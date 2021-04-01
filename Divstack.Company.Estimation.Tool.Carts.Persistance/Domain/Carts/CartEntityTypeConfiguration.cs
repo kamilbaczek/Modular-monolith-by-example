@@ -1,5 +1,6 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Carts.Domain.Carts;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Money;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -24,9 +25,11 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Domain.Carts
                 ownedNavigationBuilder.Property<Guid>("ProductId");
                 ownedNavigationBuilder.WithOwner().HasForeignKey("CartId");
                 ownedNavigationBuilder.HasKey("Id");
-                ownedNavigationBuilder.OwnsOne<Quantity>("Quantity").Property<long>("Value")
-                    .HasColumnName("Quantity")
-                    .IsRequired();
+                ownedNavigationBuilder.OwnsOne<Money>("Money", builderTest =>
+                {
+                    builderTest.Property<decimal>("Amount");
+                    builderTest.Property<string>("Currency");
+                });
             });
         }
     }

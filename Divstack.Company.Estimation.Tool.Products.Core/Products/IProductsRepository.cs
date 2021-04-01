@@ -11,5 +11,7 @@ namespace Divstack.Company.Estimation.Tool.Products.Core.Products
         Task DeleteAsync(Product product, CancellationToken cancellationToken = default);
         Task<List<Product>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<Product> GetAsync(Guid publicId, CancellationToken cancellationToken = default);
+        Task CommitAsync(CancellationToken cancellationToken = default);
+
     }
 }

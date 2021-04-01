@@ -10,4 +10,9 @@
       <PackageReference Include="Scrutor" Version="3.3.0" />
     </ItemGroup>
 
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>Divstack.Company.Estimation.Tool.Products.IntegrationsTests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
 </Project>

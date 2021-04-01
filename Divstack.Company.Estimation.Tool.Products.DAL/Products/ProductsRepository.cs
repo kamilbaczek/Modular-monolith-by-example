@@ -40,8 +40,16 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL.Products
 
         public async Task<Product> GetAsync(Guid publicId, CancellationToken cancellationToken = default)
         {
-            return await _productsContext.Products.Include(product => product.Category)
+            return await _productsContext.Products
+                .Include(product => product.Category)
+                .Include(product => product.Attributes)
+                .ThenInclude(attribute =>  attribute.PossibleValues)
                 .SingleOrDefaultAsync(product => product.Id == publicId, cancellationToken);
+        }
+
+        public async Task CommitAsync(CancellationToken cancellationToken = default)
+        {
+            await _productsContext.SaveChangesAsync(cancellationToken);
         }
     }
 }

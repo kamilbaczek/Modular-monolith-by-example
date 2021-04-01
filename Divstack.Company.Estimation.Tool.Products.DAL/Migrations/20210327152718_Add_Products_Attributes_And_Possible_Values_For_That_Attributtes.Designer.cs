@@ -4,14 +4,16 @@ using Divstack.Company.Estimation.Tool.Products.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Products.DAL.Migrations
 {
     [DbContext(typeof(ProductsContext))]
-    partial class ProductsContextModelSnapshot : ModelSnapshot
+    [Migration("20210327152718_Add_Products_Attributes_And_Possible_Values_For_That_Attributtes")]
+    partial class Add_Products_Attributes_And_Possible_Values_For_That_Attributtes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Products.Core.Products.Attributes.Dtos;
+using Divstack.Company.Estimation.Tool.Products.Core.Products.Attributes.PossibleValues.Dtos;
 using Divstack.Company.Estimation.Tool.Products.Core.Products.Categories;
 using Divstack.Company.Estimation.Tool.Products.Core.Products.Categories.Exceptions;
 using Divstack.Company.Estimation.Tool.Products.Core.Products.Dtos;
@@ -62,6 +64,38 @@ namespace Divstack.Company.Estimation.Tool.Products.Core.Products.Services
             var product = await _productsRepository.GetAsync(id, cancellationToken);
             ThrowIfProductNotFound(id, product);
             await _productsRepository.DeleteAsync(product, cancellationToken);
+        }
+
+        public async Task AddAttributeAsync(CreateAttributeRequest createAttributeRequest, CancellationToken cancellationToken = default)
+        {
+            var product = await _productsRepository.GetAsync(createAttributeRequest.ProductId, cancellationToken);
+            ThrowIfProductNotFound(createAttributeRequest.ProductId, product);
+            product.AddAttribute(createAttributeRequest.Name);
+            await _productsRepository.CommitAsync(cancellationToken);
+        }
+
+        public async Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest, CancellationToken cancellationToken = default)
+        {
+            var product = await _productsRepository.GetAsync(deleteAttributeRequest.ProductId, cancellationToken);
+            ThrowIfProductNotFound(deleteAttributeRequest.ProductId, product);
+            product.DeleteAttribute(deleteAttributeRequest.AttributeId);
+            await _productsRepository.CommitAsync(cancellationToken);
+        }
+
+        public async Task AddAttributePossibleValueAsync(CreatePossibleValueRequest createPossibleValueRequest, CancellationToken cancellationToken = default)
+        {
+            var product = await _productsRepository.GetAsync(createPossibleValueRequest.ProductId, cancellationToken);
+            ThrowIfProductNotFound(createPossibleValueRequest.ProductId, product);
+            product.AddAttributePotentialValue(createPossibleValueRequest.AttributeId, createPossibleValueRequest.Value);
+            await _productsRepository.CommitAsync(cancellationToken);
+        }
+
+        public async Task RemoveAttributePossibleValueAsync(DeletePossibleValueRequest deleteAttributeRequest, CancellationToken cancellationToken = default)
+        {
+            var product = await _productsRepository.GetAsync(deleteAttributeRequest.ProductId, cancellationToken);
+            ThrowIfProductNotFound(deleteAttributeRequest.ProductId, product);
+            product.DeleteAttributePossibleValue(deleteAttributeRequest.AttributeId, deleteAttributeRequest.ProductId);
+            await _productsRepository.CommitAsync(cancellationToken);
         }
 
         private static void ThrowIfCategoryNotFound(Guid id, Category category)

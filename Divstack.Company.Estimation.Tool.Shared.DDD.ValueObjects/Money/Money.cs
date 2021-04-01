@@ -15,4 +15,21 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Money
             base.Validate();
         }
     }
+
+    public class Address : ValueOf<(string Address, string State, string PostCode), Address>
+    {
+
+    }
+
+    public class Test
+    {
+        public Test()
+        {
+            var orderAddress = Address.From(("test", "Test", "Test"));
+            var userAddress = Address.From(("test", "Test", "Test"));
+            if(orderAddress == userAddress)
+            {}
+
+        }
+    }
 }

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Extensions
 {
-    internal static class DatabaseConfigurationExtensions
+    public static class DatabaseConfigurationExtensions
     {
         private static void RemoveDbContextConfiguration<TDbContext>(this IServiceCollection serviceCollection) where TDbContext: DbContext
         {
@@ -17,7 +17,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
             }
         }
 
-        internal static void ReplaceToInMemoryInstance<TDbContext>(this IServiceCollection serviceCollection) where TDbContext: DbContext
+        public static void ReplaceToInMemoryInstance<TDbContext>(this IServiceCollection serviceCollection) where TDbContext: DbContext
         {
             serviceCollection.RemoveDbContextConfiguration<TDbContext>();
             serviceCollection.AddDbContext<TDbContext>(options =>

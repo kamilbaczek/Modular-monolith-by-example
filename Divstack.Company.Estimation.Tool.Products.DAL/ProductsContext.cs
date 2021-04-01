@@ -1,13 +1,11 @@
-﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Products.Core.Products;
+﻿using Divstack.Company.Estimation.Tool.Products.Core.Products;
 using Divstack.Company.Estimation.Tool.Products.Core.Products.Categories;
 using Divstack.Company.Estimation.Tool.Products.DAL.Products;
 using Microsoft.EntityFrameworkCore;
 
-[assembly:InternalsVisibleTo("Divstack.Company.Estimation.Tool.Products.IntegrationsTests")]
 namespace Divstack.Company.Estimation.Tool.Products.DAL
 {
-    public class ProductsContext : DbContext
+    public sealed class ProductsContext : DbContext
     {
         public ProductsContext(DbContextOptions options)
             : base(options)

@@ -26,7 +26,7 @@ namespace Divstack.Company.Estimation.Tool.Products.Api.Controllers
             return Ok(products);
         }
 
-        [HttpPost(Name = nameof(Routing.Products.Create))]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
@@ -44,5 +44,7 @@ namespace Divstack.Company.Estimation.Tool.Products.Api.Controllers
             await _productsService.DeleteAsync(id);
             return NoContent();
         }
+
+
     }
 }

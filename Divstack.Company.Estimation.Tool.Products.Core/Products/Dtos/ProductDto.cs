@@ -7,7 +7,11 @@ namespace Divstack.Company.Estimation.Tool.Products.Core.Products.Dtos
     public sealed class ProductDto
     {
         [JsonConstructor]
-        public ProductDto(Guid id, string name, string description, CategoryDto category, Guid createdBy)
+        private ProductDto()
+        {
+        }
+
+        private ProductDto(Guid id, string name, string description, CategoryDto category, Guid createdBy)
         {
             Id = id;
             Name = name;
@@ -16,12 +20,12 @@ namespace Divstack.Company.Estimation.Tool.Products.Core.Products.Dtos
             CreatedBy = createdBy;
         }
 
-        public Guid Id { get; }
-        public string Name { get; }
-        public string Description { get; }
-        public Guid CreatedBy { get; }
+        public Guid Id { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public Guid CreatedBy { get; private set; }
 
-        public CategoryDto Category { get; }
+        public CategoryDto Category { get; private set; }
 
         internal static ProductDto Map(Product product)
         {
