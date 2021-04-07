@@ -1,5 +1,4 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Money;
 using ValueOf;
 
 namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity

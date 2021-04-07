@@ -8,4 +8,8 @@
       <PackageReference Include="ValueOf" Version="1.0.17" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
+    </ItemGroup>
+
 </Project>

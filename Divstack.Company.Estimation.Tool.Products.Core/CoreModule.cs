@@ -3,7 +3,6 @@ using Divstack.Company.Estimation.Tool.Products.Core.Products.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Products.DAL")]
-
 namespace Divstack.Company.Estimation.Tool.Products.Core
 {
     internal static class CoreModule
