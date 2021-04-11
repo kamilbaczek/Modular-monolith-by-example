@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposals;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Exceptions
 {

@@ -1,10 +1,14 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Proposals
+namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposals
 {
     public sealed class ProposalDecision : ValueObject
     {
+        private ProposalDecision()
+        {
+        }
+
         private const string Accept = "Accept";
 
         private const string Reject = "Reject";

@@ -1,7 +1,7 @@
-﻿
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("Divstack.Company.Estimation.Tool.Products.IntegrationsTests")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Products.IntegrationsTests")]
+
 namespace Divstack.Company.Estimation.Tool.Users.Api
 {
     internal static class Routing
@@ -11,7 +11,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api
 
         internal static class Authentication
         {
-            private const string Controller = Host + ModuleBase + "/" + nameof(Authentication) +"/" ;
+            private const string Controller = Host + ModuleBase + "/" + nameof(Authentication) + "/";
 
             internal const string SignIn = Controller;
         }

@@ -6,6 +6,10 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations
 {
     public class Client : ValueObject
     {
+        private Client()
+        {
+        }
+
         private Client(Email email, string firstName, string lastName)
         {
             Email = email ?? throw new ArgumentNullException(nameof(email));
@@ -21,5 +25,5 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations
         internal Email Email { get;  }
         private string FirstName { get;  }
         private string LastName { get;  }
-    };
+    }
 }

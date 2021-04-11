@@ -1,5 +1,4 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Estimations.Domain.Proposals;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposals.Exceptions
 {

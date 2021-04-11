@@ -1,7 +1,5 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Estimations.Domain.Proposals;
 using Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Exceptions;
-using Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposals.Events;
 using Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposals.Exceptions;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
@@ -12,32 +10,40 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposa
     {
         internal ProposalId Id { get; }
         private ProposalDescription Description { get; }
-        internal Money Value { get; }
+        private Money Price { get; }
         private EmployeeId SuggestedBy { get; }
         private DateTime Suggested { get; }
         private EmployeeId CancelledBy { get; set; }
         private DateTime? Cancelled { get; set; }
         private ProposalDecision Decision { get; set; }
+        private Valuation Valuation { get; }
+
+        private Proposal()
+        {
+        }
 
         private Proposal(
+            Valuation valuation,
             Money value,
             ProposalDescription description,
             EmployeeId suggestedBy)
         {
             Id = new ProposalId(Guid.NewGuid());
-            Value = value ?? throw new ArgumentNullException(nameof(value));
+            Price = value ?? throw new ArgumentNullException(nameof(value));
             Description = description ?? throw new ArgumentNullException(nameof(description));;
             SuggestedBy = suggestedBy ?? throw new ArgumentNullException(nameof(suggestedBy));
             Suggested = DateTime.Now;
-            AddDomainEvent(new ProposalSuggestedEvent(suggestedBy, value, Id));
+            Decision = ProposalDecision.NoDecision;
+            Valuation = valuation;
         }
 
         internal static Proposal Suggest(
+            Valuation valuation,
             Money value,
             ProposalDescription description,
             EmployeeId estimatedBy)
         {
-            return new(value, description, estimatedBy);
+            return new(valuation, value, description, estimatedBy);
         }
 
         internal void Approve()
@@ -57,7 +63,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposa
             if (HasDecision())
                 throw new ProposalAlreadyHasDecisionException(Id);
             Decision = ProposalDecision.RejectDecision(DateTime.Now, rejectReason);
-            AddDomainEvent(new ProposalRejectedEvent(rejectReason, Id));
         }
 
         internal void Cancel(EmployeeId employeeId)
@@ -67,7 +72,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Proposa
 
             Cancelled = DateTime.Now;
             CancelledBy = employeeId;
-            AddDomainEvent(new ProposalCancelledEvent(employeeId, Id));
         }
 
         internal bool HasDecision()

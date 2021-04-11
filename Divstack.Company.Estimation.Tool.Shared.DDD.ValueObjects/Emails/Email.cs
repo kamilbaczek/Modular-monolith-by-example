@@ -6,6 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails
 {
     public sealed class Email : ValueObject
     {
+        public string Value { get; }
         private Email()
         {
         }
@@ -17,6 +18,8 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails
             {
                 throw new InvalidEmailFormatException(emailAddress);
             }
+
+            Value = emailAddress;
         }
         public static Email Of(string emailAddress)
         {

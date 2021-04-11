@@ -4,6 +4,10 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects
 {
     public class Money : ValueObject
     {
+        private Money()
+        {
+        }
+
         public static Money Undefined => new Money(null, null);
 
         public decimal? Value { get; }
