@@ -4,14 +4,16 @@ using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 {
     [DbContext(typeof(ValuationsContext))]
-    partial class ValuationsContextModelSnapshot : ModelSnapshot
+    [Migration("20210414191957_Create_Valuations")]
+    partial class Create_Valuations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

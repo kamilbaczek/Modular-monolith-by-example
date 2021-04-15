@@ -18,6 +18,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Tests.Valuations.C
         protected BaseValuationTest()
         {
             _productExistingCheckerMock = new Mock<IProductExistingChecker>();
+            _productExistingCheckerMock.Setup(productExistingChecker =>
+                productExistingChecker.ExistAsync(It.IsAny<List<Guid>>())).ReturnsAsync(true);
         }
 
         protected const string FakeRejectReason = "test";

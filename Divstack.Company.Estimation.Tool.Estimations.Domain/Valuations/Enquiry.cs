@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
@@ -19,7 +20,9 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations
             Client client)
         {
             Valuation = valuation ?? throw new ArgumentNullException(nameof(valuation));
-            ProductsIds = productsIds ?? throw new ArgumentNullException(nameof(productsIds));
+            if (!productsIds.Any())
+                throw new InvalidOperationException("Cannot request valuation without products");
+            Products = productsIds.Select(productsId => Product.Create(productsId, this)).ToList().AsReadOnly();
             Client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
@@ -32,9 +35,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations
         }
 
         internal Email ClientEmail => Client.Email;
-        private Valuation Valuation  { get; set; }
-        private IReadOnlyList<ProductId> ProductsIds { get; set; }
-        private Client Client { get; set; }
-
+        private Valuation Valuation  { get; }
+        private IReadOnlyList<Product> Products { get; }
+        private Client Client { get; }
     }
 }

@@ -7,7 +7,7 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL
 {
     public sealed class ProductsContext : DbContext
     {
-        public ProductsContext(DbContextOptions options)
+        public ProductsContext(DbContextOptions<ProductsContext> options)
             : base(options)
         {
         }

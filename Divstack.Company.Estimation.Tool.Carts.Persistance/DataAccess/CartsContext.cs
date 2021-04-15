@@ -6,7 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.DataAccess
 {
     internal class CartsContext : DbContext
     {
-        public CartsContext(DbContextOptions options)
+        public CartsContext(DbContextOptions<CartsContext> options)
             : base(options)
         {
         }

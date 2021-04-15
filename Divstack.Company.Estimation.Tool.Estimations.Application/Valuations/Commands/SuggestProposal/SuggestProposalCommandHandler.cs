@@ -21,7 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Application.Valuations.Co
 
         public async Task<Unit> Handle(SuggestProposalCommand command, CancellationToken cancellationToken)
         {
-            var valuationId = new ValuationId(command.valuationId);
+            var valuationId = new ValuationId(command.ValuationId);
             var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
             var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
             var money = Money.Of(command.Value, command.Currency);

@@ -11,7 +11,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api
 {
     internal static class ValuationModule
     {
-        public static IServiceCollection AddCartsModule(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddValuationsModule(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddInfrastructure(configuration);

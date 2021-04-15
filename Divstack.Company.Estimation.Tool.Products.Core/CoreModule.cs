@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Divstack.Company.Estimation.Tool.Products.Core.Products.Contracts;
 using Divstack.Company.Estimation.Tool.Products.Core.Products.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,12 @@ namespace Divstack.Company.Estimation.Tool.Products.Core
             services.Scan(scan => scan
                 .FromAssemblyOf<ProductsService>()
                 .AddClasses(c => c.Where(@class => @class.Name.EndsWith("Service")))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
+
+            services.Scan(scan => scan
+                .FromAssemblyOf<ProductExistingChecker>()
+                .AddClasses(c => c.Where(@class => @class.Name.EndsWith("Checker")))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
         }

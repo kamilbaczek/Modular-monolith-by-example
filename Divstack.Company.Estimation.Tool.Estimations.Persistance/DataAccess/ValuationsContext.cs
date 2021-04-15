@@ -6,7 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
 {
     public class ValuationsContext : DbContext
     {
-        public ValuationsContext(DbContextOptions options)
+        public ValuationsContext(DbContextOptions<ValuationsContext> options)
             : base(options)
         {
         }

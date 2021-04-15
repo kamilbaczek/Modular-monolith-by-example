@@ -8,7 +8,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Application.Valuations.Co
         {
             RuleFor(command => command.Currency).NotEmpty();
             RuleFor(command => command.Description).NotEmpty().MaximumLength(255);
-            RuleFor(command => command.valuationId).NotEmpty();
+            RuleFor(command => command.ValuationId).NotEmpty();
             RuleFor(command => command.Value).GreaterThanOrEqualTo(0);
         }
     }

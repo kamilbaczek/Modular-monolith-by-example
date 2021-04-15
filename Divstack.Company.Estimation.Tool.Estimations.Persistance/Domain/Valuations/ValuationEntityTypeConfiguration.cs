@@ -52,15 +52,28 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
             });
             builder.Property<DateTime>("RequestedDate").IsRequired();
             builder.Property<EmployeeId>("CompletedBy")
-                .HasConversion(id => id.Value, value => new EmployeeId(value));
-            builder.Property<DateTime?>("CompletedDate").IsRequired();
+                .HasConversion(id => id.Value, value => new EmployeeId(value))
+                .IsRequired(false);
+            builder.Property<DateTime?>("CompletedDate").IsRequired(false);
 
             builder.OwnsOne<Enquiry>("Enquiry", equiryValueObjectBuilder =>
             {
+                equiryValueObjectBuilder.OwnsMany<Product>("Products", productsBuilder =>
+                {
+                    productsBuilder.WithOwner("Enquiry").HasForeignKey();
+                    productsBuilder.ToTable("Valuations", "Products");
+                    productsBuilder.HasKey("Id");
+                    productsBuilder.Property<ProductId>("Id")
+                        .HasConversion(id => id.Value, value => new ProductId(value));
+                });
                 equiryValueObjectBuilder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
                 {
                     clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
                     clientValueObjectBuilder.Property<string>("LastName").IsRequired();
+                    clientValueObjectBuilder.OwnsOne<Email>("Email", emailValueObjectBuilder =>
+                    {
+                        emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
+                    });
                     clientValueObjectBuilder.OwnsOne<Email>("Email", emailValueObjectBuilder =>
                     {
                         emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);

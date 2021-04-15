@@ -14,7 +14,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Tests.Valuations.P
     public class SuggestProposalTests : BaseValuationTest
     {
         [Fact]
-          public async Task Given_SuggestProposal_Then_ProposalIsSuggested()
+        public async Task Given_SuggestProposal_Then_CannotSuggestProposal()
         {
             var valuation = await RequestFakeValuation();
             var money = Money.Of(30, "USD");
@@ -27,14 +27,14 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Tests.Valuations.P
         }
 
         [Fact]
-          public async Task Given_SuggestProposal_When_ValuationIsCompleted_Then_ProposalIsNotCreated()
+        public async Task Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
         {
+            var valuation = await RequestFakeValuation();
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
             var proposalId = SuggestFakeProposal(valuation, Money.Of(50, "USD"));
             valuation.ApproveProposal(proposalId);
-            valuation.Complete(new EmployeeId(Guid.NewGuid()));
+            valuation.Complete(employee);
 
             Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
@@ -42,7 +42,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Tests.Valuations.P
         }
 
         [Fact]
-          public async Task Given_SuggestProposal_When_AnyProposalHasNoDecision_Then_ProposalIsNotCreated()
+        public async Task Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
         {
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());

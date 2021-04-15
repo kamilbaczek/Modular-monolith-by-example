@@ -7,6 +7,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.DependencyInjection\Divstack.Company.Estimation.Tool.Emails.DependencyInjection.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Estimations.Api\Divstack.Company.Estimation.Tool.Estimations.Api.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Products.Api\Divstack.Company.Estimation.Tool.Products.Api.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj" />
     </ItemGroup>
