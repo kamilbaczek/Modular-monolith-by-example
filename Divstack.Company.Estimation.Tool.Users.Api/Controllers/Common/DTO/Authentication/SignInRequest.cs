@@ -4,7 +4,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Auth
 {
     public class SignInRequest
     {
-        [JsonPropertyName("userName")] public string UserName { get; set; }
+        [JsonPropertyName("email")] public string UserName { get; set; }
 
         [JsonPropertyName("password")] public string Password { get; set; }
     }

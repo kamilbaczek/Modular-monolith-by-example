@@ -18,12 +18,18 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
                 });
 
             services.AddSwaggerModule();
+            services.AddMvcCore();
+            services.AddCors();
 
             return services;
         }
 
         public static void UseSharedInfrastructure(this IApplicationBuilder app)
         {
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
             app.UseSwaggerModule();
         }
     }

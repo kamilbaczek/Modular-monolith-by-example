@@ -50,7 +50,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations
             if (areProductsExists is false)
                 throw new InvalidProductsException(productsIds);
 
-            return new(productsIds, client);
+            return new Valuation(productsIds, client);
         }
 
         public void SuggestProposal(Money value,

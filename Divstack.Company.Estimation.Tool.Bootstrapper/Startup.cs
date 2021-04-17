@@ -36,6 +36,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseSharedInfrastructure();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
@@ -43,7 +44,6 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
                 endpoints.MapControllers();
             });
             app.UseUsersModule(usersSeeder);
-            app.UseSharedInfrastructure();
         }
     }
 }

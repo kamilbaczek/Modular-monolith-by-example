@@ -17,6 +17,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.HasDefaultSchema("Carts");
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CartEntityTypeConfiguration).Assembly);
         }
     }

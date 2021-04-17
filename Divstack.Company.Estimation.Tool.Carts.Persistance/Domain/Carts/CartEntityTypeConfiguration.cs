@@ -10,7 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Domain.Carts
     {
         public void Configure(EntityTypeBuilder<Cart> builder)
         {
-            builder.ToTable("Carts", "Carts");
+            builder.ToTable("Carts");
             builder.HasKey("Id");
             builder.Property<Guid>("UserId").IsRequired();
             builder.Property("Status").IsRequired().HasMaxLength(50);
@@ -20,15 +20,10 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Domain.Carts
 
             builder.OwnsMany<CartItem>("Items", ownedNavigationBuilder =>
             {
-                ownedNavigationBuilder.ToTable("Carts", "Items");
+                ownedNavigationBuilder.ToTable("Items");
                 ownedNavigationBuilder.Property<Guid>("ProductId");
                 ownedNavigationBuilder.WithOwner().HasForeignKey("CartId");
                 ownedNavigationBuilder.HasKey("Id");
-                ownedNavigationBuilder.OwnsOne<Money>("Money", builderTest =>
-                {
-                    builderTest.Property<decimal>("Value");
-                    builderTest.Property<string>("Currency");
-                });
             });
         }
     }

@@ -1,0 +1,60 @@
+
+
+/* 
+Datatable
+*/
+
+// datatable
+
+div.dataTables_wrapper {
+  div.dataTables_filter{
+    text-align: right;
+
+    input{
+      margin-left: 0.5em;
+      margin-right: 0;
+    }
+  }
+}
+
+
+// data table
+
+.datatables {
+  thead {
+    tr {
+      th {
+        position: relative;
+        &:before {
+          content: "\F0143";
+          position: absolute;
+          right: 0;
+          top: 7px;
+          font: normal normal normal 24px/1 "Material Design Icons";
+          opacity: 0.3;
+        }
+
+        &:after {
+          content: "\F0140";
+          position: absolute;
+          right: 0;
+          top: 14px;
+          opacity: 0.3;
+          font: normal normal normal 24px/1 "Material Design Icons";
+        }
+      }
+
+      .asc {
+        &:before {
+          opacity: 1;
+        }
+      }
+
+      .desc {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

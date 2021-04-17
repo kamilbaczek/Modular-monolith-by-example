@@ -15,6 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Carts")
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
@@ -40,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts", "Carts");
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Carts.Domain.Carts.Cart", b =>
@@ -61,30 +62,10 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
 
                             b1.HasIndex("CartId");
 
-                            b1.ToTable("Carts", "Items");
+                            b1.ToTable("Items");
 
                             b1.WithOwner()
                                 .HasForeignKey("CartId");
-
-                            b1.OwnsOne("Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity.Quantity", "Quantity", b2 =>
-                                {
-                                    b2.Property<Guid>("CartItemId")
-                                        .HasColumnType("uniqueidentifier");
-
-                                    b2.Property<long>("Value")
-                                        .HasColumnType("bigint")
-                                        .HasColumnName("Quantity");
-
-                                    b2.HasKey("CartItemId");
-
-                                    b2.ToTable("Carts");
-
-                                    b2.WithOwner()
-                                        .HasForeignKey("CartItemId");
-                                });
-
-                            b1.Navigation("Quantity")
-                                .IsRequired();
                         });
 
                     b.Navigation("Items");

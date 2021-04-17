@@ -10,7 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL.Products
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.ToTable("Products", "Products");
+            builder.ToTable("Products");
             builder.HasKey(product => product.Id);
             builder.HasOne(product => product.Category)
                 .WithMany();
@@ -19,14 +19,14 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL.Products
             builder.Property(product => product.CreatedBy).IsRequired();
             builder.OwnsMany<Attribute>("Attributes", ownedAttribute =>
             {
-                ownedAttribute.ToTable( "Attributes","Products");
+                ownedAttribute.ToTable("Attributes");
                 ownedAttribute.HasKey("Id");
                 ownedAttribute.WithOwner("Product").HasForeignKey();
                 ownedAttribute.Property<string>("Name").HasMaxLength(255).IsRequired();
                 ownedAttribute.OwnsMany<PossibleValue>("PossibleValues",
                     ownedPotentialValues =>
                 {
-                    ownedAttribute.ToTable("AttributePossibleValues","Products");
+                    ownedAttribute.ToTable("AttributePossibleValues");
                     ownedPotentialValues.WithOwner("Attribute").HasForeignKey();
                     ownedPotentialValues.HasKey("Id");
                     ownedPotentialValues.Property<string>("Value").HasMaxLength(255).IsRequired();

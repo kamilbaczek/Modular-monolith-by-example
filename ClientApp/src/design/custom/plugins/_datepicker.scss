@@ -1,0 +1,213 @@
+
+//
+// Datepicker
+//
+@import "~vue2-datepicker/index.css";
+
+.mx-datepicker {
+  width: 100% !important;
+  font-family: $font-family-base !important;
+}
+
+.mx-input {
+  display: block !important;
+  height: $input-height !important;
+  padding: $input-padding-y $input-padding-x !important;
+  font-family: $input-font-family !important;
+  @include font-size($input-font-size);
+  font-weight: $input-font-weight !important;
+  line-height: $input-line-height !important;
+  color: $input-color !important;
+  background-color: $input-bg !important;
+  background-clip: padding-box;
+  border: $input-border-width solid $input-border-color !important;
+  box-shadow: none !important;
+}
+
+.mx-calendar {
+  font-family: $font-family-base !important;
+}
+
+.mx-datepicker-popup {
+  box-shadow: $box-shadow-lg !important;
+  border: none !important;
+  background-color: lighten($dropdown-bg, 2%) !important;
+}
+
+.mx-panel-date td,
+.mx-panel-date th {
+  border-radius: 30px;
+}
+
+.mx-calendar-content .cell.disabled,
+.inrange {
+  background-color: lighten($gray-200, 2%) !important;
+}
+
+.mx-calendar-content .cell:hover,
+.mx-calendar-content .cell.actived {
+  color: $gray-400;
+}
+
+.mx-shortcuts-wrapper .mx-shortcuts {
+  color: $gray-500 !important;
+}
+
+// hotel
+
+.datepicker__month-button {
+  font: normal normal normal 24px/1 "Material Design Icons";
+  font-size: inherit;
+  display: unset !important;
+  height: 0px !important;
+  width: 20px !important;
+  line-height: 40px;
+}
+
+.datepicker__month-button--next {
+  &::before {
+    content: "\F013E";
+  }
+}
+
+.datepicker__month-button--prev {
+  &::before {
+    content: "\F013D";
+  }
+}
+
+.datepicker__header {
+  margin-bottom: 13px;
+}
+[dir="rtl"]{
+  .datepicker {
+    right: 0 !important;
+    left: auto;
+  }
+}
+
+[dir="rtl"]{
+  .bootstrap-timepicker-widget{
+    right: 0 !important;
+    left: auto;
+    
+  }
+
+  .timepicker-orient-top{
+    top: $input-height !important;
+  }
+
+  .timepicker-orient-bottom{
+    top: auto !important;
+    bottom: $input-height !important;
+  }
+}
+
+.datepicker {
+  border: 1px solid $border-color;
+  padding: 8px;
+  z-index: 999 !important;
+  
+
+  table{
+    tr{
+      th{
+        font-weight: 500;
+      }
+      td{
+        &.active, &.active:hover, .active.disabled, &.active.disabled:hover,
+        &.today,  &.today:hover, &.today.disabled, &.today.disabled:hover, 
+        &.selected, &.selected:hover, &.selected.disabled, &.selected.disabled:hover,
+        span.active.active, span.active:hover.active{
+          background-color: $primary !important;
+          background-image: none;
+          box-shadow: none;
+          color: $white !important;
+        }
+
+        &.day.focused,
+        &.day:hover,
+        span.focused,
+        span:hover {
+            background: $light;
+        }
+
+        &.new,
+        &.old,
+        span.new,
+        span.old {
+            color: $gray-500;
+            opacity: 0.6;
+        }
+
+        &.range, &.range.disabled, &.range.disabled:hover, &.range:hover{
+            background-color: $gray-300;
+        }
+      }
+    }
+  }
+}
+
+.table-condensed{
+  >thead>tr>th, >tbody>tr>td {
+    padding: 7px;
+  }
+}
+
+.bootstrap-datepicker-inline{
+  .datepicker-inline{
+    width: auto !important;
+    display: inline-block;
+  }
+}
+
+
+// DATEPICKER
+
+.datepicker-container{
+  border: 1px solid $border-color;
+  box-shadow: none;
+  background-color: $dropdown-bg;
+
+  &.datepicker-inline{
+    width: 212px;
+  }
+}
+
+.datepicker-panel{
+  
+  >ul{
+    >li{
+      background-color: $dropdown-bg;
+      border-radius: 4px;
+
+      &.picked, &.picked:hover{
+        background-color: rgba($primary, 0.25);
+        color: $primary;
+      }
+
+      &.highlighted, &.highlighted:hover, &:hover{
+        background-color: $primary;
+        color: $white;
+      }
+
+      
+      &.muted, &.muted:hover{
+        color: $gray-500;
+        opacity: 0.6;
+      }
+    }
+
+    
+
+    &[data-view=week]{
+      >li{
+        font-weight: $fw-medium;
+      }
+
+      >li, >li:hover{
+        background-color: $dropdown-bg;
+      }
+    }
+  }
+}

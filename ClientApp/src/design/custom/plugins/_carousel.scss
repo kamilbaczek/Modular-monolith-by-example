@@ -1,0 +1,34 @@
+.team-carousel {
+    .VueCarousel-inner {
+        flex-basis: auto !important;
+
+        .VueCarousel-slide {
+            margin-right: 24px;
+            width: 255px;
+
+            .team-box {
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.owl-nav {
+    margin-top: 16px;
+    text-align: center;
+
+    button {
+        width: 30px;
+        height: 30px;
+        line-height: 28px !important;
+        font-size: 20px !important;
+        border-radius: 50% !important;
+        background-color: rgba($primary, 0.25) !important;
+        color: $primary !important;
+        margin: 4px 8px !important;
+        border: none;
+    }
+}

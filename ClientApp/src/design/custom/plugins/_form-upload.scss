@@ -1,0 +1,31 @@
+
+//
+// Form-Upload
+//
+
+@import "~vue2-dropzone/dist/vue2Dropzone.min.css";
+
+/* Dropzone */
+.dropzone {
+  min-height: 230px;
+  border: 2px dashed $gray-400 !important;
+  background: $card-bg !important;
+  border-radius: 6px !important;
+
+  .dz-message {
+    font-size: 24px;
+    color: $gray-400;
+    margin: 2.5em 0 !important;
+  }
+}
+
+.vue-dropzone>.dz-preview .dz-details {
+  background-color: #e5e5e5 !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+  border-radius: 20px;
+}
+
+.vue-dropzone>.dz-preview .dz-image {
+  height: 120px !important;
+  width: 120px !important;
+}

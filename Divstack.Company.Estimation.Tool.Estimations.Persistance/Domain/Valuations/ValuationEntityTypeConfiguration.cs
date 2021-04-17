@@ -12,7 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
     {
         public void Configure(EntityTypeBuilder<Valuation> builder)
         {
-            builder.ToTable("Valuations", "Valuations");
+            builder.ToTable("Valuations");
             builder.HasKey("Id");
             builder.Property<ValuationId>("Id")
                 .HasConversion(id => id.Value, value => new ValuationId(value));
@@ -20,13 +20,13 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
             builder.OwnsMany<Proposal>("Proposals", ownedNavigationBuilder =>
             {
                 ownedNavigationBuilder.WithOwner("Valuation").HasForeignKey();
-                ownedNavigationBuilder.ToTable("Valuations", "Proposals");
+                ownedNavigationBuilder.ToTable("Proposals");
                 ownedNavigationBuilder.HasKey("Id");
                 ownedNavigationBuilder.Property<ProposalId>("Id")
                     .HasConversion(id => id.Value, value => new ProposalId(value));
                 ownedNavigationBuilder.OwnsOne<Money>("Price", moneyValueObjectBuilder =>
                 {
-                    moneyValueObjectBuilder.Property<decimal?>("Value");
+                    moneyValueObjectBuilder.Property<decimal?>("Value").IsRequired(false).HasPrecision(15,2);
                     moneyValueObjectBuilder.Property<string>("Currency");
                 });
                 ownedNavigationBuilder.OwnsOne<ProposalDescription>("Description", valueObjectBuilder =>
@@ -61,7 +61,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 equiryValueObjectBuilder.OwnsMany<Product>("Products", productsBuilder =>
                 {
                     productsBuilder.WithOwner("Enquiry").HasForeignKey();
-                    productsBuilder.ToTable("Valuations", "Products");
+                    productsBuilder.ToTable("Products");
                     productsBuilder.HasKey("Id");
                     productsBuilder.Property<ProductId>("Id")
                         .HasConversion(id => id.Value, value => new ProductId(value));

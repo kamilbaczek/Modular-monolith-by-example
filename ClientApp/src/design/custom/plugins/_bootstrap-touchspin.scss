@@ -1,0 +1,21 @@
+
+//
+// Bootstrap touchspin
+//
+
+.vnis__button {
+  background: $primary !important;
+}
+
+.product-cart-touchspin {
+  .vnis__button {
+    background: none !important;
+    color: black;
+  }
+}
+
+.vnis__input {
+  border: 1px solid $gray-400 !important;
+  background-color: rgba($topbar-search-bg, 0.07);
+  color: $input-color;
+}

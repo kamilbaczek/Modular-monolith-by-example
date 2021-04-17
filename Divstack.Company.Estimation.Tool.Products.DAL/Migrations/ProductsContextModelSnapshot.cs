@@ -15,6 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Products")
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
@@ -61,7 +62,7 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", "Products");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Products.Core.Products.Product", b =>
@@ -88,7 +89,7 @@ namespace Divstack.Company.Estimation.Tool.Products.DAL.Migrations
 
                             b1.HasIndex("ProductId");
 
-                            b1.ToTable("AttributePossibleValues", "Products");
+                            b1.ToTable("AttributePossibleValues");
 
                             b1.WithOwner("Product")
                                 .HasForeignKey("ProductId");

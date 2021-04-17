@@ -1,0 +1,101 @@
+{
+  "name": "skote",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^22.0.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.3",
+    "@fullcalendar/bootstrap": "^5.3.1",
+    "@fullcalendar/core": "^5.3.1",
+    "@fullcalendar/daygrid": "^5.3.1",
+    "@fullcalendar/interaction": "^5.3.1",
+    "@fullcalendar/list": "^5.3.1",
+    "@fullcalendar/timegrid": "^5.3.1",
+    "@fullcalendar/vue": "^5.3.1",
+    "@voerro/vue-tagsinput": "^2.4.3",
+    "apexcharts": "^3.22.2",
+    "bootstrap": "^5.0.0-beta2",
+    "bootstrap-vue": "^2.21.2",
+    "chart.js": "^2.9.4",
+    "chartist": "^0.11.4",
+    "core-js": "^3.7.0",
+    "echarts": "^4.9.0",
+    "eslint-loader": "^4.0.2",
+    "firebase": "^8.2.5",
+    "leaflet": "^1.7.1",
+    "metismenujs": "^1.2.1",
+    "sass": "^1.30.0",
+    "sass-loader": "^10.1.0",
+    "simplebar-vue": "^1.6.0",
+    "sweetalert2": "^10.12.3",
+    "v-click-outside": "^3.1.2",
+    "v-mask": "^2.2.3",
+    "vue": "^2.6.12",
+    "vue-apexcharts": "^1.6.0",
+    "vue-carousel": "^0.18.0",
+    "vue-chartist": "^2.3.1",
+    "vue-chartjs": "^3.5.1",
+    "vue-cropperjs": "^4.1.0",
+    "vue-easy-lightbox": "^0.14.0",
+    "vue-echarts": "^5.0.0-beta.0",
+    "vue-form-wizard": "^0.8.4",
+    "vue-hotel-datepicker": "^4.1.0",
+    "vue-i18n": "^8.22.2",
+    "vue-loading-overlay": "^3.4.2",
+    "vue-meta": "^2.4.0",
+    "vue-multiselect": "^2.1.6",
+    "vue-number-input-spinner": "^2.2.0",
+    "vue-router": "^3.4.9",
+    "vue-scrollto": "^2.20.0",
+    "vue-slide-bar": "^1.2.0",
+    "vue-spinner": "^1.0.4",
+    "vue-sweetalert2": "^4.1.1",
+    "vue-switches": "^2.0.1",
+    "vue-tinymce-editor": "^1.6.2",
+    "vue-verification-code-input": "^1.0.0",
+    "vue2-animate": "^2.1.4",
+    "vue2-datepicker": "^3.8.2",
+    "vue2-dropzone": "^3.6.0",
+    "vue2-google-maps": "^0.10.7",
+    "vue2-leaflet": "^2.6.0",
+    "vue2-scrollspy": "^2.3.1",
+    "vuedraggable": "^2.24.3",
+    "vuelidate": "^0.7.6",
+    "vuetable-2": "^1.7.5",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.1",
+    "@vue/cli-plugin-eslint": "~4.3.1",
+    "@vue/cli-service": "~4.3.1",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-i18n": "~1.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

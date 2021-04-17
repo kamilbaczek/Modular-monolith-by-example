@@ -1,0 +1,81 @@
+//
+// Form editors.scss
+//
+
+// ck-editor
+.ck.ck-toolbar {
+  background-color: $gray-200 !important;
+  border: 1px solid $input-border-color !important;
+}
+
+.ck.ck-editor__main>.ck-editor__editable {
+  border-color: $input-border-color !important;
+  box-shadow: none !important;
+}
+
+.ck.ck-dropdown__panel,
+.ck.ck-list {
+  background: $dropdown-bg !important;
+  border: 1px solid $dropdown-border-color !important;
+}
+
+.ck-editor__editable {
+  min-height: 245px !important;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping>.ck-toolbar__items {
+  flex-wrap: wrap !important;
+}
+
+.ck.ck-editor__main>.ck-editor__editable {
+  background-color: $card-bg !important;
+}
+
+.ck.ck-reset_all,
+.ck.ck-reset_all * {
+  color: $gray-600 !important
+}
+.ck.ck-toolbar .ck.ck-toolbar__separator, .mce-container {
+  background: transparent !important;
+}
+
+.ck.ck-button.ck-on,
+a.ck.ck-button.ck-on,
+.ck.ck-button:not(.ck-disabled):hover,
+a.ck.ck-button:not(.ck-disabled):hover {
+  background: $gray-200 !important;
+}
+
+
+.mce-toolbar-grp{
+  background: #f6f6f6 !important;
+  border: none !important;
+
+  .mce-btn {
+    background: none;
+  }
+
+  .mce-container-body {
+    font-family: inherit
+  }
+}
+
+// mce tiny editor
+.mce-container {
+  background-color: $card-bg !important;
+}
+.mce-tinymce.mce-container.mce-panel, .mce-panel, .mce-statusbar, .mce-menubar, .mce-btn-group:not(:first-child){
+  border: 1px solid $input-border-color !important;
+}
+.mce-menubtn button, .mce-container, .mce-container-body {
+  span, .mce-btn .mce-ico, .mce-path-item {
+    color: $gray-600 !important;
+    border: 0px solid !important;
+  }
+  iframe {
+    p {
+      color: $gray-600 !important;
+    }
+  }
+  color: $gray-600 !important;
+}

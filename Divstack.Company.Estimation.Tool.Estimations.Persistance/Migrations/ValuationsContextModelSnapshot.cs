@@ -15,6 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasDefaultSchema("Valuations")
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
@@ -28,7 +29,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("CompletedDate")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("RequestedDate")
@@ -36,7 +36,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Valuations", "Valuations");
+                    b.ToTable("Valuations");
                 });
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Estimations.Domain.Valuations.Valuation", b =>
@@ -106,7 +106,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                                     b2.HasIndex("EnquiryValuationId");
 
-                                    b2.ToTable("Valuations", "Products");
+                                    b2.ToTable("Products");
 
                                     b2.WithOwner("Enquiry")
                                         .HasForeignKey("EnquiryValuationId");
@@ -143,7 +143,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.HasIndex("ValuationId");
 
-                            b1.ToTable("Valuations", "Proposals");
+                            b1.ToTable("Proposals");
 
                             b1.WithOwner("Valuation")
                                 .HasForeignKey("ValuationId");
@@ -167,7 +167,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                                     b2.HasKey("ProposalId");
 
-                                    b2.ToTable("Valuations");
+                                    b2.ToTable("Proposals");
 
                                     b2.WithOwner()
                                         .HasForeignKey("ProposalId");
@@ -184,7 +184,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                                     b2.HasKey("ProposalId");
 
-                                    b2.ToTable("Valuations");
+                                    b2.ToTable("Proposals");
 
                                     b2.WithOwner()
                                         .HasForeignKey("ProposalId");
@@ -199,11 +199,12 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                         .HasColumnType("nvarchar(max)");
 
                                     b2.Property<decimal?>("Value")
-                                        .HasColumnType("decimal(18,2)");
+                                        .HasPrecision(15, 2)
+                                        .HasColumnType("decimal(15,2)");
 
                                     b2.HasKey("ProposalId");
 
-                                    b2.ToTable("Valuations");
+                                    b2.ToTable("Proposals");
 
                                     b2.WithOwner()
                                         .HasForeignKey("ProposalId");

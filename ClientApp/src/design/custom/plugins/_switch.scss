@@ -1,0 +1,48 @@
+//
+//  Sweetalert2
+//
+
+.vue-switcher-theme--default {
+  &.vue-switcher-color--default {
+      div {
+          background-color: $gray-400 !important;
+
+          &:after {
+              background-color: $gray-600 !important;
+          }
+      }
+
+      &.vue-switcher--unchecked {
+          div {
+              background-color: $gray-300 !important;
+
+              &:after {
+                  background-color: $gray-500 !important;
+              }
+          }
+      }
+  }
+
+  @each $color,
+  $value in $theme-colors {
+      &.vue-switcher-color--#{$color} {
+          div {
+              background-color: #{$value};
+
+              &:after {
+                  background-color: $white;
+              }
+          }
+
+          &.vue-switcher--unchecked {
+              div {
+                  background-color: rgba($value, 0.3);
+
+                  &:after {
+                      background-color: #{$value};
+                  }
+              }
+          }
+      }
+  }
+}

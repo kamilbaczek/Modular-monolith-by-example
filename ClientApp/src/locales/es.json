@@ -1,0 +1,339 @@
+{
+  "navbar": {
+    "search": {
+      "text": "Buscar..."
+    },
+    "dropdown": {
+      "megamenu": {
+        "text": "Mega menú",
+        "uicontent": {
+          "title": "Componentes de la IU",
+          "list": {
+            "lightbox": "Caja ligera",
+            "rangeslider": "Control deslizante de rango",
+            "sweetalert": "Alerta dulce",
+            "rating": "Clasificación",
+            "forms": "Formas",
+            "tables": "Mesas",
+            "charts": "Gráficos"
+          }
+        },
+        "application": {
+          "title": "Aplicaciones",
+          "list": {
+            "ecommerce": "Comercio electrónico",
+            "calendar": "Calendario",
+            "email": "Correo electrónico",
+            "projects": "Proyectos",
+            "tasks": "Tareas",
+            "contacts": "Contactos"
+          }
+        },
+        "extrapages": {
+          "title": "Páginas extra",
+          "list": {
+            "lightsidebar": "Barra lateral ligera",
+            "compactsidebar": "Barra lateral compacta",
+            "horizontallayout": "Diseño horizontal",
+            "maintenance": "Mantenimiento",
+            "comingsoon": "Próximamente",
+            "timeline": "Cronograma",
+            "faqs": "Preguntas frecuentes"
+          }
+        }
+      },
+      "site": {
+        "list": {
+          "github": "GitHub",
+          "bitbucket": "Bitbucket",
+          "dribbble": "Regatear",
+          "dropbox": "Dropbox",
+          "mailchimp": "Chimpancé de correo",
+          "slack": "Floja"
+        }
+      },
+      "notification": {
+        "badge": "3",
+        "text": "Notificaciones",
+        "subtext": "Ver todo",
+        "order": {
+          "title": "Su pedido es realizado",
+          "text": "Si varios idiomas fusionan la gramática",
+          "time": "Hace 3 minutos"
+        },
+        "james": {
+          "title": "James Lemire",
+          "text": "Parecerá un inglés simplificado.",
+          "time": "Hace 1 hora"
+        },
+        "item": {
+          "title": "Your item is shipped",
+          "text": "Si varios idiomas fusionan la gramática",
+          "time": "Hace 3 minutos"
+        },
+        "salena": {
+          "title": "Salena Layfield",
+          "text": "As a skeptical Cambridge friend of mine occidental.",
+          "time": "Hace 1 hora"
+        },
+        "button": "Carga más.."
+      },
+      "henry": {
+        "text": "Henry",
+        "list": {
+          "profile": "Perfil",
+          "mywallet": "Mi billetera",
+          "settings": "Configuraciones",
+          "lockscreen": "Bloquear pantalla",
+          "logout": "cerrar sesión"
+        }
+      }
+    }
+  },
+  "menuitems": {
+    "menu": {
+      "text": "Menú"
+    },
+    "dashboards": {
+      "text": "Tableros",
+      "badge": "04",
+      "list": {
+        "default": "Defecto",
+        "saas": "Saas",
+        "crypto": "Cripto",
+        "blog": "Blog"
+      }
+    },
+    "layouts": {
+      "text": "Diseños",
+      "list": {
+        "horizontal": "Horizontal",
+        "lightsidebar": "Barra lateral ligera",
+        "compactsidebar": "Barra lateral compacta",
+        "iconsidebar": "Barra lateral de iconos",
+        "boxed": "Diseño en caja",
+        "coloredsidebar": "Barra lateral de color",
+        "vertical": "Vertical",
+        "lighttopbar": "Barra superior ligera",
+        "coloredheader": "Encabezado de color"
+      }
+    },
+    "apps": {
+      "text": "Aplicaciones"
+    },
+    "calendar": {
+      "text": "Calendario"
+    },
+    "chat": {
+      "text": "Charla",
+      "badge": "Nueva"
+    },
+    "filemanager": {
+      "text": "Administradora de archivos",
+      "badge": "Nueva"
+    },
+    "ecommerce": {
+      "text": "Comercio electrónico",
+      "list": {
+        "products": "Productos",
+        "productdetail": "Detalle del producto",
+        "orders": "Pedidos",
+        "customers": "Clientes",
+        "cart": "Carro",
+        "checkout": "Revisa",
+        "shops": "Tiendas",
+        "addproduct": "Agregar producto"
+      }
+    },
+    "crypto": {
+      "text": "Cripto",
+      "list": {
+        "wallet": "Billetera",
+        "buy/sell": "Compra venta",
+        "exchange": "Intercambiar",
+        "lending": "Préstamo",
+        "orders": "Pedidos",
+        "kycapplication": "Solicitud KYC",
+        "icolanding": "Aterrizaje ICO"
+      }
+    },
+    "email": {
+      "text": "Correo electrónico",
+      "list": {
+        "inbox": "Bandeja de entrada",
+        "reademail": "Leer el correo electrónico",
+        "template": {
+          "text": "Plantillas",
+          "list": {
+            "basic": "Acción básica",
+            "alert": "Correo electrónico de alerta",
+            "billing": "Correo Electrónico de Facturas"
+          }
+        }
+      }
+    },
+    "invoices": {
+      "text": "Facturas",
+      "list": {
+        "invoicelist": "Lista de facturas",
+        "invoicedetail": "Detalle de factura"
+      }
+    },
+    "projects": {
+      "text": "Proyectos",
+      "list": {
+        "grid": "Cuadrícula de proyectos",
+        "projectlist": "Lista de proyectos",
+        "overview": "Descripción del proyecto",
+        "create": "Crear nueva"
+      }
+    },
+    "tasks": {
+      "text": "Tareas",
+      "list": {
+        "tasklist": "Lista de tareas",
+        "kanban": "Kanban Board",
+        "createtask": "Crear tarea"
+      }
+    },
+    "contacts": {
+      "text": "Contactos",
+      "list": {
+        "usergrid": "Cuadrícula de usuario",
+        "userlist": "Lista de usuarios",
+        "profile": "Perfil"
+      }
+    },
+    "blog": {
+      "text": "Blog",
+      "badge": "Nueva",
+      "list": {
+        "bloglist": "Lista de blogs",
+        "grid": "Blog Grid",
+        "detail": "Detalles del blog"
+      }
+    },
+    "pages": {
+      "text": "Páginas"
+    },
+    "authentication": {
+      "text": "Autenticación",
+      "badge": "Nueva",
+      "list": {
+        "login": "Iniciar sesión",
+        "register": "Registrarse",
+        "recoverpwd": "Recuperar contraseña",
+        "lockscreen": "Bloquear pantalla",
+        "login-2": "Iniciar sesión 2",
+        "register-2": "Registrarse 2",
+        "recoverpwd-2": "Recuperar contraseña 2",
+        "lockscreen-2": "Bloquear pantalla 2",
+        "confirm-mail": "Confirmar correo",
+        "confirm-mail-2": "Confirmar correo 2",
+        "verification": "Verificacion de email",
+        "verification-2": "Verificacion de email 2",
+        "verification-step": "Verificación de dos pasos",
+        "verification-step-2": "Verificación de dos pasos 2"
+      }
+    },
+    "utility": {
+      "text": "Utilidad",
+      "list": {
+        "starter": "Página de inicio",
+        "maintenance": "Mantenimiento",
+        "timeline": "Cronograma",
+        "faqs": "Preguntas frecuentes",
+        "pricing": "Precios",
+        "error404": "error 404",
+        "error500": "error 500",
+        "comingsoon": "Próximamente"
+      }
+    },
+    "components": {
+      "text": "Componentes"
+    },
+    "uielements": {
+      "text": "Elementos de la IU",
+      "list": {
+        "alerts": "Alertas",
+        "buttons": "Botones",
+        "cards": "Tarjetas",
+        "carousel": "Carrusel",
+        "dropdowns": "Listas deplegables",
+        "grid": "Cuadrícula",
+        "images": "Imágenes",
+        "modals": "Modalidades",
+        "rangeslider": "Control deslizante de rango",
+        "progressbar": "Barras de progreso",
+        "sweetalert": "Alerta dulce",
+        "tabs": "Pestañas y acordeones",
+        "typography": "Tipografía",
+        "video": "Vídeo",
+        "general": "General",
+        "colors": "Colores",
+        "lightbox": "Caja ligera",
+        "cropper": "Recortador de imagen"
+      }
+    },
+    "forms": {
+      "text": "Formas",
+      "badge": "8",
+      "list": {
+        "elements": "Elementos de formulario",
+        "layouts": "Diseños de formulario",
+        "validation": "Validación de formulario",
+        "advanced": "Formulario avanzado",
+        "editor": "Editora de formularios",
+        "fileupload": "Subir archivo de formulario",
+        "repeater": "Repetidor de forma",
+        "wizard": "Asistente de formulario",
+        "mask": "Máscara de forma"
+      }
+    },
+    "tables": {
+      "text": "Mesas",
+      "list": {
+        "basic": "Tablas Básicas",
+        "advanced": "Mesa avanzada"
+      }
+    },
+    "charts": {
+      "text": "Gráficos",
+      "list": {
+        "apex": "Gráfico de Apex",
+        "chartjs": "Chartjs Chart",
+        "chartist": "Chartist Chart",
+        "echart": "Gráfico E"
+      }
+    },
+    "icons": {
+      "text": "Íconos",
+      "list": {
+        "boxicons": "Boxicones",
+        "materialdesign": "Diseño de materiales",
+        "dripicons": "Dripicons",
+        "fontawesome": "Font awesome"
+      }
+    },
+    "maps": {
+      "text": "Mapas",
+      "list": {
+        "googlemap": "mapas de Google",
+        "leafletmap": "Mapas de folleto"
+      }
+    },
+    "multilevel": {
+      "text": "Multi nivel",
+      "list": {
+        "level1": {
+          "1": "Nivel 1.1",
+          "2": "Nivel 1.2",
+          "level2": {
+            "1": "Nivel 2.1",
+            "2": "Level 2.2"
+          }
+        }
+      }
+    }
+  }
+}
