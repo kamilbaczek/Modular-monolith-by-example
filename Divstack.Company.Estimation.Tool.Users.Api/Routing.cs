@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Products.IntegrationsTests")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.IntegrationsTests")]
 
 namespace Divstack.Company.Estimation.Tool.Users.Api
 {

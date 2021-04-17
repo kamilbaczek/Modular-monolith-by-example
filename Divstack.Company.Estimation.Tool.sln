@@ -42,13 +42,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Emails.DependencyInjection", "Divstack.Company.Estimation.Tool.Emails.DependencyInjection\Divstack.Company.Estimation.Tool.Emails.DependencyInjection.csproj", "{A57EE97B-B96C-41E9-A8E7-908D7628F7E5}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Products", "Products", "{CE927331-FFEE-4C0B-B073-5A15D4779AC3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CE927331-FFEE-4C0B-B073-5A15D4779AC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Products.Core", "Divstack.Company.Estimation.Tool.Products.Core\Divstack.Company.Estimation.Tool.Products.Core.csproj", "{A11DE301-2D58-4783-BDAA-7F7C96E99FF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.Core", "Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj", "{A11DE301-2D58-4783-BDAA-7F7C96E99FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Products.DAL", "Divstack.Company.Estimation.Tool.Products.DAL\Divstack.Company.Estimation.Tool.Products.DAL.csproj", "{7859FBFF-0814-46C6-8B47-807F02D3BFB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.DAL", "Divstack.Company.Estimation.Tool.Services.DAL\Divstack.Company.Estimation.Tool.Services.DAL.csproj", "{7859FBFF-0814-46C6-8B47-807F02D3BFB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Products.Api", "Divstack.Company.Estimation.Tool.Products.Api\Divstack.Company.Estimation.Tool.Products.Api.csproj", "{E68F782B-FDCA-41DC-94FF-2F97BE47F905}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.Api", "Divstack.Company.Estimation.Tool.Services.Api\Divstack.Company.Estimation.Tool.Services.Api.csproj", "{E68F782B-FDCA-41DC-94FF-2F97BE47F905}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{2467FD81-5348-4E16-9744-501AA4AE3DF2}"
 EndProject
@@ -58,9 +58,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C4", "C4", "{5262984E-25B8-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Docs.Architecture.C4", "Divstack.Company.Estimation.Tool.Docs.Architecture.C4\Divstack.Company.Estimation.Tool.Docs.Architecture.C4.csproj", "{FBE773A3-2635-48DE-A854-BB26B14FDBC4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Estimations", "Estimations", "{D8C07E63-3DAE-4497-9D41-D5E89C571357}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Valuations", "Valuations", "{D8C07E63-3DAE-4497-9D41-D5E89C571357}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Estimations.Domain", "Divstack.Company.Estimation.Tool.Estimations.Domain\Divstack.Company.Estimation.Tool.Estimations.Domain.csproj", "{3616DC40-39B0-4AE2-AD00-1CD6AA169DE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Domain", "Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj", "{3616DC40-39B0-4AE2-AD00-1CD6AA169DE8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{4C4D5CB4-7F47-4BFB-9EC7-B08E7455A662}"
 EndProject
@@ -80,21 +80,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Carts.Infrastructure", "Divstack.Company.Estimation.Tool.Carts.Infrastructure\Divstack.Company.Estimation.Tool.Carts.Infrastructure.csproj", "{9FE54C2D-A6EA-4E2D-BCC3-05A5AD8CC485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Products.IntegrationsTests", "Divstack.Company.Estimation.Tool.Products.IntegrationsTests\Divstack.Company.Estimation.Tool.Products.IntegrationsTests.csproj", "{77DADC26-0AA3-4B70-9356-4D31350631DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.IntegrationsTests", "Divstack.Company.Estimation.Tool.Services.IntegrationsTests\Divstack.Company.Estimation.Tool.Services.IntegrationsTests.csproj", "{77DADC26-0AA3-4B70-9356-4D31350631DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{3EEC7448-F25B-4F6C-97EA-12FA860E57B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests", "Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests\Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.csproj", "{A725B545-1ADD-4A0A-A57E-843CCDB594E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Estimations.Domain.Tests", "Divstack.Company.Estimation.Tool.Estimations.Domain.Tests\Divstack.Company.Estimation.Tool.Estimations.Domain.Tests.csproj", "{A79840F4-7EE0-4E71-B73A-3CF22CAAF16F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Domain.Tests", "Divstack.Company.Estimation.Tool.Valuations.Domain.Tests\Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.csproj", "{A79840F4-7EE0-4E71-B73A-3CF22CAAF16F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Estimations.Application", "Divstack.Company.Estimation.Tool.Estimations.Application\Divstack.Company.Estimation.Tool.Estimations.Application.csproj", "{9EF60896-F721-4BB8-BA08-C1A764DA89FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Application", "Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj", "{9EF60896-F721-4BB8-BA08-C1A764DA89FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Estimations.Api", "Divstack.Company.Estimation.Tool.Estimations.Api\Divstack.Company.Estimation.Tool.Estimations.Api.csproj", "{7CD27E83-B4E5-4CF4-B411-308125B002A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Api", "Divstack.Company.Estimation.Tool.Valuations.Api\Divstack.Company.Estimation.Tool.Valuations.Api.csproj", "{7CD27E83-B4E5-4CF4-B411-308125B002A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Estimations.Infrastructure", "Divstack.Company.Estimation.Tool.Estimations.Infrastructure\Divstack.Company.Estimation.Tool.Estimations.Infrastructure.csproj", "{EA3CF88C-E3CF-4689-A50D-670E3FEB6602}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Infrastructure", "Divstack.Company.Estimation.Tool.Valuations.Infrastructure\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.csproj", "{EA3CF88C-E3CF-4689-A50D-670E3FEB6602}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Estimations.Persistance", "Divstack.Company.Estimation.Tool.Estimations.Persistance\Divstack.Company.Estimation.Tool.Estimations.Persistance.csproj", "{D434E3DA-E6DD-48E5-AE43-50954AA1BC16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Persistance", "Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj", "{D434E3DA-E6DD-48E5-AE43-50954AA1BC16}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{B8387AF7-323C-406E-8B51-F16A25E5C070}"
 EndProject

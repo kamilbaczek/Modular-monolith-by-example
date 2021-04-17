@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Carts.Domain.Carts;
 using Divstack.Company.Estimation.Tool.Carts.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Products.Core.Products.Contracts;
+using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.AddItem
@@ -12,15 +12,16 @@ namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.AddI
     {
         private readonly ICartRepository _cartRepository;
         private readonly ICurrentUserService _currentUserService;
-        private readonly IProductExistingChecker _productExistingChecker;
+        private readonly IServiceExistingChecker _serviceExistingChecker
+            ;
 
         public AddItemCommandHandler(ICartRepository cartRepository,
             ICurrentUserService currentUserService,
-            IProductExistingChecker productExistingChecker)
+            IServiceExistingChecker serviceExistingChecker)
         {
             _cartRepository = cartRepository;
             _currentUserService = currentUserService;
-            _productExistingChecker = productExistingChecker;
+            _serviceExistingChecker = serviceExistingChecker;
         }
 
         public async Task<Unit> Handle(AddItemCommand request, CancellationToken cancellationToken)
@@ -28,9 +29,9 @@ namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.AddI
             var userId = _currentUserService.GetPublicUserId();
             var cart = await GetOrCreateActiveCart(userId, cancellationToken);
             await cart.AddItemAsync(
-                request.ProductId,
+                request.ServiceId,
                 request.Quantity,
-                _productExistingChecker);
+                _serviceExistingChecker);
 
             return Unit.Value;
         }

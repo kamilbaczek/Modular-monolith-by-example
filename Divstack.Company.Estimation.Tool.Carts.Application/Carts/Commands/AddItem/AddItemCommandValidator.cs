@@ -9,7 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.AddI
             RuleFor(cart => cart.Quantity).NotNull().NotEmpty()
                 .Must(quantity => quantity.Value > 0)
                 .WithMessage("Quantity must be greater than 0");
-            RuleFor(cart => cart.ProductId).NotNull().NotEmpty();
+            RuleFor(cart => cart.ServiceId).NotNull().NotEmpty();
         }
     }
 }

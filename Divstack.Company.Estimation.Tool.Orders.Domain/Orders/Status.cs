@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Orders
+﻿namespace Divstack.Company.Estimation.Tool.Orders.Orders
 {
     internal enum Status
     {

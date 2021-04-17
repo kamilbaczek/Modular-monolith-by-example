@@ -1,6 +1,6 @@
 using Divstack.Company.Estimation.Tool.Estimations.Api;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Products.Api;
+using Divstack.Company.Estimation.Tool.Services.Api;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 using Divstack.Company.Estimation.Tool.Users.Api;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
@@ -25,7 +25,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
         {
             services.AddSharedInfrastructure();
             services.AddUsersModule(Configuration);
-            services.AddProductsModule(Configuration);
+            services.AddServicesModule(Configuration);
             services.AddValuationsModule(Configuration);
             services.AddEmailsModule();
         }

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Dapper" Version="2.0.78" />
+        <PackageReference Include="FluentValidation" Version="9.4.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Scrutor" Version="3.3.0" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Valuations\Queries\GetAll" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
+    </ItemGroup>
+</Project>

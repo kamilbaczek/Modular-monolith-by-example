@@ -6,13 +6,13 @@ namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.AddI
 {
     public sealed class AddItemCommand : ICommand
     {
-        public AddItemCommand(Guid productId, long quantity)
+        public AddItemCommand(Guid serviceId, long quantity)
         {
             Quantity = Quantity.From(quantity);
-            ProductId = productId;
+            ServiceId = serviceId;
         }
 
         public Quantity Quantity { get; }
-        public Guid ProductId { get; }
+        public Guid ServiceId { get; }
     }
 }

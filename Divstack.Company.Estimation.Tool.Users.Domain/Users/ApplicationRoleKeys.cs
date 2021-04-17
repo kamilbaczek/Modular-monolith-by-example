@@ -6,7 +6,6 @@
         public const string SystemAdministrator = "SystemAdministrator"; // System wide administrator
         public const string User = "User";
 
-
         private const string Separator = ",";
 
         public const string AnyAdministrator = SystemAdministrator;

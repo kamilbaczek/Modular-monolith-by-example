@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Carts.Domain.Carts.Events;
 using Divstack.Company.Estimation.Tool.Carts.Domain.Carts.Exceptions;
-using Divstack.Company.Estimation.Tool.Products.Core.Products.Contracts;
+using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity;
 
@@ -49,11 +49,11 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
 
         public async Task AddItemAsync(Guid productId,
             Quantity quantity,
-            IProductExistingChecker productExistingChecker)
+            IServiceExistingChecker serviceExistingChecker)
         {
             if (!IsActive)
                 throw new CannotAddItemToNotActiveCartException();
-            var productExist =  await productExistingChecker.ExistAsync(productId);
+            var productExist =  await serviceExistingChecker.ExistAsync(productId);
             if (!productExist)
                 throw new UnableAddToCartNonExistentProductException();
             var itemWithSameProduct = FindItemByProductOrDefault(productId);

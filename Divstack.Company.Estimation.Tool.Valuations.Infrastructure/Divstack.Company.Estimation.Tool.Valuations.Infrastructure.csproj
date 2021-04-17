@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>Divstack.Company.Estimation.Tool.Estimations.Infrastructure</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+        <HintPath>..\..\..\..\..\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\5.0.0\ref\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="9.4.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj" />
+    </ItemGroup>
+
+</Project>
