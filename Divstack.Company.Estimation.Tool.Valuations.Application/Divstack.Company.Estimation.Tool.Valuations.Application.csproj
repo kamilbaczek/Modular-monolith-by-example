@@ -13,9 +13,6 @@
         <PackageReference Include="Scrutor" Version="3.3.0" />
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Valuations\Queries\GetAll" />
-    </ItemGroup>
-    <ItemGroup>
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
     </ItemGroup>
 </Project>

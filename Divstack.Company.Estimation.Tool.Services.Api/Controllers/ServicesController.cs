@@ -19,7 +19,6 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<ServiceDto>>> GetAll()
         {
             var services = await _servicesService.GetAllAsync();

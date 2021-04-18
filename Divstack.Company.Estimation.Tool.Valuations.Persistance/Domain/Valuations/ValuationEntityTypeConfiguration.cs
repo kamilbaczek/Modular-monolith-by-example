@@ -3,6 +3,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -56,17 +57,19 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 .IsRequired(false);
             builder.Property<DateTime?>("CompletedDate").IsRequired(false);
 
-            builder.OwnsOne<Enquiry>("Enquiry", equiryValueObjectBuilder =>
+            builder.OwnsOne<Enquiry>("Enquiry", enquiryValueObjectBuilder =>
             {
-                equiryValueObjectBuilder.OwnsMany<Service>("Services", servicesBuilder =>
+                enquiryValueObjectBuilder.OwnsMany<InquiryService>("InquiryServices", servicesBuilder =>
                 {
                     servicesBuilder.WithOwner("Enquiry").HasForeignKey();
-                    servicesBuilder.ToTable("Services");
+                    servicesBuilder.ToTable("InquiryServices");
                     servicesBuilder.HasKey("Id");
-                    servicesBuilder.Property<ServiceId>("Id")
+                    servicesBuilder.Property<ServiceId>("ServiceId")
                         .HasConversion(id => id.Value, value => new ServiceId(value));
+                    servicesBuilder.Property<InquiryServiceId>("Id")
+                        .HasConversion(id => id.Value, value => new InquiryServiceId(value));
                 });
-                equiryValueObjectBuilder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
+                enquiryValueObjectBuilder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
                 {
                     clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
                     clientValueObjectBuilder.Property<string>("LastName").IsRequired();

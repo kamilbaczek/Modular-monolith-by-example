@@ -5,6 +5,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Command
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +21,24 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
             _valuationsModule = valuationsModule;
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<ValuationListVm>> GetAll()
+        {
+            var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(new GetAllValuationsQuery());
+            return Ok(valuationsListVm);
+        }
+
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
         [AllowAnonymous]
-        public async Task<ActionResult> Request([FromBody] RequestCommand requestCommand)
+        public async Task<ActionResult> Request([FromBody] RequestValuationCommand requestValuationCommand)
         {
-            await _valuationsModule.ExecuteCommandAsync(requestCommand);
+            await _valuationsModule.ExecuteCommandAsync(requestValuationCommand);
             return Ok();
         }
 

@@ -10,7 +10,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
     internal abstract class DesignTimeDbContextFactoryBase<TContext> :
         IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
-        private const string ConnectionStringName = "Estimations";
         private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
 
         public TContext CreateDbContext(string[] args)
@@ -34,7 +33,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
                 .AddEnvironmentVariables()
                 .Build();
 
-            var connectionString = configuration.GetConnectionString(ConnectionStringName);
+            var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
 
             return Create(connectionString);
         }
@@ -42,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         private TContext Create(string connectionString)
         {
             if (string.IsNullOrEmpty(connectionString))
-                throw new ArgumentException($"Connection string '{ConnectionStringName}' is null or empty.",
+                throw new ArgumentException($"Connection string '{DataAccessConstants.ConnectionStringName}' is null or empty.",
                     nameof(connectionString));
 
             Console.WriteLine(

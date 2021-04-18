@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 {
     [DbContext(typeof(ValuationsContext))]
-    [Migration("20210417120655_Init_Valuations")]
+    [Migration("20210418104118_Init_Valuations")]
     partial class Init_Valuations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,7 +96,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                     b2.Navigation("Email");
                                 });
 
-                            b1.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Service", "Services", b2 =>
+                            b1.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries.InquiryService", "InquiryServices", b2 =>
                                 {
                                     b2.Property<Guid>("Id")
                                         .HasColumnType("uniqueidentifier");
@@ -104,11 +104,14 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                     b2.Property<Guid>("EnquiryValuationId")
                                         .HasColumnType("uniqueidentifier");
 
+                                    b2.Property<Guid?>("ServiceId")
+                                        .HasColumnType("uniqueidentifier");
+
                                     b2.HasKey("Id");
 
                                     b2.HasIndex("EnquiryValuationId");
 
-                                    b2.ToTable("Services");
+                                    b2.ToTable("InquiryServices");
 
                                     b2.WithOwner("Enquiry")
                                         .HasForeignKey("EnquiryValuationId");
@@ -118,7 +121,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.Navigation("Client");
 
-                            b1.Navigation("Services");
+                            b1.Navigation("InquiryServices");
                         });
 
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Proposal", "Proposals", b1 =>

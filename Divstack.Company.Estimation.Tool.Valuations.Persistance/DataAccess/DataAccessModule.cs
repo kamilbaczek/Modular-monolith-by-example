@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
@@ -10,6 +11,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         {
 
             services.AddDbContext<ValuationsContext>(connectionString);
+            services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
+
             return services;
         }
 

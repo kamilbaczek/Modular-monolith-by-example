@@ -5,6 +5,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 {
@@ -16,13 +17,13 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 
         private Enquiry(
             Valuation valuation,
-            IReadOnlyList<ServiceId> productsIds,
+            IReadOnlyList<ServiceId> serviceIds,
             Client client)
         {
             Valuation = valuation ?? throw new ArgumentNullException(nameof(valuation));
-            if (!productsIds.Any())
+            if (!serviceIds.Any())
                 throw new InvalidOperationException("Cannot request valuation without products");
-            Services = productsIds.Select(serivceId => Service.Create(serivceId, this)).ToList().AsReadOnly();
+            InquiryServices = serviceIds.Select(serivceId => InquiryService.Create(serivceId, this)).ToList().AsReadOnly();
             Client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
@@ -36,7 +37,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 
         internal Email ClientEmail => Client.Email;
         private Valuation Valuation  { get; }
-        private IReadOnlyList<Service> Services { get; }
+        private IReadOnlyList<InquiryService> InquiryServices { get; }
         private Client Client { get; }
     }
 }

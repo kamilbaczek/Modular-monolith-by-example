@@ -29,6 +29,27 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "InquiryServices",
+                schema: "Valuations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    EnquiryValuationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InquiryServices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_InquiryServices_Valuations_EnquiryValuationId",
+                        column: x => x.EnquiryValuationId,
+                        principalSchema: "Valuations",
+                        principalTable: "Valuations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Proposals",
                 schema: "Valuations",
                 columns: table => new
@@ -58,47 +79,27 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Services",
+            migrationBuilder.CreateIndex(
+                name: "IX_InquiryServices_EnquiryValuationId",
                 schema: "Valuations",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EnquiryValuationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Services", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Services_Valuations_EnquiryValuationId",
-                        column: x => x.EnquiryValuationId,
-                        principalSchema: "Valuations",
-                        principalTable: "Valuations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
+                table: "InquiryServices",
+                column: "EnquiryValuationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Proposals_ValuationId",
                 schema: "Valuations",
                 table: "Proposals",
                 column: "ValuationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Services_EnquiryValuationId",
-                schema: "Valuations",
-                table: "Services",
-                column: "EnquiryValuationId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Proposals",
+                name: "InquiryServices",
                 schema: "Valuations");
 
             migrationBuilder.DropTable(
-                name: "Services",
+                name: "Proposals",
                 schema: "Valuations");
 
             migrationBuilder.DropTable(
