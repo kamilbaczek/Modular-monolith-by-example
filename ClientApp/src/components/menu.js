@@ -14,7 +14,7 @@ export const menuItems = [
     id: 3,
     label: "menuitems.estimations.text",
     icon: "bx-paper-plane",
-    link: "/",
+    link: "/valuations",
   },
   {
     id: 4,
