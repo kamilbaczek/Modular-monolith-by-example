@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 225 225" style="enable-background:new 0 0 225 225;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#ffffff;stroke-width:20;stroke-linecap:round;stroke-miterlimit:3;}
-</style>
-<g transform="matrix( 1, 0, 0, 1, 0,0) ">
-	<g>
-		<path id="Layer0_0_1_STROKES" class="st0" d="M173.8,151.5l13.6-13.6 M35.4,89.9l29.1-29 M89.4,34.9v1 M137.4,187.9l-0.6-0.4
-			 M36.6,138.7l0.2-0.2 M56.1,169.1l27.7-27.6 M63.8,111.5l74.3-74.4 M87.1,188.1L187.6,87.6 M110.8,114.5l57.8-57.8"/>
-	</g>
-</g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 105.38 131.1"><defs><style>.cls-1{fill:url(#Nueva_muestra_de_degradado_1);}.cls-2{fill:url(#Nueva_muestra_de_degradado_1-2);}.cls-3{fill:url(#Nueva_muestra_de_degradado_1-3);}</style><linearGradient id="Nueva_muestra_de_degradado_1" x1="68.75" y1="2.39" x2="65.66" y2="180.84" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#8fffab"/><stop offset="1" stop-color="#2f4efa"/></linearGradient><linearGradient id="Nueva_muestra_de_degradado_1-2" x1="66.47" y1="-3.78" x2="72.66" y2="118.97" xlink:href="#Nueva_muestra_de_degradado_1"/><linearGradient id="Nueva_muestra_de_degradado_1-3" x1="65.11" y1="64.28" x2="70.27" y2="204.57" xlink:href="#Nueva_muestra_de_degradado_1"/></defs><g id="OBJECTS"><path class="cls-1" d="M67.35,30.08a52.67,52.67,0,1,0,52.7,52.68A52.67,52.67,0,0,0,67.35,30.08Zm0,80.31A27.62,27.62,0,1,1,95,82.77,27.63,27.63,0,0,1,67.35,110.39Z" transform="translate(-14.67 -4.36)"/><path class="cls-2" d="M67.35,22.82a9.23,9.23,0,1,0-9.23-9.23A9.22,9.22,0,0,0,67.35,22.82Z" transform="translate(-14.67 -4.36)"/><path class="cls-3" d="M98.68,125.11a52.61,52.61,0,0,1-62.67,0L53.41,95A16.11,16.11,0,0,1,81.3,95Z" transform="translate(-14.67 -4.36)"/></g></svg>
