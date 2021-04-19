@@ -75,6 +75,22 @@ export default {
       :fields="fields"
       :tableData="tableData"
       :totalRows="totalRows"
-    />
+    >
+      <template v-slot:actions="data">
+        <b-button
+          variant="warning"
+          class="mx-1"
+          v-b-tooltip.hover
+          title="Suggest valuation proposal"
+        >
+          <i class="bx bxs-comment-add font-size-16 align-middle me-2"></i>
+          Suggest
+        </b-button>
+        <b-button variant="info" class="mx-1" title="Go to details">
+          <i class="bx bx-detail font-size-16 align-middle me-2"></i>
+          Details
+        </b-button>
+      </template>
+    </Grid>
   </Layout>
 </template>

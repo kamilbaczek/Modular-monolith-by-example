@@ -46,6 +46,9 @@ export default {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
+    toCellName(slot) {
+      return `cell(${slot})`;
+    },
   },
 };
 </script>
@@ -104,7 +107,14 @@ export default {
               :filter="filter"
               :filter-included-fields="filterOn"
               @filtered="onFiltered"
-            ></b-table>
+            >
+              <template
+                v-for="slot in Object.keys($scopedSlots)"
+                v-slot:[toCellName(slot)]="props"
+              >
+                <slot v-bind="props" :name="slot" />
+              </template>
+            </b-table>
           </div>
           <div class="row">
             <div class="col">
