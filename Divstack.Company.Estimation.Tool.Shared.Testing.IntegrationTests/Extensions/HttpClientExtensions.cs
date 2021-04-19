@@ -6,7 +6,8 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
 {
     public static class HttpClientExtentions
     {
-        public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, string requestUri, T command) where T : class
+        public static async Task<HttpResponseMessage> PostAsync<T>(this HttpClient client, string requestUri, T command)
+            where T : class
         {
             var commandAsString = Serializer.GetRequestContent(command);
             var response = await client.PostAsync(requestUri, commandAsString);

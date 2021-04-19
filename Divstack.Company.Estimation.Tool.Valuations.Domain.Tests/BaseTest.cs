@@ -16,7 +16,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests
 
         protected static void AssertEventNotPublished<TEvent>(Entity entity) where TEvent : class
         {
-             entity.DomainEvents.OfType<TEvent>()
+            entity.DomainEvents.OfType<TEvent>()
                 .FirstOrDefault().Should().BeNull();
         }
 

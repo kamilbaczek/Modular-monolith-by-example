@@ -43,7 +43,5 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
             await _servicesService.DeleteAsync(id);
             return NoContent();
         }
-
-
     }
 }

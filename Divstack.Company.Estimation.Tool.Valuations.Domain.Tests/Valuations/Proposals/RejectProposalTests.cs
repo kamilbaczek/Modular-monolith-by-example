@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using FluentAssertions;
 using Xunit;
 
@@ -16,7 +16,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
     public class RejectProposalTests : BaseValuationTest
     {
         [Fact]
-          public async Task Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
+        public async Task Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
         {
             var fakeEmail = Email.Of("test@mail.com");
             var valuation = await RequestFakeValuation();
@@ -25,7 +25,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             valuation.RejectProposal(proposalId, FakeRejectReason);
 
             var @event = GetPublishedEvent<ProposalRejectedEvent>(valuation);
-            @event.AssertIsCorrect(fakeEmail,proposalId, FakeRejectReason);
+            @event.AssertIsCorrect(fakeEmail, proposalId, FakeRejectReason);
         }
 
         [Fact]

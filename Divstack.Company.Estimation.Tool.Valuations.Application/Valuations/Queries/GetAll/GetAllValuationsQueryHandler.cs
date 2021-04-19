@@ -19,8 +19,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         {
             var connection = _databaseConnectionFactory.Create();
 
-           var valuationItems = await connection.QueryAsync<ValuationListItemDto>(
-               new CommandDefinition(@$"
+            var valuationItems = await connection.QueryAsync<ValuationListItemDto>(
+                new CommandDefinition(@$"
                 SELECT [Id] AS {nameof(ValuationListItemDto.Id)},
                        [Enquiry_Client_FirstName] AS {nameof(ValuationListItemDto.FirstName)},
                        [Enquiry_Client_LastName]  AS {nameof(ValuationListItemDto.LastName)},

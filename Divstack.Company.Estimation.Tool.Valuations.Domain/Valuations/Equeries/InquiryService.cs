@@ -16,13 +16,13 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries
             Enquiry = enquiry;
         }
 
-        internal static InquiryService Create(ServiceId serviceId, Enquiry enquiry)
-        {
-            return new (serviceId, enquiry);
-        }
-
         private ServiceId ServiceId { get; }
         private InquiryServiceId Id { get; }
         private Enquiry Enquiry { get; }
+
+        internal static InquiryService Create(ServiceId serviceId, Enquiry enquiry)
+        {
+            return new(serviceId, enquiry);
+        }
     }
 }

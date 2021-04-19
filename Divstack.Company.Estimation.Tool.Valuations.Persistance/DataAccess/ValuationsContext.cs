@@ -1,5 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations;
+﻿using Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess

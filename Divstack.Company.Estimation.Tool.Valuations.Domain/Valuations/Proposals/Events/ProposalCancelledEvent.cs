@@ -10,8 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             ProposalId = proposalId;
         }
 
-        public EmployeeId CancelledBy { get;  }
-        public ProposalId  ProposalId { get;}
-
+        public EmployeeId CancelledBy { get; }
+        public ProposalId ProposalId { get; }
     }
 }

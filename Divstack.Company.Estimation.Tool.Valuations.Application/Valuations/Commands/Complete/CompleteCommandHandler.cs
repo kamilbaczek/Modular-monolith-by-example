@@ -8,10 +8,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 {
     internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
     {
-        private readonly IValuationsRepository _valuationsRepository;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IValuationsRepository _valuationsRepository;
 
-        public CompleteCommandHandler(IValuationsRepository valuationsRepository, ICurrentUserService currentUserService)
+        public CompleteCommandHandler(IValuationsRepository valuationsRepository,
+            ICurrentUserService currentUserService)
         {
             _valuationsRepository = valuationsRepository;
             _currentUserService = currentUserService;

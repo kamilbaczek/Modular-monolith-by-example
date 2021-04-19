@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using FluentAssertions;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions
 {
     internal static class AssertValuationEvents
     {
-        internal static void AssertIsCorrect(this ValuationRequestedEvent @event, List<ServiceId> productIds, Email email)
+        internal static void AssertIsCorrect(this ValuationRequestedEvent @event, List<ServiceId> productIds,
+            Email email)
         {
             @event.Should().NotBeNull();
             @event.ClientEmail.Should().Be(email);
@@ -26,7 +28,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
             @event.ProposedBy.Should().Be(employee);
         }
 
-        internal static void AssertIsCorrect(this ProposalApprovedEvent @event, Email clientEmail, ProposalId proposalId)
+        internal static void AssertIsCorrect(this ProposalApprovedEvent @event, Email clientEmail,
+            ProposalId proposalId)
         {
             @event.Should().NotBeNull();
             @event.ClientEmail.Should().Be(clientEmail);

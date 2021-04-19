@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using FluentAssertions;
 using Xunit;
 

@@ -9,7 +9,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         internal static IServiceCollection AddDataAccess(this IServiceCollection services,
             string connectionString)
         {
-
             services.AddDbContext<ValuationsContext>(connectionString);
             services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
 

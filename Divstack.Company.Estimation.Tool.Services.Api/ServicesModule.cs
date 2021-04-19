@@ -1,8 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Services.Core;
+using Divstack.Company.Estimation.Tool.Services.Api.UserAccess;
 using Divstack.Company.Estimation.Tool.Services.Core.UserAccess;
 using Divstack.Company.Estimation.Tool.Services.DAL;
-using Divstack.Company.Estimation.Tool.Services.Api.UserAccess;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

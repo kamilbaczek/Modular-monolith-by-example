@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Exceptions;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
 
 namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services
 {
@@ -33,18 +32,18 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Ser
             await _categoriesRepository.AddAsync(category, cancellationToken);
         }
 
-        public async Task Update(UpdateCategoryRequest updateCategoryRequest,
-            CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var category = await _categoriesRepository.GetAsync(id, cancellationToken);
             if (category is null)
                 throw new CategoryNotFoundException(id);
             await _categoriesRepository.DeleteAsync(category, cancellationToken);
+        }
+
+        public async Task Update(UpdateCategoryRequest updateCategoryRequest,
+            CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
     }
 }

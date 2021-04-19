@@ -5,11 +5,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Carts.Api")]
+
 namespace Divstack.Company.Estimation.Tool.Carts.Infrastructure
 {
     internal static class InfrastructureModule
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddPersistanceModule(configuration);
             services.AddApplicationModule();

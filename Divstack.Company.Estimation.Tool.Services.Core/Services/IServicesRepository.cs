@@ -12,6 +12,5 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services
         Task<List<Service>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<Service> GetAsync(Guid publicId, CancellationToken cancellationToken = default);
         Task CommitAsync(CancellationToken cancellationToken = default);
-
     }
 }

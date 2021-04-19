@@ -25,14 +25,14 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Domain.Carts
         {
             return await _cartsContext.Carts
                 .SingleOrDefaultAsync(cart => cart.UserId == userId && cart.IsActive
-                ,cancellationToken);
+                    , cancellationToken);
         }
 
         public async Task<Cart> GetActiveAsync(Guid userId, CancellationToken cancellationToken = default)
         {
             return await _cartsContext.Carts
                 .SingleAsync(cart => cart.UserId == userId && cart.IsActive
-                    ,cancellationToken);
+                    , cancellationToken);
         }
 
         public async Task SaveAsync(CancellationToken cancellationToken = default)

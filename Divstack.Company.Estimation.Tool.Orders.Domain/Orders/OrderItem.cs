@@ -5,6 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Orders.Orders
     internal sealed class OrderItem
     {
         internal Guid Id { get; }
-        internal Decimal Price { get; }
+        internal decimal Price { get; }
     }
 }

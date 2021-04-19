@@ -18,6 +18,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Dto
         public Guid Id { get; }
         public string Name { get; }
         public List<PossibleValueDto> PossibleValues { get; }
+
         internal static AttributeDto Map(Attribute attribute)
         {
             var possibleValues = attribute.PossibleValues.Select(PossibleValueDto.Map).ToList();

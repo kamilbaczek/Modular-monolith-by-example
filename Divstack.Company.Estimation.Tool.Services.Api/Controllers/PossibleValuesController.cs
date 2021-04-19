@@ -20,7 +20,8 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> CreatePossibleValues([FromBody] CreatePossibleValueRequest createPossibleValueRequest)
+        public async Task<ActionResult> CreatePossibleValues(
+            [FromBody] CreatePossibleValueRequest createPossibleValueRequest)
         {
             await _servicesService.AddAttributePossibleValueAsync(createPossibleValueRequest);
             return Ok();

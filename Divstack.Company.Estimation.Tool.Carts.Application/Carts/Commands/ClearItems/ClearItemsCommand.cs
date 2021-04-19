@@ -1,5 +1,4 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Carts.Application.Contracts;
+﻿using Divstack.Company.Estimation.Tool.Carts.Application.Contracts;
 
 namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.ClearItems
 {

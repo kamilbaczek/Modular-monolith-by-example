@@ -12,8 +12,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             EmployeeEmail = employeeEmail;
         }
 
-        public string ReasonMessage { get;}
-        public ProposalId  ProposalId { get;}
+        public string ReasonMessage { get; }
+        public ProposalId ProposalId { get; }
         public Email EmployeeEmail { get; }
     }
 }

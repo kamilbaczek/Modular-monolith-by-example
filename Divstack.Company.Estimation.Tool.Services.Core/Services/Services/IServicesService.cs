@@ -25,6 +25,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
 
         Task RemoveAttributePossibleValueAsync(DeletePossibleValueRequest deleteAttributeRequest,
             CancellationToken cancellationToken = default);
-       Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+
+        Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }

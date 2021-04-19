@@ -1,6 +1,5 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Carts.Domain.Carts;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

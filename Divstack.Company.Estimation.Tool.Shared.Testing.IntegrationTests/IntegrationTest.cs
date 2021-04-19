@@ -7,20 +7,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests
 {
-    public abstract class IntegrationTest<TModuleContext> : IDisposable where TModuleContext: DbContext
+    public abstract class IntegrationTest<TModuleContext> : IDisposable where TModuleContext : DbContext
     {
-        protected readonly  WebApplicationFactory<Startup> Application;
+        protected readonly WebApplicationFactory<Startup> Application;
 
         protected IntegrationTest()
         {
-            Application =  new WebApplicationFactory<Startup>()
-                  .WithWebHostBuilder(builder =>
+            Application = new WebApplicationFactory<Startup>()
+                .WithWebHostBuilder(builder =>
                 {
                     builder.ConfigureServices(services =>
                     {
                         services.ReplaceToInMemoryInstance<UsersContext>();
                         services.ReplaceToInMemoryInstance<TModuleContext>();
-
                     });
                 });
         }

@@ -17,23 +17,27 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
     {
         private const string Bearer = "bearer";
 
-        public static async Task ExecuteOnDatabaseContextAsync<T>(this WebApplicationFactory<Startup> application,Func<T, Task> asyncAction) where T: DbContext
+        public static async Task ExecuteOnDatabaseContextAsync<T>(this WebApplicationFactory<Startup> application,
+            Func<T, Task> asyncAction) where T : DbContext
         {
             using var scope = application.Server.Services.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<T>();
             await asyncAction(dbContext);
         }
 
-        public static async Task<HttpClient> GetAuthenticatedClientAsync(this WebApplicationFactory<Startup> application)
-        {    var client = application.CreateClient();
+        public static async Task<HttpClient> GetAuthenticatedClientAsync(
+            this WebApplicationFactory<Startup> application)
+        {
+            var client = application.CreateClient();
             application.CreateClient();
             var token = await GetJwtAsync(application, client);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Bearer,token);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Bearer, token);
 
             return client;
         }
 
-        private static async Task<string> GetJwtAsync(this WebApplicationFactory<Startup> application, HttpClient client)
+        private static async Task<string> GetJwtAsync(this WebApplicationFactory<Startup> application,
+            HttpClient client)
         {
             var usersConfiguration = application.Server.Services.GetRequiredService<IAdminAccountConfiguration>();
             var response = await client.PostAsJsonAsync(

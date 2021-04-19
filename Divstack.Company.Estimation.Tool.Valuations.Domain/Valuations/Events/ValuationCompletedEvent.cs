@@ -10,8 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events
             ValuationId = valuationId;
         }
 
-        public EmployeeId ClosedBy { get;  }
-        public ValuationId  ValuationId { get;  }
-
+        public EmployeeId ClosedBy { get; }
+        public ValuationId ValuationId { get; }
     }
 }

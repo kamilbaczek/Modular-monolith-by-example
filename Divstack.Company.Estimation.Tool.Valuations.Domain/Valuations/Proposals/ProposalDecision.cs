@@ -5,13 +5,13 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class ProposalDecision : ValueObject
     {
-        private ProposalDecision()
-        {
-        }
-
         private const string Accept = "Accept";
 
         private const string Reject = "Reject";
+
+        private ProposalDecision()
+        {
+        }
 
         private ProposalDecision(DateTime? date, string code, string rejectReason)
         {
@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         private string RejectReason { get; }
 
         internal static ProposalDecision NoDecision =>
-            new ProposalDecision(null,  null, null);
+            new ProposalDecision(null, null, null);
 
         private bool IsAccepted => Code == Accept;
 
@@ -40,7 +40,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         internal static ProposalDecision RejectDecision(DateTime date, string rejectReason)
         {
-            return new ProposalDecision(date,  Reject, rejectReason);
+            return new ProposalDecision(date, Reject, rejectReason);
         }
     }
 }

@@ -17,13 +17,13 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
         }
 
+        internal Email Email { get; }
+        private string FirstName { get; }
+        private string LastName { get; }
+
         public static Client Of(Email email, string firstName, string lastName)
         {
-            return new (email, firstName, lastName);
+            return new(email, firstName, lastName);
         }
-
-        internal Email Email { get;  }
-        private string FirstName { get;  }
-        private string LastName { get;  }
     }
 }

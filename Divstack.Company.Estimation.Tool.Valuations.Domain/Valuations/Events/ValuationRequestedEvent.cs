@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events
 {

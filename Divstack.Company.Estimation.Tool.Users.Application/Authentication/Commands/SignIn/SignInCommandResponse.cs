@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json;
 
 namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn
 {

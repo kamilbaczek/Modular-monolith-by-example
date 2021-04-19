@@ -12,8 +12,8 @@ namespace Divstack.Company.Estimation.Tool.Carts.Application.Carts.Commands.AddI
     {
         private readonly ICartRepository _cartRepository;
         private readonly ICurrentUserService _currentUserService;
-        private readonly IServiceExistingChecker _serviceExistingChecker
-            ;
+
+        private readonly IServiceExistingChecker _serviceExistingChecker;
 
         public AddItemCommandHandler(ICartRepository cartRepository,
             ICurrentUserService currentUserService,

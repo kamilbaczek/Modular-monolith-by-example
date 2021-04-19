@@ -20,12 +20,12 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos
             CreatedBy = createdBy;
         }
 
-        public Guid Id { get; private set; }
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public Guid CreatedBy { get; private set; }
+        public Guid Id { get; }
+        public string Name { get; }
+        public string Description { get; }
+        public Guid CreatedBy { get; }
 
-        public CategoryDto Category { get; private set; }
+        public CategoryDto Category { get; }
 
         internal static ServiceDto Map(Service service)
         {

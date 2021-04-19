@@ -8,16 +8,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class Proposal : Entity
     {
-        internal ProposalId Id { get; }
-        private ProposalDescription Description { get; }
-        private Money Price { get; }
-        private EmployeeId SuggestedBy { get; }
-        private DateTime Suggested { get; }
-        private EmployeeId CancelledBy { get; set; }
-        private DateTime? Cancelled { get; set; }
-        private ProposalDecision Decision { get; set; }
-        private Valuation Valuation { get; }
-
         private Proposal()
         {
         }
@@ -30,12 +20,23 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         {
             Id = new ProposalId(Guid.NewGuid());
             Price = value ?? throw new ArgumentNullException(nameof(value));
-            Description = description ?? throw new ArgumentNullException(nameof(description));;
+            Description = description ?? throw new ArgumentNullException(nameof(description));
+            ;
             SuggestedBy = suggestedBy ?? throw new ArgumentNullException(nameof(suggestedBy));
             Suggested = DateTime.Now;
             Decision = ProposalDecision.NoDecision;
             Valuation = valuation;
         }
+
+        internal ProposalId Id { get; }
+        private ProposalDescription Description { get; }
+        private Money Price { get; }
+        private EmployeeId SuggestedBy { get; }
+        private DateTime Suggested { get; }
+        private EmployeeId CancelledBy { get; set; }
+        private DateTime? Cancelled { get; set; }
+        private ProposalDecision Decision { get; set; }
+        private Valuation Valuation { get; }
 
         internal static Proposal Suggest(
             Valuation valuation,

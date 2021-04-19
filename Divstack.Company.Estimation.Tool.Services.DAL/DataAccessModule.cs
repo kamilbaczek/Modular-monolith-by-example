@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.Api")]
+
 namespace Divstack.Company.Estimation.Tool.Services.DAL
 {
     internal static class DataAccessModule

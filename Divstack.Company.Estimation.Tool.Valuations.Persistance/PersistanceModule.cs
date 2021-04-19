@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
+
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance
 {
     internal static class PersistanceModule

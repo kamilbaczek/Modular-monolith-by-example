@@ -51,7 +51,8 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
             var token = AsyncUtil.RunSync(() =>
                 _passwordsManagementService.GenerateConfirmAccountTokenAsync(userId));
             AsyncUtil.RunSync(() =>
-                _passwordsManagementService.ConfirmUserEmailAndSetPasswordAsync(userId, token, _adminAccountConfiguration.Password));
+                _passwordsManagementService.ConfirmUserEmailAndSetPasswordAsync(userId, token,
+                    _adminAccountConfiguration.Password));
         }
     }
 }

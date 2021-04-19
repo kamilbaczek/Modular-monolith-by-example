@@ -35,7 +35,8 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services
         public List<Attribute> Attributes { get; }
         public Guid CreatedBy { get; }
 
-        internal static Service Create(string name, string description, Category category, ICurrentUserService currentUserService)
+        internal static Service Create(string name, string description, Category category,
+            ICurrentUserService currentUserService)
         {
             return new(name, description, category, currentUserService);
         }

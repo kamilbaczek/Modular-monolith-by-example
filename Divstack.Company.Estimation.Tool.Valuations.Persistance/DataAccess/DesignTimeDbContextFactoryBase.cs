@@ -41,7 +41,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         private TContext Create(string connectionString)
         {
             if (string.IsNullOrEmpty(connectionString))
-                throw new ArgumentException($"Connection string '{DataAccessConstants.ConnectionStringName}' is null or empty.",
+                throw new ArgumentException(
+                    $"Connection string '{DataAccessConstants.ConnectionStringName}' is null or empty.",
                     nameof(connectionString));
 
             Console.WriteLine(

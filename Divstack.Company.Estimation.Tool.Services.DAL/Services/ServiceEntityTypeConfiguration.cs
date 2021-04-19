@@ -25,12 +25,12 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Services
                 ownedAttribute.Property<string>("Name").HasMaxLength(255).IsRequired();
                 ownedAttribute.OwnsMany<PossibleValue>("PossibleValues",
                     ownedPotentialValues =>
-                {
-                    ownedAttribute.ToTable("AttributePossibleValues");
-                    ownedPotentialValues.WithOwner("Attribute").HasForeignKey();
-                    ownedPotentialValues.HasKey("Id");
-                    ownedPotentialValues.Property<string>("Value").HasMaxLength(255).IsRequired();
-                });
+                    {
+                        ownedAttribute.ToTable("AttributePossibleValues");
+                        ownedPotentialValues.WithOwner("Attribute").HasForeignKey();
+                        ownedPotentialValues.HasKey("Id");
+                        ownedPotentialValues.Property<string>("Value").HasMaxLength(255).IsRequired();
+                    });
             });
         }
     }

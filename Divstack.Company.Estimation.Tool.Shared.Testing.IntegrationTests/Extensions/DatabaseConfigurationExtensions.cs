@@ -6,7 +6,8 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
 {
     public static class DatabaseConfigurationExtensions
     {
-        private static void RemoveDbContextConfiguration<TDbContext>(this IServiceCollection serviceCollection) where TDbContext: DbContext
+        private static void RemoveDbContextConfiguration<TDbContext>(this IServiceCollection serviceCollection)
+            where TDbContext : DbContext
         {
             var descriptor = serviceCollection.SingleOrDefault(
                 service => service.ServiceType == typeof(DbContextOptions<TDbContext>));
@@ -17,13 +18,11 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
             }
         }
 
-        public static void ReplaceToInMemoryInstance<TDbContext>(this IServiceCollection serviceCollection) where TDbContext: DbContext
+        public static void ReplaceToInMemoryInstance<TDbContext>(this IServiceCollection serviceCollection)
+            where TDbContext : DbContext
         {
             serviceCollection.RemoveDbContextConfiguration<TDbContext>();
-            serviceCollection.AddDbContext<TDbContext>(options =>
-            {
-                options.UseInMemoryDatabase(nameof(TDbContext));
-            });
+            serviceCollection.AddDbContext<TDbContext>(options => { options.UseInMemoryDatabase(nameof(TDbContext)); });
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
     public sealed class ProposalIsCancelledException : InvalidOperationException
     {
         public ProposalIsCancelledException(ProposalId proposalId) : base($"Proposal: {proposalId} is cancelled." +
-                                                                          $" You can't execute any operations on that proposal")
+                                                                          " You can't execute any operations on that proposal")
         {
         }
     }

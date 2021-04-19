@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Exceptions;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using FluentAssertions;
 using Xunit;
 

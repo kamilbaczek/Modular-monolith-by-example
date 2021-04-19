@@ -12,7 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Domain.Customers
         }
 
         public Guid PublicId { get; }
-        public string FirstName { get;  }
-        public string LastName { get;  }
+        public string FirstName { get; }
+        public string LastName { get; }
     }
 }

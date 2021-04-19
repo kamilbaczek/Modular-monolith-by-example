@@ -1,8 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Runtime.CompilerServices;
 
-[assembly:InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.IntegrationsTests")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.IntegrationsTests")]
+
 namespace Divstack.Company.Estimation.Tool.Services.Api
 {
     internal static class Routing
@@ -12,7 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Api
 
         internal static class Services
         {
-            private const string ServicesController = Host + ModuleBase + "/" + nameof(Services) +"/" ;
+            private const string ServicesController = Host + ModuleBase + "/" + nameof(Services) + "/";
 
             internal const string GetAll = ServicesController;
             internal const string Create = ServicesController;
@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Api
 
             internal static class Categories
             {
-                private const string Controller = ServicesController ;
+                private const string Controller = ServicesController;
 
                 internal const string GetAll = Controller + nameof(GetAll);
                 internal const string Create = Controller + nameof(Create);

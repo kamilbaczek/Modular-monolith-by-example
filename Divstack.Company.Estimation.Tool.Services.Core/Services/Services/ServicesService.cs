@@ -66,7 +66,8 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             await _servicesRepository.DeleteAsync(service, cancellationToken);
         }
 
-        public async Task AddAttributeAsync(CreateAttributeRequest createAttributeRequest, CancellationToken cancellationToken = default)
+        public async Task AddAttributeAsync(CreateAttributeRequest createAttributeRequest,
+            CancellationToken cancellationToken = default)
         {
             var service = await _servicesRepository.GetAsync(createAttributeRequest.ServiceId, cancellationToken);
             ThrowIfServiceNotFound(createAttributeRequest.ServiceId, service);
@@ -74,7 +75,8 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 
-        public async Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest, CancellationToken cancellationToken = default)
+        public async Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest,
+            CancellationToken cancellationToken = default)
         {
             var service = await _servicesRepository.GetAsync(deleteAttributeRequest.ServiceId, cancellationToken);
             ThrowIfServiceNotFound(deleteAttributeRequest.ServiceId, service);
@@ -82,15 +84,18 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 
-        public async Task AddAttributePossibleValueAsync(CreatePossibleValueRequest createPossibleValueRequest, CancellationToken cancellationToken = default)
+        public async Task AddAttributePossibleValueAsync(CreatePossibleValueRequest createPossibleValueRequest,
+            CancellationToken cancellationToken = default)
         {
             var service = await _servicesRepository.GetAsync(createPossibleValueRequest.ServiceId, cancellationToken);
             ThrowIfServiceNotFound(createPossibleValueRequest.ServiceId, service);
-            service.AddAttributePotentialValue(createPossibleValueRequest.AttributeId, createPossibleValueRequest.Value);
+            service.AddAttributePotentialValue(createPossibleValueRequest.AttributeId,
+                createPossibleValueRequest.Value);
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 
-        public async Task RemoveAttributePossibleValueAsync(DeletePossibleValueRequest deleteAttributeRequest, CancellationToken cancellationToken = default)
+        public async Task RemoveAttributePossibleValueAsync(DeletePossibleValueRequest deleteAttributeRequest,
+            CancellationToken cancellationToken = default)
         {
             var service = await _servicesRepository.GetAsync(deleteAttributeRequest.ServiceId, cancellationToken);
             ThrowIfServiceNotFound(deleteAttributeRequest.ServiceId, service);

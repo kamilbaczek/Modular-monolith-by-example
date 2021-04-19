@@ -4,7 +4,8 @@ using Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-[assembly:InternalsVisibleTo("Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests")]
+
 namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess
 {
     internal class UsersContext : IdentityDbContext<UserAccount, ApplicationRole, string>

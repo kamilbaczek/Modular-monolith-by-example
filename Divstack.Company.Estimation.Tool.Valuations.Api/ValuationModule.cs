@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Estimations.Api.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 using Divstack.Company.Estimation.Tool.Estimations.Infrastructure;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,7 +11,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api
 {
     internal static class ValuationModule
     {
-        public static IServiceCollection AddValuationsModule(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddValuationsModule(this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddInfrastructure(configuration);

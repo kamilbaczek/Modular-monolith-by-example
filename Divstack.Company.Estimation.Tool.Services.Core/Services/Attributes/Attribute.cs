@@ -8,7 +8,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes
 {
     public sealed class Attribute
     {
-        private Attribute(Service service,string name)
+        private Attribute(Service service, string name)
         {
             Id = Guid.NewGuid();
             Name = name;

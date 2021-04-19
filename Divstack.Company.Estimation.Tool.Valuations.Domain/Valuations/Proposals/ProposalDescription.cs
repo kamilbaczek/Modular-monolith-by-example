@@ -14,16 +14,16 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         {
             if (string.IsNullOrEmpty(message))
                 throw new ArgumentNullException(nameof(message));
-            if(message.Length > 250)
+            if (message.Length > 250)
                 throw new ProposalDescriptionTooLongException(message);
             Message = message;
         }
+
+        private string Message { get; }
 
         internal static ProposalDescription From(string message)
         {
             return new ProposalDescription(message);
         }
-
-        private string Message { get; }
     }
 }

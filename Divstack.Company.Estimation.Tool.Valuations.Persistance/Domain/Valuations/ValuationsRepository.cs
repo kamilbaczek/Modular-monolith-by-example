@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations
@@ -17,7 +17,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
 
         public async Task<Valuation> GetAsync(ValuationId valuationId, CancellationToken cancellationToken = default)
         {
-            return await _valuationsContext.Valuations.SingleOrDefaultAsync(valuations => valuations.Id == valuationId, cancellationToken);
+            return await _valuationsContext.Valuations.SingleOrDefaultAsync(valuations => valuations.Id == valuationId,
+                cancellationToken);
         }
 
         public async Task AddAsync(Valuation valuation, CancellationToken cancellationToken = default)

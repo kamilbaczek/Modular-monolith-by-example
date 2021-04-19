@@ -1,16 +1,16 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal
 {
     internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestProposalCommand>
     {
-        private readonly IValuationsRepository _valuationsRepository;
         private readonly ICurrentUserService _currentUserService;
+        private readonly IValuationsRepository _valuationsRepository;
 
         public SuggestProposalCommandHandler(IValuationsRepository valuationsRepository,
             ICurrentUserService currentUserService)

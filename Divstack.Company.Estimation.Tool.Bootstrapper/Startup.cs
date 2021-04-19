@@ -36,13 +36,11 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseSharedInfrastructure();
             app.UseRouting();
             app.UseAuthorization();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             app.UseUsersModule(usersSeeder);
         }
     }

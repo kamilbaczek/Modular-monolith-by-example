@@ -16,9 +16,13 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
             Quantity = quantity;
         }
 
+        private Guid Id { get; }
+        internal Guid ProductId { get; }
+        private Quantity Quantity { get; set; }
+
         public void ChangeQuantity(Quantity quantity)
         {
-            Quantity  = quantity;
+            Quantity = quantity;
         }
 
         public void AddQuantity(Quantity quantity)
@@ -30,9 +34,5 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
         {
             return new(productId, quantity);
         }
-
-        private Guid Id { get; }
-        internal Guid ProductId { get; }
-        private Quantity Quantity { get; set; }
     }
 }

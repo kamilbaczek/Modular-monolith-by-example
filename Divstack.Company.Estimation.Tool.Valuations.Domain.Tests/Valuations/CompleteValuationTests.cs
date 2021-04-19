@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Xunit;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations

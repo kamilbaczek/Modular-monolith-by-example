@@ -1,9 +1,9 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -27,13 +27,11 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     .HasConversion(id => id.Value, value => new ProposalId(value));
                 ownedNavigationBuilder.OwnsOne<Money>("Price", moneyValueObjectBuilder =>
                 {
-                    moneyValueObjectBuilder.Property<decimal?>("Value").IsRequired(false).HasPrecision(15,2);
+                    moneyValueObjectBuilder.Property<decimal?>("Value").IsRequired(false).HasPrecision(15, 2);
                     moneyValueObjectBuilder.Property<string>("Currency");
                 });
-                ownedNavigationBuilder.OwnsOne<ProposalDescription>("Description", valueObjectBuilder =>
-                {
-                    valueObjectBuilder.Property<string>("Message").HasMaxLength(512);
-                });
+                ownedNavigationBuilder.OwnsOne<ProposalDescription>("Description",
+                    valueObjectBuilder => { valueObjectBuilder.Property<string>("Message").HasMaxLength(512); });
                 ownedNavigationBuilder.Property<EmployeeId>("SuggestedBy")
                     .HasConversion(id => id.Value, value => new EmployeeId(value))
                     .IsRequired();
@@ -73,14 +71,16 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 {
                     clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
                     clientValueObjectBuilder.Property<string>("LastName").IsRequired();
-                    clientValueObjectBuilder.OwnsOne<Email>("Email", emailValueObjectBuilder =>
-                    {
-                        emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
-                    });
-                    clientValueObjectBuilder.OwnsOne<Email>("Email", emailValueObjectBuilder =>
-                    {
-                        emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
-                    });
+                    clientValueObjectBuilder.OwnsOne<Email>("Email",
+                        emailValueObjectBuilder =>
+                        {
+                            emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
+                        });
+                    clientValueObjectBuilder.OwnsOne<Email>("Email",
+                        emailValueObjectBuilder =>
+                        {
+                            emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
+                        });
                 });
             });
         }

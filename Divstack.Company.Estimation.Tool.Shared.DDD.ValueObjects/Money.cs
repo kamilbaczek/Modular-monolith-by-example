@@ -8,6 +8,12 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects
         {
         }
 
+        private Money(decimal? value, string currency)
+        {
+            Value = value;
+            Currency = currency;
+        }
+
         public static Money Undefined => new Money(null, null);
 
         public decimal? Value { get; }
@@ -17,12 +23,6 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects
         public static Money Of(decimal value, string currency)
         {
             return new Money(value, currency);
-        }
-
-        private Money(decimal? value, string currency)
-        {
-            Value = value;
-            Currency = currency;
         }
 
         public static Money operator *(int left, Money right)

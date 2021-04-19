@@ -8,7 +8,6 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.DataAccess
         internal static IServiceCollection AddDataAccess(this IServiceCollection services,
             string connectionString)
         {
-
             services.AddDbContext<CartsContext>(connectionString);
             return services;
         }

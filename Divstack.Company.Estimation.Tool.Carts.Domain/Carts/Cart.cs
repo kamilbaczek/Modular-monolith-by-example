@@ -30,6 +30,12 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
         public Guid UserId { get; }
         public bool IsActive => Status == Status.Active;
 
+        private Guid Id { get; }
+        private Status Status { get; set; }
+        private DateTime CreationDate { get; }
+        private DateTime LastActivity { get; set; }
+        private IList<CartItem> Items { get; }
+
         public void Abandon()
         {
             Status = Status.Abandoned;
@@ -44,7 +50,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
 
         public static Cart Create(Guid userId)
         {
-            return new (userId);
+            return new(userId);
         }
 
         public async Task AddItemAsync(Guid productId,
@@ -53,7 +59,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
         {
             if (!IsActive)
                 throw new CannotAddItemToNotActiveCartException();
-            var productExist =  await serviceExistingChecker.ExistAsync(productId);
+            var productExist = await serviceExistingChecker.ExistAsync(productId);
             if (!productExist)
                 throw new UnableAddToCartNonExistentProductException();
             var itemWithSameProduct = FindItemByProductOrDefault(productId);
@@ -100,11 +106,5 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
         {
             return Items.Single(item => item.ProductId == productId);
         }
-
-        private Guid Id { get; }
-        private Status Status { get; set; }
-        private DateTime CreationDate { get; }
-        private DateTime LastActivity { get;  set; }
-        private IList<CartItem> Items { get; }
     }
 }

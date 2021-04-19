@@ -12,9 +12,12 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             var admin = model.AddPerson("Admin", "A person responsible for system infrastructure.");
 
             var estimationTool = model.AddSoftwareSystem("Divstack Estimation Tool", "");
-            var wooCommerce = model.AddSoftwareSystem(Location.External, "WooCommerce", "WooCommerce is a customizable, open-source eCommerce platform built on WordPress.");
-            var trello = model.AddSoftwareSystem(Location.External, "Trello", "Trello is a collaboration tool that organizes your projects into boards. In one glance, Trello tells you what's being worked on, who's working on what, and where something is in a process.");
-            var toggl = model.AddSoftwareSystem(Location.External, "Toggl", "Toggl Track (formerly Toggl) is a time tracking software.Toggl Track tracks time blocks optionally labeled with a task, a project, and tags.");
+            var wooCommerce = model.AddSoftwareSystem(Location.External, "WooCommerce",
+                "WooCommerce is a customizable, open-source eCommerce platform built on WordPress.");
+            var trello = model.AddSoftwareSystem(Location.External, "Trello",
+                "Trello is a collaboration tool that organizes your projects into boards. In one glance, Trello tells you what's being worked on, who's working on what, and where something is in a process.");
+            var toggl = model.AddSoftwareSystem(Location.External, "Toggl",
+                "Toggl Track (formerly Toggl) is a time tracking software.Toggl Track tracks time blocks optionally labeled with a task, a project, and tags.");
 
             estimationTool.Uses(toggl, "Create projects for time logging");
             estimationTool.Uses(trello, "Create boards and tasks for employee");
