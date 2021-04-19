@@ -71,7 +71,7 @@ export default {
         },
       })
       .then((res) => {
-        return res;
+        this.tableData = res.data.valuations;
       });
   },
   methods: {
