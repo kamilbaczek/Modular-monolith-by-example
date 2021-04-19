@@ -47,27 +47,11 @@ export default {
       sortDesc: false,
       fields: [
         {
-          key: "name",
+          key: "firstName",
           sortable: true,
         },
         {
-          key: "position",
-          sortable: true,
-        },
-        {
-          key: "office",
-          sortable: true,
-        },
-        {
-          key: "age",
-          sortable: true,
-        },
-        {
-          key: "date",
-          sortable: true,
-        },
-        {
-          key: "salary",
+          key: "lastName",
           sortable: true,
         },
       ],
@@ -81,7 +65,7 @@ export default {
   mounted() {
     this.totalRows = this.items.length;
     axios
-      .get("http://dummy.restapiexample.com/api/v1/employees", {
+      .get("https://localhost:5001/api/valuations-module/Valuations", {
         headers: {
           "Content-type": "application/json;charset=utf-8",
         },

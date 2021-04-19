@@ -24,6 +24,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [AllowAnonymous]
         public async Task<ActionResult<ValuationListVm>> GetAll()
         {
             var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(new GetAllValuationsQuery());

@@ -344,7 +344,7 @@ export default {
                   <p class="mb-0">
                     ©
                     {{ new Date().getFullYear() }} Estimation Tool Crafted with
-                    <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                    <i class="mdi mdi-heart text-danger"></i>
                   </p>
                 </div>
               </div>

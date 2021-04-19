@@ -73,7 +73,7 @@ export default {
           <div class="mt-5 text-center">
             <p>
               © {{ new Date().getFullYear() }} Estimation Tool Crafted with
-              <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+              <i class="mdi mdi-heart text-danger"></i>
             </p>
           </div>
         </div>

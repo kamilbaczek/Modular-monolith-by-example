@@ -1,10 +1,6 @@
 <script>
 import Layout from "../../layouts/auth";
-import {
-  authMethods,
-  authFackMethods,
-  notificationMethods,
-} from "@/state/helpers";
+import { authFackMethods, notificationMethods } from "@/state/helpers";
 import { mapState } from "vuex";
 
 import appConfig from "@/app.config";
@@ -52,7 +48,6 @@ export default {
     },
   },
   methods: {
-    ...authMethods,
     ...authFackMethods,
     ...notificationMethods,
 
@@ -233,7 +228,7 @@ export default {
           </p>
           <p>
             © {{ new Date().getFullYear() }} Estimation Tool Crafted with
-            <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+            <i class="mdi mdi-heart text-danger"></i>
           </p>
         </div>
         <!-- end row -->
