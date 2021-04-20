@@ -24,5 +24,4 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         public Guid? CompletedBy { get; }
         public string FullName => $"{FirstName} {LastName}";
     }
-
 }
