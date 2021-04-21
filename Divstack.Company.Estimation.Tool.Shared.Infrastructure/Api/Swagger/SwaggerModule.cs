@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
-
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
 {
     internal static class SwaggerModule
@@ -11,6 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
             services.AddSwaggerGen();
             services.AddSwaggerGen(swagger =>
             {
+                swagger.AddJwtAuthorization();
                 swagger.SwaggerDoc("estimation-tool", new OpenApiInfo {Title = "API", Version = "v1.0"});
             });
         }
@@ -18,7 +18,11 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
         internal static void UseSwaggerModule(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/estimation-tool/swagger.json", "Users Module"); });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/estimation-tool/swagger.json", "Estimation Tool");
+            });
+
         }
     }
 }
