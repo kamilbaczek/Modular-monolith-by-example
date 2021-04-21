@@ -1,12 +1,16 @@
 import axios from "axios";
+import {authHeader} from './authservice/auth-header';
 
-export const HTTP = axios.create({
-  baseURL: `https://localhost:5001/api`,
+export const anonymousHttpClient = axios.create({
+  baseURL: 'https://localhost:5001/api/',
+  timeout: 1000,
 });
 
-export default axios.create({
-  baseURL: "http://localhost:8080/api",
-  headers: {
-    "Content-Type": "application/json",
-  },
+
+const authenticatedHttpClient = axios.create({
+  baseURL: 'https://localhost:5001/api/',
+  timeout: 1000,
+  headers: authHeader()
 });
+
+export default authenticatedHttpClient;

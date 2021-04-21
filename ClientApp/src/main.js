@@ -9,6 +9,7 @@ import vco from "v-click-outside";
 import router from "./router/index";
 import Scrollspy from "vue2-scrollspy";
 import VueSweetalert2 from "vue-sweetalert2";
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 import "../src/design/app.scss";
 

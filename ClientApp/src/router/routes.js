@@ -19,6 +19,15 @@ export default [
       import("./views/valuations/list-valuations/list-valuations"),
   },
   {
+    path: "/users",
+    name: "users",
+    meta: {
+      authRequired: true,
+    },
+    component: () =>
+      import("./views/users/list-users/list-users"),
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("./views/account/login"),

@@ -1,5 +1,5 @@
 <script>
-import HTTP from "@/helpers/http-comunicator";
+import axios from "@/helpers/http-comunicator";
 import Layout from "../../../layouts/main";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
@@ -54,8 +54,8 @@ export default {
   },
   mounted() {
     this.totalRows = this.items.length;
-    HTTP
-      .get("https://localhost:5001/api/valuations-module/Valuations", {
+    axios
+      .get("valuations-module/Valuations", {
         headers: {
           "Content-type": "application/json;charset=utf-8",
         },
