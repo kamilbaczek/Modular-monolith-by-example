@@ -10,7 +10,6 @@ import router from "./router/index";
 import Scrollspy from "vue2-scrollspy";
 import VueSweetalert2 from "vue-sweetalert2";
 import 'sweetalert2/dist/sweetalert2.min.css';
-
 import "../src/design/app.scss";
 
 import store from "@/state/store";
@@ -20,6 +19,10 @@ import App from "./App.vue";
 import i18n from "./i18n";
 
 import tinymce from "vue-tinymce-editor";
+
+//custom plugins
+import EtToast from '@/plugins/et-toast';
+import EtConfirm from '@/plugins/et-confirm';
 
 Vue.component("tinymce", tinymce);
 Vue.use(VueRouter);
@@ -34,6 +37,9 @@ Vue.use(Vuelidate);
 Vue.use(VueMask);
 Vue.use(require("vue-chartist"));
 Vue.use(VueSweetalert2);
+Vue.use(VueMask);
+Vue.use(EtToast);
+Vue.use(EtConfirm);
 Vue.use(VueGoogleMaps, {
   load: {
     key: "AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE",

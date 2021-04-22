@@ -20,11 +20,11 @@
         <b-button
           variant="danger"
           class="mx-1"
-          title="Remove user"
-          @click.prevent="removeUser(data.item.publicId)"
+          title="Delete user"
+          @click.prevent="deleteUser(data.item.publicId)"
         >
           <i class="bx bxs-x-square font-size-16 align-middle me-2"></i>
-          Remove
+          Delete
         </b-button>
       </template>
     </Grid>
@@ -142,39 +142,18 @@ export default {
   },
 
   methods: {
-    openSuggestModal() {
-      this.$refs["suggest-proposal-modal"].show();
-    },
-    consoleLogThis(anything) {
-      // eslint-disable-next-line no-console
-      console.log(anything);
-    },
     getUsers() {
-      axios
-        .get("users-module/Users", {
-          headers: {
-            "Content-type": "application/json;charset=utf-8",
-          },
-        })
-        .then((res) => {
-          this.tableData = res.data.userListVm.users;
-        });
+      axios.get("users-module/Users").then((res) => {
+        this.tableData = res.data.userListVm.users;
+      });
     },
-    removeUser(userPublicId) {
+    deleteUser(userPublicId) {
       if (userPublicId) {
-        this.$swal({
-          title: "Are you sure?",
-          icon: "warning",
-          showCancelButton: true,
-        }).then((actionResult) => {
+        this.$etConfirm().then((actionResult) => {
           if (actionResult.isConfirmed) {
-            axios
-              .delete(`users-module/Users/${userPublicId}`, {
-                headers: {
-                  "Content-type": "application/json;charset=utf-8",
-                },
-              })
-              .then(() => {});
+            axios.delete(`users-module/Users/${userPublicId}`).then(() => {
+              this.$etToast("Operation completed!");
+            });
           }
         });
       }
