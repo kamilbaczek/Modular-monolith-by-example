@@ -1,4 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
+using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +32,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
                 .AllowAnyHeader()
                 .AllowAnyMethod());
             app.UseSwaggerModule();
+            app.UseCustomExceptionHandler();
         }
     }
 }
