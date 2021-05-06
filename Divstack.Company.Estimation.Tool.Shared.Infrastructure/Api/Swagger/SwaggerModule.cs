@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.IO;
+using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
@@ -10,8 +13,12 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
             services.AddSwaggerGen();
             services.AddSwaggerGen(swagger =>
             {
+                var projectName = Assembly.GetEntryAssembly()?.GetName().Name;
                 swagger.AddJwtAuthorization();
-                swagger.SwaggerDoc("estimation-tool", new OpenApiInfo {Title = "API", Version = "v1.0"});
+                swagger.SwaggerDoc("api", new OpenApiInfo {Title = "API", Version = "v1.0"});
+                var xmlFile = $"{projectName}.xml";
+                var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                swagger.IncludeXmlComments(xmlFilePath);
             });
         }
 
@@ -20,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/estimation-tool/swagger.json", "Estimation Tool");
+                c.SwaggerEndpoint("/swagger/api/swagger.json", "Estimation Tool");
             });
 
         }

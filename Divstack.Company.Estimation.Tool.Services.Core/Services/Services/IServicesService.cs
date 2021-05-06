@@ -10,6 +10,9 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
 {
     public interface IServicesService
     {
+        Task<List<ServiceDto>> GetBatchAsync(IReadOnlyCollection<Guid> serviceIds,
+            int itemsLimit,
+            CancellationToken cancellationToken = default);
         Task<List<ServiceDto>> GetAllAsync(CancellationToken cancellationToken = default);
         Task CreateAsync(CreateServiceRequest createServiceRequest, CancellationToken cancellationToken = default);
         Task Update(UpdateServiceRequest serviceToUpdate, CancellationToken cancellationToken = default);

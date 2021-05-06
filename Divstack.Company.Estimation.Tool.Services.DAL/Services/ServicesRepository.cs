@@ -40,6 +40,19 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Services
                 .ToListAsync(cancellationToken);
         }
 
+        public async Task<List<Service>> GetBatchAsync(IReadOnlyCollection<Guid> serviceIds,
+            int limitItems = 25,
+            CancellationToken cancellationToken = default)
+        {
+            return await _servicesContext.Services
+                .Include(service => service.Category)
+                .OrderBy(service => service.Name)
+                .ThenBy(service => service.Description)
+                .Where(service => serviceIds.Contains(service.Id))
+                .Take(limitItems)
+                .ToListAsync(cancellationToken);
+        }
+
         public async Task<Service> GetAsync(Guid publicId, CancellationToken cancellationToken = default)
         {
             return await _servicesContext.Services

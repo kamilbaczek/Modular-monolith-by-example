@@ -3,16 +3,6 @@
     <PageHeader :title="title" :items="siteCrumbs" />
     <Grid :title="title" :fields="tableHeaders" :tableData="tableData">
       <template v-slot:actions="data">
-        <b-button
-          variant="warning"
-          class="mx-1"
-          v-b-tooltip.hover
-          title="Suggest proposal"
-          @click="openSuggestModal()"
-        >
-          <i class="bx bxs-comment-add font-size-16 align-middle me-2"></i>
-          Suggest
-        </b-button>
         <b-button variant="info" class="mx-1" title="Go to details">
           <i class="bx bx-detail font-size-16 align-middle me-2"></i>
           Details
@@ -28,52 +18,6 @@
         </b-button>
       </template>
     </Grid>
-    <b-modal
-      ref="suggest-proposal-modal"
-      title="Suggest proposal"
-      hide-footer
-      size="lg"
-      centered
-    >
-      <div class="card-body">
-        <form>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="mb-3">
-                <label for="price">Price</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="price"
-                  placeholder="Enter Price"
-                  v-mask="'###.###.###.###.###,##'"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="mb-3">
-                <label for="message">Message</label>
-                <textarea class="form-control" id="message" rows="3"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="text-end">
-                <b-button variant="success" class="mx-1" title="Go to details">
-                  <i
-                    class="bx bx bx-mail-send font-size-16 align-middle me-2"
-                  ></i>
-                  Send
-                </b-button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </b-modal>
   </Layout>
 </template>
 

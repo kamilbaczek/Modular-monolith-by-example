@@ -5,6 +5,14 @@
         <LangVersion>9</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\Divstack.Company.Estimation.Tool.Bootstrapper.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\Divstack.Company.Estimation.Tool.Bootstrapper.xml</DocumentationFile>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.DependencyInjection\Divstack.Company.Estimation.Tool.Emails.DependencyInjection.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Api\Divstack.Company.Estimation.Tool.Valuations.Api.csproj" />

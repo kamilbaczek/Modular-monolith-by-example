@@ -11,10 +11,25 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
     internal sealed class ServicesController : BaseController
     {
         private readonly IServicesService _servicesService;
+        private const int BatchItemsLimit = 25;
+        private const string BatchRoute = "batch";
 
         public ServicesController(IServicesService servicesService)
         {
             _servicesService = servicesService;
+        }
+
+        /// <summary>
+        /// Get batch of services details
+        /// </summary>
+        /// <param name="servicesIds">list of guid as parameter. 25 ids per single request allowed</param>
+        /// <returns>List of services returned</returns>
+        [HttpGet(BatchRoute)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<ServiceDto>>> GetBatch([FromQuery] IReadOnlyCollection<Guid> servicesIds)
+        {
+            var services = await _servicesService.GetBatchAsync(servicesIds, BatchItemsLimit);
+            return Ok(services);
         }
 
         [HttpGet]

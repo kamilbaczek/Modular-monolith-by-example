@@ -19,13 +19,18 @@ export default [
       import("./views/valuations/list-valuations/list-valuations"),
   },
   {
+    path: "/valuations/:id",
+    name: "details-valuation",
+    component: () =>
+      import("./views/valuations/details-valuation/details-valuation"),
+  },
+  {
     path: "/users",
     name: "users",
     meta: {
       authRequired: true,
     },
-    component: () =>
-      import("./views/users/list-users/list-users"),
+    component: () => import("./views/users/list-users/list-users"),
   },
   {
     path: "/login",

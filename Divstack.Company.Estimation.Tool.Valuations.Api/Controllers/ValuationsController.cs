@@ -1,10 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,16 +24,21 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
             _valuationsModule = valuationsModule;
         }
 
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<ValuationVm>> Get(Guid id)
+        {
+            var valuationVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationQuery(id));
+            return Ok(valuationVm);
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [AllowAnonymous]
         public async Task<ActionResult<ValuationListVm>> GetAll()
         {
             var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(new GetAllValuationsQuery());
             return Ok(valuationsListVm);
         }
-
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]

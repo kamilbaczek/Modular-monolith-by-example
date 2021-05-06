@@ -36,6 +36,16 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             return servicesDtos;
         }
 
+        public async Task<List<ServiceDto>> GetBatchAsync(IReadOnlyCollection<Guid> serviceIds,
+            int itemsLimit,
+            CancellationToken cancellationToken = default)
+        {
+            var services = await _servicesRepository.GetBatchAsync(serviceIds, itemsLimit, cancellationToken);
+            var servicesDtos = services.Select(ServiceDto.Map).ToList();
+
+            return servicesDtos;
+        }
+
         public async Task CreateAsync(CreateServiceRequest createServiceRequest,
             CancellationToken cancellationToken = default)
         {

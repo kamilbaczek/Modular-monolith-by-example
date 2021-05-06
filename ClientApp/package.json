@@ -30,6 +30,7 @@
     "firebase": "^8.2.5",
     "leaflet": "^1.7.1",
     "metismenujs": "^1.2.1",
+    "qs": "^6.10.1",
     "sass": "^1.30.0",
     "sass-loader": "^10.1.0",
     "simplebar-vue": "^1.6.0",
