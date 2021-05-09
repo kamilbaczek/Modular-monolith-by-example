@@ -36,7 +36,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 
         private Proposal ProposalWaitForDecision => NotCancelledProposals
             .SingleOrDefault(proposal => !proposal.HasDecision());
-
+        private bool IsWaitingForDecision => ProposalWaitForDecision is not null;
         private Enquiry Enquiry { get; }
         private DateTime RequestedDate { get; }
         private DateTime? CompletedDate { get; set; }
@@ -62,13 +62,20 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         {
             if (IsCompleted)
                 throw new ValuationCompletedException(Id);
-            if (ProposalWaitForDecision is not null)
+            if (IsWaitingForDecision)
                 throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
 
             var proposalDescription = ProposalDescription.From(description);
             var proposal = Proposal.Suggest(this, value, proposalDescription, proposedBy);
             Proposals.Add(proposal);
-            AddDomainEvent(new ProposalSuggestedEvent(proposedBy, value, proposal.Id));
+            AddDomainEvent(new ProposalSuggestedEvent(
+                Enquiry.ClientFullName,
+                proposedBy,
+                proposal.Id,
+                value,
+                Enquiry.ClientEmail,
+                proposalDescription,
+                Id));
         }
 
         public void ApproveProposal(ProposalId proposalId)

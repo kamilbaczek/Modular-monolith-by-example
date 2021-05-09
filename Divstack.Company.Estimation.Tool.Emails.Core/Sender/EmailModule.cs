@@ -6,7 +6,6 @@ using MimeKit;
 using MimeKit.Text;
 using static System.String;
 
-
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
 {
     internal sealed class EmailModule : IEmailModule
@@ -18,18 +17,17 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
             _mailConfiguration = mailConfiguration;
         }
 
+        private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
+            && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
+
         public async Task SendEmailAsync(string email, string subject, string text)
         {
-            if (!IsNullOrEmpty(_mailConfiguration.ServerAddress) && !IsNullOrEmpty(_mailConfiguration.MailFrom)
-            ) //TODO Handle Invalid Configuration
+            if (!IsNullOrEmpty(_mailConfiguration.ServerAddress) && !IsNullOrEmpty(_mailConfiguration.MailFrom)) //TODO Handle Invalid Configuration
             {
                 var message = BuildMessage(email, subject, text);
                 await SendMessageAsync(message);
             }
         }
-
-        private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
-                                                     && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
 
         private async Task SendMessageAsync(MimeMessage message)
         {
@@ -51,13 +49,13 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
             var message = new MimeMessage();
             var mailFrom = IsConfiguredAuthentication()
                 ? new MailboxAddress(_mailConfiguration.MailFrom, _mailConfiguration.ServerLogin)
-                : new MailboxAddress(_mailConfiguration.MailFrom);
+                :  MailboxAddress.Parse(_mailConfiguration.MailFrom);
             message.From.Add(mailFrom);
-            message.To.Add(new MailboxAddress(email));
+            message.To.Add(MailboxAddress.Parse(email));
             message.Subject = subject;
             message.Body = new TextPart(TextFormat.Html)
             {
-                Text = Format(_mailConfiguration.MailTemplate, text)
+                Text = text
             };
             return message;
         }

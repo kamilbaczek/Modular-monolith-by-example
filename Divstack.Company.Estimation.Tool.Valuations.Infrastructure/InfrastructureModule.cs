@@ -1,8 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
+using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.EventBus;
 using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Mediation;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance;
 using Divstack.Company.Estimation.Tool.Valuations.Application;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure
             services.AddApplicationModule();
             services.AddMediationModule();
             services.AddScoped<IValuationsModule, ValuationsModule>();
+            services.AddScoped<IEventPublisher, EventPublisher>();
 
             return services;
         }

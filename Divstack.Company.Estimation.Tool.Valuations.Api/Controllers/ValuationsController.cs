@@ -78,7 +78,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("valuations/proposals/approve")]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> ApproveProposal([FromBody] ApproveProposalCommand approveProposalCommand)
+        public async Task<ActionResult> ApproveProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
         {
             await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
             return Ok();
@@ -89,7 +89,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("valuations/proposals/reject")]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> RejectProposal([FromBody] ApproveProposalCommand approveProposalCommand)
+        public async Task<ActionResult> RejectProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
         {
             await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
             return Ok();
@@ -100,7 +100,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("valuations/proposals/cancel")]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> CancelProposal([FromBody] CancelProposalCommand cancelProposalCommand)
+        public async Task<ActionResult> CancelProposal([FromQuery] CancelProposalCommand cancelProposalCommand)
         {
             await _valuationsModule.ExecuteCommandAsync(cancelProposalCommand);
             return Ok();

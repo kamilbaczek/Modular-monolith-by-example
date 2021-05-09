@@ -18,6 +18,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         }
 
         internal Email Email { get; }
+        internal string FullName => $"{FirstName} {LastName}";
         private string FirstName { get; }
         private string LastName { get; }
 

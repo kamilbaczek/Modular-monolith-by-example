@@ -2,6 +2,7 @@
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
+using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails.DependencyInjection")]
@@ -14,6 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core
         {
             services.AddSingleton<IEmailModule, EmailModule>();
             services.AddSingleton<IMailConfiguration, MailConfiguration>();
+            services.AddScoped<IMailTemplateReader, MailTemplateReader>();
 
             return services;
         }

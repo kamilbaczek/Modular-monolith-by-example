@@ -8,6 +8,5 @@
         string ServerPassword { get; }
         string MailFrom { get; }
         bool DisableSsl { get; }
-        string MailTemplate { get; }
     }
 }

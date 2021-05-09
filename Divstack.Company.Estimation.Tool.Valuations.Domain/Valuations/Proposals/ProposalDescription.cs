@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Message = message;
         }
 
-        private string Message { get; }
+        public string Message { get; }
 
         internal static ProposalDescription From(string message)
         {

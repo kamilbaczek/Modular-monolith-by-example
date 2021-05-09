@@ -42,6 +42,9 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     .IsRequired(false);
                 ownedNavigationBuilder.Property<DateTime?>("Cancelled")
                     .IsRequired(false);
+                ownedNavigationBuilder.Property<bool>("IsWaitingForDecision")
+                    .IsRequired();
+
                 ownedNavigationBuilder.OwnsOne<ProposalDecision>("Decision", decisionValueObjectBuilder =>
                 {
                     decisionValueObjectBuilder.Property<DateTime?>("Date").IsRequired();

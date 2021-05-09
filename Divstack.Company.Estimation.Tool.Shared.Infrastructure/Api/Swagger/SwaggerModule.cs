@@ -10,7 +10,6 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
     {
         internal static void AddSwaggerModule(this IServiceCollection services)
         {
-            services.AddSwaggerGen();
             services.AddSwaggerGen(swagger =>
             {
                 var projectName = Assembly.GetEntryAssembly()?.GetName().Name;
@@ -29,7 +28,6 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
             {
                 c.SwaggerEndpoint("/swagger/api/swagger.json", "Estimation Tool");
             });
-
         }
     }
 }

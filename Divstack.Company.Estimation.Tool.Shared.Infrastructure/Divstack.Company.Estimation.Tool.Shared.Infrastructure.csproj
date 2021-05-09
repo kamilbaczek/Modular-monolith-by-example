@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
       <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.1" />
@@ -13,6 +14,10 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
       <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
     </ItemGroup>
 
 </Project>

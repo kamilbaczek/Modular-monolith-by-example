@@ -21,16 +21,5 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configurat
 
         public string MailFrom => configurationSection.GetValue<string>(nameof(MailFrom));
         public bool DisableSsl => configurationSection.GetValue<bool>(nameof(DisableSsl));
-
-        public string MailTemplate
-        {
-            get
-            {
-                var path = configurationSection.GetValue<string>("MailTemplatePath");
-                var pathToTemplate = Path.Combine($"{AppDomain.CurrentDomain.BaseDirectory}", path);
-
-                return File.ReadAllText(pathToTemplate);
-            }
-        }
     }
 }
