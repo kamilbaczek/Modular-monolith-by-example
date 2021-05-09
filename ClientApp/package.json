@@ -37,6 +37,7 @@
     "sweetalert2": "^10.12.3",
     "v-click-outside": "^3.1.2",
     "v-mask": "^2.2.3",
+    "vee-validate": "^3.4.5",
     "vue": "^2.6.12",
     "vue-apexcharts": "^1.6.0",
     "vue-axios": "^3.2.4",

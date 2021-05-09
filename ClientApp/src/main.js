@@ -1,5 +1,10 @@
 import Vue from "vue";
 import BootstrapVue from "bootstrap-vue";
+
+// Import Bootstrap an BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 import VueApexCharts from "vue-apexcharts";
 import Vuelidate from "vuelidate";
 import * as VueGoogleMaps from "vue2-google-maps";
@@ -20,17 +25,21 @@ import i18n from "./i18n";
 
 import tinymce from "vue-tinymce-editor";
 
+//vee-validate
+import { ValidationObserver, ValidationProvider, extend, localize} from "vee-validate";
+import * as rules from "vee-validate/dist/rules";
+import en from "vee-validate/dist/locale/en.json";
+
 //custom plugins
 import EtToast from '@/plugins/et-toast';
 import EtConfirm from '@/plugins/et-confirm';
 
-Vue.component("tinymce", tinymce);
 Vue.use(VueRouter);
 Vue.use(vco);
 Vue.use(Scrollspy);
+
 const VueScrollTo = require("vue-scrollto");
 Vue.use(VueScrollTo);
-Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
 Vue.use(Vuelidate);
@@ -47,7 +56,19 @@ Vue.use(VueGoogleMaps, {
   },
   installComponents: true,
 });
+
 Vue.component("apexchart", VueApexCharts);
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component("ValidationObserver", ValidationObserver);
+Vue.component("tinymce", tinymce);
+
+Object.keys(rules).forEach(rule => {
+  extend(rule, rules[rule]);
+});
+localize("en", en);
+
+
+Vue.config.productionTip = false;
 
 new Vue({
   router,
