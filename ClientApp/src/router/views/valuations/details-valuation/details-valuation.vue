@@ -4,6 +4,7 @@ import Layout from "../../../layouts/main";
 import PageHeader from "@/components/page-header";
 import SuggestProposalModal from "./suggest-proposal-modal/suggest-proposal-modal";
 import ListServices from "./list-services/list-services";
+import Status from "../components/status";
 
 import appConfig from "@/app.config";
 
@@ -22,6 +23,7 @@ export default {
     PageHeader,
     ListServices,
     SuggestProposalModal,
+    Status,
   },
   data() {
     return {
@@ -68,6 +70,9 @@ export default {
         <div class="card">
           <div class="card-body">
             <div class="invoice-title">
+              <h4 class="float-end mx-2 font-size-16">
+                <Status :status="details.information.status"></Status>
+              </h4>
               <h4 class="float-end font-size-16">
                 Identifier: <b>{{ details.information.id }}</b>
               </h4>

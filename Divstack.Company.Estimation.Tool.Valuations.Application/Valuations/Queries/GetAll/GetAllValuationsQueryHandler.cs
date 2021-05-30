@@ -24,6 +24,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
                 SELECT [Id] AS {nameof(ValuationListItemDto.Id)},
                        [Enquiry_Client_FirstName] AS {nameof(ValuationListItemDto.FirstName)},
                        [Enquiry_Client_LastName]  AS {nameof(ValuationListItemDto.LastName)},
+                       [Status_Value]  AS {nameof(ValuationListItemDto.Status)},
                        [RequestedDate] AS {nameof(ValuationListItemDto.RequestedDate)},
                        [CompletedBy] AS {nameof(ValuationListItemDto.CompletedBy)}
                 FROM [Valuations].[Valuations]

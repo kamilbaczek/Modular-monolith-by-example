@@ -42,14 +42,17 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     .IsRequired(false);
                 ownedNavigationBuilder.Property<DateTime?>("Cancelled")
                     .IsRequired(false);
-                ownedNavigationBuilder.Property<bool>("IsWaitingForDecision")
-                    .IsRequired();
 
                 ownedNavigationBuilder.OwnsOne<ProposalDecision>("Decision", decisionValueObjectBuilder =>
                 {
                     decisionValueObjectBuilder.Property<DateTime?>("Date").IsRequired();
                     decisionValueObjectBuilder.Property<string>("Code").IsRequired().HasMaxLength(10);
                 });
+            });
+            builder.OwnsOne<ValuationStatus>("Status", statusObjectBuilder =>
+            {
+                statusObjectBuilder.Property<string>("Value").IsRequired();
+
             });
             builder.Property<DateTime>("RequestedDate").IsRequired();
             builder.Property<EmployeeId>("CompletedBy")

@@ -4,6 +4,7 @@ import Layout from "../../../layouts/main";
 import PageHeader from "@/components/page-header";
 import appConfig from "@/app.config";
 import Grid from "@/components/et-grid";
+import Status from "../components/status.vue";
 
 export default {
   page: {
@@ -19,6 +20,7 @@ export default {
     Layout,
     PageHeader,
     Grid,
+    Status,
   },
   data() {
     return {
@@ -40,11 +42,11 @@ export default {
           sortable: true,
         },
         {
-          key: "lastName",
+          key: "requestedDate",
           sortable: true,
         },
         {
-          key: "requestedDate",
+          key: "status",
           sortable: true,
         },
         { key: "actions", label: "Actions" },
@@ -91,6 +93,10 @@ export default {
           <i class="bx bx-detail font-size-16 align-middle me-2"></i>
           Details
         </b-button>
+      </template>
+
+      <template v-slot:status="data">
+        <Status :status="data.item.status"></Status>
       </template>
     </Grid>
   </Layout>

@@ -9,13 +9,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
             string lastName,
             string email,
             DateTime requestedDate,
-            Guid? completedBy)
+            Guid? completedBy,
+            string status)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             RequestedDate = requestedDate.ToString(Formatting.DateFormat);
             CompletedBy = completedBy;
+            Status = status;
             Email = email;
         }
 
@@ -25,6 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         public string Email { get; }
         public string RequestedDate { get; }
         public Guid? CompletedBy { get; }
+        public string Status { get; }
         public string FullName => $"{FirstName} {LastName}";
     }
 }

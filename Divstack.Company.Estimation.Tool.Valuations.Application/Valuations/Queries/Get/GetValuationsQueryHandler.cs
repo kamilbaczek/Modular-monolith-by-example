@@ -56,7 +56,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
                        [Enquiry_Client_LastName]  AS {nameof(ValuationInformationDto.LastName)},
                        [Enquiry_Client_Email_Value] AS {nameof(ValuationInformationDto.Email)},
                        [RequestedDate] AS {nameof(ValuationInformationDto.RequestedDate)},
-                       [CompletedBy] AS {nameof(ValuationInformationDto.CompletedBy)}
+                       [CompletedBy] AS {nameof(ValuationInformationDto.CompletedBy)},
+                       [Status_Value] AS [{nameof(ValuationInformationDto.Status)}]
                 FROM [Valuations].[Valuations]
                 WHERE [Id] = @ValuationId
                 ORDER BY [RequestedDate] ASC";
