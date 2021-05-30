@@ -15,32 +15,31 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
     public abstract class BaseValuationTest : BaseTest
     {
         protected const string FakeRejectReason = "test";
-        protected readonly Mock<IServiceExistingChecker> _serviceExistingCheckerMock;
+        protected readonly Mock<IServiceExistingChecker> ServiceExistingCheckerMock;
 
         protected BaseValuationTest()
         {
-            _serviceExistingCheckerMock = new Mock<IServiceExistingChecker>();
-            _serviceExistingCheckerMock.Setup(serviceExistingChecker =>
+            ServiceExistingCheckerMock = new Mock<IServiceExistingChecker>();
+            ServiceExistingCheckerMock.Setup(serviceExistingChecker =>
                 serviceExistingChecker.ExistAsync(It.IsAny<List<Guid>>())).ReturnsAsync(true);
         }
 
 
         protected void SetupServiceExistingChecker(bool areServicesExists = true)
         {
-            _serviceExistingCheckerMock
+            ServiceExistingCheckerMock
                 .Setup(x => x.ExistAsync(It.IsAny<List<Guid>>()))
                 .ReturnsAsync(areServicesExists);
         }
 
-        protected static ProposalId SuggestFakeProposal(Valuation valuation)
+        protected static ProposalId SuggestFakeProposal(EmployeeId employee, Valuation valuation)
         {
             var money = Money.Of(30, "USD");
-            return SuggestFakeProposal(valuation, money);
+            return SuggestFakeProposal(employee, valuation, money);
         }
 
-        protected static ProposalId SuggestFakeProposal(Valuation valuation, Money money)
+        protected static ProposalId SuggestFakeProposal(EmployeeId employee, Valuation valuation, Money money)
         {
-            var employee = new EmployeeId(Guid.NewGuid());
             valuation.SuggestProposal(money, "test", employee);
             var @event = GetPublishedEvent<ProposalSuggestedEvent>(valuation);
 
@@ -51,11 +50,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
         {
             var productsIds = new List<ServiceId>
             {
-                new ServiceId(Guid.NewGuid()),
-                new ServiceId(Guid.NewGuid()),
+                new(Guid.NewGuid()),
+                new(Guid.NewGuid()),
             };
             var client = Client.Of(email, "firstname", "lastname");
-            return await Valuation.RequestAsync(productsIds, client, _serviceExistingCheckerMock.Object);
+            return await Valuation.RequestAsync(productsIds, client, ServiceExistingCheckerMock.Object);
         }
 
         protected async Task<Valuation> RequestFakeValuation()

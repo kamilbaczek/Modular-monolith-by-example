@@ -1,10 +1,9 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Sender
+namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender
 {
-    internal record SuggestProposalEmailRequest(
+    internal record ValuationProposalSuggestedEmailRequest(
         string FullName,
         string ClientEmail,
         Guid ValuationId,

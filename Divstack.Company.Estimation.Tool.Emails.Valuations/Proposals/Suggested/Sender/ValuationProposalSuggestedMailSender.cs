@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
+using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Sender
+namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender
 {
     internal sealed class ValuationProposalSuggestedMailSender : IValuationProposalSuggestedMailSender
     {
@@ -31,7 +32,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Sender
             _mailTemplateReader = mailTemplateReader;
         }
 
-        public async Task SendEmailAsync(SuggestProposalEmailRequest request)
+        public async Task SendEmailAsync(ValuationProposalSuggestedEmailRequest request)
         {
             var acceptLink = _configuration.AcceptProposalLink
                 .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
@@ -54,4 +55,3 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Sender
         }
     }
 }
-

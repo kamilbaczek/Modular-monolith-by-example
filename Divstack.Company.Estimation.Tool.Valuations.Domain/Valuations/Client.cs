@@ -4,7 +4,7 @@ using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 {
-    public class Client : ValueObject
+    public sealed class Client : ValueObject
     {
         private Client()
         {

@@ -28,11 +28,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
             @event.ProposedBy.Should().Be(employee);
         }
 
-        internal static void AssertIsCorrect(this ProposalApprovedEvent @event, Email clientEmail,
+        internal static void AssertIsCorrect(this ProposalApprovedEvent @event,
+            EmployeeId employeeId,
             ProposalId proposalId)
         {
             @event.Should().NotBeNull();
-            @event.ClientEmail.Should().Be(clientEmail);
+            @event.SuggestedBy.Should().Be(employeeId);
             @event.ProposalId.Should().Be(proposalId);
         }
 
@@ -42,9 +43,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
             string rejectReason)
         {
             @event.Should().NotBeNull();
-            @event.EmployeeEmail.Should().Be(clientEmail);
+            @event.ClientEmail.Should().Be(clientEmail);
             @event.ProposalId.Should().Be(proposalId);
-            @event.ReasonMessage.Should().Be(rejectReason);
         }
 
         internal static void AssertIsCorrect(this ValuationCompletedEvent @event,

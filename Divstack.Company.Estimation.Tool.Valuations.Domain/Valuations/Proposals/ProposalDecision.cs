@@ -13,21 +13,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         {
         }
 
-        private ProposalDecision(DateTime? date, string code, string rejectReason)
+        private ProposalDecision(DateTime? date, string code)
         {
             Date = date;
             Code = code;
-            RejectReason = rejectReason;
         }
 
         private DateTime? Date { get; }
 
         private string Code { get; }
-
-        private string RejectReason { get; }
-
-        internal static ProposalDecision NoDecision =>
-            new ProposalDecision(null, null, null);
 
         private bool IsAccepted => Code == Accept;
 
@@ -35,12 +29,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         internal static ProposalDecision AcceptDecision(DateTime date)
         {
-            return new ProposalDecision(date, Accept, null);
+            return new(date, Accept);
         }
 
-        internal static ProposalDecision RejectDecision(DateTime date, string rejectReason)
+        internal static ProposalDecision RejectDecision(DateTime date)
         {
-            return new ProposalDecision(date, Reject, rejectReason);
+            return new(date, Reject);
         }
     }
 }

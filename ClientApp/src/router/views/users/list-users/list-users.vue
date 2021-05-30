@@ -4,29 +4,50 @@
 
     <Grid :title="title" :fields="tableHeaders" :tableData="tableData">
       <template #headerButtons>
-        <b-button variant="info" class="mx-1" v-b-tooltip.hover title="Suggest proposal" @click="openModalForm()">
+        <b-button
+          variant="info"
+          class="mx-1"
+          v-b-tooltip.hover
+          title="Suggest proposal"
+          @click="openModalForm()"
+        >
           <i class="bx bx-plus font-size-16 align-middle me-2"></i>
           Add new
         </b-button>
       </template>
       <template v-slot:actions="data">
-        <b-button variant="info" class="mx-1" v-b-tooltip.hover title="Edit" @click="openModalForm()">
+        <b-button
+          variant="info"
+          class="mx-1"
+          v-b-tooltip.hover
+          title="Edit"
+          @click="openModalForm()"
+        >
           <i class="bx bx-detail font-size-16 align-middle me-2"></i>
           Edit
         </b-button>
-        <b-button variant="danger" class="mx-1" v-b-tooltip.hover title="Delete user" @click.prevent="deleteUser(data.item.publicId)">
+        <b-button
+          variant="danger"
+          class="mx-1"
+          v-b-tooltip.hover
+          title="Delete user"
+          @click.prevent="deleteUser(data.item.publicId)"
+        >
           <i class="bx bxs-x-square font-size-16 align-middle me-2"></i>
           Delete
         </b-button>
-
       </template>
     </Grid>
 
-    <!-- MODAL -->
-    <b-modal ref="user-form-modal" title="Add user" hide-footer size="md" centered>
+    <b-modal
+      ref="user-form-modal"
+      title="Add user"
+      hide-footer
+      size="md"
+      centered
+    >
       <UserForm />
     </b-modal>
-
   </Layout>
 </template>
 
@@ -34,7 +55,7 @@
 import axios from "@/helpers/http-comunicator";
 import Layout from "../../../layouts/main";
 import PageHeader from "@/components/page-header";
-import UserForm from "@/components/users/user-form.vue";
+import UserForm from "../user-form.vue";
 import appConfig from "@/app.config";
 import Grid from "@/components/et-grid";
 

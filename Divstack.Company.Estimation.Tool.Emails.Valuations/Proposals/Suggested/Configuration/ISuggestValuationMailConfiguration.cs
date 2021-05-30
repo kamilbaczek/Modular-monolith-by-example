@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration
 {
     internal interface ISuggestValuationMailConfiguration
     {

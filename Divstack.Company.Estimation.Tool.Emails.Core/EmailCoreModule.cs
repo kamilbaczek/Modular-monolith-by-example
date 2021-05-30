@@ -5,8 +5,7 @@ using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails.DependencyInjection")]
-
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core
 {
     internal static class EmailCoreModule

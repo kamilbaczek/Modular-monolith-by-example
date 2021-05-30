@@ -32,7 +32,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             var valuation = await RequestFakeValuation();
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());
-            var proposalId = SuggestFakeProposal(valuation, Money.Of(50, "USD"));
+            var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
             valuation.ApproveProposal(proposalId);
             valuation.Complete(employee);
 
@@ -47,7 +47,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());
             var valuation = await RequestFakeValuation();
-            SuggestFakeProposal(valuation);
+            SuggestFakeProposal(employee, valuation);
 
             Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 

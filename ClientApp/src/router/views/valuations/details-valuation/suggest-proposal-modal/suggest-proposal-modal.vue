@@ -35,6 +35,10 @@ export default {
       this.$refs[this.suggestModalRef].hide();
     },
 
+    getValidationState({ dirty, validated, valid = null }) {
+      return dirty || validated ? valid : null;
+    },
+
     onSend() {
       axios
         .post("valuations-module/Valuations/valuations/proposals", {
@@ -65,58 +69,72 @@ export default {
       centered
     >
       <div class="card-body">
-        <form>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="mb-3">
-                <label for="price">Price</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="price"
-                  v-model="form.value"
-                  placeholder="Enter Price"
-                  v-mask="'######.##'"
-                />
-                <div v-if="$v.form.value.$error" class="invalid-feedback">
-                  <span v-if="!$v.form.value.required"
-                    >This value is required.</span
+        <validation-observer ref="observer" v-slot="{ invalid, handleSubmit }">
+          <b-form @submit.stop.prevent="handleSubmit(onSend)">
+            <div class="row">
+              <div class="col-lg-7">
+                <validation-provider
+                  name="Price"
+                  rules="required|min:1"
+                  v-slot="validationContext"
+                >
+                  <b-form-group label="Price">
+                    <b-form-input
+                      id="price"
+                      name="price"
+                      v-mask="'#####.##'"
+                      v-model="form.value"
+                      :state="getValidationState(validationContext)"
+                    />
+                    <b-form-invalid-feedback>
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-7">
+                <validation-provider
+                  name="Message"
+                  rules="required|min:3|max:255"
+                  v-slot="validationContext"
+                >
+                  <b-form-group label="Message">
+                    <b-form-textarea
+                      id="message"
+                      name="message"
+                      v-model="form.description"
+                      :state="getValidationState(validationContext)"
+                      rows="3"
+                    />
+                    <b-form-invalid-feedback>
+                      {{ validationContext.errors[0] }}
+                    </b-form-invalid-feedback>
+                  </b-form-group>
+                </validation-provider>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="text-end">
+                  <b-button
+                    variant="success"
+                    @click.prevent="onSend()"
+                    :disabled="invalid"
+                    class="mx-1"
+                    title="Send proposal"
                   >
+                    <i
+                      class="bx bx bx-mail-send font-size-16 align-middle me-2"
+                    ></i>
+                    Send
+                  </b-button>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="mb-3">
-                <label for="message">Message</label>
-                <textarea
-                  v-model="form.description"
-                  class="form-control"
-                  id="message"
-                  rows="3"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="text-end">
-                <b-button
-                  variant="success"
-                  @click.prevent="onSend()"
-                  class="mx-1"
-                  title="Go to details"
-                >
-                  <i
-                    class="bx bx bx-mail-send font-size-16 align-middle me-2"
-                  ></i>
-                  Send
-                </b-button>
-              </div>
-            </div>
-          </div>
-        </form>
+          </b-form>
+        </validation-observer>
       </div>
     </b-modal>
   </div>

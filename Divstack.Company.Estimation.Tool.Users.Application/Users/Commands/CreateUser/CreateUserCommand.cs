@@ -49,9 +49,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.Crea
                 var @event = UserCreatedEvent.Create(userPublicId, request.Email, request.UserName, token);
                 await _mediator.Publish(@event, cancellationToken);
 
-                var typicaluser = new TypicalUserAccount();
-
-                var fuser = UserAccount.Create("test", "test", true, "test");
                 return Unit.Value;
             }
         }

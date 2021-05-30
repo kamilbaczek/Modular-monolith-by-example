@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using MediatR;
@@ -9,10 +10,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
     internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
     {
         private readonly IValuationsRepository _valuationsRepository;
+        private readonly IEventPublisher _eventPublisher;
 
-        public ApproveProposalCommandHandler(IValuationsRepository valuationsRepository)
+        public ApproveProposalCommandHandler(IValuationsRepository valuationsRepository, IEventPublisher eventPublisher)
         {
             _valuationsRepository = valuationsRepository;
+            _eventPublisher = eventPublisher;
         }
 
         public async Task<Unit> Handle(ApproveProposalCommand command, CancellationToken cancellationToken)
@@ -24,6 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             valuation.ApproveProposal(proposalId);
 
             await _valuationsRepository.CommitAsync(cancellationToken);
+            _eventPublisher.Publish(valuation.DomainEvents);
 
             return Unit.Value;
         }

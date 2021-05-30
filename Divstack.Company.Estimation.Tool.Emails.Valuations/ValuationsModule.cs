@@ -1,20 +1,32 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Sender;
+using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
+using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested;
+using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
+using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails.DependencyInjection")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 namespace Divstack.Company.Estimation.Tool.Emails.Valuations
 {
     internal static class ValuationsModule
     {
+        private const string Configuration = "Configuration";
+        private const string Sender = "Sender";
+
         internal static IServiceCollection AddValuations(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddScoped<IValuationProposalSuggestedMailSender, ValuationProposalSuggestedMailSender>();
-            services.AddSingleton<ISuggestValuationMailConfiguration, SuggestValuationMailConfiguration>();
+            services.Scan(scan => scan.FromAssemblyOf<ProposalSuggestedEventHandler>()
+                .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
+                .AsImplementedInterfaces()
+                .WithSingletonLifetime());
+
+            services.Scan(scan => scan.FromAssemblyOf<ProposalSuggestedEventHandler>()
+                .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Sender)))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
 
             return services;
         }

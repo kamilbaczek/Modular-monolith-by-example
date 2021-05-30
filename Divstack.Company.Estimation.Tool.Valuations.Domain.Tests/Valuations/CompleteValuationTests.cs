@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
         {
             var employee = new EmployeeId(Guid.NewGuid());
             var valuation = await RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(valuation);
+            var proposalId = SuggestFakeProposal(employee, valuation);
             valuation.ApproveProposal(proposalId);
 
             valuation.Complete(employee);

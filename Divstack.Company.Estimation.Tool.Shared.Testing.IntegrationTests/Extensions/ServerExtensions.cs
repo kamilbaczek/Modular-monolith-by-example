@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
@@ -29,9 +31,9 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
             this WebApplicationFactory<Startup> application)
         {
             var client = application.CreateClient();
-            application.CreateClient();
             var token = await GetJwtAsync(application, client);
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Bearer, token);
+
 
             return client;
         }
@@ -42,10 +44,9 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Exten
             var usersConfiguration = application.Server.Services.GetRequiredService<IAdminAccountConfiguration>();
             var response = await client.PostAsJsonAsync(
                 Routing.Authentication.SignIn,
-                new SignInCommand(
+                new SignInRequest(
                     usersConfiguration.UserName,
                     usersConfiguration.Password));
-
 
             var signInResponse = await response.Content.ReadAsAsync<SignInResponse>();
             return signInResponse.Token;

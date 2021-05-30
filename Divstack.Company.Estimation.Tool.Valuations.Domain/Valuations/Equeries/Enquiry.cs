@@ -29,7 +29,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries
         internal string ClientFullName => Client.FullName;
         private Valuation Valuation { get; }
         private IReadOnlyList<InquiryService> InquiryServices { get; }
-        private Client Client { get; }
+        internal Client Client { get; }
 
         internal static Enquiry Create(
             Valuation valuation,

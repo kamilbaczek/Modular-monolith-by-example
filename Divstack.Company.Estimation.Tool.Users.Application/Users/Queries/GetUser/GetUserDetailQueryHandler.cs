@@ -30,7 +30,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUs
                 UserName = userDetails.UserName,
                 PasswordExpirationDate = userDetails.PasswordExpirationDate
             };
-            var testUser = new TypicalUserAccount();
             return userDetailVm;
         }
     }

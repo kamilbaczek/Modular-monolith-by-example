@@ -1,10 +1,10 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Sender;
+using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals
+namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 {
     internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggestedEvent>
     {
@@ -17,7 +17,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals
 
         public async Task Handle(ProposalSuggestedEvent proposalSuggestedEvent, CancellationToken cancellationToken)
         {
-            var request = new SuggestProposalEmailRequest(
+            var request = new ValuationProposalSuggestedEmailRequest(
                 proposalSuggestedEvent.FullName,
                 proposalSuggestedEvent.ClientEmail.Value,
                 proposalSuggestedEvent.ValuationId.Value,

@@ -21,17 +21,16 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Id = new ProposalId(Guid.NewGuid());
             Price = value ?? throw new ArgumentNullException(nameof(value));
             Description = description ?? throw new ArgumentNullException(nameof(description));
-            ;
             SuggestedBy = suggestedBy ?? throw new ArgumentNullException(nameof(suggestedBy));
             Suggested = DateTime.Now;
-            Decision = ProposalDecision.NoDecision;
+            Decision = null;
             Valuation = valuation;
         }
 
         internal ProposalId Id { get; }
         private ProposalDescription Description { get; }
-        private Money Price { get; }
-        private EmployeeId SuggestedBy { get; }
+        internal Money Price { get; }
+        internal EmployeeId SuggestedBy { get; }
         private DateTime Suggested { get; }
         private EmployeeId CancelledBy { get; set; }
         private DateTime? Cancelled { get; set; }
@@ -42,9 +41,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Valuation valuation,
             Money value,
             ProposalDescription description,
-            EmployeeId estimatedBy)
+            EmployeeId proposedBy)
         {
-            return new(valuation, value, description, estimatedBy);
+            return new(valuation, value, description, proposedBy);
         }
 
         internal void Approve()
@@ -56,14 +55,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Decision = ProposalDecision.AcceptDecision(DateTime.Now);
         }
 
-        internal void Reject(string rejectReason)
+        internal void Reject()
         {
             if (IsCancelled())
                 throw new ProposalIsCancelledException(Id);
 
             if (HasDecision())
                 throw new ProposalAlreadyHasDecisionException(Id);
-            Decision = ProposalDecision.RejectDecision(DateTime.Now, rejectReason);
+            Decision = ProposalDecision.RejectDecision(DateTime.Now);
         }
 
         internal void Cancel(EmployeeId employeeId)
@@ -77,7 +76,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         internal bool HasDecision()
         {
-            return Decision != ProposalDecision.NoDecision;
+            return Decision is not null;
         }
 
         internal bool IsCancelled()

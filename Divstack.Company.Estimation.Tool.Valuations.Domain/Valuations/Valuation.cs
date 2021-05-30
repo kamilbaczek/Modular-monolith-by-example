@@ -32,10 +32,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 
         public ValuationId Id { get; }
         private IList<Proposal> Proposals { get; }
-        private IEnumerable<Proposal> NotCancelledProposals => GetNotCancelledProposals();
+        private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
 
         private Proposal ProposalWaitForDecision => NotCancelledProposals
             .SingleOrDefault(proposal => !proposal.HasDecision());
+
         private bool IsWaitingForDecision => ProposalWaitForDecision is not null;
         private Enquiry Enquiry { get; }
         private DateTime RequestedDate { get; }
@@ -68,28 +69,39 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             var proposalDescription = ProposalDescription.From(description);
             var proposal = Proposal.Suggest(this, value, proposalDescription, proposedBy);
             Proposals.Add(proposal);
-            AddDomainEvent(new ProposalSuggestedEvent(
+            var @event = new ProposalSuggestedEvent(
                 Enquiry.ClientFullName,
                 proposedBy,
                 proposal.Id,
                 value,
                 Enquiry.ClientEmail,
                 proposalDescription,
-                Id));
+                Id);
+            AddDomainEvent(@event);
         }
 
         public void ApproveProposal(ProposalId proposalId)
         {
             var proposal = GetProposal(proposalId);
             proposal.Approve();
-            AddDomainEvent(new ProposalApprovedEvent(proposalId, Enquiry.ClientEmail));
+            var @event = new ProposalApprovedEvent(
+                Id,
+                proposalId,
+                proposal.Price,
+                proposal.SuggestedBy);
+            AddDomainEvent(@event);
         }
 
-        public void RejectProposal(ProposalId proposalId, string rejectReason)
+        public void RejectProposal(ProposalId proposalId)
         {
             var proposal = GetProposal(proposalId);
-            proposal.Reject(rejectReason);
-            AddDomainEvent(new ProposalRejectedEvent(rejectReason, proposalId, Enquiry.ClientEmail));
+            proposal.Reject();
+            var @event = new ProposalRejectedEvent(
+                Id,
+                proposalId,
+                proposal.Price,
+                Enquiry.ClientEmail);
+            AddDomainEvent(@event);
         }
 
         public void CancelProposal(ProposalId proposalId, EmployeeId employeeId)
@@ -120,7 +132,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             return proposal;
         }
 
-        private IEnumerable<Proposal> GetNotCancelledProposals()
+        private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
         {
             return Proposals
                 .Where(proposal => !proposal.IsCancelled())

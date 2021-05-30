@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
             var email = Email.Of("test@mail.com");
             var client = Client.Of(email, "firstname", "lastname");
 
-            var valuation = await Valuation.RequestAsync(servicesIds, client, _serviceExistingCheckerMock.Object);
+            var valuation = await Valuation.RequestAsync(servicesIds, client, ServiceExistingCheckerMock.Object);
 
             var @event = GetPublishedEvent<ValuationRequestedEvent>(valuation);
             @event.AssertIsCorrect(servicesIds, email);
@@ -46,7 +46,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
             var client = Client.Of(email, "firstname", "lastname");
             Func<Task> valuationRequestAsync = async () =>
             {
-                await Valuation.RequestAsync(servicesIds, client, _serviceExistingCheckerMock.Object);
+                await Valuation.RequestAsync(servicesIds, client, ServiceExistingCheckerMock.Object);
             };
 
             await valuationRequestAsync.Should().ThrowAsync<InvalidServicesException>();

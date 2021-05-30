@@ -9,7 +9,7 @@ using Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired.Conf
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails.DependencyInjection")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users
 {

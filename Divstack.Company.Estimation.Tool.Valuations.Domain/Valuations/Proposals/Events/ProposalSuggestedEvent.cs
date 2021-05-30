@@ -6,7 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class ProposalSuggestedEvent : DomainEventBase
     {
-        public ProposalSuggestedEvent(
+        internal ProposalSuggestedEvent(
             string fullName,
             EmployeeId proposedBy,
             ProposalId proposalId,

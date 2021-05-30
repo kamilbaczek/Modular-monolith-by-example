@@ -18,11 +18,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         [Fact]
         public async Task Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
         {
+            var employee = new EmployeeId(Guid.NewGuid());
             var fakeEmail = Email.Of("test@mail.com");
             var valuation = await RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(valuation);
+            var proposalId = SuggestFakeProposal(employee, valuation);
 
-            valuation.RejectProposal(proposalId, FakeRejectReason);
+            valuation.RejectProposal(proposalId);
 
             var @event = GetPublishedEvent<ProposalRejectedEvent>(valuation);
             @event.AssertIsCorrect(fakeEmail, proposalId, FakeRejectReason);
@@ -33,10 +34,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         {
             var employee = new EmployeeId(Guid.NewGuid());
             var valuation = await RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(valuation, Money.Of(50, "USD"));
+            var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
             valuation.CancelProposal(proposalId, employee);
 
-            Action rejectProposal = () => valuation.RejectProposal(proposalId, FakeRejectReason);
+            Action rejectProposal = () => valuation.RejectProposal(proposalId);
 
             rejectProposal.Should().Throw<ProposalNotFoundException>();
         }
@@ -47,31 +48,20 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             var valuation = await RequestFakeValuation();
             var proposalId = new ProposalId(Guid.NewGuid());
 
-            Action rejectProposal = () => valuation.RejectProposal(proposalId, FakeRejectReason);
+            Action rejectProposal = () => valuation.RejectProposal(proposalId);
 
             rejectProposal.Should().Throw<ProposalNotFoundException>();
         }
 
         [Fact]
-        public async Task Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejectd()
-        {
-            var valuation = await RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(valuation, Money.Of(50, "USD"));
-            valuation.RejectProposal(proposalId, FakeRejectReason);
-
-            Action rejectProposal = () => valuation.RejectProposal(proposalId, FakeRejectReason);
-
-            rejectProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
-        }
-
-        [Fact]
         public async Task Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
         {
+            var employee = new EmployeeId(Guid.NewGuid());
             var valuation = await RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(valuation, Money.Of(50, "USD"));
-            valuation.RejectProposal(proposalId, FakeRejectReason);
+            var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
+            valuation.RejectProposal(proposalId);
 
-            Action rejectProposal = () => valuation.RejectProposal(proposalId, FakeRejectReason);
+            Action rejectProposal = () => valuation.RejectProposal(proposalId);
 
             rejectProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
         }

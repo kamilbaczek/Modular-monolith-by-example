@@ -40,7 +40,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abstractions", "Abstraction
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Abstractions", "Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj", "{F0919E5C-67E4-45F2-9146-2DFC06D732AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Emails.DependencyInjection", "Divstack.Company.Estimation.Tool.Emails.DependencyInjection\Divstack.Company.Estimation.Tool.Emails.DependencyInjection.csproj", "{A57EE97B-B96C-41E9-A8E7-908D7628F7E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Emails", "Divstack.Company.Estimation.Tool.Emails\Divstack.Company.Estimation.Tool.Emails.csproj", "{A57EE97B-B96C-41E9-A8E7-908D7628F7E5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CE927331-FFEE-4C0B-B073-5A15D4779AC3}"
 EndProject

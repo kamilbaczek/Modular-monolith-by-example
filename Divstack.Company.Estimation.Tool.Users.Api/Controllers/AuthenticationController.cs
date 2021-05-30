@@ -22,7 +22,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers
         public async Task<ActionResult<SignInResponse>> SignIn([FromBody] SignInRequest request)
         {
             var signInCommandResponse = await _userModule.ExecuteCommandAsync(
-                new SignInCommand(request.UserName, request.Password));
+                new SignInCommand(request.Email, request.Password));
 
             var response = new SignInResponse
             {
@@ -72,7 +72,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers
         // {
         //     await _userModule.ExecuteCommandAsync(new ForgotPasswordCommand
         //     {
-        //         UserName = request.Email
+        //         Email = request.Email
         //     });
         //
         //     return Ok();

@@ -39,7 +39,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.Json
 
         public static StringContent GetRequestContent(object obj)
         {
-            return new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
+            return new(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json");
         }
     }
 }

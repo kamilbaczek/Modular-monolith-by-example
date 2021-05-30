@@ -14,7 +14,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.DependencyInjection\Divstack.Company.Estimation.Tool.Emails.DependencyInjection.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails\Divstack.Company.Estimation.Tool.Emails.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Api\Divstack.Company.Estimation.Tool.Valuations.Api.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Services.Api\Divstack.Company.Estimation.Tool.Services.Api.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj" />

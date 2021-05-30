@@ -49,7 +49,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 {
                     decisionValueObjectBuilder.Property<DateTime?>("Date").IsRequired();
                     decisionValueObjectBuilder.Property<string>("Code").IsRequired().HasMaxLength(10);
-                    decisionValueObjectBuilder.Property<string>("RejectReason").IsRequired(false);
                 });
             });
             builder.Property<DateTime>("RequestedDate").IsRequired();
