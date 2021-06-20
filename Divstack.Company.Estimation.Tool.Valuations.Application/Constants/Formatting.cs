@@ -1,7 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Constants
 {
     internal static class Formatting
     {
         internal const string DateFormat = "MM/dd/yyyy";
+        internal const string DateTimeFormat = "f";
     }
 }

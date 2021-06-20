@@ -3,8 +3,10 @@ using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations
@@ -49,10 +51,19 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     decisionValueObjectBuilder.Property<string>("Code").IsRequired().HasMaxLength(10);
                 });
             });
-            builder.OwnsOne<ValuationStatus>("Status", statusObjectBuilder =>
-            {
-                statusObjectBuilder.Property<string>("Value").IsRequired();
 
+            builder.OwnsMany<HistoricalEntry>("History", ownedNavigationBuilder =>
+            {
+                ownedNavigationBuilder.WithOwner("Valuation").HasForeignKey();
+                ownedNavigationBuilder.ToTable("History");
+                ownedNavigationBuilder.HasKey("Id");
+                ownedNavigationBuilder.Property<HistoricalEntryId>("Id")
+                    .HasConversion(id => id.Value, value => new HistoricalEntryId(value));
+                ownedNavigationBuilder.OwnsOne<ValuationStatus>("Status", statusObjectBuilder =>
+                {
+                    statusObjectBuilder.Property<string>("Value").IsRequired();
+                });
+                ownedNavigationBuilder.Property<DateTime>("ChangeDate").IsRequired();
             });
             builder.Property<DateTime>("RequestedDate").IsRequired();
             builder.Property<EmployeeId>("CompletedBy")

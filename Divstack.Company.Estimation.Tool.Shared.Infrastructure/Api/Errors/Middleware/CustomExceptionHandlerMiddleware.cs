@@ -6,6 +6,7 @@ using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Environments;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware
 {
@@ -13,12 +14,14 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Midd
     {
         private readonly RequestDelegate _next;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
 
         public CustomExceptionHandlerMiddleware(RequestDelegate next,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment, ILogger<CustomExceptionHandlerMiddleware> logger)
         {
             _next = next;
             _webHostEnvironment = webHostEnvironment;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -44,8 +47,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Midd
             var  response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
                     ? ExceptionDto.CreateWithMessage(exception.Message)
                     : ExceptionDto.CreateInternalServerError();
-            //TODO add logger here
-
+            _logger.LogError(exception.Message);
             return SendResponse(context, code, response);
         }
 

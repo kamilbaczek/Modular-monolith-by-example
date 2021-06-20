@@ -9,7 +9,7 @@ export default {
   methods: {
     getClassByStatus() {
       switch (this.status) {
-        case "Request":
+        case "WaitForProposal":
           return "bg-info";
         case "WaitForClientDecision":
           return "bg-warning";

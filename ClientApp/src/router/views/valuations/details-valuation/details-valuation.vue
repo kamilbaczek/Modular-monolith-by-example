@@ -4,6 +4,7 @@ import Layout from "../../../layouts/main";
 import PageHeader from "@/components/page-header";
 import SuggestProposalModal from "./suggest-proposal-modal/suggest-proposal-modal";
 import ListServices from "./list-services/list-services";
+import History from "./history/history.vue";
 import Status from "../components/status";
 
 import appConfig from "@/app.config";
@@ -24,6 +25,7 @@ export default {
     ListServices,
     SuggestProposalModal,
     Status,
+    History,
   },
   data() {
     return {
@@ -45,18 +47,21 @@ export default {
   },
   mounted() {
     this.valuationId = this.$route.params.id;
-    axios
-      .get(`valuations-module/valuations/${this.valuationId}`)
-      .then((res) => {
-        this.details = res.data.valuationDetails;
-        this.servicesIds = res.data.valuationDetails.services.map(
-          (service) => service.serviceId
-        );
-      });
+    this.loadData();
   },
   methods: {
     openSuggestModal() {
       this.$refs["suggest-proposal-modal"].show();
+    },
+    loadData() {
+      axios
+        .get(`valuations-module/valuations/${this.valuationId}`)
+        .then((res) => {
+          this.details = res.data.valuationDetails;
+          this.servicesIds = res.data.valuationDetails.services.map(
+            (service) => service.serviceId
+          );
+        });
     },
   },
 };
@@ -104,6 +109,7 @@ export default {
               :servicesIds="servicesIds"
               :clientFullName="details.information.fullName"
             ></ListServices>
+            <History :valuationId="valuationId"></History>
             <div class="d-print-none">
               <div class="float-end">
                 <a
@@ -127,6 +133,7 @@ export default {
       ref="suggest-proposal-modal"
       v-if="valuationId"
       :valuationId="valuationId"
+      @onProposalSuggested="loadData()"
     ></SuggestProposalModal>
   </Layout>
 </template>

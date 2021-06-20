@@ -2,6 +2,8 @@
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
 import PageHeader from "@/components/page-header";
+
+import Stat from "@/components/widgets/stat";
 /**
  * Dashboard Component
  */
@@ -18,6 +20,7 @@ export default {
   components: {
     Layout,
     PageHeader,
+    Stat,
   },
   data() {
     return {
@@ -35,18 +38,18 @@ export default {
       statData: [
         {
           icon: "bx bx-copy-alt",
-          title: "Orders",
-          value: "1,235",
+          title: "Total Approved",
+          value: "226,435",
         },
         {
           icon: "bx bx-archive-in",
-          title: "Revenue",
+          title: "Total Rejected",
           value: "$35, 723",
         },
         {
           icon: "bx bx-purchase-tag-alt",
-          title: "Average Price",
-          value: "$16.2",
+          title: "Average proposal",
+          value: "$223.43",
         },
       ],
       transactions: [
@@ -131,6 +134,16 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title" :items="items" />
-  
+    <div class="row">
+      <div class="col-xl-4"></div>
+      <!-- end col -->
+      <div class="col-xl-8">
+        <div class="row">
+          <div v-for="stat of statData" :key="stat.icon" class="col-md-4">
+            <Stat :icon="stat.icon" :title="stat.title" :value="stat.value" />
+          </div>
+        </div>
+      </div>
+    </div>
   </Layout>
 </template>

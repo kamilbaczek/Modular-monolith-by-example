@@ -80,8 +80,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Carts.Infrastructure", "Divstack.Company.Estimation.Tool.Carts.Infrastructure\Divstack.Company.Estimation.Tool.Carts.Infrastructure.csproj", "{9FE54C2D-A6EA-4E2D-BCC3-05A5AD8CC485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.IntegrationsTests", "Divstack.Company.Estimation.Tool.Services.IntegrationsTests\Divstack.Company.Estimation.Tool.Services.IntegrationsTests.csproj", "{77DADC26-0AA3-4B70-9356-4D31350631DA}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{3EEC7448-F25B-4F6C-97EA-12FA860E57B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests", "Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests\Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests.csproj", "{A725B545-1ADD-4A0A-A57E-843CCDB594E4}"
@@ -101,6 +99,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{80D76A09-3C3A-4BAE-AB10-184ABF781E81}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Emails.Valuations", "Divstack.Company.Estimation.Tool.Emails.Valuations\Divstack.Company.Estimation.Tool.Emails.Valuations.csproj", "{8526EF41-DFB3-40BB-B4E5-69A9D433F74A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests", "Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.csproj", "{CA85158F-2B85-45EA-9123-4DFB696548CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests", "Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests\Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests.csproj", "{1DE95B20-56C3-4E53-B753-2689634EFD6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -204,10 +206,6 @@ Global
 		{9FE54C2D-A6EA-4E2D-BCC3-05A5AD8CC485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FE54C2D-A6EA-4E2D-BCC3-05A5AD8CC485}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FE54C2D-A6EA-4E2D-BCC3-05A5AD8CC485}.Release|Any CPU.Build.0 = Release|Any CPU
-		{77DADC26-0AA3-4B70-9356-4D31350631DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{77DADC26-0AA3-4B70-9356-4D31350631DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{77DADC26-0AA3-4B70-9356-4D31350631DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77DADC26-0AA3-4B70-9356-4D31350631DA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A725B545-1ADD-4A0A-A57E-843CCDB594E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A725B545-1ADD-4A0A-A57E-843CCDB594E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A725B545-1ADD-4A0A-A57E-843CCDB594E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -236,6 +234,14 @@ Global
 		{8526EF41-DFB3-40BB-B4E5-69A9D433F74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8526EF41-DFB3-40BB-B4E5-69A9D433F74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8526EF41-DFB3-40BB-B4E5-69A9D433F74A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA85158F-2B85-45EA-9123-4DFB696548CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA85158F-2B85-45EA-9123-4DFB696548CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA85158F-2B85-45EA-9123-4DFB696548CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA85158F-2B85-45EA-9123-4DFB696548CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE95B20-56C3-4E53-B753-2689634EFD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE95B20-56C3-4E53-B753-2689634EFD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE95B20-56C3-4E53-B753-2689634EFD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE95B20-56C3-4E53-B753-2689634EFD6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -276,7 +282,6 @@ Global
 		{7D9FEF10-F8E1-4ADE-9228-FD5B0F29833F} = {B8332C62-C172-42C2-81CB-0B020ECA5E24}
 		{BF6D78BF-9538-497B-A06B-B912A376D6CE} = {8B16304A-56C8-4225-BFA8-16967AA75836}
 		{9FE54C2D-A6EA-4E2D-BCC3-05A5AD8CC485} = {8B16304A-56C8-4225-BFA8-16967AA75836}
-		{77DADC26-0AA3-4B70-9356-4D31350631DA} = {CE927331-FFEE-4C0B-B073-5A15D4779AC3}
 		{3EEC7448-F25B-4F6C-97EA-12FA860E57B9} = {53037BE2-91B0-486F-A113-17F0D956F32F}
 		{A725B545-1ADD-4A0A-A57E-843CCDB594E4} = {3EEC7448-F25B-4F6C-97EA-12FA860E57B9}
 		{A79840F4-7EE0-4E71-B73A-3CF22CAAF16F} = {D8C07E63-3DAE-4497-9D41-D5E89C571357}
@@ -287,5 +292,7 @@ Global
 		{B8387AF7-323C-406E-8B51-F16A25E5C070} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
 		{80D76A09-3C3A-4BAE-AB10-184ABF781E81} = {B8387AF7-323C-406E-8B51-F16A25E5C070}
 		{8526EF41-DFB3-40BB-B4E5-69A9D433F74A} = {3CC204EA-5654-4B42-9863-271E0A9099CB}
+		{CA85158F-2B85-45EA-9123-4DFB696548CE} = {D8C07E63-3DAE-4497-9D41-D5E89C571357}
+		{1DE95B20-56C3-4E53-B753-2689634EFD6A} = {3EEC7448-F25B-4F6C-97EA-12FA860E57B9}
 	EndGlobalSection
 EndGlobal

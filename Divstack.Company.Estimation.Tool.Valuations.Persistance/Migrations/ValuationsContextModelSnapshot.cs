@@ -122,6 +122,48 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                             b1.Navigation("InquiryServices");
                         });
 
+                    b.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History.HistoricalEntry", "History", b1 =>
+                        {
+                            b1.Property<Guid>("Id")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<DateTime>("ChangeDate")
+                                .HasColumnType("datetime2");
+
+                            b1.Property<Guid>("ValuationId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("ValuationId");
+
+                            b1.ToTable("History");
+
+                            b1.WithOwner("Valuation")
+                                .HasForeignKey("ValuationId");
+
+                            b1.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.ValuationStatus", "Status", b2 =>
+                                {
+                                    b2.Property<Guid>("HistoricalEntryId")
+                                        .HasColumnType("uniqueidentifier");
+
+                                    b2.Property<string>("Value")
+                                        .IsRequired()
+                                        .HasColumnType("nvarchar(max)");
+
+                                    b2.HasKey("HistoricalEntryId");
+
+                                    b2.ToTable("History");
+
+                                    b2.WithOwner()
+                                        .HasForeignKey("HistoricalEntryId");
+                                });
+
+                            b1.Navigation("Status");
+
+                            b1.Navigation("Valuation");
+                        });
+
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Proposal", "Proposals", b1 =>
                         {
                             b1.Property<Guid>("Id")
@@ -219,28 +261,11 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                             b1.Navigation("Valuation");
                         });
 
-                    b.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.ValuationStatus", "Status", b1 =>
-                        {
-                            b1.Property<Guid>("ValuationId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<string>("Value")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("ValuationId");
-
-                            b1.ToTable("Valuations");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ValuationId");
-                        });
-
                     b.Navigation("Enquiry");
 
-                    b.Navigation("Proposals");
+                    b.Navigation("History");
 
-                    b.Navigation("Status");
+                    b.Navigation("Proposals");
                 });
 #pragma warning restore 612, 618
         }

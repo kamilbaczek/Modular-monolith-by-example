@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess
 {
-    internal class UsersContext : IdentityDbContext<UserAccount, ApplicationRole, string>
+    public class UsersContext : IdentityDbContext<UserAccount, ApplicationRole, string>
     {
         public UsersContext(DbContextOptions<UsersContext> options)
             : base(options)

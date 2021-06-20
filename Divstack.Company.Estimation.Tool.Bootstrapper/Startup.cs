@@ -23,6 +23,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(Configuration);
             services.AddSharedInfrastructure();
             services.AddUsersModule(Configuration);
             services.AddServicesModule(Configuration);

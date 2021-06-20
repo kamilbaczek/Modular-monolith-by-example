@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using MailKit.Net.Smtp;
@@ -22,7 +23,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
 
         public async Task SendEmailAsync(string email, string subject, string text)
         {
-            if (!IsNullOrEmpty(_mailConfiguration.ServerAddress) && !IsNullOrEmpty(_mailConfiguration.MailFrom)) //TODO Handle Invalid Configuration
+            if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
             {
                 var message = BuildMessage(email, subject, text);
                 await SendMessageAsync(message);
@@ -37,11 +38,19 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
                 DisableSsl(client);
             }
 
-            await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
-            if (IsConfiguredAuthentication())
-                await client.AuthenticateAsync(_mailConfiguration.ServerLogin, _mailConfiguration.ServerPassword);
-            await client.SendAsync(message);
-            await client.DisconnectAsync(true);
+            try
+            {
+                await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
+                if (IsConfiguredAuthentication())
+                    await client.AuthenticateAsync(_mailConfiguration.ServerLogin, _mailConfiguration.ServerPassword);
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         private MimeMessage BuildMessage(string email, string subject, string text)

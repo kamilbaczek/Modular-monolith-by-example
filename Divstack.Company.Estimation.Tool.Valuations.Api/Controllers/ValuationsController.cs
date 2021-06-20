@@ -9,6 +9,8 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Command
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -61,6 +63,16 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
             await _valuationsModule.ExecuteCommandAsync(suggestProposalCommand);
             return Ok();
         }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [Route("valuations/history/{id}")]
+        public async Task<ActionResult<ValuationHistoryVm>> GetHistory(Guid id)
+        {
+            var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationHistoryByIdQuery(id));
+            return Ok(valuationHistoryVm);
+        }
+
 
         [HttpPatch]
         [ProducesResponseType(StatusCodes.Status200OK)]

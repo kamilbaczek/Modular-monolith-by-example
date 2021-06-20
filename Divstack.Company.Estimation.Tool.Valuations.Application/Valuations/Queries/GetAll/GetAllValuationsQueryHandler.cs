@@ -24,11 +24,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
                 SELECT [Id] AS {nameof(ValuationListItemDto.Id)},
                        [Enquiry_Client_FirstName] AS {nameof(ValuationListItemDto.FirstName)},
                        [Enquiry_Client_LastName]  AS {nameof(ValuationListItemDto.LastName)},
-                       [Status_Value]  AS {nameof(ValuationListItemDto.Status)},
+                       [RecentHistoryEntry].[Status_Value] AS {nameof(ValuationListItemDto.Status)},
                        [RequestedDate] AS {nameof(ValuationListItemDto.RequestedDate)},
                        [CompletedBy] AS {nameof(ValuationListItemDto.CompletedBy)}
-                FROM [Valuations].[Valuations]
-                ORDER BY [RequestedDate] ASC
+                FROM [Valuations].[Valuations] OUTER apply
+                  (SELECT top 1 Status_Value
+                   FROM Valuations.History
+                   WHERE Valuations.History.ValuationId = [Valuations].[Valuations].[Id]
+                   ORDER BY ChangeDate DESC) [RecentHistoryEntry]
+                 ORDER BY [RequestedDate] DESC
         ", cancellationToken));
 
             return new ValuationListVm(valuationItems);

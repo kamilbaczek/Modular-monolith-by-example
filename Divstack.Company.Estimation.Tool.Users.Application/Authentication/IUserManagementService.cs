@@ -19,6 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication
         Task AssignUserToRolesAsync(Guid userPublicId, List<string> rolesNames);
         Task<UserDetailsDto> GetUserDetailsAsync(string userName);
         Task<UserDetailsDto> GetUserDetailsByPublicIdAsync(Guid userPublicId);
+        Task<UserDetailsDto> GetUserDetailsByUsernameAsync(string username);
         Task<IEnumerable<UserDto>> GetAllUsersAsync();
         Task<IList<string>> GetUserRolesAsync(string userName);
         Task<IList<string>> GetUserRolesAsync(Guid userPublicId);

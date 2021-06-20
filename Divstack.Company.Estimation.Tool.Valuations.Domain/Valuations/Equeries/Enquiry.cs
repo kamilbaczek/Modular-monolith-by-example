@@ -19,8 +19,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries
         {
             Valuation = valuation ?? throw new ArgumentNullException(nameof(valuation));
             if (!serviceIds.Any())
-                throw new InvalidOperationException("Cannot request valuation without products");
-            InquiryServices = serviceIds.Select(serivceId => InquiryService.Create(serivceId, this)).ToList()
+                throw new InvalidOperationException("Cannot request valuation without services");
+            InquiryServices = serviceIds.Select(serviceId => InquiryService.Create(serviceId, this)).ToList()
                 .AsReadOnly();
             Client = client ?? throw new ArgumentNullException(nameof(client));
         }

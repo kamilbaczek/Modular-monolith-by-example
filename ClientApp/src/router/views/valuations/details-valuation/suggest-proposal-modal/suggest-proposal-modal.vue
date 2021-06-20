@@ -53,6 +53,7 @@ export default {
           this.$etToast(
             `Valuation estimited: ${this.form.value} ${this.form.currency}`
           );
+          this.$emit("onProposalSuggested");
         });
     },
   },

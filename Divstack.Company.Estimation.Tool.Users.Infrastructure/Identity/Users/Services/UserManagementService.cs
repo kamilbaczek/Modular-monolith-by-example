@@ -123,6 +123,12 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
             return await MapUserToUserDetailsDto(user);
         }
 
+        public async Task<UserDetailsDto> GetUserDetailsByUsernameAsync(string username)
+        {
+            var user = await _applicationUserManager.Users.SingleAsync(u => u.UserName == username);
+            return await MapUserToUserDetailsDto(user);
+        }
+
         public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
         {
             var users = await _applicationUserManager.Users.ToListAsync();
