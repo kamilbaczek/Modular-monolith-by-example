@@ -50,7 +50,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.DataAccess
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
 
-            optionsBuilder.UseSqlServer(connectionString,
+            optionsBuilder.UseMySQL(connectionString,
                 dbContextOptionsBuilder =>
                     dbContextOptionsBuilder.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name));
 

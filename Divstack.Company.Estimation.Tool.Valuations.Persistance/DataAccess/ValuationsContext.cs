@@ -18,7 +18,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("Valuations");
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ValuationEntityTypeConfiguration).Assembly);
         }
     }

@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using MediatR;
@@ -12,13 +13,16 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
     internal sealed class RequestValuationCommandHandler : IRequestHandler<RequestValuationCommand>
     {
         private readonly IServiceExistingChecker _serviceExistingChecker;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IValuationsRepository _valuationsRepository;
 
         public RequestValuationCommandHandler(IValuationsRepository valuationsRepository,
-            IServiceExistingChecker serviceExistingChecker)
+            IServiceExistingChecker serviceExistingChecker,
+            IEventPublisher eventPublisher)
         {
             _valuationsRepository = valuationsRepository;
             _serviceExistingChecker = serviceExistingChecker;
+            _eventPublisher = eventPublisher;
         }
 
         public async Task<Unit> Handle(RequestValuationCommand requestValuation, CancellationToken cancellationToken)
@@ -31,6 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             var valuation = await Valuation.RequestAsync(serviceIds, client, _serviceExistingChecker);
             await _valuationsRepository.AddAsync(valuation, cancellationToken);
             await _valuationsRepository.CommitAsync(cancellationToken);
+            _eventPublisher.Publish(valuation.DomainEvents);
 
             return Unit.Value;
         }

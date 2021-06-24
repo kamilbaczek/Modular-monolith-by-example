@@ -21,7 +21,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("Users");
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserAccountEntityTypeConfiguration).Assembly);
         }
     }

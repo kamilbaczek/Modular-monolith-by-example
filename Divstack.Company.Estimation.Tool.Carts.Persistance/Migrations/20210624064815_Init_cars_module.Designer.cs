@@ -3,43 +3,41 @@ using System;
 using Divstack.Company.Estimation.Tool.Carts.Persistance.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
 {
     [DbContext(typeof(CartsContext))]
-    [Migration("20210415192354_Init_Carts")]
-    partial class Init_Carts
+    [Migration("20210624064815_Init_cars_module")]
+    partial class Init_cars_module
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("Carts")
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Carts.Domain.Carts.Cart", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("LastActivity")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<int>("Status")
                         .HasMaxLength(50)
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<byte[]>("UserId")
+                        .IsRequired()
+                        .HasColumnType("varbinary(16)");
 
                     b.HasKey("Id");
 
@@ -50,15 +48,17 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
                 {
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Carts.Domain.Carts.CartItem", "Items", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<byte[]>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("uniqueidentifier");
+                                .HasColumnType("varbinary(16)");
 
-                            b1.Property<Guid>("CartId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<byte[]>("CartId")
+                                .IsRequired()
+                                .HasColumnType("varbinary(16)");
 
-                            b1.Property<Guid>("ProductId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<byte[]>("ProductId")
+                                .IsRequired()
+                                .HasColumnType("varbinary(16)");
 
                             b1.HasKey("Id");
 

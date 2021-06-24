@@ -3,7 +3,6 @@ using System;
 using Divstack.Company.Estimation.Tool.Services.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
@@ -15,21 +14,19 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("Services")
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -38,25 +35,26 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Services.Core.Services.Service", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<byte[]>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<Guid?>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<byte[]>("CategoryId")
+                        .HasColumnType("varbinary(16)");
 
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<byte[]>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(512)
-                        .HasColumnType("nvarchar(512)");
+                        .HasColumnType("varchar(512)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
 
@@ -73,17 +71,18 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Attribute", "Attributes", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<byte[]>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("uniqueidentifier");
+                                .HasColumnType("varbinary(16)");
 
                             b1.Property<string>("Name")
                                 .IsRequired()
                                 .HasMaxLength(255)
-                                .HasColumnType("nvarchar(255)");
+                                .HasColumnType("varchar(255)");
 
-                            b1.Property<Guid>("ServiceId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<byte[]>("ServiceId")
+                                .IsRequired()
+                                .HasColumnType("varbinary(16)");
 
                             b1.HasKey("Id");
 
@@ -96,17 +95,18 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 
                             b1.OwnsMany("Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.PossibleValue", "PossibleValues", b2 =>
                                 {
-                                    b2.Property<Guid>("Id")
+                                    b2.Property<byte[]>("Id")
                                         .ValueGeneratedOnAdd()
-                                        .HasColumnType("uniqueidentifier");
+                                        .HasColumnType("varbinary(16)");
 
-                                    b2.Property<Guid>("AttributeId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("AttributeId")
+                                        .IsRequired()
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<string>("Value")
                                         .IsRequired()
                                         .HasMaxLength(255)
-                                        .HasColumnType("nvarchar(255)");
+                                        .HasColumnType("varchar(255)");
 
                                     b2.HasKey("Id");
 

@@ -3,7 +3,6 @@ using System;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
@@ -15,24 +14,22 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("Valuations")
-                .UseIdentityColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Valuation", b =>
                 {
                     b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<Guid?>("CompletedBy")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("varbinary(16)");
 
                     b.Property<DateTime?>("CompletedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.Property<DateTime>("RequestedDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime");
 
                     b.HasKey("Id");
 
@@ -43,8 +40,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                 {
                     b.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries.Enquiry", "Enquiry", b1 =>
                         {
-                            b1.Property<Guid>("ValuationId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<byte[]>("ValuationId")
+                                .HasColumnType("varbinary(16)");
 
                             b1.HasKey("ValuationId");
 
@@ -55,16 +52,16 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Client", "Client", b2 =>
                                 {
-                                    b2.Property<Guid>("EnquiryValuationId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("EnquiryValuationId")
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<string>("FirstName")
                                         .IsRequired()
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("text");
 
                                     b2.Property<string>("LastName")
                                         .IsRequired()
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("text");
 
                                     b2.HasKey("EnquiryValuationId");
 
@@ -75,13 +72,13 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                                     b2.OwnsOne("Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails.Email", "Email", b3 =>
                                         {
-                                            b3.Property<Guid>("ClientEnquiryValuationId")
-                                                .HasColumnType("uniqueidentifier");
+                                            b3.Property<byte[]>("ClientEnquiryValuationId")
+                                                .HasColumnType("varbinary(16)");
 
                                             b3.Property<string>("Value")
                                                 .IsRequired()
                                                 .HasMaxLength(255)
-                                                .HasColumnType("nvarchar(255)");
+                                                .HasColumnType("varchar(255)");
 
                                             b3.HasKey("ClientEnquiryValuationId");
 
@@ -97,13 +94,14 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                             b1.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries.InquiryService", "InquiryServices", b2 =>
                                 {
                                     b2.Property<Guid>("Id")
-                                        .HasColumnType("uniqueidentifier");
+                                        .HasColumnType("varbinary(16)");
 
-                                    b2.Property<Guid>("EnquiryValuationId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("EnquiryValuationId")
+                                        .IsRequired()
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<Guid?>("ServiceId")
-                                        .HasColumnType("uniqueidentifier");
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.HasKey("Id");
 
@@ -125,13 +123,14 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History.HistoricalEntry", "History", b1 =>
                         {
                             b1.Property<Guid>("Id")
-                                .HasColumnType("uniqueidentifier");
+                                .HasColumnType("varbinary(16)");
 
                             b1.Property<DateTime>("ChangeDate")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime");
 
-                            b1.Property<Guid>("ValuationId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<byte[]>("ValuationId")
+                                .IsRequired()
+                                .HasColumnType("varbinary(16)");
 
                             b1.HasKey("Id");
 
@@ -144,12 +143,12 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.ValuationStatus", "Status", b2 =>
                                 {
-                                    b2.Property<Guid>("HistoricalEntryId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("HistoricalEntryId")
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<string>("Value")
                                         .IsRequired()
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("text");
 
                                     b2.HasKey("HistoricalEntryId");
 
@@ -167,22 +166,23 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Proposal", "Proposals", b1 =>
                         {
                             b1.Property<Guid>("Id")
-                                .HasColumnType("uniqueidentifier");
+                                .HasColumnType("varbinary(16)");
 
                             b1.Property<DateTime?>("Cancelled")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime");
 
                             b1.Property<Guid?>("CancelledBy")
-                                .HasColumnType("uniqueidentifier");
+                                .HasColumnType("varbinary(16)");
 
                             b1.Property<DateTime>("Suggested")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime");
 
                             b1.Property<Guid>("SuggestedBy")
-                                .HasColumnType("uniqueidentifier");
+                                .HasColumnType("varbinary(16)");
 
-                            b1.Property<Guid>("ValuationId")
-                                .HasColumnType("uniqueidentifier");
+                            b1.Property<byte[]>("ValuationId")
+                                .IsRequired()
+                                .HasColumnType("varbinary(16)");
 
                             b1.HasKey("Id");
 
@@ -195,15 +195,15 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.OwnsOne("Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Money", "Price", b2 =>
                                 {
-                                    b2.Property<Guid>("ProposalId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("ProposalId")
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<string>("Currency")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("text");
 
                                     b2.Property<decimal?>("Value")
                                         .HasPrecision(15, 2)
-                                        .HasColumnType("decimal(15,2)");
+                                        .HasColumnType("decimal(18, 2)");
 
                                     b2.HasKey("ProposalId");
 
@@ -215,17 +215,17 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.ProposalDecision", "Decision", b2 =>
                                 {
-                                    b2.Property<Guid>("ProposalId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("ProposalId")
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<string>("Code")
                                         .IsRequired()
                                         .HasMaxLength(10)
-                                        .HasColumnType("nvarchar(10)");
+                                        .HasColumnType("varchar(10)");
 
                                     b2.Property<DateTime?>("Date")
                                         .IsRequired()
-                                        .HasColumnType("datetime2");
+                                        .HasColumnType("datetime");
 
                                     b2.HasKey("ProposalId");
 
@@ -237,12 +237,12 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.ProposalDescription", "Description", b2 =>
                                 {
-                                    b2.Property<Guid>("ProposalId")
-                                        .HasColumnType("uniqueidentifier");
+                                    b2.Property<byte[]>("ProposalId")
+                                        .HasColumnType("varbinary(16)");
 
                                     b2.Property<string>("Message")
                                         .HasMaxLength(512)
-                                        .HasColumnType("nvarchar(512)");
+                                        .HasColumnType("varchar(512)");
 
                                     b2.HasKey("ProposalId");
 

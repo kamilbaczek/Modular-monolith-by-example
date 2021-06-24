@@ -7,13 +7,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events
 {
     public sealed class ValuationRequestedEvent : DomainEventBase
     {
-        public ValuationRequestedEvent(IReadOnlyList<ServiceId> productsIds, Email clientEmail)
+        public ValuationRequestedEvent(ValuationId valuationId, IReadOnlyList<ServiceId> serviceIds, Email clientEmail)
         {
-            ProductsIds = productsIds;
+            ValuationId = valuationId;
+            ServiceIds = serviceIds;
             ClientEmail = clientEmail;
         }
 
-        public IReadOnlyList<ServiceId> ProductsIds { get; }
+        public ValuationId ValuationId { get; }
+        public IReadOnlyList<ServiceId> ServiceIds { get; }
         public Email ClientEmail { get; }
     }
 }

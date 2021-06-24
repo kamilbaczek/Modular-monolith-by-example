@@ -43,6 +43,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
             app.UseUsersModule(usersSeeder);
+            app.UseValuationModule();
         }
     }
 }

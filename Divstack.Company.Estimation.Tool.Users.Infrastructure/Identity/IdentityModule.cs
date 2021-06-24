@@ -34,6 +34,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity
                     config.Password.RequireDigit = true;
                     config.Password.RequireNonAlphanumeric = false;
                     config.Lockout = lockoutOptions;
+                    config.Stores.MaxLengthForKeys = 85;
                 })
                 .AddUserManager<ApplicationUserManager>()
                 .AddErrorDescriber<CustomIdentityErrorDescriber>()

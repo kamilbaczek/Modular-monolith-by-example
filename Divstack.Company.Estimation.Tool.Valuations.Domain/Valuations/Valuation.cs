@@ -30,7 +30,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             Proposals = new List<Proposal>();
             History = new List<HistoricalEntry>();
             ChangeStatus(ValuationStatus.WaitForProposal);
-            AddDomainEvent(new ValuationRequestedEvent(serviceIds, client.Email));
+            AddDomainEvent(new ValuationRequestedEvent(Id, serviceIds, client.Email));
         }
 
         public ValuationId Id { get; }

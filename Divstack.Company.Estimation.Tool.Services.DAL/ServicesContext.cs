@@ -18,7 +18,6 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("Services");
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ServiceEntityTypeConfiguration).Assembly);
         }
     }

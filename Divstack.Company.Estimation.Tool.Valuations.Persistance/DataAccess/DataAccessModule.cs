@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
             where TContext : DbContext
         {
             services.AddDbContext<TContext>(options =>
-                options.UseSqlServer(connectionString)
+                options.UseMySQL(connectionString)
             );
 
             using var scope = services.BuildServiceProvider().CreateScope();

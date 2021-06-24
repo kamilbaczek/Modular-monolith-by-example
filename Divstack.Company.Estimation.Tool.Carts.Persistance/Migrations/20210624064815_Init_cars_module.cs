@@ -3,23 +3,19 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
 {
-    public partial class Init_Carts : Migration
+    public partial class Init_cars_module : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "Carts");
-
             migrationBuilder.CreateTable(
                 name: "Carts",
-                schema: "Carts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
+                    UserId = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
                     Status = table.Column<int>(type: "int", maxLength: 50, nullable: false),
-                    CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastActivity = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    CreationDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    LastActivity = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,12 +24,11 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Items",
-                schema: "Carts",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CartId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
+                    ProductId = table.Column<byte[]>(type: "varbinary(16)", nullable: false),
+                    CartId = table.Column<byte[]>(type: "varbinary(16)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,7 +36,6 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
                     table.ForeignKey(
                         name: "FK_Items_Carts_CartId",
                         column: x => x.CartId,
-                        principalSchema: "Carts",
                         principalTable: "Carts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -49,7 +43,6 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Items_CartId",
-                schema: "Carts",
                 table: "Items",
                 column: "CartId");
         }
@@ -57,12 +50,10 @@ namespace Divstack.Company.Estimation.Tool.Carts.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Items",
-                schema: "Carts");
+                name: "Items");
 
             migrationBuilder.DropTable(
-                name: "Carts",
-                schema: "Carts");
+                name: "Carts");
         }
     }
 }

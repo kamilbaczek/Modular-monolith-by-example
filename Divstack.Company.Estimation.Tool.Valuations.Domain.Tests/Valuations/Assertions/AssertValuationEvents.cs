@@ -12,12 +12,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
 {
     internal static class AssertValuationEvents
     {
-        internal static void AssertIsCorrect(this ValuationRequestedEvent @event, List<ServiceId> productIds,
+        internal static void AssertIsCorrect(this ValuationRequestedEvent @event, List<ServiceId> serviceIds,
             Email email)
         {
             @event.Should().NotBeNull();
             @event.ClientEmail.Should().Be(email);
-            @event.ProductsIds.Should().BeEquivalentTo(productIds);
+            @event.ServiceIds.Should().BeEquivalentTo(serviceIds);
         }
 
         internal static void AssertIsCorrect(this ProposalSuggestedEvent @event, Money money, EmployeeId employee)
