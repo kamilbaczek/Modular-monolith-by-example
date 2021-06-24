@@ -19,6 +19,24 @@ export default [
       import("./views/valuations/list-valuations/list-valuations"),
   },
   {
+    path: "/services",
+    name: "services",
+    meta: {
+      authRequired: true,
+    },
+    component: () =>
+      import("./views/services/services-list/services-list"),
+  },
+  {
+    path: "/add-new-service",
+    name: "add-new-service",
+    meta: {
+      authRequired: true,
+    },
+    component: () =>
+      import("./views/services/new-service/new-service"),
+  },
+  {
     path: "/valuations/:id",
     name: "details-valuation",
     component: () =>

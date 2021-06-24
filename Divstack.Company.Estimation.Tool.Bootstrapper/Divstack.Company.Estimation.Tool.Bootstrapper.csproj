@@ -20,4 +20,6 @@
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj" />
     </ItemGroup>
 
+    <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 </Project>

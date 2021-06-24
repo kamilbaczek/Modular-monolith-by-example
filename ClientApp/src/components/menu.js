@@ -26,6 +26,6 @@ export const menuItems = [
     id: 5,
     label: "menuitems.services.text",
     icon: "bx-building-house",
-    link: "/",
+    link: "/services",
   },
 ];
