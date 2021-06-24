@@ -9,7 +9,10 @@
           class="mx-1"
           v-b-tooltip.hover
           title="Suggest proposal"
-          @click="openModalForm()"
+          @click="
+            pickedUserPublicId = '';
+            openModalForm();
+          "
         >
           <i class="bx bx-plus font-size-16 align-middle me-2"></i>
           Add new
@@ -21,7 +24,10 @@
           class="mx-1"
           v-b-tooltip.hover
           title="Edit"
-          @click="openModalForm()"
+          @click="
+            openModalForm();
+            pickedUserPublicId = data.item.publicId;
+          "
         >
           <i class="bx bx-detail font-size-16 align-middle me-2"></i>
           Edit
@@ -41,12 +47,12 @@
 
     <b-modal
       ref="user-form-modal"
-      title="Add user"
+      :title="pickedUserPublicId === '' ? 'Add user' : 'Edit user'"
       hide-footer
       size="md"
       centered
     >
-      <UserForm />
+      <UserForm :userPublicId="pickedUserPublicId" />
     </b-modal>
   </Layout>
 </template>
@@ -115,6 +121,7 @@ export default {
           key: "actions",
         },
       ],
+      pickedUserPublicId: "",
     };
   },
 
