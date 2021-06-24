@@ -39,11 +39,5 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Ser
                 throw new CategoryNotFoundException(id);
             await _categoriesRepository.DeleteAsync(category, cancellationToken);
         }
-
-        public async Task Update(UpdateCategoryRequest updateCategoryRequest,
-            CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

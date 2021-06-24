@@ -110,7 +110,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6F31D638
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{3704CA35-A411-40DA-BC45-2DB82C734467}"
 ProjectSection(SolutionItems) = preProject
-	travis.yml = travis.yml
+	.travis.yml = .travis.yml
 EndProjectSection
 EndProject
 Global

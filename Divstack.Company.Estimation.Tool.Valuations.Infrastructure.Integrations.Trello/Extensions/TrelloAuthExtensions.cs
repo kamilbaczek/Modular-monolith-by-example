@@ -3,6 +3,7 @@ using Manatee.Trello;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello.Extensions
 {
     internal static class TrelloAuthExtensions
