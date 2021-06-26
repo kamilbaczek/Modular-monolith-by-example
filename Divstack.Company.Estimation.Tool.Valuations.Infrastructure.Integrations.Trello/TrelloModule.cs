@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello.Core;
 using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello.Extensions;
+using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello.Features.ValuationRequest;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,12 +19,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integration
         internal static IServiceCollection AddTrello(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.Scan(scan => scan.FromAssemblyOf<RequestCreatedTrelloEventHandler>()
+            services.Scan(scan => scan.FromAssemblyOf<ValuationRequestCreatedTrelloEventHandler>()
                 .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
                 .AsImplementedInterfaces()
                 .WithSingletonLifetime());
 
-            services.Scan(scan => scan.FromAssemblyOf<RequestCreatedTrelloEventHandler>()
+            services.Scan(scan => scan.FromAssemblyOf<ValuationRequestCreatedTrelloEventHandler>()
                 .AddClasses(classes => classes.Where(type => type.Name.EndsWith(EventHandler)))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());

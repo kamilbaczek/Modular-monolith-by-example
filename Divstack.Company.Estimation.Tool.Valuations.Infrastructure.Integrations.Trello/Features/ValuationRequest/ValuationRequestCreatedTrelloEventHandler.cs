@@ -9,14 +9,14 @@ using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Tr
 using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello.Core.Constants;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello
+namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello.Features.ValuationRequest
 {
-    internal sealed class RequestCreatedTrelloEventHandler : INotificationHandler<ValuationRequestedEvent>
+    internal sealed class ValuationRequestCreatedTrelloEventHandler : INotificationHandler<ValuationRequestedEvent>
     {
         private readonly IServicesService _servicesService;
         private readonly ITrelloTaskCreator _trelloTaskCreator;
 
-        public RequestCreatedTrelloEventHandler(ITrelloTaskCreator trelloTaskCreator, IServicesService servicesService)
+        public ValuationRequestCreatedTrelloEventHandler(ITrelloTaskCreator trelloTaskCreator, IServicesService servicesService)
         {
             _trelloTaskCreator = trelloTaskCreator;
             _servicesService = servicesService;
