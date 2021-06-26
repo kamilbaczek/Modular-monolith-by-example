@@ -6,7 +6,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
@@ -41,7 +41,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
 
         internal static async Task<ValuationProposalEntryDto> GetRecentProposal(Guid valuationId)
         {
-            var valuationProposalsVm = await ValuationsTesting.ExecuteQueryAsync(new GetValuationProposalsByIdQuery(valuationId));
+            var valuationProposalsVm =
+                await ValuationsTesting.ExecuteQueryAsync(new GetValuationProposalsByIdQuery(valuationId));
             var valuationProposalEntryDto = valuationProposalsVm.Proposals.First();
 
             return valuationProposalEntryDto;

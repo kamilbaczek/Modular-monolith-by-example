@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Users.Api;
 using Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;

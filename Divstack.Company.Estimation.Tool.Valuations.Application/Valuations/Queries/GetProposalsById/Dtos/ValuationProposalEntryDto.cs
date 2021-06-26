@@ -13,14 +13,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         DateTime? DecisionDate,
         string Decision)
     {
-        internal DateTime? Suggested { get;} = Suggested;
+        internal DateTime? Suggested { get; } = Suggested;
 
         public string SuggestedFormatted =>
             Suggested.HasValue ? Suggested.Value.ToString(Formatting.DateTimeFormat) : string.Empty;
 
-        internal DateTime? DecisionDate { get;} = DecisionDate;
+        internal DateTime? DecisionDate { get; } = DecisionDate;
 
         public string DecisionDateFormatted =>
             DecisionDate.HasValue ? DecisionDate.Value.ToString(Formatting.DateTimeFormat) : string.Empty;
-    };
+    }
 }

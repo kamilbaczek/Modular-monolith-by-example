@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
+
 namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integrations.Trello
 {
     internal static class TrelloModule
@@ -38,4 +39,3 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integration
         }
     }
 }
-

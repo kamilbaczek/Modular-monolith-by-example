@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance.Repositories;
+using Divstack.Company.Estimation.Tool.Estimations.Persistance.Seeders.Request;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance
             var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
             services.AddDataAccess(connectionString);
             services.AddRepositories();
+            services.AddSeeders();
 
             return services;
         }

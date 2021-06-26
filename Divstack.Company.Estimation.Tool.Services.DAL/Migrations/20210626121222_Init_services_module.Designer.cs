@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 {
     [DbContext(typeof(ServicesContext))]
-    [Migration("20210624064852_Init_services_module")]
+    [Migration("20210626121222_Init_services_module")]
     partial class Init_services_module
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,13 +17,13 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.7");
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Category", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -37,16 +37,15 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Services.Core.Services.Service", b =>
                 {
-                    b.Property<byte[]>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("varbinary(16)");
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("CategoryId")
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -73,18 +72,17 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Attribute", "Attributes", b1 =>
                         {
-                            b1.Property<byte[]>("Id")
+                            b1.Property<Guid>("Id")
                                 .ValueGeneratedOnAdd()
-                                .HasColumnType("varbinary(16)");
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Name")
                                 .IsRequired()
                                 .HasMaxLength(255)
                                 .HasColumnType("varchar(255)");
 
-                            b1.Property<byte[]>("ServiceId")
-                                .IsRequired()
-                                .HasColumnType("varbinary(16)");
+                            b1.Property<Guid>("ServiceId")
+                                .HasColumnType("char(36)");
 
                             b1.HasKey("Id");
 
@@ -97,13 +95,12 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Migrations
 
                             b1.OwnsMany("Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.PossibleValue", "PossibleValues", b2 =>
                                 {
-                                    b2.Property<byte[]>("Id")
+                                    b2.Property<Guid>("Id")
                                         .ValueGeneratedOnAdd()
-                                        .HasColumnType("varbinary(16)");
+                                        .HasColumnType("char(36)");
 
-                                    b2.Property<byte[]>("AttributeId")
-                                        .IsRequired()
-                                        .HasColumnType("varbinary(16)");
+                                    b2.Property<Guid>("AttributeId")
+                                        .HasColumnType("char(36)");
 
                                     b2.Property<string>("Value")
                                         .IsRequired()

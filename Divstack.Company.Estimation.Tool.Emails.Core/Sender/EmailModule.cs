@@ -18,9 +18,6 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
             _mailConfiguration = mailConfiguration;
         }
 
-        private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
-            && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
-
         public async Task SendEmailAsync(string email, string subject, string text)
         {
             if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
@@ -29,6 +26,9 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
                 await SendMessageAsync(message);
             }
         }
+
+        private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
+                                                     && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
 
         private async Task SendMessageAsync(MimeMessage message)
         {
@@ -58,7 +58,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
             var message = new MimeMessage();
             var mailFrom = IsConfiguredAuthentication()
                 ? new MailboxAddress(_mailConfiguration.MailFrom, _mailConfiguration.ServerLogin)
-                :  MailboxAddress.Parse(_mailConfiguration.MailFrom);
+                : MailboxAddress.Parse(_mailConfiguration.MailFrom);
             message.From.Add(mailFrom);
             message.To.Add(MailboxAddress.Parse(email));
             message.Subject = subject;

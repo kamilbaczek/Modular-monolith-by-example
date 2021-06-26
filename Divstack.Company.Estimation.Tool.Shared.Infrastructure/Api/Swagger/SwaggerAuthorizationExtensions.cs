@@ -8,10 +8,12 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
 {
     internal static class SwaggerAuthorizationExtensions
     {
-        private static readonly string SecurityMessageDescription = $@"JWT Authorization header using the Bearer scheme.{Environment.NewLine}Enter 'Bearer' [space] and then your token in the text input below.{Environment.NewLine}Example: 'Bearer XXX'";
         private const string Bearer = "Bearer";
         private const string Oauth2 = "oauth2";
         private const string Authorization = "Authorization";
+
+        private static readonly string SecurityMessageDescription =
+            $@"JWT Authorization header using the Bearer scheme.{Environment.NewLine}Enter 'Bearer' [space] and then your token in the text input below.{Environment.NewLine}Example: 'Bearer XXX'";
 
 
         internal static void AddJwtAuthorization(this SwaggerGenOptions options)

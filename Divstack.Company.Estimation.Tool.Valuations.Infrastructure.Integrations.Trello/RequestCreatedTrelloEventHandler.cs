@@ -32,7 +32,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Integration
             await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
         }
 
-        private static string GenerateDescription(ValuationRequestedEvent notification, IEnumerable<string> servicesNames)
+        private static string GenerateDescription(ValuationRequestedEvent notification,
+            IEnumerable<string> servicesNames)
         {
             return $"Client: {notification.ClientEmail.Value} " +
                    $"{Environment.NewLine}" +

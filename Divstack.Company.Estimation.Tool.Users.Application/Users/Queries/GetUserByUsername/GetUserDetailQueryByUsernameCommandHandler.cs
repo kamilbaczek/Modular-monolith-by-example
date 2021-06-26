@@ -5,7 +5,9 @@ using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername
 {
-    internal sealed class GetUserDetailQueryByUsernameCommandHandler : IRequestHandler<GetUserDetailQueryByUsernameCommand, UserAccountDto>
+    internal sealed class
+        GetUserDetailQueryByUsernameCommandHandler : IRequestHandler<GetUserDetailQueryByUsernameCommand,
+            UserAccountDto>
     {
         private readonly IUserManagementService _userManagementService;
 
@@ -14,7 +16,8 @@ namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUs
             _userManagementService = userManagementService;
         }
 
-        public async Task<UserAccountDto> Handle(GetUserDetailQueryByUsernameCommand request, CancellationToken cancellationToken)
+        public async Task<UserAccountDto> Handle(GetUserDetailQueryByUsernameCommand request,
+            CancellationToken cancellationToken)
         {
             var userDetails = await _userManagementService.GetUserDetailsByUsernameAsync(request.Username);
 

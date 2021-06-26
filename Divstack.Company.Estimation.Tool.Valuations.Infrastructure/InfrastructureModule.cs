@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Api")]
+
 namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure
 {
     internal static class InfrastructureModule

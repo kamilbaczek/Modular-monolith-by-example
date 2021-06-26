@@ -9,8 +9,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 {
     internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
     {
-        private readonly IValuationsRepository _valuationsRepository;
         private readonly IEventPublisher _eventPublisher;
+        private readonly IValuationsRepository _valuationsRepository;
 
         public ApproveProposalCommandHandler(IValuationsRepository valuationsRepository, IEventPublisher eventPublisher)
         {

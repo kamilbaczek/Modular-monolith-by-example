@@ -1,7 +1,7 @@
 using System.Data;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
 {
@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         {
             if (_connection is {State: ConnectionState.Open}) return _connection;
             _connection =
-                new SqlConnection(_configuration.GetConnectionString(DataAccessConstants.ConnectionStringName));
+                new MySqlConnection(_configuration.GetConnectionString(DataAccessConstants.ConnectionStringName));
             _connection.Open();
 
             return _connection;

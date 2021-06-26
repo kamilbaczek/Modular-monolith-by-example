@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using netDumbster.smtp;
 

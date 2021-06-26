@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser

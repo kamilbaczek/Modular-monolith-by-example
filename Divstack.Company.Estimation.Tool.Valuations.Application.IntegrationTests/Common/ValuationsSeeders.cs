@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+using Faker;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
@@ -24,11 +24,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
         private static async Task<ServiceDto> CreateService(IServiceScope scope, CategoryDto category)
         {
             var servicesService = scope.ServiceProvider.GetRequiredService<IServicesService>();
-            var createServiceRequest = new CreateServiceRequest()
+            var createServiceRequest = new CreateServiceRequest
             {
-                Name = Faker.Lorem.GetFirstWord(),
+                Name = Lorem.GetFirstWord(),
                 CategoryId = category.Id,
-                Description = Faker.Lorem.Paragraphs(1).First(),
+                Description = Lorem.Paragraphs(1).First(),
             };
             await servicesService.CreateAsync(createServiceRequest);
             var serviceDtos = await servicesService.GetAllAsync();
@@ -41,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
         {
             var categoriesService = scope.ServiceProvider.GetRequiredService<ICategoriesService>();
 
-            var createCategoryRequest = new CreateCategoryRequest()
+            var createCategoryRequest = new CreateCategoryRequest
             {
                 Description = "test",
                 Name = "Category 1"

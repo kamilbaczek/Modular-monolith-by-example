@@ -2,7 +2,6 @@
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
 {
     public sealed class ValuationsContext : DbContext

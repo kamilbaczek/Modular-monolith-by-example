@@ -25,12 +25,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
             var historicalEntryDtos = await connection.QueryAsync<ValuationHistoricalEntryDto>(
                 new CommandDefinition(@$"
                 SELECT
-                        [Id] {nameof(ValuationHistoricalEntryDto.Id)}
-                       ,[Status_Value] {nameof(ValuationHistoricalEntryDto.Status)}
-                       ,[ChangeDate] {nameof(ValuationHistoricalEntryDto.ChangeDate)}
-                  FROM [EstimationToolDb].[Valuations].[History]
+                        Id {nameof(ValuationHistoricalEntryDto.Id)}
+                       ,Status_Value {nameof(ValuationHistoricalEntryDto.Status)}
+                       ,ChangeDate {nameof(ValuationHistoricalEntryDto.ChangeDate)}
+                  FROM History
                   WHERE ValuationId = @ValuationId
-                  ORDER BY [ChangeDate] DESC", new
+                  ORDER BY ChangeDate DESC", new
                 {
                     request.ValuationId
                 }));

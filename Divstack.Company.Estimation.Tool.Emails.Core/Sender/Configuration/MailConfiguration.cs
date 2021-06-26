@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
+﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
 using Microsoft.Extensions.Configuration;
 
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration

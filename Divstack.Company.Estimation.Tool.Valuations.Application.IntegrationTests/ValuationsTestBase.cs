@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
 using NUnit.Framework;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests

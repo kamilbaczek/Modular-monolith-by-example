@@ -1,5 +1,6 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
+using Faker;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes
 {
@@ -7,8 +8,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
     {
         internal static SuggestProposalCommand GenerateFakeSuggestProposalCommand(Guid valuationId) => new()
         {
-            Currency = Faker.Currency.ThreeLetterCode(),
-            Description = Faker.Lorem.Sentence(),
+            Currency = Currency.ThreeLetterCode(),
+            Description = Lorem.Sentence(),
             ValuationId = valuationId,
             Value = 333m
         };

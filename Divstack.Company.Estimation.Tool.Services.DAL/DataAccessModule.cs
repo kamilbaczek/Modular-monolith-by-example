@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Services.Core;
+using Divstack.Company.Estimation.Tool.Services.DAL.Seeder;
 using Divstack.Company.Estimation.Tool.Services.DAL.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL
         {
             services.AddCore();
             services.RegisterRepositories();
+            services.AddSeeders();
 
             var connectionString = configuration.GetConnectionString(ServicesConnectionString);
             services.AddDbContext<ServicesContext>(connectionString);
@@ -29,7 +31,7 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL
         {
             services.Scan(scan => scan
                 .FromAssemblyOf<ServicesRepository>()
-                .AddClasses(c => c.Where(@class => @class.Name.EndsWith("Repository")))
+                .AddClasses(filter => filter.Where(@class => @class.Name.EndsWith("Repository")))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
         }
@@ -38,7 +40,7 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL
             where TContext : DbContext
         {
             services.AddDbContext<TContext>(options =>
-                options.UseMySQL(connectionString)
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );
 
             using var scope = services.BuildServiceProvider().CreateScope();

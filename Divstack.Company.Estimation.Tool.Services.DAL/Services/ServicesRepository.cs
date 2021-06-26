@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
 using Microsoft.EntityFrameworkCore;
-using Attribute = Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Attribute;
 
 namespace Divstack.Company.Estimation.Tool.Services.DAL.Services
 {
@@ -58,7 +56,7 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL.Services
             return await _servicesContext.Services
                 .Include(service => service.Category)
                 .Include(service => service.Attributes)
-                .ThenInclude<Service, Attribute, IList<PossibleValue>>(attribute => attribute.PossibleValues)
+                .ThenInclude(attribute => attribute.PossibleValues)
                 .SingleOrDefaultAsync(service => service.Id == publicId, cancellationToken);
         }
 

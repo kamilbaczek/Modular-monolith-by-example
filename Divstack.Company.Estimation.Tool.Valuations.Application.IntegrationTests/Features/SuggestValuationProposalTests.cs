@@ -50,7 +50,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         public async Task Given_SuggestProposal_When_CommandIsValid_Then_CorrectEmailIsSend()
         {
             var server = FakeSmtp.Create(_configuration);
-            var request =  await ValuationModuleHelper.RequestValuation();
+            var request = await ValuationModuleHelper.RequestValuation();
             var valuationBeforeSuggestProposal = await ValuationModuleHelper.GetFirstRequestedValuation();
             var suggestProposalCommand =
                 FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationBeforeSuggestProposal.Id);
@@ -65,5 +65,3 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         }
     }
 }
-
-

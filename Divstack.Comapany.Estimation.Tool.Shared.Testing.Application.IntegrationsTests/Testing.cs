@@ -1,25 +1,16 @@
-﻿using System;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
 using Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
 using Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SingOut;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using NUnit.Framework;
 using Respawn;
 
 namespace Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests
@@ -29,6 +20,8 @@ namespace Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.Integrati
         private static IConfigurationRoot _configuration;
         protected static IServiceScopeFactory ServiceScopeFactory;
         private static Checkpoint _checkpoint;
+
+        public static IServiceScope CreateServiceScope => ServiceScopeFactory.CreateScope();
 
         protected void InitTest()
         {
@@ -82,11 +75,9 @@ namespace Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.Integrati
             return scope;
         }
 
-        public static IServiceScope CreateServiceScope => ServiceScopeFactory.CreateScope();
-
         public static async Task RunAsAdministratorAsync()
         {
-            await RunAsUserAsync("admin@divstack.pl","Administrator1234!");
+            await RunAsUserAsync("admin@divstack.pl", "Administrator1234!");
         }
 
         public static async Task RunAsUserAsync(string userName, string password)

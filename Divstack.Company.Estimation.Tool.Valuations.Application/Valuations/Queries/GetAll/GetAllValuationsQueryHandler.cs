@@ -18,22 +18,33 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
         {
             var connection = _databaseConnectionFactory.Create();
+            var query = @$"SELECT
+                               Valuations.Id AS {nameof(ValuationListItemDto.Id)},
+                               Enquiry_Client_FirstName AS {nameof(ValuationListItemDto.FirstName)},
+                               Enquiry_Client_LastName AS {nameof(ValuationListItemDto.LastName)},
+                               ValuationsHistory.Status_Value AS {nameof(ValuationListItemDto.Status)},
+                               RequestedDate AS {nameof(ValuationListItemDto.RequestedDate)},
+                               CompletedBy AS {nameof(ValuationListItemDto.CompletedBy)} 
+                            FROM
+                               Valuations 
+                               INNER JOIN
+                                  ValuationsHistory 
+                                  ON Valuations.Id = 
+                                  (
+                                     SELECT
+                                        ValuationsHistory.ValuationId
+                                     FROM
+                                        ValuationsHistory 
+                                     WHERE
+                                        ValuationsHistory.ValuationId = valuations.Id 
+                                     ORDER BY
+                                        ValuationsHistory.ChangeDate DESC LIMIT 1 
+                                  )
+                            ORDER BY
+                               RequestedDate DESC";
 
             var valuationItems = await connection.QueryAsync<ValuationListItemDto>(
-                new CommandDefinition(@$"
-                SELECT [Id] AS {nameof(ValuationListItemDto.Id)},
-                       [Enquiry_Client_FirstName] AS {nameof(ValuationListItemDto.FirstName)},
-                       [Enquiry_Client_LastName]  AS {nameof(ValuationListItemDto.LastName)},
-                       [RecentHistoryEntry].[Status_Value] AS {nameof(ValuationListItemDto.Status)},
-                       [RequestedDate] AS {nameof(ValuationListItemDto.RequestedDate)},
-                       [CompletedBy] AS {nameof(ValuationListItemDto.CompletedBy)}
-                FROM [Valuations].[Valuations] OUTER apply
-                  (SELECT top 1 Status_Value
-                   FROM Valuations.History
-                   WHERE Valuations.History.ValuationId = [Valuations].[Valuations].[Id]
-                   ORDER BY ChangeDate DESC) [RecentHistoryEntry]
-                 ORDER BY [RequestedDate] DESC
-        ", cancellationToken));
+                new CommandDefinition(query, cancellationToken));
 
             return new ValuationListVm(valuationItems);
         }

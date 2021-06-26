@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Extensions
                 commandType: null,
                 commandTimeout: timeout,
                 cancellationToken: cancellationToken);
-           return await connection.QueryAsync<TDto>(commandDefinition);
+            return await connection.QueryAsync<TDto>(commandDefinition);
         }
 
         internal static async Task<TDto> ExecuteSingleQueryAsync<TDto>(this IDbConnection connection,
@@ -33,7 +33,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Extensions
                 commandType: null,
                 commandTimeout: timeout,
                 cancellationToken: cancellationToken);
-           return await connection.QuerySingleAsync<TDto>(commandDefinition);
+            return await connection.QuerySingleAsync<TDto>(commandDefinition);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.7");
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Users.Domain.Users.ApplicationRole", b =>
                 {
@@ -25,10 +25,10 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Name")
                         .HasMaxLength(85)
@@ -54,14 +54,13 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Token")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
-                    b.Property<byte[]>("UserPublicId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("UserPublicId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -79,7 +78,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -89,22 +88,22 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTime?>("LastLoginDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -115,23 +114,22 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("varchar(256)");
 
                     b.Property<DateTime?>("PasswordExpirationDate")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<byte[]>("PublicId")
-                        .IsRequired()
-                        .HasColumnType("varbinary(16)");
+                    b.Property<Guid>("PublicId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("tinyint(1)");
@@ -160,10 +158,10 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
@@ -184,10 +182,10 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -211,7 +209,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("varchar(85)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -253,7 +251,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                         .HasColumnType("varchar(85)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -269,10 +267,10 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                                 .HasColumnType("bigint");
 
                             b1.Property<DateTime>("ChangeDate")
-                                .HasColumnType("datetime");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Password")
-                                .HasColumnType("text");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("UserAccountId")
                                 .IsRequired()
@@ -297,7 +295,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
                                 .HasColumnType("bigint");
 
                             b1.Property<DateTime>("LoginDate")
-                                .HasColumnType("datetime");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("UserId")
                                 .IsRequired()

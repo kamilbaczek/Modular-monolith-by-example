@@ -10,8 +10,8 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved
 {
     internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApprovedEvent>
     {
-        private readonly IValuationProposalApprovedMailSender _valuationProposalApprovedMailSender;
         private readonly IUserModule _userModule;
+        private readonly IValuationProposalApprovedMailSender _valuationProposalApprovedMailSender;
 
         public ProposalApprovedEventHandler(IValuationProposalApprovedMailSender valuationProposalApprovedMailSender,
             IUserModule userModule)

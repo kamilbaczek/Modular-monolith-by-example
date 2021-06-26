@@ -12,9 +12,9 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Midd
 {
     internal sealed class CustomExceptionHandlerMiddleware
     {
+        private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
         private readonly RequestDelegate _next;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
 
         public CustomExceptionHandlerMiddleware(RequestDelegate next,
             IWebHostEnvironment webHostEnvironment, ILogger<CustomExceptionHandlerMiddleware> logger)
@@ -44,9 +44,9 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Midd
             if (exception.IsValidationException())
                 code = HttpStatusCode.BadRequest;
 
-            var  response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
-                    ? ExceptionDto.CreateWithMessage(exception.Message)
-                    : ExceptionDto.CreateInternalServerError();
+            var response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
+                ? ExceptionDto.CreateWithMessage(exception.Message)
+                : ExceptionDto.CreateInternalServerError();
             _logger.LogError(exception.Message);
             return SendResponse(context, code, response);
         }

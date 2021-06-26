@@ -48,7 +48,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 
         private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
         private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
-        private bool IsCompleted => RecentStatus.Status  == ValuationStatus.Completed;
+        private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
 
         public static async Task<Valuation> RequestAsync(
             List<ServiceId> serviceIds,

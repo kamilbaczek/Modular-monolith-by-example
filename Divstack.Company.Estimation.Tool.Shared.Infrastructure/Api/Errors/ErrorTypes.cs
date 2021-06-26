@@ -9,7 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors
 
         internal static bool IsNotFoundException(this Exception exception)
         {
-            return  IsType(exception, NotFound);
+            return IsType(exception, NotFound);
         }
 
         internal static bool IsValidationException(this Exception exception)

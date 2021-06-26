@@ -54,7 +54,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users
         {
             builder.Property(m => m.LoginProvider).HasMaxLength(85);
             builder.Property(m => m.ProviderKey).HasMaxLength(85);
-
         }
     }
 
@@ -64,7 +63,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users
         {
             builder.Property(m => m.LoginProvider).HasMaxLength(85);
             builder.Property(m => m.Name).HasMaxLength(85);
-
         }
     }
 
@@ -74,7 +72,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users
         {
             builder.Property(m => m.LoginProvider).HasMaxLength(85);
             builder.Property(m => m.Name).HasMaxLength(85);
-
         }
     }
 
@@ -84,7 +81,6 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users
         {
             builder.Property(userAccount => userAccount.Id).HasMaxLength(85);
             builder.Property(m => m.Name).HasMaxLength(85);
-
         }
     }
 }

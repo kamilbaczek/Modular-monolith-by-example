@@ -3,7 +3,7 @@
     internal interface ITrelloConfiguration
     {
         string BoardId { get; }
-        string AppKey  { get; }
-        string UserToken  { get; }
+        string AppKey { get; }
+        string UserToken { get; }
     }
 }

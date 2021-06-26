@@ -18,15 +18,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         public async Task Given_RequestValuation_When_CommandIsValid_Then_RequestIsSavedInDatabase()
         {
             var serviceId = await ValuationsSeeders.CreateService();
-            var requestCommand = FakeValuationsRequests.GenerateFakeRequestValuationCommand(new List<Guid>{serviceId});
+            var requestCommand = FakeValuationsRequests.GenerateFakeRequestValuationCommand(new List<Guid> {serviceId});
 
             await ExecuteCommandAsync(requestCommand);
 
-           var result = await ExecuteQueryAsync(new GetAllValuationsQuery());
-           result.Valuations.Count().Should().Be(1);
-           var valuationListItemDto = result.Valuations.First();
-           valuationListItemDto.Should().BeEquivalentTo(requestCommand,
-               options => options.ExcludingMissingMembers());
+            var result = await ExecuteQueryAsync(new GetAllValuationsQuery());
+            result.Valuations.Count().Should().Be(1);
+            var valuationListItemDto = result.Valuations.First();
+            valuationListItemDto.Should().BeEquivalentTo(requestCommand,
+                options => options.ExcludingMissingMembers());
         }
     }
 }

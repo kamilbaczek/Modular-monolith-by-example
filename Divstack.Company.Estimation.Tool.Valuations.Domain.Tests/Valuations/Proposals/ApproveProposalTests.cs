@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;

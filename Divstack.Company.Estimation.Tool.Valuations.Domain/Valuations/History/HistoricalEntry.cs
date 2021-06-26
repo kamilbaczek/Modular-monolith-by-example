@@ -5,11 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
 {
     public sealed class HistoricalEntry : Entity
     {
-        internal static HistoricalEntry Create(Valuation valuation, ValuationStatus status)
-        {
-            return new(valuation, status);
-        }
-
         private HistoricalEntry()
         {
         }
@@ -26,5 +21,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
         internal ValuationStatus Status { get; }
         internal DateTime ChangeDate { get; }
         private HistoricalEntryId Id { get; }
+
+        internal static HistoricalEntry Create(Valuation valuation, ValuationStatus status)
+        {
+            return new(valuation, status);
+        }
     }
 }

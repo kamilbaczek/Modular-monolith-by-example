@@ -36,9 +36,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
             CancellationToken cancellationToken)
         {
             var query = @$"SELECT
-                [ServiceId] AS {nameof(ValuationsServiceItemDto.ServiceId)}
-                FROM [Valuations].[InquiryServices]
-                WHERE [EnquiryValuationId] = @ValuationId";
+                ServiceId AS {nameof(ValuationsServiceItemDto.ServiceId)}
+                FROM Valuations.InquiryServices
+                WHERE EnquiryValuationId = @ValuationId";
             var valuationServices = await connection.ExecuteQueryAsync<ValuationsServiceItemDto>(
                 query, new {request.ValuationId}, cancellationToken);
 
@@ -48,23 +48,23 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         private static async Task<ValuationInformationDto> GetInformation(
             GetValuationQuery request,
             IDbConnection connection,
-            CancellationToken  cancellationToken)
+            CancellationToken cancellationToken)
         {
             var query = @$"
-                SELECT [Id] AS {nameof(ValuationInformationDto.Id)},
-                       [Enquiry_Client_FirstName] AS {nameof(ValuationInformationDto.FirstName)},
-                       [Enquiry_Client_LastName]  AS {nameof(ValuationInformationDto.LastName)},
-                       [Enquiry_Client_Email_Value] AS {nameof(ValuationInformationDto.Email)},
-                       [RequestedDate] AS {nameof(ValuationInformationDto.RequestedDate)},
-                       [CompletedBy] AS {nameof(ValuationInformationDto.CompletedBy)},
+                SELECT Id AS {nameof(ValuationInformationDto.Id)},
+                       Enquiry_Client_FirstName AS {nameof(ValuationInformationDto.FirstName)},
+                       Enquiry_Client_LastName  AS {nameof(ValuationInformationDto.LastName)},
+                       Enquiry_Client_Email_Value AS {nameof(ValuationInformationDto.Email)},
+                       RequestedDate AS {nameof(ValuationInformationDto.RequestedDate)},
+                       CompletedBy AS {nameof(ValuationInformationDto.CompletedBy)},
                        (SELECT TOP(1) 
                             Status_Value 
-                       FROM Valuations.History 
-                       WHERE [ValuationId] = @ValuationId
-                       ORDER BY ChangeDate DESC) AS [{nameof(ValuationInformationDto.Status)}]
-                FROM [Valuations].[Valuations]
-                WHERE [Id] = @ValuationId
-                ORDER BY [RequestedDate] DESC";
+                       FROM History 
+                       WHERE ValuationId = @ValuationId
+                       ORDER BY ChangeDate DESC) AS {nameof(ValuationInformationDto.Status)}
+                FROM Valuations
+                WHERE Id = @ValuationId
+                ORDER BY RequestedDate DESC";
             var valuationInformation = await connection.ExecuteSingleQueryAsync<ValuationInformationDto>(
                 query, new {request.ValuationId}, cancellationToken);
 

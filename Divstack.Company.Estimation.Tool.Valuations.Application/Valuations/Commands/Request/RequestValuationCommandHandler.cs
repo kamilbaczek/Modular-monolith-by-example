@@ -12,8 +12,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 {
     internal sealed class RequestValuationCommandHandler : IRequestHandler<RequestValuationCommand>
     {
-        private readonly IServiceExistingChecker _serviceExistingChecker;
         private readonly IEventPublisher _eventPublisher;
+        private readonly IServiceExistingChecker _serviceExistingChecker;
         private readonly IValuationsRepository _valuationsRepository;
 
         public RequestValuationCommandHandler(IValuationsRepository valuationsRepository,

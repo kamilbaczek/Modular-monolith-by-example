@@ -10,9 +10,9 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
 {
     internal sealed class ServicesController : BaseController
     {
-        private readonly IServicesService _servicesService;
         private const int BatchItemsLimit = 25;
         private const string BatchRoute = "batch";
+        private readonly IServicesService _servicesService;
 
         public ServicesController(IServicesService servicesService)
         {
@@ -20,7 +20,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
         }
 
         /// <summary>
-        /// Get batch of services details
+        ///     Get batch of services details
         /// </summary>
         /// <param name="servicesIds">list of guid as parameter. 25 ids per single request allowed</param>
         /// <returns>List of services returned</returns>

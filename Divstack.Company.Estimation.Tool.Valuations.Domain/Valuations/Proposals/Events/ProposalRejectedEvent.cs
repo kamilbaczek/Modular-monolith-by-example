@@ -6,11 +6,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class ProposalRejectedEvent : DomainEventBase
     {
-        public Money Value { get; }
-        public Email ClientEmail { get; }
-        public ValuationId ValuationId { get; }
-        public ProposalId ProposalId { get; }
-
         internal ProposalRejectedEvent(
             ValuationId valuationId,
             ProposalId proposalId,
@@ -22,5 +17,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             ClientEmail = clientEmail;
             ValuationId = valuationId;
         }
+
+        public Money Value { get; }
+        public Email ClientEmail { get; }
+        public ValuationId ValuationId { get; }
+        public ProposalId ProposalId { get; }
     }
 }

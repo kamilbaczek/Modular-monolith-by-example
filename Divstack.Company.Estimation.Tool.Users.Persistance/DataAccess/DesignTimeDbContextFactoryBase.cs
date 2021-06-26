@@ -49,10 +49,11 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess
                 $"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
-
-            optionsBuilder.UseMySQL(connectionString,
+            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
                 dbContextOptionsBuilder =>
-                    dbContextOptionsBuilder.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name));
+                {
+                    dbContextOptionsBuilder.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name);
+                });
 
             return CreateNewInstance(optionsBuilder.Options);
         }
