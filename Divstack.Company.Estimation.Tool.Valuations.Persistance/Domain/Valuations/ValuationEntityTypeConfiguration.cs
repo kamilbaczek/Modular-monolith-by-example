@@ -1,6 +1,7 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
@@ -18,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
             builder.HasKey("Id");
             builder.Property<ValuationId>("Id")
                 .HasConversion(id => id.Value, value => new ValuationId(value))
-                .HasColumnType("char(36)");
+                .IsIdentity();
 
             builder.OwnsMany<Proposal>("Proposals", ownedNavigationBuilder =>
             {
@@ -27,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 ownedNavigationBuilder.HasKey("Id");
                 ownedNavigationBuilder.Property<ProposalId>("Id")
                     .HasConversion(id => id.Value, value => new ProposalId(value))
-                    .HasColumnType("char(36)");
+                    .IsIdentity();
                 ownedNavigationBuilder.OwnsOne<Money>("Price", moneyValueObjectBuilder =>
                 {
                     moneyValueObjectBuilder.Property<decimal?>("Value").IsRequired(false).HasPrecision(15, 2);
@@ -37,13 +38,13 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     valueObjectBuilder => { valueObjectBuilder.Property<string>("Message").HasMaxLength(512); });
                 ownedNavigationBuilder.Property<EmployeeId>("SuggestedBy")
                     .HasConversion(id => id.Value, value => new EmployeeId(value))
-                    .HasColumnType("char(36)")
+                    .IsIdentity()
                     .IsRequired();
                 ownedNavigationBuilder.Property<DateTime>("Suggested")
                     .IsRequired();
                 ownedNavigationBuilder.Property<EmployeeId>("CancelledBy")
                     .HasConversion(id => id.Value, value => new EmployeeId(value))
-                    .HasColumnType("char(36)")
+                    .IsIdentity()
                     .IsRequired(false);
                 ownedNavigationBuilder.Property<DateTime?>("Cancelled")
                     .IsRequired(false);
@@ -62,7 +63,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 ownedNavigationBuilder.HasKey("Id");
                 ownedNavigationBuilder.Property<HistoricalEntryId>("Id")
                     .HasConversion(id => id.Value, value => new HistoricalEntryId(value))
-                    .HasColumnType("char(36)");
+                    .IsIdentity();
                 ownedNavigationBuilder.OwnsOne<ValuationStatus>("Status",
                     statusObjectBuilder => { statusObjectBuilder.Property<string>("Value").IsRequired(); });
                 ownedNavigationBuilder.Property<DateTime>("ChangeDate").IsRequired();
@@ -70,7 +71,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
             builder.Property<DateTime>("RequestedDate").IsRequired();
             builder.Property<EmployeeId>("CompletedBy")
                 .HasConversion(id => id.Value, value => new EmployeeId(value))
-                .HasColumnType("char(36)")
+                .IsIdentity()
                 .IsRequired(false);
             builder.Property<DateTime?>("CompletedDate").IsRequired(false);
 
@@ -83,10 +84,10 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     servicesBuilder.HasKey("Id");
                     servicesBuilder.Property<ServiceId>("ServiceId")
                         .HasConversion(id => id.Value, value => new ServiceId(value))
-                        .HasColumnType("char(36)");
+                        .IsIdentity();
                     servicesBuilder.Property<InquiryServiceId>("Id")
                         .HasConversion(id => id.Value, value => new InquiryServiceId(value))
-                        .HasColumnType("char(36)");
+                        .IsIdentity();
                 });
                 enquiryValueObjectBuilder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
                 {

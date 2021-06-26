@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
@@ -133,8 +134,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         public static async Task ResetState()
         {
             using var scope = CreateServiceScope;
-            // var userModule = scope.ServiceProvider.GetRequiredService<IUserModule>();
-            // await userModule.ExecuteCommandAsync(new SignOutCommand());
             var connectionString = _configuration.GetConnectionString("Valuations");
             await _checkpoint.Reset(connectionString);
         }

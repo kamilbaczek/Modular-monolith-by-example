@@ -2,9 +2,9 @@
 using MySqlConnector;
 using Respawn;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
+namespace Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests
 {
-    public class RespawnMySql : Checkpoint
+    public sealed class RespawnMySql : Checkpoint
     {
         public override async Task Reset(string connectionString)
         {
