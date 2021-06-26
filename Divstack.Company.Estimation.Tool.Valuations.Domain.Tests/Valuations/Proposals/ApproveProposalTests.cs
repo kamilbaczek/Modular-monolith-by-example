@@ -8,13 +8,13 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 using FluentAssertions;
-using Xunit;
+using NUnit.Framework;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals
 {
     public class ApproveProposalTests : BaseValuationTest
     {
-        [Fact]
+        [Test]
         public async Task Given_ApproveProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsApproved()
         {
             var employeeId = new EmployeeId(Guid.NewGuid());
@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             @event.AssertIsCorrect(employeeId, proposalId);
         }
 
-        [Fact]
+        [Test]
         public async Task Given_ApproveProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
         {
             var employee = new EmployeeId(Guid.NewGuid());
@@ -40,7 +40,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             approveProposal.Should().Throw<ProposalNotFoundException>();
         }
 
-        [Fact]
+        [Test]
         public async Task Given_ApproveProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
         {
             var valuation = await RequestFakeValuation();
@@ -51,7 +51,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             approveProposal.Should().Throw<ProposalNotFoundException>();
         }
 
-        [Fact]
+        [Test]
         public async Task Given_ApproveProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotApproved()
         {
             var employee = new EmployeeId(Guid.NewGuid());
@@ -64,7 +64,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
         }
 
-        [Fact]
+        [Test]
         public async Task Given_ApproveProposal_When_ProposalAlreadyApproved_Then_ProposalIsNotApproved()
         {
             var employee = new EmployeeId(Guid.NewGuid());

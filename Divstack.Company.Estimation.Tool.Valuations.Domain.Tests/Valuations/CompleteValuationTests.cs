@@ -4,13 +4,13 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assert
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
-using Xunit;
+using NUnit.Framework;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
 {
     public class CompleteValuationTests : BaseValuationTest
     {
-        [Fact]
+        [Test]
         public async Task Given_Complete_When_ValuationHasAtLastOnceProposalWithDecision_Then_ValuationIsCompleted()
         {
             var employee = new EmployeeId(Guid.NewGuid());

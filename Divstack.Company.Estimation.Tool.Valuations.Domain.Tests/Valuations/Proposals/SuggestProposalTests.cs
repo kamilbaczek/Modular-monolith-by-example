@@ -7,13 +7,13 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 using FluentAssertions;
-using Xunit;
+using NUnit.Framework;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals
 {
     public class SuggestProposalTests : BaseValuationTest
     {
-        [Fact]
+        [Test]
         public async Task Given_SuggestProposal_Then_CannotSuggestProposal()
         {
             var valuation = await RequestFakeValuation();
@@ -26,7 +26,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             @event.AssertIsCorrect(money, employee);
         }
 
-        [Fact]
+        [Test]
         public async Task Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
         {
             var valuation = await RequestFakeValuation();
@@ -41,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             suggestProposal.Should().Throw<ValuationCompletedException>();
         }
 
-        [Fact]
+        [Test]
         public async Task Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
         {
             var money = Money.Of(30, "USD");

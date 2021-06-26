@@ -14,6 +14,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
 
     public class SuggestValuationProposalTests : ValuationsTestBase
     {
+        private const int OneMinuteInMs = 60000;
+
         [Test]
         public async Task
             Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToWaitForClientDecision()
@@ -43,7 +45,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
             var proposal = await ValuationModuleHelper.GetRecentProposal(valuation.Id);
             proposal.Should().BeEquivalentTo(suggestProposalCommand, opt => opt.ExcludingMissingMembers());
             proposal.SuggestedBy.Should().Be(CurrentUserId);
-            DateTime.Parse(proposal.SuggestedFormatted).Should().BeCloseTo(DateTime.Now, 60000);
+            DateTime.Parse(proposal.SuggestedFormatted).Should().BeCloseTo(DateTime.Now, OneMinuteInMs);
         }
 
         [Test]
@@ -57,7 +59,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
 
             await ExecuteCommandAsync(suggestProposalCommand);
 
-            var message = await server.GetRecentReceivedMessage();
+            var message = await server.GetReceivedMessage(request.Email);
+            message.Should().NotBeNull();
             message.AssertEqualsToAddress(request.Email);
             message.AssertEqualsFromAddress(_configuration);
             message.Data.Should().Contain(suggestProposalCommand.Value.ToString(CultureInfo.InvariantCulture));

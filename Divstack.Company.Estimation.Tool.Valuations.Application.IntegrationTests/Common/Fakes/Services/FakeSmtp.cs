@@ -30,10 +30,13 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
             smtpServer.Stop();
         }
 
-        internal static async Task<SmtpMessage> GetRecentReceivedMessage(this SimpleSmtpServer smtpServer)
+        internal static async Task<SmtpMessage> GetReceivedMessage(this SimpleSmtpServer smtpServer, string clientEmail)
         {
             await Task.Delay(DelayBeforeMailWillBeReceivedIn);
-            var email = smtpServer.ReceivedEmail.Last();
+            var email = smtpServer.ReceivedEmail
+                .Where(message => message.ToAddresses
+                    .Any(emailAddress => emailAddress.Address == clientEmail))
+                .FirstOrDefault();
 
             return email;
         }

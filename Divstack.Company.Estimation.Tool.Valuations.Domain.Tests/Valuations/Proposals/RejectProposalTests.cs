@@ -9,13 +9,13 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 using FluentAssertions;
-using Xunit;
+using NUnit.Framework;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals
 {
     public class RejectProposalTests : BaseValuationTest
     {
-        [Fact]
+        [Test]
         public async Task Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
         {
             var employee = new EmployeeId(Guid.NewGuid());
@@ -29,7 +29,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             @event.AssertIsCorrect(fakeEmail, proposalId, FakeRejectReason);
         }
 
-        [Fact]
+        [Test]
         public async Task Given_RejectProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
         {
             var employee = new EmployeeId(Guid.NewGuid());
@@ -42,7 +42,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             rejectProposal.Should().Throw<ProposalNotFoundException>();
         }
 
-        [Fact]
+        [Test]
         public async Task Given_RejectProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
         {
             var valuation = await RequestFakeValuation();
@@ -53,7 +53,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
             rejectProposal.Should().Throw<ProposalNotFoundException>();
         }
 
-        [Fact]
+        [Test]
         public async Task Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
         {
             var employee = new EmployeeId(Guid.NewGuid());

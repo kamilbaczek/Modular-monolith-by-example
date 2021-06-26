@@ -12,5 +12,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         {
             await ResetState();
         }
+
+        [TearDown]
+        public async Task Cleanup()
+        {
+            await ResetState();
+        }
     }
 }

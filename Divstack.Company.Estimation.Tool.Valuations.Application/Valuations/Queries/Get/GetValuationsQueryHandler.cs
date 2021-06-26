@@ -57,11 +57,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
                        Enquiry_Client_Email_Value AS {nameof(ValuationInformationDto.Email)},
                        RequestedDate AS {nameof(ValuationInformationDto.RequestedDate)},
                        CompletedBy AS {nameof(ValuationInformationDto.CompletedBy)},
-                       (SELECT TOP(1) 
-                            Status_Value 
-                       FROM History 
-                       WHERE ValuationId = @ValuationId
-                       ORDER BY ChangeDate DESC) AS {nameof(ValuationInformationDto.Status)}
+                       (SELECT
+                           ValuationsHistory.Status_Value
+                         FROM
+                            ValuationsHistory 
+                         WHERE
+                            ValuationsHistory.ValuationId = Valuations.Id 
+                         ORDER BY
+                            ValuationsHistory.ChangeDate DESC 
+                          LIMIT 1) AS {nameof(ValuationInformationDto.Status)}
                 FROM Valuations
                 WHERE Id = @ValuationId
                 ORDER BY RequestedDate DESC";
