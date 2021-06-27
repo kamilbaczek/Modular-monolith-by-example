@@ -7,3 +7,5 @@ install:
 script:
   - dotnet build
   - dotnet test -v=normal
+notifications:
+  slack: estimationtool:bOTvxHaF5GBvP2e6Q2gErCqr
