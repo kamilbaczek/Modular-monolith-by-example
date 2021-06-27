@@ -23,15 +23,17 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton(Configuration);
-            services.AddSharedInfrastructure();
+            services.AddSharedInfrastructure(Configuration);
             services.AddUsersModule(Configuration);
             services.AddServicesModule(Configuration);
             services.AddValuationsModule(Configuration);
             services.AddEmailsModule();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IUsersSeeder usersSeeder)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            IUsersSeeder usersSeeder)
         {
             if (env.IsDevelopment())
             {

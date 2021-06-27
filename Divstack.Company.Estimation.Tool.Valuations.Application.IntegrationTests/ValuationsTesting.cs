@@ -32,7 +32,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true)
-                .AddEnvironmentVariables();
+                .AddEnvironmentVariables()
+                .AddUserSecrets<ValuationsTesting>();
 
             _configuration = builder.Build();
 
@@ -45,8 +46,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
                 w.ApplicationName == "Divstack.Company.Estimation.Tool.Bootstrapper"));
 
 
-            var currentUserServiceDescriptor = services.FirstOrDefault(d =>
-                d.ServiceType == typeof(ICurrentUserService));
+            var currentUserServiceDescriptor = services.FirstOrDefault(serviceDescriptor =>
+                serviceDescriptor.ServiceType == typeof(ICurrentUserService));
 
             services.Remove(currentUserServiceDescriptor);
 
@@ -94,7 +95,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         protected void EnsureDatabaseModule(IServiceScope serviceScope)
         {
             var valuationsContext = serviceScope.ServiceProvider.GetRequiredService<ValuationsContext>();
-            valuationsContext.Database.EnsureCreated();
+            valuationsContext.Database.Migrate();
         }
 
         internal static IConfigurationRoot _configuration;
