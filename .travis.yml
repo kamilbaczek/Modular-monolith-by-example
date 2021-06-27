@@ -6,4 +6,4 @@ install:
   - dotnet restore
 script:
   - dotnet build
-  - dotnet test --v=normal
+  - dotnet test -v=normal
