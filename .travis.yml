@@ -9,3 +9,7 @@ script:
   - dotnet test -v=normal
 notifications:
   slack: estimationtool:bOTvxHaF5GBvP2e6Q2gErCqr
+deploy:
+  provider: heroku
+  api_key: c1a24ea2-57c9-4a99-80b1-498b767346cd
+  app: estimation-tool-kb
