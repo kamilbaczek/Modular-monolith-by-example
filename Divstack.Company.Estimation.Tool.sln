@@ -115,6 +115,12 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql", "Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql.csproj", "{85CF9780-4D34-44CA-A12D-5A7CD209FC3E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{4DC00626-B000-46CB-B8D9-8C6775C81C29}"
+ProjectSection(SolutionItems) = preProject
+	Dockerfile = Dockerfile
+	.dockerignore = .dockerignore
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

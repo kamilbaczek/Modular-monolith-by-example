@@ -37,7 +37,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         {
             var query = @$"SELECT
                 ServiceId AS {nameof(ValuationsServiceItemDto.ServiceId)}
-                FROM Valuations.InquiryServices
+                FROM InquiryServices
                 WHERE EnquiryValuationId = @ValuationId";
             var valuationServices = await connection.ExecuteQueryAsync<ValuationsServiceItemDto>(
                 query, new {request.ValuationId}, cancellationToken);

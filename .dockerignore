@@ -1,0 +1,7 @@
+﻿# .dockerignore
+**/node_modules
+**/ClientApp
+
+Dockerfile
+[b|B]in
+[O|o]bj

@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
                         Id {nameof(ValuationHistoricalEntryDto.Id)}
                        ,Status_Value {nameof(ValuationHistoricalEntryDto.Status)}
                        ,ChangeDate {nameof(ValuationHistoricalEntryDto.ChangeDate)}
-                  FROM History
+                  FROM ValuationsHistory
                   WHERE ValuationId = @ValuationId
                   ORDER BY ChangeDate DESC", new
                 {

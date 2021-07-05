@@ -48,7 +48,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
             };
             await categoriesService.CreateAsync(createCategoryRequest);
             var categoryDtos = await categoriesService.GetAllAsync();
-            var category = categoryDtos.Single(category => category.Name == createCategoryRequest.Name);
+            var category = categoryDtos.FirstOrDefault(category => category.Name == createCategoryRequest.Name);
 
             return category;
         }

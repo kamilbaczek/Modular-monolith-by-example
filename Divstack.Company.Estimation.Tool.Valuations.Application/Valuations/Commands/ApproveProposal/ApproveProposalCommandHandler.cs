@@ -27,6 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             valuation.ApproveProposal(proposalId);
 
             await _valuationsRepository.CommitAsync(cancellationToken);
+
             _eventPublisher.Publish(valuation.DomainEvents);
 
             return Unit.Value;

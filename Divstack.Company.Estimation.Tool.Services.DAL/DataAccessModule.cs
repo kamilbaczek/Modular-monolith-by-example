@@ -39,7 +39,7 @@ namespace Divstack.Company.Estimation.Tool.Services.DAL
         private static void AddDbContext<TContext>(this IServiceCollection services, string connectionString)
             where TContext : DbContext
         {
-            services.AddDbContext<TContext>(options =>
+            services.AddDbContextPool<TContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
             );
 
