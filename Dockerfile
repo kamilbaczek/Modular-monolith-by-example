@@ -12,5 +12,4 @@ ENV ConnectionStrings__Carts "Server=195.78.66.133;Port=3306;Database=divstack_e
 ENV ConnectionStrings__Users "Server=195.78.66.133;Port=3306;Database=divstack_estimatetool;Uid=divstack_estimatetool;Pwd=IBi2q6JB7)wm--YQ;"
 ENV ConnectionStrings__Services "Server=195.78.66.133;Port=3306;Database=divstack_estimatetool;Uid=divstack_estimatetool;Pwd=IBi2q6JB7)wm--YQ;"
 ENV ConnectionStrings__Valuations "Server=195.78.66.133;Port=3306;Database=divstack_estimatetool;Uid=divstack_estimatetool;Pwd=IBi2q6JB7)wm--YQ;"
-
-ENTRYPOINT ["dotnet", "Divstack.Company.Estimation.Tool.Bootstrapper.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet Divstack.Company.Estimation.Tool.Bootstrapper.dll
