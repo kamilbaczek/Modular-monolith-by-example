@@ -35,7 +35,10 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     moneyValueObjectBuilder.Property<string>("Currency");
                 });
                 ownedNavigationBuilder.OwnsOne<ProposalDescription>("Description",
-                    valueObjectBuilder => { valueObjectBuilder.Property<string>("Message").HasMaxLength(512); });
+                    valueObjectBuilder =>
+                    {
+                        valueObjectBuilder.Property<string>("Message").HasMaxLength(512);
+                    });
                 ownedNavigationBuilder.Property<EmployeeId>("SuggestedBy")
                     .HasConversion(id => id.Value, value => new EmployeeId(value))
                     .IsIdentity()
