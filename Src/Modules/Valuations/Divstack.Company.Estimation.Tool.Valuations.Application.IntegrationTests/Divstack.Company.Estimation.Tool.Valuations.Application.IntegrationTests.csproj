@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>Divstack.Company.Estimation.Tool.Valuations.Application.Tests</RootNamespace>
+        <UserSecretsId>0e4dc013-06b7-40e8-9e51-6c08e4dcd81c</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
+      <ProjectReference Include="..\..\..\Shared\Testing\Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests\Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests.csproj" />
+      <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Persistance\Divstack.Company.Estimation.Tool.Users.Persistance.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Faker.Net" Version="1.5.138" />
+      <PackageReference Include="FluentAssertions" Version="5.10.3" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+      <PackageReference Include="Moq" Version="4.16.1" />
+      <PackageReference Include="netDumbster" Version="2.0.0.8" />
+      <PackageReference Include="NUnit" Version="3.13.2" />
+        <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+      <PackageReference Include="Respawn" Version="4.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

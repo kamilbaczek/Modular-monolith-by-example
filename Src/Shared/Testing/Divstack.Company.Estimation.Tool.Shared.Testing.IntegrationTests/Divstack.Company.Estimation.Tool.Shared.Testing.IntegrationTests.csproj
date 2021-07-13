@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.11" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
+      <ProjectReference Include="..\..\..\Modules\Users\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj" />
+      <ProjectReference Include="..\..\..\Modules\Users\Divstack.Company.Estimation.Tool.Users.Persistance\Divstack.Company.Estimation.Tool.Users.Persistance.csproj" />
+    </ItemGroup>
+
+</Project>
