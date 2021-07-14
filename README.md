@@ -1,9 +1,8 @@
 # Estimations Tool - makes estimations easier
-CI
-<br>
+### CI
 [![Build Status](https://travis-ci.com/kamilbaczek/estimations-tool.svg?branch=develop)](https://travis-ci.com/kamilbaczek/estimations-tool)
 
-Technologies:
+### Technologies
 .Net 5
 Docker
 Travis CI
