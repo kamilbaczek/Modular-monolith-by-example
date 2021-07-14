@@ -39,6 +39,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{3704CA35-A411-40DA-BC45-2DB82C734467}"
 ProjectSection(SolutionItems) = preProject
 	.travis.yml = .travis.yml
+	heroku.yml = heroku.yml
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{4DC00626-B000-46CB-B8D9-8C6775C81C29}"

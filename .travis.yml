@@ -11,7 +11,7 @@ notifications:
   slack: estimationtool:bOTvxHaF5GBvP2e6Q2gErCqr
 deploy:
   provider: heroku
-  api_key: f4e9c6a2-7620-4041-b6bb-aa0dffd1b602
+  api_key: 6eac2a68-903a-4e1d-a05c-c5ac355e5ee2
   app: estimation-tool-kb
   on:
     branch: develop
