@@ -1,4 +1,4 @@
-# estimations-tool
+# Estimations Tool - makes estimations easier
 CI
 <br>
 [![Build Status](https://travis-ci.com/kamilbaczek/estimations-tool.svg?branch=develop)](https://travis-ci.com/kamilbaczek/estimations-tool)
