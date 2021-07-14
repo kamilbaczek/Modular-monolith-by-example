@@ -6,6 +6,6 @@ WORKDIR /src
 COPY . .
 RUN dotnet build "Divstack.Company.Estimation.Tool.sln" -c Release
 WORKDIR /src/Divstack.Company.Estimation.Tool.Bootstrapper
-RUN dotnet publish "Divstack.Company.Estimation.Tool.Bootstrapper.csproj" --no-build -c Release -o /EstimationToolApi
+RUN dotnet publish "Src\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" --no-build -c Release -o /EstimationToolApi
 WORKDIR /EstimationToolApi
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet Divstack.Company.Estimation.Tool.Bootstrapper.dll
