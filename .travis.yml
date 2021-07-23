@@ -7,11 +7,11 @@ install:
 script:
   - dotnet build
   - dotnet test -v=normal
-notifications:
-  slack: estimationtool:$Slack__Key
 deploy:
   provider: heroku
   api_key: $Heroku__App__Key
   app: estimation-tool-kb
   on:
     branch: develop
+notifications:
+  slack: estimationtool:$Slack__Key
