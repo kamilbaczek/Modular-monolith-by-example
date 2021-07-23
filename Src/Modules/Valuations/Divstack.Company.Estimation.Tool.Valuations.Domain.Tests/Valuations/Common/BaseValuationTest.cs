@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
@@ -53,8 +55,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
                 new(Guid.NewGuid()),
                 new(Guid.NewGuid()),
             };
+            var deadline = DeadlineTestHelper.CreateDeadline();
             var client = Client.Of(email, "firstname", "lastname");
-            return await Valuation.RequestAsync(productsIds, client, ServiceExistingCheckerMock.Object);
+
+            return await Valuation.RequestAsync(productsIds, client, deadline, ServiceExistingCheckerMock.Object);
         }
 
         protected async Task<Valuation> RequestFakeValuation()

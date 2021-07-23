@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
@@ -26,8 +27,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
             };
             var email = Email.Of("test@mail.com");
             var client = Client.Of(email, "firstname", "lastname");
+            var deadline = DeadlineTestHelper.CreateDeadline();
 
-            var valuation = await Valuation.RequestAsync(servicesIds, client, ServiceExistingCheckerMock.Object);
+            var valuation = await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
 
             var @event = GetPublishedEvent<ValuationRequestedEvent>(valuation);
             @event.AssertIsCorrect(servicesIds, email);
@@ -42,11 +44,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
                 new(Guid.NewGuid()),
                 new(Guid.NewGuid()),
             };
+            var deadline = DeadlineTestHelper.CreateDeadline();
             var email = Email.Of("test@mail.com");
             var client = Client.Of(email, "firstname", "lastname");
             Func<Task> valuationRequestAsync = async () =>
             {
-                await Valuation.RequestAsync(servicesIds, client, ServiceExistingCheckerMock.Object);
+                await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
             };
 
             await valuationRequestAsync.Should().ThrowAsync<InvalidServicesException>();

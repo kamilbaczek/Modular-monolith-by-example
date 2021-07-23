@@ -19,8 +19,14 @@
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Domain" />
     </ItemGroup>
 
 </Project>

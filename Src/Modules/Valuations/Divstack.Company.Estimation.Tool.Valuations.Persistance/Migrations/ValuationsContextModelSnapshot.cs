@@ -38,6 +38,22 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Valuation", b =>
                 {
+                    b.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines.Deadline", "Deadline", b1 =>
+                        {
+                            b1.Property<Guid>("ValuationId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<DateTime>("Date")
+                                .HasColumnType("datetime(6)");
+
+                            b1.HasKey("ValuationId");
+
+                            b1.ToTable("Valuations");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ValuationId");
+                        });
+
                     b.OwnsOne("Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries.Enquiry", "Enquiry", b1 =>
                         {
                             b1.Property<Guid>("ValuationId")
@@ -75,7 +91,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                             b3.Property<Guid>("ClientEnquiryValuationId")
                                                 .HasColumnType("char(36)");
 
-                                            b3.Property<string>("Value")
+                                            b3.Property<string>("Date")
                                                 .IsRequired()
                                                 .HasMaxLength(255)
                                                 .HasColumnType("varchar(255)");
@@ -144,7 +160,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                     b2.Property<Guid>("HistoricalEntryId")
                                         .HasColumnType("char(36)");
 
-                                    b2.Property<string>("Value")
+                                    b2.Property<string>("Date")
                                         .IsRequired()
                                         .HasColumnType("longtext");
 
@@ -198,7 +214,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                     b2.Property<string>("Currency")
                                         .HasColumnType("longtext");
 
-                                    b2.Property<decimal?>("Value")
+                                    b2.Property<decimal?>("Date")
                                         .HasPrecision(15, 2)
                                         .HasColumnType("decimal(15,2)");
 
@@ -257,6 +273,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
                             b1.Navigation("Valuation");
                         });
+
+                    b.Navigation("Deadline");
 
                     b.Navigation("Enquiry");
 

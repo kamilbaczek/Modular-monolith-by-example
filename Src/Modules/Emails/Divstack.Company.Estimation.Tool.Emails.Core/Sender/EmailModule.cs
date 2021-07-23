@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
+using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
+using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;
@@ -12,45 +14,41 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
     internal sealed class EmailModule : IEmailModule
     {
         private readonly IMailConfiguration _mailConfiguration;
+        private readonly IBackgroundJobScheduler _backgroundJobScheduler;
 
-        public EmailModule(IMailConfiguration mailConfiguration)
+        public EmailModule(IMailConfiguration mailConfiguration, IBackgroundJobScheduler backgroundJobScheduler)
         {
             _mailConfiguration = mailConfiguration;
+            _backgroundJobScheduler = backgroundJobScheduler;
         }
 
-        public async Task SendEmailAsync(string email, string subject, string text)
+        public Task SendEmailAsync(string email, string subject, string text)
         {
             if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
             {
-                var message = BuildMessage(email, subject, text);
-                await SendMessageAsync(message);
+                _backgroundJobScheduler.Run(() => SendMessageAsync(email, subject, text));
             }
+
+            return Task.CompletedTask;
         }
 
         private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
                                                      && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
 
-        private async Task SendMessageAsync(MimeMessage message)
+        public async Task SendMessageAsync(string email, string subject, string text)
         {
+            var message = BuildMessage(email, subject, text);
             using var client = new SmtpClient();
             if (_mailConfiguration.DisableSsl)
             {
                 DisableSsl(client);
             }
 
-            try
-            {
-                await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
-                if (IsConfiguredAuthentication())
-                    await client.AuthenticateAsync(_mailConfiguration.ServerLogin, _mailConfiguration.ServerPassword);
-                await client.SendAsync(message);
-                await client.DisconnectAsync(true);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
+            if (IsConfiguredAuthentication())
+                await client.AuthenticateAsync(_mailConfiguration.ServerLogin, _mailConfiguration.ServerPassword);
+            await client.SendAsync(message);
+            await client.DisconnectAsync(true);
         }
 
         private MimeMessage BuildMessage(string email, string subject, string text)

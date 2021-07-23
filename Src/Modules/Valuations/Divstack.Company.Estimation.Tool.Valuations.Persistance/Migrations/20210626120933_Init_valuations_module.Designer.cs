@@ -77,7 +77,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                             b3.Property<Guid>("ClientEnquiryValuationId")
                                                 .HasColumnType("char(36)");
 
-                                            b3.Property<string>("Value")
+                                            b3.Property<string>("Date")
                                                 .IsRequired()
                                                 .HasMaxLength(255)
                                                 .HasColumnType("varchar(255)");
@@ -146,7 +146,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                     b2.Property<Guid>("HistoricalEntryId")
                                         .HasColumnType("char(36)");
 
-                                    b2.Property<string>("Value")
+                                    b2.Property<string>("Date")
                                         .IsRequired()
                                         .HasColumnType("longtext");
 
@@ -200,7 +200,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                                     b2.Property<string>("Currency")
                                         .HasColumnType("longtext");
 
-                                    b2.Property<decimal?>("Value")
+                                    b2.Property<decimal?>("Date")
                                         .HasPrecision(15, 2)
                                         .HasColumnType("decimal(15,2)");
 

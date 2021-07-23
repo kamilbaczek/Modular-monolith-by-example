@@ -1,5 +1,6 @@
 using Divstack.Company.Estimation.Tool.Estimations.Api;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
+using Divstack.Company.Estimation.Tool.Reminders;
 using Divstack.Company.Estimation.Tool.Services.Api;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 using Divstack.Company.Estimation.Tool.Users.Api;
@@ -28,6 +29,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             services.AddServicesModule(Configuration);
             services.AddValuationsModule(Configuration);
             services.AddEmailsModule();
+            services.AddRemindersModule();
         }
 
         public void Configure(

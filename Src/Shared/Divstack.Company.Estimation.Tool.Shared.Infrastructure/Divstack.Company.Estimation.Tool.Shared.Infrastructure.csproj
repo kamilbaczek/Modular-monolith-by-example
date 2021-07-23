@@ -6,6 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Hangfire" Version="1.7.24" />
+      <PackageReference Include="Hangfire.InMemory" Version="0.3.4" />
       <PackageReference Include="MediatR" Version="9.0.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
@@ -17,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
     </ItemGroup>
 
