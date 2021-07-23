@@ -8,16 +8,16 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired
 {
     internal sealed class PasswordExpiredMailSender : IPasswordExpiredMailSender
     {
-        private readonly IEmailModule _ieMailModule;
+        private readonly IEmailSender _emailSender;
         private readonly IPasswordExpiredMailConfiguration configuration;
 
-        public PasswordExpiredMailSender(IPasswordExpiredMailConfiguration configuration, IEmailModule ieMailModule)
+        public PasswordExpiredMailSender(IPasswordExpiredMailConfiguration configuration, IEmailSender emailSender)
         {
             this.configuration = configuration;
-            _ieMailModule = ieMailModule;
+            _emailSender = emailSender;
         }
 
-        public async Task SendResetPasswordEmailAsync(string email, string token, Guid userId)
+        public void Send(string email, string token, Guid userId)
         {
             if (string.IsNullOrWhiteSpace(configuration.Format))
                 throw new InvalidOperationException("Password Expired email format is not set");
@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired
                 .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()))
                 .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token));
 
-            await _ieMailModule.SendEmailAsync(email, configuration.Subject, emailText);
+            _emailSender.Send(email, configuration.Subject, emailText);
         }
     }
 }

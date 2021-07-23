@@ -9,17 +9,17 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword
     internal class ForgotPasswordMailSender : IForgotPasswordMailSender
     {
         private readonly IForgotPasswordMailConfiguration _configuration;
-        private readonly IEmailModule _ieMailModule;
+        private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordMailSender(IEmailModule ieMailModule, IForgotPasswordMailConfiguration configuration)
+        public ForgotPasswordMailSender(IEmailSender emailSender, IForgotPasswordMailConfiguration configuration)
         {
-            _ieMailModule = ieMailModule;
+            _emailSender = emailSender;
             _configuration = configuration;
         }
 
-        public async Task
-            SendForgotPasswordMail(string email, string token,
-                Guid userId) // todo this is almost exactly like SendConfirmAccountMail - refactor it so no code is copied
+        public void
+            Send(string email, string token,
+                Guid userId)
         {
             if (string.IsNullOrWhiteSpace(_configuration.Format))
                 throw new InvalidOperationException("Forgot password email format is not set");
@@ -30,7 +30,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword
                 .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token))
                 .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()));
 
-            await _ieMailModule.SendEmailAsync(email, _configuration.Subject, emailText);
+            _emailSender.Send(email, _configuration.Subject, emailText);
         }
     }
 }

@@ -11,26 +11,26 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Sende
         private const string DaysToDeadlinePlaceholder = "{DaysToDeadline}";
 
         private readonly IValuationCloseToDeadlineMailConfiguration _configuration;
-        private readonly IEmailModule _emailModule;
+        private readonly IEmailSender _emailSender;
         private readonly IMailTemplateReader _mailTemplateReader;
 
         public ValuationCloseToDeadlineMailSender(IValuationCloseToDeadlineMailConfiguration configuration,
-            IEmailModule emailModule,
+            IEmailSender emailSender,
             IMailTemplateReader mailTemplateReader)
         {
             _configuration = configuration;
-            _emailModule = emailModule;
+            _emailSender = emailSender;
             _mailTemplateReader = mailTemplateReader;
         }
 
-        public async Task SendEmailAsync(ValuationCloseToDeadlineEmailRequest request)
+        public void Send(ValuationCloseToDeadlineEmailRequest request)
         {
             var htmlTemplate = _mailTemplateReader.Read(_configuration.PathToTemplate);
             var emailAsHtml = htmlTemplate
                 .Replace(ValuationIdPlaceholder, request.ValuationId.ToString())
                 .Replace(DaysToDeadlinePlaceholder, request.DaysToDeadline.ToString());
 
-            await _emailModule.SendEmailAsync(request.EmployeeEmail, _configuration.Subject, emailAsHtml);
+            _emailSender.Send(request.EmployeeEmail, _configuration.Subject, emailAsHtml);
         }
     }
 }

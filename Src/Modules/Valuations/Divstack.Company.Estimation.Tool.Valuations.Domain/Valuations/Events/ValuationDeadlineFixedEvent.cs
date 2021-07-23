@@ -10,11 +10,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events
         public ValuationDeadlineFixedEvent(ValuationId valuationId, Deadline deadline)
         {
             ValuationId = valuationId;
-            Date = deadline.Date;
+            DeadlineDate = deadline.Date;
         }
 
         public ValuationId ValuationId { get; }
-        public DateTime Date { get; }
+        public DateTime DeadlineDate { get; }
 
     }
 }

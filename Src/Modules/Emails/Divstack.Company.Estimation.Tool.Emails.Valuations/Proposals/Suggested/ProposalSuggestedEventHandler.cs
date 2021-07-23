@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
             _proposalSuggestedMailSender = proposalSuggestedMailSender;
         }
 
-        public async Task Handle(ProposalSuggestedEvent proposalSuggestedEvent, CancellationToken cancellationToken)
+        public Task Handle(ProposalSuggestedEvent proposalSuggestedEvent, CancellationToken cancellationToken)
         {
             var request = new ValuationProposalSuggestedEmailRequest(
                 proposalSuggestedEvent.FullName,
@@ -24,7 +24,9 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
                 proposalSuggestedEvent.ProposalId.Value,
                 proposalSuggestedEvent.Value,
                 proposalSuggestedEvent.Description.Message);
-            await _proposalSuggestedMailSender.SendEmailAsync(request);
+             _proposalSuggestedMailSender.Send(request);
+
+             return Task.CompletedTask;
         }
     }
 }

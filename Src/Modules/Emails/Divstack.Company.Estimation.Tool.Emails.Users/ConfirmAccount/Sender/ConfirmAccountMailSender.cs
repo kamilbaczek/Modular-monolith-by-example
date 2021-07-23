@@ -9,16 +9,16 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.S
     internal class ConfirmAccountMailSender : IConfirmAccountMailSender
     {
         private readonly IConfirmAccountMailConfiguration _confirmAccountMailConfiguration;
-        private readonly IEmailModule _ieMailModule;
+        private readonly IEmailSender _mailSender;
 
         public ConfirmAccountMailSender(IConfirmAccountMailConfiguration confirmAccountMailConfiguration,
-            IEmailModule ieMailModule)
+            IEmailSender mailSender)
         {
             _confirmAccountMailConfiguration = confirmAccountMailConfiguration;
-            _ieMailModule = ieMailModule;
+            _mailSender = mailSender;
         }
 
-        public async Task SendConfirmationEmailAsync(string email, string token, Guid userId)
+        public void Send(string email, string token, Guid userId)
         {
             if (string.IsNullOrWhiteSpace(_confirmAccountMailConfiguration.Format))
                 throw new InvalidOperationException("Confirmation email format is not set");
@@ -29,7 +29,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.S
                 .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()))
                 .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token));
 
-            await _ieMailModule.SendEmailAsync(email, _confirmAccountMailConfiguration.Subject, emailText);
+             _mailSender.Send(email, _confirmAccountMailConfiguration.Subject, emailText);
         }
     }
 }

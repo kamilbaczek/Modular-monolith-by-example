@@ -22,7 +22,7 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Sc
         {
             _backgroundJobScheduler.Schedule(
                 () => _valuationsDeadlineCloseReminder.RemindAsync(notification.Id, 1, cancellationToken),
-                notification.Date);
+                notification.DeadlineDate);
 
             return Task.CompletedTask;
         }

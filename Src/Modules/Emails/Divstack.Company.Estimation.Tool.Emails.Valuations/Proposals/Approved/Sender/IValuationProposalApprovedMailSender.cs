@@ -4,6 +4,6 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.
 {
     internal interface IValuationProposalApprovedMailSender
     {
-        Task SendEmailAsync(ValuationProposalApprovedEmailRequest request);
+        void Send(ValuationProposalApprovedEmailRequest request);
     }
 }

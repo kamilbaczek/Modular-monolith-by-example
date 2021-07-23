@@ -35,7 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose
                     email,
                     valuationCloseToDeadlineRemindEvent.ValuationId);
 
-                await _valuationCloseToDeadlineMailSender.SendEmailAsync(request);
+                _valuationCloseToDeadlineMailSender.Send(request);
             }
         }
     }

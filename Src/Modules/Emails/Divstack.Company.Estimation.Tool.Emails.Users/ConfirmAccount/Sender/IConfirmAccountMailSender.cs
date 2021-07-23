@@ -5,6 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.S
 {
     internal interface IConfirmAccountMailSender
     {
-        Task SendConfirmationEmailAsync(string email, string token, Guid userId);
+        void Send(string email, string token, Guid userId);
     }
 }

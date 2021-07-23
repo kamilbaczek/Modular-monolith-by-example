@@ -13,7 +13,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core
     {
         internal static IServiceCollection AddEmailCore(this IServiceCollection services)
         {
-            services.AddScoped<IEmailModule, EmailModule>();
+            services.AddScoped<IEmailSender, EmailSender>();
             services.AddSingleton<IMailConfiguration, MailConfiguration>();
             services.AddScoped<IMailTemplateReader, MailTemplateReader>();
 

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;
@@ -11,25 +9,23 @@ using static System.String;
 
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
 {
-    internal sealed class EmailModule : IEmailModule
+    internal sealed class EmailSender : IEmailSender
     {
         private readonly IMailConfiguration _mailConfiguration;
         private readonly IBackgroundJobScheduler _backgroundJobScheduler;
 
-        public EmailModule(IMailConfiguration mailConfiguration, IBackgroundJobScheduler backgroundJobScheduler)
+        public EmailSender(IMailConfiguration mailConfiguration, IBackgroundJobScheduler backgroundJobScheduler)
         {
             _mailConfiguration = mailConfiguration;
             _backgroundJobScheduler = backgroundJobScheduler;
         }
 
-        public Task SendEmailAsync(string email, string subject, string text)
+        public void Send(string email, string subject, string text)
         {
             if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
             {
                 _backgroundJobScheduler.Run(() => SendMessageAsync(email, subject, text));
             }
-
-            return Task.CompletedTask;
         }
 
         private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
@@ -64,6 +60,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
             {
                 Text = text
             };
+
             return message;
         }
 

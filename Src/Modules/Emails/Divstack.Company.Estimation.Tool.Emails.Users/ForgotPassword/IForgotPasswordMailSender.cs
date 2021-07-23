@@ -5,6 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword
 {
     internal interface IForgotPasswordMailSender
     {
-        Task SendForgotPasswordMail(string email, string token, Guid userId);
+        void Send(string email, string token, Guid userId);
     }
 }
