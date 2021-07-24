@@ -5,6 +5,7 @@ using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using MediatR;
 
@@ -13,16 +14,19 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
     internal sealed class RequestValuationCommandHandler : IRequestHandler<RequestValuationCommand>
     {
         private readonly IEventPublisher _eventPublisher;
+        private readonly IDeadlinesConfiguration _deadlinesConfiguration;
         private readonly IServiceExistingChecker _serviceExistingChecker;
         private readonly IValuationsRepository _valuationsRepository;
 
         public RequestValuationCommandHandler(IValuationsRepository valuationsRepository,
             IServiceExistingChecker serviceExistingChecker,
-            IEventPublisher eventPublisher)
+            IEventPublisher eventPublisher,
+            IDeadlinesConfiguration deadlinesConfiguration)
         {
             _valuationsRepository = valuationsRepository;
             _serviceExistingChecker = serviceExistingChecker;
             _eventPublisher = eventPublisher;
+            _deadlinesConfiguration = deadlinesConfiguration;
         }
 
         public async Task<Unit> Handle(RequestValuationCommand requestValuation, CancellationToken cancellationToken)
@@ -32,7 +36,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             var serviceIds = requestValuation.ServicesIds
                 .Select(id => new ServiceId(id))
                 .ToList();
-            var valuation = await Valuation.RequestAsync(serviceIds, client, _serviceExistingChecker);
+
+            var deadline = Deadline.Create(_deadlinesConfiguration);
+            var valuation = await Valuation.RequestAsync(serviceIds, client, deadline, _serviceExistingChecker);
             await _valuationsRepository.AddAsync(valuation, cancellationToken);
             await _valuationsRepository.CommitAsync(cancellationToken);
             _eventPublisher.Publish(valuation.DomainEvents);

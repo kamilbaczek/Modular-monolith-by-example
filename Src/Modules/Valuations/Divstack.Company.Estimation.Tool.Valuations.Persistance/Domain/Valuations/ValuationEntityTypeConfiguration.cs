@@ -3,6 +3,7 @@ using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
@@ -17,10 +18,15 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
         {
             builder.ToTable("Valuations");
             builder.HasKey("Id");
+
             builder.Property<ValuationId>("Id")
                 .HasConversion(id => id.Value, value => new ValuationId(value))
                 .IsIdentity();
 
+            builder.OwnsOne<Deadline>("Deadline", deadlineValueObjectBuilder =>
+            {
+                deadlineValueObjectBuilder.Property<DateTime>("Date").IsRequired();
+            });
             builder.OwnsMany<Proposal>("Proposals", ownedNavigationBuilder =>
             {
                 ownedNavigationBuilder.WithOwner("Valuation").HasForeignKey();
@@ -96,11 +102,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 {
                     clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
                     clientValueObjectBuilder.Property<string>("LastName").IsRequired();
-                    clientValueObjectBuilder.OwnsOne<Email>("Email",
-                        emailValueObjectBuilder =>
-                        {
-                            emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
-                        });
                     clientValueObjectBuilder.OwnsOne<Email>("Email",
                         emailValueObjectBuilder =>
                         {

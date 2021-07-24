@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
         public TContext CreateDbContext(string[] args)
         {
             var basePath = Directory.GetCurrentDirectory() +
-                           string.Format("{0}..{0}Divstack.Company.Estimation.Tool.Bootstrapper",
+                           string.Format("{0}..{0}..{0}..{0}Bootstrapper{0}Divstack.Company.Estimation.Tool.Bootstrapper",
                                Path.DirectorySeparatorChar);
             Console.WriteLine(basePath);
 

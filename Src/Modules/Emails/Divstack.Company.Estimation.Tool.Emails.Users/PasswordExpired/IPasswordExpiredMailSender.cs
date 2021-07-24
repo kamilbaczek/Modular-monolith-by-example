@@ -5,6 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired
 {
     internal interface IPasswordExpiredMailSender
     {
-        Task SendResetPasswordEmailAsync(string email, string token, Guid userId);
+        void Send(string email, string token, Guid userId);
     }
 }

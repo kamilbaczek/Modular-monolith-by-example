@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
+using Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
             services.AddSwaggerModule();
             services.AddMvcCore();
             services.AddCors();
+            services.AddBackgroundProcessing();
 
             return services;
         }
@@ -35,6 +37,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
                 .AllowAnyMethod());
             app.UseSwaggerModule();
             app.UseCustomExceptionHandler();
+            app.UseBackgroundProcessing();
         }
     }
 }

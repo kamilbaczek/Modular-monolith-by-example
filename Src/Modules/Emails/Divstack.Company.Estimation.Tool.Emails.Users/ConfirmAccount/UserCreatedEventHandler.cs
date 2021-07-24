@@ -15,12 +15,14 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount
             _confirmAccountMailSender = confirmAccountMailSender;
         }
 
-        public async Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
         {
-            await _confirmAccountMailSender.SendConfirmationEmailAsync(
+             _confirmAccountMailSender.Send(
                 notification.Email,
                 notification.ConfirmAccountToken,
                 notification.UserPublicId);
+
+             return Task.CompletedTask;
         }
     }
 }

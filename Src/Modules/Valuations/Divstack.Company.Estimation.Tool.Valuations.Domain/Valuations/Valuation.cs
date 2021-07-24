@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
@@ -22,17 +23,19 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 
         private Valuation(
             IReadOnlyList<ServiceId> serviceIds,
-            Client client)
+            Client client,
+            Deadline deadline)
         {
             Id = new ValuationId(Guid.NewGuid());
+            AddDomainEvent(new ValuationRequestedEvent(Id, serviceIds, client.Email));
             Enquiry = Enquiry.Create(this, serviceIds, client);
             RequestedDate = SystemTime.Now();
             Proposals = new List<Proposal>();
             History = new List<HistoricalEntry>();
             ChangeStatus(ValuationStatus.WaitForProposal);
-            AddDomainEvent(new ValuationRequestedEvent(Id, serviceIds, client.Email));
+            Deadline = deadline;
+            AddDomainEvent(new ValuationDeadlineFixedEvent(Id, Deadline));
         }
-
         public ValuationId Id { get; }
         private IList<Proposal> Proposals { get; }
         private IList<HistoricalEntry> History { get; }
@@ -45,7 +48,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private DateTime RequestedDate { get; }
         private DateTime? CompletedDate { get; set; }
         private EmployeeId CompletedBy { get; set; }
-
+        private Deadline Deadline { get; }
         private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
         private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
         private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
@@ -53,6 +56,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         public static async Task<Valuation> RequestAsync(
             List<ServiceId> serviceIds,
             Client client,
+            Deadline deadline,
             IServiceExistingChecker serviceExistingChecker)
         {
             var productsIdsValues = serviceIds.Select(id => id.Value).ToList();
@@ -60,7 +64,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             if (areServicesExists is false)
                 throw new InvalidServicesException(serviceIds);
 
-            return new Valuation(serviceIds, client);
+            return new Valuation(serviceIds, client, deadline);
         }
 
         public void SuggestProposal(Money value,

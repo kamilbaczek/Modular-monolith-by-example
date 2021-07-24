@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj" />
+      <ProjectReference Include="..\..\Reminders\Divstack.Company.Estimation.Tool.Reminders.Valuations\Divstack.Company.Estimation.Tool.Reminders.Valuations.csproj" />
       <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj" />
       <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj" />
@@ -23,6 +24,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="DeadlineClose\Templates\valuation_close_to_deadline_mail.html">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
       <EmbeddedResource Include="Proposals\Templates\valuation_proposal_suggested_mail.html">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </EmbeddedResource>

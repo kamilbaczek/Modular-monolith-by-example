@@ -97,7 +97,7 @@ namespace Divstack.Company.Estimation.Tool.Carts.Domain.Carts
             LastActivity = DateTime.Now;
         }
 
-        private CartItem? FindItemByProductOrDefault(Guid productId)
+        private CartItem FindItemByProductOrDefault(Guid productId)
         {
             return Items.SingleOrDefault(item => item.ProductId == productId);
         }

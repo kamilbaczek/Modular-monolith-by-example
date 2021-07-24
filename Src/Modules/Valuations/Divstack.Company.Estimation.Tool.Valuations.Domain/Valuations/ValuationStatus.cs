@@ -10,6 +10,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private const string ApprovedStatus = "Approved";
         private const string CompletedStatus = "Completed";
 
+        private ValuationStatus()
+        {
+        }
+
         private ValuationStatus(string value)
         {
             Value = value;

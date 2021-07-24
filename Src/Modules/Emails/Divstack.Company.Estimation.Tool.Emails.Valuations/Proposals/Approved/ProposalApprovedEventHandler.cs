@@ -32,7 +32,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved
                 proposalApprovedEvent.ProposalId.Value,
                 proposalApprovedEvent.Value);
 
-            await _valuationProposalApprovedMailSender.SendEmailAsync(request);
+            _valuationProposalApprovedMailSender.Send(request);
         }
     }
 }

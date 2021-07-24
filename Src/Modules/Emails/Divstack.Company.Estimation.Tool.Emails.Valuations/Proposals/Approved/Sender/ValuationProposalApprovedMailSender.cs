@@ -18,19 +18,19 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.
         private const string PriceCurrencyPlaceholder = "{PriceCurrency}";
 
         private readonly IValuationProposalApprovedMailConfiguration _configuration;
-        private readonly IEmailModule _emailModule;
+        private readonly IEmailSender _emailSender;
         private readonly IMailTemplateReader _mailTemplateReader;
 
         public ValuationProposalApprovedMailSender(IValuationProposalApprovedMailConfiguration configuration,
-            IEmailModule emailModule,
+            IEmailSender emailSender,
             IMailTemplateReader mailTemplateReader)
         {
             _configuration = configuration;
-            _emailModule = emailModule;
+            _emailSender = emailSender;
             _mailTemplateReader = mailTemplateReader;
         }
 
-        public async Task SendEmailAsync(ValuationProposalApprovedEmailRequest request)
+        public void Send(ValuationProposalApprovedEmailRequest request)
         {
             var approvedLink = _configuration.ApprovedProposalLink
                 .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
@@ -43,7 +43,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.
                 .Replace(ClientEmailPlaceholder, request.SuggestedByEmployeeEmail)
                 .Replace(PriceValuePlaceholder, request.Value.Value.ToString());
 
-            await _emailModule.SendEmailAsync(request.SuggestedByEmployeeEmail, _configuration.Subject, emailAsHtml);
+            _emailSender.Send(request.SuggestedByEmployeeEmail, _configuration.Subject, emailAsHtml);
         }
     }
 }
