@@ -12,19 +12,19 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
     internal sealed class EmailSender : IEmailSender
     {
         private readonly IMailConfiguration _mailConfiguration;
-        private readonly IBackgroundJobScheduler _backgroundJobScheduler;
+        private readonly IBackgroundProcessQueue _backgroundProcessQueue;
 
-        public EmailSender(IMailConfiguration mailConfiguration, IBackgroundJobScheduler backgroundJobScheduler)
+        public EmailSender(IMailConfiguration mailConfiguration, IBackgroundProcessQueue backgroundProcessQueue)
         {
             _mailConfiguration = mailConfiguration;
-            _backgroundJobScheduler = backgroundJobScheduler;
+            _backgroundProcessQueue = backgroundProcessQueue;
         }
 
         public void Send(string email, string subject, string text)
         {
             if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
             {
-                _backgroundJobScheduler.Run(() => SendMessageAsync(email, subject, text));
+                _backgroundProcessQueue.Enqueue(() => SendMessageAsync(email, subject, text));
             }
         }
 

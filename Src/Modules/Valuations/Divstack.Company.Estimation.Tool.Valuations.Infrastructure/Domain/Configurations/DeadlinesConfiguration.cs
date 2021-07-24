@@ -10,7 +10,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Con
 
         public DeadlinesConfiguration(IConfiguration configuration)
         {
-            _configuration = configuration.GetSection($"{nameof(Valuation)}:{nameof(Deadline)}");
+            var sectionKey = $"{nameof(Valuation)}:{nameof(Deadline)}";
+            _configuration = configuration.GetSection(sectionKey);
         }
 
         public int WorksDaysToDeadlineFromNow => _configuration.GetValue<int>(nameof(WorksDaysToDeadlineFromNow));

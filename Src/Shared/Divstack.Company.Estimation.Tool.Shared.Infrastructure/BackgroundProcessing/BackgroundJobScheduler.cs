@@ -10,7 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProce
     {
         public void Schedule(Expression<Action> methodCall, DateTime date)
         {
-            var enqueueAt = new DateTimeOffset(DateTime.Now.AddMinutes(1));
+            var enqueueAt = new DateTimeOffset(date);
             BackgroundJob.Schedule(
                 methodCall,
                 enqueueAt);
