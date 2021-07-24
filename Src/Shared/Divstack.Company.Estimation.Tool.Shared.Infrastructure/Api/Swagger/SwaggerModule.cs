@@ -25,7 +25,11 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
         internal static void UseSwaggerModule(this IApplicationBuilder app)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/api/swagger.json", "Estimation Tool"); });
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/api/swagger.json", "Estimation Tool");
+            });
         }
     }
 }
