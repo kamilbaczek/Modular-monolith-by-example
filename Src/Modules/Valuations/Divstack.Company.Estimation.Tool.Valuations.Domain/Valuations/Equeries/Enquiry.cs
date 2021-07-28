@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ardalis.GuardClauses;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
@@ -17,12 +18,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries
             IReadOnlyList<ServiceId> serviceIds,
             Client client)
         {
-            Valuation = valuation ?? throw new ArgumentNullException(nameof(valuation));
+            Valuation = Guard.Against.Null(valuation, nameof(valuation));
             if (!serviceIds.Any())
                 throw new InvalidOperationException("Cannot request valuation without services");
-            InquiryServices = serviceIds.Select(serviceId => InquiryService.Create(serviceId, this)).ToList()
+            InquiryServices = serviceIds
+                .Select(serviceId => InquiryService.Create(serviceId, this))
+                .ToList()
                 .AsReadOnly();
-            Client = client ?? throw new ArgumentNullException(nameof(client));
+            Client = Guard.Against.Null(client, nameof(client));
         }
 
         internal Email ClientEmail => Client.Email;

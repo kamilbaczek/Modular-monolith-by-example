@@ -6,5 +6,6 @@ namespace Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcess
     public interface IBackgroundJobScheduler
     {
         void Schedule(Expression<Action> methodCall, DateTime date);
+        void UnSchedule(Expression<Action> methodCall);
     }
 }

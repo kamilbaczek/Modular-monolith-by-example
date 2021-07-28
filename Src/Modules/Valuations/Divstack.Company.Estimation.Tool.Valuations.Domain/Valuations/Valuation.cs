@@ -128,7 +128,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             proposal.Cancel(employeeId);
             ChangeStatus(ValuationStatus.WaitForProposal);
 
-            AddDomainEvent(new ProposalCancelledEvent(employeeId, proposalId));
+            AddDomainEvent(new ProposalCancelledEvent(employeeId, proposalId, Id));
         }
 
         public void Complete(EmployeeId employeeId)

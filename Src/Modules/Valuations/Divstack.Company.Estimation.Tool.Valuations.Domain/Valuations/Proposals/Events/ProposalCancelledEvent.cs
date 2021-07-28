@@ -4,13 +4,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class ProposalCancelledEvent : DomainEventBase
     {
-        public ProposalCancelledEvent(EmployeeId cancelledBy, ProposalId proposalId)
+        public ProposalCancelledEvent(EmployeeId cancelledBy, ProposalId proposalId, ValuationId valuationId)
         {
             CancelledBy = cancelledBy;
             ProposalId = proposalId;
+            ValuationId = valuationId;
         }
 
         public EmployeeId CancelledBy { get; }
         public ProposalId ProposalId { get; }
+        public ValuationId ValuationId { get; }
     }
 }

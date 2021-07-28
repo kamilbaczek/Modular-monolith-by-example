@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0" />
       <PackageReference Include="ValueOf" Version="1.0.17" />
     </ItemGroup>
 
