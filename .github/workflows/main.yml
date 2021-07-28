@@ -14,7 +14,7 @@ jobs:
       - name: Valuations Domain Tests
         uses: zyborg/dotnet-tests-report@v1
         with:
-          project_path: /home/runner/work/Estimation-Tool/Estimation-Tool/Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.csproj
+          project_path: Src
           report_name: valuations_domain_project_tests
           report_title: Valuations Domain Tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
