@@ -11,14 +11,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: ls
       - name: Valuations Domain Tests
         uses: zyborg/dotnet-tests-report@v1
         with:
           report_name: valuations_domain_project_tests
           report_title: Valuations Domain Tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          project_path: /home/runner/work/Estimation-Tool/Estimation-Tool/home/runner/wo
-rk/Estimation-Tool/Estimation-Tool/Divstack.Company.Estimation.Tool.sln
+          project_path: /home/runner/work/Estimation-Tool/Estimation-Tool/home/runner/work/Estimation-Tool/Estimation-Tool/Divstack.Company.Estimation.Tool.sln
 
