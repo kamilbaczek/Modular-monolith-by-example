@@ -11,11 +11,6 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             CreateHostBuilder(args).Build().Run();
         }
 
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })

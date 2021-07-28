@@ -23,13 +23,13 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Sc
             _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
         }
 
-        public Task Handle(ValuationDeadlineFixedEvent notification, CancellationToken cancellationToken)
+        public Task Handle(ValuationDeadlineFixedEvent valuationDeadlineFixedEvent, CancellationToken cancellationToken)
         {
             var reminderDate =
-                notification.DeadlineDate.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+                valuationDeadlineFixedEvent.DeadlineDate.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
           _backgroundJobScheduler.Schedule(
                 () => _valuationsDeadlineCloseReminder.RemindAsync(
-                    notification.ValuationId.Value,
+                    valuationDeadlineFixedEvent.ValuationId.Value,
                     _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
                     cancellationToken),
                 reminderDate);

@@ -24,7 +24,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure
             services.AddMediationModule();
             services.AddDeadlines();
             services.AddTrello();
-
             services.AddScoped<IValuationsModule, ValuationsModule>();
             services.AddScoped<IEventPublisher, EventPublisher>();
 
