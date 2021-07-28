@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
@@ -23,6 +24,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
         {
             var valuationId = new ValuationId(command.ValuationId);
             var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
+            if (valuation is null)
+                throw new NotFoundException(command.ValuationId, nameof(Valuation));
             var proposalId = new ProposalId(command.ProposalId);
             var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
 
