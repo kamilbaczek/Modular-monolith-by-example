@@ -7,6 +7,7 @@ install:
 script:
   - dotnet build
   - dotnet test -v=normal
+
 deploy:
   provider: heroku
   api_key: $Heroku__App__Key
