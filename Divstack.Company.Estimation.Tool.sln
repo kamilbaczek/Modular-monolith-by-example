@@ -116,6 +116,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Reminders", "Src\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders\Divstack.Company.Estimation.Tool.Reminders.csproj", "{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests", "Src\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.csproj", "{4119DB08-0395-435D-95FE-CA6A1D88C6A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -258,6 +260,10 @@ Global
 		{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4119DB08-0395-435D-95FE-CA6A1D88C6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4119DB08-0395-435D-95FE-CA6A1D88C6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4119DB08-0395-435D-95FE-CA6A1D88C6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4119DB08-0395-435D-95FE-CA6A1D88C6A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -310,5 +316,6 @@ Global
 		{D88D1A4A-D511-4BF6-B813-097A5C68ED0C} = {BFEFB882-5EBB-4CE6-9F02-869B10C5B2A3}
 		{3264FE92-66A7-491B-984E-1013808D8A7F} = {D88D1A4A-D511-4BF6-B813-097A5C68ED0C}
 		{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8} = {D88D1A4A-D511-4BF6-B813-097A5C68ED0C}
+		{4119DB08-0395-435D-95FE-CA6A1D88C6A3} = {6F31D638-3020-4A9F-A04B-AF686C7E2B62}
 	EndGlobalSection
 EndGlobal

@@ -7,16 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
-      <ProjectReference Include="..\..\..\Shared\Testing\Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests\Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests.csproj" />
-      <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Persistance\Divstack.Company.Estimation.Tool.Users.Persistance.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Faker.Net" Version="1.5.138" />
       <PackageReference Include="FluentAssertions" Version="5.10.3" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
       <PackageReference Include="Moq" Version="4.16.1" />
       <PackageReference Include="netDumbster" Version="2.0.0.8" />
@@ -29,6 +22,10 @@
       <None Update="appsettings.json">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
     </ItemGroup>
 
 </Project>

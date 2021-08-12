@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
     public class ValuationsTesting
     {
         [OneTimeSetUp]
-        public void RunBeforeAnyTests()
+        public async Task RunBeforeAnyTests()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -65,7 +65,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
                 DbAdapter = DbAdapter.MySql
             };
 
-            EnsureDatabase();
+            await EnsureDatabase();
         }
 
 
@@ -103,7 +103,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         private static RespawnMySql _checkpoint;
         internal static Guid CurrentUserId { get; set; }
 
-        private void EnsureDatabase()
+        private async Task EnsureDatabase()
         {
             using var scope = _ServiceScopeFactory.CreateScope();
 
@@ -111,7 +111,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
             usersContext.Database.Migrate();
 
             var usersSeeder = scope.ServiceProvider.GetRequiredService<IUsersSeeder>();
-            usersSeeder.SeedAdminUser();
+            await usersSeeder.SeedAdminUserAsync();
 
             EnsureDatabaseModule(scope);
         }
