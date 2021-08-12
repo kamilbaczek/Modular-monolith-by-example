@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Comapany.Estimation.Tool.Shared.Testing.Application.IntegrationsTests;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
