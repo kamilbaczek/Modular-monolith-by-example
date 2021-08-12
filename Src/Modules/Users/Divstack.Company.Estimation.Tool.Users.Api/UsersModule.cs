@@ -22,7 +22,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api
 
         public static void UseUsersModule(this IApplicationBuilder app, IUsersSeeder usersSeeder)
         {
-            usersSeeder.SeedAdminUser();
+            usersSeeder.SeedAdminUserAsync();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users
             services.AddScoped<IRoleManagementService, RoleManagementService>();
             services.AddScoped<IPasswordComparer, PasswordComparer>();
             services.AddScoped<IPasswordsManagementService, PasswordsManagementService>();
-            services.AddScoped<IUsersSeeder, UsersSeeder>();
+            services.AddUserSeeder();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+﻿using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser.Requests;
 using Divstack.Company.Estimation.Tool.Users.Domain.Users;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
@@ -27,17 +28,16 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
             _systemAdminUserName = _adminAccountConfiguration.UserName;
         }
 
-        public void SeedAdminUser()
+        public async Task SeedAdminUserAsync()
         {
             if (!_adminAccountConfiguration.Init) return;
-            var systemRoleExist = AsyncUtil.RunSync(() =>
-                _roleManagementService.RoleExists(ApplicationRoleKeys.SystemAdministrator));
+            var systemRoleExist = await _roleManagementService.RoleExists(ApplicationRoleKeys.SystemAdministrator);
             if (!systemRoleExist)
             {
                 _roleManagementService.AddNewRole(ApplicationRoleKeys.SystemAdministrator).Wait();
             }
 
-            var adminExist = AsyncUtil.RunSync(() => _userManagementService.UserExists(_systemAdminUserName));
+            var adminExist = await _userManagementService.UserExists(_systemAdminUserName);
             if (adminExist) return;
 
             var createUserRequest = new CreateUserRequest(
