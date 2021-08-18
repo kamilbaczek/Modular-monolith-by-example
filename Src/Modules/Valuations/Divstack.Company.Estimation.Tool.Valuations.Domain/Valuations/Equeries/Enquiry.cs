@@ -4,6 +4,7 @@ using System.Linq;
 using Ardalis.GuardClauses;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries
 {

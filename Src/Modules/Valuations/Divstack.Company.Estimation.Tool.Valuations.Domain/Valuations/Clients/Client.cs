@@ -2,7 +2,7 @@
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
+namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients
 {
     public sealed class Client : ValueObject
     {
@@ -21,6 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         internal string FullName => $"{FirstName} {LastName}";
         private string FirstName { get; }
         private string LastName { get; }
+        private ClientCompany Company { get; }
 
         public static Client Of(Email email, string firstName, string lastName)
         {
