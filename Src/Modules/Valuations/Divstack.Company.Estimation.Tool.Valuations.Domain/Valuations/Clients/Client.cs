@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Ardalis.GuardClauses;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
@@ -10,11 +10,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients
         {
         }
 
-        private Client(Email email, string firstName, string lastName)
+        private Client(Email email, string firstName, string lastName, ClientCompany company)
         {
-            Email = email ?? throw new ArgumentNullException(nameof(email));
-            FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-            LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+            Email = Guard.Against.Null(email, nameof(email));
+            FirstName = Guard.Against.Null(firstName, nameof(firstName));
+            LastName = Guard.Against.Null(lastName, nameof(lastName));
+            Company = Guard.Against.Null(company, nameof(company));;
         }
 
         internal Email Email { get; }
@@ -23,9 +24,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients
         private string LastName { get; }
         private ClientCompany Company { get; }
 
-        public static Client Of(Email email, string firstName, string lastName)
+        public static Client Of(Email email, string firstName, string lastName, ClientCompany company)
         {
-            return new(email, firstName, lastName);
+            return new(email, firstName, lastName, company);
         }
     }
 }

@@ -15,7 +15,7 @@
       <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj" />
       <ProjectReference Include="..\..\Reminders\Divstack.Company.Estimation.Tool.Reminders.Valuations\Divstack.Company.Estimation.Tool.Reminders.Valuations.csproj" />
       <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj" />
-      <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
+      <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj" />
     </ItemGroup>
 

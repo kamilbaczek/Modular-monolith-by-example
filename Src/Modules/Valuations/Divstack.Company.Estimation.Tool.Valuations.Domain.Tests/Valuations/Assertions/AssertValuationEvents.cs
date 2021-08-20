@@ -12,48 +12,48 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
 {
     internal static class AssertValuationEvents
     {
-        internal static void AssertIsCorrect(this ValuationRequestedEvent @event, List<ServiceId> serviceIds,
+        internal static void AssertIsCorrect(this ValuationRequestedDomainEvent domainEvent, List<ServiceId> serviceIds,
             Email email)
         {
-            @event.Should().NotBeNull();
-            @event.ClientEmail.Should().Be(email);
-            @event.ServiceIds.Should().BeEquivalentTo(serviceIds);
+            domainEvent.Should().NotBeNull();
+            domainEvent.ClientEmail.Should().Be(email);
+            domainEvent.ServiceIds.Should().BeEquivalentTo(serviceIds);
         }
 
-        internal static void AssertIsCorrect(this ProposalSuggestedEvent @event, Money money, EmployeeId employee)
+        internal static void AssertIsCorrect(this ProposalSuggestedDomainEvent domainEvent, Money money, EmployeeId employee)
         {
-            @event.Should().NotBeNull();
-            @event.Value.Should().Be(money);
-            @event.ProposalId.Should().NotBeNull();
-            @event.ProposedBy.Should().Be(employee);
+            domainEvent.Should().NotBeNull();
+            domainEvent.Value.Should().Be(money);
+            domainEvent.ProposalId.Should().NotBeNull();
+            domainEvent.ProposedBy.Should().Be(employee);
         }
 
-        internal static void AssertIsCorrect(this ProposalApprovedEvent @event,
+        internal static void AssertIsCorrect(this ProposalApprovedDomainEvent domainEvent,
             EmployeeId employeeId,
             ProposalId proposalId)
         {
-            @event.Should().NotBeNull();
-            @event.SuggestedBy.Should().Be(employeeId);
-            @event.ProposalId.Should().Be(proposalId);
+            domainEvent.Should().NotBeNull();
+            domainEvent.SuggestedBy.Should().Be(employeeId);
+            domainEvent.ProposalId.Should().Be(proposalId);
         }
 
-        internal static void AssertIsCorrect(this ProposalRejectedEvent @event,
+        internal static void AssertIsCorrect(this ProposalRejectedDomainEvent domainEvent,
             Email clientEmail,
             ProposalId proposalId,
             string rejectReason)
         {
-            @event.Should().NotBeNull();
-            @event.ClientEmail.Should().Be(clientEmail);
-            @event.ProposalId.Should().Be(proposalId);
+            domainEvent.Should().NotBeNull();
+            domainEvent.ClientEmail.Should().Be(clientEmail);
+            domainEvent.ProposalId.Should().Be(proposalId);
         }
 
-        internal static void AssertIsCorrect(this ValuationCompletedEvent @event,
+        internal static void AssertIsCorrect(this ValuationCompletedDomainEvent domainEvent,
             EmployeeId closedBy,
             ValuationId valuationId)
         {
-            @event.Should().NotBeNull();
-            @event.ClosedBy.Should().Be(closedBy);
-            @event.ValuationId.Should().Be(valuationId);
+            domainEvent.Should().NotBeNull();
+            domainEvent.ClosedBy.Should().Be(closedBy);
+            domainEvent.ValuationId.Should().Be(valuationId);
         }
     }
 }

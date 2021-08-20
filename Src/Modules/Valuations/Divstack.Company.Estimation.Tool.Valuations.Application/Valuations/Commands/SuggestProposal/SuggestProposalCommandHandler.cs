@@ -12,16 +12,16 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
     internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestProposalCommand>
     {
         private readonly ICurrentUserService _currentUserService;
-        private readonly IEventPublisher _eventPublisher;
+        private readonly IIntegrationEventPublisher _integrationEventPublisher;
         private readonly IValuationsRepository _valuationsRepository;
 
         public SuggestProposalCommandHandler(IValuationsRepository valuationsRepository,
             ICurrentUserService currentUserService,
-            IEventPublisher eventPublisher)
+            IIntegrationEventPublisher integrationEventPublisher)
         {
             _valuationsRepository = valuationsRepository;
             _currentUserService = currentUserService;
-            _eventPublisher = eventPublisher;
+            _integrationEventPublisher = integrationEventPublisher;
         }
 
         public async Task<Unit> Handle(SuggestProposalCommand command, CancellationToken cancellationToken)
@@ -36,7 +36,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             valuation.SuggestProposal(money, command.Description, employeeId);
 
             await _valuationsRepository.CommitAsync(cancellationToken);
-            _eventPublisher.Publish(valuation.DomainEvents);
+            _integrationEventPublisher.Publish(valuation.DomainEvents);
             return Unit.Value;
         }
     }

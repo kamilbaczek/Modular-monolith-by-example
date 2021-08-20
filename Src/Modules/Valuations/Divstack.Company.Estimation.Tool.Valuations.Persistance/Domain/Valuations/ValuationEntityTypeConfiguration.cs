@@ -108,6 +108,11 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                         {
                             emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
                         });
+                    clientValueObjectBuilder.OwnsOne<ClientCompany>("Company", clientCompanyValueObjectBuilder =>
+                    {
+                        clientCompanyValueObjectBuilder.Property<string>("Size").IsRequired();
+                        clientCompanyValueObjectBuilder.Property<string>("Name").IsRequired();
+                    });
                 });
             });
         }

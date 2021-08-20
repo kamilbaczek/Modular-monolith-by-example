@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
-
 namespace Divstack.Company.Estimation.Tool.Users.Api
 {
     internal static class UsersModule
@@ -20,9 +19,5 @@ namespace Divstack.Company.Estimation.Tool.Users.Api
             return services;
         }
 
-        public static void UseUsersModule(this IApplicationBuilder app, IUsersSeeder usersSeeder)
-        {
-            usersSeeder.SeedAdminUserAsync();
-        }
     }
 }

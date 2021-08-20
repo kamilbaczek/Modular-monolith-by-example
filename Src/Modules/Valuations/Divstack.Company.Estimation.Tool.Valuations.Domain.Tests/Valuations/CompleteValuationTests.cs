@@ -20,7 +20,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
 
             valuation.Complete(employee);
 
-            var @event = GetPublishedEvent<ValuationCompletedEvent>(valuation);
+            var @event = GetPublishedEvent<ValuationCompletedDomainEvent>(valuation);
             @event.AssertIsCorrect(employee, valuation.Id);
         }
     }

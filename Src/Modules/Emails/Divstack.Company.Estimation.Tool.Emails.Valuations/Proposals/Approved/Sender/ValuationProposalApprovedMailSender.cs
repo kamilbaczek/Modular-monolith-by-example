@@ -39,9 +39,9 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.
             var htmlTemplate = _mailTemplateReader.Read(_configuration.PathToTemplate);
             var emailAsHtml = htmlTemplate
                 .Replace(ApprovedLinkPlaceholder, approvedLink)
-                .Replace(PriceCurrencyPlaceholder, request.Value.Currency)
+                .Replace(PriceCurrencyPlaceholder, request.Currency)
                 .Replace(ClientEmailPlaceholder, request.SuggestedByEmployeeEmail)
-                .Replace(PriceValuePlaceholder, request.Value.Value.ToString());
+                .Replace(PriceValuePlaceholder, request.Value.ToString());
 
             _emailSender.Send(request.SuggestedByEmployeeEmail, _configuration.Subject, emailAsHtml);
         }

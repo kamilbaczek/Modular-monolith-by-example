@@ -6,7 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
     {
         internal static void AddUserSeeder(this IServiceCollection services)
         {
-            services.AddScoped<IUsersSeeder, UsersSeeder>();
+            services.AddTransient<IUsersSeeder, UsersSeeder>();
             services.AddHostedService<UsersSeederInitializer>();
         }
     }

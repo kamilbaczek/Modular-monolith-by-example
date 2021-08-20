@@ -5,7 +5,6 @@ using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
@@ -28,12 +27,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
                 new(Guid.NewGuid()),
             };
             var email = Email.Of("test@mail.com");
-            var client = Client.Of(email, "firstname", "lastname");
-            var deadline = DeadlineTestHelper.CreateDeadline();
+            var client = FakeClient.CreateClientWithCompany(email);
+            var deadline = FakeDeadline.CreateDeadline();
 
             var valuation = await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
 
-            var @event = GetPublishedEvent<ValuationRequestedEvent>(valuation);
+            var @event = GetPublishedEvent<ValuationRequestedDomainEvent>(valuation);
             @event.AssertIsCorrect(servicesIds, email);
         }
 
@@ -52,12 +51,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
                 new(Guid.NewGuid()),
             };
             var email = Email.Of("test@mail.com");
-            var client = Client.Of(email, "firstname", "lastname");
-            var deadline = DeadlineTestHelper.CreateDeadline(daysToDeadlineFromNow);
+            var client = FakeClient.CreateClientWithCompany(email);
+            var deadline = FakeDeadline.CreateDeadline(daysToDeadlineFromNow);
 
             var valuation = await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
 
-            var @event = GetPublishedEvent<ValuationDeadlineFixedEvent>(valuation);
+            var @event = GetPublishedEvent<ValuationDeadlineFixedDomainEvent>(valuation);
             @event.DeadlineDate.Should().Be(expectedDeadline);
         }
 
@@ -70,9 +69,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
                 new(Guid.NewGuid()),
                 new(Guid.NewGuid()),
             };
-            var deadline = DeadlineTestHelper.CreateDeadline();
+            var deadline = FakeDeadline.CreateDeadline();
             var email = Email.Of("test@mail.com");
-            var client = Client.Of(email, "firstname", "lastname");
+            var clientCompany = ClientCompany.Of("10-15", "Test Company");
+            var client = Client.Of(email, "firstname", "lastname", clientCompany);
             Func<Task> valuationRequestAsync = async () =>
             {
                 await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);

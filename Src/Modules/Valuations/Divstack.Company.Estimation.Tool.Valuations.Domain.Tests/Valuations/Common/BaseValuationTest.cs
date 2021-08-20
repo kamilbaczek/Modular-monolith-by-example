@@ -4,10 +4,7 @@ using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
@@ -44,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
         protected static ProposalId SuggestFakeProposal(EmployeeId employee, Valuation valuation, Money money)
         {
             valuation.SuggestProposal(money, "test", employee);
-            var @event = GetPublishedEvent<ProposalSuggestedEvent>(valuation);
+            var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuation);
 
             return @event.ProposalId;
         }
@@ -56,8 +53,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
                 new(Guid.NewGuid()),
                 new(Guid.NewGuid()),
             };
-            var deadline = DeadlineTestHelper.CreateDeadline();
-            var client = Client.Of(email, "firstname", "lastname");
+            var deadline = FakeDeadline.CreateDeadline();
+            var client = FakeClient.CreateClientWithCompany(email);
 
             return await Valuation.RequestAsync(productsIds, client, deadline, ServiceExistingCheckerMock.Object);
         }

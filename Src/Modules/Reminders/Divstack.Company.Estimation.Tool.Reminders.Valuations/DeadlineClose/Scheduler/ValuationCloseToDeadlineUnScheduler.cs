@@ -10,8 +10,8 @@ using MediatR;
 namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler
 {
     internal sealed class ValuationCloseToDeadlineUnScheduler :
-        INotificationHandler<ProposalSuggestedEvent>,
-        INotificationHandler<ProposalCancelledEvent>
+        INotificationHandler<ProposalSuggestedDomainEvent>,
+        INotificationHandler<ProposalCancelledDomainEvent>
     {
         private readonly IBackgroundJobScheduler _backgroundJobScheduler;
         private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
@@ -26,16 +26,16 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Sc
             _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
         }
 
-        public Task Handle(ProposalSuggestedEvent proposalSuggestedEvent, CancellationToken cancellationToken)
+        public Task Handle(ProposalSuggestedDomainEvent proposalSuggestedDomainEvent, CancellationToken cancellationToken)
         {
-            UnSchedule(proposalSuggestedEvent.ValuationId.Value, cancellationToken);
+            UnSchedule(proposalSuggestedDomainEvent.ValuationId.Value, cancellationToken);
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(ProposalCancelledEvent proposalCancelledEvent, CancellationToken cancellationToken)
+        public Task Handle(ProposalCancelledDomainEvent proposalCancelledDomainEvent, CancellationToken cancellationToken)
         {
-            UnSchedule(proposalCancelledEvent.ValuationId.Value, cancellationToken);
+            UnSchedule(proposalCancelledDomainEvent.ValuationId.Value, cancellationToken);
 
             return Task.CompletedTask;
         }

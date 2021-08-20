@@ -8,18 +8,18 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients
         {
         }
 
-        private ClientCompany(string employeeNumber, string name)
+        private ClientCompany(string size, string name)
         {
-            EmployeeNumber = employeeNumber;
+            Size = size;
             Name = name;
         }
 
-        private string EmployeeNumber { get; }
+        private string Size { get; }
         private string Name { get; }
 
-        public static ClientCompany Of(string employeeNumber, string name)
+        public static ClientCompany Of(string size, string name)
         {
-            return new (employeeNumber, name);
+            return new (size, name);
         }
     }
 }

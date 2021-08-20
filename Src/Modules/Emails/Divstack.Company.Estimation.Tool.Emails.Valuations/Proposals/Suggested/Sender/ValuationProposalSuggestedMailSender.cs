@@ -48,8 +48,8 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
                 .Replace(RejectLinkPlaceholder, rejectLink)
                 .Replace(FullNamePlaceholder, request.FullName)
                 .Replace(DescriptionPlaceholder, request.Description)
-                .Replace(PriceCurrencyPlaceholder, request.Value.Currency)
-                .Replace(PriceValuePlaceholder, request.Value.Value.ToString());
+                .Replace(PriceCurrencyPlaceholder, request.Currency)
+                .Replace(PriceValuePlaceholder, request.Value.ToString());
 
             _emailSender.Send(request.ClientEmail, _configuration.Subject, emailAsHtml);
         }

@@ -28,14 +28,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             Deadline deadline)
         {
             Id = new ValuationId(Guid.NewGuid());
-            AddDomainEvent(new ValuationRequestedEvent(Id, serviceIds, client.Email));
+            AddDomainEvent(new ValuationRequestedDomainEvent(Id, serviceIds, client.Email));
             Enquiry = Enquiry.Create(this, serviceIds, client);
             RequestedDate = SystemTime.Now();
             Proposals = new List<Proposal>();
             History = new List<HistoricalEntry>();
             ChangeStatus(ValuationStatus.WaitForProposal);
             Deadline = deadline;
-            AddDomainEvent(new ValuationDeadlineFixedEvent(Id, Deadline));
+            AddDomainEvent(new ValuationDeadlineFixedDomainEvent(Id, Deadline));
         }
         public ValuationId Id { get; }
         private IList<Proposal> Proposals { get; }
@@ -82,7 +82,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             Proposals.Add(proposal);
             ChangeStatus(ValuationStatus.WaitForClientDecision);
 
-            var @event = new ProposalSuggestedEvent(
+            var @event = new ProposalSuggestedDomainEvent(
                 Enquiry.ClientFullName,
                 proposedBy,
                 proposal.Id,
@@ -99,7 +99,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             proposal.Approve();
             ChangeStatus(ValuationStatus.Approved);
 
-            var @event = new ProposalApprovedEvent(
+            var @event = new ProposalApprovedDomainEvent(
                 Id,
                 proposalId,
                 proposal.Price,
@@ -114,7 +114,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             proposal.Reject();
             ChangeStatus(ValuationStatus.Rejected);
 
-            var @event = new ProposalRejectedEvent(
+            var @event = new ProposalRejectedDomainEvent(
                 Id,
                 proposalId,
                 proposal.Price,
@@ -129,7 +129,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             proposal.Cancel(employeeId);
             ChangeStatus(ValuationStatus.WaitForProposal);
 
-            AddDomainEvent(new ProposalCancelledEvent(employeeId, proposalId, Id));
+            AddDomainEvent(new ProposalCancelledDomainEvent(employeeId, proposalId, Id));
         }
 
         public void Complete(EmployeeId employeeId)
@@ -143,7 +143,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             ChangeStatus(ValuationStatus.Completed);
             CompletedBy = employeeId;
             CompletedDate = SystemTime.Now();
-            AddDomainEvent(new ValuationCompletedEvent(employeeId, Id));
+            AddDomainEvent(new ValuationCompletedDomainEvent(employeeId, Id));
         }
 
         private void ChangeStatus(ValuationStatus valuationStatus)

@@ -22,7 +22,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
 
             valuation.SuggestProposal(money, "test", employee);
 
-            var @event = GetPublishedEvent<ProposalSuggestedEvent>(valuation);
+            var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuation);
             @event.AssertIsCorrect(money, employee);
         }
 

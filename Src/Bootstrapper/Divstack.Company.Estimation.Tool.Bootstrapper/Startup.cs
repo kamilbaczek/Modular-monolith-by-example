@@ -34,8 +34,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
 
         public void Configure(
             IApplicationBuilder app,
-            IWebHostEnvironment env,
-            IUsersSeeder usersSeeder)
+            IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -46,7 +45,6 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-            app.UseUsersModule(usersSeeder);
             app.UseValuationModule();
         }
     }

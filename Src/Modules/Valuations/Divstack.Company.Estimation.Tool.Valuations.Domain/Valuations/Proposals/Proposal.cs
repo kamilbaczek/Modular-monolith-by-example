@@ -1,4 +1,5 @@
 ﻿using System;
+using Ardalis.GuardClauses;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
@@ -19,10 +20,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             EmployeeId suggestedBy)
         {
             Id = new ProposalId(Guid.NewGuid());
-            Price = value ?? throw new ArgumentNullException(nameof(value));
-            Description = description ?? throw new ArgumentNullException(nameof(description));
-            SuggestedBy = suggestedBy ?? throw new ArgumentNullException(nameof(suggestedBy));
-            Suggested = DateTime.Now;
+            Price = Guard.Against.Null(value, nameof(value));
+            Description = Guard.Against.Null(description, nameof(description));
+            SuggestedBy =  Guard.Against.Null(suggestedBy, nameof(suggestedBy));
+            Suggested = SystemTime.Now();
             Decision = null;
             Valuation = valuation;
         }

@@ -10,13 +10,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 {
     internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
     {
-        private readonly IEventPublisher _eventPublisher;
+        private readonly IIntegrationEventPublisher _integrationEventPublisher;
         private readonly IValuationsRepository _valuationsRepository;
 
-        public ApproveProposalCommandHandler(IValuationsRepository valuationsRepository, IEventPublisher eventPublisher)
+        public ApproveProposalCommandHandler(
+            IValuationsRepository valuationsRepository,
+            IIntegrationEventPublisher integrationEventPublisher)
         {
             _valuationsRepository = valuationsRepository;
-            _eventPublisher = eventPublisher;
+            _integrationEventPublisher = integrationEventPublisher;
         }
 
         public async Task<Unit> Handle(ApproveProposalCommand command, CancellationToken cancellationToken)
@@ -30,8 +32,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             valuation.ApproveProposal(proposalId);
 
             await _valuationsRepository.CommitAsync(cancellationToken);
-
-            _eventPublisher.Publish(valuation.DomainEvents);
+            _integrationEventPublisher.Publish(valuation.DomainEvents);
 
             return Unit.Value;
         }

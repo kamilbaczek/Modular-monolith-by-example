@@ -15,7 +15,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
     </ItemGroup>
 
 </Project>

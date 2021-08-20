@@ -2,11 +2,12 @@
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 {
-    internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggestedEvent>
+    internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggested>
     {
         private readonly IValuationProposalSuggestedMailSender _proposalSuggestedMailSender;
 
@@ -15,15 +16,16 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
             _proposalSuggestedMailSender = proposalSuggestedMailSender;
         }
 
-        public Task Handle(ProposalSuggestedEvent proposalSuggestedEvent, CancellationToken cancellationToken)
+        public Task Handle(ProposalSuggested proposalSuggestedDomainEvent, CancellationToken cancellationToken)
         {
             var request = new ValuationProposalSuggestedEmailRequest(
-                proposalSuggestedEvent.FullName,
-                proposalSuggestedEvent.ClientEmail.Value,
-                proposalSuggestedEvent.ValuationId.Value,
-                proposalSuggestedEvent.ProposalId.Value,
-                proposalSuggestedEvent.Value,
-                proposalSuggestedEvent.Description.Message);
+                proposalSuggestedDomainEvent.FullName,
+                proposalSuggestedDomainEvent.ClientEmail,
+                proposalSuggestedDomainEvent.ValuationId,
+                proposalSuggestedDomainEvent.ProposalId,
+                proposalSuggestedDomainEvent.Value,
+                proposalSuggestedDomainEvent.Currency,
+                proposalSuggestedDomainEvent.Description);
              _proposalSuggestedMailSender.Send(request);
 
              return Task.CompletedTask;

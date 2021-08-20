@@ -23,7 +23,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         internal static ProposalDescription From(string message)
         {
-            return new ProposalDescription(message);
+            return new(message);
         }
     }
 }

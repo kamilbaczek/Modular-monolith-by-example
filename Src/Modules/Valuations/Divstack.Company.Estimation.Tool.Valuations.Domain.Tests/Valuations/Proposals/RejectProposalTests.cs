@@ -25,7 +25,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
 
             valuation.RejectProposal(proposalId);
 
-            var @event = GetPublishedEvent<ProposalRejectedEvent>(valuation);
+            var @event = GetPublishedEvent<ProposalRejectedDomainEvent>(valuation);
             @event.AssertIsCorrect(fakeEmail, proposalId, FakeRejectReason);
         }
 

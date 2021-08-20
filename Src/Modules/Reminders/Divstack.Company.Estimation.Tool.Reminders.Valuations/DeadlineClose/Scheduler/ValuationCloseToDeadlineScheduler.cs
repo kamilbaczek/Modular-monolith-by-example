@@ -4,11 +4,12 @@ using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Config
 using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder;
 using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
+using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler
 {
-    internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<ValuationDeadlineFixedEvent>
+    internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<ValuationDeadlineFixed>
     {
         private readonly IBackgroundJobScheduler _backgroundJobScheduler;
         private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
@@ -23,13 +24,13 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Sc
             _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
         }
 
-        public Task Handle(ValuationDeadlineFixedEvent valuationDeadlineFixedEvent, CancellationToken cancellationToken)
+        public Task Handle(ValuationDeadlineFixed valuationDeadlineFixed, CancellationToken cancellationToken)
         {
             var reminderDate =
-                valuationDeadlineFixedEvent.DeadlineDate.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+                valuationDeadlineFixed.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
           _backgroundJobScheduler.Schedule(
                 () => _valuationsDeadlineCloseReminder.RemindAsync(
-                    valuationDeadlineFixedEvent.ValuationId.Value,
+                    valuationDeadlineFixed.ValuationId,
                     _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
                     cancellationToken),
                 reminderDate);

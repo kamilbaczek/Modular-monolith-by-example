@@ -7,5 +7,6 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.
         string SuggestedByEmployeeEmail,
         Guid ValuationId,
         Guid ProposalId,
-        Money Value);
+        string Currency,
+        decimal? Value);
 }

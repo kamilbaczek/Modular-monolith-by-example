@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Snov.FindClientCompany.HttpClient;
+using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Snov.FindClientCompany.ApiConsumer;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Snov.FindClientCompany
 {
@@ -15,6 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Snov.FindCl
         {
             _companyFinderHttpClient = companyFinderHttpClient;
         }
+
         public async Task<ClientCompany> FindCompany(Email email)
         {
             var clientProfile = await _companyFinderHttpClient.GetClientProfile(email.Value);

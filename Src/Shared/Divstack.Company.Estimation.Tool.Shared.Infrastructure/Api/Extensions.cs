@@ -21,6 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
                     manager.FeatureProviders.Add(new InternalControllersFeatureProvider());
                 });
 
+            services.AddHttpClient();
             services.AddSwaggerModule();
             services.AddMvcCore();
             services.AddCors();

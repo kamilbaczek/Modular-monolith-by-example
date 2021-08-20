@@ -1,4 +1,5 @@
 ﻿using System;
+using Ardalis.GuardClauses;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
@@ -11,8 +12,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
 
         private HistoricalEntry(Valuation valuation, ValuationStatus status)
         {
-            Status = status ?? throw new ArgumentNullException(nameof(status));
-            Valuation = valuation ?? throw new ArgumentNullException(nameof(valuation));
+            Status = Guard.Against.Null(status, nameof(Status));
+            Valuation = Guard.Against.Null(valuation, nameof(Valuation));
             ChangeDate = SystemTime.Now();
             Id = new HistoricalEntryId(Guid.NewGuid());
         }

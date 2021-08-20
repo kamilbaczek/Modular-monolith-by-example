@@ -4,11 +4,12 @@ using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Send
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved
 {
-    internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApprovedEvent>
+    internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApproved>
     {
         private readonly IUserModule _userModule;
         private readonly IValuationProposalApprovedMailSender _valuationProposalApprovedMailSender;
@@ -20,17 +21,18 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved
             _userModule = userModule;
         }
 
-        public async Task Handle(ProposalApprovedEvent proposalApprovedEvent, CancellationToken cancellationToken)
+        public async Task Handle(ProposalApproved proposalApprovedDomainEvent, CancellationToken cancellationToken)
         {
-            var employeeId = proposalApprovedEvent.SuggestedBy.Value;
+            var employeeId = proposalApprovedDomainEvent.SuggestedBy;
             var query = new GetUserEmailQuery(employeeId);
             var suggestedByEmployeeEmail = await _userModule.ExecuteQueryAsync(query);
 
             var request = new ValuationProposalApprovedEmailRequest(
                 suggestedByEmployeeEmail,
-                proposalApprovedEvent.ValuationId.Value,
-                proposalApprovedEvent.ProposalId.Value,
-                proposalApprovedEvent.Value);
+                proposalApprovedDomainEvent.ValuationId,
+                proposalApprovedDomainEvent.ProposalId,
+                proposalApprovedDomainEvent.Currency,
+                proposalApprovedDomainEvent.Value);
 
             _valuationProposalApprovedMailSender.Send(request);
         }
