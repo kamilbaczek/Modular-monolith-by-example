@@ -11,7 +11,7 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
                 "compose all components together as one deplyoment unit", "C#");
 
             var productsApi = webApplication.AddComponent("Api - Products",
-                "Serves API to manage products and categories", ".Net Core API");
+                "Serves API to manage services, categories, services possible values", ".Net Core API");
             bootstraper.Uses(productsApi, "");
 
             var productsCore = webApplication.AddComponent("Core - Products", "Provides module skeleton", "C#");
