@@ -16,13 +16,13 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             var trello = model.AddSoftwareSystem(Location.External, "Trello",
                 "Trello is a collaboration tool that organizes your projects into boards. In one glance, Trello tells you what's being worked on, who's working on what, and where something is in a process.");
             var snovio = model.AddSoftwareSystem(Location.External, "Snov.io",
-                "Snov.io provides data about the client company, who requested valuation");
+                "Snov.io tool to generate leads");
             estimationTool.Uses(trello, "Create boards and tasks for employee");
-            estimationTool.Uses(snovio, "");
+            estimationTool.Uses(snovio, "Get informations about client company");
 
-            customer.Uses(estimationTool, "to request estimate of service/approve/reject");
-            employee.Uses(estimationTool, "to make a service valuation/cancel/complete");
-            admin.Uses(estimationTool, "manage system configuration, users, services");
+            customer.Uses(estimationTool, "To request estimate of service/approve/reject");
+            employee.Uses(estimationTool, "To make a service valuation/cancel/complete");
+            admin.Uses(estimationTool, "Manage system configuration, users, services");
 
             var viewSet = workspace.Views;
             var contextView = viewSet.CreateSystemContextView(estimationTool, "SystemContext",
