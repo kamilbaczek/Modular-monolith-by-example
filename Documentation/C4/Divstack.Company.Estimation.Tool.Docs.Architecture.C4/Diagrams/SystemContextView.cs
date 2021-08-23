@@ -15,11 +15,14 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
 
             var trello = model.AddSoftwareSystem(Location.External, "Trello",
                 "Trello is a collaboration tool that organizes your projects into boards. In one glance, Trello tells you what's being worked on, who's working on what, and where something is in a process.");
-
+            var snovio = model.AddSoftwareSystem(Location.External, "Snov.io",
+                "Snov.io provides data about the client company, who requested valuation");
             estimationTool.Uses(trello, "Create boards and tasks for employee");
-            customer.Uses(estimationTool, "to request estimate of service");
-            employee.Uses(estimationTool, "to make a service estimate");
-            admin.Uses(estimationTool, "manage system configuration and users");
+            estimationTool.Uses(snovio, "");
+
+            customer.Uses(estimationTool, "to request estimate of service/approve/reject");
+            employee.Uses(estimationTool, "to make a service valuation/cancel/complete");
+            admin.Uses(estimationTool, "manage system configuration, users, services");
 
             var viewSet = workspace.Views;
             var contextView = viewSet.CreateSystemContextView(estimationTool, "SystemContext",
@@ -32,6 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             styles.Add(new ElementStyle(Tags.Person) {Background = "#08427b", Color = "#ffffff", Shape = Shape.Person});
 
             workspace.ConfigureContainersView(estimationTool, customer, admin);
+            contextView.EnableAutomaticLayout();
         }
     }
 }

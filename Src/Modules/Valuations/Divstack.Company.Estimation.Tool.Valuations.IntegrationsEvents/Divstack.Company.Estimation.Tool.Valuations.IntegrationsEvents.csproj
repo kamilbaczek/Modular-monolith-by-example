@@ -6,7 +6,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
     </ItemGroup>
 

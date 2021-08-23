@@ -1,4 +1,5 @@
-﻿using Structurizr;
+﻿using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Helpers;
+using Structurizr;
 
 namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
 {
@@ -8,21 +9,20 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             Person customer, Person admin)
         {
             var webApplication = softwareSystem.AddContainer("Web Application",
-                "Provides all of the estimation functionality to customers.", ".NET Core");
-            var mobileApp = softwareSystem.AddContainer("Mobile", "", "Xamarin");
-            var database = softwareSystem.AddContainer("Database", "Stores interesting data.", "MSSQL");
-            var clientApp = softwareSystem.AddContainer("Client App", "Display UI", "Nuxt.JS");
+                "Provides all of the estimation functionality to customers.", Technologies.DotnetApi);
+            var database = softwareSystem.AddContainer("Database", "Stores interesting data.", "MySQL");
+            var clientApp = softwareSystem.AddContainer("Client App", "Display UI", "Vue.js");
             var elasticSearch = softwareSystem.AddContainer("ElasticSearch", "Logs, metrics", "ElasticSearch");
+            var hangfire = softwareSystem.AddContainer("Hangfire", "Background Processing", "Hangfire .Net");
 
             customer.Uses(clientApp, "HTTPS");
             admin.Uses(clientApp, "HTTPS");
 
-            customer.Uses(mobileApp, "View");
             clientApp.Uses(webApplication, "Execute commands and queries", "REST");
             webApplication.Uses(database, "Writes to", "EF Core");
             webApplication.Uses(database, "Read from", "Dapper");
             webApplication.Uses(elasticSearch, "Save logs, metrics", "REST");
-
+            webApplication.Uses(hangfire, "Running recurring jobs, running functions out of process");
 
             var containerView = workspace.Views.CreateContainerView(softwareSystem, "Containers",
                 "The container diagram for the Estimation Tool.");
@@ -30,6 +30,7 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             containerView.AddAllPeople();
             containerView.AddAllContainers();
             workspace.ConfigureComponentsView(webApplication, database, admin, customer);
+            containerView.EnableAutomaticLayout();
         }
     }
 }
