@@ -1,6 +1,6 @@
 # Estimations Tool - makes estimations easier
 ### CI
-[![Build Status](https://travis-ci.com/kamilbaczek/estimations-tool.svg?branch=develop)](https://travis-ci.com/kamilbaczek/estimations-tool)
+[![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
 
 ## Technologies
 .Net 5

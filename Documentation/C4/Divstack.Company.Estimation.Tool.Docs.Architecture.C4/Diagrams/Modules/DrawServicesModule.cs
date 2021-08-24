@@ -9,7 +9,6 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
 
         internal static void ServicesModule(this Container webApplication, Container database, Component bootstrapper)
         {
-            var admin = webApplication.Model.GetPersonWithName("Admin");
             var servicesApi = webApplication.AddComponent(ApiServices,
                 "Serves API to manage services, categories, services possible values", ".Net Core API");
             bootstrapper.Uses(servicesApi, "");
@@ -21,8 +20,6 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
                 "Entity Framework Core");
             servicesCore.Uses(servicesDal, "");
             servicesDal.Uses(database, "");
-
-            admin.Uses(servicesApi, "Manage services");
         }
     }
 }

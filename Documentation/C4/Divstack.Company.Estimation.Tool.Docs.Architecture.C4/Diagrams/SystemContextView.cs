@@ -34,7 +34,7 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             styles.Add(new ElementStyle(Tags.SoftwareSystem) {Background = "#1168bd", Color = "#ffffff"});
             styles.Add(new ElementStyle(Tags.Person) {Background = "#08427b", Color = "#ffffff", Shape = Shape.Person});
 
-            workspace.ConfigureContainersView(estimationTool, customer, admin);
+            workspace.ConfigureContainersView(estimationTool);
             contextView.EnableAutomaticLayout();
         }
     }

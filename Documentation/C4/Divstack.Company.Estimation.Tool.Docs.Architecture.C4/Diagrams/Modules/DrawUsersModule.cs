@@ -7,9 +7,6 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
     {
         internal static void UsersModule(this Container webApplication, Container database, Component bootstrapper)
         {
-            var admin = webApplication.Model.GetPersonWithName("Admin");
-            var employee = webApplication.Model.GetPersonWithName("Employee");
-
             var usersApi = webApplication.AddComponent("Api - Users", "Serves API to manage users and authentications",
                 ".Net Core API");
             bootstrapper.Uses(usersApi, "");
@@ -25,9 +22,6 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
             var usersDomain = webApplication.AddComponent("Domain - Users", "Bussiness logic", Technologies.DotnetDll);
             usersApplication.Uses(usersDomain, "");
             usersPersistance.Uses(database, "");
-
-            admin.Uses(usersApi, "Manage Users");
-            employee.Uses(usersApi, "Sign In/Sign out");
         }
     }
 }

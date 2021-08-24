@@ -7,9 +7,6 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
     {
         internal static void ValuationModule(this Container webApplication, Container database, Component bootstrapper)
         {
-            var customer= webApplication.Model.GetPersonWithName("Customer");
-            var employee= webApplication.Model.GetPersonWithName("Employee");
-
             var valuationsApi =
                 webApplication.AddComponent("Api - Valuations", "Serves API to estimate services", Technologies.DotnetDll);
             bootstrapper.Uses(valuationsApi, "");
@@ -24,9 +21,9 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
                 "Public contracts to exposed to other modules", Technologies.DotnetDll);
             var valuationsInfrastructureTrello = webApplication.AddComponent("Trello - Infrastructure - Valuations",
                 "Trello integrations", Technologies.DotnetDll);
-            var valuationsInfrastructureSnovIo = webApplication.AddComponent("Trello - Infrastructure - Valuations",
+            var valuationsInfrastructureSnovIo = webApplication.AddComponent("Snov - Infrastructure - Valuations",
                 "Provides client company info like (size, name)", Technologies.DotnetDll);
-            var valuationsPersistance = webApplication.AddComponent("- Valuations",
+            var valuationsPersistance = webApplication.AddComponent("Persistance - Valuations",
                 "Migrations, DbContexts, Implementation Repositories, Seeders", Technologies.DotnetDll);
 
             valuationsApplication.Uses(valuationsDomain, "");
@@ -37,9 +34,6 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
             valuationsPersistance.Uses(database, "");
             valuationsInfrastrucutre.Uses(valuationsInfrastructureTrello, "Register trello module");
             valuationsInfrastrucutre.Uses(valuationsInfrastructureSnovIo, "Register snov.io module");
-
-            customer.Uses(valuationsApi, "Make valuations request/approve/reject");
-            employee.Uses(valuationsApi, "Proposal Suggest/Cancel/Complete");
         }
     }
 }
