@@ -1,0 +1,12 @@
+﻿{
+  "ConfirmAccountMailConfiguration": {
+    "Format": "Visit <a href=\"https://localhost:5001/auth/confirm-account/{userId}/{token}\">here</a> to confirm your account and set password"
+  },
+  "ForgotPasswordMailConfiguration": {
+    "Format": "Visit <a href=\"https://localhost:5001/auth/reset-password/{userId}/{token}\">here</a> to reset your password"
+  },
+  "PasswordExpiredMailConfiguration": {
+    "Subject": "Your password expired! Create new one",
+    "Format": "Visit <a href=\"https://localhost:5001/auth/reset-password/{userId}/{token}\">here</a> to reset your password"
+  }
+}

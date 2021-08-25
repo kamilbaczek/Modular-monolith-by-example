@@ -15,4 +15,10 @@
       <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="users-appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

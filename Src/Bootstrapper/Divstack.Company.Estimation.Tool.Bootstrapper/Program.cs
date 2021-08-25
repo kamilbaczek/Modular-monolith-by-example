@@ -1,3 +1,4 @@
+using Divstack.Company.Estimation.Tool.Bootstrapper.Configurations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +18,9 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
                 .ConfigureAppConfiguration((hostContext, builder) =>
                 {
                     builder.AddEnvironmentVariables();
+                    var envName = hostContext.HostingEnvironment.EnvironmentName;
+                    builder.LoadAllConfigurationsFromSolution(envName);
+
                     if(hostContext.HostingEnvironment.IsEnvironment("Local"))
                         builder.AddUserSecrets<Startup>();
                 });

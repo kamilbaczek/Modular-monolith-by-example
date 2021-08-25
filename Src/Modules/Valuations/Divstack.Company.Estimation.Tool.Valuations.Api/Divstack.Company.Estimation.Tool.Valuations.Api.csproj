@@ -21,4 +21,8 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     </ItemGroup>
+
+    <ItemGroup>
+        <None Update="valuations-appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
 </Project>

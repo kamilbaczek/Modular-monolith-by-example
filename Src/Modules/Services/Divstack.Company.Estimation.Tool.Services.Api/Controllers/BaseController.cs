@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
 {
     [ApiController]
-    [Route(Routing.ModuleBase + "/[controller]")]
+    [Route("api/services-module/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     internal abstract class BaseController : ControllerBase
     {

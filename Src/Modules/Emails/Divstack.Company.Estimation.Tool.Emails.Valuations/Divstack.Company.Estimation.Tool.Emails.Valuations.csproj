@@ -21,6 +21,9 @@
 
     <ItemGroup>
       <None Remove="suggest_proposal_mail.html" />
+      <None Update="emails-valuations-appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
     <ItemGroup>

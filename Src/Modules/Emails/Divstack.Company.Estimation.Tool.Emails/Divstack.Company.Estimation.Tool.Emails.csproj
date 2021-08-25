@@ -16,4 +16,10 @@
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Valuations\Divstack.Company.Estimation.Tool.Emails.Valuations.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="emails-appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
