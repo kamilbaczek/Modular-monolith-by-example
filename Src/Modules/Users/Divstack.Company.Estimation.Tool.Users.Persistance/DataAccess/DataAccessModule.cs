@@ -9,9 +9,9 @@ namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess
         internal static IServiceCollection AddDataAccess(this IServiceCollection services,
             string connectionString)
         {
-            services.AddSingleton<ISqlConnectionFactory>(provider => new SqlConnectionFactory(connectionString));
-
+            services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
             services.AddDbContext<UsersContext>(connectionString);
+
             return services;
         }
 

@@ -1,11 +1,13 @@
 using Divstack.Company.Estimation.Tool.Bootstrapper.Configurations;
+using Divstack.Company.Estimation.Tool.Bootstrapper.Extensions;
+using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace Divstack.Company.Estimation.Tool.Bootstrapper
 {
-    public class Program
+    public sealed class Program
     {
         public static void Main(string[] args)
         {
@@ -14,15 +16,21 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseObservability();
+                })
                 .ConfigureAppConfiguration((hostContext, builder) =>
                 {
-                    builder.AddEnvironmentVariables();
                     var envName = hostContext.HostingEnvironment.EnvironmentName;
-                    builder.LoadAllConfigurationsFromSolution(envName);
+                    builder.AddAllConfigurationsFromSolution(envName);
+                    builder.AddEnvironmentVariables();
 
-                    if(hostContext.HostingEnvironment.IsEnvironment("Local"))
+                    if(hostContext.HostingEnvironment.IsForDevs())
                         builder.AddUserSecrets<Startup>();
                 });
+
+
     }
 }

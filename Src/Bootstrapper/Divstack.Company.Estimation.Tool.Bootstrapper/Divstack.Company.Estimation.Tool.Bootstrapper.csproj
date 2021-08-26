@@ -6,14 +6,6 @@
         <UserSecretsId>b7c336cb-ae81-4dd5-a4d6-6eb22bbadc75</UserSecretsId>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <DocumentationFile>bin\Release\Divstack.Company.Estimation.Tool.Bootstrapper.xml</DocumentationFile>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <DocumentationFile>bin\Debug\Divstack.Company.Estimation.Tool.Bootstrapper.xml</DocumentationFile>
-    </PropertyGroup>
-
     <ItemGroup>
       <ProjectReference Include="..\..\Modules\Emails\Divstack.Company.Estimation.Tool.Emails\Divstack.Company.Estimation.Tool.Emails.csproj" />
       <ProjectReference Include="..\..\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders\Divstack.Company.Estimation.Tool.Reminders.csproj" />

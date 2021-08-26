@@ -3,19 +3,18 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
 
 namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations
 {
     internal static class ConfigurationLoader
     {
         private const string AppSettings = "appsettings";
-        internal static void LoadAllConfigurationsFromSolution(this IConfigurationBuilder builder, string envName)
+        internal static void AddAllConfigurationsFromSolution(this IConfigurationBuilder builder, string envName)
         {
-            var baseConfigurations = LoadBaseConfigurations();
+            var loadDefaultConfigurations = LoadDefaultConfigurations();
             var envConfigurations = LoadEnvConfigurations(envName);
 
-            var allConfigurations = baseConfigurations.Concat(envConfigurations).ToList().AsReadOnly();
+            var allConfigurations = loadDefaultConfigurations.Concat(envConfigurations).ToList().AsReadOnly();
 
             builder.LoadConfigurationFiles(allConfigurations);
         }
@@ -28,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations
             }
         }
 
-        private static string[] LoadBaseConfigurations()
+        private static string[] LoadDefaultConfigurations()
         {
             return Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, $"*-{AppSettings}.json");
         }

@@ -2,7 +2,9 @@
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
+using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -26,6 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
             services.AddMvcCore();
             services.AddCors();
             services.AddBackgroundProcessing();
+            services.AddObservability();
 
             return services;
         }
@@ -39,6 +42,12 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
             app.UseSwaggerModule();
             app.UseCustomExceptionHandler();
             app.UseBackgroundProcessing();
+            app.UseObservability();
+        }
+
+        public static void ConfigureSharedInfrastructure(this IWebHostBuilder hostBuilder)
+        {
+            hostBuilder.UseObservability();
         }
     }
 }
