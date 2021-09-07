@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
@@ -22,22 +18,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         {
         }
 
-        private Valuation(
-            IReadOnlyList<ServiceId> serviceIds,
-            Client client,
-            Deadline deadline)
-        {
-            Id = new ValuationId(Guid.NewGuid());
-            AddDomainEvent(new ValuationRequestedDomainEvent(Id, serviceIds, client.Email));
-            Enquiry = Enquiry.Create(this, serviceIds, client);
-            RequestedDate = SystemTime.Now();
-            Proposals = new List<Proposal>();
-            History = new List<HistoricalEntry>();
-            ChangeStatus(ValuationStatus.WaitForProposal);
-            Deadline = deadline;
-            AddDomainEvent(new ValuationDeadlineFixedDomainEvent(Id, Deadline));
-        }
         public ValuationId Id { get; }
+        private InquiryId InquiryId { get; }
         private IList<Proposal> Proposals { get; }
         private IList<HistoricalEntry> History { get; }
         private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
@@ -45,7 +27,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private Proposal ProposalWaitForDecision => NotCancelledProposals
             .SingleOrDefault(proposal => !proposal.HasDecision());
 
-        private Enquiry Enquiry { get; }
         private DateTime RequestedDate { get; }
         private DateTime? CompletedDate { get; set; }
         private EmployeeId CompletedBy { get; set; }
@@ -54,21 +35,29 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
         private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
 
-        public static async Task<Valuation> RequestAsync(
-            List<ServiceId> serviceIds,
-            Client client,
+        private Valuation(
             Deadline deadline,
-            IServiceExistingChecker serviceExistingChecker)
+            InquiryId inquiryId)
         {
-            var productsIdsValues = serviceIds.Select(id => id.Value).ToList();
-            var areServicesExists = await serviceExistingChecker.ExistAsync(productsIdsValues);
-            if (areServicesExists is false)
-                throw new InvalidServicesException(serviceIds);
-
-            return new Valuation(serviceIds, client, deadline);
+            Id = new ValuationId(Guid.NewGuid());
+            RequestedDate = SystemTime.Now();
+            Proposals = new List<Proposal>();
+            History = new List<HistoricalEntry>();
+            ChangeStatus(ValuationStatus.WaitForProposal);
+            Deadline = deadline;
+            InquiryId = inquiryId;
+            AddDomainEvent(new ValuationDeadlineFixedDomainEvent(Id, Deadline));
         }
 
-        public void SuggestProposal(Money value,
+        public static Valuation Request(
+            InquiryId inquiryId,
+                Deadline deadline)
+        {
+
+            return new (deadline, inquiryId);
+    }
+
+    public void SuggestProposal(Money value,
             string description,
             EmployeeId proposedBy)
         {
@@ -83,11 +72,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             ChangeStatus(ValuationStatus.WaitForClientDecision);
 
             var @event = new ProposalSuggestedDomainEvent(
-                Enquiry.ClientFullName,
                 proposedBy,
                 proposal.Id,
                 value,
-                Enquiry.ClientEmail,
                 proposalDescription,
                 Id);
             AddDomainEvent(@event);
@@ -117,8 +104,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             var @event = new ProposalRejectedDomainEvent(
                 Id,
                 proposalId,
-                proposal.Price,
-                Enquiry.ClientEmail);
+                proposal.Price);
 
             AddDomainEvent(@event);
         }

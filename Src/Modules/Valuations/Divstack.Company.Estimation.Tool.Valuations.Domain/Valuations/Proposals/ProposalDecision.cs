@@ -9,6 +9,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         private const string Reject = "Reject";
 
+        private const string EmptyDecision = "NoDecision";
+
         private ProposalDecision()
         {
         }
@@ -23,13 +25,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         private string Code { get; }
 
-        private bool IsAccepted => Code == Accept;
-
-        private bool IsRejected => Code == Reject;
 
         internal static ProposalDecision AcceptDecision(DateTime date)
         {
             return new(date, Accept);
+        }
+
+        internal static ProposalDecision NoDecision()
+        {
+            return new(null, EmptyDecision);
         }
 
         internal static ProposalDecision RejectDecision(DateTime date)

@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="9.4.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0" />
+        <PackageReference Include="MediatR" Version="9.0.0" />
+        <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Persistance\Divstack.Company.Estimation.Tool.Inquiries.Persistance.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Seeders\ValuationRequestSeeder.cs" />
+      <Compile Remove="Seeders\Request\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Seeders" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Seeders\Request\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Seeders\Request\**" />
+    </ItemGroup>
+
+</Project>

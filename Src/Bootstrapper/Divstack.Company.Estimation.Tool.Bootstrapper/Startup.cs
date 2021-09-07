@@ -1,10 +1,10 @@
 using Divstack.Company.Estimation.Tool.Estimations.Api;
+using Divstack.Company.Estimation.Tool.Inquiries.Api;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Reminders;
 using Divstack.Company.Estimation.Tool.Services.Api;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 using Divstack.Company.Estimation.Tool.Users.Api;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             services.AddSharedInfrastructure(Configuration);
             services.AddUsersModule(Configuration);
             services.AddServicesModule(Configuration);
+            services.AddInquiriesModule(Configuration);
             services.AddValuationsModule(Configuration);
             services.AddEmailsModule();
             services.AddRemindersModule();

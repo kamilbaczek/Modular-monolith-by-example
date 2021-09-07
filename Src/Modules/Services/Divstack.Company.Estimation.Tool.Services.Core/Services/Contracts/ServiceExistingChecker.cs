@@ -21,7 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts
             return service is not null;
         }
 
-        public async Task<bool> ExistAsync(List<Guid> serviceIds)
+        public async Task<bool> ExistAsync(IReadOnlyCollection<Guid> serviceIds)
         {
             var services = await _servicesRepository.GetAllAsync();
             var servicesIdsFromDb = services.Select(service => service.Id).ToList();

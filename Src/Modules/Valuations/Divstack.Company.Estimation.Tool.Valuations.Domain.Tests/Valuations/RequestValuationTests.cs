@@ -30,7 +30,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
             var client = FakeClient.CreateClientWithCompany(email);
             var deadline = FakeDeadline.CreateDeadline();
 
-            var valuation = await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
+            var valuation = await Valuation.Request(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
 
             var @event = GetPublishedEvent<ValuationRequestedDomainEvent>(valuation);
             @event.AssertIsCorrect(servicesIds, email);
@@ -54,7 +54,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
             var client = FakeClient.CreateClientWithCompany(email);
             var deadline = FakeDeadline.CreateDeadline(daysToDeadlineFromNow);
 
-            var valuation = await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
+            var valuation = await Valuation.Request(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
 
             var @event = GetPublishedEvent<ValuationDeadlineFixedDomainEvent>(valuation);
             @event.DeadlineDate.Should().Be(expectedDeadline);
@@ -75,7 +75,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations
             var client = Client.Of(email, "firstname", "lastname", clientCompany);
             Func<Task> valuationRequestAsync = async () =>
             {
-                await Valuation.RequestAsync(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
+                await Valuation.Request(servicesIds, client, deadline, ServiceExistingCheckerMock.Object);
             };
 
             await valuationRequestAsync.Should().ThrowAsync<InvalidServicesException>();

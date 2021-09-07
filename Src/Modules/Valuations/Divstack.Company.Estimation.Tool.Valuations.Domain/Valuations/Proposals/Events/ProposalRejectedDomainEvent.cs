@@ -9,17 +9,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         internal ProposalRejectedDomainEvent(
             ValuationId valuationId,
             ProposalId proposalId,
-            Money value,
-            Email clientEmail)
+            Money value)
         {
             ProposalId = proposalId;
             Value = value;
-            ClientEmail = clientEmail;
             ValuationId = valuationId;
         }
 
         public Money Value { get; }
-        public Email ClientEmail { get; }
         public ValuationId ValuationId { get; }
         public ProposalId ProposalId { get; }
     }

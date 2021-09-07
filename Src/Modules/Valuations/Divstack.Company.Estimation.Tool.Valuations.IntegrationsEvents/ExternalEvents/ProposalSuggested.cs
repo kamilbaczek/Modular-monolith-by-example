@@ -5,7 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.Externa
 {
     public record ProposalSuggested(
         string FullName,
-        string ClientEmail,
         Guid ValuationId,
         Guid ProposalId,
         decimal? Value,

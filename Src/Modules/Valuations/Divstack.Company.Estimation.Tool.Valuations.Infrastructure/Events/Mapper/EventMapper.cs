@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
+namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper
 {
     internal sealed class EventMapper : IEventMapper
     {
@@ -31,12 +30,10 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
                         domainEvent.ValuationId.Value,
                         domainEvent.ProposalId.Value,
                         domainEvent.Value.Value,
-                        domainEvent.Value.Currency,
-                        domainEvent.ClientEmail.Value),
+                        domainEvent.Value.Currency),
                 ProposalSuggestedDomainEvent domainEvent =>
                     new ProposalSuggested(
                         domainEvent.FullName,
-                        domainEvent.ClientEmail.Value,
                         domainEvent.ValuationId.Value,
                         domainEvent.ProposalId.Value,
                         domainEvent.Value.Value,
@@ -50,12 +47,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
                     new ValuationCompleted(
                         domainEvent.ClosedBy.Value,
                         domainEvent.ValuationId.Value),
-                ValuationRequestedDomainEvent domainEvent =>
-                    new ValuationRequested(
-                        domainEvent.ValuationId.Value,
-                        domainEvent.ServiceIds.Select(serviceId => serviceId.Value).ToList(),
-                        domainEvent.ClientEmail.Value),
-                _ => null
+
             };
     }
 }

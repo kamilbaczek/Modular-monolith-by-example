@@ -1,11 +1,8 @@
 ﻿using System;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Clients;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +19,10 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
 
             builder.Property<ValuationId>("Id")
                 .HasConversion(id => id.Value, value => new ValuationId(value))
+                .IsIdentity();
+
+            builder.Property<InquiryId>("InquiryId")
+                .HasConversion(id => id.Value, value => new InquiryId(value))
                 .IsIdentity();
 
             builder.OwnsOne<Deadline>("Deadline", deadlineValueObjectBuilder =>
@@ -85,36 +86,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 .IsRequired(false);
             builder.Property<DateTime?>("CompletedDate").IsRequired(false);
 
-            builder.OwnsOne<Enquiry>("Enquiry", enquiryValueObjectBuilder =>
-            {
-                enquiryValueObjectBuilder.OwnsMany<InquiryService>("InquiryServices", servicesBuilder =>
-                {
-                    servicesBuilder.WithOwner("Enquiry").HasForeignKey();
-                    servicesBuilder.ToTable("InquiryServices");
-                    servicesBuilder.HasKey("Id");
-                    servicesBuilder.Property<ServiceId>("ServiceId")
-                        .HasConversion(id => id.Value, value => new ServiceId(value))
-                        .IsIdentity();
-                    servicesBuilder.Property<InquiryServiceId>("Id")
-                        .HasConversion(id => id.Value, value => new InquiryServiceId(value))
-                        .IsIdentity();
-                });
-                enquiryValueObjectBuilder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
-                {
-                    clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
-                    clientValueObjectBuilder.Property<string>("LastName").IsRequired();
-                    clientValueObjectBuilder.OwnsOne<Email>("Email",
-                        emailValueObjectBuilder =>
-                        {
-                            emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
-                        });
-                    clientValueObjectBuilder.OwnsOne<ClientCompany>("Company", clientCompanyValueObjectBuilder =>
-                    {
-                        clientCompanyValueObjectBuilder.Property<string>("Size").IsRequired();
-                        clientCompanyValueObjectBuilder.Property<string>("Name").IsRequired();
-                    });
-                });
-            });
         }
     }
 }

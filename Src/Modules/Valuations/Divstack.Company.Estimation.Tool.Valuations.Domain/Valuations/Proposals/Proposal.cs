@@ -24,7 +24,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Description = Guard.Against.Null(description, nameof(description));
             SuggestedBy =  Guard.Against.Null(suggestedBy, nameof(suggestedBy));
             Suggested = SystemTime.Now();
-            Decision = null;
+            Decision = ProposalDecision.NoDecision();
             Valuation = valuation;
         }
 
@@ -77,7 +77,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         internal bool HasDecision()
         {
-            return Decision is not null;
+            return Decision == ProposalDecision.NoDecision();
         }
 
         internal bool IsCancelled()

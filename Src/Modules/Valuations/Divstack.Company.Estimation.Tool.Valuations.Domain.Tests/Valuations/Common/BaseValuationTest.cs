@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 using Moq;
@@ -15,22 +13,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
     public abstract class BaseValuationTest : BaseTest
     {
         protected const string FakeRejectReason = "test";
-        protected readonly Mock<IServiceExistingChecker> ServiceExistingCheckerMock;
-
-        protected BaseValuationTest()
-        {
-            ServiceExistingCheckerMock = new Mock<IServiceExistingChecker>();
-            ServiceExistingCheckerMock.Setup(serviceExistingChecker =>
-                serviceExistingChecker.ExistAsync(It.IsAny<List<Guid>>())).ReturnsAsync(true);
-        }
-
-
-        protected void SetupServiceExistingChecker(bool areServicesExists = true)
-        {
-            ServiceExistingCheckerMock
-                .Setup(x => x.ExistAsync(It.IsAny<List<Guid>>()))
-                .ReturnsAsync(areServicesExists);
-        }
 
         protected static ProposalId SuggestFakeProposal(EmployeeId employee, Valuation valuation)
         {
@@ -56,7 +38,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
             var deadline = FakeDeadline.CreateDeadline();
             var client = FakeClient.CreateClientWithCompany(email);
 
-            return await Valuation.RequestAsync(productsIds, client, deadline, ServiceExistingCheckerMock.Object);
+            return await Valuation.Request(productsIds, client, deadline, ServiceExistingCheckerMock.Object);
         }
 
         protected async Task<Valuation> RequestFakeValuation()

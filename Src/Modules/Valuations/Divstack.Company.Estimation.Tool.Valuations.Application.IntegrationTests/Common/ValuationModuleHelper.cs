@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
