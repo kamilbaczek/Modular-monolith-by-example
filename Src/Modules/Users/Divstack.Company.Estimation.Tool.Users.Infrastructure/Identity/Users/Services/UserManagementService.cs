@@ -40,10 +40,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
                 createUserRequest.Email);
 
             var result = await _applicationUserManager.CreateAsync(applicationUser);
-            if (result.Succeeded)
-            {
-                return applicationUser.PublicId;
-            }
+            if (result.Succeeded) return applicationUser.PublicId;
 
             var errors = result.Errors.Select(identityError => identityError.Code).ToList();
 

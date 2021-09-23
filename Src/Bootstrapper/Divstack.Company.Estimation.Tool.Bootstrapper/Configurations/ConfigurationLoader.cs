@@ -9,6 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations
     internal static class ConfigurationLoader
     {
         private const string AppSettings = "appsettings";
+
         internal static void AddAllConfigurationsFromSolution(this IConfigurationBuilder builder, string envName)
         {
             var loadDefaultConfigurations = LoadDefaultConfigurations();
@@ -19,12 +20,10 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations
             builder.LoadConfigurationFiles(allConfigurations);
         }
 
-        private static void LoadConfigurationFiles(this IConfigurationBuilder builder, ReadOnlyCollection<string> allConfigurations)
+        private static void LoadConfigurationFiles(this IConfigurationBuilder builder,
+            ReadOnlyCollection<string> allConfigurations)
         {
-            foreach (var configuration in allConfigurations)
-            {
-                builder.AddJsonFile(configuration);
-            }
+            foreach (var configuration in allConfigurations) builder.AddJsonFile(configuration);
         }
 
         private static string[] LoadDefaultConfigurations()
@@ -34,7 +33,8 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations
 
         private static string[] LoadEnvConfigurations(string envName)
         {
-            var envConfigurations = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, $"*-{AppSettings}.{envName}.json");
+            var envConfigurations =
+                Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, $"*-{AppSettings}.{envName}.json");
 
             return envConfigurations;
         }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
@@ -15,10 +14,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
     public class ApproveProposalTests : BaseValuationTest
     {
         [Test]
-        public async Task Given_ApproveProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsApproved()
+        public void Given_ApproveProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsApproved()
         {
             var employeeId = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employeeId, valuation);
 
             valuation.ApproveProposal(proposalId);
@@ -28,10 +27,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_ApproveProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
+        public void Given_ApproveProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
         {
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
             valuation.CancelProposal(proposalId, employee);
 
@@ -41,9 +40,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_ApproveProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
+        public void Given_ApproveProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
         {
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = new ProposalId(Guid.NewGuid());
 
             Action approveProposal = () => valuation.ApproveProposal(proposalId);
@@ -52,10 +51,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_ApproveProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotApproved()
+        public void Given_ApproveProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotApproved()
         {
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
             valuation.RejectProposal(proposalId);
 
@@ -65,10 +64,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_ApproveProposal_When_ProposalAlreadyApproved_Then_ProposalIsNotApproved()
+        public void Given_ApproveProposal_When_ProposalAlreadyApproved_Then_ProposalIsNotApproved()
         {
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employee, valuation);
             valuation.ApproveProposal(proposalId);
 

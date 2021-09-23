@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {
     internal sealed class ValuationsContextFactory : DesignTimeDbContextFactoryBase<ValuationsContext>
     {

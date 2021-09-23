@@ -14,8 +14,9 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
@@ -27,10 +28,9 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
                     builder.AddAllConfigurationsFromSolution(envName);
                     builder.AddEnvironmentVariables();
 
-                    if(hostContext.HostingEnvironment.IsForDevs())
+                    if (hostContext.HostingEnvironment.IsForDevs())
                         builder.AddUserSecrets<Startup>();
                 });
-
-
+        }
     }
 }

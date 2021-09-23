@@ -3,7 +3,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {
     internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
     {

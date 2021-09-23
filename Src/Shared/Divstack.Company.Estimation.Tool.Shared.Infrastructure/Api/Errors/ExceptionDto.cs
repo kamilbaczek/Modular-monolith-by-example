@@ -4,12 +4,12 @@
     {
         internal static ExceptionDto CreateInternalServerError()
         {
-            return new(ErrorMessages.InternalServerError);
+            return new ExceptionDto(ErrorMessages.InternalServerError);
         }
 
         internal static ExceptionDto CreateWithMessage(string message)
         {
-            return new(message);
+            return new ExceptionDto(message);
         }
     }
 }

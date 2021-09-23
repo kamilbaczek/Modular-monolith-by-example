@@ -2,7 +2,7 @@
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients
 {
     public interface IClientCompanyFinder
     {

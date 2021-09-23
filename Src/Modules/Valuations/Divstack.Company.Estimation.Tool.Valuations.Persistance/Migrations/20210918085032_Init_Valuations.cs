@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Migrations
 {
-    public partial class Init_valuations_module : Migration
+    public partial class Init_Valuations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,16 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    Enquiry_Client_Email_Value = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Enquiry_Client_FirstName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Enquiry_Client_LastName = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Enquiry_Client_Company_Size = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Enquiry_Client_Company_Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    InquiryId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     RequestedDate = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     CompletedDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     CompletedBy = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
@@ -33,26 +24,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Valuations", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "InquiryServices",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
-                    ServiceId = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
-                    EnquiryValuationId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InquiryServices", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_InquiryServices_Valuations_EnquiryValuationId",
-                        column: x => x.EnquiryValuationId,
-                        principalTable: "Valuations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -110,11 +81,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InquiryServices_EnquiryValuationId",
-                table: "InquiryServices",
-                column: "EnquiryValuationId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Proposals_ValuationId",
                 table: "Proposals",
                 column: "ValuationId");
@@ -127,9 +93,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "InquiryServices");
-
             migrationBuilder.DropTable(
                 name: "Proposals");
 

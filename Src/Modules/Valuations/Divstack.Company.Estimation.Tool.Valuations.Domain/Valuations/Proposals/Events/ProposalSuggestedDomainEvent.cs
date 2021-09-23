@@ -1,6 +1,5 @@
 ﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events
 {
@@ -11,8 +10,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             ProposalId proposalId,
             Money value,
             ProposalDescription description,
-            ValuationId valuationId)
+            ValuationId valuationId,
+            InquiryId inquiryId)
         {
+            InquiryId = inquiryId;
             ProposedBy = proposedBy;
             Value = value;
             ProposalId = proposalId;
@@ -20,6 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             ValuationId = valuationId;
         }
 
+        public InquiryId InquiryId { get; }
         public ProposalId ProposalId { get; }
         public EmployeeId ProposedBy { get; }
         public Money Value { get; }

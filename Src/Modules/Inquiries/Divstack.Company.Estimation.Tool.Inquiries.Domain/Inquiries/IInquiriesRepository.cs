@@ -5,7 +5,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries
 {
     public interface IInquiriesRepository
     {
-        Task AddAsync(Inquiry inquiry, CancellationToken cancellationToken = default);
-        Task CommitAsync(CancellationToken cancellationToken = default);
+        Task PersistAsync(Inquiry inquiry, CancellationToken cancellationToken = default);
     }
 }

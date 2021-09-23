@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Divstack.Company.Estimation.Tool.Bootstrapper
 {
-    public class Startup
+    public sealed class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -37,10 +37,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             IApplicationBuilder app,
             IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseSharedInfrastructure();
             app.UseRouting();

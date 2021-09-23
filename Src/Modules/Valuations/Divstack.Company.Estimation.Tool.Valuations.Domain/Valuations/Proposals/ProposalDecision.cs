@@ -3,7 +3,7 @@ using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyM
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals
 {
-    public sealed class ProposalDecision : ValueObject
+    public record ProposalDecision
     {
         private const string Accept = "Accept";
 
@@ -28,17 +28,17 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         internal static ProposalDecision AcceptDecision(DateTime date)
         {
-            return new(date, Accept);
+            return new ProposalDecision(date, Accept);
         }
 
         internal static ProposalDecision NoDecision()
         {
-            return new(null, EmptyDecision);
+            return new ProposalDecision(null, EmptyDecision);
         }
 
         internal static ProposalDecision RejectDecision(DateTime date)
         {
-            return new(date, Reject);
+            return new ProposalDecision(date, Reject);
         }
     }
 }

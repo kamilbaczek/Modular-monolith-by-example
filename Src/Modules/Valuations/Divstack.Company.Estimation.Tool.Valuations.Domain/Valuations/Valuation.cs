@@ -18,23 +18,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         {
         }
 
-        public ValuationId Id { get; }
-        private InquiryId InquiryId { get; }
-        private IList<Proposal> Proposals { get; }
-        private IList<HistoricalEntry> History { get; }
-        private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
-
-        private Proposal ProposalWaitForDecision => NotCancelledProposals
-            .SingleOrDefault(proposal => !proposal.HasDecision());
-
-        private DateTime RequestedDate { get; }
-        private DateTime? CompletedDate { get; set; }
-        private EmployeeId CompletedBy { get; set; }
-        private Deadline Deadline { get; }
-        private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
-        private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
-        private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
-
         private Valuation(
             Deadline deadline,
             InquiryId inquiryId)
@@ -46,18 +29,34 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             ChangeStatus(ValuationStatus.WaitForProposal);
             Deadline = deadline;
             InquiryId = inquiryId;
-            AddDomainEvent(new ValuationDeadlineFixedDomainEvent(Id, Deadline));
+            AddDomainEvent(new ValuationRequestedDomainEvent(Id, Deadline));
         }
+
+        public ValuationId Id { get; }
+        private InquiryId InquiryId { get; }
+        private IList<Proposal> Proposals { get; }
+        private IList<HistoricalEntry> History { get; }
+        private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
+
+        private Proposal ProposalWaitForDecision => NotCancelledProposals
+            .SingleOrDefault(proposal => !proposal.HasDecision);
+
+        private DateTime RequestedDate { get; }
+        private DateTime? CompletedDate { get; set; }
+        private EmployeeId CompletedBy { get; set; }
+        private Deadline Deadline { get; }
+        private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
+        private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
+        private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
 
         public static Valuation Request(
             InquiryId inquiryId,
-                Deadline deadline)
+            Deadline deadline)
         {
+            return new Valuation(deadline, inquiryId);
+        }
 
-            return new (deadline, inquiryId);
-    }
-
-    public void SuggestProposal(Money value,
+        public void SuggestProposal(Money value,
             string description,
             EmployeeId proposedBy)
         {
@@ -76,7 +75,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
                 proposal.Id,
                 value,
                 proposalDescription,
-                Id);
+                Id,
+                InquiryId);
             AddDomainEvent(@event);
         }
 
@@ -149,7 +149,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
         {
             return Proposals
-                .Where(proposal => !proposal.IsCancelled())
+                .Where(proposal => !proposal.IsCancelled)
                 .ToList();
         }
     }

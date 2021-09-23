@@ -2,27 +2,26 @@
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Microsoft.EntityFrameworkCore;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries
 {
-    internal sealed class InquriesRepository : IInquiriesRepository
+    internal sealed class InquiriesRepository : IInquiriesRepository
     {
-        private readonly  InquiriesContext _inquiriesContext;
+        private readonly InquiriesContext _inquiriesContext;
 
-        public InquriesRepository(InquiriesContext inquiriesContext)
+        public InquiriesRepository(InquiriesContext inquiriesContext)
         {
             _inquiriesContext = inquiriesContext;
         }
 
 
-        public async Task AddAsync(Inquiry inquiry, CancellationToken cancellationToken = default)
+        public async Task PersistAsync(Inquiry inquiry, CancellationToken cancellationToken = default)
         {
             await _inquiriesContext.Inquiries.AddAsync(inquiry, cancellationToken);
+            await CommitAsync(cancellationToken);
         }
 
-        public async Task CommitAsync(CancellationToken cancellationToken = default)
+        private async Task CommitAsync(CancellationToken cancellationToken = default)
         {
             await _inquiriesContext.SaveChangesAsync(cancellationToken);
         }

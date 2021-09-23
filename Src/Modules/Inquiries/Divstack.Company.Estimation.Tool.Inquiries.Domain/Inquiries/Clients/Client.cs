@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients
             Email = Guard.Against.Null(email, nameof(email));
             FirstName = Guard.Against.Null(firstName, nameof(firstName));
             LastName = Guard.Against.Null(lastName, nameof(lastName));
-            Company = Guard.Against.Null(company, nameof(company));;
+            Company = Guard.Against.Null(company, nameof(company));
         }
 
         internal Email Email { get; }
@@ -26,7 +26,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients
 
         public static Client Of(Email email, string firstName, string lastName, ClientCompany company)
         {
-            return new(email, firstName, lastName, company);
+            return new Client(email, firstName, lastName, company);
         }
     }
 }

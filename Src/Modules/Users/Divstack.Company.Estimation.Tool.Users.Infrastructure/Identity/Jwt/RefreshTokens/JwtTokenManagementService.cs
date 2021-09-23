@@ -55,19 +55,16 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Ref
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.Email, userDetails.Email),
-                new Claim(CustomClaimTypes.FirstName,
+                new(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new(ClaimTypes.Email, userDetails.Email),
+                new(CustomClaimTypes.FirstName,
                     !string.IsNullOrEmpty(userDetails.FirstName) ? userDetails.FirstName : ""),
-                new Claim(CustomClaimTypes.LastName,
-                    !string.IsNullOrEmpty(userDetails.LastName) ? userDetails.LastName : ""),
+                new(CustomClaimTypes.LastName,
+                    !string.IsNullOrEmpty(userDetails.LastName) ? userDetails.LastName : "")
             };
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+            foreach (var role in roles) claims.Add(new Claim(ClaimTypes.Role, role));
 
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(tokenConfiguration.Secret));
             var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

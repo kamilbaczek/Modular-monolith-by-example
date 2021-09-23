@@ -20,7 +20,7 @@
 
         public static readonly string[] UserRoles =
         {
-            User,
+            User
         };
 
         public static readonly string[] SystemAdmins = {SystemAdministrator};

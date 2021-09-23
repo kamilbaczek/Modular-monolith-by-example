@@ -1,12 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
 namespace Divstack.Company.Estimation.Tool.Users.Api
 {
     internal static class UsersModule
@@ -18,6 +17,5 @@ namespace Divstack.Company.Estimation.Tool.Users.Api
 
             return services;
         }
-
     }
 }

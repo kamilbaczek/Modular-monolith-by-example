@@ -6,9 +6,10 @@ using Ardalis.GuardClauses;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries
 {
@@ -19,42 +20,47 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries
         }
 
         private Inquiry(
-            IReadOnlyList<ServiceId> serviceIds,
+            IReadOnlyCollection<Service> services,
             Client client)
         {
-            Guard.Against.NullOrEmpty(serviceIds, nameof(serviceIds));
+            Guard.Against.NullOrEmpty(services, nameof(services));
             Client = Guard.Against.Null(client, nameof(client));
-            Id = new InquiryId(Guid.NewGuid());
-            InquiryServices = serviceIds
-                .Select(serviceId => InquiryService.Create(serviceId, this))
+
+            Id = InquiryId.Create();
+            InquiryItems = services
+                .Select(service => InquiryItem.Create(service, this))
                 .ToList()
                 .AsReadOnly();
+
             AddDomainEvent(new InquiryMadeDomainEvent(Id));
         }
+
         public InquiryId Id { get; }
-        internal Email ClientEmail => Client.Email;
-        internal string ClientFullName => Client.FullName;
-        private IReadOnlyList<InquiryService> InquiryServices { get; }
-        internal Client Client { get; }
+        private IReadOnlyList<InquiryItem> InquiryItems { get; }
+        private Client Client { get; }
 
         internal static Inquiry Make(
-            IReadOnlyList<ServiceId> productsIds,
+            IReadOnlyList<Service> services,
             Client client)
         {
-            return new(productsIds, client);
+            return new Inquiry(services, client);
         }
 
         public static async Task<Inquiry> MakeAsync(
-            List<ServiceId> serviceIds,
+            IReadOnlyCollection<Service> services,
             Client client,
             IServiceExistingChecker serviceExistingChecker)
         {
-            var servicesIdsValues = serviceIds.Select(id => id.Value).ToList().AsReadOnly();
-            var areServicesExists = await serviceExistingChecker.ExistAsync(servicesIdsValues);
+            if (!services.Any())
+                throw new InvalidOperationException("Inquiry cannot be empty");
+            var servicesIds = services.Select(service => service.ServiceId.Value)
+                .ToList()
+                .AsReadOnly();
+            var areServicesExists = await serviceExistingChecker.ExistAsync(servicesIds);
             if (areServicesExists is false)
-                throw new InvalidServicesException(serviceIds);
+                throw new InvalidServicesException(servicesIds);
 
-            return new Inquiry(serviceIds, client);
+            return new Inquiry(services, client);
         }
     }
 }

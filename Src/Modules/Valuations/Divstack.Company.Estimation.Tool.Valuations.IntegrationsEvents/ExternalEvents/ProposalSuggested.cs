@@ -7,6 +7,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.Externa
         string FullName,
         Guid ValuationId,
         Guid ProposalId,
+        Guid InquiryId,
         decimal? Value,
         string Currency,
         string Description) : IntegrationEvent;

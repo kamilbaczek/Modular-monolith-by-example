@@ -26,6 +26,5 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers
             await _inquiriesModule.ExecuteCommandAsync(makeInquiryCommand);
             return Ok();
         }
-
     }
 }

@@ -8,8 +8,9 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Repositories
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.Scan(scan => scan
-                .FromAssemblyOf<InquriesRepository>()
-                .AddClasses(implementationTypeFilter => implementationTypeFilter.Where(type => type.Name.EndsWith("Repository")))
+                .FromAssemblyOf<InquiriesRepository>()
+                .AddClasses(implementationTypeFilter =>
+                    implementationTypeFilter.Where(type => type.Name.EndsWith("Repository")))
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 

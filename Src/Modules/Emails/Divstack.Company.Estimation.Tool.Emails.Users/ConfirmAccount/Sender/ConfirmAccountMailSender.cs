@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Web;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration;
@@ -29,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.S
                 .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()))
                 .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token));
 
-             _mailSender.Send(email, _confirmAccountMailConfiguration.Subject, emailText);
+            _mailSender.Send(email, _confirmAccountMailConfiguration.Subject, emailText);
         }
     }
 }

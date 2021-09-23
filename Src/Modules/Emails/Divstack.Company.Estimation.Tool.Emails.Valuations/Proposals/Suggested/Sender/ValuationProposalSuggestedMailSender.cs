@@ -1,6 +1,8 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
 
@@ -21,19 +23,25 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 
         private readonly ISuggestValuationMailConfiguration _configuration;
         private readonly IEmailSender _emailSender;
+        private readonly IInquiriesModule _inquiriesModule;
         private readonly IMailTemplateReader _mailTemplateReader;
 
         public ValuationProposalSuggestedMailSender(ISuggestValuationMailConfiguration configuration,
             IEmailSender emailSender,
-            IMailTemplateReader mailTemplateReader)
+            IMailTemplateReader mailTemplateReader,
+            IInquiriesModule inquiriesModule)
         {
             _configuration = configuration;
             _emailSender = emailSender;
             _mailTemplateReader = mailTemplateReader;
+            _inquiriesModule = inquiriesModule;
         }
 
-        public void Send(ValuationProposalSuggestedEmailRequest request)
+        public async Task SendAsync(ValuationProposalSuggestedEmailRequest request)
         {
+            var inquiryClientQuery = new GetInquiryClientQuery(request.InquiryId);
+            var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
+
             var acceptLink = _configuration.AcceptProposalLink
                 .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
                 .Replace(ProposalIdPlaceholder, HttpUtility.UrlEncode(request.ProposalId.ToString()));
@@ -51,7 +59,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
                 .Replace(PriceCurrencyPlaceholder, request.Currency)
                 .Replace(PriceValuePlaceholder, request.Value.ToString());
 
-            _emailSender.Send(request.ClientEmail, _configuration.Subject, emailAsHtml);
+            _emailSender.Send(client.Email, _configuration.Subject, emailAsHtml);
         }
     }
 }

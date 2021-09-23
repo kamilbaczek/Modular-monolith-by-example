@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Xml;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Constants;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll
 {

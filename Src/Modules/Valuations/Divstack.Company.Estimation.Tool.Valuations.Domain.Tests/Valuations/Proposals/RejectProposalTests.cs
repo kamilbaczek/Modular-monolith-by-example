@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
@@ -16,24 +14,23 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
     public class RejectProposalTests : BaseValuationTest
     {
         [Test]
-        public async Task Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
+        public void Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
         {
             var employee = new EmployeeId(Guid.NewGuid());
-            var fakeEmail = Email.Of("test@mail.com");
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employee, valuation);
 
             valuation.RejectProposal(proposalId);
 
             var @event = GetPublishedEvent<ProposalRejectedDomainEvent>(valuation);
-            @event.AssertIsCorrect(fakeEmail, proposalId, FakeRejectReason);
+            @event.AssertIsCorrect(proposalId, valuation.Id);
         }
 
         [Test]
-        public async Task Given_RejectProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
+        public void Given_RejectProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
         {
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
             valuation.CancelProposal(proposalId, employee);
 
@@ -43,9 +40,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_RejectProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
+        public void Given_RejectProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
         {
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = new ProposalId(Guid.NewGuid());
 
             Action rejectProposal = () => valuation.RejectProposal(proposalId);
@@ -54,10 +51,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
+        public void Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
         {
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
             valuation.RejectProposal(proposalId);
 

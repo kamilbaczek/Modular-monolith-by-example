@@ -9,11 +9,14 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Map
 {
     internal sealed class EventMapper : IEventMapper
     {
-        public IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events) =>
-            events.Select(Map).ToList();
+        public IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events)
+        {
+            return events.Select(Map).ToList();
+        }
 
         private static IntegrationEvent Map(IDomainEvent @event)
-            => @event switch
+        {
+            return @event switch
             {
                 ProposalApprovedDomainEvent domainEvent =>
                     new ProposalApproved(domainEvent.ValuationId.Value,
@@ -36,11 +39,12 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Map
                         domainEvent.FullName,
                         domainEvent.ValuationId.Value,
                         domainEvent.ProposalId.Value,
+                        domainEvent.InquiryId.Value,
                         domainEvent.Value.Value,
                         domainEvent.Value.Currency,
                         domainEvent.Description.Message),
-                ValuationDeadlineFixedDomainEvent domainEvent =>
-                    new ValuationDeadlineFixed(
+                ValuationRequestedDomainEvent domainEvent =>
+                    new ValuationRequested(
                         domainEvent.ValuationId.Value,
                         domainEvent.DeadlineDate.Date),
                 ValuationCompletedDomainEvent domainEvent =>
@@ -48,6 +52,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Map
                         domainEvent.ClosedBy.Value,
                         domainEvent.ValuationId.Value),
 
+                _ => null
             };
+        }
     }
 }

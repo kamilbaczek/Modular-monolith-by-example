@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients
 
         public static ClientCompany Of(string size, string name)
         {
-            return new (size, name);
+            return new ClientCompany(size, name);
         }
     }
 }

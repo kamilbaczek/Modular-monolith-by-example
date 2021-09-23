@@ -8,5 +8,3 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindCli
         Task<ClientProfileDto> GetClientProfile(string email);
     }
 }
-
-

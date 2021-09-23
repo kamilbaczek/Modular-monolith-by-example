@@ -17,12 +17,12 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount
 
         public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
         {
-             _confirmAccountMailSender.Send(
+            _confirmAccountMailSender.Send(
                 notification.Email,
                 notification.ConfirmAccountToken,
                 notification.UserPublicId);
 
-             return Task.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }

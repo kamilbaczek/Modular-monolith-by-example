@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations;
+﻿using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Repositories
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Repositories
 {
     internal static class RepositoriesModule
     {

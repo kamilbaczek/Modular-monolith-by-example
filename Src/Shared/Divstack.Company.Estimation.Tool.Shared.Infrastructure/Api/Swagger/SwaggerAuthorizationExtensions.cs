@@ -39,7 +39,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger
                         },
                         Scheme = Oauth2,
                         Name = Bearer,
-                        In = ParameterLocation.Header,
+                        In = ParameterLocation.Header
                     },
                     new List<string>()
                 }

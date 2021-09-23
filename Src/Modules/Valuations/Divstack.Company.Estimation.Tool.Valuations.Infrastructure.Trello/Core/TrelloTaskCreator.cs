@@ -24,7 +24,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core
         {
             var factory = new TrelloFactory();
             var board = factory.Board(_configuration.BoardId);
-            await board.Refresh();
+            await board.Refresh(ct: cancellationToken);
             var list = board.Lists.FirstOrDefault(listInBoard => listInBoard.Name == listName);
             if (list is null)
                 throw new TrelloTodoListNotFound(listName);

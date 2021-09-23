@@ -7,17 +7,11 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
         public InquiryInformationDto(Guid id,
             string firstName,
             string lastName,
-            string email,
-            DateTime requestedDate,
-            Guid? completedBy,
-            string status)
+            string email)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
-            RequestedDate = requestedDate.ToString(Formatting.DateFormat);
-            CompletedBy = completedBy;
-            Status = status;
             Email = email;
         }
 
@@ -25,9 +19,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
         public string FirstName { get; }
         public string LastName { get; }
         public string Email { get; }
-        public string RequestedDate { get; }
-        public Guid? CompletedBy { get; }
-        public string Status { get; }
         public string FullName => $"{FirstName} {LastName}";
     }
 }

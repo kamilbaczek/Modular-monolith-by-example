@@ -15,11 +15,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadline
             Date = SystemTime.Now().AddDays(daysToDeadlineFromNow);
         }
 
+        internal DateTime Date { get; }
+
         public static Deadline Create(IDeadlinesConfiguration deadlinesConfiguration)
         {
-            return new(deadlinesConfiguration.WorksDaysToDeadlineFromNow);
+            return new Deadline(deadlinesConfiguration.WorksDaysToDeadlineFromNow);
         }
-
-        internal DateTime Date { get; }
     }
 }

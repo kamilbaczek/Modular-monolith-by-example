@@ -21,10 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
             {
                 if (Equals(obj1, null))
                 {
-                    if (Equals(obj2, null))
-                    {
-                        return true;
-                    }
+                    if (Equals(obj2, null)) return true;
 
                     return false;
                 }
@@ -39,10 +36,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
 
             public override bool Equals(object obj)
             {
-                if (obj == null || GetType() != obj.GetType())
-                {
-                    return false;
-                }
+                if (obj == null || GetType() != obj.GetType()) return false;
 
                 return GetProperties().All(p => PropertiesAreEqual(obj, p))
                        && GetFields().All(f => FieldsAreEqual(obj, f));
@@ -52,7 +46,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
             {
                 unchecked
                 {
-                    int hash = 17;
+                    var hash = 17;
                     foreach (var prop in GetProperties())
                     {
                         var value = prop.GetValue(this, null);
@@ -71,10 +65,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
 
             protected static void CheckRule(IBusinessRule rule)
             {
-                if (rule.IsBroken())
-                {
-                    throw new BusinessRuleValidationException(rule);
-                }
+                if (rule.IsBroken()) throw new BusinessRuleValidationException(rule);
             }
 
             private bool PropertiesAreEqual(object obj, PropertyInfo p)
@@ -90,12 +81,10 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
             private IEnumerable<PropertyInfo> GetProperties()
             {
                 if (_properties == null)
-                {
                     _properties = GetType()
                         .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                         .Where(p => p.GetCustomAttribute(typeof(IgnoreMemberAttribute)) == null)
                         .ToList();
-                }
 
                 return _properties;
             }
@@ -103,11 +92,9 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
             private IEnumerable<FieldInfo> GetFields()
             {
                 if (_fields == null)
-                {
                     _fields = GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                         .Where(p => p.GetCustomAttribute(typeof(IgnoreMemberAttribute)) == null)
                         .ToList();
-                }
 
                 return _fields;
             }
@@ -116,7 +103,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
             {
                 var currentHash = value?.GetHashCode() ?? 0;
 
-                return (seed * 23) + currentHash;
+                return seed * 23 + currentHash;
             }
         }
     }

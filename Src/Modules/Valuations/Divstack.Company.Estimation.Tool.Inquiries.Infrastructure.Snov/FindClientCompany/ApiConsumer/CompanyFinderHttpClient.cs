@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer.Dtos.ClientProfile;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer.Requests;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer
 {
@@ -46,4 +44,3 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindCli
         // }
     }
 }
-

@@ -3,6 +3,7 @@ using Divstack.Company.Estimation.Tool.Reminders.Valuations;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
 namespace Divstack.Company.Estimation.Tool.Reminders
 {
     internal static class RemindersModule

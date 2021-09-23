@@ -1,5 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Emails.Valuations;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Users;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +13,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper
         {
             services.AddEmailCore();
             services.AddEmailUsers();
-            services.AddValuations();
+            // services.AddValuations();
 
             return services;
         }

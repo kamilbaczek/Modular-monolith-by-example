@@ -1,5 +1,8 @@
 ﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services.Attributes;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
 using Microsoft.EntityFrameworkCore;
@@ -16,31 +19,47 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquirie
             builder.Property<InquiryId>("Id")
                 .HasConversion(id => id.Value, value => new InquiryId(value))
                 .IsIdentity();
-            builder.OwnsMany<InquiryService>("InquiryServices", servicesBuilder =>
+            builder.OwnsMany<InquiryItem>("InquiryItems", inquiryServiceBuilder =>
             {
-                servicesBuilder.WithOwner("Enquiry").HasForeignKey();
-                servicesBuilder.ToTable("InquiryServices");
-                servicesBuilder.HasKey("Id");
-                servicesBuilder.Property<ServiceId>("ServiceId")
-                    .HasConversion(id => id.Value, value => new ServiceId(value))
+                inquiryServiceBuilder.WithOwner("Inquiry").HasForeignKey();
+                inquiryServiceBuilder.ToTable("InquiryItems");
+                inquiryServiceBuilder.HasKey("Id");
+                inquiryServiceBuilder.Property<InquiryItemId>("Id")
+                    .HasConversion(id => id.Value, value => new InquiryItemId(value))
                     .IsIdentity();
-                    servicesBuilder.Property<InquiryServiceId>("Id")
-                        .HasConversion(id => id.Value, value => new InquiryServiceId(value))
-                        .IsIdentity();
-            });
-            builder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
-            {
-                clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
-                clientValueObjectBuilder.Property<string>("LastName").IsRequired();
-                clientValueObjectBuilder.OwnsOne<Email>("Email",
-                    emailValueObjectBuilder =>
-                    {
-                        emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
-                    });
-                clientValueObjectBuilder.OwnsOne<ClientCompany>("Company", clientCompanyValueObjectBuilder =>
+                inquiryServiceBuilder.OwnsOne<Service>("Service", servicesBuilder =>
                 {
-                    clientCompanyValueObjectBuilder.Property<string>("Size").IsRequired();
-                    clientCompanyValueObjectBuilder.Property<string>("Name").IsRequired();
+                    inquiryServiceBuilder.ToTable("InquiryItemsServices");
+                    servicesBuilder.Property<ServiceId>("ServiceId")
+                        .HasConversion(id => id.Value, value => new ServiceId(value))
+                        .IsIdentity();
+                    servicesBuilder.OwnsMany<Attribute>("Attributes", attributeBuilder =>
+                    {
+                        attributeBuilder.ToTable("InquiryItemsServicesAttributes");
+                        attributeBuilder.HasKey("Id");
+                        attributeBuilder.Property<AttributeId>("Id")
+                            .HasConversion(id => id.Value, value => new AttributeId(value))
+                            .IsIdentity();
+                        attributeBuilder.Property<AttributeValueId>("ValueId")
+                            .HasConversion(id => id.Value, value => new AttributeValueId(value))
+                            .IsIdentity();
+                        attributeBuilder.WithOwner("Service").HasForeignKey();
+                    });
+                });
+                builder.OwnsOne<Client>("Client", clientValueObjectBuilder =>
+                {
+                    clientValueObjectBuilder.Property<string>("FirstName").IsRequired();
+                    clientValueObjectBuilder.Property<string>("LastName").IsRequired();
+                    clientValueObjectBuilder.OwnsOne<Email>("Email",
+                        emailValueObjectBuilder =>
+                        {
+                            emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
+                        });
+                    clientValueObjectBuilder.OwnsOne<ClientCompany>("Company", clientCompanyValueObjectBuilder =>
+                    {
+                        clientCompanyValueObjectBuilder.Property<string>("Size").IsRequired();
+                        clientCompanyValueObjectBuilder.Property<string>("Name").IsRequired();
+                    });
                 });
             });
         }

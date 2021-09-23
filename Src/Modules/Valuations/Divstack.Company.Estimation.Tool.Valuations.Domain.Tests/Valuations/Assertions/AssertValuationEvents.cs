@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+﻿using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
@@ -12,15 +9,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
 {
     internal static class AssertValuationEvents
     {
-        internal static void AssertIsCorrect(this ValuationRequestedDomainEvent domainEvent, List<ServiceId> serviceIds,
-            Email email)
+        internal static void AssertIsCorrect(this ValuationRequestedDomainEvent domainEvent)
         {
             domainEvent.Should().NotBeNull();
-            domainEvent.ClientEmail.Should().Be(email);
-            domainEvent.ServiceIds.Should().BeEquivalentTo(serviceIds);
+            domainEvent.ValuationId.Value.Should().NotBeEmpty();
         }
 
-        internal static void AssertIsCorrect(this ProposalSuggestedDomainEvent domainEvent, Money money, EmployeeId employee)
+        internal static void AssertIsCorrect(this ProposalSuggestedDomainEvent domainEvent, Money money,
+            EmployeeId employee)
         {
             domainEvent.Should().NotBeNull();
             domainEvent.Value.Should().Be(money);
@@ -38,13 +34,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.As
         }
 
         internal static void AssertIsCorrect(this ProposalRejectedDomainEvent domainEvent,
-            Email clientEmail,
             ProposalId proposalId,
-            string rejectReason)
+            ValuationId valuationId)
         {
             domainEvent.Should().NotBeNull();
-            domainEvent.ClientEmail.Should().Be(clientEmail);
             domainEvent.ProposalId.Should().Be(proposalId);
+            domainEvent.ValuationId.Should().Be(valuationId);
         }
 
         internal static void AssertIsCorrect(this ValuationCompletedDomainEvent domainEvent,

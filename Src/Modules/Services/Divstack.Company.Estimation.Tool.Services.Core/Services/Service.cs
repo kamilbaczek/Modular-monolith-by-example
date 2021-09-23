@@ -38,7 +38,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services
         internal static Service Create(string name, string description, Category category,
             ICurrentUserService currentUserService)
         {
-            return new(name, description, category, currentUserService);
+            return new Service(name, description, category, currentUserService);
         }
 
         internal void Update(string name, string description, Category category)

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {
     internal abstract class DesignTimeDbContextFactoryBase<TContext> :
         IDesignTimeDbContextFactory<TContext> where TContext : DbContext
@@ -14,22 +13,15 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
 
         public TContext CreateDbContext(string[] args)
         {
-            var basePath = Directory.GetCurrentDirectory() +
-                           string.Format("{0}..{0}..{0}..{0}Bootstrapper{0}Divstack.Company.Estimation.Tool.Bootstrapper",
-                               Path.DirectorySeparatorChar);
-            Console.WriteLine(basePath);
-
-            return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
+            return Create();
         }
 
         protected abstract TContext CreateNewInstance(DbContextOptions<TContext> options);
 
-        private TContext Create(string basePath, string environmentName)
+        private TContext Create()
         {
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(basePath)
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{environmentName}.json", true)
+                .AddUserSecrets<ValuationsContext>()
                 .AddEnvironmentVariables()
                 .Build();
 

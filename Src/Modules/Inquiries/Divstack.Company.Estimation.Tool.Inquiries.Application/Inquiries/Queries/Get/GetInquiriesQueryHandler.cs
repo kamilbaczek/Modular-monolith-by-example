@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Extensions;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get.Dtos;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
 using MediatR;
@@ -21,11 +23,11 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
         {
             var connection = _databaseConnectionFactory.Create();
 
-            // var valuationInformationDto = await GetInformation(request, connection, cancellationToken);
-            // var Inquirieservices = await GetServices(request, connection, cancellationToken);
-            // var InquiriesDetails = new ValuationDetailsDto(valuationInformationDto, Inquirieservices);
+            var valuationInformationDto = await GetInformation(request, connection, cancellationToken);
+            var inquiriesServices = await GetServices(request, connection, cancellationToken);
+            var inquiriesDetails = new InquiryDetailsDto(valuationInformationDto, inquiriesServices);
 
-            return new InquiryVm(InquiriesDetails);
+            return new InquiryVm(inquiriesDetails);
         }
 
         private static async Task<IReadOnlyList<InquiriesServiceItemDto>> GetServices(
@@ -35,7 +37,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
         {
             var query = @$"SELECT
                 ServiceId AS {nameof(InquiriesServiceItemDto.ServiceId)}
-                FROM InquiryServices
+                FROM InquiryItems
                 WHERE EnquiryValuationId = @InquiryId";
             var inquirieServices = await connection.ExecuteQueryAsync<InquiriesServiceItemDto>(
                 query, new {request.InquiryId}, cancellationToken);
@@ -43,22 +45,20 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
             return inquirieServices.ToList().AsReadOnly();
         }
 
-        private static async Task<ValuationInformationDto> GetInformation(
-            GetValuationQuery request,
+        private static async Task<InquiryInformationDto> GetInformation(
+            GetInquiryQuery request,
             IDbConnection connection,
             CancellationToken cancellationToken)
         {
             var query = @$"
-                SELECT Id AS {nameof(ValuationInformationDto.Id)},
-                       Enquiry_Client_FirstName AS {nameof(ValuationInformationDto.FirstName)},
-                       Enquiry_Client_LastName  AS {nameof(ValuationInformationDto.LastName)},
-                       Enquiry_Client_Email_Value AS {nameof(ValuationInformationDto.Email)},
-                       RequestedDate AS {nameof(ValuationInformationDto.RequestedDate)},
-                       CompletedBy AS {nameof(ValuationInformationDto.CompletedBy)},
+                SELECT Id AS {nameof(InquiryInformationDto.Id)},
+                       Client_FirstName AS {nameof(InquiryInformationDto.FirstName)},
+                       Client_LastName  AS {nameof(InquiryInformationDto.LastName)},
+                       Client_Email_Value AS {nameof(InquiryInformationDto.Email)},
                 FROM Inquiries
                 WHERE Id = @InquiryId
                 ORDER BY RequestedDate DESC";
-            var valuationInformation = await connection.ExecuteSingleQueryAsync<ValuationInformationDto>(
+            var valuationInformation = await connection.ExecuteSingleQueryAsync<InquiryInformationDto>(
                 query, new {request.InquiryId}, cancellationToken);
 
             return valuationInformation;

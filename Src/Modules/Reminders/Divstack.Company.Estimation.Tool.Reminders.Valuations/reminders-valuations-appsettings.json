@@ -1,8 +1,6 @@
 ﻿{
-  "Reminders":
-  {
-    "Valuation":
-    {
+  "Reminders": {
+    "Valuation": {
       "DaysBeforeDeadline": 2
     }
   }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make
 {
@@ -9,6 +9,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public List<Guid> ServicesIds { get; set; }
+        public IReadOnlyCollection<ServiceDto> Services { get; set; }
     }
 }

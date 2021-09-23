@@ -1,5 +1,4 @@
 ﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 using Microsoft.Extensions.Configuration;
 
 namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration

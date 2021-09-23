@@ -14,8 +14,8 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Sc
         INotificationHandler<ProposalCancelledDomainEvent>
     {
         private readonly IBackgroundJobScheduler _backgroundJobScheduler;
-        private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
         private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
+        private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
 
         public ValuationCloseToDeadlineUnScheduler(IBackgroundJobScheduler backgroundJobScheduler,
             IValuationsDeadlineCloseReminder valuationsDeadlineCloseReminder,
@@ -26,16 +26,18 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Sc
             _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
         }
 
-        public Task Handle(ProposalSuggestedDomainEvent proposalSuggestedDomainEvent, CancellationToken cancellationToken)
+        public Task Handle(ProposalCancelledDomainEvent proposalCancelledDomainEvent,
+            CancellationToken cancellationToken)
         {
-            UnSchedule(proposalSuggestedDomainEvent.ValuationId.Value, cancellationToken);
+            UnSchedule(proposalCancelledDomainEvent.ValuationId.Value, cancellationToken);
 
             return Task.CompletedTask;
         }
 
-        public Task Handle(ProposalCancelledDomainEvent proposalCancelledDomainEvent, CancellationToken cancellationToken)
+        public Task Handle(ProposalSuggestedDomainEvent proposalSuggestedDomainEvent,
+            CancellationToken cancellationToken)
         {
-            UnSchedule(proposalCancelledDomainEvent.ValuationId.Value, cancellationToken);
+            UnSchedule(proposalSuggestedDomainEvent.ValuationId.Value, cancellationToken);
 
             return Task.CompletedTask;
         }

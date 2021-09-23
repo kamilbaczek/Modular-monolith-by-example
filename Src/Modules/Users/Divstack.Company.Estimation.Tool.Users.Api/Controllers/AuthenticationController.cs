@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers
             var response = new SignInResponse
             {
                 Token = signInCommandResponse.AccessToken,
-                RefreshToken = signInCommandResponse.RefreshToken,
+                RefreshToken = signInCommandResponse.RefreshToken
             };
 
             if (string.IsNullOrEmpty(signInCommandResponse.Error))

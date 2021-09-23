@@ -25,7 +25,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
 
         internal static HistoricalEntry Create(Valuation valuation, ValuationStatus status)
         {
-            return new(valuation, status);
+            return new HistoricalEntry(valuation, status);
         }
     }
 }

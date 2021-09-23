@@ -8,7 +8,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations
 {
     internal class ValuationEntityTypeConfiguration : IEntityTypeConfiguration<Valuation>
     {
@@ -25,10 +25,8 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 .HasConversion(id => id.Value, value => new InquiryId(value))
                 .IsIdentity();
 
-            builder.OwnsOne<Deadline>("Deadline", deadlineValueObjectBuilder =>
-            {
-                deadlineValueObjectBuilder.Property<DateTime>("Date").IsRequired();
-            });
+            builder.OwnsOne<Deadline>("Deadline",
+                deadlineValueObjectBuilder => { deadlineValueObjectBuilder.Property<DateTime>("Date").IsRequired(); });
             builder.OwnsMany<Proposal>("Proposals", ownedNavigationBuilder =>
             {
                 ownedNavigationBuilder.WithOwner("Valuation").HasForeignKey();
@@ -43,10 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                     moneyValueObjectBuilder.Property<string>("Currency");
                 });
                 ownedNavigationBuilder.OwnsOne<ProposalDescription>("Description",
-                    valueObjectBuilder =>
-                    {
-                        valueObjectBuilder.Property<string>("Message").HasMaxLength(512);
-                    });
+                    valueObjectBuilder => { valueObjectBuilder.Property<string>("Message").HasMaxLength(512); });
                 ownedNavigationBuilder.Property<EmployeeId>("SuggestedBy")
                     .HasConversion(id => id.Value, value => new EmployeeId(value))
                     .IsIdentity()
@@ -85,7 +80,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuat
                 .IsIdentity()
                 .IsRequired(false);
             builder.Property<DateTime?>("CompletedDate").IsRequired(false);
-
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects
             Currency = currency;
         }
 
-        public static Money Undefined => new Money(null, null);
+        public static Money Undefined => new(null, null);
 
         public decimal? Value { get; }
 

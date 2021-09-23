@@ -25,6 +25,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         internal static ValuationStatus Approved => new(ApprovedStatus);
         internal static ValuationStatus Completed => new(CompletedStatus);
 
-        internal string Value { get; }
+        private string Value { get; }
     }
 }

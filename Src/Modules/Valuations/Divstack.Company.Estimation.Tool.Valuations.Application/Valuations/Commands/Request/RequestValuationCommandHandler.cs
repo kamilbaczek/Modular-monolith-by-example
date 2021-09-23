@@ -10,8 +10,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 {
     internal sealed class RequestValuationCommandHandler : INotificationHandler<InquiryMadeEvent>
     {
-        private readonly IIntegrationEventPublisher _integrationEventPublisher;
         private readonly IDeadlinesConfiguration _deadlinesConfiguration;
+        private readonly IIntegrationEventPublisher _integrationEventPublisher;
         private readonly IValuationsRepository _valuationsRepository;
 
         public RequestValuationCommandHandler(IValuationsRepository valuationsRepository,

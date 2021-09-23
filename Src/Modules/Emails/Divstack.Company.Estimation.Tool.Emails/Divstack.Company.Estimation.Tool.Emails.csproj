@@ -7,19 +7,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Users\Divstack.Company.Estimation.Tool.Emails.Users.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Valuations\Divstack.Company.Estimation.Tool.Emails.Valuations.csproj" />
+        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj"/>
+        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Users\Divstack.Company.Estimation.Tool.Emails.Users.csproj"/>
+        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Valuations\Divstack.Company.Estimation.Tool.Emails.Valuations.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="emails-appsettings.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="emails-appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

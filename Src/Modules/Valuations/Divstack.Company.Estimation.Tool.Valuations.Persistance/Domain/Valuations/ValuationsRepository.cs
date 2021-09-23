@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.Domain.Valuations
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations
 {
     internal sealed class ValuationsRepository : IValuationsRepository
     {

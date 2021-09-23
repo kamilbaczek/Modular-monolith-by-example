@@ -5,7 +5,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
 {
     internal static class FakeDeadline
     {
-        internal const int FakeWorksDaysToDeadlineFromNow = 10;
+        private const int FakeWorksDaysToDeadlineFromNow = 10;
 
         internal static Deadline CreateDeadline(int worksDaysToDeadlineFromNow = FakeWorksDaysToDeadlineFromNow)
         {
