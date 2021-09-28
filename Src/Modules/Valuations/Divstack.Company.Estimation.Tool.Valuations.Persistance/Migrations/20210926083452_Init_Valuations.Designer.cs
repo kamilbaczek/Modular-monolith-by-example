@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Migrations
 {
     [DbContext(typeof(ValuationsContext))]
-    [Migration("20210918085032_Init_Valuations")]
+    [Migration("20210926083452_Init_Valuations")]
     partial class Init_Valuations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

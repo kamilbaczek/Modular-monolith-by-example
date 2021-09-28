@@ -1,5 +1,6 @@
 ﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services.Attributes;

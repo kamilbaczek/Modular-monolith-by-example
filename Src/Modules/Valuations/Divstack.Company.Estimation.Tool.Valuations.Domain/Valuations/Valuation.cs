@@ -29,7 +29,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             ChangeStatus(ValuationStatus.WaitForProposal);
             Deadline = deadline;
             InquiryId = inquiryId;
-            AddDomainEvent(new ValuationRequestedDomainEvent(Id, Deadline));
+            AddDomainEvent(new ValuationRequestedDomainEvent(Id, InquiryId, Deadline));
         }
 
         public ValuationId Id { get; }

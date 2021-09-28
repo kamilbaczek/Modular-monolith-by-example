@@ -45,13 +45,13 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Map
                         domainEvent.Description.Message),
                 ValuationRequestedDomainEvent domainEvent =>
                     new ValuationRequested(
+                        domainEvent.InquiryId.Value,
                         domainEvent.ValuationId.Value,
                         domainEvent.DeadlineDate.Date),
                 ValuationCompletedDomainEvent domainEvent =>
                     new ValuationCompleted(
                         domainEvent.ClosedBy.Value,
                         domainEvent.ValuationId.Value),
-
                 _ => null
             };
         }

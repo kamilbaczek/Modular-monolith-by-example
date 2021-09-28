@@ -20,8 +20,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
             var connection = _databaseConnectionFactory.Create();
             var query = @$"SELECT
                                Valuations.Id AS {nameof(ValuationListItemDto.Id)},
-                               Enquiry_Client_FirstName AS {nameof(ValuationListItemDto.FirstName)},
-                               Enquiry_Client_LastName AS {nameof(ValuationListItemDto.LastName)},
+                               Valuations.InquiryId AS {nameof(ValuationListItemDto.InquiryId)},
                                (SELECT
                                        ValuationsHistory.Status_Value
                                      FROM

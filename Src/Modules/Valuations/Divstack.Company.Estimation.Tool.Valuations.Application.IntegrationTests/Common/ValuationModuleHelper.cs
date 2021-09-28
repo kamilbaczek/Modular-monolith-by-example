@@ -19,14 +19,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
             return valuationListItemDto;
         }
 
-        internal static async Task<RequestValuationCommand> RequestValuation()
-        {
-            var serviceId = await ValuationsSeeders.CreateService();
-            var requestCommand = FakeValuationsRequests.GenerateFakeRequestValuationCommand(new List<Guid> {serviceId});
-            await ValuationsTesting.ExecuteCommandAsync(requestCommand);
-
-            return requestCommand;
-        }
+        // internal static async Task<RequestValuationCommand> RequestValuation()
+        // {
+        //     var serviceId = await ValuationsSeeders.CreateService();
+        //     var requestCommand = FakeValuationsRequests.GenerateFakeRequestValuationCommand(new List<Guid> {serviceId});
+        //     await ValuationsTesting.ExecuteCommandAsync(requestCommand);
+        //
+        //     return requestCommand;
+        // }
 
         internal static async Task<SuggestProposalCommand> SuggestValuationProposal(Guid valuationId)
         {

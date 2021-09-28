@@ -21,7 +21,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure
             services.AddMediationModule();
             services.AddEvents();
 
-
             return services;
         }
 

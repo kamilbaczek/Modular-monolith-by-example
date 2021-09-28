@@ -8,13 +8,13 @@ using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request
 {
-    internal sealed class RequestValuationCommandHandler : INotificationHandler<InquiryMadeEvent>
+    internal sealed class RequestValuationEventHandler : INotificationHandler<InquiryMadeEvent>
     {
         private readonly IDeadlinesConfiguration _deadlinesConfiguration;
         private readonly IIntegrationEventPublisher _integrationEventPublisher;
         private readonly IValuationsRepository _valuationsRepository;
 
-        public RequestValuationCommandHandler(IValuationsRepository valuationsRepository,
+        public RequestValuationEventHandler(IValuationsRepository valuationsRepository,
             IIntegrationEventPublisher integrationEventPublisher,
             IDeadlinesConfiguration deadlinesConfiguration)
         {

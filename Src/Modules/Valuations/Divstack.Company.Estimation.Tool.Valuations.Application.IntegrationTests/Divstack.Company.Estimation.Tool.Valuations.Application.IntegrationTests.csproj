@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <RootNamespace>Divstack.Company.Estimation.Tool.Valuations.Application.Tests</RootNamespace>
-        <UserSecretsId>0e4dc013-06b7-40e8-9e51-6c08e4dcd81c</UserSecretsId>
+        <UserSecretsId>b7c336cb-ae81-4dd5-a4d6-6eb22bbadc75</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>

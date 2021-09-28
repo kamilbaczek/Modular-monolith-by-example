@@ -25,8 +25,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Feat
 
         public async Task Handle(ValuationRequested notification, CancellationToken cancellationToken)
         {
-            var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
-            var servicesNames = services.Select(service => service.Name);
+            // var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
+            // var servicesNames = services.Select(service => service.Name);
             var taskName = GenerateTaskName(notification.ValuationId);
             var description = GenerateDescription(notification, servicesNames);
             await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
@@ -35,7 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Feat
         private static string GenerateDescription(ValuationRequested notification,
             IEnumerable<string> servicesNames)
         {
-            return $"Client: {notification.ClientEmail} " +
+            return $"Valuation: {notification.ValuationId} " +
                    $"{Environment.NewLine}" +
                    $"Requested: {string.Join($"{Environment.NewLine}", servicesNames)}";
         }
