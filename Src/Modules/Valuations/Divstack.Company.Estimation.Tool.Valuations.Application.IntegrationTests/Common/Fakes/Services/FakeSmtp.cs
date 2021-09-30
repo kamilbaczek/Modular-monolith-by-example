@@ -33,7 +33,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
         {
             await Task.Delay(DelayBeforeMailWillBeReceivedIn);
             var email = smtpServer.ReceivedEmail
-                    .FirstOrDefault(message => message.ToAddresses
+                .FirstOrDefault(message => message.ToAddresses
                     .Any(emailAddress => emailAddress.Address == clientEmail));
 
             return email;

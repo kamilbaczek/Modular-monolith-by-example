@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
             {
                 Name = Lorem.GetFirstWord(),
                 CategoryId = category.Id,
-                Description = Lorem.Paragraphs(1).First(),
+                Description = Lorem.Paragraphs(1).First()
             };
             await servicesService.CreateAsync(createServiceRequest);
             var serviceDtos = await servicesService.GetAllAsync();

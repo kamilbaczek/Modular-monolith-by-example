@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess
@@ -9,6 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess
             string connectionString)
         {
             services.AddDbContext<InquiriesContext>(connectionString);
+            services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
 
             return services;
         }

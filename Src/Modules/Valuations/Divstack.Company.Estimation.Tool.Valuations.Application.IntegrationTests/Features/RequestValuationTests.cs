@@ -16,7 +16,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         public async Task Given_RequestValuation_When_CommandIsValid_Then_RequestIsSavedInDatabase()
         {
             var inquiryMadeEvent = new InquiryMadeEvent(Guid.NewGuid());
-
             await ConsumeEvent(inquiryMadeEvent);
 
             var result = await ExecuteQueryAsync(new GetAllValuationsQuery());

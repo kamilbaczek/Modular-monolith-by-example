@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
@@ -19,23 +18,18 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
             return valuationListItemDto;
         }
 
-        // internal static async Task<RequestValuationCommand> RequestValuation()
-        // {
-        //     var serviceId = await ValuationsSeeders.CreateService();
-        //     var requestCommand = FakeValuationsRequests.GenerateFakeRequestValuationCommand(new List<Guid> {serviceId});
-        //     await ValuationsTesting.ExecuteCommandAsync(requestCommand);
-        //
-        //     return requestCommand;
-        // }
+        internal static async Task RequestValuation()
+        {
+            var inquiryMadeEvent = new InquiryMadeEvent(Guid.NewGuid());
+            await ValuationsTesting.ConsumeEvent(inquiryMadeEvent);
+        }
 
-        internal static async Task<SuggestProposalCommand> SuggestValuationProposal(Guid valuationId)
+        internal static async Task SuggestValuationProposal(Guid valuationId)
         {
             var suggestProposalCommand =
                 FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationId);
 
             await ValuationsTesting.ExecuteCommandAsync(suggestProposalCommand);
-
-            return suggestProposalCommand;
         }
 
         internal static async Task<ValuationProposalEntryDto> GetRecentProposal(Guid valuationId)

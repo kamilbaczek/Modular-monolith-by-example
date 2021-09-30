@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
@@ -31,16 +28,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
     [TestFixture]
     public class ValuationsTesting
     {
-        private const string ConnectionStringName = "Valuations";
-        private const string IgnoredTable = "__EFMigrationsHistory";
-        
-        internal static IConfigurationRoot Configuration;
-        private static IServiceScopeFactory _serviceScopeFactory;
-        private static RespawnMySql _checkpoint;
-        public static IServiceScope CreateServiceScope => _serviceScopeFactory.CreateScope();
-
-        internal static Guid CurrentUserId { get; set; }
-        
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
         {
@@ -66,6 +53,22 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
             await EnsureDatabase();
         }
 
+
+        [OneTimeTearDown]
+        public void RunAfterAnyTests()
+        {
+        }
+
+        private const string ConnectionStringName = "Valuations";
+        private const string IgnoredTable = "__EFMigrationsHistory";
+
+        internal static IConfigurationRoot Configuration;
+        private static IServiceScopeFactory _serviceScopeFactory;
+        private static RespawnMySql _checkpoint;
+        public static IServiceScope CreateServiceScope => _serviceScopeFactory.CreateScope();
+
+        internal static Guid CurrentUserId { get; set; }
+
         private static IConfigurationRoot CreateConfigurations()
         {
             var builder = new ConfigurationBuilder()
@@ -89,13 +92,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
                 serviceDescriptor.ServiceType == typeof(ICurrentUserService));
             services.Remove(currentUserServiceDescriptor);
             services.AddTransient(_ =>
-                Mock.Of<ICurrentUserService>(currentUserService => currentUserService.GetPublicUserId() == CurrentUserId));
-        }
-
-
-        [OneTimeTearDown]
-        public void RunAfterAnyTests()
-        {
+                Mock.Of<ICurrentUserService>(
+                    currentUserService => currentUserService.GetPublicUserId() == CurrentUserId));
         }
 
         public static async Task ExecuteCommandAsync(ICommand request)
@@ -117,19 +115,20 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         }
 
 
-        public static async Task ConsumeEvent<TEvent>(TEvent domainEvent) where TEvent: IntegrationEvent
+        public static async Task ConsumeEvent<TEvent>(TEvent domainEvent) where TEvent : IntegrationEvent
         {
             using var scope = _serviceScopeFactory.CreateScope();
-            
+
             var integrationEventPublisher = scope.ServiceProvider.GetRequiredService<INotificationHandler<TEvent>>();
             await integrationEventPublisher.Handle(domainEvent, CancellationToken.None);
         }
+
         protected static void EnsureDatabaseModule(IServiceScope serviceScope)
         {
             var valuationsContext = serviceScope.ServiceProvider.GetRequiredService<ValuationsContext>();
             valuationsContext.Database.Migrate();
         }
-        
+
         private static async Task EnsureDatabase()
         {
             using var scope = _serviceScopeFactory.CreateScope();
@@ -142,7 +141,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
 
             EnsureDatabaseModule(scope);
         }
-        
+
         public static async Task RunAsAdministratorAsync()
         {
             await RunAsUserAsync("admin@divstack.pl");

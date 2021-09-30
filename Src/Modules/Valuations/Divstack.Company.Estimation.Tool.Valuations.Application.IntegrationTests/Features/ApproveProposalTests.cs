@@ -14,8 +14,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         public async Task
             Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToApproved()
         {
-            // await ValuationModuleHelper.RequestValuation();
-            var test = new 
+            await ValuationModuleHelper.RequestValuation();
             var valuationBeforeApproval = await ValuationModuleHelper.GetFirstRequestedValuation();
             await ValuationModuleHelper.SuggestValuationProposal(valuationBeforeApproval.Id);
             var recentProposal = await ValuationModuleHelper.GetRecentProposal(valuationBeforeApproval.Id);
