@@ -13,7 +13,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application
     {
         internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
         {
-            services.AddScoped<IMapper<ServiceDto, Service>, ServiceDtoToServiceMapper>();
+            services.AddScoped<IMapper<AskedServiceDto, Service>, ServiceDtoToServiceMapper>();
 
             return services;
         }

@@ -46,7 +46,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             return servicesDtos;
         }
 
-        public async Task CreateAsync(CreateServiceRequest createServiceRequest,
+        public async Task<Guid> CreateAsync(CreateServiceRequest createServiceRequest,
             CancellationToken cancellationToken = default)
         {
             var category = await _categoriesRepository.GetAsync(createServiceRequest.CategoryId, cancellationToken);
@@ -57,6 +57,8 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
                 category,
                 _currentUserService);
             await _servicesRepository.AddAsync(service, cancellationToken);
+            
+            return service.Id;
         }
 
         public async Task Update(UpdateServiceRequest updateServiceRequest,

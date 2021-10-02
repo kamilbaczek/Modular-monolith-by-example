@@ -20,13 +20,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
         private readonly IInquiriesRepository _inquiriesRepository;
         private readonly IIntegrationEventPublisher _integrationEventPublisher;
         private readonly IServiceExistingChecker _serviceExistingChecker;
-        private readonly IMapper<ServiceDto, Service> _serviceMapper;
+        private readonly IMapper<AskedServiceDto, Service> _serviceMapper;
 
         public MakeInquiryCommandHandler(IInquiriesRepository inquiriesRepository,
             IServiceExistingChecker serviceExistingChecker,
             IIntegrationEventPublisher integrationEventPublisher,
             IClientCompanyFinder clientCompanyFinder,
-            IMapper<ServiceDto, Service> serviceMapper)
+            IMapper<AskedServiceDto, Service> serviceMapper)
         {
             _inquiriesRepository = inquiriesRepository;
             _serviceExistingChecker = serviceExistingChecker;
@@ -40,7 +40,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
             var email = Email.Of(makeInquiryCommand.Email);
             var clientCompany = await _clientCompanyFinder.FindCompany(email);
             var client = Client.Of(email, makeInquiryCommand.FirstName, makeInquiryCommand.LastName, clientCompany);
-            var services = makeInquiryCommand.Services
+            var services = makeInquiryCommand.AskedServiceDtos
                 .Select(service => _serviceMapper.Map(service))
                 .ToReadonly();
 

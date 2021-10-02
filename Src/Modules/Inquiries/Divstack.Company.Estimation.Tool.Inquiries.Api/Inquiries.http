@@ -1,0 +1,24 @@
+@url = http://localhost:5000
+
+@service = 04b9173d-2b4b-4de2-afe1-8783b1306ddc
+### Made Inquiry
+POST {{url}}/api/inquries-module/Inquiries
+content-type: application/json
+
+{
+  "FirstName": "test",
+  "LastName": "test",
+  "Email": "test@mail.com",
+  "AskedServiceDtos": [
+    {
+      "Id": "{{service}}",
+      "Attributes": [
+        {
+          "AttributeId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "ValueId": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        }
+      ]
+    }
+  ]
+}
+

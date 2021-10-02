@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers
 {
-    internal class AuthenticationController : BaseController
+    internal sealed class AuthenticationController : BaseController
     {
         private readonly IUserModule _userModule;
 

@@ -6,9 +6,9 @@ using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services.
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Mappers
 {
-    internal sealed class ServiceDtoToServiceMapper : IMapper<ServiceDto, Service>
+    internal sealed class ServiceDtoToServiceMapper : IMapper<AskedServiceDto, Service>
     {
-        public Service Map(ServiceDto source)
+        public Service Map(AskedServiceDto source)
         {
             var service = Service.Create(source.Id);
             source.Attributes

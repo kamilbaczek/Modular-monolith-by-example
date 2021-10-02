@@ -9,6 +9,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public IReadOnlyCollection<ServiceDto> Services { get; set; }
+        public IReadOnlyCollection<AskedServiceDto> AskedServiceDtos { get; set; }
     }
 }

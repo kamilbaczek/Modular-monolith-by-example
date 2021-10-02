@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Inquiries.Application;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Mediation;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance;
@@ -20,6 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure
             services.AddApplicationModule();
             services.AddMediationModule();
             services.AddEvents();
+            services.AddScoped<IInquiriesModule, InquiriesModule>();
 
             return services;
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,5 +10,9 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     internal abstract class BaseController : ControllerBase
     {
+        public CreatedResult Created(Guid id)
+        {
+            return base.Created(id.ToString(), null);
+        }
     }
 }

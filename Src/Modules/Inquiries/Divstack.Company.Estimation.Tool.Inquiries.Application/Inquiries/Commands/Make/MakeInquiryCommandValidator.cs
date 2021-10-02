@@ -9,7 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
             RuleFor(command => command.Email).EmailAddress();
             RuleFor(command => command.FirstName).NotEmpty().MaximumLength(255);
             RuleFor(command => command.LastName).NotEmpty().MaximumLength(255);
-            RuleForEach(command => command.Services).NotNull();
+            RuleForEach(command => command.AskedServiceDtos).NotNull();
         }
     }
 }
