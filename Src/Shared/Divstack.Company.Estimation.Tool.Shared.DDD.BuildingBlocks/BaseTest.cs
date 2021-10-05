@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using FluentAssertions;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests
+namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
 {
     public abstract class BaseTest
     {

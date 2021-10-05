@@ -1,4 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
@@ -7,8 +8,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Co
 {
     public abstract class BaseValuationTest : BaseTest
     {
-        protected const string FakeRejectReason = "test";
-
         protected static ProposalId SuggestFakeProposal(EmployeeId employee, Valuation valuation)
         {
             var money = Money.Of(30, "USD");

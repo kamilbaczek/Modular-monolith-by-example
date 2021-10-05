@@ -1,8 +1,8 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items
 {
     public sealed class InquiryItem : Entity
     {

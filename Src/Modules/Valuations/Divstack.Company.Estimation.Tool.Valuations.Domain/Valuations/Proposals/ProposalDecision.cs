@@ -1,5 +1,4 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals
 {

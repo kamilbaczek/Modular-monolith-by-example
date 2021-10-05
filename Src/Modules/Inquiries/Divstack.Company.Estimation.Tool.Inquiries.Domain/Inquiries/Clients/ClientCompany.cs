@@ -1,6 +1,6 @@
 ﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients
 {
     public sealed class ClientCompany : ValueObject
     {

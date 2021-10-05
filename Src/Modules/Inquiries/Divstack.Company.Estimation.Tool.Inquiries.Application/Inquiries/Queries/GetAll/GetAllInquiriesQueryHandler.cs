@@ -22,13 +22,9 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
             var query = @$"SELECT
                                Inquiries.Id AS {nameof(InquiryListItemDto.Id)},
                                Client_FirstName AS {nameof(InquiryListItemDto.FirstName)},
-                               Client_LastName AS {nameof(InquiryListItemDto.LastName)},
-                               MakeDate AS {nameof(InquiryListItemDto.MakeDate)},
+                               Client_LastName AS {nameof(InquiryListItemDto.LastName)}
                             FROM
-                               Inquiries 
-                            ORDER BY
-                               MakeDate DESC";
-
+                               Inquiries";
             var inquiryItems = await connection.QueryAsync<InquiryListItemDto>(
                 new CommandDefinition(query, cancellationToken));
             var inquiryItemsReadonly = inquiryItems.ToList().AsReadOnly();

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
@@ -40,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
             var valuationItems = await connection.QueryAsync<ValuationListItemDto>(
                 new CommandDefinition(query, cancellationToken));
 
-            return new ValuationListVm(valuationItems);
+            return new ValuationListVm(valuationItems.ToList());
         }
     }
 }

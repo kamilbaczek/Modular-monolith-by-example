@@ -2,7 +2,7 @@
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Mappers;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Infrastructure")]

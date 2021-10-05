@@ -36,13 +36,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
             CancellationToken cancellationToken)
         {
             var query = @$"SELECT
-                ServiceId AS {nameof(InquiriesServiceItemDto.ServiceId)}
-                FROM InquiryItems
-                WHERE EnquiryValuationId = @InquiryId";
-            var inquirieServices = await connection.ExecuteQueryAsync<InquiriesServiceItemDto>(
+                Service_ServiceId AS {nameof(InquiriesServiceItemDto.ServiceId)}
+                FROM InquiryItemsServices
+                WHERE InquiryId = @InquiryId";
+            var inquiriesServiceItemDtos = await connection.ExecuteQueryAsync<InquiriesServiceItemDto>(
                 query, new {request.InquiryId}, cancellationToken);
 
-            return inquirieServices.ToList().AsReadOnly();
+            return inquiriesServiceItemDtos.ToList().AsReadOnly();
         }
 
         private static async Task<InquiryInformationDto> GetInformation(
@@ -54,14 +54,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
                 SELECT Id AS {nameof(InquiryInformationDto.Id)},
                        Client_FirstName AS {nameof(InquiryInformationDto.FirstName)},
                        Client_LastName  AS {nameof(InquiryInformationDto.LastName)},
-                       Client_Email_Value AS {nameof(InquiryInformationDto.Email)},
+                       Client_Email_Value AS {nameof(InquiryInformationDto.Email)}
                 FROM Inquiries
-                WHERE Id = @InquiryId
-                ORDER BY RequestedDate DESC";
-            var valuationInformation = await connection.ExecuteSingleQueryAsync<InquiryInformationDto>(
+                WHERE Id = @InquiryId";
+            var inquiryInformationDto = await connection.ExecuteSingleQueryAsync<InquiryInformationDto>(
                 query, new {request.InquiryId}, cancellationToken);
 
-            return valuationInformation;
+            return inquiryInformationDto;
         }
     }
 }

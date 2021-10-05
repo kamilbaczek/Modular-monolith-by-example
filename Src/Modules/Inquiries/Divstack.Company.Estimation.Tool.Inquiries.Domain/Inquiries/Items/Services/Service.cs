@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services.Attributes;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Attribute = Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services.Attributes.Attribute;
+using Attribute = Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes.Attribute;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services
 {
     public sealed class Service : Entity
     {

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
@@ -53,7 +51,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries
             IServiceExistingChecker serviceExistingChecker)
         {
             if (!services.Any())
-                throw new InvalidOperationException("Inquiry cannot be empty");
+                throw new InquiryCannotBeEmptyException();
             var servicesIds = services.Select(service => service.ServiceId.Value)
                 .ToList()
                 .AsReadOnly();
