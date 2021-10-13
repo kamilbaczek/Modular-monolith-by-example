@@ -26,7 +26,8 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
         private readonly IInquiriesModule _inquiriesModule;
         private readonly IMailTemplateReader _mailTemplateReader;
 
-        public ValuationProposalSuggestedMailSender(ISuggestValuationMailConfiguration configuration,
+        public ValuationProposalSuggestedMailSender(
+            ISuggestValuationMailConfiguration configuration,
             IEmailSender emailSender,
             IMailTemplateReader mailTemplateReader,
             IInquiriesModule inquiriesModule)
@@ -54,7 +55,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
             var emailAsHtml = htmlTemplate
                 .Replace(AcceptLinkPlaceholder, acceptLink)
                 .Replace(RejectLinkPlaceholder, rejectLink)
-                .Replace(FullNamePlaceholder, request.FullName)
+                .Replace(FullNamePlaceholder, client.FullName)
                 .Replace(DescriptionPlaceholder, request.Description)
                 .Replace(PriceCurrencyPlaceholder, request.Currency)
                 .Replace(PriceValuePlaceholder, request.Value.ToString());

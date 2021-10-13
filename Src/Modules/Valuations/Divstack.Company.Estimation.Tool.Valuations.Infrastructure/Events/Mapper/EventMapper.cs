@@ -36,7 +36,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Map
                         domainEvent.Value.Currency),
                 ProposalSuggestedDomainEvent domainEvent =>
                     new ProposalSuggested(
-                        domainEvent.FullName,
                         domainEvent.ValuationId.Value,
                         domainEvent.ProposalId.Value,
                         domainEvent.InquiryId.Value,

@@ -38,5 +38,5 @@ Authorization: {{bearer}}
 {
   "Name": "string",
   "Description": "string",
-  "CategoryId": "21583f9d-2dbc-4de9-8e00-3fd42a1d43ab"
+  "CategoryId": {{categoryId}}
 }

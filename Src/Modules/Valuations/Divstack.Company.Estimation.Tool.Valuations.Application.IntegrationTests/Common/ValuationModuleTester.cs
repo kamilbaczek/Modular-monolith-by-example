@@ -9,12 +9,13 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
 {
-    internal static class ValuationModuleHelper
+    internal static class ValuationModuleTester
     {
         internal static async Task<ValuationListItemDto> GetFirstRequestedValuation()
         {
             var result = await ValuationsTesting.ExecuteQueryAsync(new GetAllValuationsQuery());
             var valuationListItemDto = result.Valuations.First();
+            
             return valuationListItemDto;
         }
 

@@ -2,7 +2,7 @@
 using MySqlConnector;
 using Respawn;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
+namespace Divstack.Company.Estimation.Tool.Shared.IntegrationTesting
 {
     public sealed class RespawnMySql : Checkpoint
     {

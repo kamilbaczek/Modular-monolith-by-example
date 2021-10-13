@@ -25,7 +25,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         public ProposalId ProposalId { get; }
         public EmployeeId ProposedBy { get; }
         public Money Value { get; }
-        public string FullName { get; }
         public ProposalDescription Description { get; }
         public ValuationId ValuationId { get; }
     }

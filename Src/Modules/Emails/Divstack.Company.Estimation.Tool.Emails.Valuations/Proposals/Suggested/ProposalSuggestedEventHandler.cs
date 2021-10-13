@@ -18,7 +18,6 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
         public async Task Handle(ProposalSuggested proposalSuggestedDomainEvent, CancellationToken cancellationToken)
         {
             var request = new ValuationProposalSuggestedEmailRequest(
-                proposalSuggestedDomainEvent.FullName,
                 proposalSuggestedDomainEvent.ValuationId,
                 proposalSuggestedDomainEvent.ProposalId,
                 proposalSuggestedDomainEvent.InquiryId,

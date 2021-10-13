@@ -19,7 +19,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
             await ConsumeEvent(inquiryMadeEvent);
 
             var result = await ExecuteQueryAsync(new GetAllValuationsQuery());
-            result.Valuations.Count().Should().Be(1);
+
+            result.Valuations.Count.Should().Be(1);
             var valuationListItemDto = result.Valuations.First();
             valuationListItemDto.InquiryId.Should().Be(inquiryMadeEvent.InquiryId);
         }

@@ -1,20 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
-using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
-using MediatR;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.UserAccess;
+using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,14 +16,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
 using Respawn;
-using ICommand = Divstack.Company.Estimation.Tool.Valuations.Application.Contracts.ICommand;
+using ICommand = Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts.ICommand;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
+namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 {
     [SetUpFixture]
     [TestFixture]
-    public class ValuationsTesting
+    public class InquiriesTesting
     {
+        private const string InquiriesConfigurationFile = "inquiries-module-integration-tests.json";
+        
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
         {
@@ -61,7 +57,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         {
         }
 
-        private const string ConnectionStringName = "Valuations";
+        private const string ConnectionStringName = "Inquiries";
         private const string IgnoredTable = "__EFMigrationsHistory";
 
         internal static IConfigurationRoot Configuration;
@@ -75,9 +71,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile(InquiriesConfigurationFile, true, true)
                 .AddEnvironmentVariables()
-                .AddUserSecrets<ValuationsTesting>();
+                .AddUserSecrets<InquiriesTesting>();
             return builder.Build();
         }
 
@@ -102,33 +98,24 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         {
             using var scope = _serviceScopeFactory.CreateScope();
 
-            var valuationsModule = scope.ServiceProvider.GetRequiredService<IValuationsModule>();
+            var inquiriesModule = scope.ServiceProvider.GetRequiredService<IInquiriesModule>();
 
-            await valuationsModule.ExecuteCommandAsync(request);
+            await inquiriesModule.ExecuteCommandAsync(request);
         }
-
-        public static async Task<TResponse> ExecuteQueryAsync<TResponse>(Contracts.IQuery<TResponse> request)
+        
+        public static async Task<TResponse> ExecuteQueryAsync<TResponse>(IQuery<TResponse> request)
         {
             using var scope = _serviceScopeFactory.CreateScope();
 
-            var valuationsModule = scope.ServiceProvider.GetRequiredService<IValuationsModule>();
+            var inquiriesModule = scope.ServiceProvider.GetRequiredService<IInquiriesModule>();
 
-            return await valuationsModule.ExecuteQueryAsync(request);
+            return await inquiriesModule.ExecuteQueryAsync(request);
         }
-
-
-        public static async Task ConsumeEvent<TEvent>(TEvent domainEvent) where TEvent : IntegrationEvent
-        {
-            using var scope = _serviceScopeFactory.CreateScope();
-
-            var integrationEventPublisher = scope.ServiceProvider.GetRequiredService<INotificationHandler<TEvent>>();
-            await integrationEventPublisher.Handle(domainEvent, CancellationToken.None);
-        }
-
+        
         protected static void EnsureDatabaseModule(IServiceScope serviceScope)
         {
-            var valuationsContext = serviceScope.ServiceProvider.GetRequiredService<ValuationsContext>();
-            valuationsContext.Database.Migrate();
+            var inquiriesContext = serviceScope.ServiceProvider.GetRequiredService<InquiriesContext>();
+            inquiriesContext.Database.Migrate();
         }
 
         private static async Task EnsureDatabase()
@@ -143,21 +130,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
 
             EnsureDatabaseModule(scope);
         }
-
-        public static async Task RunAsAdministratorAsync()
-        {
-            await RunAsUserAsync("admin@divstack.pl");
-        }
-
-        public static async Task RunAsUserAsync(string userName)
-        {
-            using var scope = _serviceScopeFactory.CreateScope();
-
-            var userModule = scope.ServiceProvider.GetRequiredService<IUserModule>();
-            var user = await userModule.ExecuteQueryAsync(new GetUserDetailQueryByUsernameCommand(userName));
-            CurrentUserId = user.PublicId;
-        }
-
+        
         public static async Task ResetState()
         {
             using var scope = CreateServiceScope;
