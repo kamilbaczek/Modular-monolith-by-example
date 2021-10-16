@@ -30,7 +30,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers
             await _inquiriesModule.ExecuteCommandAsync(makeInquiryCommand);
             return Ok();
         }
-        
+
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<InquiryVm>> Get(Guid id)
@@ -38,13 +38,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers
             var inquiries = await _inquiriesModule.ExecuteQueryAsync(new GetInquiryQuery(id));
             return Ok(inquiries);
         }
-        
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<InquiryListVm>> GetAll()
         {
-            var valuationsListVm = await _inquiriesModule.ExecuteQueryAsync(new GetAllInquiriesQuery());
-            return Ok(valuationsListVm);
+            var inquiryListVm = await _inquiriesModule.ExecuteQueryAsync(new GetAllInquiriesQuery());
+            return Ok(inquiryListVm);
         }
     }
 }

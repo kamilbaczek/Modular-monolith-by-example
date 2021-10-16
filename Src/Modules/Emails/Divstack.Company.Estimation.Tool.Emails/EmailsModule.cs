@@ -5,6 +5,7 @@ using Divstack.Company.Estimation.Tool.Modules.Emails.Users;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper
 {
     internal static class EmailsModule

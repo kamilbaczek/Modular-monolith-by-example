@@ -37,10 +37,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         private DateTime? Cancelled { get; set; }
         private ProposalDecision Decision { get; set; }
         private Valuation Valuation { get; }
-        
+
         internal bool HasDecision => Decision is not null && Decision != ProposalDecision.NoDecision();
         internal bool IsCancelled => Cancelled.HasValue;
-        
+
         internal static Proposal Suggest(
             Valuation valuation,
             Money value,

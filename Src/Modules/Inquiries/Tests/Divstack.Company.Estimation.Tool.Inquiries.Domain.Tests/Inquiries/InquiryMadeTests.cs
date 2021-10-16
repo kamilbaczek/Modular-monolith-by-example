@@ -24,11 +24,11 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries
             var services = FakeService.Create();
 
             var inquiry = await Inquiry.MakeAsync(services, client, serviceExistingChecker);
-            
+
             var @event = GetPublishedEvent<InquiryMadeDomainEvent>(inquiry);
             @event.InquiryId.Should().NotBeNull();
         }
-        
+
         [Test]
         public async Task Given_MakeAsync_When_InquiryIsEmpty_Then_InquiryCannotBeEmptyException()
         {
@@ -37,10 +37,10 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries
             var services = new List<Service>();
 
             Func<Task> act = () => Inquiry.MakeAsync(services, client, serviceExistingChecker);
-            
+
             await act.Should().ThrowAsync<InquiryCannotBeEmptyException>();
         }
-        
+
         [Test]
         public async Task Given_MakeAsync_When_ServicesAreNotExists_Then_ServicesAreNoExistsException()
         {
@@ -49,7 +49,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries
             var services = FakeService.Create();
 
             Func<Task> act = () => Inquiry.MakeAsync(services, client, serviceExistingChecker);
-            
+
             await act.Should().ThrowAsync<InvalidServicesException>();
         }
 
@@ -58,7 +58,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries
             var serviceExistingChecker = Substitute.For<IServiceExistingChecker>();
             serviceExistingChecker.ExistAsync(Arg.Any<IReadOnlyCollection<Guid>>())
                 .Returns(areValid);
-            
+
             return serviceExistingChecker;
         }
     }

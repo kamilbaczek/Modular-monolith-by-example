@@ -57,7 +57,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
                 category,
                 _currentUserService);
             await _servicesRepository.AddAsync(service, cancellationToken);
-            
+
             return service.Id;
         }
 

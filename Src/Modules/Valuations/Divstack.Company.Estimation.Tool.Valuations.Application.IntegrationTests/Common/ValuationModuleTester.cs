@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common
         {
             var result = await ValuationsTesting.ExecuteQueryAsync(new GetAllValuationsQuery());
             var valuationListItemDto = result.Valuations.First();
-            
+
             return valuationListItemDto;
         }
 

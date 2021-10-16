@@ -21,8 +21,8 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
             var connection = _databaseConnectionFactory.Create();
             var query = @$"
                 SELECT Client_FirstName AS {nameof(InquiryClientDto.FirstName)},
-                       Client_LastName  AS {nameof(InquiryClientDto.LastName)},
-                       Client_Email_Value AS {nameof(InquiryClientDto.Email)},
+                       Client_LastName AS {nameof(InquiryClientDto.LastName)},
+                       Client_Email_Value AS {nameof(InquiryClientDto.Email)}
                 FROM Inquiries
                 WHERE Id = @InquiryId";
             var client = await connection.ExecuteSingleQueryAsync<InquiryClientDto>(

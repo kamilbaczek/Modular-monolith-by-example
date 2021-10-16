@@ -5,7 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
 using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;

@@ -4,14 +4,15 @@ using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests;
+using Faker;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Common
 {
     public static class ServicesSeeder
     {
-        public static async Task<Guid> SeedAsync(string serviceName = "test Service", string categoryName = "test category")
+        public static async Task<Guid> SeedAsync(string serviceName = "test Service",
+            string categoryName = "test category")
         {
             var serviceScope = InquiriesTesting.CreateServiceScope;
             var category = await SeedCategory(serviceScope, categoryName);
@@ -26,23 +27,23 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Common
             var createServiceRequest = new CreateServiceRequest
             {
                 CategoryId = category,
-                Description = Faker.Lorem.Sentence(),
+                Description = Lorem.Sentence(),
                 Name = serviceName
             };
             var serviceId = await servicesService.CreateAsync(createServiceRequest);
-            
+
             return serviceId;
         }
-        
+
         private static async Task<Guid> SeedCategory(IServiceScope serviceScope, string categoryName)
-        {  
+        {
             var categoriesService = serviceScope.ServiceProvider.GetRequiredService<ICategoriesService>();
             var createCategoryRequest = new CreateCategoryRequest
             {
                 Description = categoryName,
-                Name = Faker.Lorem.Sentence()
+                Name = Lorem.Sentence()
             };
-            var  category = await categoriesService.CreateAsync(createCategoryRequest);
+            var category = await categoriesService.CreateAsync(createCategoryRequest);
             return category;
         }
     }

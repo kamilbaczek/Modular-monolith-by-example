@@ -12,17 +12,17 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Infrastructure\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.csproj" />
+        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj"/>
+        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Infrastructure\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.csproj"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
-        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3"/>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="valuations-appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Update="valuations-appsettings.json" CopyToOutputDirectory="PreserveNewest"/>
     </ItemGroup>
 </Project>

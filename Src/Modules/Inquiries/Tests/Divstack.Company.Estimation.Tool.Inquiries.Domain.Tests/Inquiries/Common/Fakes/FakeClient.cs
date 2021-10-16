@@ -15,7 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries.Comm
             var email = Email.Of(emailAsString);
             var clientCompany = ClientCompany.Of(companySize, companyName);
             var client = Client.Of(email, firstName, lastName, clientCompany);
-            
+
             return client;
         }
     }

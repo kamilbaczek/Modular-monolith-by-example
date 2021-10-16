@@ -8,7 +8,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
     {
         internal static SuggestProposalCommand GenerateFakeSuggestProposalCommand(Guid valuationId)
         {
-            return new()
+            return new SuggestProposalCommand
             {
                 Currency = Currency.ThreeLetterCode(),
                 Description = Lorem.Sentence(),

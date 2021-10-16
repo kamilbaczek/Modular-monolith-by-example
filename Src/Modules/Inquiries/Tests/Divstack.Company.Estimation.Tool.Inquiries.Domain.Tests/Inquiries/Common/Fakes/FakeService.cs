@@ -10,7 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries.Comm
         {
             var service = Service.Create(new Guid());
             var services = new List<Service> {service};
-            
+
             return services;
         }
     }

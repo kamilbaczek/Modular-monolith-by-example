@@ -12,7 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
     public class SuggestValuationProposalTests : ValuationsTestBase
     {
         private const int OneMinuteInMs = 60000;
-        
+
         [Test]
         public async Task
             Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToWaitForClientDecision()

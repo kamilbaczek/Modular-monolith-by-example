@@ -4,6 +4,7 @@ using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientC
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
+
 namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov
 {
     internal static class SnovModule

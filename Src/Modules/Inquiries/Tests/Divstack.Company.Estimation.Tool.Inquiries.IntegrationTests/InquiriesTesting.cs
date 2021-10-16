@@ -3,12 +3,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
-using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.UserAccess;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
+using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
+using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +16,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
 using Respawn;
-using ICommand = Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts.ICommand;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 {
@@ -24,8 +23,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
     [TestFixture]
     public class InquiriesTesting
     {
-        private const string InquiriesConfigurationFile = "inquiries-module-integration-tests.json";
-        
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
         {
@@ -56,6 +53,8 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
         public void RunAfterAnyTests()
         {
         }
+
+        private const string InquiriesConfigurationFile = "inquiries-module-integration-tests.json";
 
         private const string ConnectionStringName = "Inquiries";
         private const string IgnoredTable = "__EFMigrationsHistory";
@@ -102,7 +101,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 
             await inquiriesModule.ExecuteCommandAsync(request);
         }
-        
+
         public static async Task<TResponse> ExecuteQueryAsync<TResponse>(IQuery<TResponse> request)
         {
             using var scope = _serviceScopeFactory.CreateScope();
@@ -111,7 +110,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 
             return await inquiriesModule.ExecuteQueryAsync(request);
         }
-        
+
         protected static void EnsureDatabaseModule(IServiceScope serviceScope)
         {
             var inquiriesContext = serviceScope.ServiceProvider.GetRequiredService<InquiriesContext>();
@@ -130,7 +129,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 
             EnsureDatabaseModule(scope);
         }
-        
+
         public static async Task ResetState()
         {
             using var scope = CreateServiceScope;

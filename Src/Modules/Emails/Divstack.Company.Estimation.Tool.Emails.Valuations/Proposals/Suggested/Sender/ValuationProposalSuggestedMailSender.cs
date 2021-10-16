@@ -29,20 +29,15 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
         public ValuationProposalSuggestedMailSender(
             ISuggestValuationMailConfiguration configuration,
             IEmailSender emailSender,
-            IMailTemplateReader mailTemplateReader,
-            IInquiriesModule inquiriesModule)
+            IMailTemplateReader mailTemplateReader)
         {
             _configuration = configuration;
             _emailSender = emailSender;
             _mailTemplateReader = mailTemplateReader;
-            _inquiriesModule = inquiriesModule;
         }
 
         public async Task SendAsync(ValuationProposalSuggestedEmailRequest request)
         {
-            var inquiryClientQuery = new GetInquiryClientQuery(request.InquiryId);
-            var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
-
             var acceptLink = _configuration.AcceptProposalLink
                 .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
                 .Replace(ProposalIdPlaceholder, HttpUtility.UrlEncode(request.ProposalId.ToString()));
@@ -55,12 +50,12 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
             var emailAsHtml = htmlTemplate
                 .Replace(AcceptLinkPlaceholder, acceptLink)
                 .Replace(RejectLinkPlaceholder, rejectLink)
-                .Replace(FullNamePlaceholder, client.FullName)
+                .Replace(FullNamePlaceholder, request.FullName)
                 .Replace(DescriptionPlaceholder, request.Description)
                 .Replace(PriceCurrencyPlaceholder, request.Currency)
                 .Replace(PriceValuePlaceholder, request.Value.ToString());
 
-            _emailSender.Send(client.Email, _configuration.Subject, emailAsHtml);
+            _emailSender.Send(request.Email, _configuration.Subject, emailAsHtml);
         }
     }
 }

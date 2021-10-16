@@ -6,6 +6,7 @@ using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
 using Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Common;
+using Faker;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -13,7 +14,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features
 {
     using static InquiriesTesting;
 
-    public class ApproveProposalTests : InquiriesTestBase
+    public class InquiryMadeTests : InquiriesTestBase
     {
         [Test]
         public async Task
@@ -24,12 +25,12 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features
             var makeInquiryCommand = GetFakeMakeInquiryCommand(serviceId);
 
             await ExecuteCommandAsync(makeInquiryCommand);
-            
+
             var inquiryListVm = await ExecuteQueryAsync(new GetAllInquiriesQuery());
             inquiryListVm.Inquiries.Count.Should().Be(1);
             var inquiry = inquiryListVm.Inquiries.First();
             inquiry.Id.Should().NotBeEmpty();
-            inquiry.Should().BeEquivalentTo(makeInquiryCommand,option => option
+            inquiry.Should().BeEquivalentTo(makeInquiryCommand, option => option
                 .ExcludingMissingMembers());
         }
 
@@ -37,9 +38,9 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features
         {
             var makeInquiryCommand = new MakeInquiryCommand
             {
-                FirstName = Faker.Name.First(),
-                LastName = Faker.Name.Last(),
-                Email = Faker.Internet.Email(),
+                FirstName = Name.First(),
+                LastName = Name.Last(),
+                Email = Internet.Email(),
                 AskedServiceDtos = new List<AskedServiceDto>
                 {
                     new()

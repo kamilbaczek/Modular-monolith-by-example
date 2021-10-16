@@ -1,14 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <UserSecretsId>b7c336cb-ae81-4dd5-a4d6-6eb22bbadc75</UserSecretsId>
-    </PropertyGroup>
+        <UserSecretsId>2bd98ace-6527-48f9-b414-c7400358db12</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
-      <None Update="inquiries-module-integration-tests.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="inquiries-module-integration-tests.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
@@ -26,9 +26,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
-      <ProjectReference Include="..\..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting.csproj" />
-      <ProjectReference Include="..\..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.csproj" />
+        <ProjectReference Include="..\..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
+        <ProjectReference Include="..\..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting.csproj" />
+        <ProjectReference Include="..\..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.csproj" />
     </ItemGroup>
 
 </Project>
