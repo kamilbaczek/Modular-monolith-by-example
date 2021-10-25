@@ -29,7 +29,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             var inquiryId = new InquiryId(notification.InquiryId);
             var valuation = Valuation.Request(inquiryId, deadline);
             await _valuationsRepository.AddAsync(valuation, cancellationToken);
-            await _valuationsRepository.CommitAsync(cancellationToken);
             _integrationEventPublisher.Publish(valuation.DomainEvents);
         }
     }

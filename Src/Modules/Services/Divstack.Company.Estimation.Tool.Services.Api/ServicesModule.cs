@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Services.Api
 {
-    internal static class ServicesModule
+    public static class ServicesModule
     {
         public static IServiceCollection AddServicesModule(this IServiceCollection services,
             IConfiguration configuration)

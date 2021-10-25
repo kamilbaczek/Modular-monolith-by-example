@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Feat
             // var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
             // var servicesNames = services.Select(service => service.Name);
             var taskName = GenerateTaskName(notification.ValuationId);
-            var description = GenerateDescription(notification, servicesNames);
+            var description = GenerateDescription(notification, new List<string>());
             await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
         }
 

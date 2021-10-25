@@ -9,39 +9,18 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
 {
     internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>
     {
-        private readonly IDatabaseConnectionFactory _databaseConnectionFactory;
+        private readonly IReadRepository _readRepository;
 
-        public GetAllValuationsQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory)
+        public GetAllValuationsQueryHandler(IReadRepository readRepository)
         {
-            _databaseConnectionFactory = databaseConnectionFactory;
+            _readRepository = readRepository;
         }
 
         public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
         {
-            var connection = _databaseConnectionFactory.Create();
-            var query = @$"SELECT
-                               Valuations.Id AS {nameof(ValuationListItemDto.Id)},
-                               Valuations.InquiryId AS {nameof(ValuationListItemDto.InquiryId)},
-                               (SELECT
-                                       ValuationsHistory.Status_Value
-                                     FROM
-                                        ValuationsHistory 
-                                     WHERE
-                                        ValuationsHistory.ValuationId = Valuations.Id 
-                                     ORDER BY
-                                        ValuationsHistory.ChangeDate DESC 
-                                      LIMIT 1) AS {nameof(ValuationListItemDto.Status)},
-                               RequestedDate AS {nameof(ValuationListItemDto.RequestedDate)},
-                               CompletedBy AS {nameof(ValuationListItemDto.CompletedBy)} 
-                            FROM
-                               Valuations 
-                            ORDER BY
-                               RequestedDate DESC";
-
-            var valuationItems = await connection.QueryAsync<ValuationListItemDto>(
-                new CommandDefinition(query, cancellationToken));
-
-            return new ValuationListVm(valuationItems.ToList());
+            var valuationListItemDtos = await _readRepository.GetAllAsync(cancellationToken);
+            
+            return new ValuationListVm(valuationListItemDtos);
         }
     }
 }

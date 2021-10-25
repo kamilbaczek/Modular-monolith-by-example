@@ -20,7 +20,7 @@ Content-Type: application/json
 @inquiry = e140fdb3-6275-40f2-a227-e6a68e2b003c
 
 ### service 
-@service = 91438382-893d-46c4-8b08-bae628613a1e
+@service = b50f98cb-de73-4637-85e6-81477aa7910e
 
 ### Made Inquiry
 POST {{url}}/api/inquries-module/Inquiries
@@ -49,7 +49,7 @@ content-type: application/json
 Authorization: {{bearer}}
 
 ### inquiry
-@valuation = "96131a04-1029-4b16-ab06-f5fca68317d7"
+@valuation = "df96c096-bdd4-433b-adf6-878914d0d7b4"
 
 ### Suggest proposal
 POST {{url}}/api/valuations-module/Valuations/valuations/proposals

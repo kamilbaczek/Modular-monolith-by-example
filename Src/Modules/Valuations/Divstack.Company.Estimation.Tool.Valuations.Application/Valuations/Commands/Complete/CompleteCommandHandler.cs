@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
 
             valuation.Complete(employeeId);
-            await _valuationsRepository.CommitAsync(cancellationToken);
+            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
 
             return Unit.Value;
         }

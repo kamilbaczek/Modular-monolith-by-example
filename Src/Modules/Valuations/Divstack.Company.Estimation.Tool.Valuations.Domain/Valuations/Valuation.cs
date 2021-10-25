@@ -14,32 +14,31 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 {
     public sealed class Valuation : Entity, IAggregateRoot
     {
-        public ValuationId Id { get; }
-        private InquiryId InquiryId { get; }
-        private IList<Proposal> Proposals { get; }
-        private IList<HistoricalEntry> History { get; }
-        private DateTime RequestedDate { get; }
-        private DateTime? CompletedDate { get; set; }
-        private EmployeeId CompletedBy { get; set; }
-        private Deadline Deadline { get; }
-        private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
-        private Proposal ProposalWaitForDecision => NotCancelledProposals
-            .SingleOrDefault(proposal => !proposal.HasDecision);
-        private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
-        private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
-        private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
-
         private Valuation()
         {
         }
-
+        public ValuationId Id { get; }
+        private InquiryId InquiryId { get; }
+        // private IList<Proposal> Proposals { get; }
+        private IList<HistoricalEntry> History { get; }
+        private DateTime RequestedDate { get; }
+        // private DateTime? CompletedDate { get; set; }
+        // private EmployeeId CompletedBy { get; set; }
+        private Deadline Deadline { get; }
+        // private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
+        // private Proposal ProposalWaitForDecision => NotCancelledProposals
+            // .SingleOrDefault(proposal => !proposal.HasDecision);
+        private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
+        private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
+        private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
+        
         private Valuation(
             Deadline deadline,
             InquiryId inquiryId)
         {
             Id = ValuationId.Create();
             RequestedDate = SystemTime.Now();
-            Proposals = new List<Proposal>();
+            // Proposals = new List<Proposal>();
             History = new List<HistoricalEntry>();
             Deadline = deadline;
             InquiryId = inquiryId;
@@ -58,96 +57,96 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
             string description,
             EmployeeId proposedBy)
         {
-            if (IsCompleted)
-                throw new ValuationCompletedException(Id);
-            if (IsWaitingForDecision)
-                throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
-
-            var proposalDescription = ProposalDescription.From(description);
-            var proposal = Proposal.Suggest(this, value, proposalDescription, proposedBy);
-            Proposals.Add(proposal);
-            ChangeStatus(ValuationStatus.WaitForClientDecision);
-
-            var @event = new ProposalSuggestedDomainEvent(
-                proposedBy,
-                proposal.Id,
-                value,
-                proposalDescription,
-                Id,
-                InquiryId);
-            AddDomainEvent(@event);
+            // if (IsCompleted)
+            //     throw new ValuationCompletedException(Id);
+            // if (IsWaitingForDecision)
+            //     throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
+            //
+            // var proposalDescription = ProposalDescription.From(description);
+            // var proposal = Proposal.Suggest(this, value, proposalDescription, proposedBy);
+            // Proposals.Add(proposal);
+            // ChangeStatus(ValuationStatus.WaitForClientDecision);
+            //
+            // var @event = new ProposalSuggestedDomainEvent(
+            //     proposedBy,
+            //     proposal.Id,
+            //     value,
+            //     proposalDescription,
+            //     Id,
+            //     InquiryId);
+            // AddDomainEvent(@event);
         }
 
         public void ApproveProposal(ProposalId proposalId)
         {
-            var proposal = GetProposal(proposalId);
-            proposal.Approve();
-            ChangeStatus(ValuationStatus.Approved);
-
-            var @event = new ProposalApprovedDomainEvent(
-                Id,
-                proposalId,
-                proposal.Price,
-                proposal.SuggestedBy);
-
-            AddDomainEvent(@event);
+            // var proposal = GetProposal(proposalId);
+            // proposal.Approve();
+            // ChangeStatus(ValuationStatus.Approved);
+            //
+            // var @event = new ProposalApprovedDomainEvent(
+            //     Id,
+            //     proposalId,
+            //     proposal.Price,
+            //     proposal.SuggestedBy);
+            //
+            // AddDomainEvent(@event);
         }
 
         public void RejectProposal(ProposalId proposalId)
         {
-            var proposal = GetProposal(proposalId);
-            proposal.Reject();
-            ChangeStatus(ValuationStatus.Rejected);
-
-            var @event = new ProposalRejectedDomainEvent(
-                Id,
-                proposalId,
-                proposal.Price);
-
-            AddDomainEvent(@event);
+            // var proposal = GetProposal(proposalId);
+            // proposal.Reject();
+            // ChangeStatus(ValuationStatus.Rejected);
+            //
+            // var @event = new ProposalRejectedDomainEvent(
+            //     Id,
+            //     proposalId,
+            //     proposal.Price);
+            //
+            // AddDomainEvent(@event);
         }
 
         public void CancelProposal(ProposalId proposalId, EmployeeId employeeId)
         {
-            var proposal = GetProposal(proposalId);
-            proposal.Cancel(employeeId);
-            ChangeStatus(ValuationStatus.WaitForProposal);
-            AddDomainEvent(new ProposalCancelledDomainEvent(employeeId, proposalId, Id));
+            // var proposal = GetProposal(proposalId);
+            // proposal.Cancel(employeeId);
+            // ChangeStatus(ValuationStatus.WaitForProposal);
+            // AddDomainEvent(new ProposalCancelledDomainEvent(employeeId, proposalId, Id));
         }
 
         public void Complete(EmployeeId employeeId)
         {
-            if (IsCompleted)
-                throw new ValuationCompletedException(Id);
-            if (ProposalWaitForDecision is not null)
-                throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
-            if (!NotCancelledProposals.Any())
-                throw new CannotCompleteValuationWithNoProposalException(Id);
-            CompletedBy = employeeId;
-            CompletedDate = SystemTime.Now();
-            ChangeStatus(ValuationStatus.Completed);
-            AddDomainEvent(new ValuationCompletedDomainEvent(employeeId, Id));
+            // if (IsCompleted)
+            //     throw new ValuationCompletedException(Id);
+            // if (ProposalWaitForDecision is not null)
+            //     throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
+            // if (!NotCancelledProposals.Any())
+            //     throw new CannotCompleteValuationWithNoProposalException(Id);
+            // CompletedBy = employeeId;
+            // CompletedDate = SystemTime.Now();
+            // ChangeStatus(ValuationStatus.Completed);
+            // AddDomainEvent(new ValuationCompletedDomainEvent(employeeId, Id));
         }
 
         private void ChangeStatus(ValuationStatus valuationStatus)
         {
-            var historicalEntry = HistoricalEntry.Create(this, valuationStatus);
+            var historicalEntry = HistoricalEntry.Create(valuationStatus);
             History.Add(historicalEntry);
         }
 
-        private Proposal GetProposal(ProposalId proposalId)
-        {
-            var proposal = NotCancelledProposals.SingleOrDefault(proposal => proposal.Id == proposalId);
-            if (proposal is null)
-                throw new ProposalNotFoundException(proposalId);
-            return proposal;
-        }
+        // private Proposal GetProposal(ProposalId proposalId)
+        // {
+        //     var proposal = NotCancelledProposals.SingleOrDefault(proposal => proposal.Id == proposalId);
+        //     if (proposal is null)
+        //         throw new ProposalNotFoundException(proposalId);
+        //     return proposal;
+        // }
 
-        private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
-        {
-            return Proposals
-                .Where(proposal => !proposal.IsCancelled)
-                .ToList();
-        }
+        // private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
+        // {
+        //     return Proposals
+        //         .Where(proposal => !proposal.IsCancelled)
+        //         .ToList();
+        // }
     }
 }

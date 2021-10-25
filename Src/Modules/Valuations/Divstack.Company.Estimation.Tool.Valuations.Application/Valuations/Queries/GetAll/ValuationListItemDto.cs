@@ -5,23 +5,23 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
 {
     public sealed class ValuationListItemDto
     {
-        public ValuationListItemDto(Guid id,
-            Guid inquiryId,
-            string status,
-            DateTime requestedDate,
-            Guid? completedBy)
-        {
-            Id = id;
-            InquiryId = inquiryId;
-            Status = status;
-            RequestedDate = requestedDate.ToString(Formatting.DateFormat);
-            CompletedBy = completedBy;
-        }
+        // public ValuationListItemDto(Guid id,
+        //     Guid inquiryId,
+        //     string status,
+        //     DateTime requestedDate,
+        //     Guid? completedBy)
+        // {
+        //     Id = id;
+        //     InquiryId = inquiryId;
+        //     Status = status;
+        //     RequestedDate = requestedDate.ToString(Formatting.DateFormat);
+        //     CompletedBy = completedBy;
+        // }
 
-        public Guid Id { get; }
-        public Guid InquiryId { get; }
-        public string Status { get; }
-        public string RequestedDate { get; }
-        public Guid? CompletedBy { get; }
+        public Guid Id { get; set; }
+        public Guid InquiryId { get;set;  }
+        // public string Status { get; set; }
+        public DateTime RequestedDate { get;set;  }
+        public Guid? CompletedBy { get; set; }
     }
 }

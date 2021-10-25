@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations
 {
-    internal class ValuationEntityTypeConfiguration : IEntityTypeConfiguration<Valuation>
+    internal sealed class ValuationEntityTypeConfiguration : IEntityTypeConfiguration<Valuation>
     {
         public void Configure(EntityTypeBuilder<Valuation> builder)
         {
@@ -23,7 +23,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
 
             builder.Property<InquiryId>("InquiryId")
                 .HasConversion(id => id.Value, value => new InquiryId(value))
-                .IsIdentity();
+                .IsIdentity()
+                .IsRequired();
 
             builder.OwnsOne<Deadline>("Deadline",
                 deadlineValueObjectBuilder => { deadlineValueObjectBuilder.Property<DateTime>("Date").IsRequired(); });
@@ -79,7 +80,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
                 .HasConversion(id => id.Value, value => new EmployeeId(value))
                 .IsIdentity()
                 .IsRequired(false);
-            builder.Property<DateTime?>("CompletedDate").IsRequired(false);
+            builder.Property<DateTime?>("CompletedDate")
+                .IsRequired(false);
         }
     }
 }

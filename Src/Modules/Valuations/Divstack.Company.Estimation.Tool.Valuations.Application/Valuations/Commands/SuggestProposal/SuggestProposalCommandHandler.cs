@@ -35,7 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 
             valuation.SuggestProposal(money, command.Description, employeeId);
 
-            await _valuationsRepository.CommitAsync(cancellationToken);
+            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
             _integrationEventPublisher.Publish(valuation.DomainEvents);
             return Unit.Value;
         }

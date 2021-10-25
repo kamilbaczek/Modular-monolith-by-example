@@ -17,7 +17,7 @@ Content-Type: application/json
 @bearer = Bearer {{token}}
 
 
-@service = 807c0f70-9aee-4737-8a01-07abd875da59
+@service = b50f98cb-de73-4637-85e6-81477aa7910e
 
 ### Made Inquiry
 POST {{url}}/api/inquries-module/Inquiries
