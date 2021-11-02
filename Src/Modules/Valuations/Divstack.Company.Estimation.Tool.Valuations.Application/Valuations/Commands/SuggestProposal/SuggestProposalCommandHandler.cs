@@ -30,7 +30,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
             var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
             if (valuation is null)
                 throw new NotFoundException(command.ValuationId, nameof(Valuation));
-            
+
             var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
             var money = Money.Of(command.Value, command.Currency);
 

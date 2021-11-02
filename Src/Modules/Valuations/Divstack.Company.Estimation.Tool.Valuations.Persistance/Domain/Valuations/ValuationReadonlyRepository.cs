@@ -20,15 +20,17 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
         {
             _valuationsContext = valuationsContext;
         }
+
         public async Task<IReadOnlyCollection<ValuationListItemDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-             const string projectionQuery = @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
-             var filterDefinition = FilterDefinition<Valuation>.Empty;
-             var valuationListItemDtos = await _valuationsContext.Valuations
+            const string projectionQuery =
+                @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
+            var filterDefinition = FilterDefinition<Valuation>.Empty;
+            var valuationListItemDtos = await _valuationsContext.Valuations
                 .Find(filterDefinition)
                 .Project<ValuationListItemDto>(projectionQuery)
                 .ToListAsync(cancellationToken);
-           
+
             return valuationListItemDtos;
         }
 
@@ -53,25 +55,28 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
                 .Find(filterDefinition)
                 .Project<ValuationHistoryVm>(projectionQuery)
                 .SingleOrDefaultAsync(cancellationToken);
-            
+
             return valuationHistoryVm;
         }
 
-        public async Task<ValuationProposalsVm> GetProposals(ValuationId valuationId, CancellationToken cancellationToken)
+        public async Task<ValuationProposalsVm> GetProposals(ValuationId valuationId,
+            CancellationToken cancellationToken)
         {
-            
-            const string projectionQuery = @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
+            const string projectionQuery =
+                @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
             var valuationProposalsVm = await _valuationsContext.Valuations
                 .Find(valuation => valuation.Id == valuationId)
                 .Project<ValuationProposalsVm>(projectionQuery)
                 .SingleOrDefaultAsync(cancellationToken);
-            
+
             return valuationProposalsVm;
         }
 
-        public async Task<ValuationInformationDto> GetValuation(ValuationId valuationId, CancellationToken cancellationToken)
+        public async Task<ValuationInformationDto> GetValuation(ValuationId valuationId,
+            CancellationToken cancellationToken)
         {
-            const string projectionQuery = @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
+            const string projectionQuery =
+                @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
             var valuationInformationDto = await _valuationsContext.Valuations
                 .Find(valuation => valuation.Id == valuationId)
                 .Project<ValuationInformationDto>(projectionQuery)

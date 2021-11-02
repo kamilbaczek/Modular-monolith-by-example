@@ -16,9 +16,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Code = code;
         }
 
-        private DateTime? Date { get; init; }
+        private DateTime? Date { get; }
 
-        private string Code { get; init; }
+        private string Code { get; }
 
 
         internal static ProposalDecision AcceptDecision(DateTime date)

@@ -8,5 +8,5 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         {
             return new EmployeeId(guid);
         }
-    };
+    }
 }

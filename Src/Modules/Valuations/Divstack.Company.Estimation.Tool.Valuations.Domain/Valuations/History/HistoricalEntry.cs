@@ -14,8 +14,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
         }
 
         internal ValuationStatus Status { get; private set; }
-        internal DateTime ChangeDate { get; private set; }
-        private HistoricalEntryId Id { get; init; }
+        internal DateTime ChangeDate { get; }
+        private HistoricalEntryId Id { get; }
 
         internal static HistoricalEntry Create(ValuationStatus status)
         {

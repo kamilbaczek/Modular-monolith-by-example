@@ -16,7 +16,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
         {
             var valuationListItemDtos = await _readRepository.GetAllAsync(cancellationToken);
-            
+
             return new ValuationListVm(valuationListItemDtos);
         }
     }

@@ -11,8 +11,8 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 {
     internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggested>
     {
-        private readonly IValuationProposalSuggestedMailSender _proposalSuggestedMailSender;
         private readonly IInquiriesModule _inquiriesModule;
+        private readonly IValuationProposalSuggestedMailSender _proposalSuggestedMailSender;
 
         public ProposalSuggestedEventHandler(IValuationProposalSuggestedMailSender proposalSuggestedMailSender,
             IInquiriesModule inquiriesModule)

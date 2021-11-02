@@ -29,7 +29,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
 
         public async Task CommitAsync(Valuation updatedValuation, CancellationToken cancellationToken = default)
         {
-            await _valuationsContext.Valuations.ReplaceOneAsync(valuation => valuation.Id == updatedValuation.Id, updatedValuation, cancellationToken: cancellationToken);
+            await _valuationsContext.Valuations.ReplaceOneAsync(valuation => valuation.Id == updatedValuation.Id,
+                updatedValuation, cancellationToken: cancellationToken);
         }
     }
 }

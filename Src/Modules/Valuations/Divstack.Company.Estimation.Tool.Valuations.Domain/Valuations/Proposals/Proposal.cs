@@ -23,10 +23,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
         }
 
         internal ProposalId Id { get; init; }
-        private ProposalDescription Description { get; init; }
+        private ProposalDescription Description { get; }
         internal Money Price { get; init; }
         internal EmployeeId SuggestedBy { get; init; }
-        private DateTime Suggested { get; init; }
+        private DateTime Suggested { get; }
         private EmployeeId CancelledBy { get; set; }
         private DateTime? Cancelled { get; set; }
         private ProposalDecision Decision { get; set; }

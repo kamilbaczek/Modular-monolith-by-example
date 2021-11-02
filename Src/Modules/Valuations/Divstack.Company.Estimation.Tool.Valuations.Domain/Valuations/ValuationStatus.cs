@@ -9,7 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private const string RejectedStatus = "Rejected";
         private const string ApprovedStatus = "Approved";
         private const string CompletedStatus = "Completed";
-        
+
         private ValuationStatus(string value)
         {
             Value = value;
@@ -21,6 +21,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         internal static ValuationStatus Approved => new(ApprovedStatus);
         internal static ValuationStatus Completed => new(CompletedStatus);
 
-        private string Value { get; init; }
+        private string Value { get; }
     }
 }

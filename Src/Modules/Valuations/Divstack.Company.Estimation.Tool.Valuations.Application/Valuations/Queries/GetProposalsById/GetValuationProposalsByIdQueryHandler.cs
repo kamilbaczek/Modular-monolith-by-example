@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
@@ -16,6 +15,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         {
             _readRepository = readRepository;
         }
+
         public async Task<ValuationProposalsVm> Handle(GetValuationProposalsByIdQuery request,
             CancellationToken cancellationToken)
         {

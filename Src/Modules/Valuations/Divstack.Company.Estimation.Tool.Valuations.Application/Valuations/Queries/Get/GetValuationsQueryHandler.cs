@@ -14,12 +14,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         {
             _readRepository = readRepository;
         }
-        
+
         public async Task<ValuationVm> Handle(GetValuationQuery request, CancellationToken cancellationToken)
         {
             var valuationId = ValuationId.Of(request.ValuationId);
             var valuationInformationDto = await _readRepository.GetValuation(valuationId, cancellationToken);
-            
+
             return new ValuationVm(valuationInformationDto);
         }
     }

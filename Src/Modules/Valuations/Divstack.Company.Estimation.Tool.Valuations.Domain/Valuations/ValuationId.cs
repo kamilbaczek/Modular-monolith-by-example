@@ -8,10 +8,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         {
             return new ValuationId(Guid.NewGuid());
         }
-        
+
         public static ValuationId Of(Guid guid)
         {
             return new ValuationId(guid);
         }
-    };
+    }
 }

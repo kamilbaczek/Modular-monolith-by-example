@@ -18,9 +18,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
         public async Task<ValuationHistoryVm> Handle(GetValuationHistoryByIdQuery request,
             CancellationToken cancellationToken)
         {
-           var historyVm = await _readRepository.GetAllHistoricalEntries(cancellationToken);
+            var historyVm = await _readRepository.GetAllHistoricalEntries(cancellationToken);
 
-           return historyVm;
+            return historyVm;
         }
     }
 }

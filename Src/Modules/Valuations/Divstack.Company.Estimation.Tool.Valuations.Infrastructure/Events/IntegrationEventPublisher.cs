@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using MediatR;
@@ -12,7 +11,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
         private readonly IEventMapper _eventMapper;
         private readonly IMediator _mediator;
 
-        public IntegrationEventPublisher(IMediator mediator, 
+        public IntegrationEventPublisher(IMediator mediator,
             IEventMapper eventMapper)
         {
             _mediator = mediator;
