@@ -6,11 +6,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
 {
     public record ValuationHistoryVm(IReadOnlyCollection<ValuationHistoricalEntryDto> ValuationHistoricalEntries)
     {
-        public ValuationHistoryVm(IEnumerable<ValuationHistoricalEntryDto> valuationHistoricalEntries) :
-            this(valuationHistoricalEntries.ToList().AsReadOnly())
-        {
-        }
-
-        public Guid RecentHistoricalEntryId => ValuationHistoricalEntries.First().Id;
+        public Guid RecentHistoricalEntryId => ValuationHistoricalEntries.First().HistoricalEntryId;
     }
 }

@@ -1,4 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
@@ -23,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
             services.AddScoped<IValuationsContext, ValuationsContext>();
             services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
             services.AddScoped<IReadRepository, ValuationReadonlyRepository>();
-            
+
             return services;
         }
 
@@ -31,38 +35,62 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
         {
             var settings = MongoClientSettings.FromConnectionString(connectionString);
             var mongoClient = new MongoClient(settings);
-            
+
             ConfigureMapping();
             services.AddSingleton(mongoClient);
         }
 
         private static void ConfigureMapping()
         {
-            ConventionRegistry.Register(nameof(ImmutableTypeClassMapConvention), 
-                new ConventionPack { new ImmutableTypeClassMapConvention()}, type => true);
-            BsonClassMap.RegisterClassMap<Valuation>(cm =>
+            BsonClassMap.RegisterClassMap<Valuation>(classMap =>
             {
-                cm.SetIgnoreExtraElements(true);
-                cm.MapIdProperty(valuation => valuation.Id);
-                cm.MapProperty("RequestedDate");
-                cm.MapProperty("InquiryId");
-                // cm.MapProperty("CompletedDate");
-                cm.MapProperty("Deadline");
-                // cm.MapProperty("Proposals");
-                cm.MapProperty("History");
+                classMap.SetIgnoreExtraElements(true);
+                classMap.MapIdProperty(valuation => valuation.Id).SetElementName("ValuationId");
+                classMap.MapProperty("RequestedDate").SetIsRequired(true);
+                classMap.MapProperty("InquiryId").SetIsRequired(true);
+                classMap.MapProperty("Deadline").SetIsRequired(true);
+                classMap.MapProperty("CompletedDate");
+                classMap.MapProperty("CompletedBy");
+                classMap.MapProperty("Proposals");
+                classMap.MapProperty("History");
             });
-            // BsonClassMap.RegisterClassMap<Proposal>(cm =>
-            // {
-            //     cm.MapProperty("Id");
-            //     cm.MapProperty("Description");
-            // });
-            BsonClassMap.RegisterClassMap<Deadline>(cm =>
+            BsonClassMap.RegisterClassMap<Proposal>(classMap =>
             {
-                cm.MapProperty("Date");
+                classMap.MapProperty("Id").SetElementName("ProposalId").SetIsRequired(true);
+                classMap.MapProperty("SuggestedBy").SetIsRequired(true);
+                classMap.MapProperty("Suggested").SetIsRequired(true);
+                classMap.MapProperty("Decision").SetIsRequired(true);
+                classMap.MapProperty("Price").SetIsRequired(true);
+                classMap.MapProperty("Description").SetIsRequired(true);
+            });
+            BsonClassMap.RegisterClassMap<Money>(classMap =>
+            {
+                classMap.MapProperty(money => money.Value).SetIsRequired(true);
+                classMap.MapProperty(money => money.Currency).SetIsRequired(true);
+            });
+            BsonClassMap.RegisterClassMap<EmployeeId>(classMap =>
+            {
+                classMap.MapProperty(employeeId => employeeId.Value)
+                    .SetSerializer(new GuidSerializer(BsonType.String))
+                    .SetIsRequired(true);
+            });
+            BsonClassMap.RegisterClassMap<ProposalDescription>(classMap =>
+            {
+                classMap.MapProperty("Message").SetIsRequired(true);
+            });
+            BsonClassMap.RegisterClassMap<ProposalDecision>(classMap =>
+            {
+                classMap.MapProperty("Date").SetIsRequired(false);
+                classMap.MapProperty("Code").SetIsRequired(true);
+
+            });
+            BsonClassMap.RegisterClassMap<Deadline>(classMap =>
+            {
+                classMap.MapProperty("Date").SetIsRequired(true);
             });
             BsonClassMap.RegisterClassMap<HistoricalEntry>(cm =>
             {
-                cm.MapProperty("Id");
+                cm.MapProperty("Id").SetElementName("HistoricalEntryId");
                 cm.MapProperty("Status");
                 cm.MapProperty("ChangeDate");
             });
@@ -70,18 +98,30 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
             {
                 cm.MapProperty("Value");
             });
-            BsonClassMap.RegisterClassMap<HistoricalEntryId>(cm =>
+            BsonClassMap.RegisterClassMap<InquiryId>(classMap =>
             {
-                cm.MapProperty("Value").SetSerializer(new GuidSerializer(BsonType.String));
+                classMap.MapProperty("Value")
+                    .SetSerializer(new GuidSerializer(BsonType.String))
+                    .SetIsRequired(true);
             });
-            BsonClassMap.RegisterClassMap<InquiryId>(cm =>
+            BsonClassMap.RegisterClassMap<HistoricalEntryId>(classMap =>
             {
-                cm.MapProperty("Value").SetSerializer(new GuidSerializer(BsonType.String));;
+                classMap.MapProperty("Value")
+                    .SetSerializer(new GuidSerializer(BsonType.String))
+                    .SetIsRequired(true);
             });
             BsonClassMap.RegisterClassMap<ValuationId>(cm =>
             {
-                cm.MapProperty("Value").SetSerializer(new GuidSerializer(BsonType.String));;
+                cm.MapProperty("Value")
+                    .SetSerializer(new GuidSerializer(BsonType.String))
+                    .SetIsRequired(true);
             });
-        }
+            BsonClassMap.RegisterClassMap<ProposalId>(cm =>
+            {
+                cm.MapProperty("Value")
+                    .SetSerializer(new GuidSerializer(BsonType.String))
+                    .SetIsRequired(true);
+            });
+        } 
     }
 }

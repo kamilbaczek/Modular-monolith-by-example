@@ -5,8 +5,7 @@ using System.Reflection;
 
 namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
 {
-    namespace CompanyName.MyMeetings.BuildingBlocks.Domain
-    {
+
         public abstract class ValueObject : IEquatable<ValueObject>
         {
             private List<FieldInfo> _fields;
@@ -107,4 +106,3 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
             }
         }
     }
-}

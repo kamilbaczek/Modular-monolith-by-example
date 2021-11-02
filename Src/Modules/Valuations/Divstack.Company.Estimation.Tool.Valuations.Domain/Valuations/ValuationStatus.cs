@@ -1,4 +1,4 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
+﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
 {
@@ -9,11 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         private const string RejectedStatus = "Rejected";
         private const string ApprovedStatus = "Approved";
         private const string CompletedStatus = "Completed";
-
-        private ValuationStatus()
-        {
-        }
-
+        
         private ValuationStatus(string value)
         {
             Value = value;
@@ -25,6 +21,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
         internal static ValuationStatus Approved => new(ApprovedStatus);
         internal static ValuationStatus Completed => new(CompletedStatus);
 
-        private string Value { get; }
+        private string Value { get; init; }
     }
 }

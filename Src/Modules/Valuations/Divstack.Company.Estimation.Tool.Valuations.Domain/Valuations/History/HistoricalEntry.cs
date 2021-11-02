@@ -6,10 +6,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
 {
     public sealed class HistoricalEntry : Entity
     {
-        private HistoricalEntry()
-        {
-        }
-
         private HistoricalEntry(ValuationStatus status)
         {
             Status = Guard.Against.Null(status, nameof(Status));
@@ -17,9 +13,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History
             Id = new HistoricalEntryId(Guid.NewGuid());
         }
 
-        internal ValuationStatus Status { get; }
-        internal DateTime ChangeDate { get; }
-        private HistoricalEntryId Id { get; }
+        internal ValuationStatus Status { get; private set; }
+        internal DateTime ChangeDate { get; private set; }
+        private HistoricalEntryId Id { get; init; }
 
         internal static HistoricalEntry Create(ValuationStatus status)
         {

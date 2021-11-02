@@ -1,4 +1,4 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
+﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients
 {

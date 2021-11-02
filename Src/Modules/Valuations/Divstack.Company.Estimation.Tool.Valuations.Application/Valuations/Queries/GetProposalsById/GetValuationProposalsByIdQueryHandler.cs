@@ -1,8 +1,8 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using Dapper;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById
@@ -10,37 +10,18 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
     internal sealed class
         GetValuationProposalsByIdQueryHandler : IRequestHandler<GetValuationProposalsByIdQuery, ValuationProposalsVm>
     {
-        private readonly IDatabaseConnectionFactory _databaseConnectionFactory;
+        private readonly IReadRepository _readRepository;
 
-        public GetValuationProposalsByIdQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory)
+        public GetValuationProposalsByIdQueryHandler(IReadRepository readRepository)
         {
-            _databaseConnectionFactory = databaseConnectionFactory;
+            _readRepository = readRepository;
         }
-
         public async Task<ValuationProposalsVm> Handle(GetValuationProposalsByIdQuery request,
             CancellationToken cancellationToken)
         {
-            var connection = _databaseConnectionFactory.Create();
-
-            var valuationProposalEntryDtos = await connection.QueryAsync<ValuationProposalEntryDto>(
-                new CommandDefinition(@$"
-                   SELECT Id {nameof(ValuationProposalEntryDto.Id)}
-                          ,Description_Message  {nameof(ValuationProposalEntryDto.Message)}
-                          ,Price_Currency {nameof(ValuationProposalEntryDto.Currency)}
-                          ,Price_Value {nameof(ValuationProposalEntryDto.Value)}
-                          ,Suggested {nameof(ValuationProposalEntryDto.Suggested)}
-                          ,SuggestedBy {nameof(ValuationProposalEntryDto.SuggestedBy)}
-                          ,Decision_Date {nameof(ValuationProposalEntryDto.DecisionDate)}
-                          ,Decision_Code {nameof(ValuationProposalEntryDto.Decision)}
-                  FROM Proposals
-                  WHERE ValuationId = @ValuationId
-                   ORDER BY Suggested DESC", new
-                {
-                    request.ValuationId
-                }));
-
-
-            return new ValuationProposalsVm(valuationProposalEntryDtos);
+            var valuationId = ValuationId.Of(request.ValuationId);
+            var valuationProposalsVm = await _readRepository.GetProposals(valuationId, cancellationToken);
+            return valuationProposalsVm;
         }
     }
 }

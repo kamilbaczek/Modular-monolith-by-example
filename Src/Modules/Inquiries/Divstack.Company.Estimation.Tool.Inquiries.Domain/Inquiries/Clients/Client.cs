@@ -1,5 +1,5 @@
 ﻿using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
+using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients

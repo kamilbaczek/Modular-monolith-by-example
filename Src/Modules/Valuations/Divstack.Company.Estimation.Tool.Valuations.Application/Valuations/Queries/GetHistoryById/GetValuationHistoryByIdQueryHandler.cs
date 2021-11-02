@@ -1,7 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Dapper;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
 using MediatR;
 
@@ -10,33 +8,19 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Que
     internal sealed class
         GetValuationHistoryByIdQueryHandler : IRequestHandler<GetValuationHistoryByIdQuery, ValuationHistoryVm>
     {
-        private readonly IDatabaseConnectionFactory _databaseConnectionFactory;
+        private readonly IReadRepository _readRepository;
 
-        public GetValuationHistoryByIdQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory)
+        public GetValuationHistoryByIdQueryHandler(IReadRepository readRepository)
         {
-            _databaseConnectionFactory = databaseConnectionFactory;
+            _readRepository = readRepository;
         }
 
         public async Task<ValuationHistoryVm> Handle(GetValuationHistoryByIdQuery request,
             CancellationToken cancellationToken)
         {
-            var connection = _databaseConnectionFactory.Create();
+           var historyVm = await _readRepository.GetAllHistoricalEntries(cancellationToken);
 
-            var historicalEntryDtos = await connection.QueryAsync<ValuationHistoricalEntryDto>(
-                new CommandDefinition(@$"
-                SELECT
-                        Id {nameof(ValuationHistoricalEntryDto.Id)}
-                       ,Status_Value {nameof(ValuationHistoricalEntryDto.Status)}
-                       ,ChangeDate {nameof(ValuationHistoricalEntryDto.ChangeDate)}
-                  FROM ValuationsHistory
-                  WHERE ValuationId = @ValuationId
-                  ORDER BY ChangeDate DESC", new
-                {
-                    request.ValuationId
-                }));
-
-
-            return new ValuationHistoryVm(historicalEntryDtos);
+           return historyVm;
         }
     }
 }

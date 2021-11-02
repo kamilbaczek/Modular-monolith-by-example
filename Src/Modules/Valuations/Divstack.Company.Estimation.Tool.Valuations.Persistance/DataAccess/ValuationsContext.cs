@@ -9,7 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {
     internal sealed class ValuationsContext : IValuationsContext
     {
-        private const string DatabaseName = "test";
+        private const string DatabaseName = "EstimationTool";
         private const string ValuationsCollectionName = "Valuations";
 
         private readonly IMongoDatabase _database;

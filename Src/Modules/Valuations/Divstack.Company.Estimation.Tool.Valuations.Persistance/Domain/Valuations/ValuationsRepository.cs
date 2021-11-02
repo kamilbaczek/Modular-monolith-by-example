@@ -19,7 +19,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
         {
             return await _valuationsContext.Valuations
                 .Find(valuation => valuation.Id.Value == valuationId.Value)
-                .SingleAsync(cancellationToken);
+                .SingleOrDefaultAsync(cancellationToken);
         }
 
         public async Task AddAsync(Valuation valuation, CancellationToken cancellationToken = default)

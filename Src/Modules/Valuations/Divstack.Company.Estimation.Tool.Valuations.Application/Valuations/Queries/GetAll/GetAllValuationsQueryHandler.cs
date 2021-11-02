@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
-using Dapper;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll

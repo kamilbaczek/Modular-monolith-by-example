@@ -9,12 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class Proposal : Entity
     {
-        private Proposal()
-        {
-        }
-
         private Proposal(
-            Valuation valuation,
             Money value,
             ProposalDescription description,
             EmployeeId suggestedBy)
@@ -25,29 +20,26 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             SuggestedBy = Guard.Against.Null(suggestedBy, nameof(suggestedBy));
             Suggested = SystemTime.Now();
             Decision = ProposalDecision.NoDecision();
-            Valuation = valuation;
         }
 
-        internal ProposalId Id { get; }
-        private ProposalDescription Description { get; }
-        internal Money Price { get; }
-        internal EmployeeId SuggestedBy { get; }
-        private DateTime Suggested { get; }
+        internal ProposalId Id { get; init; }
+        private ProposalDescription Description { get; init; }
+        internal Money Price { get; init; }
+        internal EmployeeId SuggestedBy { get; init; }
+        private DateTime Suggested { get; init; }
         private EmployeeId CancelledBy { get; set; }
         private DateTime? Cancelled { get; set; }
         private ProposalDecision Decision { get; set; }
-        private Valuation Valuation { get; }
 
         internal bool HasDecision => Decision is not null && Decision != ProposalDecision.NoDecision();
         internal bool IsCancelled => Cancelled.HasValue;
 
         internal static Proposal Suggest(
-            Valuation valuation,
             Money value,
             ProposalDescription description,
             EmployeeId proposedBy)
         {
-            return new Proposal(valuation, value, description, proposedBy);
+            return new Proposal(value, description, proposedBy);
         }
 
         internal void Approve()
