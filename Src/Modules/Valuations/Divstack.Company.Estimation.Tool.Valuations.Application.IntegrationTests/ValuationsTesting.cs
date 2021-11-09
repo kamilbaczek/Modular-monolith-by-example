@@ -1,15 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
+using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
+using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -28,39 +32,22 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         [OneTimeSetUp]
         public async Task RunBeforeAnyTests()
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
-                .AddEnvironmentVariables()
-                .AddUserSecrets<ValuationsTesting>();
-
-            _configuration = builder.Build();
-
-            var startup = new Startup(_configuration);
-
+            Configuration = CreateConfigurations();
+            var startup = new Startup(Configuration);
             var services = new ServiceCollection();
 
-            services.AddSingleton(Mock.Of<IWebHostEnvironment>(w =>
-                w.EnvironmentName == "Test" &&
-                w.ApplicationName == "Divstack.Company.Estimation.Tool.Bootstrapper"));
-
-
-            var currentUserServiceDescriptor = services.FirstOrDefault(serviceDescriptor =>
-                serviceDescriptor.ServiceType == typeof(ICurrentUserService));
-
-            services.Remove(currentUserServiceDescriptor);
-
-            services.AddTransient(_ =>
-                Mock.Of<ICurrentUserService>(s => s.GetPublicUserId() == CurrentUserId));
+            ReplaceHostEnviromentToMock(services);
+            ReplaceCurrentUserServiceToMock(services);
 
             services.AddLogging();
             startup.ConfigureServices(services);
 
-            _ServiceScopeFactory = services.BuildServiceProvider().GetService<IServiceScopeFactory>();
+            _serviceScopeFactory = services.BuildServiceProvider()
+                .GetService<IServiceScopeFactory>();
 
             _checkpoint = new RespawnMySql
             {
-                TablesToIgnore = new[] {"__EFMigrationsHistory"},
+                TablesToIgnore = new[] { IgnoredTable },
                 DbAdapter = DbAdapter.MySql
             };
 
@@ -73,9 +60,46 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         {
         }
 
+        private const string ConnectionStringName = "Valuations";
+        private const string IgnoredTable = "__EFMigrationsHistory";
+
+        internal static IConfigurationRoot Configuration;
+        private static IServiceScopeFactory _serviceScopeFactory;
+        private static RespawnMySql _checkpoint;
+        public static IServiceScope CreateServiceScope => _serviceScopeFactory.CreateScope();
+
+        internal static Guid CurrentUserId { get; set; }
+
+        private static IConfigurationRoot CreateConfigurations()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", true, true)
+                .AddEnvironmentVariables()
+                .AddUserSecrets<ValuationsTesting>();
+            return builder.Build();
+        }
+
+        private static void ReplaceHostEnviromentToMock(ServiceCollection services)
+        {
+            services.AddSingleton(Mock.Of<IWebHostEnvironment>(hostEnvironment =>
+                hostEnvironment.EnvironmentName == "Test" &&
+                hostEnvironment.ApplicationName == "Divstack.Company.Estimation.Tool.Bootstrapper"));
+        }
+
+        private static void ReplaceCurrentUserServiceToMock(ServiceCollection services)
+        {
+            var currentUserServiceDescriptor = services.FirstOrDefault(serviceDescriptor =>
+                serviceDescriptor.ServiceType == typeof(ICurrentUserService));
+            services.Remove(currentUserServiceDescriptor);
+            services.AddTransient(_ =>
+                Mock.Of<ICurrentUserService>(
+                    currentUserService => currentUserService.GetPublicUserId() == CurrentUserId));
+        }
+
         public static async Task ExecuteCommandAsync(ICommand request)
         {
-            using var scope = _ServiceScopeFactory.CreateScope();
+            using var scope = _serviceScopeFactory.CreateScope();
 
             var valuationsModule = scope.ServiceProvider.GetRequiredService<IValuationsModule>();
 
@@ -84,38 +108,40 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
 
         public static async Task<TResponse> ExecuteQueryAsync<TResponse>(Contracts.IQuery<TResponse> request)
         {
-            using var scope = _ServiceScopeFactory.CreateScope();
+            using var scope = _serviceScopeFactory.CreateScope();
 
             var valuationsModule = scope.ServiceProvider.GetRequiredService<IValuationsModule>();
 
             return await valuationsModule.ExecuteQueryAsync(request);
         }
 
-        protected void EnsureDatabaseModule(IServiceScope serviceScope)
+
+        public static async Task ConsumeEvent<TEvent>(TEvent domainEvent) where TEvent : IntegrationEvent
+        {
+            using var scope = _serviceScopeFactory.CreateScope();
+
+            var integrationEventPublisher = scope.ServiceProvider.GetRequiredService<INotificationHandler<TEvent>>();
+            await integrationEventPublisher.Handle(domainEvent, CancellationToken.None);
+        }
+
+        protected static void EnsureDatabaseModule(IServiceScope serviceScope)
         {
             var valuationsContext = serviceScope.ServiceProvider.GetRequiredService<ValuationsContext>();
             valuationsContext.Database.Migrate();
         }
 
-        internal static IConfigurationRoot _configuration;
-        private static IServiceScopeFactory _ServiceScopeFactory;
-        private static RespawnMySql _checkpoint;
-        internal static Guid CurrentUserId { get; set; }
-
-        private async Task EnsureDatabase()
+        private static async Task EnsureDatabase()
         {
-            using var scope = _ServiceScopeFactory.CreateScope();
+            using var scope = _serviceScopeFactory.CreateScope();
 
             var usersContext = scope.ServiceProvider.GetRequiredService<UsersContext>();
-            usersContext.Database.Migrate();
+            await usersContext.Database.MigrateAsync();
 
             var usersSeeder = scope.ServiceProvider.GetRequiredService<IUsersSeeder>();
             await usersSeeder.SeedAdminUserAsync();
 
             EnsureDatabaseModule(scope);
         }
-
-        public static IServiceScope CreateServiceScope => _ServiceScopeFactory.CreateScope();
 
         public static async Task RunAsAdministratorAsync()
         {
@@ -124,7 +150,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
 
         public static async Task RunAsUserAsync(string userName)
         {
-            using var scope = _ServiceScopeFactory.CreateScope();
+            using var scope = _serviceScopeFactory.CreateScope();
 
             var userModule = scope.ServiceProvider.GetRequiredService<IUserModule>();
             var user = await userModule.ExecuteQueryAsync(new GetUserDetailQueryByUsernameCommand(userName));
@@ -134,7 +160,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         public static async Task ResetState()
         {
             using var scope = CreateServiceScope;
-            var connectionString = _configuration.GetConnectionString("Valuations");
+            var connectionString = Configuration.GetConnectionString(ConnectionStringName);
             await _checkpoint.Reset(connectionString);
         }
     }

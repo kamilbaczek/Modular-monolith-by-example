@@ -1,10 +1,10 @@
 using Divstack.Company.Estimation.Tool.Estimations.Api;
+using Divstack.Company.Estimation.Tool.Inquiries.Api;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Reminders;
 using Divstack.Company.Estimation.Tool.Services.Api;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 using Divstack.Company.Estimation.Tool.Users.Api;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Divstack.Company.Estimation.Tool.Bootstrapper
 {
-    public class Startup
+    public sealed class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -27,6 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             services.AddSharedInfrastructure(Configuration);
             services.AddUsersModule(Configuration);
             services.AddServicesModule(Configuration);
+            services.AddInquiriesModule(Configuration);
             services.AddValuationsModule(Configuration);
             services.AddEmailsModule();
             services.AddRemindersModule();
@@ -36,10 +37,7 @@ namespace Divstack.Company.Estimation.Tool.Bootstrapper
             IApplicationBuilder app,
             IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseSharedInfrastructure();
             app.UseRouting();

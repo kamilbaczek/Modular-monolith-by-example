@@ -31,11 +31,12 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> RemoveAttribute(Guid serviceId, Guid attributeId)
         {
-            await _servicesService.RemoveAttributeAsync(new DeleteAttributeRequest
+            var removeAttributeRequest = new RemoveAttributeRequest
             {
                 ServiceId = serviceId,
                 AttributeId = attributeId
-            });
+            };
+            await _servicesService.RemoveAttributeAsync(removeAttributeRequest);
 
             return NoContent();
         }

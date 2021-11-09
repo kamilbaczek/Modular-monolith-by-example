@@ -1,13 +1,13 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.Repositories;
-using Divstack.Company.Estimation.Tool.Estimations.Persistance.Seeders.Request;
+using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance
 {
     internal static class PersistanceModule
     {
@@ -17,9 +17,13 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Persistance
             var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
             services.AddDataAccess(connectionString);
             services.AddRepositories();
-            services.AddSeeders();
 
             return services;
+        }
+
+        internal static void UsePersistanceModule(this IApplicationBuilder app)
+        {
+            app.UseDataAccess();
         }
     }
 }

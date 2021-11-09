@@ -11,10 +11,12 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
                 ".Net Core API");
             bootstrapper.Uses(usersApi, "");
             var usersInfrastrucutre =
-                webApplication.AddComponent("Infrastructure - Users", "Provides module skeleton", Technologies.DotnetDll);
+                webApplication.AddComponent("Infrastructure - Users", "Provides module skeleton",
+                    Technologies.DotnetDll);
             usersApi.Uses(usersInfrastrucutre, "");
             var usersApplication =
-                webApplication.AddComponent("Application - Users", "Run action on bussiness logic (Domain)", Technologies.DotnetDll);
+                webApplication.AddComponent("Application - Users", "Run action on bussiness logic (Domain)",
+                    Technologies.DotnetDll);
             usersInfrastrucutre.Uses(usersApplication, "");
             var usersPersistance =
                 webApplication.AddComponent("Persistance - Users", "Database Access", "Entity Framework Core");

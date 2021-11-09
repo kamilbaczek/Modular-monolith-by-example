@@ -32,10 +32,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
         {
             if (!_adminAccountConfiguration.Init) return;
             var systemRoleExist = await _roleManagementService.RoleExists(ApplicationRoleKeys.SystemAdministrator);
-            if (!systemRoleExist)
-            {
-                _roleManagementService.AddNewRole(ApplicationRoleKeys.SystemAdministrator).Wait();
-            }
+            if (!systemRoleExist) _roleManagementService.AddNewRole(ApplicationRoleKeys.SystemAdministrator).Wait();
 
             var adminExist = await _userManagementService.UserExists(_systemAdminUserName);
             if (adminExist) return;

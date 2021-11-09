@@ -1,20 +1,20 @@
 ﻿{
-  "TokenConfiguration":{
-    "Secret":"",
-    "Issuer":"localhost:5001",
-    "Audience":"DeveloperAudience",
-    "AccessExpirationInMinutes":10000000,
-    "RefreshExpirationInMinutes":100000,
-    "LinksExpirationInMinutes":15
+  "TokenConfiguration": {
+    "Secret": "",
+    "Issuer": "localhost:5001",
+    "Audience": "DeveloperAudience",
+    "AccessExpirationInMinutes": 10000000,
+    "RefreshExpirationInMinutes": 100000,
+    "LinksExpirationInMinutes": 15
   },
-  "Users":{
-    "PasswordExpirationFrequency":30
+  "Users": {
+    "PasswordExpirationFrequency": 30
   },
-  "AdminAccount":{
-    "UserName":"admin@divstack.pl",
-    "Email":"admin@divstack.pl",
-    "Password":"3wsx$EDC5rfvtest4",
-    "Init":"true"
+  "AdminAccount": {
+    "UserName": "admin@divstack.pl",
+    "Email": "admin@divstack.pl",
+    "Password": "3wsx$EDC5rfvtest4",
+    "Init": "true"
   },
   "ConnectionStrings": {
     "Users": ""

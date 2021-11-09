@@ -1,17 +1,14 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals
 {
-    public sealed class ProposalDecision : ValueObject
+    public record ProposalDecision
     {
         private const string Accept = "Accept";
 
         private const string Reject = "Reject";
 
-        private ProposalDecision()
-        {
-        }
+        private const string EmptyDecision = "NoDecision";
 
         private ProposalDecision(DateTime? date, string code)
         {
@@ -23,18 +20,20 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 
         private string Code { get; }
 
-        private bool IsAccepted => Code == Accept;
-
-        private bool IsRejected => Code == Reject;
 
         internal static ProposalDecision AcceptDecision(DateTime date)
         {
-            return new(date, Accept);
+            return new ProposalDecision(date, Accept);
+        }
+
+        internal static ProposalDecision NoDecision()
+        {
+            return new ProposalDecision(null, EmptyDecision);
         }
 
         internal static ProposalDecision RejectDecision(DateTime date)
         {
-            return new(date, Reject);
+            return new ProposalDecision(date, Reject);
         }
     }
 }

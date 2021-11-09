@@ -31,10 +31,10 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Create([FromBody] CreateCategoryRequest createServiceRequest)
+        public async Task<ActionResult<Guid>> Create([FromBody] CreateCategoryRequest createServiceRequest)
         {
-            await _categoriesService.CreateAsync(createServiceRequest);
-            return Ok();
+            var categoryId = await _categoriesService.CreateAsync(createServiceRequest);
+            return Created(categoryId);
         }
 
         [HttpDelete("{id}")]

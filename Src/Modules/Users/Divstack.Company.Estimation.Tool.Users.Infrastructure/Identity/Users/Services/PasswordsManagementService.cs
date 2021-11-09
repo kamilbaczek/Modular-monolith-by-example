@@ -99,17 +99,13 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.S
 
             var confirmEmailResult = await _applicationUserManager.ConfirmEmailAsync(user, token);
             if (!confirmEmailResult.Succeeded)
-            {
                 // throw event await SendConfirmationEmailAsync(user);
                 throw new InvalidOperationException("Link Expired");
-            }
 
             var addPasswordResult = await _applicationUserManager.AddPasswordAsync(user,
                 password);
             if (!addPasswordResult.Succeeded)
-            {
                 throw new InvalidOperationException("Setting password not succeeded: " + addPasswordResult);
-            }
         }
     }
 }

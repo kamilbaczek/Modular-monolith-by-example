@@ -64,10 +64,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Ref
         private async Task RemoveTokenFromDbForUserIfExists(Guid userPublicId)
         {
             var existingRefreshToken = await _refreshTokenRepository.GetByUserPublicIdOrDefaultAsync(userPublicId);
-            if (existingRefreshToken != null)
-            {
-                await _refreshTokenRepository.RemoveAsync(existingRefreshToken);
-            }
+            if (existingRefreshToken != null) await _refreshTokenRepository.RemoveAsync(existingRefreshToken);
         }
     }
 }

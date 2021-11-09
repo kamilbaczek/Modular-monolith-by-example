@@ -6,8 +6,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Structurizr.Client" Version="0.9.7" />
-      <PackageReference Include="Structurizr.Core" Version="0.9.7" />
+        <PackageReference Include="Structurizr.Client" Version="0.9.7"/>
+        <PackageReference Include="Structurizr.Core" Version="0.9.7"/>
     </ItemGroup>
 
 </Project>

@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers
         {
             var usersList = await _userModule.ExecuteQueryAsync(new GetAllUsersQuery());
 
-            return new GetAllUsersResponse {UserListVm = usersList};
+            return new GetAllUsersResponse { UserListVm = usersList };
         }
 
         [HttpGet("{id}", Name = "GetUserById")]
@@ -36,7 +36,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserDetailVm>> Get(Guid id)
         {
-            var query = new GetUserDetailQuery {PublicId = id};
+            var query = new GetUserDetailQuery { PublicId = id };
             return Ok(await _userModule.ExecuteQueryAsync(query));
         }
 

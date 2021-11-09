@@ -21,17 +21,28 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Ref
             this.tokenConfiguration = tokenConfiguration;
         }
 
-        public async Task<bool> IsCurrentTokenActiveAsync() => await IsTokenActiveAsync(GetCurrentAsync());
+        public async Task<bool> IsCurrentTokenActiveAsync()
+        {
+            return await IsTokenActiveAsync(GetCurrentAsync());
+        }
 
-        public async Task DeactivateCurrentAsync() => await DeactivateAsync(GetCurrentAsync());
+        public async Task DeactivateCurrentAsync()
+        {
+            await DeactivateAsync(GetCurrentAsync());
+        }
 
-        private async Task<bool> IsTokenActiveAsync(string token) => await cache.GetStringAsync(GetKey(token)) == null;
+        private async Task<bool> IsTokenActiveAsync(string token)
+        {
+            return await cache.GetStringAsync(GetKey(token)) == null;
+        }
 
         private async Task DeactivateAsync(string token)
-            => await cache.SetStringAsync(GetKey(token), " ", new DistributedCacheEntryOptions
+        {
+            await cache.SetStringAsync(GetKey(token), " ", new DistributedCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(tokenConfiguration.AccessExpirationInMinutes)
             });
+        }
 
 
         private string GetCurrentAsync()
@@ -41,6 +52,9 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Ref
             return authorizationHeader == string.Empty ? string.Empty : authorizationHeader.Single().Split(" ").Last();
         }
 
-        private static string GetKey(string token) => $"tokens:{token}:deactivated";
+        private static string GetKey(string token)
+        {
+            return $"tokens:{token}:deactivated";
+        }
     }
 }

@@ -15,13 +15,16 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             CancellationToken cancellationToken = default);
 
         Task<List<ServiceDto>> GetAllAsync(CancellationToken cancellationToken = default);
-        Task CreateAsync(CreateServiceRequest createServiceRequest, CancellationToken cancellationToken = default);
+
+        Task<Guid> CreateAsync(CreateServiceRequest createServiceRequest,
+            CancellationToken cancellationToken = default);
+
         Task Update(UpdateServiceRequest serviceToUpdate, CancellationToken cancellationToken = default);
 
         Task AddAttributeAsync(CreateAttributeRequest createAttributeRequest,
             CancellationToken cancellationToken = default);
 
-        Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest,
+        Task RemoveAttributeAsync(RemoveAttributeRequest removeAttributeRequest,
             CancellationToken cancellationToken = default);
 
         Task AddAttributePossibleValueAsync(CreatePossibleValueRequest createPossibleValueRequest,

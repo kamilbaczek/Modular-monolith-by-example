@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Mail;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
+using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails
 {
@@ -13,10 +13,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails
         private Email(string emailAddress)
         {
             var isValid = IsValid(emailAddress);
-            if (!isValid)
-            {
-                throw new InvalidEmailFormatException(emailAddress);
-            }
+            if (!isValid) throw new InvalidEmailFormatException(emailAddress);
 
             Value = emailAddress;
         }

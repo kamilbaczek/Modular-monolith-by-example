@@ -4,7 +4,6 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos;
@@ -40,17 +39,6 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
         {
             var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(new GetAllValuationsQuery());
             return Ok(valuationsListVm);
-        }
-
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesDefaultResponseType]
-        [AllowAnonymous]
-        public async Task<ActionResult> Request([FromBody] RequestValuationCommand requestValuationCommand)
-        {
-            await _valuationsModule.ExecuteCommandAsync(requestValuationCommand);
-            return Ok();
         }
 
         [HttpPost]

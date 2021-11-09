@@ -6,11 +6,10 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Utils
 {
     internal static class AsyncUtil
     {
-        private static readonly TaskFactory TaskFactory = new
-            TaskFactory(CancellationToken.None,
-                TaskCreationOptions.None,
-                TaskContinuationOptions.None,
-                TaskScheduler.Default);
+        private static readonly TaskFactory TaskFactory = new(CancellationToken.None,
+            TaskCreationOptions.None,
+            TaskContinuationOptions.None,
+            TaskScheduler.Default);
 
         /// <summary>
         ///     Executes an async Task method which has a void return value synchronously
@@ -18,11 +17,13 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Utils
         /// </summary>
         /// <param name="task">Task method to execute</param>
         internal static void RunSync(Func<Task> task)
-            => TaskFactory
+        {
+            TaskFactory
                 .StartNew(task)
                 .Unwrap()
                 .GetAwaiter()
                 .GetResult();
+        }
 
         /// <summary>
         ///     Executes an async Task
@@ -34,10 +35,12 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Utils
         /// <param name="task">Task<T> method to execute</param>
         /// <returns></returns>
         internal static TResult RunSync<TResult>(Func<Task<TResult>> task)
-            => TaskFactory
+        {
+            return TaskFactory
                 .StartNew(task)
                 .Unwrap()
                 .GetAwaiter()
                 .GetResult();
+        }
     }
 }

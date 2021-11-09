@@ -1,15 +1,11 @@
 ﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
+using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Exceptions;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals
 {
     public sealed class ProposalDescription : ValueObject
     {
-        private ProposalDescription()
-        {
-        }
-
         private ProposalDescription(string message)
         {
             if (string.IsNullOrEmpty(message))
@@ -19,11 +15,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Message = message;
         }
 
-        public string Message { get; }
+        public string Message { get; init; }
 
         internal static ProposalDescription From(string message)
         {
-            return new(message);
+            return new ProposalDescription(message);
         }
     }
 }

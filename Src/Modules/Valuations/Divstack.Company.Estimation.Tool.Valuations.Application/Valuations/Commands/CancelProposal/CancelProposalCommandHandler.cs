@@ -31,7 +31,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Com
 
             valuation.CancelProposal(proposalId, employeeId);
 
-            await _valuationsRepository.CommitAsync(cancellationToken);
+            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
 
             return Unit.Value;
         }

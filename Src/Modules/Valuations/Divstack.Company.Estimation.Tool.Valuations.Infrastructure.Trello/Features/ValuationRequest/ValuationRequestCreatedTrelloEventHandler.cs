@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
@@ -25,17 +24,17 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Feat
 
         public async Task Handle(ValuationRequested notification, CancellationToken cancellationToken)
         {
-            var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
-            var servicesNames = services.Select(service => service.Name);
+            // var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
+            // var servicesNames = services.Select(service => service.Name);
             var taskName = GenerateTaskName(notification.ValuationId);
-            var description = GenerateDescription(notification, servicesNames);
+            var description = GenerateDescription(notification, new List<string>());
             await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
         }
 
         private static string GenerateDescription(ValuationRequested notification,
             IEnumerable<string> servicesNames)
         {
-            return $"Client: {notification.ClientEmail} " +
+            return $"Valuation: {notification.ValuationId} " +
                    $"{Environment.NewLine}" +
                    $"Requested: {string.Join($"{Environment.NewLine}", servicesNames)}";
         }

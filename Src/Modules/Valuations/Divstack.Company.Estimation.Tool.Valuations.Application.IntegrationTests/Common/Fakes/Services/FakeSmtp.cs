@@ -16,7 +16,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
         {
             var serverAddress = configuration.GetValue<string>(ServerAddressConfigurationName);
             var port = configuration.GetValue<int>(MailServerPortConfigurationName);
-
             var ipAddress = IPAddress.Parse(serverAddress);
             var server = SimpleSmtpServer.Start(port);
 
@@ -34,9 +33,8 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
         {
             await Task.Delay(DelayBeforeMailWillBeReceivedIn);
             var email = smtpServer.ReceivedEmail
-                .Where(message => message.ToAddresses
-                    .Any(emailAddress => emailAddress.Address == clientEmail))
-                .FirstOrDefault();
+                .FirstOrDefault(message => message.ToAddresses
+                    .Any(emailAddress => emailAddress.Address == clientEmail));
 
             return email;
         }

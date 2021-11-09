@@ -5,7 +5,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptio
     public sealed class ValuationCompletedException : InvalidOperationException
     {
         public ValuationCompletedException(ValuationId valuationId) :
-            base($"Cannot execute operation on completed valuation :{valuationId} ")
+            base($"Cannot execute operation on completed valuation :{valuationId}")
         {
         }
     }

@@ -11,8 +11,8 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
 {
     internal sealed class EmailSender : IEmailSender
     {
-        private readonly IMailConfiguration _mailConfiguration;
         private readonly IBackgroundProcessQueue _backgroundProcessQueue;
+        private readonly IMailConfiguration _mailConfiguration;
 
         public EmailSender(IMailConfiguration mailConfiguration, IBackgroundProcessQueue backgroundProcessQueue)
         {
@@ -23,22 +23,20 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender
         public void Send(string email, string subject, string text)
         {
             if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
-            {
                 _backgroundProcessQueue.Enqueue(() => SendMessageAsync(email, subject, text));
-            }
         }
 
-        private bool IsConfiguredAuthentication() => !IsNullOrEmpty(_mailConfiguration.ServerLogin)
-                                                     && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
+        private bool IsConfiguredAuthentication()
+        {
+            return !IsNullOrEmpty(_mailConfiguration.ServerLogin)
+                   && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
+        }
 
         public async Task SendMessageAsync(string email, string subject, string text)
         {
             var message = BuildMessage(email, subject, text);
             using var client = new SmtpClient();
-            if (_mailConfiguration.DisableSsl)
-            {
-                DisableSsl(client);
-            }
+            if (_mailConfiguration.DisableSsl) DisableSsl(client);
 
             await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
             if (IsConfiguredAuthentication())

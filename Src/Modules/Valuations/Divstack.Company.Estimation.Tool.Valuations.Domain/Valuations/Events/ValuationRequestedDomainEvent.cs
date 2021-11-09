@@ -1,21 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Equeries;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events
 {
     public sealed class ValuationRequestedDomainEvent : DomainEventBase
     {
-        public ValuationRequestedDomainEvent(ValuationId valuationId, IReadOnlyList<ServiceId> serviceIds, Email clientEmail)
+        public ValuationRequestedDomainEvent(
+            ValuationId valuationId,
+            InquiryId inquiryId,
+            Deadline deadline)
         {
             ValuationId = valuationId;
-            ServiceIds = serviceIds;
-            ClientEmail = clientEmail;
+            DeadlineDate = deadline.Date;
+            InquiryId = inquiryId;
         }
 
         public ValuationId ValuationId { get; }
-        public IReadOnlyList<ServiceId> ServiceIds { get; }
-        public Email ClientEmail { get; }
+        public InquiryId InquiryId { get; }
+        public DateTime DeadlineDate { get; }
     }
 }

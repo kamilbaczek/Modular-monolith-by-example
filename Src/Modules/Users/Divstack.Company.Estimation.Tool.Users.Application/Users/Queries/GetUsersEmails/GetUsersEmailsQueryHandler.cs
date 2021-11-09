@@ -17,19 +17,20 @@ namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUs
             _userManagementService = userManagementService;
         }
 
-        public async Task<string> Handle(GetUserEmailQuery request, CancellationToken cancellationToken)
-        {
-            var userDetails = await _userManagementService.GetUserDetailsByPublicIdAsync(request.PublicId);
-
-            return userDetails.Email;
-        }
-
-        public async Task<IReadOnlyList<string>> Handle(GetUsersEmailsQuery request, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<string>> Handle(GetUsersEmailsQuery request,
+            CancellationToken cancellationToken)
         {
             var allUsers = await _userManagementService.GetAllUsersAsync();
             var usersEmails = allUsers.Select(userDto => userDto.Email).ToList();
 
             return usersEmails;
+        }
+
+        public async Task<string> Handle(GetUserEmailQuery request, CancellationToken cancellationToken)
+        {
+            var userDetails = await _userManagementService.GetUserDetailsByPublicIdAsync(request.PublicId);
+
+            return userDetails.Email;
         }
     }
 }

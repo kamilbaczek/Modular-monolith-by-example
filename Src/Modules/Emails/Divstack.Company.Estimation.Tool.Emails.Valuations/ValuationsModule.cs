@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
+
 namespace Divstack.Company.Estimation.Tool.Emails.Valuations
 {
     internal static class ValuationsModule

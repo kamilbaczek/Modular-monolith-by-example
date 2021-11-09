@@ -14,11 +14,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         public async Task
             Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToApproved()
         {
-            await ValuationModuleHelper.RequestValuation();
-            var valuationBeforeApproval = await ValuationModuleHelper.GetFirstRequestedValuation();
-            await ValuationModuleHelper.SuggestValuationProposal(valuationBeforeApproval.Id);
-            var recentProposal = await ValuationModuleHelper.GetRecentProposal(valuationBeforeApproval.Id);
-
+            await ValuationModuleTester.RequestValuation();
+            var valuationBeforeApproval = await ValuationModuleTester.GetFirstRequestedValuation();
+            await ValuationModuleTester.SuggestValuationProposal(valuationBeforeApproval.Id);
+            var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.Id);
             var approveCommand = new ApproveProposalCommand
             {
                 ProposalId = recentProposal.Id,
@@ -27,7 +26,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
 
             await ExecuteCommandAsync(approveCommand);
 
-            var valuationAfterApproval = await ValuationModuleHelper.GetFirstRequestedValuation();
+            var valuationAfterApproval = await ValuationModuleTester.GetFirstRequestedValuation();
             valuationAfterApproval.Status.Should().Be("Approved");
         }
     }

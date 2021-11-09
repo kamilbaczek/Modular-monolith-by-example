@@ -8,10 +8,11 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
 {
     internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
     {
-        private readonly IMediator _mediator;
         private readonly IEventMapper _eventMapper;
+        private readonly IMediator _mediator;
 
-        public IntegrationEventPublisher(IMediator mediator, IEventMapper eventMapper)
+        public IntegrationEventPublisher(IMediator mediator,
+            IEventMapper eventMapper)
         {
             _mediator = mediator;
             _eventMapper = eventMapper;
@@ -21,9 +22,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
         {
             var integrationEvents = _eventMapper.Map(domainEvents);
             foreach (var integrationEvent in integrationEvents)
-            {
                 _mediator.Publish(integrationEvent);
-            }
         }
     }
 }

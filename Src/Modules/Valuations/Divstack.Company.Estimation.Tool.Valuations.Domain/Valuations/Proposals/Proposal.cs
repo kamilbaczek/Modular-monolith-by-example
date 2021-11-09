@@ -9,12 +9,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
 {
     public sealed class Proposal : Entity
     {
-        private Proposal()
-        {
-        }
-
         private Proposal(
-            Valuation valuation,
             Money value,
             ProposalDescription description,
             EmployeeId suggestedBy)
@@ -22,67 +17,57 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposal
             Id = new ProposalId(Guid.NewGuid());
             Price = Guard.Against.Null(value, nameof(value));
             Description = Guard.Against.Null(description, nameof(description));
-            SuggestedBy =  Guard.Against.Null(suggestedBy, nameof(suggestedBy));
+            SuggestedBy = Guard.Against.Null(suggestedBy, nameof(suggestedBy));
             Suggested = SystemTime.Now();
-            Decision = null;
-            Valuation = valuation;
+            Decision = ProposalDecision.NoDecision();
         }
 
-        internal ProposalId Id { get; }
+        internal ProposalId Id { get; init; }
         private ProposalDescription Description { get; }
-        internal Money Price { get; }
-        internal EmployeeId SuggestedBy { get; }
+        internal Money Price { get; init; }
+        internal EmployeeId SuggestedBy { get; init; }
         private DateTime Suggested { get; }
         private EmployeeId CancelledBy { get; set; }
         private DateTime? Cancelled { get; set; }
         private ProposalDecision Decision { get; set; }
-        private Valuation Valuation { get; }
+
+        internal bool HasDecision => Decision is not null && Decision != ProposalDecision.NoDecision();
+        internal bool IsCancelled => Cancelled.HasValue;
 
         internal static Proposal Suggest(
-            Valuation valuation,
             Money value,
             ProposalDescription description,
             EmployeeId proposedBy)
         {
-            return new(valuation, value, description, proposedBy);
+            return new Proposal(value, description, proposedBy);
         }
 
         internal void Approve()
         {
-            if (IsCancelled())
+            if (IsCancelled)
                 throw new ProposalIsCancelledException(Id);
-            if (HasDecision())
+            if (HasDecision)
                 throw new ProposalAlreadyHasDecisionException(Id);
             Decision = ProposalDecision.AcceptDecision(DateTime.Now);
         }
 
         internal void Reject()
         {
-            if (IsCancelled())
+            if (IsCancelled)
                 throw new ProposalIsCancelledException(Id);
 
-            if (HasDecision())
+            if (HasDecision)
                 throw new ProposalAlreadyHasDecisionException(Id);
             Decision = ProposalDecision.RejectDecision(DateTime.Now);
         }
 
         internal void Cancel(EmployeeId employeeId)
         {
-            if (IsCancelled())
+            if (IsCancelled)
                 throw new ProposalAlreadyCancelledException(Id);
 
             Cancelled = DateTime.Now;
             CancelledBy = employeeId;
-        }
-
-        internal bool HasDecision()
-        {
-            return Decision is not null;
-        }
-
-        internal bool IsCancelled()
-        {
-            return Cancelled.HasValue;
         }
     }
 }

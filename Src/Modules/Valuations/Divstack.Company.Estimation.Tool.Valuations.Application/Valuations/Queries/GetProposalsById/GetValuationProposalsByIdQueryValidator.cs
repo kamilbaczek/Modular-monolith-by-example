@@ -1,7 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
-using FluentValidation;
+﻿using FluentValidation;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById
 {
     public sealed class GetValuationProposalsByIdQueryValidator : AbstractValidator<GetValuationProposalsByIdQuery>
     {

@@ -25,11 +25,13 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Ser
             return categoriesDtos;
         }
 
-        public async Task CreateAsync(CreateCategoryRequest createCategoryRequest,
+        public async Task<Guid> CreateAsync(CreateCategoryRequest createCategoryRequest,
             CancellationToken cancellationToken = default)
         {
             var category = Category.Create(createCategoryRequest.Name, createCategoryRequest.Description);
             await _categoriesRepository.AddAsync(category, cancellationToken);
+
+            return category.Id;
         }
 
         public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)

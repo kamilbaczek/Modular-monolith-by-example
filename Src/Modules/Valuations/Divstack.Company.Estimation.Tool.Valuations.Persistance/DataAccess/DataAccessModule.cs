@@ -1,30 +1,33 @@
 ﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Persistance.DataAccess
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {
     internal static class DataAccessModule
     {
         internal static IServiceCollection AddDataAccess(this IServiceCollection services,
             string connectionString)
         {
-            services.AddDbContext<ValuationsContext>(connectionString);
+            services.AddMongo(connectionString);
+            services.AddScoped<IValuationsContext, ValuationsContext>();
             services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
 
             return services;
         }
 
-        private static void AddDbContext<TContext>(this IServiceCollection services, string connectionString)
-            where TContext : DbContext
+        private static void AddMongo(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContextPool<TContext>(options =>
-                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-            );
+            var settings = MongoClientSettings.FromConnectionString(connectionString);
+            var mongoClient = new MongoClient(settings);
 
-            using var scope = services.BuildServiceProvider().CreateScope();
-            var dbContext = scope.ServiceProvider.GetRequiredService<TContext>();
-            dbContext.Database.Migrate();
+            services.AddSingleton(mongoClient);
+        }
+
+        internal static void UseDataAccess(this IApplicationBuilder app)
+        {
+            PersistanceConfiguration.Configure();
         }
     }
 }

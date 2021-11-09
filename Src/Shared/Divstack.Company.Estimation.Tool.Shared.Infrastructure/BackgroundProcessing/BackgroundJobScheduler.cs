@@ -12,6 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProce
     internal sealed class BackgroundJobScheduler : IBackgroundJobScheduler
     {
         private const int Zero = 0;
+
         public void Schedule(Expression<Action> methodCall, DateTime date)
         {
             var enqueueAt = new DateTimeOffset(date);
@@ -21,21 +22,19 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProce
         }
 
         public void UnSchedule(Expression<Action> methodCall)
-        {   var methodAsJob = Job.FromExpression(methodCall);
+        {
+            var methodAsJob = Job.FromExpression(methodCall);
             var monitor = JobStorage.Current.GetMonitoringApi();
             var jobsToUnSchedule = monitor
                 .ScheduledJobs(Zero, int.MaxValue)
                 .Where(jobKeyValues => JobEquals(jobKeyValues.Value.Job, methodAsJob));
 
-             UnSchedule(jobsToUnSchedule);
+            UnSchedule(jobsToUnSchedule);
         }
 
         private static void UnSchedule(IEnumerable<KeyValuePair<string, ScheduledJobDto>> scheduledJobsWithMethod)
         {
-            foreach (var scheduledJob in scheduledJobsWithMethod)
-            {
-                BackgroundJob.Delete(scheduledJob.Key);
-            }
+            foreach (var scheduledJob in scheduledJobsWithMethod) BackgroundJob.Delete(scheduledJob.Key);
         }
 
         private static bool JobEquals(Job right, Job left)

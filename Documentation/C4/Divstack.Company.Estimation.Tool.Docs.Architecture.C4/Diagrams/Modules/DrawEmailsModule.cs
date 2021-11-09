@@ -14,7 +14,8 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
                 webApplication.AddComponent("Emails - Core", "Sending email abstractions", Technologies.DotnetDll);
             emails.Uses(emailsCore, "");
             var emailsValuations =
-                webApplication.AddComponent("Emails - Valuations", "Emails module for valuations", Technologies.DotnetDll);
+                webApplication.AddComponent("Emails - Valuations", "Emails module for valuations",
+                    Technologies.DotnetDll);
             emails.Uses(emailsCore, "");
             emailsValuations.Uses(emailsCore, "Use abstractions");
             var emailsUsers =

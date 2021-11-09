@@ -15,7 +15,8 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Re
             _mediator = mediator;
         }
 
-        public async Task RemindAsync(Guid valuationId, int daysBeforeDeadline, CancellationToken cancellationToken = default)
+        public async Task RemindAsync(Guid valuationId, int daysBeforeDeadline,
+            CancellationToken cancellationToken = default)
         {
             var @event = new ValuationCloseToDeadlineRemindEvent(valuationId, daysBeforeDeadline);
             await _mediator.Publish(@event, cancellationToken);

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
@@ -14,9 +13,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
     public class SuggestProposalTests : BaseValuationTest
     {
         [Test]
-        public async Task Given_SuggestProposal_Then_CannotSuggestProposal()
+        public void Given_SuggestProposal_Then_CannotSuggestProposal()
         {
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());
 
@@ -27,9 +26,9 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
+        public void Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
         {
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());
             var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
@@ -42,11 +41,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Pr
         }
 
         [Test]
-        public async Task Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
+        public void Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
         {
             var money = Money.Of(30, "USD");
             var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = await RequestFakeValuation();
+            var valuation = RequestFakeValuation();
             SuggestFakeProposal(employee, valuation);
 
             Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);

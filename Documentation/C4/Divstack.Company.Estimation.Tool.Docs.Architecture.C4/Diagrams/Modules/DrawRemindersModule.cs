@@ -10,7 +10,8 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
             var reminders =
                 webApplication.AddComponent("Reminders", "Reminders bootstrapper", Technologies.DotnetDll);
             var remindersValuations =
-                webApplication.AddComponent("Reminders - Valuations", "Reminders Scheduler, Reminder Events for Valuations Module", Technologies.DotnetDll);
+                webApplication.AddComponent("Reminders - Valuations",
+                    "Reminders Scheduler, Reminder Events for Valuations Module", Technologies.DotnetDll);
             reminders.Uses(remindersValuations, "Register SubModule");
 
             bootstrapper.Uses(reminders, "");

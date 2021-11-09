@@ -1,7 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using MediatR;
 
@@ -9,26 +11,36 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 {
     internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggested>
     {
+        private readonly IInquiriesModule _inquiriesModule;
         private readonly IValuationProposalSuggestedMailSender _proposalSuggestedMailSender;
 
-        public ProposalSuggestedEventHandler(IValuationProposalSuggestedMailSender proposalSuggestedMailSender)
+        public ProposalSuggestedEventHandler(IValuationProposalSuggestedMailSender proposalSuggestedMailSender,
+            IInquiriesModule inquiriesModule)
         {
             _proposalSuggestedMailSender = proposalSuggestedMailSender;
+            _inquiriesModule = inquiriesModule;
         }
 
-        public Task Handle(ProposalSuggested proposalSuggestedDomainEvent, CancellationToken cancellationToken)
+        public async Task Handle(ProposalSuggested proposalSuggestedDomainEvent, CancellationToken cancellationToken)
         {
+            var client = await GetClientInfo(proposalSuggestedDomainEvent);
             var request = new ValuationProposalSuggestedEmailRequest(
-                proposalSuggestedDomainEvent.FullName,
-                proposalSuggestedDomainEvent.ClientEmail,
                 proposalSuggestedDomainEvent.ValuationId,
                 proposalSuggestedDomainEvent.ProposalId,
+                proposalSuggestedDomainEvent.InquiryId,
+                client.FullName,
+                client.Email,
                 proposalSuggestedDomainEvent.Value,
                 proposalSuggestedDomainEvent.Currency,
                 proposalSuggestedDomainEvent.Description);
-             _proposalSuggestedMailSender.Send(request);
+            await _proposalSuggestedMailSender.SendAsync(request);
+        }
 
-             return Task.CompletedTask;
+        private async Task<InquiryClientDto> GetClientInfo(ProposalSuggested proposalSuggestedDomainEvent)
+        {
+            var inquiryClientQuery = new GetInquiryClientQuery(proposalSuggestedDomainEvent.InquiryId);
+            var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
+            return client;
         }
     }
 }

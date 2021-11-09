@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
 {
     internal static class Extensions

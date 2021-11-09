@@ -8,15 +8,18 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
         internal static void ValuationModule(this Container webApplication, Container database, Component bootstrapper)
         {
             var valuationsApi =
-                webApplication.AddComponent("Api - Valuations", "Serves API to estimate services", Technologies.DotnetDll);
+                webApplication.AddComponent("Api - Valuations", "Serves API to estimate services",
+                    Technologies.DotnetDll);
             bootstrapper.Uses(valuationsApi, "");
             var valuationsInfrastrucutre =
-                webApplication.AddComponent("Infrastructure - Valuations", "Provides module skeleton", Technologies.DotnetDll);
+                webApplication.AddComponent("Infrastructure - Valuations", "Provides module skeleton",
+                    Technologies.DotnetDll);
             valuationsApi.Uses(valuationsInfrastrucutre, "");
             var valuationsApplication = webApplication.AddComponent("Application - Valuations",
                 "Run action on bussiness logic (Domain)", "C#");
             valuationsInfrastrucutre.Uses(valuationsApplication, "");
-            var valuationsDomain = webApplication.AddComponent("Domain - Valuations", "Bussiness logic", Technologies.DotnetDll);
+            var valuationsDomain =
+                webApplication.AddComponent("Domain - Valuations", "Bussiness logic", Technologies.DotnetDll);
             var valuationsIntegrationsEvents = webApplication.AddComponent("Integrations Events - Valuations",
                 "Public contracts to exposed to other modules", Technologies.DotnetDll);
             var valuationsInfrastructureTrello = webApplication.AddComponent("Trello - Infrastructure - Valuations",

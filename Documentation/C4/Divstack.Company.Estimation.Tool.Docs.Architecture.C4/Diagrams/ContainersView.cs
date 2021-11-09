@@ -7,9 +7,9 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
     {
         public static void ConfigureContainersView(this Workspace workspace, SoftwareSystem softwareSystem)
         {
-            var customer= workspace.Model.GetPersonWithName("Customer");
-            var admin= workspace.Model.GetPersonWithName("Admin");
-            var employee= workspace.Model.GetPersonWithName("Employee");
+            var customer = workspace.Model.GetPersonWithName("Customer");
+            var admin = workspace.Model.GetPersonWithName("Admin");
+            var employee = workspace.Model.GetPersonWithName("Employee");
 
             var webApplication = softwareSystem.AddContainer("Web Application",
                 "Provides all of the estimation functionality to customers.", Technologies.DotnetApi);

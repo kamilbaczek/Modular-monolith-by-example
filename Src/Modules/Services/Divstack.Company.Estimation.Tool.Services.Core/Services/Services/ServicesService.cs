@@ -46,7 +46,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             return servicesDtos;
         }
 
-        public async Task CreateAsync(CreateServiceRequest createServiceRequest,
+        public async Task<Guid> CreateAsync(CreateServiceRequest createServiceRequest,
             CancellationToken cancellationToken = default)
         {
             var category = await _categoriesRepository.GetAsync(createServiceRequest.CategoryId, cancellationToken);
@@ -57,6 +57,8 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
                 category,
                 _currentUserService);
             await _servicesRepository.AddAsync(service, cancellationToken);
+
+            return service.Id;
         }
 
         public async Task Update(UpdateServiceRequest updateServiceRequest,
@@ -85,12 +87,12 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 
-        public async Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest,
+        public async Task RemoveAttributeAsync(RemoveAttributeRequest removeAttributeRequest,
             CancellationToken cancellationToken = default)
         {
-            var service = await _servicesRepository.GetAsync(deleteAttributeRequest.ServiceId, cancellationToken);
-            ThrowIfServiceNotFound(deleteAttributeRequest.ServiceId, service);
-            service.DeleteAttribute(deleteAttributeRequest.AttributeId);
+            var service = await _servicesRepository.GetAsync(removeAttributeRequest.ServiceId, cancellationToken);
+            ThrowIfServiceNotFound(removeAttributeRequest.ServiceId, service);
+            service.DeleteAttribute(removeAttributeRequest.AttributeId);
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 

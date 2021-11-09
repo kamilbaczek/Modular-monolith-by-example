@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
 
@@ -21,9 +22,11 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 
         private readonly ISuggestValuationMailConfiguration _configuration;
         private readonly IEmailSender _emailSender;
+        private readonly IInquiriesModule _inquiriesModule;
         private readonly IMailTemplateReader _mailTemplateReader;
 
-        public ValuationProposalSuggestedMailSender(ISuggestValuationMailConfiguration configuration,
+        public ValuationProposalSuggestedMailSender(
+            ISuggestValuationMailConfiguration configuration,
             IEmailSender emailSender,
             IMailTemplateReader mailTemplateReader)
         {
@@ -32,7 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
             _mailTemplateReader = mailTemplateReader;
         }
 
-        public void Send(ValuationProposalSuggestedEmailRequest request)
+        public Task SendAsync(ValuationProposalSuggestedEmailRequest request)
         {
             var acceptLink = _configuration.AcceptProposalLink
                 .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
@@ -51,7 +54,8 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
                 .Replace(PriceCurrencyPlaceholder, request.Currency)
                 .Replace(PriceValuePlaceholder, request.Value.ToString());
 
-            _emailSender.Send(request.ClientEmail, _configuration.Subject, emailAsHtml);
+            _emailSender.Send(request.Email, _configuration.Subject, emailAsHtml);
+            return Task.CompletedTask;
         }
     }
 }

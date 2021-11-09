@@ -24,11 +24,11 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Ref
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, userDetails.PublicId.ToString()),
-                new Claim(ClaimTypes.Email, userDetails.Email),
-                new Claim(ClaimTypes.GivenName, $"{userDetails.FirstName} {userDetails.LastName}"),
+                new(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new(ClaimTypes.NameIdentifier, userDetails.PublicId.ToString()),
+                new(ClaimTypes.Email, userDetails.Email),
+                new(ClaimTypes.GivenName, $"{userDetails.FirstName} {userDetails.LastName}")
             };
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 

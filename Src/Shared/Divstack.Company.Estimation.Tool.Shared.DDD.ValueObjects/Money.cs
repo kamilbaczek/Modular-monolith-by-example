@@ -1,24 +1,20 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.CompanyName.MyMeetings.BuildingBlocks.Domain;
+﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects
 {
     public class Money : ValueObject
     {
-        private Money()
-        {
-        }
-
         private Money(decimal? value, string currency)
         {
             Value = value;
             Currency = currency;
         }
 
-        public static Money Undefined => new Money(null, null);
+        public static Money Undefined => new(null, null);
 
-        public decimal? Value { get; }
+        public decimal? Value { get; init; }
 
-        public string Currency { get; }
+        public string Currency { get; init; }
 
         public static Money Of(decimal value, string currency)
         {

@@ -11,7 +11,9 @@ namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity
             base.Validate();
         }
 
-        public static Quantity operator +(Quantity left, Quantity right) =>
-            From(left.Value + right.Value);
+        public static Quantity operator +(Quantity left, Quantity right)
+        {
+            return From(left.Value + right.Value);
+        }
     }
 }

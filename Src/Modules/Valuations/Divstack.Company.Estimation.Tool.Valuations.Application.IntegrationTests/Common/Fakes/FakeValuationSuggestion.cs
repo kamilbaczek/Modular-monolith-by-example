@@ -6,12 +6,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.F
 {
     internal static class FakeValuationSuggestion
     {
-        internal static SuggestProposalCommand GenerateFakeSuggestProposalCommand(Guid valuationId) => new()
+        internal static SuggestProposalCommand GenerateFakeSuggestProposalCommand(Guid valuationId)
         {
-            Currency = Currency.ThreeLetterCode(),
-            Description = Lorem.Sentence(),
-            ValuationId = valuationId,
-            Value = 333m
-        };
+            return new SuggestProposalCommand
+            {
+                Currency = Currency.ThreeLetterCode(),
+                Description = Lorem.Sentence(),
+                ValuationId = valuationId,
+                Value = 333m
+            };
+        }
     }
 }

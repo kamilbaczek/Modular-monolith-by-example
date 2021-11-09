@@ -5,14 +5,14 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.E
     public class CustomIdentityErrorDescriber : IdentityErrorDescriber
     {
         public static IdentityError PasswordRepeated =>
-            new IdentityError
+            new()
             {
                 Code = nameof(IndentityErrorsCodes.PasswordRepeated),
                 Description = "You can't use a password you have used before."
             };
 
         public static IdentityError TokenExpired =>
-            new IdentityError
+            new()
             {
                 Code = nameof(IndentityErrorsCodes.TokenExpired),
                 Description = "Token expired."
@@ -21,7 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.E
         public override IdentityError DuplicateEmail(string email)
         {
             return new IdentityError
-                {Code = IndentityErrorsCodes.EmailAlreadyTaken, Description = $"Email '{email}' is already taken."};
+            { Code = IndentityErrorsCodes.EmailAlreadyTaken, Description = $"Email '{email}' is already taken." };
         }
 
         public override IdentityError DuplicateUserName(string userName)
