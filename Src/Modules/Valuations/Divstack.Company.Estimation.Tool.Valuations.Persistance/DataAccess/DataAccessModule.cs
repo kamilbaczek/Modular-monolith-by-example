@@ -1,6 +1,5 @@
 ﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 
@@ -14,7 +13,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
             services.AddMongo(connectionString);
             services.AddScoped<IValuationsContext, ValuationsContext>();
             services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
-            services.AddScoped<IReadRepository, ValuationReadonlyRepository>();
 
             return services;
         }
@@ -25,6 +23,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
             var mongoClient = new MongoClient(settings);
 
             services.AddSingleton(mongoClient);
+        }
+
+        internal static void UseDataAccess(this IApplicationBuilder app)
+        {
             PersistanceConfiguration.Configure();
         }
     }

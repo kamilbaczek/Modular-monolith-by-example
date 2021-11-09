@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.Repositories;
+using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance
             services.AddRepositories();
 
             return services;
+        }
+
+        internal static void UsePersistanceModule(this IApplicationBuilder app)
+        {
+            app.UseDataAccess();
         }
     }
 }

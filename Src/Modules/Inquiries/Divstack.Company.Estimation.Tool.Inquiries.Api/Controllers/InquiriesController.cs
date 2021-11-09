@@ -27,8 +27,8 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Make([FromBody] MakeInquiryCommand makeInquiryCommand)
         {
-            await _inquiriesModule.ExecuteCommandAsync(makeInquiryCommand);
-            return Ok();
+            var inquiryId = await _inquiriesModule.ExecuteCommandAsync(makeInquiryCommand);
+            return Created(inquiryId);
         }
 
         [HttpGet("{id}")]

@@ -29,13 +29,13 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure
             services.AddSnov();
             services.AddScoped<IValuationsModule, ValuationsModule>();
 
-
             return services;
         }
 
         internal static void UseInfrastructure(this IApplicationBuilder app)
         {
             app.UseTrello();
+            app.UsePersistanceModule();
         }
     }
 }

@@ -18,8 +18,8 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindCli
         public async Task<ClientCompany> FindCompany(Email email)
         {
             var clientProfile = await _companyFinderHttpClient.GetClientProfile(email.Value);
-            var currentCompany = clientProfile.CurrentJobs.First();
-            var clientCompany = ClientCompany.Of(currentCompany.Size, currentCompany.CompanyName);
+            var (companyName, size) = clientProfile.CurrentJobs.First();
+            var clientCompany = ClientCompany.Of(size, companyName);
 
             return clientCompany;
         }

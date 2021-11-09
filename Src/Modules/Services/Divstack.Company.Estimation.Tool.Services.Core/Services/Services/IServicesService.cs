@@ -24,7 +24,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
         Task AddAttributeAsync(CreateAttributeRequest createAttributeRequest,
             CancellationToken cancellationToken = default);
 
-        Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest,
+        Task RemoveAttributeAsync(RemoveAttributeRequest removeAttributeRequest,
             CancellationToken cancellationToken = default);
 
         Task AddAttributePossibleValueAsync(CreatePossibleValueRequest createPossibleValueRequest,

@@ -24,12 +24,12 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features
             var serviceId = await ServicesSeeder.SeedAsync();
             var makeInquiryCommand = GetFakeMakeInquiryCommand(serviceId);
 
-            await ExecuteCommandAsync(makeInquiryCommand);
+            var inquiryId = await ExecuteCommandAsync(makeInquiryCommand);
 
             var inquiryListVm = await ExecuteQueryAsync(new GetAllInquiriesQuery());
             inquiryListVm.Inquiries.Count.Should().Be(1);
             var inquiry = inquiryListVm.Inquiries.First();
-            inquiry.Id.Should().NotBeEmpty();
+            inquiryId.Should().NotBeEmpty();
             inquiry.Should().BeEquivalentTo(makeInquiryCommand, option => option
                 .ExcludingMissingMembers());
         }

@@ -35,7 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
             _mailTemplateReader = mailTemplateReader;
         }
 
-        public async Task SendAsync(ValuationProposalSuggestedEmailRequest request)
+        public Task SendAsync(ValuationProposalSuggestedEmailRequest request)
         {
             var acceptLink = _configuration.AcceptProposalLink
                 .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
@@ -55,6 +55,7 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
                 .Replace(PriceValuePlaceholder, request.Value.ToString());
 
             _emailSender.Send(request.Email, _configuration.Subject, emailAsHtml);
+            return Task.CompletedTask;
         }
     }
 }

@@ -54,7 +54,7 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Midd
         private static Task SendResponse(HttpContext context, HttpStatusCode code, ExceptionDto response)
         {
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int) code;
+            context.Response.StatusCode = (int)code;
             var jsonResponseBody = JsonSerializer.Serialize(response);
 
             return context.Response.WriteAsync(jsonResponseBody);

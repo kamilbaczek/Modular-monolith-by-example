@@ -1,4 +1,4 @@
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations;
+using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Configurations;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {

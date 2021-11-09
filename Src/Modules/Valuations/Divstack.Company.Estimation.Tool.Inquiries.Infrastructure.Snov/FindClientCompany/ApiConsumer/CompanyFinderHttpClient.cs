@@ -28,7 +28,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindCli
             // var clientProfile = await GetClientProfile(profileRequestAsJson);
 
             var mockedClientJob = new CurrentJobDto("Test Company inc", "150-10");
-            var mockedClientProfile = new ClientProfileDto(new List<CurrentJobDto> {mockedClientJob});
+            var mockedClientProfile = new ClientProfileDto(new List<CurrentJobDto> { mockedClientJob });
 
             return await Task.FromResult(mockedClientProfile);
         }

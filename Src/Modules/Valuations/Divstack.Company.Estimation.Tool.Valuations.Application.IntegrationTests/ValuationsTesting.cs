@@ -47,7 +47,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
 
             _checkpoint = new RespawnMySql
             {
-                TablesToIgnore = new[] {IgnoredTable},
+                TablesToIgnore = new[] { IgnoredTable },
                 DbAdapter = DbAdapter.MySql
             };
 

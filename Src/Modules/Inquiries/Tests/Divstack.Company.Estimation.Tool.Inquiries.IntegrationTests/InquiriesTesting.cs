@@ -1,4 +1,4 @@
-﻿using System;
+﻿using  System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 
             _checkpoint = new RespawnMySql
             {
-                TablesToIgnore = new[] {IgnoredTable},
+                TablesToIgnore = new[] { IgnoredTable },
                 DbAdapter = DbAdapter.MySql
             };
 
@@ -93,13 +93,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
                     currentUserService => currentUserService.GetPublicUserId() == CurrentUserId));
         }
 
-        public static async Task ExecuteCommandAsync(ICommand request)
+        public static async Task<TResult> ExecuteCommandAsync<TResult>(ICommand<TResult> request)
         {
             using var scope = _serviceScopeFactory.CreateScope();
 
             var inquiriesModule = scope.ServiceProvider.GetRequiredService<IInquiriesModule>();
 
-            await inquiriesModule.ExecuteCommandAsync(request);
+            return await inquiriesModule.ExecuteCommandAsync(request);
         }
 
         public static async Task<TResponse> ExecuteQueryAsync<TResponse>(IQuery<TResponse> request)

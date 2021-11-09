@@ -10,7 +10,7 @@ namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     internal abstract class BaseController : ControllerBase
     {
-        public CreatedResult Created(Guid id)
+        protected CreatedResult Created(Guid id)
         {
             return base.Created(id.ToString(), null);
         }

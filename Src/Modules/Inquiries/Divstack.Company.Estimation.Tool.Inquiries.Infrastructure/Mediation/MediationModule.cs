@@ -11,7 +11,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Mediation
         {
             var applicationAssembly = typeof(ApplicationModule).Assembly;
             services.AddMediatR(applicationAssembly);
-            services.AddFluentValidation(new[] {applicationAssembly});
+            services.AddFluentValidation(new[] { applicationAssembly });
 
             return services;
         }

@@ -87,12 +87,12 @@ namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 
-        public async Task RemoveAttributeAsync(DeleteAttributeRequest deleteAttributeRequest,
+        public async Task RemoveAttributeAsync(RemoveAttributeRequest removeAttributeRequest,
             CancellationToken cancellationToken = default)
         {
-            var service = await _servicesRepository.GetAsync(deleteAttributeRequest.ServiceId, cancellationToken);
-            ThrowIfServiceNotFound(deleteAttributeRequest.ServiceId, service);
-            service.DeleteAttribute(deleteAttributeRequest.AttributeId);
+            var service = await _servicesRepository.GetAsync(removeAttributeRequest.ServiceId, cancellationToken);
+            ThrowIfServiceNotFound(removeAttributeRequest.ServiceId, service);
+            service.DeleteAttribute(removeAttributeRequest.AttributeId);
             await _servicesRepository.CommitAsync(cancellationToken);
         }
 

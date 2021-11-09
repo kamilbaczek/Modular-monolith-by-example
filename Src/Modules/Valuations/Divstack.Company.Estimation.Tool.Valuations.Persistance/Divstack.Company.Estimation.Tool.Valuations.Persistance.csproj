@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6"/>
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.2.0"/>

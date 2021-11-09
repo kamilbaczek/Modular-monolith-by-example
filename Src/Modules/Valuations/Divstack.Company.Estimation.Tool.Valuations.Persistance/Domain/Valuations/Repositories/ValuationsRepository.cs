@@ -4,7 +4,7 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 using MongoDB.Driver;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories
 {
     internal sealed class ValuationsRepository : IValuationsRepository
     {

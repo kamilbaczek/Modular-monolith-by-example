@@ -21,7 +21,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.E
         public override IdentityError DuplicateEmail(string email)
         {
             return new IdentityError
-                {Code = IndentityErrorsCodes.EmailAlreadyTaken, Description = $"Email '{email}' is already taken."};
+            { Code = IndentityErrorsCodes.EmailAlreadyTaken, Description = $"Email '{email}' is already taken." };
         }
 
         public override IdentityError DuplicateUserName(string userName)

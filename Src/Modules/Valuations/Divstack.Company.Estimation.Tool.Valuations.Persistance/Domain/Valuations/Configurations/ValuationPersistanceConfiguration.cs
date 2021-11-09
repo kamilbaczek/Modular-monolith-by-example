@@ -7,7 +7,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Configurations
 {
     internal static class ValuationPersistanceConfiguration
     {

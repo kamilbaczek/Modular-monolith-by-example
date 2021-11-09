@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Extensions;
@@ -13,7 +14,7 @@ using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make
 {
-    internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCommand>
+    internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCommand, Guid>
     {
         private readonly IClientCompanyFinder _clientCompanyFinder;
         private readonly IInquiriesRepository _inquiriesRepository;
@@ -34,7 +35,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
             _serviceMapper = serviceMapper;
         }
 
-        public async Task<Unit> Handle(MakeInquiryCommand makeInquiryCommand, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(MakeInquiryCommand makeInquiryCommand, CancellationToken cancellationToken)
         {
             var email = Email.Of(makeInquiryCommand.Email);
             var clientCompany = await _clientCompanyFinder.FindCompany(email);
@@ -48,7 +49,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Comma
             await _inquiriesRepository.PersistAsync(inquiry, cancellationToken);
             _integrationEventPublisher.Publish(inquiry.DomainEvents);
 
-            return Unit.Value;
+            return inquiry.Id.Value;
         }
     }
 }
