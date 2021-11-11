@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Payments.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Payments.Application.Common.Contracts;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure;

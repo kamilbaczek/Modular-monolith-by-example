@@ -17,6 +17,8 @@ public class TokenValidAuthorizationHandler : AuthorizationHandler<TokenValidReq
         TokenValidRequirement requirement)
     {
         if (context.User.Identity.IsAuthenticated && await tokenStoreManager.IsCurrentTokenActiveAsync())
+        {
             context.Succeed(requirement);
+        }
     }
 }

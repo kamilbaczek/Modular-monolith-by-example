@@ -1,11 +1,9 @@
-﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Payments.Application;
-using Divstack.Company.Estimation.Tool.Payments.Application.Contracts;
+﻿using Divstack.Company.Estimation.Tool.Payments.Application;
+using Divstack.Company.Estimation.Tool.Payments.Application.Common.Contracts;
 using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
 using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Mediation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Api")]
 

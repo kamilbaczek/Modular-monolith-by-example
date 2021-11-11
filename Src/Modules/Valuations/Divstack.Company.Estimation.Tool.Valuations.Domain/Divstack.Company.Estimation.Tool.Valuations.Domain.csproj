@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj" />
-        <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
+    <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0" />
-        <PackageReference Include="ValueOf" Version="2.0.21" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0"/>
+    <PackageReference Include="ValueOf" Version="2.0.21"/>
+  </ItemGroup>
 
 </Project>

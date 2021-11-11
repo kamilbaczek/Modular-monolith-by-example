@@ -15,7 +15,7 @@ internal static class SwaggerModule
         {
             var projectName = Assembly.GetEntryAssembly()?.GetName().Name;
             swagger.AddJwtAuthorization();
-            swagger.SwaggerDoc("api", new OpenApiInfo { Title = "API", Version = "v1.0" });
+            swagger.SwaggerDoc("api", new OpenApiInfo {Title = "API", Version = "v1.0"});
             var xmlFile = $"{projectName}.xml";
             var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             swagger.IncludeXmlComments(xmlFilePath);

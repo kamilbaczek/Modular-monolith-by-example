@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Sentry.AspNetCore;
 
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
 

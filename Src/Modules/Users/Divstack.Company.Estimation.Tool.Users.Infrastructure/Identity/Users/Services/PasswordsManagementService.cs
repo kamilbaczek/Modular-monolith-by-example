@@ -38,7 +38,9 @@ internal sealed class PasswordsManagementService : IPasswordsManagementService
     {
         var user = await _applicationUserManager.Users.SingleAsync(u => u.PublicId == userPublicId);
         if (!user.EmailConfirmed)
+        {
             throw new InvalidOperationException("User email is not confirmed");
+        }
 
         var resetPasswordToken = await _applicationUserManager.GeneratePasswordResetTokenAsync(user);
     }
@@ -53,16 +55,23 @@ internal sealed class PasswordsManagementService : IPasswordsManagementService
             .SingleAsync(u => u.PublicId == userPublicId, cancellationToken);
         var result = await _applicationUserManager.ResetPasswordAsync(user, resetPasswordToken, newPassword);
 
-        if (result.Succeeded) return result.Succeeded;
+        if (result.Succeeded)
+        {
+            return result.Succeeded;
+        }
 
         var tokenExpiredError = result.Errors.SingleOrDefault(c => c.Code == IndentityErrorsCodes.TokenExpired);
         if (tokenExpiredError != null)
+        {
             throw new InvalidOperationException("Token Expired");
+        }
 
         var passwordRepeatedError =
             result.Errors.SingleOrDefault(c => c.Code == IndentityErrorsCodes.PasswordRepeated);
         if (passwordRepeatedError != null)
+        {
             throw new InvalidOperationException("Password Reapted");
+        }
 
         throw new InvalidOperationException(
             $"Error during reset password for user: {user}. Message: {result.Errors}");
@@ -75,16 +84,24 @@ internal sealed class PasswordsManagementService : IPasswordsManagementService
         var user = await _applicationUserManager.Users
             .SingleAsync(userAccount => userAccount.PublicId == userPublicId, cancellationToken);
         if (user == null)
+        {
             throw new InvalidOperationException("User is not found");
+        }
 
         var token = await _applicationUserManager.GeneratePasswordResetTokenAsync(user);
         var result = await _applicationUserManager.ResetPasswordAsync(user, token, newPassword);
 
-        if (result.Succeeded) return result.Succeeded;
+        if (result.Succeeded)
+        {
+            return result.Succeeded;
+        }
+
         var passwordRepeatedError =
             result.Errors.SingleOrDefault(c => c.Code == IndentityErrorsCodes.PasswordRepeated);
         if (passwordRepeatedError != null)
+        {
             throw new InvalidOperationException(passwordRepeatedError.Description, null);
+        }
 
         var errorMessages = result.Errors.Select(error => error.Description).ToArray();
         throw new InvalidOperationException(
@@ -95,16 +112,22 @@ internal sealed class PasswordsManagementService : IPasswordsManagementService
     {
         var user = await _applicationUserManager.Users.SingleAsync(u => u.PublicId == userPublicId);
         if (user.EmailConfirmed)
+        {
             throw new InvalidOperationException("Email is already confirmed");
+        }
 
         var confirmEmailResult = await _applicationUserManager.ConfirmEmailAsync(user, token);
         if (!confirmEmailResult.Succeeded)
             // throw event await SendConfirmationEmailAsync(user);
+        {
             throw new InvalidOperationException("Link Expired");
+        }
 
         var addPasswordResult = await _applicationUserManager.AddPasswordAsync(user,
             password);
         if (!addPasswordResult.Succeeded)
+        {
             throw new InvalidOperationException("Setting password not succeeded: " + addPasswordResult);
+        }
     }
 }

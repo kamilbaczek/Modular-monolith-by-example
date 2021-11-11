@@ -1,12 +1,10 @@
-﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Inquiries.Application;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
 using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Mediation;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Api")]
 

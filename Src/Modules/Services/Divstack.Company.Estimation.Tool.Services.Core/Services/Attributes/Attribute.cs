@@ -39,7 +39,10 @@ public sealed class Attribute
     {
         var possibleValueToRemove = PossibleValues.SingleOrDefault(value => value.Id == id);
         if (possibleValueToRemove is null)
+        {
             throw new PossibleValueNotFoundException(id);
+        }
+
         PossibleValues.Remove(possibleValueToRemove);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Threading;
-using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 

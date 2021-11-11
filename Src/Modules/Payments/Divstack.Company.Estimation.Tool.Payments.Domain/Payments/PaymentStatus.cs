@@ -1,6 +1,4 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-
-namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
 
 public sealed class PaymentStatus : ValueObject
 {
@@ -15,5 +13,5 @@ public sealed class PaymentStatus : ValueObject
     internal static PaymentStatus WaitForPayment => new(WaitForPaymentStatus);
     internal static PaymentStatus Payed => new(PayedStatus);
 
-    private string Value { get; init; }
+    private string Value { get; }
 }

@@ -12,16 +12,14 @@ public class CustomIdentityErrorDescriber : IdentityErrorDescriber
         };
 
     public static IdentityError TokenExpired =>
-        new()
-        {
-            Code = nameof(IndentityErrorsCodes.TokenExpired),
-            Description = "Token expired."
-        };
+        new() {Code = nameof(IndentityErrorsCodes.TokenExpired), Description = "Token expired."};
 
     public override IdentityError DuplicateEmail(string email)
     {
         return new IdentityError
-        { Code = IndentityErrorsCodes.EmailAlreadyTaken, Description = $"Email '{email}' is already taken." };
+        {
+            Code = IndentityErrorsCodes.EmailAlreadyTaken, Description = $"Email '{email}' is already taken."
+        };
     }
 
     public override IdentityError DuplicateUserName(string userName)

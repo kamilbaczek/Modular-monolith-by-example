@@ -18,14 +18,15 @@ public class RoleManagementService : IRoleManagementService
     public async Task AddNewRole(string roleName)
     {
         if (await roleManager.RoleExistsAsync(roleName))
-            throw new InvalidOperationException($"Role [{roleName}] already exists.");
-
-        var result = await roleManager.CreateAsync(new ApplicationRole
         {
-            Name = roleName
-        });
+            throw new InvalidOperationException($"Role [{roleName}] already exists.");
+        }
+
+        var result = await roleManager.CreateAsync(new ApplicationRole {Name = roleName});
         if (result.Succeeded == false)
+        {
             throw new NotImplementedException(); // todo
+        }
     }
 
     public async Task<bool> RoleExists(string roleName)

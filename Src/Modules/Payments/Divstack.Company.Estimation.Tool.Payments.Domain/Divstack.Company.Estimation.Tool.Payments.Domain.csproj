@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
-      <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0"/>
+  </ItemGroup>
 
 </Project>

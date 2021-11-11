@@ -11,17 +11,31 @@ public sealed class InternalControllersFeatureProvider : ControllerFeatureProvid
 
     protected override bool IsController(TypeInfo typeInfo)
     {
-        if (!typeInfo.IsClass) return false;
+        if (!typeInfo.IsClass)
+        {
+            return false;
+        }
 
-        if (typeInfo.IsAbstract) return false;
+        if (typeInfo.IsAbstract)
+        {
+            return false;
+        }
 
-        if (typeInfo.ContainsGenericParameters) return false;
+        if (typeInfo.ContainsGenericParameters)
+        {
+            return false;
+        }
 
-        if (typeInfo.IsDefined(typeof(NonControllerAttribute))) return false;
+        if (typeInfo.IsDefined(typeof(NonControllerAttribute)))
+        {
+            return false;
+        }
 
         if (!typeInfo.Name.EndsWith(ControllerTypeNameSuffix, StringComparison.OrdinalIgnoreCase) &&
             !typeInfo.IsDefined(typeof(ControllerAttribute)))
+        {
             return false;
+        }
 
         return true;
     }

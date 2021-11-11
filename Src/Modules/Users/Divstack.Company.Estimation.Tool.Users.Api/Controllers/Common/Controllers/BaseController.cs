@@ -12,6 +12,6 @@ internal abstract class BaseController : ControllerBase
 {
     protected UnauthorizedObjectResult UnauthorizedWithReason(string message)
     {
-        return new UnauthorizedObjectResult(new ExceptionDto { Message = message });
+        return new UnauthorizedObjectResult(new ExceptionDto {Message = message});
     }
 }

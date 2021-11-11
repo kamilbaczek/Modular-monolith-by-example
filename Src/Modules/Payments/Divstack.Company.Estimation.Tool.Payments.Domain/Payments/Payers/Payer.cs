@@ -1,7 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-
-namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments.Payers;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments.Payers;
 
 public sealed class Payer : ValueObject
 {
@@ -10,7 +7,7 @@ public sealed class Payer : ValueObject
         PayerId = Guard.Against.Null(payerId, nameof(payerId));
     }
 
-    private PayerId PayerId { get; init; }
+    private PayerId PayerId { get; }
 
     public static Payer Of(PayerId payerId)
     {

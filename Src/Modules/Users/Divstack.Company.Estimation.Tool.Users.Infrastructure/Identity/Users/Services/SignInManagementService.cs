@@ -38,11 +38,21 @@ internal class SignInManagementService : ISignInManagementService
         var user = await userManager.Users.SingleOrDefaultAsync(u => u.UserName == userName);
 
         if (user is null)
+        {
             return SignInResultStatus.Negative;
+        }
 
         var signInResult = await signInManager.PasswordSignInAsync(user, password, true, true);
-        if (signInResult.IsLockedOut) return SignInResultStatus.Locked;
-        if (!signInResult.Succeeded) return SignInResultStatus.Negative;
+        if (signInResult.IsLockedOut)
+        {
+            return SignInResultStatus.Locked;
+        }
+
+        if (!signInResult.Succeeded)
+        {
+            return SignInResultStatus.Negative;
+        }
+
         if (!user.IsPasswordExpired(_datetimeProvider))
         {
             user.SignIn(_datetimeProvider);
@@ -69,7 +79,11 @@ internal class SignInManagementService : ISignInManagementService
     public async Task SaveLogForFailedLoginAttemptAsync(string userName, CancellationToken cancellationToken)
     {
         var user = await userManager.Users.SingleOrDefaultAsync(u => u.UserName == userName, cancellationToken);
-        if (user is null) return;
+        if (user is null)
+        {
+            return;
+        }
+
         user.RegisterFailedLoginAttempt(_datetimeProvider.Now);
         await userManager.UpdateAsync(user);
     }

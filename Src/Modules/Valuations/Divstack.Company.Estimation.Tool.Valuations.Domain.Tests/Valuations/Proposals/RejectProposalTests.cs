@@ -34,7 +34,7 @@ public class RejectProposalTests : BaseValuationTest
         var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
         valuation.CancelProposal(proposalId, employee);
 
-        Action rejectProposal = () => valuation.RejectProposal(proposalId);
+        var rejectProposal = () => valuation.RejectProposal(proposalId);
 
         rejectProposal.Should().Throw<ProposalNotFoundException>();
     }
@@ -45,7 +45,7 @@ public class RejectProposalTests : BaseValuationTest
         var valuation = RequestFakeValuation();
         var proposalId = new ProposalId(Guid.NewGuid());
 
-        Action rejectProposal = () => valuation.RejectProposal(proposalId);
+        var rejectProposal = () => valuation.RejectProposal(proposalId);
 
         rejectProposal.Should().Throw<ProposalNotFoundException>();
     }
@@ -58,7 +58,7 @@ public class RejectProposalTests : BaseValuationTest
         var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
         valuation.RejectProposal(proposalId);
 
-        Action rejectProposal = () => valuation.RejectProposal(proposalId);
+        var rejectProposal = () => valuation.RejectProposal(proposalId);
 
         rejectProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }

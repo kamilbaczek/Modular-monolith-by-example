@@ -21,7 +21,9 @@ internal class ForgotPasswordMailSender : IForgotPasswordMailSender
             Guid userId)
     {
         if (string.IsNullOrWhiteSpace(_configuration.Format))
+        {
             throw new InvalidOperationException("Forgot password email format is not set");
+        }
 
         const string tokenPlaceholder = "{token}";
         const string userIdPlaceholder = "{userId}";

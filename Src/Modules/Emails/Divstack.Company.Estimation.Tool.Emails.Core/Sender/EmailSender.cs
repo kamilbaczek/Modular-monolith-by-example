@@ -23,7 +23,9 @@ internal sealed class EmailSender : IEmailSender
     public void Send(string email, string subject, string text)
     {
         if (!IsNullOrEmpty(_mailConfiguration.MailFrom))
+        {
             _backgroundProcessQueue.Enqueue(() => SendMessageAsync(email, subject, text));
+        }
     }
 
     private bool IsConfiguredAuthentication()
@@ -36,11 +38,17 @@ internal sealed class EmailSender : IEmailSender
     {
         var message = BuildMessage(email, subject, text);
         using var client = new SmtpClient();
-        if (_mailConfiguration.DisableSsl) DisableSsl(client);
+        if (_mailConfiguration.DisableSsl)
+        {
+            DisableSsl(client);
+        }
 
         await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
         if (IsConfiguredAuthentication())
+        {
             await client.AuthenticateAsync(_mailConfiguration.ServerLogin, _mailConfiguration.ServerPassword);
+        }
+
         await client.SendAsync(message);
         await client.DisconnectAsync(true);
     }
@@ -54,10 +62,7 @@ internal sealed class EmailSender : IEmailSender
         message.From.Add(mailFrom);
         message.To.Add(MailboxAddress.Parse(email));
         message.Subject = subject;
-        message.Body = new TextPart(TextFormat.Html)
-        {
-            Text = text
-        };
+        message.Body = new TextPart(TextFormat.Html) {Text = text};
 
         return message;
     }

@@ -18,10 +18,7 @@ public static class ApplicationRoleKeys
         SystemAdministrator + Separator +
         User;
 
-    public static readonly string[] UserRoles =
-    {
-            User
-        };
+    public static readonly string[] UserRoles = {User};
 
-    public static readonly string[] SystemAdmins = { SystemAdministrator };
+    public static readonly string[] SystemAdmins = {SystemAdministrator};
 }

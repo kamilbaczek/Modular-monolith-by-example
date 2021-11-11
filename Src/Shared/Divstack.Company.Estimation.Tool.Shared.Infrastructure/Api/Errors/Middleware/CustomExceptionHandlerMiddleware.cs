@@ -40,9 +40,14 @@ internal sealed class CustomExceptionHandlerMiddleware
     {
         var code = HttpStatusCode.InternalServerError;
         if (exception.IsNotFoundException())
+        {
             code = HttpStatusCode.NotFound;
+        }
+
         if (exception.IsValidationException())
+        {
             code = HttpStatusCode.BadRequest;
+        }
 
         var response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
             ? ExceptionDto.CreateWithMessage(exception.Message)

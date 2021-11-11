@@ -1,6 +1,4 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 
 public sealed class ClientCompany : ValueObject
 {

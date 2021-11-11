@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;

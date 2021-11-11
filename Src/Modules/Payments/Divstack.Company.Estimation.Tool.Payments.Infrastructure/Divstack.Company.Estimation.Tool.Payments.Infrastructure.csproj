@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Application\Divstack.Company.Estimation.Tool.Payments.Application.csproj"/>
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Application\Divstack.Company.Estimation.Tool.Payments.Application.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1"/>
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1"/>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+  </ItemGroup>
 
 </Project>

@@ -30,12 +30,22 @@ internal sealed class UsersSeeder : IUsersSeeder
 
     public async Task SeedAdminUserAsync()
     {
-        if (!_adminAccountConfiguration.Init) return;
+        if (!_adminAccountConfiguration.Init)
+        {
+            return;
+        }
+
         var systemRoleExist = await _roleManagementService.RoleExists(ApplicationRoleKeys.SystemAdministrator);
-        if (!systemRoleExist) _roleManagementService.AddNewRole(ApplicationRoleKeys.SystemAdministrator).Wait();
+        if (!systemRoleExist)
+        {
+            _roleManagementService.AddNewRole(ApplicationRoleKeys.SystemAdministrator).Wait();
+        }
 
         var adminExist = await _userManagementService.UserExists(_systemAdminUserName);
-        if (adminExist) return;
+        if (adminExist)
+        {
+            return;
+        }
 
         var createUserRequest = new CreateUserRequest(
             _systemAdminUserName,

@@ -7,7 +7,10 @@ public class Quantity : ValueOf<long, Quantity>
     protected override void Validate()
     {
         if (Value < 0)
+        {
             throw new QuantityCannotBeNegative();
+        }
+
         base.Validate();
     }
 

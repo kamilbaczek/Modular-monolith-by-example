@@ -58,7 +58,10 @@ public sealed class Service
     {
         var attributeToRemove = Attributes.SingleOrDefault(value => value.Id == id);
         if (attributeToRemove is null)
+        {
             throw new AttributeNotFoundException(id);
+        }
+
         Attributes.Remove(attributeToRemove);
     }
 
@@ -66,7 +69,10 @@ public sealed class Service
     {
         var attribute = Attributes.SingleOrDefault(attribute => attribute.Id == attributeId);
         if (attribute is null)
+        {
             throw new AttributeNotFoundException(attributeId);
+        }
+
         attribute.AddPossibleValue(value);
     }
 
@@ -74,7 +80,10 @@ public sealed class Service
     {
         var attribute = Attributes.SingleOrDefault(attribute => attribute.Id == attributeId);
         if (attribute is null)
+        {
             throw new AttributeNotFoundException(attributeId);
+        }
+
         attribute.DeletePossibleValue(possibleValueId);
     }
 }

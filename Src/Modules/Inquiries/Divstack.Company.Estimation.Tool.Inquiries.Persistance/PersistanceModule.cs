@@ -1,8 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance.Repositories;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Infrastructure")]
 

@@ -118,12 +118,16 @@ internal sealed class ServicesService : IServicesService
     private static void ThrowIfCategoryNotFound(Guid id, Category category)
     {
         if (category is null)
+        {
             throw new CategoryNotFoundException(id);
+        }
     }
 
     private static void ThrowIfServiceNotFound(Guid id, Service service)
     {
         if (service is null)
+        {
             throw new ServiceNotFoundException(id);
+        }
     }
 }

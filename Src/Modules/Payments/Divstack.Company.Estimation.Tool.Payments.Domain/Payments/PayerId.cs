@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
 
 public record PaymentId(Guid Value)
 {

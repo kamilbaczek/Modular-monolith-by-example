@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
 using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 

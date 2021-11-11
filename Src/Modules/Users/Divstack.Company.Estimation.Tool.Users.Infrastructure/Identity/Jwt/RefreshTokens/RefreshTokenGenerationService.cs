@@ -36,7 +36,9 @@ internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationSer
     {
         var userRefreshToken = await _refreshTokenRepository.GetByUserPublicIdOrDefaultAsync(userPublicId);
         if (userRefreshToken == null)
+        {
             return false;
+        }
 
         return userRefreshToken.Token == refreshToken && userRefreshToken.ExpiryDate > _dateTimeProvider.Now;
     }
@@ -64,6 +66,9 @@ internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationSer
     private async Task RemoveTokenFromDbForUserIfExists(Guid userPublicId)
     {
         var existingRefreshToken = await _refreshTokenRepository.GetByUserPublicIdOrDefaultAsync(userPublicId);
-        if (existingRefreshToken != null) await _refreshTokenRepository.RemoveAsync(existingRefreshToken);
+        if (existingRefreshToken != null)
+        {
+            await _refreshTokenRepository.RemoveAsync(existingRefreshToken);
+        }
     }
 }

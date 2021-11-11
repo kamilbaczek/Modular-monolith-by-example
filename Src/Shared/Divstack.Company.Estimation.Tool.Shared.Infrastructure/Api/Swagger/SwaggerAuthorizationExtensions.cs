@@ -18,31 +18,28 @@ internal static class SwaggerAuthorizationExtensions
 
     internal static void AddJwtAuthorization(this SwaggerGenOptions options)
     {
-        options.AddSecurityDefinition(Bearer, new OpenApiSecurityScheme
-        {
-            Description = SecurityMessageDescription,
-            In = ParameterLocation.Header,
-            Type = SecuritySchemeType.ApiKey,
-            Name = Authorization,
-            Scheme = Bearer
-        });
+        options.AddSecurityDefinition(Bearer,
+            new OpenApiSecurityScheme
+            {
+                Description = SecurityMessageDescription,
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.ApiKey,
+                Name = Authorization,
+                Scheme = Bearer
+            });
 
         options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
             {
+                new OpenApiSecurityScheme
                 {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type = ReferenceType.SecurityScheme,
-                            Id = Bearer
-                        },
-                        Scheme = Oauth2,
-                        Name = Bearer,
-                        In = ParameterLocation.Header
-                    },
-                    new List<string>()
-                }
-            });
+                    Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = Bearer},
+                    Scheme = Oauth2,
+                    Name = Bearer,
+                    In = ParameterLocation.Header
+                },
+                new List<string>()
+            }
+        });
     }
 }

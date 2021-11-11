@@ -57,9 +57,14 @@ public sealed class Valuation : Entity, IAggregateRoot
         EmployeeId proposedBy)
     {
         if (IsCompleted)
+        {
             throw new ValuationCompletedException(Id);
+        }
+
         if (IsWaitingForDecision)
+        {
             throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
+        }
 
         var proposalDescription = ProposalDescription.From(description);
         var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
@@ -116,11 +121,20 @@ public sealed class Valuation : Entity, IAggregateRoot
     public void Complete(EmployeeId employeeId)
     {
         if (IsCompleted)
+        {
             throw new ValuationCompletedException(Id);
+        }
+
         if (ProposalWaitForDecision is not null)
+        {
             throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
+        }
+
         if (!NotCancelledProposals.Any())
+        {
             throw new CannotCompleteValuationWithNoProposalException(Id);
+        }
+
         CompletedBy = employeeId;
         CompletedDate = SystemTime.Now();
         ChangeStatus(ValuationStatus.Completed);
@@ -137,7 +151,10 @@ public sealed class Valuation : Entity, IAggregateRoot
     {
         var proposal = NotCancelledProposals.SingleOrDefault(proposal => proposal.Id == proposalId);
         if (proposal is null)
+        {
             throw new ProposalNotFoundException(proposalId);
+        }
+
         return proposal;
     }
 

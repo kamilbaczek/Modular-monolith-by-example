@@ -24,7 +24,9 @@ internal sealed class JwtTokenManagementService : IJwtTokenManagementService
         this.tokenConfiguration = tokenConfiguration;
         this.dateTimeProvider = dateTimeProvider;
         if (jwtSecurityTokenHandler == null)
+        {
             jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+        }
     }
 
     public Guid GetUserPublicIdFromToken(string accessToken)
@@ -44,7 +46,9 @@ internal sealed class JwtTokenManagementService : IJwtTokenManagementService
         if (!(securityToken is JwtSecurityToken jwtSecurityToken) ||
             !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
                 StringComparison.InvariantCultureIgnoreCase))
+        {
             throw new SecurityTokenException("Invalid token");
+        }
 
         var publicUserId = principal.Claims.Single(c => c.Type == ClaimTypes.NameIdentifier).Value;
 
@@ -54,17 +58,20 @@ internal sealed class JwtTokenManagementService : IJwtTokenManagementService
     public string GenerateJwtToken(UserDetailsDto userDetails, IList<string> roles)
     {
         var claims = new List<Claim>
-            {
-                new(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new(ClaimTypes.Email, userDetails.Email),
-                new(CustomClaimTypes.FirstName,
-                    !string.IsNullOrEmpty(userDetails.FirstName) ? userDetails.FirstName : ""),
-                new(CustomClaimTypes.LastName,
-                    !string.IsNullOrEmpty(userDetails.LastName) ? userDetails.LastName : "")
-            };
+        {
+            new(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new(ClaimTypes.Email, userDetails.Email),
+            new(CustomClaimTypes.FirstName,
+                !string.IsNullOrEmpty(userDetails.FirstName) ? userDetails.FirstName : ""),
+            new(CustomClaimTypes.LastName,
+                !string.IsNullOrEmpty(userDetails.LastName) ? userDetails.LastName : "")
+        };
 
-        foreach (var role in roles) claims.Add(new Claim(ClaimTypes.Role, role));
+        foreach (var role in roles)
+        {
+            claims.Add(new Claim(ClaimTypes.Role, role));
+        }
 
         var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(tokenConfiguration.Secret));
         var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

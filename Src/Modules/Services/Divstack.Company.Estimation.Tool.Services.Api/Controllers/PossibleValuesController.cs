@@ -35,9 +35,7 @@ internal sealed class PossibleValuesController : BaseController
         await _servicesService.RemoveAttributePossibleValueAsync(
             new DeletePossibleValueRequest
             {
-                PossibleValueId = possibleValueId,
-                ServiceId = serviceId,
-                AttributeId = attributeId
+                PossibleValueId = possibleValueId, ServiceId = serviceId, AttributeId = attributeId
             });
 
         return NoContent();

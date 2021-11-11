@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;

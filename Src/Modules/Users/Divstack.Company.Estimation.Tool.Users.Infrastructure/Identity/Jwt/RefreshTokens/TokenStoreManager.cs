@@ -38,10 +38,11 @@ public class TokenStoreManager : ITokenStoreManager
 
     private async Task DeactivateAsync(string token)
     {
-        await cache.SetStringAsync(GetKey(token), " ", new DistributedCacheEntryOptions
-        {
-            AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(tokenConfiguration.AccessExpirationInMinutes)
-        });
+        await cache.SetStringAsync(GetKey(token), " ",
+            new DistributedCacheEntryOptions
+            {
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(tokenConfiguration.AccessExpirationInMinutes)
+            });
     }
 
 

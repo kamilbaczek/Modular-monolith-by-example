@@ -24,7 +24,10 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
         var valuationId = new ValuationId(command.ValuationId);
         var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
         if (valuation is null)
+        {
             throw new NotFoundException(command.ValuationId, nameof(Valuation));
+        }
+
         var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
 
         valuation.Complete(employeeId);

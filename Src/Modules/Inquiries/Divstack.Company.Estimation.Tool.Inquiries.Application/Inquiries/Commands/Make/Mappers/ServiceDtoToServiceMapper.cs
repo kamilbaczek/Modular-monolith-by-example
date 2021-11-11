@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
 

@@ -1,42 +1,42 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
-        <PackageReference Include="Scrutor" Version="3.3.0"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Scrutor" Version="3.3.0"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
-        <ProjectReference Include="..\..\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj"/>
-        <ProjectReference Include="..\..\Reminders\Divstack.Company.Estimation.Tool.Reminders.Valuations\Divstack.Company.Estimation.Tool.Reminders.Valuations.csproj"/>
-        <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj"/>
-        <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj"/>
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
+    <ProjectReference Include="..\..\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj"/>
+    <ProjectReference Include="..\..\Reminders\Divstack.Company.Estimation.Tool.Reminders.Valuations\Divstack.Company.Estimation.Tool.Reminders.Valuations.csproj"/>
+    <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj"/>
+    <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <None Remove="suggest_proposal_mail.html"/>
-        <None Update="emails-valuations-appsettings.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Remove="suggest_proposal_mail.html"/>
+    <None Update="emails-valuations-appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
-    <ItemGroup>
-        <EmbeddedResource Include="DeadlineClose\Templates\valuation_close_to_deadline_mail.html">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Proposals\Templates\valuation_proposal_suggested_mail.html">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Proposals\Templates\valuation_proposal_approved_mail.html">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </EmbeddedResource>
-    </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeadlineClose\Templates\valuation_close_to_deadline_mail.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proposals\Templates\valuation_proposal_suggested_mail.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proposals\Templates\valuation_proposal_approved_mail.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

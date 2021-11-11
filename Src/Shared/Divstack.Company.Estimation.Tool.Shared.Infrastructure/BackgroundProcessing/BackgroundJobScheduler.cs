@@ -34,7 +34,10 @@ internal sealed class BackgroundJobScheduler : IBackgroundJobScheduler
 
     private static void UnSchedule(IEnumerable<KeyValuePair<string, ScheduledJobDto>> scheduledJobsWithMethod)
     {
-        foreach (var scheduledJob in scheduledJobsWithMethod) BackgroundJob.Delete(scheduledJob.Key);
+        foreach (var scheduledJob in scheduledJobsWithMethod)
+        {
+            BackgroundJob.Delete(scheduledJob.Key);
+        }
     }
 
     private static bool JobEquals(Job right, Job left)
@@ -53,7 +56,9 @@ internal sealed class BackgroundJobScheduler : IBackgroundJobScheduler
             var rightArg = right.Args[index];
             var leftArg = left.Args[index];
             if (!rightArg.Equals(leftArg))
+            {
                 areArgsEquals = false;
+            }
         }
 
         return areArgsEquals;

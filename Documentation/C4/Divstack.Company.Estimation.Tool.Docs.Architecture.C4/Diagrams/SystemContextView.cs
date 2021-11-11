@@ -31,8 +31,8 @@ namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
             contextView.AddAllPeople();
 
             var styles = viewSet.Configuration.Styles;
-            styles.Add(new ElementStyle(Tags.SoftwareSystem) { Background = "#1168bd", Color = "#ffffff" });
-            styles.Add(new ElementStyle(Tags.Person) { Background = "#08427b", Color = "#ffffff", Shape = Shape.Person });
+            styles.Add(new ElementStyle(Tags.SoftwareSystem) {Background = "#1168bd", Color = "#ffffff"});
+            styles.Add(new ElementStyle(Tags.Person) {Background = "#08427b", Color = "#ffffff", Shape = Shape.Person});
 
             workspace.ConfigureContainersView(estimationTool);
             contextView.EnableAutomaticLayout();

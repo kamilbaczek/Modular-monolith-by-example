@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
 using Attribute = Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes.Attribute;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
 
 public sealed class InquiryListItemDto
 {

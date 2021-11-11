@@ -22,6 +22,8 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)
+        {
             _mediator.Publish(integrationEvent);
+        }
     }
 }

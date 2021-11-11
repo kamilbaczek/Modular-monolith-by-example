@@ -26,7 +26,10 @@ internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApprovePro
         var valuationId = new ValuationId(command.ValuationId);
         var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
         if (valuation is null)
+        {
             throw new NotFoundException(command.ValuationId, nameof(Valuation));
+        }
+
         var proposalId = new ProposalId(command.ProposalId);
 
         valuation.ApproveProposal(proposalId);

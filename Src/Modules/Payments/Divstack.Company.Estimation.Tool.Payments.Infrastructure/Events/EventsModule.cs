@@ -1,6 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Payments.Application.Interfaces;
+﻿using Divstack.Company.Estimation.Tool.Payments.Application.Common.Interfaces;
 using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
 

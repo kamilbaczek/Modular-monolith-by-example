@@ -2,7 +2,6 @@
 using Divstack.Company.Estimation.Tool.Bootstrapper.Extensions;
 using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace Divstack.Company.Estimation.Tool.Bootstrapper;
@@ -29,7 +28,9 @@ public sealed class Program
                 builder.AddEnvironmentVariables();
 
                 if (hostContext.HostingEnvironment.IsForDevs())
+                {
                     builder.AddUserSecrets<Startup>();
+                }
             });
     }
 }

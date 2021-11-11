@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
 

@@ -23,13 +23,13 @@ public class TokenGenerationService : ITokenGenerationService
     public string GenerateToken(UserDetailsDto userDetails, IEnumerable<string> roles)
     {
         var claims = new List<Claim>
-            {
-                new(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new(ClaimTypes.NameIdentifier, userDetails.PublicId.ToString()),
-                new(ClaimTypes.Email, userDetails.Email),
-                new(ClaimTypes.GivenName, $"{userDetails.FirstName} {userDetails.LastName}")
-            };
+        {
+            new(JwtRegisteredClaimNames.Sub, userDetails.PublicId.ToString()),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new(ClaimTypes.NameIdentifier, userDetails.PublicId.ToString()),
+            new(ClaimTypes.Email, userDetails.Email),
+            new(ClaimTypes.GivenName, $"{userDetails.FirstName} {userDetails.LastName}")
+        };
         claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
 

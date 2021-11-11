@@ -1,7 +1,6 @@
 ﻿using Divstack.Company.Estimation.Tool.Inquiries.Application;
 using MediatR;
 using MediatR.Extensions.FluentValidation.AspNetCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Mediation;
 
@@ -11,7 +10,7 @@ internal static class MediationModule
     {
         var applicationAssembly = typeof(ApplicationModule).Assembly;
         services.AddMediatR(applicationAssembly);
-        services.AddFluentValidation(new[] { applicationAssembly });
+        services.AddFluentValidation(new[] {applicationAssembly});
 
         return services;
     }

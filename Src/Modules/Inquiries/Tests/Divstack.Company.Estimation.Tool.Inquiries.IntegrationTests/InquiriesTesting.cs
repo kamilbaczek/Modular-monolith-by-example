@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.UserAccess;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Common.UserAccess;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
@@ -39,11 +39,7 @@ public class InquiriesTesting
         _serviceScopeFactory = services.BuildServiceProvider()
             .GetService<IServiceScopeFactory>();
 
-        _checkpoint = new RespawnMySql
-        {
-            TablesToIgnore = new[] { IgnoredTable },
-            DbAdapter = DbAdapter.MySql
-        };
+        _checkpoint = new RespawnMySql {TablesToIgnore = new[] {IgnoredTable}, DbAdapter = DbAdapter.MySql};
 
         await EnsureDatabase();
     }

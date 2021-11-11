@@ -16,7 +16,10 @@ public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 
     public void Dispose()
     {
-        if (_connection != null && _connection.State == ConnectionState.Open) _connection.Dispose();
+        if (_connection != null && _connection.State == ConnectionState.Open)
+        {
+            _connection.Dispose();
+        }
     }
 
     public IDbConnection GetOpenConnection()

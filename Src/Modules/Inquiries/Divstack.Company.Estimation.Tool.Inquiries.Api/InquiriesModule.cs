@@ -1,10 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Inquiries.Api.UserAccess;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.UserAccess;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Api.Common.UserAccess;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Common.UserAccess;
 using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 

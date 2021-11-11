@@ -27,13 +27,18 @@ internal sealed class ServicesSeeder : IHostedService
             var categoriesService = scope.ServiceProvider.GetRequiredService<ICategoriesService>();
             var categories = await categoriesService.GetAllAsync(cancellationToken);
             if (categories.Any())
+            {
                 return;
+            }
+
             var categoryDto = await CreateCategory(cancellationToken, categoriesService);
 
             var servicesService = scope.ServiceProvider.GetRequiredService<IServicesService>();
             var services = await servicesService.GetAllAsync(cancellationToken);
             if (services.Any())
+            {
                 return;
+            }
 
             await CreateService(servicesService, categoryDto.Id);
         }
@@ -48,9 +53,7 @@ internal sealed class ServicesSeeder : IHostedService
     {
         var createService = new CreateServiceRequest
         {
-            Name = "Cisco Router Fix",
-            Description = "Very hard service",
-            CategoryId = categoryId
+            Name = "Cisco Router Fix", Description = "Very hard service", CategoryId = categoryId
         };
         await servicesService.CreateAsync(createService);
     }
@@ -58,11 +61,7 @@ internal sealed class ServicesSeeder : IHostedService
     private static async Task<CategoryDto> CreateCategory(CancellationToken cancellationToken,
         ICategoriesService categoriesService)
     {
-        var categoryRequest = new CreateCategoryRequest
-        {
-            Name = "Internet",
-            Description = "Internet Services"
-        };
+        var categoryRequest = new CreateCategoryRequest {Name = "Internet", Description = "Internet Services"};
         await categoriesService.CreateAsync(categoryRequest, cancellationToken);
         var categories = await categoriesService.GetAllAsync(cancellationToken);
         var categoryDto = categories.First();

@@ -24,7 +24,10 @@ public sealed class ForgotPasswordCommand : ICommand
         public async Task<Unit> Handle(ForgotPasswordCommand request, CancellationToken cancellationToken)
         {
             var userExists = await _userManagementService.UserExists(request.UserName);
-            if (!userExists) return Unit.Value;
+            if (!userExists)
+            {
+                return Unit.Value;
+            }
 
             var userDetails = await _userManagementService.GetUserDetailsAsync(request.UserName);
             await _passwordsManagementService.ForgotPasswordAsync(userDetails.PublicId);

@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-         <LangVersion>10</LangVersion>
-        <RootNamespace>Divstack.Company.Estimation.Tool.Users.Api</RootNamespace>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+    <RootNamespace>Divstack.Company.Estimation.Tool.Users.Api</RootNamespace>
 
-    </PropertyGroup>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Infrastructure\Divstack.Company.Estimation.Tool.Users.Infrastructure.csproj"/>
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Infrastructure\Divstack.Company.Estimation.Tool.Users.Infrastructure.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <None Update="users-appsettings.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="users-appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

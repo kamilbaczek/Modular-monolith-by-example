@@ -1,21 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="FluentAssertions" Version="6.2.0"/>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4"/>
-        <PackageReference Include="Moq" Version="4.16.1"/>
-        <PackageReference Include="NUnit" Version="3.13.2"/>
-        <PackageReference Include="NUnit3TestAdapter" Version="4.0.0"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.2.0"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4"/>
+    <PackageReference Include="Moq" Version="4.16.1"/>
+    <PackageReference Include="NUnit" Version="3.13.2"/>
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
-        <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj"/>
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj"/>
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
+    <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj"/>
+  </ItemGroup>
 
 </Project>

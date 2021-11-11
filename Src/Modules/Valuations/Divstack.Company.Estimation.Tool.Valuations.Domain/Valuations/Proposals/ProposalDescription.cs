@@ -9,9 +9,15 @@ public sealed class ProposalDescription : ValueObject
     private ProposalDescription(string message)
     {
         if (string.IsNullOrEmpty(message))
+        {
             throw new ArgumentNullException(nameof(message));
+        }
+
         if (message.Length > 250)
+        {
             throw new ProposalDescriptionTooLongException(message);
+        }
+
         Message = message;
     }
 

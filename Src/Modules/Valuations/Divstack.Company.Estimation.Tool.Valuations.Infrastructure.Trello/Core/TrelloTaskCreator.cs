@@ -27,7 +27,9 @@ internal sealed class TrelloTaskCreator : ITrelloTaskCreator
         await board.Refresh(ct: cancellationToken);
         var list = board.Lists.FirstOrDefault(listInBoard => listInBoard.Name == listName);
         if (list is null)
+        {
             throw new TrelloTodoListNotFound(listName);
+        }
 
         await list.Cards.Add(taskName, description: description, ct: cancellationToken);
     }

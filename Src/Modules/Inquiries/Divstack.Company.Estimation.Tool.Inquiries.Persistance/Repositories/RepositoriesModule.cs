@@ -1,5 +1,4 @@
 ﻿using Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Repositories;
 

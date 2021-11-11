@@ -19,7 +19,9 @@ internal sealed class PasswordExpiredMailSender : IPasswordExpiredMailSender
     public void Send(string email, string token, Guid userId)
     {
         if (string.IsNullOrWhiteSpace(configuration.Format))
+        {
             throw new InvalidOperationException("Password Expired email format is not set");
+        }
 
         const string userIdPlaceholder = "{userId}";
         const string tokenPlaceholder = "{token}";

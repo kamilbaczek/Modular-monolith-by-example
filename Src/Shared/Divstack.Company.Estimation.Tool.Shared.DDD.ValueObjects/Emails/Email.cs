@@ -13,7 +13,10 @@ public sealed class Email : ValueObject
     private Email(string emailAddress)
     {
         var isValid = IsValid(emailAddress);
-        if (!isValid) throw new InvalidEmailFormatException(emailAddress);
+        if (!isValid)
+        {
+            throw new InvalidEmailFormatException(emailAddress);
+        }
 
         Value = emailAddress;
     }

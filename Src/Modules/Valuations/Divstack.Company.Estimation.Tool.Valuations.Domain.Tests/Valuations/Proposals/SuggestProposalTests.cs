@@ -35,7 +35,7 @@ public class SuggestProposalTests : BaseValuationTest
         valuation.ApproveProposal(proposalId);
         valuation.Complete(employee);
 
-        Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
+        var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
         suggestProposal.Should().Throw<ValuationCompletedException>();
     }
@@ -48,7 +48,7 @@ public class SuggestProposalTests : BaseValuationTest
         var valuation = RequestFakeValuation();
         SuggestFakeProposal(employee, valuation);
 
-        Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
+        var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
         suggestProposal.Should().Throw<ProposalWaitForDecisionException>();
     }

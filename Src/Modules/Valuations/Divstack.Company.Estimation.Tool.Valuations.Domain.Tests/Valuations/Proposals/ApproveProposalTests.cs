@@ -34,7 +34,7 @@ public class ApproveProposalTests : BaseValuationTest
         var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
         valuation.CancelProposal(proposalId, employee);
 
-        Action approveProposal = () => valuation.ApproveProposal(proposalId);
+        var approveProposal = () => valuation.ApproveProposal(proposalId);
 
         approveProposal.Should().Throw<ProposalNotFoundException>();
     }
@@ -45,7 +45,7 @@ public class ApproveProposalTests : BaseValuationTest
         var valuation = RequestFakeValuation();
         var proposalId = new ProposalId(Guid.NewGuid());
 
-        Action approveProposal = () => valuation.ApproveProposal(proposalId);
+        var approveProposal = () => valuation.ApproveProposal(proposalId);
 
         approveProposal.Should().Throw<ProposalNotFoundException>();
     }
@@ -58,7 +58,7 @@ public class ApproveProposalTests : BaseValuationTest
         var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
         valuation.RejectProposal(proposalId);
 
-        Action approveProposal = () => valuation.ApproveProposal(proposalId);
+        var approveProposal = () => valuation.ApproveProposal(proposalId);
 
         approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }
@@ -71,7 +71,7 @@ public class ApproveProposalTests : BaseValuationTest
         var proposalId = SuggestFakeProposal(employee, valuation);
         valuation.ApproveProposal(proposalId);
 
-        Action approveProposal = () => valuation.ApproveProposal(proposalId);
+        var approveProposal = () => valuation.ApproveProposal(proposalId);
 
         approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }

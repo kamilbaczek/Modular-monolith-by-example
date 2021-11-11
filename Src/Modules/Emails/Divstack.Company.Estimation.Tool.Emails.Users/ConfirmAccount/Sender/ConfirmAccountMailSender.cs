@@ -20,7 +20,9 @@ internal class ConfirmAccountMailSender : IConfirmAccountMailSender
     public void Send(string email, string token, Guid userId)
     {
         if (string.IsNullOrWhiteSpace(_confirmAccountMailConfiguration.Format))
+        {
             throw new InvalidOperationException("Confirmation email format is not set");
+        }
 
         const string userIdPlaceholder = "{userId}";
         const string tokenPlaceholder = "{token}";

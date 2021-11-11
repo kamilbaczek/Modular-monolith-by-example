@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Interfaces;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
 
@@ -17,7 +17,11 @@ internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 
     public IDbConnection Create()
     {
-        if (_connection is { State: ConnectionState.Open }) return _connection;
+        if (_connection is {State: ConnectionState.Open})
+        {
+            return _connection;
+        }
+
         _connection =
             new MySqlConnection(_configuration.GetConnectionString(DataAccessConstants.ConnectionStringName));
         _connection.Open();
@@ -27,6 +31,9 @@ internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 
     public void Dispose()
     {
-        if (_connection is { State: ConnectionState.Open }) _connection.Dispose();
+        if (_connection is {State: ConnectionState.Open})
+        {
+            _connection.Dispose();
+        }
     }
 }

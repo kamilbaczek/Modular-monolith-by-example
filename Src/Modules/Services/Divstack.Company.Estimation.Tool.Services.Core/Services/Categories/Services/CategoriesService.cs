@@ -38,7 +38,10 @@ internal sealed class CategoriesService : ICategoriesService
     {
         var category = await _categoriesRepository.GetAsync(id, cancellationToken);
         if (category is null)
+        {
             throw new CategoryNotFoundException(id);
+        }
+
         await _categoriesRepository.DeleteAsync(category, cancellationToken);
     }
 }

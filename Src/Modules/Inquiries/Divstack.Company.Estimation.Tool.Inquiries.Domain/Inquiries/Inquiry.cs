@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
+using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Exceptions;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
 using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
 
@@ -51,13 +46,18 @@ public sealed class Inquiry : Entity, IAggregateRoot
         IServiceExistingChecker serviceExistingChecker)
     {
         if (!services.Any())
+        {
             throw new InquiryCannotBeEmptyException();
+        }
+
         var servicesIds = services.Select(service => service.ServiceId.Value)
             .ToList()
             .AsReadOnly();
         var areServicesExists = await serviceExistingChecker.ExistAsync(servicesIds);
         if (areServicesExists is false)
+        {
             throw new InvalidServicesException(servicesIds);
+        }
 
         return new Inquiry(services, client);
     }

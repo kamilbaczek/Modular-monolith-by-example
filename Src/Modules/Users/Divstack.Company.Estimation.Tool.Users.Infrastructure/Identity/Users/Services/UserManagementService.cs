@@ -40,12 +40,17 @@ internal sealed class UserManagementService : IUserManagementService
             createUserRequest.Email);
 
         var result = await _applicationUserManager.CreateAsync(applicationUser);
-        if (result.Succeeded) return applicationUser.PublicId;
+        if (result.Succeeded)
+        {
+            return applicationUser.PublicId;
+        }
 
         var errors = result.Errors.Select(identityError => identityError.Code).ToList();
 
         if (errors.Contains(IndentityErrorsCodes.UsernameAlreadyTaken))
+        {
             throw new UserNameAlreadyTakenException(createUserRequest.UserName);
+        }
 
         throw new UserNotCreatedException(errors);
     }
@@ -62,12 +67,16 @@ internal sealed class UserManagementService : IUserManagementService
         var result = await _applicationUserManager.UpdateAsync(user);
 
         if (result.Succeeded)
+        {
             return;
+        }
 
         var errors = result.Errors.Select(x => x.Code).ToList();
 
         if (errors.Contains(IndentityErrorsCodes.UsernameAlreadyTaken))
+        {
             throw new UserNameAlreadyTakenException(user.UserName);
+        }
 
         throw new UserNotUpdatedException(errors);
     }

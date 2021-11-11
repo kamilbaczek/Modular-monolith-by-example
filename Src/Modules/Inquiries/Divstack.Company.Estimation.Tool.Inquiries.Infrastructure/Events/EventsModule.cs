@@ -1,6 +1,4 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 

@@ -45,26 +45,39 @@ public sealed class Proposal : Entity
     internal void Approve()
     {
         if (IsCancelled)
+        {
             throw new ProposalIsCancelledException(Id);
+        }
+
         if (HasDecision)
+        {
             throw new ProposalAlreadyHasDecisionException(Id);
+        }
+
         Decision = ProposalDecision.AcceptDecision(DateTime.Now);
     }
 
     internal void Reject()
     {
         if (IsCancelled)
+        {
             throw new ProposalIsCancelledException(Id);
+        }
 
         if (HasDecision)
+        {
             throw new ProposalAlreadyHasDecisionException(Id);
+        }
+
         Decision = ProposalDecision.RejectDecision(DateTime.Now);
     }
 
     internal void Cancel(EmployeeId employeeId)
     {
         if (IsCancelled)
+        {
             throw new ProposalAlreadyCancelledException(Id);
+        }
 
         Cancelled = DateTime.Now;
         CancelledBy = employeeId;

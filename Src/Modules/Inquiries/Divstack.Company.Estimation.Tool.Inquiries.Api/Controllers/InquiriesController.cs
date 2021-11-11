@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get.Dtos;
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;

@@ -31,11 +31,7 @@ internal sealed class AttributesController : BaseController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> RemoveAttribute(Guid serviceId, Guid attributeId)
     {
-        var removeAttributeRequest = new RemoveAttributeRequest
-        {
-            ServiceId = serviceId,
-            AttributeId = attributeId
-        };
+        var removeAttributeRequest = new RemoveAttributeRequest {ServiceId = serviceId, AttributeId = attributeId};
         await _servicesService.RemoveAttributeAsync(removeAttributeRequest);
 
         return NoContent();

@@ -1,6 +1,4 @@
-﻿using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+﻿using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 

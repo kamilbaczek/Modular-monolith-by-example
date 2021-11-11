@@ -61,10 +61,16 @@ public sealed class ApplicationUserManager : UserManager<UserAccount>
             _dateTimeProvider,
             _usersConfiguration,
             _passwordComparer);
-        if (passwordRepeated) return IdentityResult.Failed(CustomIdentityErrorDescriber.PasswordRepeated);
+        if (passwordRepeated)
+        {
+            return IdentityResult.Failed(CustomIdentityErrorDescriber.PasswordRepeated);
+        }
 
         var result = await base.ResetPasswordAsync(userAccount, token, newPassword);
-        if (!result.Succeeded) return IdentityResult.Failed(CustomIdentityErrorDescriber.TokenExpired);
+        if (!result.Succeeded)
+        {
+            return IdentityResult.Failed(CustomIdentityErrorDescriber.TokenExpired);
+        }
 
         userAccount.ArchivePassword(userAccount.PasswordHash, _dateTimeProvider);
         userAccount.RenewPasswordExpiration(_dateTimeProvider, _usersConfiguration);
@@ -77,7 +83,10 @@ public sealed class ApplicationUserManager : UserManager<UserAccount>
         string password)
     {
         var result = await base.AddPasswordAsync(userAccount, password);
-        if (!result.Succeeded) return result;
+        if (!result.Succeeded)
+        {
+            return result;
+        }
 
         userAccount.ArchivePassword(userAccount.PasswordHash, _dateTimeProvider);
         userAccount.RenewPasswordExpiration(_dateTimeProvider, _usersConfiguration);

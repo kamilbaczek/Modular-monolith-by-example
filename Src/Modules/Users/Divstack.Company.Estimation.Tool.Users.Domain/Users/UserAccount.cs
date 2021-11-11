@@ -72,7 +72,9 @@ public sealed class UserAccount : IdentityUser
     public bool IsPasswordExpired(IDateTimeProvider datetimeProvider)
     {
         if (PasswordExpirationDate is null)
+        {
             return false;
+        }
 
         return datetimeProvider.NowDate > PasswordExpirationDate;
     }
@@ -81,9 +83,13 @@ public sealed class UserAccount : IdentityUser
     {
         var passwordChangeFrequency = configuration.PasswordExpirationFrequency;
         if (passwordChangeFrequency is 0)
+        {
             PasswordExpirationDate = null;
+        }
         else
+        {
             PasswordExpirationDate = datetimeProvider.Now.AddDays(passwordChangeFrequency);
+        }
     }
 
     public void ArchivePassword(string password, IDateTimeProvider dateTimeProvider)
@@ -98,7 +104,10 @@ public sealed class UserAccount : IdentityUser
         IPasswordComparer passwordComparer)
     {
         var passwordCannotBeRepeatedPeriod = configuration.PasswordExpirationFrequency;
-        if (passwordCannotBeRepeatedPeriod is 0) return false;
+        if (passwordCannotBeRepeatedPeriod is 0)
+        {
+            return false;
+        }
 
         var verificationStartDate = dateTimeProvider.Now.AddDays(-passwordCannotBeRepeatedPeriod);
         var passwordRepeated = ArchivedPasswords

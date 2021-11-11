@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;

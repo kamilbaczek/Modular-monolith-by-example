@@ -26,9 +26,7 @@ public static class ServicesSeeder
         var servicesService = serviceScope.ServiceProvider.GetRequiredService<IServicesService>();
         var createServiceRequest = new CreateServiceRequest
         {
-            CategoryId = category,
-            Description = Lorem.Sentence(),
-            Name = serviceName
+            CategoryId = category, Description = Lorem.Sentence(), Name = serviceName
         };
         var serviceId = await servicesService.CreateAsync(createServiceRequest);
 
@@ -38,11 +36,7 @@ public static class ServicesSeeder
     private static async Task<Guid> SeedCategory(IServiceScope serviceScope, string categoryName)
     {
         var categoriesService = serviceScope.ServiceProvider.GetRequiredService<ICategoriesService>();
-        var createCategoryRequest = new CreateCategoryRequest
-        {
-            Description = categoryName,
-            Name = Lorem.Sentence()
-        };
+        var createCategoryRequest = new CreateCategoryRequest {Description = categoryName, Name = Lorem.Sentence()};
         var category = await categoriesService.CreateAsync(createCategoryRequest);
         return category;
     }

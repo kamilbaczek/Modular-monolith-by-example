@@ -1,6 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 

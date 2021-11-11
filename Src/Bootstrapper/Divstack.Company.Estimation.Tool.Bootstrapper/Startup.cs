@@ -7,8 +7,6 @@ using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 using Divstack.Company.Estimation.Tool.Users.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace Divstack.Company.Estimation.Tool.Bootstrapper;
@@ -37,7 +35,10 @@ public sealed class Startup
         IApplicationBuilder app,
         IWebHostEnvironment env)
     {
-        if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
 
         app.UseSharedInfrastructure();
         app.UseRouting();

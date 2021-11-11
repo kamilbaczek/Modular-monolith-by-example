@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Payments.Application.Interfaces;
+﻿using Divstack.Company.Estimation.Tool.Payments.Application.Common.Interfaces;
 using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 using MediatR;
@@ -22,6 +21,8 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)
+        {
             _mediator.Publish(integrationEvent);
+        }
     }
 }

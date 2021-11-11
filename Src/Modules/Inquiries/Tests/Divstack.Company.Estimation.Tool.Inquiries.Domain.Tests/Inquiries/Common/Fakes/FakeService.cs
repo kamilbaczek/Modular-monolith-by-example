@@ -9,7 +9,7 @@ internal static class FakeService
     internal static List<Service> Create()
     {
         var service = Service.Create(new Guid());
-        var services = new List<Service> { service };
+        var services = new List<Service> {service};
 
         return services;
     }

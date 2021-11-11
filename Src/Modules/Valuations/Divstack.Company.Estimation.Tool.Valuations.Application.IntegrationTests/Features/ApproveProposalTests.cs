@@ -20,8 +20,7 @@ public class ApproveProposalTests : ValuationsTestBase
         var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.ValuationId);
         var approveCommand = new ApproveProposalCommand
         {
-            ProposalId = recentProposal.ProposalId,
-            ValuationId = valuationBeforeApproval.ValuationId
+            ProposalId = recentProposal.ProposalId, ValuationId = valuationBeforeApproval.ValuationId
         };
 
         await ExecuteCommandAsync(approveCommand);

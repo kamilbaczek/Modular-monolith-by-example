@@ -1,8 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Extensions;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
+﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 using MediatR;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
@@ -26,7 +22,7 @@ internal sealed class GetInquiryClientQueryHandler : IRequestHandler<GetInquiryC
                 FROM Inquiries
                 WHERE Id = @InquiryId";
         var client = await connection.ExecuteSingleQueryAsync<InquiryClientDto>(
-            query, new { request.InquiryId }, cancellationToken);
+            query, new {request.InquiryId}, cancellationToken);
 
         return client;
     }

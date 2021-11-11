@@ -13,9 +13,9 @@ public class RequestValuationTests : BaseValuationTest
 {
     private static object[] _datesTestCases =
     {
-            new object[] {new DateTime(1998, 2, 3), 3, new DateTime(1998, 2, 6)},
-            new object[] {new DateTime(2021, 6, 25), 2, new DateTime(2021, 6, 27)}
-        };
+        new object[] {new DateTime(1998, 2, 3), 3, new DateTime(1998, 2, 6)},
+        new object[] {new DateTime(2021, 6, 25), 2, new DateTime(2021, 6, 27)}
+    };
 
     [Test]
     public void Given_Request_Then_ValuationIsCreated()

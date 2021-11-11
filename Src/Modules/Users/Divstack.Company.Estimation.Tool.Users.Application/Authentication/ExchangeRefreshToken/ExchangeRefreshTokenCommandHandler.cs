@@ -27,7 +27,9 @@ public class ExchangeRefreshTokenCommandHandler : IRequestHandler<ExchangeRefres
         var isAuthorized =
             await _refreshTokenGenerationService.HasValidRefreshTokenAsync(userPublicId, request.RefreshToken);
         if (!isAuthorized)
+        {
             return new UnauthorizedResult();
+        }
 
         var userDetails = await _userManagementService.GetUserDetailsByPublicIdAsync(userPublicId);
         var userRoles = await _userManagementService.GetUserRolesAsync(userDetails.Email);
