@@ -7,7 +7,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateRe
     {
         public string Read(string relativePathToTemplate)
         {
-            string[] paths = { $"{AppDomain.CurrentDomain.BaseDirectory}", relativePathToTemplate };
+            string[] paths = {$"{AppDomain.CurrentDomain.BaseDirectory}", relativePathToTemplate};
             var pathToTemplate = Path.Combine(paths);
             var html = File.ReadAllText(pathToTemplate);
 

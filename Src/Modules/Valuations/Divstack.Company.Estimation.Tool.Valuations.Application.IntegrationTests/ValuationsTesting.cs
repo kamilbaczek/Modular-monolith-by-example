@@ -5,22 +5,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using Divstack.Company.Estimation.Tool.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Mongo2Go;
+using MongoDB.Driver;
 using Moq;
 using NUnit.Framework;
-using Respawn;
 using ICommand = Divstack.Company.Estimation.Tool.Valuations.Application.Contracts.ICommand;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
@@ -35,23 +34,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
             Configuration = CreateConfigurations();
             var startup = new Startup(Configuration);
             var services = new ServiceCollection();
-
-            ReplaceHostEnviromentToMock(services);
-            ReplaceCurrentUserServiceToMock(services);
-
-            services.AddLogging();
             startup.ConfigureServices(services);
 
+            EnsureDatabaseModule(services);
+            ReplaceHostEnviromentToMock(services);
+            ReplaceCurrentUserServiceToMock(services);
             _serviceScopeFactory = services.BuildServiceProvider()
                 .GetService<IServiceScopeFactory>();
-
-            _checkpoint = new RespawnMySql
-            {
-                TablesToIgnore = new[] { IgnoredTable },
-                DbAdapter = DbAdapter.MySql
-            };
-
-            await EnsureDatabase();
+            await EnsureDatabase(services);
         }
 
 
@@ -61,14 +51,15 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
         }
 
         private const string ConnectionStringName = "Valuations";
-        private const string IgnoredTable = "__EFMigrationsHistory";
 
-        internal static IConfigurationRoot Configuration;
-        private static IServiceScopeFactory _serviceScopeFactory;
-        private static RespawnMySql _checkpoint;
+        private static readonly MongoDbRunner Runner1 = MongoDbRunner.StartForDebugging();
         public static IServiceScope CreateServiceScope => _serviceScopeFactory.CreateScope();
 
         internal static Guid CurrentUserId { get; set; }
+
+        internal static IConfigurationRoot Configuration;
+        private static IServiceScopeFactory _serviceScopeFactory;
+        internal static MongoDbRunner MongoDbInstance;
 
         private static IConfigurationRoot CreateConfigurations()
         {
@@ -124,13 +115,18 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
             await integrationEventPublisher.Handle(domainEvent, CancellationToken.None);
         }
 
-        protected static void EnsureDatabaseModule(IServiceScope serviceScope)
+        protected static void EnsureDatabaseModule(ServiceCollection services)
         {
-            var valuationsContext = serviceScope.ServiceProvider.GetRequiredService<ValuationsContext>();
-            valuationsContext.Database.Migrate();
+            MongoDbInstance = MongoDbRunner.Start();
+            var currentUserServiceDescriptor = services.FirstOrDefault(serviceDescriptor =>
+                serviceDescriptor.ServiceType == typeof(MongoClient));
+            services.Remove(currentUserServiceDescriptor);
+
+            var mongoClient = new MongoClient(MongoDbInstance.ConnectionString);
+            services.AddSingleton(mongoClient);
         }
 
-        private static async Task EnsureDatabase()
+        private static async Task EnsureDatabase(ServiceCollection services)
         {
             using var scope = _serviceScopeFactory.CreateScope();
 
@@ -139,8 +135,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
 
             var usersSeeder = scope.ServiceProvider.GetRequiredService<IUsersSeeder>();
             await usersSeeder.SeedAdminUserAsync();
-
-            EnsureDatabaseModule(scope);
         }
 
         public static async Task RunAsAdministratorAsync()
@@ -157,11 +151,11 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
             CurrentUserId = user.PublicId;
         }
 
-        public static async Task ResetState()
+        public static Task ResetState()
         {
-            using var scope = CreateServiceScope;
-            var connectionString = Configuration.GetConnectionString(ConnectionStringName);
-            await _checkpoint.Reset(connectionString);
+            MongoDbInstance.Dispose();
+
+            return Task.CompletedTask;
         }
     }
 }

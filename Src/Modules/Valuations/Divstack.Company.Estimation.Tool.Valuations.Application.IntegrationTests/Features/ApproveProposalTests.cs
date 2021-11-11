@@ -16,12 +16,12 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
         {
             await ValuationModuleTester.RequestValuation();
             var valuationBeforeApproval = await ValuationModuleTester.GetFirstRequestedValuation();
-            await ValuationModuleTester.SuggestValuationProposal(valuationBeforeApproval.Id);
-            var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.Id);
+            await ValuationModuleTester.SuggestValuationProposal(valuationBeforeApproval.ValuationId);
+            var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.ValuationId);
             var approveCommand = new ApproveProposalCommand
             {
-                ProposalId = recentProposal.Id,
-                ValuationId = valuationBeforeApproval.Id
+                ProposalId = recentProposal.ProposalId,
+                ValuationId = valuationBeforeApproval.ValuationId
             };
 
             await ExecuteCommandAsync(approveCommand);

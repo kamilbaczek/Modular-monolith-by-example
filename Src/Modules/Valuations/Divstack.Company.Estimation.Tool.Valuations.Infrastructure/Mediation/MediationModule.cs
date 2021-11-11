@@ -12,7 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Mediation
         {
             var commandsHandlersAssembly = typeof(ApplicationModule).Assembly;
             var queryHandlersAssembly = typeof(PersistanceModule).Assembly;
-            var cqsAssemblies = new[] { commandsHandlersAssembly, queryHandlersAssembly };
+            var cqsAssemblies = new[] {commandsHandlersAssembly, queryHandlersAssembly};
 
             services.AddMediatR(cqsAssemblies);
             services.AddFluentValidation(cqsAssemblies);

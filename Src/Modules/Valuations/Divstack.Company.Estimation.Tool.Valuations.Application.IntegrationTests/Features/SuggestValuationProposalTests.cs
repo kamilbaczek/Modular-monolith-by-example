@@ -20,7 +20,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
             await ValuationModuleTester.RequestValuation();
             var valuationBeforeSuggestProposal = await ValuationModuleTester.GetFirstRequestedValuation();
             var suggestProposalCommand =
-                FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationBeforeSuggestProposal.Id);
+                FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationBeforeSuggestProposal.ValuationId);
 
             await ExecuteCommandAsync(suggestProposalCommand);
 
@@ -35,14 +35,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
             await ValuationModuleTester.RequestValuation();
             var valuation = await ValuationModuleTester.GetFirstRequestedValuation();
             var suggestProposalCommand =
-                FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuation.Id);
+                FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuation.ValuationId);
 
             await ExecuteCommandAsync(suggestProposalCommand);
 
-            var proposal = await ValuationModuleTester.GetRecentProposal(valuation.Id);
+            var proposal = await ValuationModuleTester.GetRecentProposal(valuation.ValuationId);
             proposal.Should().BeEquivalentTo(suggestProposalCommand, opt => opt.ExcludingMissingMembers());
             proposal.SuggestedBy.Should().Be(CurrentUserId);
-            DateTime.Parse(proposal.SuggestedFormatted).Should().BeCloseTo(DateTime.Now, OneMinuteInMs);
+            proposal.DecisionDate.Should().BeCloseTo(DateTime.Now, OneMinuteInMs);
         }
     }
 }

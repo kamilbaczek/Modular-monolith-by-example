@@ -6,10 +6,6 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients
 {
     public sealed class Client : ValueObject
     {
-        private Client()
-        {
-        }
-
         private Client(Email email, string firstName, string lastName, ClientCompany company)
         {
             Email = Guard.Against.Null(email, nameof(email));

@@ -12,7 +12,7 @@ namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.Controll
     {
         protected UnauthorizedObjectResult UnauthorizedWithReason(string message)
         {
-            return new UnauthorizedObjectResult(new ExceptionDto { Message = message });
+            return new UnauthorizedObjectResult(new ExceptionDto {Message = message});
         }
     }
 }

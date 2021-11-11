@@ -23,6 +23,6 @@
             User
         };
 
-        public static readonly string[] SystemAdmins = { SystemAdministrator };
+        public static readonly string[] SystemAdmins = {SystemAdministrator};
     }
 }

@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "Inquiries": "Server=195.78.66.133;Port=3306;Database=divstack_estimatetool;Uid=divstack_estimatetool;Pwd=5-irVNazMm1QPiG-;"
+  }
+}

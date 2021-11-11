@@ -1,4 +1,4 @@
-﻿using  System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,7 +41,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests
 
             _checkpoint = new RespawnMySql
             {
-                TablesToIgnore = new[] { IgnoredTable },
+                TablesToIgnore = new[] {IgnoredTable},
                 DbAdapter = DbAdapter.MySql
             };
 

@@ -17,7 +17,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess
 
         public IDbConnection Create()
         {
-            if (_connection is { State: ConnectionState.Open }) return _connection;
+            if (_connection is {State: ConnectionState.Open}) return _connection;
             _connection =
                 new MySqlConnection(_configuration.GetConnectionString(DataAccessConstants.ConnectionStringName));
             _connection.Open();
@@ -27,7 +27,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess
 
         public void Dispose()
         {
-            if (_connection is { State: ConnectionState.Open }) _connection.Dispose();
+            if (_connection is {State: ConnectionState.Open}) _connection.Dispose();
         }
     }
 }

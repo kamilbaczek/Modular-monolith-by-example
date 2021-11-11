@@ -22,7 +22,6 @@ namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested
 
         private readonly ISuggestValuationMailConfiguration _configuration;
         private readonly IEmailSender _emailSender;
-        private readonly IInquiriesModule _inquiriesModule;
         private readonly IMailTemplateReader _mailTemplateReader;
 
         public ValuationProposalSuggestedMailSender(

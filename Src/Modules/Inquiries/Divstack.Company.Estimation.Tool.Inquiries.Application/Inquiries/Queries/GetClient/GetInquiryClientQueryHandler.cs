@@ -26,7 +26,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queri
                 FROM Inquiries
                 WHERE Id = @InquiryId";
             var client = await connection.ExecuteSingleQueryAsync<InquiryClientDto>(
-                query, new { request.InquiryId }, cancellationToken);
+                query, new {request.InquiryId}, cancellationToken);
 
             return client;
         }

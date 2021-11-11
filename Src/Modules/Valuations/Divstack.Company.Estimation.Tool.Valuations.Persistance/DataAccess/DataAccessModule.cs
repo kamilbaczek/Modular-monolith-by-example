@@ -1,7 +1,6 @@
 ﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 {
@@ -19,10 +18,10 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
 
         private static void AddMongo(this IServiceCollection services, string connectionString)
         {
-            var settings = MongoClientSettings.FromConnectionString(connectionString);
-            var mongoClient = new MongoClient(settings);
-
-            services.AddSingleton(mongoClient);
+            // var settings = MongoClientSettings.FromConnectionString(connectionString);
+            // var mongoClient = new MongoClient(settings);
+            //
+            // services.AddSingleton(mongoClient);
         }
 
         internal static void UseDataAccess(this IApplicationBuilder app)
