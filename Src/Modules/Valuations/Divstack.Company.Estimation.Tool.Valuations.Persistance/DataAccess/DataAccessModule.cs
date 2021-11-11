@@ -12,7 +12,6 @@ internal static class DataAccessModule
     {
         services.AddMongo(connectionString);
         services.AddScoped<IValuationsContext, ValuationsContext>();
-        services.AddScoped<IDatabaseConnectionFactory, DatabaseConnectionFactory>();
 
         return services;
     }

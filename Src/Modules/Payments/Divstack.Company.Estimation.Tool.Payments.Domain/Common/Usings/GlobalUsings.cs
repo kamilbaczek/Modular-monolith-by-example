@@ -5,3 +5,5 @@ global using System.Threading;
 global using System.Threading.Tasks;
 global using Ardalis.GuardClauses;
 global using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+global using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+

@@ -5,13 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="9.0.0"/>
+    <PackageReference Include="MediatR" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common"/>
-    <Folder Include="Payments\Commands"/>
-    <Folder Include="Payments\Queries"/>
+    <Folder Include="Common" />
+    <Folder Include="Payments\Queries" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
+    <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Domain\Divstack.Company.Estimation.Tool.Payments.Domain.csproj" />
   </ItemGroup>
 
 </Project>

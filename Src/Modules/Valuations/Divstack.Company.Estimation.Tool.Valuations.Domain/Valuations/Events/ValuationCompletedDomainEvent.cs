@@ -1,15 +1,18 @@
 ﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 
 public sealed class ValuationCompletedDomainEvent : DomainEventBase
 {
-    public ValuationCompletedDomainEvent(EmployeeId closedBy, ValuationId valuationId)
+    public ValuationCompletedDomainEvent(InquiryId inquiryId, ValuationId valuationId, Money price)
     {
-        ClosedBy = closedBy;
+        InquiryId = inquiryId;
         ValuationId = valuationId;
+        Price = price;
     }
 
-    public EmployeeId ClosedBy { get; }
+    public InquiryId InquiryId { get; }
     public ValuationId ValuationId { get; }
+    public Money Price { get; }
 }

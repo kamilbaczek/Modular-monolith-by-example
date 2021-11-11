@@ -47,7 +47,7 @@ internal static class AssertValuationEvents
         ValuationId valuationId)
     {
         domainEvent.Should().NotBeNull();
-        domainEvent.ClosedBy.Should().Be(closedBy);
+        domainEvent.InquiryId.Should().Be(closedBy);
         domainEvent.ValuationId.Should().Be(valuationId);
     }
 }

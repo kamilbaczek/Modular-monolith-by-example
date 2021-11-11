@@ -92,7 +92,6 @@ public sealed class Valuation : Entity, IAggregateRoot
             proposalId,
             proposal.Price,
             proposal.SuggestedBy);
-
         AddDomainEvent(@event);
     }
 
@@ -106,7 +105,6 @@ public sealed class Valuation : Entity, IAggregateRoot
             Id,
             proposalId,
             proposal.Price);
-
         AddDomainEvent(@event);
     }
 
@@ -115,7 +113,9 @@ public sealed class Valuation : Entity, IAggregateRoot
         var proposal = GetProposal(proposalId);
         proposal.Cancel(employeeId);
         ChangeStatus(ValuationStatus.WaitForProposal);
-        AddDomainEvent(new ProposalCancelledDomainEvent(employeeId, proposalId, Id));
+       
+        var @event = new ProposalCancelledDomainEvent(employeeId, proposalId, Id);
+        AddDomainEvent(@event);
     }
 
     public void Complete(EmployeeId employeeId)
@@ -138,7 +138,10 @@ public sealed class Valuation : Entity, IAggregateRoot
         CompletedBy = employeeId;
         CompletedDate = SystemTime.Now();
         ChangeStatus(ValuationStatus.Completed);
-        AddDomainEvent(new ValuationCompletedDomainEvent(employeeId, Id));
+        var recentProposal = Proposals.First();
+       
+        var @event = new ValuationCompletedDomainEvent(InquiryId, Id, recentProposal.Price);
+        AddDomainEvent(@event);
     }
 
     private void ChangeStatus(ValuationStatus valuationStatus)
