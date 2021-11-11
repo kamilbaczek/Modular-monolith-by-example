@@ -1,7 +1,6 @@
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Interfaces;
+
+internal interface IMapper<in TDto, out TEntity>
 {
-    internal interface IMapper<in TDto, out TEntity>
-    {
-        TEntity Map(TDto source);
-    }
+    TEntity Map(TDto source);
 }

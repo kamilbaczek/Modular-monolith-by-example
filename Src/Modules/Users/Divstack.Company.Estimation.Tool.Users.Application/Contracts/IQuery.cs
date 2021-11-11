@@ -1,8 +1,7 @@
 ﻿using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Contracts
+namespace Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+
+public interface IQuery<TDto> : IRequest<TDto>
 {
-    public interface IQuery<TDto> : IRequest<TDto>
-    {
-    }
 }

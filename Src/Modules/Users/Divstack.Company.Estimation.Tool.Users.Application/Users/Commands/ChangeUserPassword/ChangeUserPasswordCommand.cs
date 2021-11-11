@@ -5,36 +5,35 @@ using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
 using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword
+namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
+
+public sealed class ChangeUserPasswordCommand : ICommand
 {
-    public sealed class ChangeUserPasswordCommand : ICommand
+    public ChangeUserPasswordCommand(Guid publicId, string newPassword)
     {
-        public ChangeUserPasswordCommand(Guid publicId, string newPassword)
+        PublicId = publicId;
+        NewPassword = newPassword;
+    }
+
+    public Guid PublicId { get; }
+    public string NewPassword { get; }
+
+    internal sealed class Handler : IRequestHandler<ChangeUserPasswordCommand>
+    {
+        private readonly IMediator _mediator;
+        private readonly IPasswordsManagementService _passwordsManagementService;
+
+        public Handler(IMediator mediator, IPasswordsManagementService passwordsManagementService)
         {
-            PublicId = publicId;
-            NewPassword = newPassword;
+            _mediator = mediator;
+            _passwordsManagementService = passwordsManagementService;
         }
 
-        public Guid PublicId { get; }
-        public string NewPassword { get; }
-
-        internal sealed class Handler : IRequestHandler<ChangeUserPasswordCommand>
+        public async Task<Unit> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
         {
-            private readonly IMediator _mediator;
-            private readonly IPasswordsManagementService _passwordsManagementService;
-
-            public Handler(IMediator mediator, IPasswordsManagementService passwordsManagementService)
-            {
-                _mediator = mediator;
-                _passwordsManagementService = passwordsManagementService;
-            }
-
-            public async Task<Unit> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
-            {
-                await _passwordsManagementService.ChangeUserPasswordAsync(request.PublicId, request.NewPassword,
-                    cancellationToken);
-                return Unit.Value;
-            }
+            await _passwordsManagementService.ChangeUserPasswordAsync(request.PublicId, request.NewPassword,
+                cancellationToken);
+            return Unit.Value;
         }
     }
 }

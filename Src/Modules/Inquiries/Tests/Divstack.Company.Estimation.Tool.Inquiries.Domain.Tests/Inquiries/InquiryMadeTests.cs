@@ -12,54 +12,53 @@ using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries;
+
+public class InquiryMadeTests : BaseInquiryTest
 {
-    public class InquiryMadeTests : BaseInquiryTest
+    [Test]
+    public async Task Given_MakeAsync_Then_InquiryIsMade()
     {
-        [Test]
-        public async Task Given_MakeAsync_Then_InquiryIsMade()
-        {
-            var serviceExistingChecker = SetupServiceExistingChecker(true);
-            var client = FakeClient.Create();
-            var services = FakeService.Create();
+        var serviceExistingChecker = SetupServiceExistingChecker(true);
+        var client = FakeClient.Create();
+        var services = FakeService.Create();
 
-            var inquiry = await Inquiry.MakeAsync(services, client, serviceExistingChecker);
+        var inquiry = await Inquiry.MakeAsync(services, client, serviceExistingChecker);
 
-            var @event = GetPublishedEvent<InquiryMadeDomainEvent>(inquiry);
-            @event.InquiryId.Should().NotBeNull();
-        }
+        var @event = GetPublishedEvent<InquiryMadeDomainEvent>(inquiry);
+        @event.InquiryId.Should().NotBeNull();
+    }
 
-        [Test]
-        public async Task Given_MakeAsync_When_InquiryIsEmpty_Then_InquiryCannotBeEmptyException()
-        {
-            var serviceExistingChecker = SetupServiceExistingChecker(true);
-            var client = FakeClient.Create();
-            var services = new List<Service>();
+    [Test]
+    public async Task Given_MakeAsync_When_InquiryIsEmpty_Then_InquiryCannotBeEmptyException()
+    {
+        var serviceExistingChecker = SetupServiceExistingChecker(true);
+        var client = FakeClient.Create();
+        var services = new List<Service>();
 
-            Func<Task> act = () => Inquiry.MakeAsync(services, client, serviceExistingChecker);
+        Func<Task> act = () => Inquiry.MakeAsync(services, client, serviceExistingChecker);
 
-            await act.Should().ThrowAsync<InquiryCannotBeEmptyException>();
-        }
+        await act.Should().ThrowAsync<InquiryCannotBeEmptyException>();
+    }
 
-        [Test]
-        public async Task Given_MakeAsync_When_ServicesAreNotExists_Then_ServicesAreNoExistsException()
-        {
-            var serviceExistingChecker = SetupServiceExistingChecker(false);
-            var client = FakeClient.Create();
-            var services = FakeService.Create();
+    [Test]
+    public async Task Given_MakeAsync_When_ServicesAreNotExists_Then_ServicesAreNoExistsException()
+    {
+        var serviceExistingChecker = SetupServiceExistingChecker(false);
+        var client = FakeClient.Create();
+        var services = FakeService.Create();
 
-            Func<Task> act = () => Inquiry.MakeAsync(services, client, serviceExistingChecker);
+        Func<Task> act = () => Inquiry.MakeAsync(services, client, serviceExistingChecker);
 
-            await act.Should().ThrowAsync<InvalidServicesException>();
-        }
+        await act.Should().ThrowAsync<InvalidServicesException>();
+    }
 
-        private static IServiceExistingChecker SetupServiceExistingChecker(bool areValid)
-        {
-            var serviceExistingChecker = Substitute.For<IServiceExistingChecker>();
-            serviceExistingChecker.ExistAsync(Arg.Any<IReadOnlyCollection<Guid>>())
-                .Returns(areValid);
+    private static IServiceExistingChecker SetupServiceExistingChecker(bool areValid)
+    {
+        var serviceExistingChecker = Substitute.For<IServiceExistingChecker>();
+        serviceExistingChecker.ExistAsync(Arg.Any<IReadOnlyCollection<Guid>>())
+            .Returns(areValid);
 
-            return serviceExistingChecker;
-        }
+        return serviceExistingChecker;
     }
 }

@@ -1,10 +1,9 @@
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using MongoDB.Driver;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+
+internal interface IValuationsContext
 {
-    internal interface IValuationsContext
-    {
-        public IMongoCollection<Valuation> Valuations { get; }
-    }
+    public IMongoCollection<Valuation> Valuations { get; }
 }

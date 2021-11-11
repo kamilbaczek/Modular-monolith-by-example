@@ -6,18 +6,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance
-{
-    internal static class PersistanceModule
-    {
-        internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
-            services.AddDataAccess(connectionString);
-            services.AddRepositories();
+namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance;
 
-            return services;
-        }
+internal static class PersistanceModule
+{
+    internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
+        services.AddDataAccess(connectionString);
+        services.AddRepositories();
+
+        return services;
     }
 }

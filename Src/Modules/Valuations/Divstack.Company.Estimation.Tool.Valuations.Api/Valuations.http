@@ -48,7 +48,7 @@ GET {{url}}/api/valuations-module/Valuations
 content-type: application/json
 Authorization: {{bearer}}
 
-### inquiry
+### valuation
 @valuation = 2f94d822-9ea4-4b5d-a5df-5c55f3b3e968
 
 ### Suggest proposal

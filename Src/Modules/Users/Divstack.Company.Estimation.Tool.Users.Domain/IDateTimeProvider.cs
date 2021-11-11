@@ -1,11 +1,10 @@
 ﻿using System;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain
+namespace Divstack.Company.Estimation.Tool.Users.Domain;
+
+public interface IDateTimeProvider
 {
-    public interface IDateTimeProvider
-    {
-        DateTime Now { get; }
-        DateTime NowDate { get; }
-        public string NowDateFormatted { get; }
-    }
+    DateTime Now { get; }
+    DateTime NowDate { get; }
+    public string NowDateFormatted { get; }
 }

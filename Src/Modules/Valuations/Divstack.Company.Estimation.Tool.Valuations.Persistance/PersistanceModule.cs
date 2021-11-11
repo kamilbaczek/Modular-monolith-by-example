@@ -7,23 +7,22 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance;
+
+internal static class PersistanceModule
 {
-    internal static class PersistanceModule
+    internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
+        IConfiguration configuration)
     {
-        internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
-            services.AddDataAccess(connectionString);
-            services.AddRepositories();
+        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
+        services.AddDataAccess(connectionString);
+        services.AddRepositories();
 
-            return services;
-        }
+        return services;
+    }
 
-        internal static void UsePersistanceModule(this IApplicationBuilder app)
-        {
-            app.UseDataAccess();
-        }
+    internal static void UsePersistanceModule(this IApplicationBuilder app)
+    {
+        app.UseDataAccess();
     }
 }

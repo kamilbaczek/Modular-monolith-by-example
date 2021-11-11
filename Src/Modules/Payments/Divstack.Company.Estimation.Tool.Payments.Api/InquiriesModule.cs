@@ -8,22 +8,21 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
-namespace Divstack.Company.Estimation.Tool.Payments.Api
+namespace Divstack.Company.Estimation.Tool.Payments.Api;
+
+internal static class PaymentsModule
 {
-    internal static class PaymentsModule
+    public static IServiceCollection AddInquiriesModules(this IServiceCollection services,
+        IConfiguration configuration)
     {
-        public static IServiceCollection AddInquiriesModules(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
-            services.AddInfrastructure(configuration);
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddInfrastructure(configuration);
 
-            return services;
-        }
+        return services;
+    }
 
-        public static void UseInquiriesModule(this IApplicationBuilder app)
-        {
-            app.UseInfrastructure();
-        }
+    public static void UseInquiriesModule(this IApplicationBuilder app)
+    {
+        app.UseInfrastructure();
     }
 }

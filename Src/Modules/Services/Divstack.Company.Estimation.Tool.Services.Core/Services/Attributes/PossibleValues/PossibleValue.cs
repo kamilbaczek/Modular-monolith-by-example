@@ -1,26 +1,25 @@
 ﻿using System;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues
+namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
+
+public sealed class PossibleValue
 {
-    public sealed class PossibleValue
+    private PossibleValue(Attribute attribute, string value)
     {
-        private PossibleValue(Attribute attribute, string value)
-        {
-            Id = Guid.NewGuid();
-            Value = value;
-        }
+        Id = Guid.NewGuid();
+        Value = value;
+    }
 
-        private PossibleValue()
-        {
-        }
+    private PossibleValue()
+    {
+    }
 
-        internal Guid Id { get; }
-        internal string Value { get; }
-        private Attribute Attribute { get; }
+    internal Guid Id { get; }
+    internal string Value { get; }
+    private Attribute Attribute { get; }
 
-        internal static PossibleValue Create(Attribute attribute, string value)
-        {
-            return new PossibleValue(attribute, value);
-        }
+    internal static PossibleValue Create(Attribute attribute, string value)
+    {
+        return new PossibleValue(attribute, value);
     }
 }

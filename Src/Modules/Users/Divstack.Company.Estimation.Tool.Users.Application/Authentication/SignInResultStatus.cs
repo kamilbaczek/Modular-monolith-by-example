@@ -1,10 +1,9 @@
-﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+
+public enum SignInResultStatus
 {
-    public enum SignInResultStatus
-    {
-        Negative = 1,
-        Positive = 2,
-        ExpiredPassword = 3,
-        Locked = 4
-    }
+    Negative = 1,
+    Positive = 2,
+    ExpiredPassword = 3,
+    Locked = 4
 }

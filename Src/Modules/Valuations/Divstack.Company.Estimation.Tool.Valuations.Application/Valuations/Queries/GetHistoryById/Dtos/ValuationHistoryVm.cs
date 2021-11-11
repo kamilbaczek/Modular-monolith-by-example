@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
+
+public record ValuationHistoryVm(IReadOnlyCollection<ValuationHistoricalEntryDto> ValuationHistoricalEntries)
 {
-    public record ValuationHistoryVm(IReadOnlyCollection<ValuationHistoricalEntryDto> ValuationHistoricalEntries)
-    {
-        public Guid RecentHistoricalEntryId => ValuationHistoricalEntries.First().HistoricalEntryId;
-    }
+    public Guid RecentHistoricalEntryId => ValuationHistoricalEntries.First().HistoricalEntryId;
 }

@@ -1,16 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <RootNamespace>Divstack.Company.Estimation.Tool.Valuations.Application.Tests</RootNamespace>
         <UserSecretsId>2bd98ace-6527-48f9-b414-c7400358db12</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Faker.Net" Version="1.5.138"/>
-        <PackageReference Include="FluentAssertions" Version="5.10.3"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1"/>
+        <PackageReference Include="FluentAssertions" Version="6.2.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0"/>
         <PackageReference Include="Mongo2Go" Version="3.1.3"/>
         <PackageReference Include="Moq" Version="4.16.1"/>

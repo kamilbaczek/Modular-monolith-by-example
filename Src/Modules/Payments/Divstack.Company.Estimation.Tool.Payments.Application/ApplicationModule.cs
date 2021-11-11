@@ -3,13 +3,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Payments.Application
+namespace Divstack.Company.Estimation.Tool.Payments.Application;
+
+internal static class ApplicationModule
 {
-    internal static class ApplicationModule
+    internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
     {
-        internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
-        {
-            return services;
-        }
+        return services;
     }
 }

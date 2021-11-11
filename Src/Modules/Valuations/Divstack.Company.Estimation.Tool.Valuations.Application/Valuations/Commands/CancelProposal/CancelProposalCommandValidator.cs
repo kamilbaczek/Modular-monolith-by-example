@@ -1,13 +1,12 @@
 ﻿using FluentValidation;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
+
+public sealed class CancelProposalCommandValidator : AbstractValidator<CancelProposalCommand>
 {
-    public sealed class CancelProposalCommandValidator : AbstractValidator<CancelProposalCommand>
+    public CancelProposalCommandValidator()
     {
-        public CancelProposalCommandValidator()
-        {
-            RuleFor(command => command.ProposalId).NotEmpty();
-            RuleFor(command => command.ValuationId).NotEmpty();
-        }
+        RuleFor(command => command.ProposalId).NotEmpty();
+        RuleFor(command => command.ValuationId).NotEmpty();
     }
 }

@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
+
+public sealed class GetValuationProposalsByIdQueryValidator : AbstractValidator<GetValuationProposalsByIdQuery>
 {
-    public sealed class GetValuationProposalsByIdQueryValidator : AbstractValidator<GetValuationProposalsByIdQuery>
+    public GetValuationProposalsByIdQueryValidator()
     {
-        public GetValuationProposalsByIdQueryValidator()
-        {
-            RuleFor(query => query.ValuationId).NotEmpty();
-        }
+        RuleFor(query => query.ValuationId).NotEmpty();
     }
 }

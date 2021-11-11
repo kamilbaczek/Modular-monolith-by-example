@@ -1,10 +1,9 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
+
+public interface IInquiriesRepository
 {
-    public interface IInquiriesRepository
-    {
-        Task PersistAsync(Inquiry inquiry, CancellationToken cancellationToken = default);
-    }
+    Task PersistAsync(Inquiry inquiry, CancellationToken cancellationToken = default);
 }

@@ -1,22 +1,21 @@
 ﻿using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests;
+
+using static ValuationsTesting;
+
+public abstract class ValuationsTestBase
 {
-    using static ValuationsTesting;
-
-    public abstract class ValuationsTestBase
+    [SetUp]
+    public async Task TestSetUp()
     {
-        [SetUp]
-        public async Task TestSetUp()
-        {
-            await ResetState();
-        }
+        await ResetState();
+    }
 
-        [TearDown]
-        public async Task Cleanup()
-        {
-            await ResetState();
-        }
+    [TearDown]
+    public async Task Cleanup()
+    {
+        await ResetState();
     }
 }

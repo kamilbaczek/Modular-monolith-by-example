@@ -6,20 +6,19 @@ using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seede
 using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users
+namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users;
+
+internal static class UserManagementModule
 {
-    internal static class UserManagementModule
+    internal static void AddUserManagementModule(this IServiceCollection services)
     {
-        internal static void AddUserManagementModule(this IServiceCollection services)
-        {
-            services.AddSingleton<IUsersConfiguration, UsersConfiguration>();
-            services.AddSingleton<IAdminAccountConfiguration, AdminAccountConfiguration>();
-            services.AddScoped<IUserManagementService, UserManagementService>();
-            services.AddScoped<ISignInManagementService, SignInManagementService>();
-            services.AddScoped<IRoleManagementService, RoleManagementService>();
-            services.AddScoped<IPasswordComparer, PasswordComparer>();
-            services.AddScoped<IPasswordsManagementService, PasswordsManagementService>();
-            services.AddUserSeeder();
-        }
+        services.AddSingleton<IUsersConfiguration, UsersConfiguration>();
+        services.AddSingleton<IAdminAccountConfiguration, AdminAccountConfiguration>();
+        services.AddScoped<IUserManagementService, UserManagementService>();
+        services.AddScoped<ISignInManagementService, SignInManagementService>();
+        services.AddScoped<IRoleManagementService, RoleManagementService>();
+        services.AddScoped<IPasswordComparer, PasswordComparer>();
+        services.AddScoped<IPasswordsManagementService, PasswordsManagementService>();
+        services.AddUserSeeder();
     }
 }

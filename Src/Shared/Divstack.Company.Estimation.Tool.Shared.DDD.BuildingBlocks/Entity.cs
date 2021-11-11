@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
+namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+
+public abstract class Entity
 {
-    public abstract class Entity
+    private List<IDomainEvent> _domainEvents;
+
+    public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
+
+    public void ClearDomainEvents()
     {
-        private List<IDomainEvent> _domainEvents;
+        _domainEvents?.Clear();
+    }
 
-        public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents?.AsReadOnly();
+    protected void AddDomainEvent(IDomainEvent domainEvent)
+    {
+        _domainEvents ??= new List<IDomainEvent>();
 
-        public void ClearDomainEvents()
-        {
-            _domainEvents?.Clear();
-        }
-
-        protected void AddDomainEvent(IDomainEvent domainEvent)
-        {
-            _domainEvents ??= new List<IDomainEvent>();
-
-            _domainEvents.Add(domainEvent);
-        }
+        _domainEvents.Add(domainEvent);
     }
 }

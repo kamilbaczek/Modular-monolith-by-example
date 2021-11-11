@@ -2,17 +2,16 @@
 using Divstack.Company.Estimation.Tool.Users.Domain.Users.Interfaces;
 using Microsoft.Extensions.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration
+namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
+
+internal class UsersConfiguration : ConfigurationBase, IUsersConfiguration
 {
-    internal class UsersConfiguration : ConfigurationBase, IUsersConfiguration
+    private const string SectionName = "Users";
+
+    public UsersConfiguration(IConfiguration configuration) : base(configuration, SectionName)
     {
-        private const string SectionName = "Users";
-
-        public UsersConfiguration(IConfiguration configuration) : base(configuration, SectionName)
-        {
-        }
-
-        public int PasswordExpirationFrequency =>
-            configurationSection.GetValue<int>(nameof(PasswordExpirationFrequency));
     }
+
+    public int PasswordExpirationFrequency =>
+        configurationSection.GetValue<int>(nameof(PasswordExpirationFrequency));
 }

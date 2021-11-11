@@ -14,98 +14,97 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers
+namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers;
+
+internal sealed class ValuationsController : BaseController
 {
-    internal sealed class ValuationsController : BaseController
+    private readonly IValuationsModule _valuationsModule;
+
+    public ValuationsController(IValuationsModule valuationsModule)
     {
-        private readonly IValuationsModule _valuationsModule;
+        _valuationsModule = valuationsModule;
+    }
 
-        public ValuationsController(IValuationsModule valuationsModule)
-        {
-            _valuationsModule = valuationsModule;
-        }
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<ValuationVm>> Get(Guid id)
+    {
+        var valuationVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationQuery(id));
+        return Ok(valuationVm);
+    }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<ValuationVm>> Get(Guid id)
-        {
-            var valuationVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationQuery(id));
-            return Ok(valuationVm);
-        }
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<ValuationListVm>> GetAll()
+    {
+        var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(new GetAllValuationsQuery());
+        return Ok(valuationsListVm);
+    }
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<ValuationListVm>> GetAll()
-        {
-            var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(new GetAllValuationsQuery());
-            return Ok(valuationsListVm);
-        }
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [Route("valuations/proposals")]
+    [ProducesDefaultResponseType]
+    public async Task<ActionResult> SuggestProposal([FromBody] SuggestProposalCommand suggestProposalCommand)
+    {
+        await _valuationsModule.ExecuteCommandAsync(suggestProposalCommand);
+        return Ok();
+    }
 
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("valuations/proposals")]
-        [ProducesDefaultResponseType]
-        public async Task<ActionResult> SuggestProposal([FromBody] SuggestProposalCommand suggestProposalCommand)
-        {
-            await _valuationsModule.ExecuteCommandAsync(suggestProposalCommand);
-            return Ok();
-        }
-
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [Route("valuations/history/{id}")]
-        public async Task<ActionResult<ValuationHistoryVm>> GetHistory(Guid id)
-        {
-            var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationHistoryByIdQuery(id));
-            return Ok(valuationHistoryVm);
-        }
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [Route("valuations/history/{id}")]
+    public async Task<ActionResult<ValuationHistoryVm>> GetHistory(Guid id)
+    {
+        var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationHistoryByIdQuery(id));
+        return Ok(valuationHistoryVm);
+    }
 
 
-        [HttpPatch]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("valuations/complete")]
-        [ProducesDefaultResponseType]
-        public async Task<ActionResult> Complete([FromBody] CompleteCommand suggestProposalCommand)
-        {
-            await _valuationsModule.ExecuteCommandAsync(suggestProposalCommand);
-            return Ok();
-        }
+    [HttpPatch]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [Route("valuations/complete")]
+    [ProducesDefaultResponseType]
+    public async Task<ActionResult> Complete([FromBody] CompleteCommand suggestProposalCommand)
+    {
+        await _valuationsModule.ExecuteCommandAsync(suggestProposalCommand);
+        return Ok();
+    }
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("valuations/proposals/approve")]
-        [ProducesDefaultResponseType]
-        [AllowAnonymous]
-        public async Task<ActionResult> ApproveProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
-        {
-            await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
-            return Ok();
-        }
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [Route("valuations/proposals/approve")]
+    [ProducesDefaultResponseType]
+    [AllowAnonymous]
+    public async Task<ActionResult> ApproveProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
+    {
+        await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
+        return Ok();
+    }
 
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("valuations/proposals/reject")]
-        [ProducesDefaultResponseType]
-        [AllowAnonymous]
-        public async Task<ActionResult> RejectProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
-        {
-            await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
-            return Ok();
-        }
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [Route("valuations/proposals/reject")]
+    [ProducesDefaultResponseType]
+    [AllowAnonymous]
+    public async Task<ActionResult> RejectProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
+    {
+        await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
+        return Ok();
+    }
 
-        [HttpPatch]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [Route("valuations/proposals/cancel")]
-        [ProducesDefaultResponseType]
-        public async Task<ActionResult> CancelProposal([FromQuery] CancelProposalCommand cancelProposalCommand)
-        {
-            await _valuationsModule.ExecuteCommandAsync(cancelProposalCommand);
-            return Ok();
-        }
+    [HttpPatch]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    [Route("valuations/proposals/cancel")]
+    [ProducesDefaultResponseType]
+    public async Task<ActionResult> CancelProposal([FromQuery] CancelProposalCommand cancelProposalCommand)
+    {
+        await _valuationsModule.ExecuteCommandAsync(cancelProposalCommand);
+        return Ok();
     }
 }

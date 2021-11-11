@@ -1,10 +1,9 @@
 ﻿using System;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.UserAccess
+namespace Divstack.Company.Estimation.Tool.Services.Core.UserAccess;
+
+public interface ICurrentUserService
 {
-    public interface ICurrentUserService
-    {
-        Guid GetPublicUserId();
-        string[] GetCurrentUserRoles();
-    }
+    Guid GetPublicUserId();
+    string[] GetCurrentUserRoles();
 }

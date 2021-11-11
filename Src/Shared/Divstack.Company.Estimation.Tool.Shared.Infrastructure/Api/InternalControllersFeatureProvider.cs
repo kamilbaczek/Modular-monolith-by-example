@@ -3,27 +3,26 @@ using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api
+namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
+
+public sealed class InternalControllersFeatureProvider : ControllerFeatureProvider
 {
-    public sealed class InternalControllersFeatureProvider : ControllerFeatureProvider
+    private const string ControllerTypeNameSuffix = "Controller";
+
+    protected override bool IsController(TypeInfo typeInfo)
     {
-        private const string ControllerTypeNameSuffix = "Controller";
+        if (!typeInfo.IsClass) return false;
 
-        protected override bool IsController(TypeInfo typeInfo)
-        {
-            if (!typeInfo.IsClass) return false;
+        if (typeInfo.IsAbstract) return false;
 
-            if (typeInfo.IsAbstract) return false;
+        if (typeInfo.ContainsGenericParameters) return false;
 
-            if (typeInfo.ContainsGenericParameters) return false;
+        if (typeInfo.IsDefined(typeof(NonControllerAttribute))) return false;
 
-            if (typeInfo.IsDefined(typeof(NonControllerAttribute))) return false;
+        if (!typeInfo.Name.EndsWith(ControllerTypeNameSuffix, StringComparison.OrdinalIgnoreCase) &&
+            !typeInfo.IsDefined(typeof(ControllerAttribute)))
+            return false;
 
-            if (!typeInfo.Name.EndsWith(ControllerTypeNameSuffix, StringComparison.OrdinalIgnoreCase) &&
-                !typeInfo.IsDefined(typeof(ControllerAttribute)))
-                return false;
-
-            return true;
-        }
+        return true;
     }
 }

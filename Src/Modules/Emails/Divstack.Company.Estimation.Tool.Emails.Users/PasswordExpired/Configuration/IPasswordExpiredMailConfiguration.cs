@@ -1,8 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired.Configuration
+﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired.Configuration;
+
+internal interface IPasswordExpiredMailConfiguration
 {
-    internal interface IPasswordExpiredMailConfiguration
-    {
-        string Subject { get; }
-        string Format { get; }
-    }
+    string Subject { get; }
+    string Format { get; }
 }

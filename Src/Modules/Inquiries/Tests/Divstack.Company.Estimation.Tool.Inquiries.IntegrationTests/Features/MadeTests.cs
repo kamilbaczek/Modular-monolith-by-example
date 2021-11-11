@@ -10,38 +10,38 @@ using Faker;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features
+namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features;
+
+using static InquiriesTesting;
+
+public class InquiryMadeTests : InquiriesTestBase
 {
-    using static InquiriesTesting;
-
-    public class InquiryMadeTests : InquiriesTestBase
+    [Test]
+    public async Task
+        Given_MadeInquiry_Then_InquiryIsMade()
     {
-        [Test]
-        public async Task
-            Given_MadeInquiry_Then_InquiryIsMade()
+        await EnsureInquiriesAreEmpty();
+        var serviceId = await ServicesSeeder.SeedAsync();
+        var makeInquiryCommand = GetFakeMakeInquiryCommand(serviceId);
+
+        var inquiryId = await ExecuteCommandAsync(makeInquiryCommand);
+
+        var inquiryListVm = await ExecuteQueryAsync(new GetAllInquiriesQuery());
+        inquiryListVm.Inquiries.Count.Should().Be(1);
+        var inquiry = inquiryListVm.Inquiries.First();
+        inquiryId.Should().NotBeEmpty();
+        inquiry.Should().BeEquivalentTo(makeInquiryCommand, option => option
+            .ExcludingMissingMembers());
+    }
+
+    private static MakeInquiryCommand GetFakeMakeInquiryCommand(Guid serviceId)
+    {
+        var makeInquiryCommand = new MakeInquiryCommand
         {
-            await EnsureInquiriesAreEmpty();
-            var serviceId = await ServicesSeeder.SeedAsync();
-            var makeInquiryCommand = GetFakeMakeInquiryCommand(serviceId);
-
-            var inquiryId = await ExecuteCommandAsync(makeInquiryCommand);
-
-            var inquiryListVm = await ExecuteQueryAsync(new GetAllInquiriesQuery());
-            inquiryListVm.Inquiries.Count.Should().Be(1);
-            var inquiry = inquiryListVm.Inquiries.First();
-            inquiryId.Should().NotBeEmpty();
-            inquiry.Should().BeEquivalentTo(makeInquiryCommand, option => option
-                .ExcludingMissingMembers());
-        }
-
-        private static MakeInquiryCommand GetFakeMakeInquiryCommand(Guid serviceId)
-        {
-            var makeInquiryCommand = new MakeInquiryCommand
-            {
-                FirstName = Name.First(),
-                LastName = Name.Last(),
-                Email = Internet.Email(),
-                AskedServiceDtos = new List<AskedServiceDto>
+            FirstName = Name.First(),
+            LastName = Name.Last(),
+            Email = Internet.Email(),
+            AskedServiceDtos = new List<AskedServiceDto>
                 {
                     new()
                     {
@@ -56,19 +56,18 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features
                         }
                     }
                 }
-            };
-            return makeInquiryCommand;
-        }
+        };
+        return makeInquiryCommand;
+    }
 
-        private static async Task EnsureInquiriesAreEmpty()
-        {
-            await EnsureInquiriesAre(0);
-        }
+    private static async Task EnsureInquiriesAreEmpty()
+    {
+        await EnsureInquiriesAre(0);
+    }
 
-        private static async Task EnsureInquiriesAre(int count)
-        {
-            var inquiryListVm = await ExecuteQueryAsync(new GetAllInquiriesQuery());
-            inquiryListVm.Inquiries.Count.Should().Be(count);
-        }
+    private static async Task EnsureInquiriesAre(int count)
+    {
+        var inquiryListVm = await ExecuteQueryAsync(new GetAllInquiriesQuery());
+        inquiryListVm.Inquiries.Count.Should().Be(count);
     }
 }

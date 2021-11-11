@@ -1,7 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+
+internal static class DataAccessConstants
 {
-    internal static class DataAccessConstants
-    {
-        internal const string ConnectionStringName = "Inquiries";
-    }
+    internal const string ConnectionStringName = "Inquiries";
 }

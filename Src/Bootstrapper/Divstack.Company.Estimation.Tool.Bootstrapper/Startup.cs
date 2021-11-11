@@ -1,4 +1,4 @@
-using Divstack.Company.Estimation.Tool.Estimations.Api;
+﻿using Divstack.Company.Estimation.Tool.Estimations.Api;
 using Divstack.Company.Estimation.Tool.Inquiries.Api;
 using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
 using Divstack.Company.Estimation.Tool.Reminders;
@@ -11,39 +11,38 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Divstack.Company.Estimation.Tool.Bootstrapper
+namespace Divstack.Company.Estimation.Tool.Bootstrapper;
+
+public sealed class Startup
 {
-    public sealed class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        Configuration = configuration;
+    }
 
-        private IConfiguration Configuration { get; }
+    private IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddSharedInfrastructure(Configuration);
-            services.AddUsersModule(Configuration);
-            services.AddServicesModule(Configuration);
-            services.AddInquiriesModule(Configuration);
-            services.AddValuationsModule(Configuration);
-            services.AddEmailsModule();
-            services.AddRemindersModule();
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSharedInfrastructure(Configuration);
+        services.AddUsersModule(Configuration);
+        services.AddServicesModule(Configuration);
+        services.AddInquiriesModule(Configuration);
+        services.AddValuationsModule(Configuration);
+        services.AddEmailsModule();
+        services.AddRemindersModule();
+    }
 
-        public void Configure(
-            IApplicationBuilder app,
-            IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+    public void Configure(
+        IApplicationBuilder app,
+        IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
-            app.UseSharedInfrastructure();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-            app.UseValuationModule();
-        }
+        app.UseSharedInfrastructure();
+        app.UseRouting();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        app.UseValuationModule();
     }
 }

@@ -11,23 +11,22 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users
+namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users;
+
+internal static class EmailUsersModule
 {
-    internal static class EmailUsersModule
+    internal static IServiceCollection AddEmailUsers(this IServiceCollection services)
     {
-        internal static IServiceCollection AddEmailUsers(this IServiceCollection services)
-        {
-            services.AddScoped<IConfirmAccountMailConfiguration, ConfirmAccountMailConfiguration>();
-            services.AddScoped<IConfirmAccountMailSender, ConfirmAccountMailSender>();
+        services.AddScoped<IConfirmAccountMailConfiguration, ConfirmAccountMailConfiguration>();
+        services.AddScoped<IConfirmAccountMailSender, ConfirmAccountMailSender>();
 
-            services.AddScoped<IPasswordExpiredMailConfiguration, PasswordExpiredMailConfiguration>();
-            services.AddScoped<IPasswordExpiredMailSender, PasswordExpiredMailSender>();
+        services.AddScoped<IPasswordExpiredMailConfiguration, PasswordExpiredMailConfiguration>();
+        services.AddScoped<IPasswordExpiredMailSender, PasswordExpiredMailSender>();
 
-            services.AddScoped<IForgotPasswordMailConfiguration, ForgotPasswordMailConfiguration>();
-            services.AddScoped<IForgotPasswordMailSender, ForgotPasswordMailSender>();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddScoped<IForgotPasswordMailConfiguration, ForgotPasswordMailConfiguration>();
+        services.AddScoped<IForgotPasswordMailSender, ForgotPasswordMailSender>();
+        services.AddMediatR(Assembly.GetExecutingAssembly());
 
-            return services;
-        }
+        return services;
     }
 }

@@ -4,15 +4,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
-namespace Divstack.Company.Estimation.Tool.Reminders
-{
-    internal static class RemindersModule
-    {
-        internal static IServiceCollection AddRemindersModule(this IServiceCollection services)
-        {
-            services.AddValuations();
+namespace Divstack.Company.Estimation.Tool.Reminders;
 
-            return services;
-        }
+internal static class RemindersModule
+{
+    internal static IServiceCollection AddRemindersModule(this IServiceCollection services)
+    {
+        services.AddValuations();
+
+        return services;
     }
 }

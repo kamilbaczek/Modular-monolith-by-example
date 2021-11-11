@@ -6,23 +6,22 @@ using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features;
+
+using static ValuationsTesting;
+
+public class RequestValuationTests : ValuationsTestBase
 {
-    using static ValuationsTesting;
-
-    public class RequestValuationTests : ValuationsTestBase
+    [Test]
+    public async Task Given_RequestValuation_When_CommandIsValid_Then_RequestIsSavedInDatabase()
     {
-        [Test]
-        public async Task Given_RequestValuation_When_CommandIsValid_Then_RequestIsSavedInDatabase()
-        {
-            var inquiryMadeEvent = new InquiryMadeEvent(Guid.NewGuid());
-            await ConsumeEvent(inquiryMadeEvent);
+        var inquiryMadeEvent = new InquiryMadeEvent(Guid.NewGuid());
+        await ConsumeEvent(inquiryMadeEvent);
 
-            var result = await ExecuteQueryAsync(new GetAllValuationsQuery());
+        var result = await ExecuteQueryAsync(new GetAllValuationsQuery());
 
-            result.Valuations.Count.Should().Be(1);
-            var valuationListItemDto = result.Valuations.First();
-            valuationListItemDto.InquiryId.Should().Be(inquiryMadeEvent.InquiryId);
-        }
+        result.Valuations.Count.Should().Be(1);
+        var valuationListItemDto = result.Valuations.First();
+        valuationListItemDto.InquiryId.Should().Be(inquiryMadeEvent.InquiryId);
     }
 }

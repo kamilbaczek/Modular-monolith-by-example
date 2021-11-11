@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired
+namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired;
+
+internal interface IPasswordExpiredMailSender
 {
-    internal interface IPasswordExpiredMailSender
-    {
-        void Send(string email, string token, Guid userId);
-    }
+    void Send(string email, string token, Guid userId);
 }

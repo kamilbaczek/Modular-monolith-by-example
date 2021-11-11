@@ -6,29 +6,28 @@ using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 using MediatR;
 using MongoDB.Driver;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers;
+
+internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>
 {
-    internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>
+    private const string ProjectionQuery =
+        @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
+
+    private readonly IValuationsContext _valuationsContext;
+
+    public GetAllValuationsQueryHandler(IValuationsContext valuationsContext)
     {
-        private const string ProjectionQuery =
-            @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
+        _valuationsContext = valuationsContext;
+    }
 
-        private readonly IValuationsContext _valuationsContext;
+    public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
+    {
+        var filterDefinition = FilterDefinition<Valuation>.Empty;
+        var valuationListItemDtos = await _valuationsContext.Valuations
+            .Find(filterDefinition)
+            .Project<ValuationListItemDto>(ProjectionQuery)
+            .ToListAsync(cancellationToken);
 
-        public GetAllValuationsQueryHandler(IValuationsContext valuationsContext)
-        {
-            _valuationsContext = valuationsContext;
-        }
-
-        public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
-        {
-            var filterDefinition = FilterDefinition<Valuation>.Empty;
-            var valuationListItemDtos = await _valuationsContext.Valuations
-                .Find(filterDefinition)
-                .Project<ValuationListItemDto>(ProjectionQuery)
-                .ToListAsync(cancellationToken);
-
-            return new ValuationListVm(valuationListItemDtos);
-        }
+        return new ValuationListVm(valuationListItemDtos);
     }
 }

@@ -1,28 +1,27 @@
 ﻿using System;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain.Users
+namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
+
+public sealed class FailedLoginAttempt
 {
-    public sealed class FailedLoginAttempt
+    private FailedLoginAttempt()
     {
-        private FailedLoginAttempt()
-        {
-            // only for EF
-        }
+        // only for EF
+    }
 
-        private FailedLoginAttempt(UserAccount userAccount, DateTime loginDate)
-        {
-            UserAccount = userAccount;
-            LoginDate = loginDate;
-        }
+    private FailedLoginAttempt(UserAccount userAccount, DateTime loginDate)
+    {
+        UserAccount = userAccount;
+        LoginDate = loginDate;
+    }
 
-        private long Id { get; }
+    private long Id { get; }
 
-        private UserAccount UserAccount { get; }
-        private DateTime LoginDate { get; }
+    private UserAccount UserAccount { get; }
+    private DateTime LoginDate { get; }
 
-        internal static FailedLoginAttempt Create(UserAccount userAccount, DateTime loginDate)
-        {
-            return new FailedLoginAttempt(userAccount, loginDate);
-        }
+    internal static FailedLoginAttempt Create(UserAccount userAccount, DateTime loginDate)
+    {
+        return new FailedLoginAttempt(userAccount, loginDate);
     }
 }

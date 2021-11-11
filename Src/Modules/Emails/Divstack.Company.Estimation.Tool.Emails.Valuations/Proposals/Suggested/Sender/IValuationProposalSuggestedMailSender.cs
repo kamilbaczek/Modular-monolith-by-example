@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender
+namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
+
+internal interface IValuationProposalSuggestedMailSender
 {
-    internal interface IValuationProposalSuggestedMailSender
-    {
-        Task SendAsync(ValuationProposalSuggestedEmailRequest request);
-    }
+    Task SendAsync(ValuationProposalSuggestedEmailRequest request);
 }

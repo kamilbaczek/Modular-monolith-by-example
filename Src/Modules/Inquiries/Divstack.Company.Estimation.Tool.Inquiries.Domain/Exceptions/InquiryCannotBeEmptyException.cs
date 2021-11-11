@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions;
+
+public sealed class InquiryCannotBeEmptyException : InvalidOperationException
 {
-    public sealed class InquiryCannotBeEmptyException : InvalidOperationException
+    public InquiryCannotBeEmptyException() :
+        base("Inquiry cannot be empty")
     {
-        public InquiryCannotBeEmptyException() :
-            base("Inquiry cannot be empty")
-        {
-        }
     }
 }

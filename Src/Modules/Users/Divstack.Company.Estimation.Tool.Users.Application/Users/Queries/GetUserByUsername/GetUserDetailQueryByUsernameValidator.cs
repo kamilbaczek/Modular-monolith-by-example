@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername
+namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
+
+public class GetUserDetailQueryByUsernameValidator : AbstractValidator<GetUserDetailQueryByUsernameCommand>
 {
-    public class GetUserDetailQueryByUsernameValidator : AbstractValidator<GetUserDetailQueryByUsernameCommand>
+    public GetUserDetailQueryByUsernameValidator()
     {
-        public GetUserDetailQueryByUsernameValidator()
-        {
-            RuleFor(command => command.Username).NotEmpty();
-        }
+        RuleFor(command => command.Username).NotEmpty();
     }
 }

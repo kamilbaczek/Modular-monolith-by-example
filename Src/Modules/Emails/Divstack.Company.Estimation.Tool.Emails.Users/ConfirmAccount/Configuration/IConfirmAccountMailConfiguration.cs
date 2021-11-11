@@ -1,8 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration
+﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration;
+
+internal interface IConfirmAccountMailConfiguration
 {
-    internal interface IConfirmAccountMailConfiguration
-    {
-        string Subject { get; }
-        string Format { get; }
-    }
+    string Subject { get; }
+    string Format { get; }
 }

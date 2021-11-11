@@ -7,15 +7,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application
-{
-    internal static class ApplicationModule
-    {
-        internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
-        {
-            services.AddScoped<IMapper<AskedServiceDto, Service>, ServiceDtoToServiceMapper>();
+namespace Divstack.Company.Estimation.Tool.Inquiries.Application;
 
-            return services;
-        }
+internal static class ApplicationModule
+{
+    internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
+    {
+        services.AddScoped<IMapper<AskedServiceDto, Service>, ServiceDtoToServiceMapper>();
+
+        return services;
     }
 }

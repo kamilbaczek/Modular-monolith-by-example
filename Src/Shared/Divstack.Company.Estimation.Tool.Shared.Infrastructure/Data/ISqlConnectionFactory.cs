@@ -1,13 +1,12 @@
 ﻿using System.Data;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data
+namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
+
+public interface ISqlConnectionFactory
 {
-    public interface ISqlConnectionFactory
-    {
-        IDbConnection GetOpenConnection();
+    IDbConnection GetOpenConnection();
 
-        IDbConnection CreateNewConnection();
+    IDbConnection CreateNewConnection();
 
-        string GetConnectionString();
-    }
+    string GetConnectionString();
 }

@@ -3,16 +3,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Api.Controllers
+namespace Divstack.Company.Estimation.Tool.Payments.Api.Controllers;
+
+[ApiController]
+[Route("api/inquries-module/[controller]")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+internal abstract class BaseController : ControllerBase
 {
-    [ApiController]
-    [Route("api/inquries-module/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    internal abstract class BaseController : ControllerBase
+    protected CreatedResult Created(Guid id)
     {
-        protected CreatedResult Created(Guid id)
-        {
-            return base.Created(id.ToString(), null);
-        }
+        return base.Created(id.ToString(), null);
     }
 }

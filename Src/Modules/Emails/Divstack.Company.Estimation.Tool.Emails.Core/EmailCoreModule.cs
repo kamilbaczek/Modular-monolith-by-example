@@ -7,17 +7,16 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core
-{
-    internal static class EmailCoreModule
-    {
-        internal static IServiceCollection AddEmailCore(this IServiceCollection services)
-        {
-            services.AddScoped<IEmailSender, EmailSender>();
-            services.AddSingleton<IMailConfiguration, MailConfiguration>();
-            services.AddScoped<IMailTemplateReader, MailTemplateReader>();
+namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core;
 
-            return services;
-        }
+internal static class EmailCoreModule
+{
+    internal static IServiceCollection AddEmailCore(this IServiceCollection services)
+    {
+        services.AddScoped<IEmailSender, EmailSender>();
+        services.AddSingleton<IMailConfiguration, MailConfiguration>();
+        services.AddScoped<IMailTemplateReader, MailTemplateReader>();
+
+        return services;
     }
 }

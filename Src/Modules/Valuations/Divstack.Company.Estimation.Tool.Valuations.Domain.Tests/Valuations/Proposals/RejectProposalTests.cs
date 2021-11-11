@@ -9,58 +9,57 @@ using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Ev
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals
+namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
+
+public class RejectProposalTests : BaseValuationTest
 {
-    public class RejectProposalTests : BaseValuationTest
+    [Test]
+    public void Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
     {
-        [Test]
-        public void Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected()
-        {
-            var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(employee, valuation);
+        var employee = new EmployeeId(Guid.NewGuid());
+        var valuation = RequestFakeValuation();
+        var proposalId = SuggestFakeProposal(employee, valuation);
 
-            valuation.RejectProposal(proposalId);
+        valuation.RejectProposal(proposalId);
 
-            var @event = GetPublishedEvent<ProposalRejectedDomainEvent>(valuation);
-            @event.AssertIsCorrect(proposalId, valuation.Id);
-        }
+        var @event = GetPublishedEvent<ProposalRejectedDomainEvent>(valuation);
+        @event.AssertIsCorrect(proposalId, valuation.Id);
+    }
 
-        [Test]
-        public void Given_RejectProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
-        {
-            var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-            valuation.CancelProposal(proposalId, employee);
+    [Test]
+    public void Given_RejectProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
+    {
+        var employee = new EmployeeId(Guid.NewGuid());
+        var valuation = RequestFakeValuation();
+        var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
+        valuation.CancelProposal(proposalId, employee);
 
-            Action rejectProposal = () => valuation.RejectProposal(proposalId);
+        Action rejectProposal = () => valuation.RejectProposal(proposalId);
 
-            rejectProposal.Should().Throw<ProposalNotFoundException>();
-        }
+        rejectProposal.Should().Throw<ProposalNotFoundException>();
+    }
 
-        [Test]
-        public void Given_RejectProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
-        {
-            var valuation = RequestFakeValuation();
-            var proposalId = new ProposalId(Guid.NewGuid());
+    [Test]
+    public void Given_RejectProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
+    {
+        var valuation = RequestFakeValuation();
+        var proposalId = new ProposalId(Guid.NewGuid());
 
-            Action rejectProposal = () => valuation.RejectProposal(proposalId);
+        Action rejectProposal = () => valuation.RejectProposal(proposalId);
 
-            rejectProposal.Should().Throw<ProposalNotFoundException>();
-        }
+        rejectProposal.Should().Throw<ProposalNotFoundException>();
+    }
 
-        [Test]
-        public void Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
-        {
-            var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = RequestFakeValuation();
-            var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-            valuation.RejectProposal(proposalId);
+    [Test]
+    public void Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
+    {
+        var employee = new EmployeeId(Guid.NewGuid());
+        var valuation = RequestFakeValuation();
+        var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
+        valuation.RejectProposal(proposalId);
 
-            Action rejectProposal = () => valuation.RejectProposal(proposalId);
+        Action rejectProposal = () => valuation.RejectProposal(proposalId);
 
-            rejectProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
-        }
+        rejectProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }
 }

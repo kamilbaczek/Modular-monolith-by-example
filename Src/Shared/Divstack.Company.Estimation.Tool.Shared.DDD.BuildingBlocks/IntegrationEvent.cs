@@ -1,8 +1,7 @@
 ﻿using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
+namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+
+public interface IntegrationEvent : INotification
 {
-    public interface IntegrationEvent : INotification
-    {
-    }
 }

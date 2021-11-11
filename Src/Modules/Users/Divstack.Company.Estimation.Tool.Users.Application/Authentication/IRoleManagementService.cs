@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication
+namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+
+public interface IRoleManagementService
 {
-    public interface IRoleManagementService
-    {
-        Task AddNewRole(string roleName);
-        Task<bool> RoleExists(string roleName);
-    }
+    Task AddNewRole(string roleName);
+    Task<bool> RoleExists(string roleName);
 }

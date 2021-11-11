@@ -6,22 +6,21 @@ using Microsoft.EntityFrameworkCore;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests")]
 
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess
+namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+
+public class UsersContext : IdentityDbContext<UserAccount, ApplicationRole, string>
 {
-    public class UsersContext : IdentityDbContext<UserAccount, ApplicationRole, string>
+    public UsersContext(DbContextOptions<UsersContext> options)
+        : base(options)
     {
-        public UsersContext(DbContextOptions<UsersContext> options)
-            : base(options)
-        {
-        }
+    }
 
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserAccountEntityTypeConfiguration).Assembly);
-        }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserAccountEntityTypeConfiguration).Assembly);
     }
 }

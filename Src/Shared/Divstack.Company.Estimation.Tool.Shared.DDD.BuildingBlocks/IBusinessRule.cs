@@ -1,8 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+
+public interface IBusinessRule
 {
-    public interface IBusinessRule
-    {
-        string Message { get; }
-        bool IsBroken();
-    }
+    string Message { get; }
+    bool IsBroken();
 }

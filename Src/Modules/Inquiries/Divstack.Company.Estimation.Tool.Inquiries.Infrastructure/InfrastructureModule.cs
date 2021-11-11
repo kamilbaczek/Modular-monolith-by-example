@@ -10,24 +10,23 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Api")]
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure
+namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure;
+
+internal static class InfrastructureModule
 {
-    internal static class InfrastructureModule
+    internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        IConfiguration configuration)
     {
-        internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddPersistanceModule(configuration);
-            services.AddApplicationModule();
-            services.AddMediationModule();
-            services.AddEvents();
-            services.AddScoped<IInquiriesModule, InquiriesModule>();
+        services.AddPersistanceModule(configuration);
+        services.AddApplicationModule();
+        services.AddMediationModule();
+        services.AddEvents();
+        services.AddScoped<IInquiriesModule, InquiriesModule>();
 
-            return services;
-        }
+        return services;
+    }
 
-        internal static void UseInfrastructure(this IApplicationBuilder app)
-        {
-        }
+    internal static void UseInfrastructure(this IApplicationBuilder app)
+    {
     }
 }

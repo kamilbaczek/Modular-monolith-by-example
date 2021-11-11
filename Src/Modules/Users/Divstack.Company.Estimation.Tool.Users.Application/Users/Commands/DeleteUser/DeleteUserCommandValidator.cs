@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser
+namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser;
+
+public class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
 {
-    public class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
+    public DeleteUserCommandValidator()
     {
-        public DeleteUserCommandValidator()
-        {
-            RuleFor(v => v.PublicId).NotEmpty();
-        }
+        RuleFor(v => v.PublicId).NotEmpty();
     }
 }

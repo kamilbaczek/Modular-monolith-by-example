@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
+
+public sealed class CompleteCommandValidator : AbstractValidator<CompleteCommand>
 {
-    public sealed class CompleteCommandValidator : AbstractValidator<CompleteCommand>
+    public CompleteCommandValidator()
     {
-        public CompleteCommandValidator()
-        {
-            RuleFor(command => command.ValuationId).NotEmpty();
-        }
+        RuleFor(command => command.ValuationId).NotEmpty();
     }
 }

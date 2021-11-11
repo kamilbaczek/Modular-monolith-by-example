@@ -4,25 +4,24 @@ using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Sende
 using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount
+namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount;
+
+internal sealed class UserCreatedEventHandler : INotificationHandler<UserCreatedEvent>
 {
-    internal sealed class UserCreatedEventHandler : INotificationHandler<UserCreatedEvent>
+    private readonly IConfirmAccountMailSender _confirmAccountMailSender;
+
+    public UserCreatedEventHandler(IConfirmAccountMailSender confirmAccountMailSender)
     {
-        private readonly IConfirmAccountMailSender _confirmAccountMailSender;
+        _confirmAccountMailSender = confirmAccountMailSender;
+    }
 
-        public UserCreatedEventHandler(IConfirmAccountMailSender confirmAccountMailSender)
-        {
-            _confirmAccountMailSender = confirmAccountMailSender;
-        }
+    public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
+    {
+        _confirmAccountMailSender.Send(
+            notification.Email,
+            notification.ConfirmAccountToken,
+            notification.UserPublicId);
 
-        public Task Handle(UserCreatedEvent notification, CancellationToken cancellationToken)
-        {
-            _confirmAccountMailSender.Send(
-                notification.Email,
-                notification.ConfirmAccountToken,
-                notification.UserPublicId);
-
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

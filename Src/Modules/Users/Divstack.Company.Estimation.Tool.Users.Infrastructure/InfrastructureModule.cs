@@ -13,23 +13,22 @@ using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Users.Api")]
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure
-{
-    internal static class InfrastructureModule
-    {
-        internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddApplicationModule();
-            services.AddMediationModule();
-            services.AddJwtTokenAuthorizationModule(configuration);
-            services.AddPersistanceModule(configuration);
-            services.AddUserManagementModule();
-            services.AddIdentity();
-            services.AddScoped<IUserModule, UserModule>();
-            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+namespace Divstack.Company.Estimation.Tool.Users.Infrastructure;
 
-            return services;
-        }
+internal static class InfrastructureModule
+{
+    internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
+        IConfiguration configuration)
+    {
+        services.AddApplicationModule();
+        services.AddMediationModule();
+        services.AddJwtTokenAuthorizationModule(configuration);
+        services.AddPersistanceModule(configuration);
+        services.AddUserManagementModule();
+        services.AddIdentity();
+        services.AddScoped<IUserModule, UserModule>();
+        services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+
+        return services;
     }
 }

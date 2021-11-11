@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Exceptions;
+
+public sealed class InvalidServicesException : InvalidOperationException
 {
-    public sealed class InvalidServicesException : InvalidOperationException
+    public InvalidServicesException(IReadOnlyCollection<Guid> servicesIds) :
+        base($"Not all services exist: {string.Join(',', servicesIds)}")
     {
-        public InvalidServicesException(IReadOnlyCollection<Guid> servicesIds) :
-            base($"Not all services exist: {string.Join(',', servicesIds)}")
-        {
-        }
     }
 }

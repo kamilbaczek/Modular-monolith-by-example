@@ -1,8 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Configuration
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Configuration;
+
+internal interface IValuationCloseToDeadlineMailConfiguration
 {
-    internal interface IValuationCloseToDeadlineMailConfiguration
-    {
-        string Subject { get; }
-        string PathToTemplate { get; }
-    }
+    string Subject { get; }
+    string PathToTemplate { get; }
 }
