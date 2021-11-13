@@ -26,8 +26,9 @@ public sealed class Payment : Entity, IAggregateRoot
         return new Payment(valuationId, inquiryId, amountToPay);
     }
 
-    public void Pay()
+    public void Charge(IPaymentProccessor paymentPrccesor)
     {
+        paymentPrccesor.ChargeAccount();
         PaymentStatus = PaymentStatus.Payed;
     }
 }

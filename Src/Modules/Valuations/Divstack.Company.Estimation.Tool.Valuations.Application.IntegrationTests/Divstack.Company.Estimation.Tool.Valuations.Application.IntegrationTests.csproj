@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Divstack.Company.Estimation.Tool.Valuations.Application.Tests</RootNamespace>
     <UserSecretsId>2bd98ace-6527-48f9-b414-c7400358db12</UserSecretsId>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Faker.Net" Version="1.5.138"/>
     <PackageReference Include="FluentAssertions" Version="6.2.0"/>

@@ -1,7 +1,7 @@
 ﻿{
-  "ValuationProposalApprovedMailConfiguration": {
+  "PaymentInitializedMailConfiguration": {
     "Subject": "Divstack Estimation Tool Payment",
-    "ApprovedProposalLink": "http://localhost:8080/pay/{paymentId}",
+    "PaymentUrl": "http://localhost:8080/pay/{paymentId}",
     "PathToTemplate": "PaymentInitialized/Templates/payment_initialized.html"
   }
 }

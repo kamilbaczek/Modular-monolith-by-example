@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
 
 using Domain.Payments.Events;
-using Estimation.Payments.IntegrationEvents.External;
+using IntegrationsEvents.External;
 using Shared.DDD.BuildingBlocks;
 
 internal sealed class EventMapper : IEventMapper

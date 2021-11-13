@@ -8,14 +8,18 @@ using Events;
 using Mediation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using PaymentProcessors;
+using Persistance;
 
 internal static class InfrastructureModule
 {
     internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddStripe();
         services.AddApplicationModule();
         services.AddMediationModule();
+        services.AddPersistanceModule(configuration);
         services.AddEvents();
         services.AddScoped<IPaymentsModule, PaymentsModule>();
 

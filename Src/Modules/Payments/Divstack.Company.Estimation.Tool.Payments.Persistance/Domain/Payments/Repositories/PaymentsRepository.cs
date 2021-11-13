@@ -11,7 +11,7 @@ internal sealed class PaymentsRepository : IPaymentsRepository
 
         return Task.CompletedTask;
     }
-    public Task<Payment?> GetByIdAsync(PaymentId paymentId, CancellationToken cancellationToken = default)
+    public Task<Payment?> GetAsync(PaymentId paymentId, CancellationToken cancellationToken = default)
     {
         var payment = _payments.SingleOrDefault(payment => payment.PaymentId == paymentId);
         return Task.FromResult(payment);

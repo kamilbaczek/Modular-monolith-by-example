@@ -60,16 +60,15 @@ internal sealed class ValuationsController : BaseController
         var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationHistoryByIdQuery(id));
         return Ok(valuationHistoryVm);
     }
-
-
+    
     [HttpPatch]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [Route("valuations/complete")]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> Complete([FromBody] CompleteCommand suggestProposalCommand)
+    public async Task<ActionResult> Complete([FromBody] CompleteCommand completeCommand)
     {
-        await _valuationsModule.ExecuteCommandAsync(suggestProposalCommand);
+        await _valuationsModule.ExecuteCommandAsync(completeCommand);
         return Ok();
     }
 

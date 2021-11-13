@@ -3,6 +3,8 @@
 using Mapper;
 using Microsoft.Extensions.DependencyInjection;
 using Valuations.Application.Interfaces;
+using Valuations.Infrastructure.Events;
+using Valuations.Infrastructure.Events.Mapper;
 
 internal static class EventsModule
 {

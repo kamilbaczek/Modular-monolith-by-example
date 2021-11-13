@@ -29,13 +29,13 @@ public sealed class Valuation : Entity, IAggregateRoot
     }
 
     public ValuationId Id { get; init; }
-    private InquiryId InquiryId { get; }
-    private IList<Proposal> Proposals { get; }
-    private IList<HistoricalEntry> History { get; }
-    private DateTime RequestedDate { get; }
+    private InquiryId InquiryId { get;  init;}
+    private IList<Proposal> Proposals { get;  init;}
+    private IList<HistoricalEntry> History { get;  init;}
+    private DateTime RequestedDate { get;  init;}
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
-    private Deadline Deadline { get; }
+    private Deadline Deadline { get; init; }
     private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
 
     private Proposal ProposalWaitForDecision => NotCancelledProposals

@@ -1,19 +1,19 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Payments.PaymentInitialized;
 
-using Estimation.Payments.IntegrationEvents.External;
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 using MediatR;
 using Sender;
+using Tool.Payments.IntegrationsEvents.External;
 
 internal sealed class
-    PaymentInitializedEventEventHandler : INotificationHandler<PaymentInitialized>
+    PaymentInitializedEventHandler : INotificationHandler<PaymentInitialized>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentInitializedSender _paymentInitializedSender;
 
-    public PaymentInitializedEventEventHandler(IPaymentInitializedSender paymentInitializedSender,
+    public PaymentInitializedEventHandler(IPaymentInitializedSender paymentInitializedSender,
         IInquiriesModule inquiriesModule)
     {
         _paymentInitializedSender = paymentInitializedSender;
