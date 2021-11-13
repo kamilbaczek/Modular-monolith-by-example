@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events;
+using Mapper;
+using Microsoft.Extensions.DependencyInjection;
+using Valuations.Application.Interfaces;
 
 internal static class EventsModule
 {

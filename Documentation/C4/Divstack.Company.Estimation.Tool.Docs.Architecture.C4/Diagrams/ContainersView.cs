@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Helpers;
-using Structurizr;
-
-namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
 {
+    using Helpers;
+    using Structurizr;
+
     internal static class ContainersView
     {
         public static void ConfigureContainersView(this Workspace workspace, SoftwareSystem softwareSystem)

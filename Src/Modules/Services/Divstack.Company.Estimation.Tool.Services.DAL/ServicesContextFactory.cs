@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL;
 
-namespace Divstack.Company.Estimation.Tool.Services.DAL;
+using Microsoft.EntityFrameworkCore;
 
 internal sealed class ServicesContextFactory : DesignTimeDbContextFactoryBase<ServicesContext>
 {

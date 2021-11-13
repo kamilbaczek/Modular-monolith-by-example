@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Exceptions;
+using System;
 
 internal sealed class AttributeNotFoundException : InvalidOperationException
 {

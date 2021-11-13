@@ -7,7 +7,7 @@ public sealed class Payer : ValueObject
         PayerId = Guard.Against.Null(payerId, nameof(payerId));
     }
 
-    private PayerId PayerId { get; init; }
+    private PayerId PayerId { get; }
 
     public static Payer Of(Guid payerId)
     {

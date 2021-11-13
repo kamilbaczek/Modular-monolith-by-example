@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
+using FluentValidation;
 
 public sealed class MakeInquiryCommandValidator : AbstractValidator<MakeInquiryCommand>
 {

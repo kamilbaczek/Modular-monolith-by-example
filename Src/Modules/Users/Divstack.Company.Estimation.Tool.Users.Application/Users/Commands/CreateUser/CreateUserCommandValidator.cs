@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Common.Extensions.Validations;
-using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
+using Common.Extensions.Validations;
+using FluentValidation;
 
 public class CreateUserCommandValidator : AbstractValidator<CreateUserCommand>
 {

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events;
+using System.Collections.Generic;
+using Mapper;
+using MediatR;
+using Shared.DDD.BuildingBlocks;
+using Valuations.Application.Interfaces;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {

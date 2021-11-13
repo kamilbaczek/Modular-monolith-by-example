@@ -1,9 +1,9 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
+
+using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
 public sealed class InternalControllersFeatureProvider : ControllerFeatureProvider
 {

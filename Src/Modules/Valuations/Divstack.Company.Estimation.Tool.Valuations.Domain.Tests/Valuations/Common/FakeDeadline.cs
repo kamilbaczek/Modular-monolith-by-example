@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Moq;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
+using Domain.Valuations.Deadlines;
+using Moq;
 
 internal static class FakeDeadline
 {

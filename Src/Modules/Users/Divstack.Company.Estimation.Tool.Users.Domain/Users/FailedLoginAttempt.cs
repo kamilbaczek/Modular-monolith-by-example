@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
+using System;
 
 public sealed class FailedLoginAttempt
 {

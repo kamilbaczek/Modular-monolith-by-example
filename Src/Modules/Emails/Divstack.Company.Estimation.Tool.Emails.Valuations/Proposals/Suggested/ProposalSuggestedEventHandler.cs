@@ -1,13 +1,13 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
-using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested;
+using System.Threading;
+using System.Threading.Tasks;
+using Inquiries.Application.Common.Contracts;
+using Inquiries.Application.Inquiries.Queries.GetClient;
+using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
+using MediatR;
+using Sender;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggested>
 {

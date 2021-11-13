@@ -1,7 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
+using System.Threading;
+using System.Threading.Tasks;
 
 internal interface ITrelloTaskCreator
 {

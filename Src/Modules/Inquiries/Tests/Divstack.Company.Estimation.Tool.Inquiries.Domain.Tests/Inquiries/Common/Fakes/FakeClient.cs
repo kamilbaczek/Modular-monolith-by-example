@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries.Common.Fakes;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries.Common.Fakes;
+using Domain.Inquiries.Clients;
+using Shared.DDD.ValueObjects.Emails;
 
 internal static class FakeClient
 {

@@ -1,6 +1,6 @@
-﻿using Dapper;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Extensions;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Extensions;
+using Dapper;
 
 internal static class QueriesExtensions
 {

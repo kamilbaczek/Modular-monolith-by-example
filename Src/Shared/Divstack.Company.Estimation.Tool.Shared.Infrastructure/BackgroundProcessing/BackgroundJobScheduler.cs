@@ -1,13 +1,13 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
+using Abstractions.BackgroundProcessing;
 using Hangfire;
 using Hangfire.Common;
 using Hangfire.Storage.Monitoring;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
 
 internal sealed class BackgroundJobScheduler : IBackgroundJobScheduler
 {

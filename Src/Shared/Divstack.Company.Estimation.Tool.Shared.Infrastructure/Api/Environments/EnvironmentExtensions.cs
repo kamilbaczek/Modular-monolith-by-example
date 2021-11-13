@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Environments;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Environments;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 internal static class EnvironmentExtensions
 {

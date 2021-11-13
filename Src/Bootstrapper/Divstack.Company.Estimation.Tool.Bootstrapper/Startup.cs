@@ -1,15 +1,16 @@
-﻿using Divstack.Company.Estimation.Tool.Estimations.Api;
-using Divstack.Company.Estimation.Tool.Inquiries.Api;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Reminders;
-using Divstack.Company.Estimation.Tool.Services.Api;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
-using Divstack.Company.Estimation.Tool.Users.Api;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper;
+
+using Estimations.Api;
+using Inquiries.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-
-namespace Divstack.Company.Estimation.Tool.Bootstrapper;
+using Modules.Emails.Bootstrapper;
+using Payments.Api;
+using Reminders;
+using Services.Api;
+using Shared.Infrastructure.Api;
+using Users.Api;
 
 public sealed class Startup
 {
@@ -27,6 +28,7 @@ public sealed class Startup
         services.AddServicesModule(Configuration);
         services.AddInquiriesModule(Configuration);
         services.AddValuationsModule(Configuration);
+        services.AddPaymentsModule(Configuration);
         services.AddEmailsModule();
         services.AddRemindersModule();
     }

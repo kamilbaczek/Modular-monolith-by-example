@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
+
+using System;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
 
 internal static class SwaggerAuthorizationExtensions
 {
@@ -33,7 +33,10 @@ internal static class SwaggerAuthorizationExtensions
             {
                 new OpenApiSecurityScheme
                 {
-                    Reference = new OpenApiReference {Type = ReferenceType.SecurityScheme, Id = Bearer},
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme, Id = Bearer
+                    },
                     Scheme = Oauth2,
                     Name = Bearer,
                     In = ParameterLocation.Header

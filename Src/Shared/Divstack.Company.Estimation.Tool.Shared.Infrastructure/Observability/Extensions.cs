@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
+
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
 
 internal static class Extensions
 {

@@ -1,12 +1,12 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Api.Common.UserAccess;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Common.UserAccess;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Api;
+
+using Common.UserAccess;
+using Domain.Common.UserAccess;
+using Infrastructure;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 
 internal static class InquiriesModule
 {

@@ -1,17 +1,17 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Exceptions;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Exceptions;
-using Divstack.Company.Estimation.Tool.Services.Core.UserAccess;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+using Attributes.Dtos;
+using Attributes.PossibleValues.Dtos;
+using Categories;
+using Categories.Exceptions;
+using Dtos;
+using Exceptions;
+using UserAccess;
 
 internal sealed class ServicesService : IServicesService
 {

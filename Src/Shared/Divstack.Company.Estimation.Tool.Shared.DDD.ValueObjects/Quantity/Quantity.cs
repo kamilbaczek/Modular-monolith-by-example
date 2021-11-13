@@ -1,6 +1,6 @@
-﻿using ValueOf;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity;
+using ValueOf;
 
 public class Quantity : ValueOf<long, Quantity>
 {

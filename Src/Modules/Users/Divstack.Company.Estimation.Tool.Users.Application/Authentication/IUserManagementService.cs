@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication.DTOs;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser.Requests;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetAllUsers;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+using DTOs;
+using Users.Commands.CreateUser.Requests;
+using Users.Queries.GetAllUsers;
 
 public interface IUserManagementService
 {

@@ -1,12 +1,12 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get.Dtos;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers;
+
+using Application.Inquiries.Commands.Make;
+using Application.Inquiries.Queries.Get;
+using Application.Inquiries.Queries.Get.Dtos;
+using Application.Inquiries.Queries.GetAll;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers;
 
 internal sealed class InquiriesController : BaseController
 {

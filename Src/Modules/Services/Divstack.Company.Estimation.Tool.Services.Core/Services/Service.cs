@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Exceptions;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
-using Divstack.Company.Estimation.Tool.Services.Core.UserAccess;
-using Attribute = Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Attribute;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services;
+using Attributes.Exceptions;
+using Categories;
+using UserAccess;
+using Attribute = Attributes.Attribute;
 
 public sealed class Service
 {

@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Microsoft.AspNetCore.Mvc;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.ExchangeRefreshToken;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.ExchangeRefreshToken;
+using Contracts;
+using Microsoft.AspNetCore.Mvc;
 
 public class ExchangeRefreshTokenCommand : ICommand<ActionResult<ExchangeRefreshTokenResponse>>
 {

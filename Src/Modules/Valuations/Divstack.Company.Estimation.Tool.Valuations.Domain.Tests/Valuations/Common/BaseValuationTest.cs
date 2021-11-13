@@ -1,10 +1,10 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
+using Domain.Valuations;
+using Domain.Valuations.Proposals;
+using Domain.Valuations.Proposals.Events;
+using Shared.DDD.BuildingBlocks;
+using Shared.DDD.ValueObjects;
 
 public abstract class BaseValuationTest : BaseTest
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
+using System;
 
 public class SignInCommandResponse
 {

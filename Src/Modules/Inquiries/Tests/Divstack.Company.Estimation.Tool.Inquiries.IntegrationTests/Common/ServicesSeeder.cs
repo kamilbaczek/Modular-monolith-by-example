@@ -1,13 +1,13 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Common;
+
+using System;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
 using Faker;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Common;
+using Services.Core.Services.Categories.Dtos;
+using Services.Core.Services.Categories.Services;
+using Services.Core.Services.Dtos;
+using Services.Core.Services.Services;
 
 public static class ServicesSeeder
 {
@@ -36,7 +36,10 @@ public static class ServicesSeeder
     private static async Task<Guid> SeedCategory(IServiceScope serviceScope, string categoryName)
     {
         var categoriesService = serviceScope.ServiceProvider.GetRequiredService<ICategoriesService>();
-        var createCategoryRequest = new CreateCategoryRequest {Description = categoryName, Name = Lorem.Sentence()};
+        var createCategoryRequest = new CreateCategoryRequest
+        {
+            Description = categoryName, Name = Lorem.Sentence()
+        };
         var category = await categoriesService.CreateAsync(createCategoryRequest);
         return category;
     }

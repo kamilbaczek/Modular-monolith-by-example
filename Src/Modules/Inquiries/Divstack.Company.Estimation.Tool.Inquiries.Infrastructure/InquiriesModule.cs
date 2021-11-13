@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure;
+using Application.Common.Contracts;
+using MediatR;
 
 internal sealed class InquiriesModule : IInquiriesModule
 {

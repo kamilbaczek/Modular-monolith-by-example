@@ -1,18 +1,20 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Errors;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Errors;
+using Microsoft.AspNetCore.Identity;
 
 public class CustomIdentityErrorDescriber : IdentityErrorDescriber
 {
     public static IdentityError PasswordRepeated =>
         new()
         {
-            Code = nameof(IndentityErrorsCodes.PasswordRepeated),
-            Description = "You can't use a password you have used before."
+            Code = nameof(IndentityErrorsCodes.PasswordRepeated), Description = "You can't use a password you have used before."
         };
 
     public static IdentityError TokenExpired =>
-        new() {Code = nameof(IndentityErrorsCodes.TokenExpired), Description = "Token expired."};
+        new()
+        {
+            Code = nameof(IndentityErrorsCodes.TokenExpired), Description = "Token expired."
+        };
 
     public override IdentityError DuplicateEmail(string email)
     {
@@ -26,8 +28,7 @@ public class CustomIdentityErrorDescriber : IdentityErrorDescriber
     {
         return new IdentityError
         {
-            Code = IndentityErrorsCodes.UsernameAlreadyTaken,
-            Description = $"Username '{userName}' is already taken."
+            Code = IndentityErrorsCodes.UsernameAlreadyTaken, Description = $"Username '{userName}' is already taken."
         };
     }
 }

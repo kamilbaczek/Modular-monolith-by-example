@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 internal sealed class MailConfiguration : ConfigurationBase, IMailConfiguration
 {

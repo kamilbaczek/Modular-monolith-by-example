@@ -1,17 +1,17 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Domain;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users.Interfaces;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Errors;
+using Application.Authentication;
+using Domain;
+using Domain.Users;
+using Domain.Users.Interfaces;
+using Errors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
 
 public sealed class ApplicationUserManager : UserManager<UserAccount>
 {

@@ -1,9 +1,9 @@
-﻿using System.Data;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Interfaces;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+
+using System.Data;
+using Application.Common.Interfaces;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
 internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 {

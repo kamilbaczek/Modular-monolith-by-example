@@ -1,18 +1,18 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers;
+
+using System;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.Controllers;
-using Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Errors;
-using Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Users;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetAllUsers;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser;
+using Application.Contracts;
+using Application.Users.Commands.ChangeUserPassword;
+using Application.Users.Commands.CreateUser;
+using Application.Users.Commands.DeleteUser;
+using Application.Users.Queries.GetAllUsers;
+using Application.Users.Queries.GetUser;
+using Common.Controllers;
+using Common.DTO.Errors;
+using Common.DTO.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers;
 
 internal sealed class UsersController : BaseController
 {
@@ -28,7 +28,10 @@ internal sealed class UsersController : BaseController
     {
         var usersList = await _userModule.ExecuteQueryAsync(new GetAllUsersQuery());
 
-        return new GetAllUsersResponse {UserListVm = usersList};
+        return new GetAllUsersResponse
+        {
+            UserListVm = usersList
+        };
     }
 
     [HttpGet("{id}", Name = "GetUserById")]
@@ -36,7 +39,10 @@ internal sealed class UsersController : BaseController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<UserDetailVm>> Get(Guid id)
     {
-        var query = new GetUserDetailQuery {PublicId = id};
+        var query = new GetUserDetailQuery
+        {
+            PublicId = id
+        };
         return Ok(await _userModule.ExecuteQueryAsync(query));
     }
 

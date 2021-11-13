@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
+using Microsoft.AspNetCore.Builder;
 
 internal static class ExceptionHandlerMiddlewareExtensions
 {

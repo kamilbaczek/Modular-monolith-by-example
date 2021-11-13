@@ -1,7 +1,7 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using System.Threading;
+using System.Threading.Tasks;
 
 public interface IValuationsRepository
 {

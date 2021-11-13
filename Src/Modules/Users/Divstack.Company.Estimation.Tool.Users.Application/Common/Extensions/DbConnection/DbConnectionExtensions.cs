@@ -1,9 +1,9 @@
-﻿using System.Data;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Common.Extensions.DbConnection;
+
+using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Common.Extensions.DbConnection;
 
 internal static class DbConnectionExtensions
 {

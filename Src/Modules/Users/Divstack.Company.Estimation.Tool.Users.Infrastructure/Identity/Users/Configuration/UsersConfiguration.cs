@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users.Interfaces;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
+using Domain.Users.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 internal class UsersConfiguration : ConfigurationBase, IUsersConfiguration
 {

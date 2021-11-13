@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
+using FluentValidation;
 
 public sealed class SignInCommandValidator : AbstractValidator<SignInCommand>
 {

@@ -1,23 +1,23 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests;
+
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Common.UserAccess;
-using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
-using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+using Application.Common.Contracts;
+using Bootstrapper;
+using Domain.Common.UserAccess;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using NUnit.Framework;
+using Persistance.DataAccess;
 using Respawn;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests;
+using Shared.IntegrationTesting;
+using Users.Infrastructure.Identity.Users.Seeder;
+using Users.Persistance.DataAccess;
 
 [SetUpFixture]
 [TestFixture]
@@ -39,7 +39,14 @@ public class InquiriesTesting
         _serviceScopeFactory = services.BuildServiceProvider()
             .GetService<IServiceScopeFactory>();
 
-        _checkpoint = new RespawnMySql {TablesToIgnore = new[] {IgnoredTable}, DbAdapter = DbAdapter.MySql};
+        _checkpoint = new RespawnMySql
+        {
+            TablesToIgnore = new[]
+            {
+                IgnoredTable
+            },
+            DbAdapter = DbAdapter.MySql
+        };
 
         await EnsureDatabase();
     }

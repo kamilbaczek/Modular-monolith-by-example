@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using System;
 
 public sealed class InvalidEmailFormatException : InvalidOperationException
 {

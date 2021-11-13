@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
+using System;
 
 public interface ICurrentUserService
 {

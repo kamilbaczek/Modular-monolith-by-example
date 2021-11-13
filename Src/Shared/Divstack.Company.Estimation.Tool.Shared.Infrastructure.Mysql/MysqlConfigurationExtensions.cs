@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 public static class MysqlConfigurationExtensions
 {

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUsersEmails;
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
+using Authentication;
+using GetUserEmail;
 using MediatR;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUsersEmails;
 
 internal sealed class GetUsersEmailsQueryHandler : IRequestHandler<GetUsersEmailsQuery, IReadOnlyList<string>>
 {

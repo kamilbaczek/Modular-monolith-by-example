@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Domain;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain;
+using System;
 
 public interface IDateTimeProvider
 {

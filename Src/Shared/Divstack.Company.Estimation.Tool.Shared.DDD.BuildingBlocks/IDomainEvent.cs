@@ -1,7 +1,7 @@
-﻿using System;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using System;
+using MediatR;
 
 public interface IDomainEvent : INotification
 {

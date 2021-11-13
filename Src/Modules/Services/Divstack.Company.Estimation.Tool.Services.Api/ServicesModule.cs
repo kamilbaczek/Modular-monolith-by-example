@@ -1,13 +1,14 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Services.Api.UserAccess;
-using Divstack.Company.Estimation.Tool.Services.Core.UserAccess;
-using Divstack.Company.Estimation.Tool.Services.DAL;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
 namespace Divstack.Company.Estimation.Tool.Services.Api;
+
+using Core.UserAccess;
+using DAL;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using UserAccess;
 
 public static class ServicesModule
 {

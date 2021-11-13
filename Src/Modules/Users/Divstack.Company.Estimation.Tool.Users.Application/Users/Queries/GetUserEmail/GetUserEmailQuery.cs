@@ -1,7 +1,7 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
+using System;
+using Contracts;
 
 public sealed class GetUserEmailQuery : IQuery<string>
 {

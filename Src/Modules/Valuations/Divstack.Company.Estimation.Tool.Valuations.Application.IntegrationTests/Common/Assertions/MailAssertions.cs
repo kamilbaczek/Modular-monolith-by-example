@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Assertions;
+
+using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using netDumbster.smtp;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Assertions;
 
 internal static class MailAssertions
 {

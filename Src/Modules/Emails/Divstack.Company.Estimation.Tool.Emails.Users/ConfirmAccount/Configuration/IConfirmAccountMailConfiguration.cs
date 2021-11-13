@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ConfirmAccount.Configuration;
 
 internal interface IConfirmAccountMailConfiguration
 {

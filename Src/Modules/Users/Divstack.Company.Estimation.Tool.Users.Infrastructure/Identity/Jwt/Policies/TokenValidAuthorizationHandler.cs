@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
-using Microsoft.AspNetCore.Authorization;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Policies;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Policies;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using RefreshTokens;
 
 public class TokenValidAuthorizationHandler : AuthorizationHandler<TokenValidRequirement>
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using System;
 
 /// <summary>
 ///     Used for getting DateTime.Now(), time is changeable for unit testing

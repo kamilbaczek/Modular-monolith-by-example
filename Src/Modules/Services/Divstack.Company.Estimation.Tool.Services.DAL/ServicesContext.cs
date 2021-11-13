@@ -1,9 +1,9 @@
-﻿using Divstack.Company.Estimation.Tool.Services.Core.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
-using Divstack.Company.Estimation.Tool.Services.DAL.Services;
-using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL;
 
-namespace Divstack.Company.Estimation.Tool.Services.DAL;
+using Core.Services;
+using Core.Services.Categories;
+using Microsoft.EntityFrameworkCore;
+using Services;
 
 public sealed class ServicesContext : DbContext
 {

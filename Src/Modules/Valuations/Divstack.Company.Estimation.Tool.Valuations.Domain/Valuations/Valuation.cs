@@ -1,16 +1,16 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Deadlines;
+using Events;
+using Exceptions;
+using History;
+using Proposals;
+using Proposals.Events;
+using Shared.DDD.BuildingBlocks;
+using Shared.DDD.ValueObjects;
 
 public sealed class Valuation : Entity, IAggregateRoot
 {
@@ -113,7 +113,7 @@ public sealed class Valuation : Entity, IAggregateRoot
         var proposal = GetProposal(proposalId);
         proposal.Cancel(employeeId);
         ChangeStatus(ValuationStatus.WaitForProposal);
-       
+
         var @event = new ProposalCancelledDomainEvent(employeeId, proposalId, Id);
         AddDomainEvent(@event);
     }
@@ -139,7 +139,7 @@ public sealed class Valuation : Entity, IAggregateRoot
         CompletedDate = SystemTime.Now();
         ChangeStatus(ValuationStatus.Completed);
         var recentProposal = Proposals.First();
-       
+
         var @event = new ValuationCompletedDomainEvent(InquiryId, Id, recentProposal.Price);
         AddDomainEvent(@event);
     }

@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 internal class AdminAccountConfiguration : ConfigurationBase, IAdminAccountConfiguration
 {

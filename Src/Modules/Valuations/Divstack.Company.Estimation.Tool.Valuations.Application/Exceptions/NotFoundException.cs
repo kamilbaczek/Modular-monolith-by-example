@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
+using System;
 
 public sealed class NotFoundException : InvalidOperationException
 {

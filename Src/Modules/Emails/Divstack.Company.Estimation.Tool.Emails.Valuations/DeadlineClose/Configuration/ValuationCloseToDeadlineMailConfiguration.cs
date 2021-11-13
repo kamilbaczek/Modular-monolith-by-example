@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Configuration;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 internal class ValuationCloseToDeadlineMailConfiguration : ConfigurationBase,
     IValuationCloseToDeadlineMailConfiguration

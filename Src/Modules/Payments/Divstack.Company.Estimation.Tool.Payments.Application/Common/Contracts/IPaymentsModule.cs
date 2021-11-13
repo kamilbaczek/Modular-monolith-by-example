@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Divstack.Company.Estimation.Tool.Payments.Application.Common.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Common.Contracts;
 
 public interface IPaymentsModule
 {

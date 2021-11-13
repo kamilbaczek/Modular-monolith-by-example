@@ -1,9 +1,9 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services;
 
 public interface IServicesRepository
 {

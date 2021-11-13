@@ -1,8 +1,8 @@
-﻿using System;
-using System.Net.Mail;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+using System;
+using System.Net.Mail;
+using BuildingBlocks;
 
 public sealed class Email : ValueObject
 {

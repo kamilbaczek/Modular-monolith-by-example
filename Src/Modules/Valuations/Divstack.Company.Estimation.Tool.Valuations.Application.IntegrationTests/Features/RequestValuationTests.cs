@@ -1,13 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features;
+
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 using FluentAssertions;
+using Inquiries.IntegrationsEvents.External;
 using NUnit.Framework;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features;
-
+using Valuations.Queries.GetAll;
 using static ValuationsTesting;
 
 public class RequestValuationTests : ValuationsTestBase

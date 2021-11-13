@@ -1,11 +1,11 @@
-﻿using System;
-using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Exceptions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+using System;
+using Ardalis.GuardClauses;
+using Exceptions;
+using Shared.DDD.BuildingBlocks;
+using Shared.DDD.ValueObjects;
+using Valuations.Exceptions;
 
 public sealed class Proposal : Entity
 {

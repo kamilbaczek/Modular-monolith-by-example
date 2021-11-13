@@ -1,14 +1,14 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
+
+using System;
+using Assertions;
+using Common;
+using Domain.Valuations;
+using Domain.Valuations.Exceptions;
+using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
+using Shared.DDD.ValueObjects;
 
 public class SuggestProposalTests : BaseValuationTest
 {

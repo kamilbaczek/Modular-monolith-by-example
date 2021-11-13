@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
+using Shared.DDD.BuildingBlocks;
 
 public interface IEventMapper
 {

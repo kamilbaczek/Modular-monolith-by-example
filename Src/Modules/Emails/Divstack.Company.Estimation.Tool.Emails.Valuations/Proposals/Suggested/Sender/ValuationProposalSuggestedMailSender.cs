@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using System.Web;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
+using System.Threading.Tasks;
+using System.Web;
+using Configuration;
+using Modules.Emails.Core.Sender.Contracts;
+using Modules.Emails.Core.Sender.TemplateReader;
 
 internal sealed class ValuationProposalSuggestedMailSender : IValuationProposalSuggestedMailSender
 {

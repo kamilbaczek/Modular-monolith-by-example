@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration;
+using Microsoft.Extensions.Configuration;
+using Tool.Valuations.Domain.Valuations;
 
 internal sealed class DeadlinesCloseReminderConfiguration : IDeadlinesCloseReminderConfiguration
 {

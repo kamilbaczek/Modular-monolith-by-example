@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
+
+using System.Threading.Tasks;
 using MySqlConnector;
 using Respawn;
-
-namespace Divstack.Company.Estimation.Tool.Shared.IntegrationTesting;
 
 public sealed class RespawnMySql : Checkpoint
 {

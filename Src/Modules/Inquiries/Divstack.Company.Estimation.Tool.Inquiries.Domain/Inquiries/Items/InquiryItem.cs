@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
+using Services;
 
 public sealed class InquiryItem : Entity
 {

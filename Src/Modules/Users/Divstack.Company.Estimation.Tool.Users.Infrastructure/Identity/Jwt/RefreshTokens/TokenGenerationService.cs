@@ -1,15 +1,15 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication.DTOs;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Configuration;
+using Application.Authentication;
+using Application.Authentication.DTOs;
+using Configuration;
 using Microsoft.IdentityModel.Tokens;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
 
 public class TokenGenerationService : ITokenGenerationService
 {

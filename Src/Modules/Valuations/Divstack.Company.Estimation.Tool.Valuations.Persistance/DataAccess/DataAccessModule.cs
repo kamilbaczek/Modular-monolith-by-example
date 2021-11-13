@@ -1,9 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 
 internal static class DataAccessModule
 {

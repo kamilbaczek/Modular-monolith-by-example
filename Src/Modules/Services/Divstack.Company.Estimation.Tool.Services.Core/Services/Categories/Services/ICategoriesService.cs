@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
+using Dtos;
 
 public interface ICategoriesService
 {

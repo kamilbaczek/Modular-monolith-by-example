@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class RepositoriesModule
 {

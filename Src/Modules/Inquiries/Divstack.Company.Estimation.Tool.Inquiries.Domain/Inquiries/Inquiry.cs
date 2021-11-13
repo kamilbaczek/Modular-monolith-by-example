@@ -1,11 +1,11 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Exceptions;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
+using Clients;
+using Events;
+using Exceptions;
+using Items;
+using Items.Services;
+using Services.Core.Services.Contracts;
 
 public sealed class Inquiry : Entity, IAggregateRoot
 {

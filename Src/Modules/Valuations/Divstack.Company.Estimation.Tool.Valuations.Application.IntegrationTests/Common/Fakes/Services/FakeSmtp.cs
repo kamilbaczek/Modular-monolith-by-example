@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes.Services;
+
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using netDumbster.smtp;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes.Services;
 
 internal static class FakeSmtp
 {

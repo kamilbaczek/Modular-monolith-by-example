@@ -1,10 +1,10 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+using System;
+using Shared.DDD.BuildingBlocks;
 
 public record ValuationCompleted(
     Guid InquiryId,
     Guid ValuationId,
-    decimal? Value,
-    string Currency) : IntegrationEvent;
+    decimal? AmountToPayValue,
+    string AmountToPayCurrency) : IntegrationEvent;

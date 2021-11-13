@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Api.UserAccess;
+
+using System;
 using System.Linq;
 using System.Security.Claims;
-using Divstack.Company.Estimation.Tool.Services.Core.UserAccess;
+using Core.UserAccess;
 using Microsoft.AspNetCore.Http;
-
-namespace Divstack.Company.Estimation.Tool.Services.Api.UserAccess;
 
 internal sealed class CurrentUserService : ICurrentUserService
 {

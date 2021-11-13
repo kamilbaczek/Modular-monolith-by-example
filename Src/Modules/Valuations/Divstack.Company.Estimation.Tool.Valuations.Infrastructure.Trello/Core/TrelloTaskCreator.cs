@@ -1,11 +1,11 @@
-﻿using System.Linq;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
+
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Configuration;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Exceptions;
+using Configuration;
+using Exceptions;
 using Manatee.Trello;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
 
 internal sealed class TrelloTaskCreator : ITrelloTaskCreator
 {

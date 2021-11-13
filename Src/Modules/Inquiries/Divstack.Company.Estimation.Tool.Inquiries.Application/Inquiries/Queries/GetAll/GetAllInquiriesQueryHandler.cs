@@ -1,7 +1,7 @@
-﻿using Dapper;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
+using Dapper;
+using MediatR;
 
 internal sealed class GetAllInquiriesQueryHandler : IRequestHandler<GetAllInquiriesQuery, InquiryListVm>
 {

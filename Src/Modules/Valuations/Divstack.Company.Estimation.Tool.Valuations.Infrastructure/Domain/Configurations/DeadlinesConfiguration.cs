@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Configurations;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Configurations;
+using Microsoft.Extensions.Configuration;
+using Valuations.Domain.Valuations;
+using Valuations.Domain.Valuations.Deadlines;
 
 internal sealed class DeadlinesConfiguration : IDeadlinesConfiguration
 {

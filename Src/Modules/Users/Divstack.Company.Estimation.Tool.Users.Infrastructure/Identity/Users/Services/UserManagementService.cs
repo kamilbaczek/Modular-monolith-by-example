@@ -1,19 +1,19 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication.DTOs;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser.Requests;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetAllUsers;
-using Divstack.Company.Estimation.Tool.Users.Domain;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Errors;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Exceptions;
+using Application.Authentication;
+using Application.Authentication.DTOs;
+using Application.Users.Commands.CreateUser.Requests;
+using Application.Users.Queries.GetAllUsers;
+using Domain;
+using Domain.Users;
+using Errors;
+using Exceptions;
 using Microsoft.EntityFrameworkCore;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
 
 internal sealed class UserManagementService : IUserManagementService
 {

@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
-using Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
-using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+using Domain.Inquiries;
+using Inquiries.Domain.Inquiries;
+using Microsoft.EntityFrameworkCore;
 
 public sealed class InquiriesContext : DbContext
 {

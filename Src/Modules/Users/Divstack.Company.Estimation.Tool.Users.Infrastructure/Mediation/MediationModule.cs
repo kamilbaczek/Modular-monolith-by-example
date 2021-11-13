@@ -1,9 +1,9 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Mediation;
+
+using Application;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Mediation;
 
 internal static class MediationModule
 {

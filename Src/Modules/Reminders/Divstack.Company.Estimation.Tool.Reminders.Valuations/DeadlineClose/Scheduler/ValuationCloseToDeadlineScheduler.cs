@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
-using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
-namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
+using System.Threading;
+using System.Threading.Tasks;
+using Configuration;
+using MediatR;
+using Reminder;
+using Shared.Abstractions.BackgroundProcessing;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<ValuationRequested>
 {

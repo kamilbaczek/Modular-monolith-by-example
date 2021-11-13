@@ -1,12 +1,12 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
+using Domain.Inquiries;
+using Domain.Inquiries.Clients;
+using Domain.Inquiries.Items.Services;
+using Dtos;
+using MediatR;
+using Services.Core.Services.Contracts;
+using Shared.DDD.ValueObjects.Emails;
 
 internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCommand, Guid>
 {

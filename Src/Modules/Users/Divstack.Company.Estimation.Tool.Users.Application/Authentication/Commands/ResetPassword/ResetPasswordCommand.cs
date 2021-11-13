@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ResetPassword;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+using Contracts;
 using MediatR;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ResetPassword;
 
 public sealed class ResetPasswordCommand : ICommand
 {

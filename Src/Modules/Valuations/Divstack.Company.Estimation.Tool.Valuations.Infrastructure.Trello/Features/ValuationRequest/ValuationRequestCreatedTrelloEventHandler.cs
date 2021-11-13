@@ -1,14 +1,14 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Features.ValuationRequest;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Constants;
-using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+using Core;
+using Core.Constants;
+using IntegrationsEvents.ExternalEvents;
 using MediatR;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Features.ValuationRequest;
+using Services.Core.Services.Services;
 
 internal sealed class ValuationRequestCreatedTrelloEventHandler : INotificationHandler<ValuationRequested>
 {

@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services;
+using Core.Services;
 using Microsoft.EntityFrameworkCore;
-
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Services;
 
 internal sealed class ServicesRepository : IServicesRepository
 {

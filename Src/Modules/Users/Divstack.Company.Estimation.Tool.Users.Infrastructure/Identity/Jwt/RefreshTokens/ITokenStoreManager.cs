@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+using System.Threading.Tasks;
 
 public interface ITokenStoreManager
 {

@@ -1,15 +1,16 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Extensions;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Features.ValuationRequest;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello;
+
+using System.Reflection;
+using Core;
+using Extensions;
+using Features.ValuationRequest;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class TrelloModule
 {

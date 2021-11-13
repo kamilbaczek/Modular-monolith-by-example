@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+
+using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Domain;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Configuration;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+using Application.Authentication;
+using Configuration;
+using Domain;
+using Domain.Users;
 
 internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationService
 {
@@ -56,9 +56,7 @@ internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationSer
     {
         var refreshToken = new RefreshToken
         {
-            Token = refreshTokenString,
-            UserPublicId = userPublicId,
-            ExpiryDate = _dateTimeProvider.Now.AddMinutes(_tokenConfiguration.RefreshExpirationInMinutes)
+            Token = refreshTokenString, UserPublicId = userPublicId, ExpiryDate = _dateTimeProvider.Now.AddMinutes(_tokenConfiguration.RefreshExpirationInMinutes)
         };
         await _refreshTokenRepository.AddAsync(refreshToken);
     }

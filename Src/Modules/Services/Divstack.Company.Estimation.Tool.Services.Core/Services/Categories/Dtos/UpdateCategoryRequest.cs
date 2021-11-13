@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
+using System;
 
 public sealed class UpdateCategoryRequest
 {

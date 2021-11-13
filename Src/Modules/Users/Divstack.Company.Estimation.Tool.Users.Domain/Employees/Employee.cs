@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Domain.Employees;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain.Employees;
+using System;
 
 internal sealed class Employee
 {

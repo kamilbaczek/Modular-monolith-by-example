@@ -1,7 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
-using Attribute = Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes.Attribute;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
+using Attributes;
 
 public sealed class Service : Entity
 {

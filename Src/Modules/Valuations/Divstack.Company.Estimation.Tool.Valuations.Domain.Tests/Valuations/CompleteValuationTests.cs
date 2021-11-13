@@ -1,11 +1,11 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
-using NUnit.Framework;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations;
+using System;
+using Assertions;
+using Common;
+using Domain.Valuations;
+using Domain.Valuations.Events;
+using NUnit.Framework;
 
 public class CompleteValuationTests : BaseValuationTest
 {

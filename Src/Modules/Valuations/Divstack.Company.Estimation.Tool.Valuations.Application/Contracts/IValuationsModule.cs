@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
+using System.Threading.Tasks;
 
 public interface IValuationsModule
 {

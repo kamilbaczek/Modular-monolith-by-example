@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer;
+
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer.Dtos.ClientProfile;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer;
+using Dtos.ClientProfile;
 
 internal sealed class CompanyFinderHttpClient : ICompanyFinderHttpClient
 {
@@ -28,7 +28,10 @@ internal sealed class CompanyFinderHttpClient : ICompanyFinderHttpClient
         // var clientProfile = await GetClientProfile(profileRequestAsJson);
 
         var mockedClientJob = new CurrentJobDto("Test Company inc", "150-10");
-        var mockedClientProfile = new ClientProfileDto(new List<CurrentJobDto> {mockedClientJob});
+        var mockedClientProfile = new ClientProfileDto(new List<CurrentJobDto>
+        {
+            mockedClientJob
+        });
 
         return await Task.FromResult(mockedClientProfile);
     }

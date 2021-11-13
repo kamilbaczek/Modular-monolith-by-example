@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+using Application.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 internal static class DataAccessModule
 {

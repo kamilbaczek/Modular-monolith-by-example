@@ -1,11 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Configuration;
+using Configuration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Distributed;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
 
 public class TokenStoreManager : ITokenStoreManager
 {

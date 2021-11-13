@@ -1,10 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Sender;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ConfirmAccount;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
+using Sender;
+using Tool.Users.Application.Users.Commands.CreateUser;
 
 internal sealed class UserCreatedEventHandler : INotificationHandler<UserCreatedEvent>
 {

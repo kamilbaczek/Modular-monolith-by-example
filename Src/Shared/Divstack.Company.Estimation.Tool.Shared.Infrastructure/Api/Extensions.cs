@@ -1,16 +1,17 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
+
+using BackgroundProcessing;
+using Errors.Middleware;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Observability;
+using Swagger;
 
 internal static class Extensions
 {

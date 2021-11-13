@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.PasswordExpired.Configuration;
 
 internal interface IPasswordExpiredMailConfiguration
 {

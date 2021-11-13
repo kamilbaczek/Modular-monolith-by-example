@@ -1,11 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
+
+using System;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+using Core.Services.Attributes.Dtos;
+using Core.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
 internal sealed class AttributesController : BaseController
 {
@@ -31,7 +31,10 @@ internal sealed class AttributesController : BaseController
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> RemoveAttribute(Guid serviceId, Guid attributeId)
     {
-        var removeAttributeRequest = new RemoveAttributeRequest {ServiceId = serviceId, AttributeId = attributeId};
+        var removeAttributeRequest = new RemoveAttributeRequest
+        {
+            ServiceId = serviceId, AttributeId = attributeId
+        };
         await _servicesService.RemoveAttributeAsync(removeAttributeRequest);
 
         return NoContent();

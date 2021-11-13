@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Payments.Application;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Mediation;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Mediation;
+using Application;
+using MediatR;
 
 internal static class MediationModule
 {
@@ -9,7 +9,10 @@ internal static class MediationModule
     {
         var commandsHandlersAssembly = typeof(ApplicationModule).Assembly;
         // var queryHandlersAssembly = typeof(PersistanceModule).Assembly;
-        var cqsAssemblies = new[] {commandsHandlersAssembly};
+        var cqsAssemblies = new[]
+        {
+            commandsHandlersAssembly
+        };
 
         services.AddMediatR(cqsAssemblies);
 

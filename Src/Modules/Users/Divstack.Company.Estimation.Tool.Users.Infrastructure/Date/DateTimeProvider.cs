@@ -1,8 +1,8 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Users.Domain;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Date;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Date;
+using System;
+using Domain;
+using Microsoft.Extensions.Configuration;
 
 internal sealed class DateTimeProvider : IDateTimeProvider
 {

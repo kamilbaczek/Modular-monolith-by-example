@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.ExchangeRefreshToken;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.ExchangeRefreshToken;
+using FluentValidation;
 
 public class ExchangeRefreshTokenCommandValidator : AbstractValidator<ExchangeRefreshTokenCommand>
 {

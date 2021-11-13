@@ -1,13 +1,13 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+
+using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Domain;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+using Application.Authentication;
+using Domain;
+using Domain.Users;
+using Jwt.RefreshTokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
 
 internal class SignInManagementService : ISignInManagementService
 {

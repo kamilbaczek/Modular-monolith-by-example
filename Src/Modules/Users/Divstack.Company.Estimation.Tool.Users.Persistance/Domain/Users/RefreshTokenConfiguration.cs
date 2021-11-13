@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Domain.Users;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
+using Tool.Users.Domain.Users;
 
 internal class RefreshTokenConfiguration : IEntityTypeConfiguration<RefreshToken>
 {

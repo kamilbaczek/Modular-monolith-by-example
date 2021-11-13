@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using System;
 
 public class BusinessRuleValidationException : Exception
 {

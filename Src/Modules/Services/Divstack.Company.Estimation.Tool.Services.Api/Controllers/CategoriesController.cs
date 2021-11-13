@@ -1,13 +1,13 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
+
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
+using Core.Services.Categories.Dtos;
+using Core.Services.Categories.Services;
+using Core.Services.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
 internal sealed class CategoriesController : BaseController
 {

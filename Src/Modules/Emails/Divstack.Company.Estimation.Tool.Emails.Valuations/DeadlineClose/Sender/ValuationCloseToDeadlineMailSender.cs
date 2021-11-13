@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Sender;
+using Configuration;
+using Modules.Emails.Core.Sender.Contracts;
+using Modules.Emails.Core.Sender.TemplateReader;
 
 internal sealed class ValuationCloseToDeadlineMailSender : IValuationCloseToDeadlineMailSender
 {

@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
+using Mapper;
 
 internal static class EventsModule
 {

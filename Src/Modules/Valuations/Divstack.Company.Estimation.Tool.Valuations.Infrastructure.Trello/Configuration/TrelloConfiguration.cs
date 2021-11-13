@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Configuration;
+using Microsoft.Extensions.Configuration;
 
 internal sealed class TrelloConfiguration : ITrelloConfiguration
 {

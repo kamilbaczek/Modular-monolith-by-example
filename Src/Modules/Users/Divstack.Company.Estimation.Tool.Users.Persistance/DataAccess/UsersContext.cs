@@ -1,12 +1,13 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Shared.Testing.IntegrationTests")]
 
 namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+
+using Domain.Users;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Users.Domain.Users;
 
 public class UsersContext : IdentityDbContext<UserAccount, ApplicationRole, string>
 {

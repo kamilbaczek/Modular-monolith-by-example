@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ForgotPassword;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword;
+using System;
 
 internal interface IForgotPasswordMailSender
 {

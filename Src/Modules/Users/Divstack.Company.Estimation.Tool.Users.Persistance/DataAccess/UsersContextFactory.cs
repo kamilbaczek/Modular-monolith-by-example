@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
 
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 internal sealed class UsersContextFactory : DesignTimeDbContextFactoryBase<UsersContext>
 {

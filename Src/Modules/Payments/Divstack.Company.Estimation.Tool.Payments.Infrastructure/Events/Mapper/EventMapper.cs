@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
+using Domain.Payments.Events;
+using Estimation.Payments.IntegrationEvents.External;
+using Shared.DDD.BuildingBlocks;
 
 internal sealed class EventMapper : IEventMapper
 {
@@ -14,6 +15,14 @@ internal sealed class EventMapper : IEventMapper
     {
         return @event switch
         {
+            PaymentInitializedDomainEvent domainEvent =>
+                new PaymentInitialized(
+                    domainEvent.PaymentId.Value,
+                    domainEvent.ValuationId.Value,
+                    domainEvent.InquiryId.Value,
+                    domainEvent.AmountToPay.Value,
+                    domainEvent.AmountToPay.Currency),
+            _ => null
         };
     }
 }

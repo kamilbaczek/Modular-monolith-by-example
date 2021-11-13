@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure;
+using System.Threading.Tasks;
+using Application.Contracts;
+using MediatR;
 
 internal sealed class UserModule : IUserModule
 {

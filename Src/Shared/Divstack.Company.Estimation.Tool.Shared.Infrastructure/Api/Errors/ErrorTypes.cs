@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors;
+using System;
 
 internal static class ErrorTypes
 {

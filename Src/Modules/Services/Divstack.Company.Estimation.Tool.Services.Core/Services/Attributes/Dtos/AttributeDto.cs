@@ -1,10 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Dtos;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Dtos;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Dtos;
+using PossibleValues.Dtos;
+using Attribute = Attributes.Attribute;
 
 public sealed class AttributeDto
 {

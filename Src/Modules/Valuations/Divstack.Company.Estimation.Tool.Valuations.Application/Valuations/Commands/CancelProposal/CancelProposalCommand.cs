@@ -1,7 +1,7 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
+using System;
+using Contracts;
 
 public sealed class CancelProposalCommand : ICommand
 {

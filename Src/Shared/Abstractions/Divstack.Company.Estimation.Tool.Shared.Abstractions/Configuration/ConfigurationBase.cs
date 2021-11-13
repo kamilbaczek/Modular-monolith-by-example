@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
+using Microsoft.Extensions.Configuration;
 
 public abstract class ConfigurationBase
 {

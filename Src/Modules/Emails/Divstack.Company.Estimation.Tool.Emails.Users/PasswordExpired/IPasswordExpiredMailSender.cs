@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.PasswordExpired;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired;
+using System;
 
 internal interface IPasswordExpiredMailSender
 {

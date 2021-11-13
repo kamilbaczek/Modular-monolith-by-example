@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
+﻿using static System.String;
+
+namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender;
+
+using System.Threading.Tasks;
+using Configuration;
+using Contracts;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MimeKit.Text;
-using static System.String;
-
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender;
+using Shared.Abstractions.BackgroundProcessing;
 
 internal sealed class EmailSender : IEmailSender
 {
@@ -62,7 +63,10 @@ internal sealed class EmailSender : IEmailSender
         message.From.Add(mailFrom);
         message.To.Add(MailboxAddress.Parse(email));
         message.Subject = subject;
-        message.Body = new TextPart(TextFormat.Html) {Text = text};
+        message.Body = new TextPart(TextFormat.Html)
+        {
+            Text = text
+        };
 
         return message;
     }

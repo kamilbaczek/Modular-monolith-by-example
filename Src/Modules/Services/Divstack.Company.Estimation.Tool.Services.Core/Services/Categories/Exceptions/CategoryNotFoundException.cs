@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Exceptions;
+using System;
 
 internal sealed class CategoryNotFoundException : InvalidOperationException
 {

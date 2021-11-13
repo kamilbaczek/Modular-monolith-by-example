@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser;
+using System.Threading;
+using System.Threading.Tasks;
+using Authentication;
+using MediatR;
 
 internal sealed class GetUserDetailQueryHandler : IRequestHandler<GetUserDetailQuery, UserDetailVm>
 {

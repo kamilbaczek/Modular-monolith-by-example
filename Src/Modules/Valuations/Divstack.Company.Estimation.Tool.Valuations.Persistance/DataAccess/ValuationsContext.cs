@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using MongoDB.Driver;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+using MongoDB.Driver;
+using Valuations.Domain.Valuations;
 
 internal sealed class ValuationsContext : IValuationsContext
 {

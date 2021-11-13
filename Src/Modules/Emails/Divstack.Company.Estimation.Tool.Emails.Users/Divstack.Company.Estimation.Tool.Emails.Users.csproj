@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <LangVersion>10</LangVersion>
-    <RootNamespace>Divstack.Company.Estimation.Tool.Modules.Emails.Users</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

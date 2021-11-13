@@ -1,13 +1,13 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Errors;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
-using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity;
+
+using System;
+using Domain.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity;
+using Persistance.DataAccess;
+using Users.Errors;
+using Users.Services;
 
 internal static class IdentityModule
 {
@@ -20,9 +20,7 @@ internal static class IdentityModule
     {
         var lockoutOptions = new LockoutOptions
         {
-            AllowedForNewUsers = true,
-            DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15),
-            MaxFailedAccessAttempts = 3
+            AllowedForNewUsers = true, DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15), MaxFailedAccessAttempts = 3
         };
 
         services.AddIdentity<UserAccount, ApplicationRole>(config =>

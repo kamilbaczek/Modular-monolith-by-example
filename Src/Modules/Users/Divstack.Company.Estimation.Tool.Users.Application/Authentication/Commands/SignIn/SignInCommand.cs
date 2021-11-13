@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
+using System.Threading;
+using System.Threading.Tasks;
+using Contracts;
+using MediatR;
 
 public sealed class SignInCommand : ICommand<SignInCommandResponse>
 {

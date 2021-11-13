@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Repositories;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Repositories;
+using Domain.Inquiries;
 
 internal static class RepositoriesModule
 {

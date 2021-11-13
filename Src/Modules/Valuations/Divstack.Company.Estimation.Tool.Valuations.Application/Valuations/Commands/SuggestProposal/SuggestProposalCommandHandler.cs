@@ -1,13 +1,13 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
+using System.Threading;
+using System.Threading.Tasks;
+using Domain.UserAccess;
+using Domain.Valuations;
+using Exceptions;
+using Interfaces;
+using MediatR;
+using Shared.DDD.ValueObjects;
 
 internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestProposalCommand>
 {

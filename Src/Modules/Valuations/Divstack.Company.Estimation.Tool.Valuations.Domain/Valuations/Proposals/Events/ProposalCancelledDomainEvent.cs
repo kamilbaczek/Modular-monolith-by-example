@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+using Shared.DDD.BuildingBlocks;
 
 public sealed class ProposalCancelledDomainEvent : DomainEventBase
 {

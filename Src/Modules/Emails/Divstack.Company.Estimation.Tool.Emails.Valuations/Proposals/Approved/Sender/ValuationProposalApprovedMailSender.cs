@@ -1,9 +1,9 @@
-﻿using System.Web;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
+using System.Web;
+using Configuration;
+using Modules.Emails.Core.Sender.Contracts;
+using Modules.Emails.Core.Sender.TemplateReader;
 
 internal sealed class ValuationProposalApprovedMailSender : IValuationProposalApprovedMailSender
 {

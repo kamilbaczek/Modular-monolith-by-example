@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class UsersSeederModule
 {

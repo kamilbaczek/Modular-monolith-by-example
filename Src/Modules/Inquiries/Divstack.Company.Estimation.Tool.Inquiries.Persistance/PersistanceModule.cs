@@ -1,10 +1,10 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Inquiries.Persistance.Repositories;
-using Microsoft.Extensions.Configuration;
-
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Infrastructure")]
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Infrastructure")]
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance;
+
+using DataAccess;
+using Microsoft.Extensions.Configuration;
+using Repositories;
 
 internal static class PersistanceModule
 {

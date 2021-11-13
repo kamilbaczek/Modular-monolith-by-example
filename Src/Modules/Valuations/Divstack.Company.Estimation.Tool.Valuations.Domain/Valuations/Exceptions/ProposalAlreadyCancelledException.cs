@@ -1,7 +1,7 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
+using System;
+using Proposals;
 
 public sealed class ProposalAlreadyCancelledException : InvalidOperationException
 {

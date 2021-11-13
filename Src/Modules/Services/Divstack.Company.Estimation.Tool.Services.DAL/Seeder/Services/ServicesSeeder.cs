@@ -1,15 +1,15 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Seeder.Services;
+
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+using Core.Services.Categories.Dtos;
+using Core.Services.Categories.Services;
+using Core.Services.Dtos;
+using Core.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Seeder.Services;
 
 internal sealed class ServicesSeeder : IHostedService
 {
@@ -61,7 +61,10 @@ internal sealed class ServicesSeeder : IHostedService
     private static async Task<CategoryDto> CreateCategory(CancellationToken cancellationToken,
         ICategoriesService categoriesService)
     {
-        var categoryRequest = new CreateCategoryRequest {Name = "Internet", Description = "Internet Services"};
+        var categoryRequest = new CreateCategoryRequest
+        {
+            Name = "Internet", Description = "Internet Services"
+        };
         await categoriesService.CreateAsync(categoryRequest, cancellationToken);
         var categories = await categoriesService.GetAllAsync(cancellationToken);
         var categoryDto = categories.First();

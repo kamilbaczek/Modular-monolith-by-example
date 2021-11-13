@@ -1,14 +1,14 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
+using Shared.DDD.ValueObjects.Emails;
+using Shared.Infrastructure.Mysql;
+using Tool.Inquiries.Domain.Inquiries;
+using Tool.Inquiries.Domain.Inquiries.Clients;
+using Tool.Inquiries.Domain.Inquiries.Items;
+using Tool.Inquiries.Domain.Inquiries.Items.Services;
+using Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
 
 internal class InquiryEntityTypeConfiguration : IEntityTypeConfiguration<Inquiry>
 {

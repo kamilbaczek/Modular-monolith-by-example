@@ -1,14 +1,14 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Mediation;
-using Divstack.Company.Estimation.Tool.Inquiries.Persistance;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Api")]
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Inquiries.Api")]
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure;
+
+using Application;
+using Application.Common.Contracts;
+using Events;
+using Mediation;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Persistance;
 
 internal static class InfrastructureModule
 {

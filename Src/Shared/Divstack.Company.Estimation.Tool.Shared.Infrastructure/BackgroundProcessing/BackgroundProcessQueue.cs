@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
+
+using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
+using Abstractions.BackgroundProcessing;
 using Hangfire;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
 
 internal sealed class BackgroundProcessQueue : IBackgroundProcessQueue
 {

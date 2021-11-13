@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Common.Extensions.Validations;
-using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ConfirmAccount;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ConfirmAccount;
+using Common.Extensions.Validations;
+using FluentValidation;
 
 public class ConfirmAccountCommandValidator : AbstractValidator<ConfirmAccountCommand>
 {

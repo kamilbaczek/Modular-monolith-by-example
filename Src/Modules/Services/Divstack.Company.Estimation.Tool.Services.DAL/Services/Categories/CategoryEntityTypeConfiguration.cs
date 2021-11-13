@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Services.Categories;
+
+using Core.Services.Categories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Services.Categories;
 
 internal class CategoryEntityTypeConfiguration : IEntityTypeConfiguration<Category>
 {

@@ -1,9 +1,9 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {

@@ -1,11 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL;
+
+using System;
 using System.IO;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-
-namespace Divstack.Company.Estimation.Tool.Services.DAL;
 
 internal abstract class DesignTimeDbContextFactoryBase<TContext> :
     IDesignTimeDbContextFactory<TContext> where TContext : DbContext

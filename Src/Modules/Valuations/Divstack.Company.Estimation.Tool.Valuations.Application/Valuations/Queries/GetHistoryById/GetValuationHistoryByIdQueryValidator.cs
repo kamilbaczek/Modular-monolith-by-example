@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById;
+using FluentValidation;
 
 public sealed class GetValuationHistoryByIdQueryValidator : AbstractValidator<GetValuationHistoryByIdQuery>
 {

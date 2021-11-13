@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Exceptions;
+using System;
 
 internal sealed class ServiceNotFoundException : InvalidOperationException
 {

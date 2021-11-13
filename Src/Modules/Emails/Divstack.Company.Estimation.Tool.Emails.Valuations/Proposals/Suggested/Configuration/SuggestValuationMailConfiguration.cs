@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Configuration;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 internal class SuggestValuationMailConfiguration : ConfigurationBase, ISuggestValuationMailConfiguration
 {

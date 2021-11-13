@@ -1,9 +1,9 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
+
+using Abstractions.BackgroundProcessing;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
 
 internal static class Extensions
 {

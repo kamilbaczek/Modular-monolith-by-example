@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Errors;
+using Application.Authentication;
+using Errors;
 using Microsoft.EntityFrameworkCore;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
 
 internal sealed class PasswordsManagementService : IPasswordsManagementService
 {

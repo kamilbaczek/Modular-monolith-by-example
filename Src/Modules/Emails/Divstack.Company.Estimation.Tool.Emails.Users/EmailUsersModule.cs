@@ -1,21 +1,22 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Sender;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired.Configuration;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users;
+namespace Divstack.Company.Estimation.Tool.Emails.Users;
+
+using System.Reflection;
+using ConfirmAccount.Configuration;
+using ConfirmAccount.Sender;
+using ForgotPassword;
+using ForgotPassword.Configuration;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using PasswordExpired;
+using PasswordExpired.Configuration;
 
 internal static class EmailUsersModule
 {
-    internal static IServiceCollection AddEmailUsers(this IServiceCollection services)
+    internal static IServiceCollection AddUsers(this IServiceCollection services)
     {
         services.AddScoped<IConfirmAccountMailConfiguration, ConfirmAccountMailConfiguration>();
         services.AddScoped<IConfirmAccountMailSender, ConfirmAccountMailSender>();

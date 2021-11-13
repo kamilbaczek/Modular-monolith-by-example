@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
+using System;
 
 internal record ValuationProposalSuggestedEmailRequest(
     Guid ValuationId,

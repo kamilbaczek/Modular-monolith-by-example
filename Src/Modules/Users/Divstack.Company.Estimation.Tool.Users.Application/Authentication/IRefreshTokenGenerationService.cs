@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+using System;
+using System.Threading.Tasks;
 
 public interface IRefreshTokenGenerationService
 {

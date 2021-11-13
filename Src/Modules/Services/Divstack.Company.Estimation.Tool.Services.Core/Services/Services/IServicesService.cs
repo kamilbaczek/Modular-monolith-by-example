@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+using Attributes.Dtos;
+using Attributes.PossibleValues.Dtos;
+using Dtos;
 
 public interface IServicesService
 {

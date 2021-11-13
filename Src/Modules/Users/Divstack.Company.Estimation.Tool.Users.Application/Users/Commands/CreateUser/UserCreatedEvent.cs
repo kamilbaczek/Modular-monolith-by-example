@@ -1,7 +1,7 @@
-﻿using System;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
+using System;
+using MediatR;
 
 public sealed class UserCreatedEvent : INotification
 {

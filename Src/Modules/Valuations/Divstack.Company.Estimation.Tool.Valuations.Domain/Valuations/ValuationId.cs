@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using System;
 
 public record ValuationId(Guid Value)
 {

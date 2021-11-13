@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Domain.Customers;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain.Customers;
+using System;
 
 internal sealed class Customer
 {

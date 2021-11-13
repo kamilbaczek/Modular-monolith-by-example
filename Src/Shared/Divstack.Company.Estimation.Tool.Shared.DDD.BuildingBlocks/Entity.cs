@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using System.Collections.Generic;
 
 public abstract class Entity
 {

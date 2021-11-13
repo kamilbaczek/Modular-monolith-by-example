@@ -1,12 +1,12 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.Controllers;
-using Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.SignIn;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers;
+
+using System.Threading.Tasks;
+using Application.Authentication.Commands.SignIn;
+using Application.Contracts;
+using Common.Controllers;
+using Common.DTO.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers;
 
 internal sealed class AuthenticationController : BaseController
 {

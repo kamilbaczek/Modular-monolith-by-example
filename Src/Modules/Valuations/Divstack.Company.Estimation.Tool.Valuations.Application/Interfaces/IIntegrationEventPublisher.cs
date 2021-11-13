@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
+using System.Collections.Generic;
+using Shared.DDD.BuildingBlocks;
 
 public interface IIntegrationEventPublisher
 {

@@ -1,9 +1,9 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.ExchangeRefreshToken;
+
+using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.ExchangeRefreshToken;
 
 public class ExchangeRefreshTokenCommandHandler : IRequestHandler<ExchangeRefreshTokenCommand,
     ActionResult<ExchangeRefreshTokenResponse>>

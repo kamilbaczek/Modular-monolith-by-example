@@ -1,17 +1,17 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt;
+
+using System;
 using System.Text;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Configuration;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Policies;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.RefreshTokens;
+using Application.Authentication;
+using Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt;
+using Policies;
+using RefreshTokens;
 
 internal static class JwtTokenAuthorizationModule
 {

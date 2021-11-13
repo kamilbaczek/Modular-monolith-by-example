@@ -1,13 +1,13 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
+
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
+using Fakes;
+using Inquiries.IntegrationsEvents.External;
+using Valuations.Queries.GetAll;
+using Valuations.Queries.GetProposalsById;
+using Valuations.Queries.GetProposalsById.Dtos;
 
 internal static class ValuationModuleTester
 {

@@ -1,7 +1,7 @@
-﻿using Structurizr;
-
-namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
 {
+    using Structurizr;
+
     internal static class DrawModules
     {
         internal static void Modules(this Container webApplication, Container database, Component bootstraper)

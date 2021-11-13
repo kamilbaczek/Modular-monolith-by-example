@@ -1,8 +1,8 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Utils;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Utils;
 
 internal static class AsyncUtil
 {

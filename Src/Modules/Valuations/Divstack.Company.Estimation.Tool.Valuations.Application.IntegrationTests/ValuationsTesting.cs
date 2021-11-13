@@ -1,16 +1,13 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests;
+
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
-using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
+using Bootstrapper;
+using Contracts;
+using Domain.UserAccess;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +17,12 @@ using Mongo2Go;
 using MongoDB.Driver;
 using Moq;
 using NUnit.Framework;
-using ICommand = Divstack.Company.Estimation.Tool.Valuations.Application.Contracts.ICommand;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests;
+using Shared.DDD.BuildingBlocks;
+using Users.Application.Contracts;
+using Users.Application.Users.Queries.GetUserByUsername;
+using Users.Infrastructure.Identity.Users.Seeder;
+using Users.Persistance.DataAccess;
+using ICommand = Contracts.ICommand;
 
 [SetUpFixture]
 [TestFixture]

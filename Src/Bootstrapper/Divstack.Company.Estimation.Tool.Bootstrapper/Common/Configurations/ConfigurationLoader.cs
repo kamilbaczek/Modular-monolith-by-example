@@ -1,6 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations;
 
-namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations;
+using System.Collections.ObjectModel;
 
 internal static class ConfigurationLoader
 {

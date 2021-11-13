@@ -1,12 +1,13 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Reminders")]
 
 namespace Divstack.Company.Estimation.Tool.Reminders.Valuations;
+
+using System.Reflection;
+using DeadlineClose.Reminder;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class ValuationsModule
 {

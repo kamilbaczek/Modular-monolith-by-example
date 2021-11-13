@@ -1,9 +1,9 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Extensions;
+
+using Configuration;
 using Manatee.Trello;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Extensions;
 
 internal static class TrelloAuthExtensions
 {

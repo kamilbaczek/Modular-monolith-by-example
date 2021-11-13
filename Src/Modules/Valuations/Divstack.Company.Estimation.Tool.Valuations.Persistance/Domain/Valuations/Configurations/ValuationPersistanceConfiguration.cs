@@ -1,13 +1,13 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Configurations;
+
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Configurations;
+using Shared.DDD.ValueObjects;
+using Tool.Valuations.Domain.Valuations;
+using Tool.Valuations.Domain.Valuations.Deadlines;
+using Tool.Valuations.Domain.Valuations.History;
+using Tool.Valuations.Domain.Valuations.Proposals;
 
 internal static class ValuationPersistanceConfiguration
 {

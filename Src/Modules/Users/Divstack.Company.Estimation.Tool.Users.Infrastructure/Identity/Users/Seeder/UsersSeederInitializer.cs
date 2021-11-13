@@ -1,9 +1,9 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
+
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 
 internal sealed class UsersSeederInitializer : IHostedService
 {

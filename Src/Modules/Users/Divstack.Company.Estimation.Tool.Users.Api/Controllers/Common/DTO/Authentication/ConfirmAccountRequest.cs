@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Authentication;
 
-namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Authentication;
+using System;
 
 public class ConfirmAccountRequest
 {

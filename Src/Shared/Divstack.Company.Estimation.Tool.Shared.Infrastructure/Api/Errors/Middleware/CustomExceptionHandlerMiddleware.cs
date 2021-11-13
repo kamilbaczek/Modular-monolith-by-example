@@ -1,14 +1,14 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
+
+using System;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Environments;
+using Environments;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 
 internal sealed class CustomExceptionHandlerMiddleware
 {

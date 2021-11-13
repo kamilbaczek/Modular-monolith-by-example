@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Mappers;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Mappers;
+using Domain.Inquiries.Items.Services;
+using Domain.Inquiries.Items.Services.Attributes;
+using Dtos;
 
 internal sealed class ServiceDtoToServiceMapper : IMapper<AskedServiceDto, Service>
 {

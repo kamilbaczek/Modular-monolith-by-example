@@ -1,10 +1,9 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
 internal abstract class DesignTimeDbContextFactoryBase<TContext> :
     IDesignTimeDbContextFactory<TContext> where TContext : DbContext

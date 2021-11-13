@@ -1,7 +1,7 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser;
+using System;
+using Contracts;
 
 public class DeleteUserCommand : ICommand
 {

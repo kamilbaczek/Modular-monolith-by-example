@@ -1,14 +1,15 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Services.Core;
-using Divstack.Company.Estimation.Tool.Services.DAL.Seeder;
-using Divstack.Company.Estimation.Tool.Services.DAL.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.Api")]
 
 namespace Divstack.Company.Estimation.Tool.Services.DAL;
+
+using Core;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Seeder;
+using Services;
 
 internal static class DataAccessModule
 {

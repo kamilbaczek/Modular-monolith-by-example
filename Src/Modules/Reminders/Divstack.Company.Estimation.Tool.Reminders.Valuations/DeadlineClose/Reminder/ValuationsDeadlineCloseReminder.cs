@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder.Events;
+using Events;
 using MediatR;
-
-namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder;
 
 internal sealed class ValuationsDeadlineCloseReminder : IValuationsDeadlineCloseReminder
 {

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Security.Claims;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Microsoft.AspNetCore.Http;
+﻿namespace Divstack.Company.Estimation.Tool.Estimations.Api.UserAccess;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Api.UserAccess;
+using System;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Valuations.Domain.UserAccess;
 
 internal sealed class CurrentUserService : ICurrentUserService
 {

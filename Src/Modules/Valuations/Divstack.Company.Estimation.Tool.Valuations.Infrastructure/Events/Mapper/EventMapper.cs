@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
-using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
+using System.Collections.Generic;
+using System.Linq;
+using Shared.DDD.BuildingBlocks;
+using Valuations.Domain.Valuations.Events;
+using Valuations.Domain.Valuations.Proposals.Events;
+using Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class EventMapper : IEventMapper
 {

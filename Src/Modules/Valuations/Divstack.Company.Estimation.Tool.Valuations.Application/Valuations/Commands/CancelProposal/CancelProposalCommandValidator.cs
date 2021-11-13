@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
+using FluentValidation;
 
 public sealed class CancelProposalCommandValidator : AbstractValidator<CancelProposalCommand>
 {

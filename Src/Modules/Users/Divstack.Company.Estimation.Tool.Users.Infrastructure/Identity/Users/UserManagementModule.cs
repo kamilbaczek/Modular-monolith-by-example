@@ -1,12 +1,12 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users.Interfaces;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Passwords;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users;
+using Application.Authentication;
+using Configuration;
+using Domain.Users.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using Passwords;
+using Seeder;
+using Services;
 
 internal static class UserManagementModule
 {

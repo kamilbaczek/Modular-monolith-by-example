@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Common.Extensions.Validations;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Common.Extensions.Validations;
+using FluentValidation;
 
 internal static class UserValidatorExtension
 {

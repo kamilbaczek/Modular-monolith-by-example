@@ -1,8 +1,7 @@
-﻿using System.Threading;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
-using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Domain.Inquiries;
+using DataAccess;
+using Tool.Inquiries.Domain.Inquiries;
 
 internal sealed class InquiriesRepository : IInquiriesRepository
 {

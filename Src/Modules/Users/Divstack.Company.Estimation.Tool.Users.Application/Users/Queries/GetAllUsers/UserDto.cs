@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetAllUsers;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetAllUsers;
+using System;
 
 public sealed record UserDto(
     string FirstName,

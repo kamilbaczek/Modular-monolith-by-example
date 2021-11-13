@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
+using FluentValidation;
 
 public sealed class SuggestProposalCommandValidator : AbstractValidator<SuggestProposalCommand>
 {

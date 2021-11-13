@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
-using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
+using Domain.Inquiries.Events;
+using IntegrationsEvents.External;
+using Shared.DDD.BuildingBlocks;
 
 internal sealed class EventMapper : IEventMapper
 {

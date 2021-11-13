@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.DeleteUser;
+using FluentValidation;
 
 public class DeleteUserCommandValidator : AbstractValidator<DeleteUserCommand>
 {

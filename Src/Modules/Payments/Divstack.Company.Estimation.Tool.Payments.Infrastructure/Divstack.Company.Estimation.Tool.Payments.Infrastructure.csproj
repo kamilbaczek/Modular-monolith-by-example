@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Application\Divstack.Company.Estimation.Tool.Payments.Application.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
@@ -15,6 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Stripe.net" Version="39.76.0"/>
   </ItemGroup>
 
 </Project>

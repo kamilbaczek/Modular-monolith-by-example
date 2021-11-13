@@ -1,13 +1,13 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers;
+
+using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+using Application.Valuations.Queries.Get;
+using Application.Valuations.Queries.Get.Dtos;
+using DataAccess;
 using MediatR;
 using MongoDB.Driver;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers;
+using Tool.Valuations.Domain.Valuations;
 
 internal sealed class GetValuationsQueryHandler : IRequestHandler<GetValuationQuery, ValuationVm>
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Exceptions;
+using System;
 
 public sealed class TrelloTodoListNotFound : InvalidOperationException
 {

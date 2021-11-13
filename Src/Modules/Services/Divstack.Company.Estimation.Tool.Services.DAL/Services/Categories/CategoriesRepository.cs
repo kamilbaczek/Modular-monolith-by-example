@@ -1,11 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Services.Categories;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
+using Core.Services.Categories;
 using Microsoft.EntityFrameworkCore;
-
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Services.Categories;
 
 internal sealed class CategoriesRepository : ICategoriesRepository
 {

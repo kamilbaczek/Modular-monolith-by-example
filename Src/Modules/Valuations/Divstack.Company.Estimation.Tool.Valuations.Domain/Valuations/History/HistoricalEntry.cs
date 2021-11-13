@@ -1,8 +1,8 @@
-﻿using System;
-using Ardalis.GuardClauses;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
+using System;
+using Ardalis.GuardClauses;
+using Shared.DDD.BuildingBlocks;
 
 public sealed class HistoricalEntry : Entity
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
+using System;
 
 public class UserAccountDto
 {

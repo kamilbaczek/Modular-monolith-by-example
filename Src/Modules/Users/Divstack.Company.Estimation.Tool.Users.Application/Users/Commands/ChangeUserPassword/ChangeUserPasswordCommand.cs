@@ -1,11 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+using Authentication;
+using Contracts;
 using MediatR;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
 
 public sealed class ChangeUserPasswordCommand : ICommand
 {

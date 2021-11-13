@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
+using Mapper;
+using MediatR;
+using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {

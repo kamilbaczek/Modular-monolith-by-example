@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
+using Microsoft.Extensions.Configuration;
 
 internal static class MailConfiguration
 {

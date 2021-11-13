@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
+
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
+using Core.Services.Dtos;
+using Core.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
 internal sealed class ServicesController : BaseController
 {

@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Configurations;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Configurations;
+using Microsoft.Extensions.DependencyInjection;
+using Valuations.Domain.Valuations.Deadlines;
 
 internal static class Extensions
 {

@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Extensions;
+
+using System.Collections.Generic;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Extensions;
 
 internal static class QueriesExtensions
 {

@@ -1,11 +1,11 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser.Requests;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure.Utils;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Seeder;
+using System.Threading.Tasks;
+using Application.Authentication;
+using Application.Users.Commands.CreateUser.Requests;
+using Configuration;
+using Domain.Users;
+using Utils;
 
 internal sealed class UsersSeeder : IUsersSeeder
 {

@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
+using System.Threading;
+using System.Threading.Tasks;
+using Domain.UserAccess;
+using Domain.Valuations;
+using Domain.Valuations.Proposals;
+using Exceptions;
+using MediatR;
 
 internal sealed class CancelProposalCommandHandler : IRequestHandler<CancelProposalCommand>
 {

@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
-using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Persistance.Repositories;
 
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.Repositories;
+using Domain.Users;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class RepositoriesModule
 {

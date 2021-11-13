@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Api.Controllers;
+
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
-namespace Divstack.Company.Estimation.Tool.Payments.Api.Controllers;
 
 [ApiController]
 [Route("api/inquries-module/[controller]")]

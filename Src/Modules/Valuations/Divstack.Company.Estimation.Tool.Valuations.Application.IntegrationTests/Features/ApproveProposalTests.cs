@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features;
+
+using System.Threading.Tasks;
+using Common;
 using FluentAssertions;
 using NUnit.Framework;
-
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features;
-
+using Valuations.Commands.ApproveProposal;
 using static ValuationsTesting;
 
 public class ApproveProposalTests : ValuationsTestBase

@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
+using System.Threading;
+using System.Threading.Tasks;
+using Domain.Valuations;
+using Domain.Valuations.Deadlines;
+using Inquiries.IntegrationsEvents.External;
+using Interfaces;
+using MediatR;
 
 internal sealed class RequestValuationEventHandler : INotificationHandler<InquiryMadeEvent>
 {

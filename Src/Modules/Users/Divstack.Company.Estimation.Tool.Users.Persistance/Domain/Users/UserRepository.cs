@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
 
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
+using System.Threading.Tasks;
+using DataAccess;
+using Tool.Users.Domain.Users;
 
 internal sealed class UserRepository
 {

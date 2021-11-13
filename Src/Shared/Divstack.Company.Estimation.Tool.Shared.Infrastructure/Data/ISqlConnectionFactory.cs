@@ -1,6 +1,6 @@
-﻿using System.Data;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
+using System.Data;
 
 public interface ISqlConnectionFactory
 {

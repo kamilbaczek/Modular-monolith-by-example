@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Extensions;
 
-namespace Divstack.Company.Estimation.Tool.Bootstrapper.Extensions;
+using Microsoft.Extensions.Hosting;
 
 internal static class EnvironmentExtensions
 {

@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
+using FluentValidation;
 
 public class ChangeUserPasswordCommandValidator : AbstractValidator<ChangeUserPasswordCommand>
 {

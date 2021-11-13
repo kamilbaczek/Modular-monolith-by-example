@@ -1,7 +1,7 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Errors;
 
-namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers.Common.DTO.Errors;
+using System;
+using Newtonsoft.Json;
 
 [Serializable]
 public class ExceptionDto

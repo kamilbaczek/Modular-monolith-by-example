@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get.Dtos;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get;
+using Dtos;
+using MediatR;
 
 internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery, InquiryVm>
 {
@@ -33,7 +33,10 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
                 FROM InquiryItemsServices
                 WHERE InquiryId = @InquiryId";
         var inquiriesServiceItemDtos = await connection.ExecuteQueryAsync<InquiriesServiceItemDto>(
-            query, new {request.InquiryId}, cancellationToken);
+            query, new
+            {
+                request.InquiryId
+            }, cancellationToken);
 
         return inquiriesServiceItemDtos.ToList().AsReadOnly();
     }
@@ -51,7 +54,10 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
                 FROM Inquiries
                 WHERE Id = @InquiryId";
         var inquiryInformationDto = await connection.ExecuteSingleQueryAsync<InquiryInformationDto>(
-            query, new {request.InquiryId}, cancellationToken);
+            query, new
+            {
+                request.InquiryId
+            }, cancellationToken);
 
         return inquiryInformationDto;
     }

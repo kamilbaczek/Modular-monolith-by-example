@@ -1,9 +1,9 @@
-﻿using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Helpers;
-using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules;
-using Structurizr;
-
-namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams
 {
+    using Helpers;
+    using Modules;
+    using Structurizr;
+
     internal static class ComponentsView
     {
         public static void ConfigureComponentsView(this Workspace workspace, Container webApplication,

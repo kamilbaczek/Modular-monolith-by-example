@@ -1,8 +1,8 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
+
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 
 public interface IServiceExistingChecker
 {

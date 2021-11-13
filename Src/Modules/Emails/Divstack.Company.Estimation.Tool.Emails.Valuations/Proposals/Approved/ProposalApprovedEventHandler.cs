@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
-using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
+using Sender;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
+using Users.Application.Contracts;
+using Users.Application.Users.Queries.GetUserEmail;
 
 internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApproved>
 {

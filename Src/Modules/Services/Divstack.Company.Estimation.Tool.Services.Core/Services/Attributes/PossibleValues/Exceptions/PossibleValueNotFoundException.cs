@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Exceptions;
+using System;
 
 internal sealed class PossibleValueNotFoundException : InvalidOperationException
 {

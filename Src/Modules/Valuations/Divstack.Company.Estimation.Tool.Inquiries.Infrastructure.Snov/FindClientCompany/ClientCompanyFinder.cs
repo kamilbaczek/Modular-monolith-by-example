@@ -1,10 +1,10 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany;
+using System.Linq;
+using System.Threading.Tasks;
+using ApiConsumer;
+using Domain.Inquiries.Clients;
+using Shared.DDD.ValueObjects.Emails;
 
 internal sealed class ClientCompanyFinder : IClientCompanyFinder
 {

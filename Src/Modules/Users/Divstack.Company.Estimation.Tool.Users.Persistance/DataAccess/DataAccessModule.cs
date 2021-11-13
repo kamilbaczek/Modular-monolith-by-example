@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
+using Shared.Infrastructure.Data;
 
 internal static class DataAccessModule
 {

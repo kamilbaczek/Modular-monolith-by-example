@@ -1,5 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
+using Contracts;
 
 public record GetAllValuationsQuery : IQuery<ValuationListVm>;

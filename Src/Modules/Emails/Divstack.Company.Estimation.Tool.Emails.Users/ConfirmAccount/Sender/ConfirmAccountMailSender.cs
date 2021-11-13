@@ -1,9 +1,9 @@
-﻿using System;
-using System.Web;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ConfirmAccount.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Sender;
+using System;
+using System.Web;
+using Configuration;
+using Modules.Emails.Core.Sender.Contracts;
 
 internal class ConfirmAccountMailSender : IConfirmAccountMailSender
 {

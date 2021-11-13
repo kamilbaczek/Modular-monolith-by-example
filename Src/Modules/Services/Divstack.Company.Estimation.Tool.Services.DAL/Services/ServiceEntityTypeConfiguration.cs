@@ -1,10 +1,10 @@
-﻿using Divstack.Company.Estimation.Tool.Services.Core.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Services;
+
+using Core.Services;
+using Core.Services.Attributes;
+using Core.Services.Attributes.PossibleValues;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Services;
 
 internal class ServiceEntityTypeConfiguration : IEntityTypeConfiguration<Service>
 {

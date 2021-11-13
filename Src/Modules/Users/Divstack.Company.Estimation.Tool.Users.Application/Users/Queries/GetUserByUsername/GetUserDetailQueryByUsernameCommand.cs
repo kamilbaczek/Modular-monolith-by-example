@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserByUsername;
+using Contracts;
 
 public sealed class GetUserDetailQueryByUsernameCommand : IQuery<UserAccountDto>
 {

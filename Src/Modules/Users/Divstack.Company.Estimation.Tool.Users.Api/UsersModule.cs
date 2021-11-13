@@ -1,12 +1,13 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Infrastructure;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
 namespace Divstack.Company.Estimation.Tool.Users.Api;
+
+using Application.Authentication;
+using Infrastructure;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class UsersModule
 {

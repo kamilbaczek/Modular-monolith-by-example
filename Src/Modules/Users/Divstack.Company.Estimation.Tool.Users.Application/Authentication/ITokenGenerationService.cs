@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication.DTOs;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+using System.Collections.Generic;
+using DTOs;
 
 public interface ITokenGenerationService
 {

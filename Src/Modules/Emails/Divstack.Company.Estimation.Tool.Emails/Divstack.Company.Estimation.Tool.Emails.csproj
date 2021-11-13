@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Payments\Divstack.Company.Estimation.Tool.Emails.Payments.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Users\Divstack.Company.Estimation.Tool.Emails.Users.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Valuations\Divstack.Company.Estimation.Tool.Emails.Valuations.csproj"/>
   </ItemGroup>

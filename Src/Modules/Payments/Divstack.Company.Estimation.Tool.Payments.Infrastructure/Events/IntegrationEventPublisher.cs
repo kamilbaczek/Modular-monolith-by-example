@@ -1,9 +1,9 @@
-﻿using Divstack.Company.Estimation.Tool.Payments.Application.Common.Interfaces;
-using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
+using Application.Common.Interfaces;
+using Mapper;
+using MediatR;
+using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {

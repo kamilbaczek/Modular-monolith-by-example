@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Services.DAL.Seeder.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Seeder;
 
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Seeder;
+using Microsoft.Extensions.DependencyInjection;
+using Services;
 
 internal static class SeedersModule
 {

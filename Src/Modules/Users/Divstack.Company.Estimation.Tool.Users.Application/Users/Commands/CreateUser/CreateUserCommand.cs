@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
+
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser.Requests;
+using Authentication;
+using Contracts;
 using MediatR;
-
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
+using Requests;
 
 public class CreateUserCommand : ICommand
 {

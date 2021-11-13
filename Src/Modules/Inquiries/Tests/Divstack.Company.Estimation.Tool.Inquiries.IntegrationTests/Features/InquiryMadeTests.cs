@@ -1,17 +1,16 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
-using Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Common;
+using Application.Inquiries.Commands.Make;
+using Application.Inquiries.Commands.Make.Dtos;
+using Application.Inquiries.Queries.GetAll;
+using Common;
 using Faker;
 using FluentAssertions;
 using NUnit.Framework;
-
-namespace Divstack.Company.Estimation.Tool.Inquiries.IntegrationTests.Features;
-
 using static InquiriesTesting;
 
 public class InquiryMadeTests : InquiriesTestBase
@@ -48,7 +47,10 @@ public class InquiryMadeTests : InquiriesTestBase
                     Id = serviceId,
                     Attributes = new List<AttributeDto>
                     {
-                        new() {AttributeId = Guid.NewGuid(), ValueId = Guid.NewGuid()}
+                        new()
+                        {
+                            AttributeId = Guid.NewGuid(), ValueId = Guid.NewGuid()
+                        }
                     }
                 }
             }

@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Payments.Application.Common.Interfaces;
-using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
+using Application.Common.Interfaces;
+using Mapper;
 
 internal static class EventsModule
 {

@@ -1,6 +1,7 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
+using System;
+using Attribute = Attributes.Attribute;
 
 public sealed class PossibleValue
 {

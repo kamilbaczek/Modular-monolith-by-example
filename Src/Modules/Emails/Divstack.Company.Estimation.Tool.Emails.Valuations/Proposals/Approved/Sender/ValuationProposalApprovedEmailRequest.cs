@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
+using System;
 
 internal record ValuationProposalApprovedEmailRequest(
     string SuggestedByEmployeeEmail,

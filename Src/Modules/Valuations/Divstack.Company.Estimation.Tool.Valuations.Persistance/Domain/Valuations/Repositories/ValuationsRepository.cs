@@ -1,10 +1,10 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
-using MongoDB.Driver;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
+using System.Threading;
+using System.Threading.Tasks;
+using DataAccess;
+using MongoDB.Driver;
+using Tool.Valuations.Domain.Valuations;
 
 internal sealed class ValuationsRepository : IValuationsRepository
 {

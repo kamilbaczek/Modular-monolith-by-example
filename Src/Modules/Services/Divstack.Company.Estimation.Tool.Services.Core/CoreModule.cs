@@ -1,11 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.DAL")]
 
 namespace Divstack.Company.Estimation.Tool.Services.Core;
+
+using Microsoft.Extensions.DependencyInjection;
+using Services.Contracts;
+using Services.Services;
 
 internal static class CoreModule
 {

@@ -1,12 +1,12 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Exceptions;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Services;
+using Dtos;
+using Exceptions;
 
 internal sealed class CategoriesService : ICategoriesService
 {

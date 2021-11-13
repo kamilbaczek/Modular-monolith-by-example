@@ -1,17 +1,18 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Configuration;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core;
 
+using Microsoft.Extensions.DependencyInjection;
+using Sender;
+using Sender.Configuration;
+using Sender.Contracts;
+using Sender.TemplateReader;
+
 internal static class EmailCoreModule
 {
-    internal static IServiceCollection AddEmailCore(this IServiceCollection services)
+    internal static IServiceCollection AddCore(this IServiceCollection services)
     {
         services.AddScoped<IEmailSender, EmailSender>();
         services.AddSingleton<IMailConfiguration, MailConfiguration>();

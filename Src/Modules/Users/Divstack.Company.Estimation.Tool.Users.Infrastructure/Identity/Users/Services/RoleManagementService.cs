@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Microsoft.AspNetCore.Identity;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+using System;
+using System.Threading.Tasks;
+using Application.Authentication;
+using Domain.Users;
+using Microsoft.AspNetCore.Identity;
 
 public class RoleManagementService : IRoleManagementService
 {
@@ -22,7 +22,10 @@ public class RoleManagementService : IRoleManagementService
             throw new InvalidOperationException($"Role [{roleName}] already exists.");
         }
 
-        var result = await roleManager.CreateAsync(new ApplicationRole {Name = roleName});
+        var result = await roleManager.CreateAsync(new ApplicationRole
+        {
+            Name = roleName
+        });
         if (result.Succeeded == false)
         {
             throw new NotImplementedException(); // todo

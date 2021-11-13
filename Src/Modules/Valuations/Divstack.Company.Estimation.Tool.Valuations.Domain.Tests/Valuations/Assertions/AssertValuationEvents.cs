@@ -1,11 +1,11 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
-using FluentAssertions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
+using Domain.Valuations;
+using Domain.Valuations.Events;
+using Domain.Valuations.Proposals;
+using Domain.Valuations.Proposals.Events;
+using FluentAssertions;
+using Shared.DDD.ValueObjects;
 
 internal static class AssertValuationEvents
 {

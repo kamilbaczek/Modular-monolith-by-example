@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Jwt.Configuration;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 public class TokenConfiguration : ConfigurationBase, ITokenConfiguration
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
+using System;
 
 public sealed class CannotCompleteValuationWithNoProposalException : InvalidOperationException
 {

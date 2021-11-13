@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 internal sealed class InquiriesContextFactory : DesignTimeDbContextFactoryBase<InquiriesContext>
 {

@@ -1,11 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
-using Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov;
+
+using Domain.Inquiries.Clients;
+using FindClientCompany;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class SnovModule
 {

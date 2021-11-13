@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+using BuildingBlocks;
 
 public class Money : ValueObject
 {
@@ -16,7 +16,7 @@ public class Money : ValueObject
 
     public string Currency { get; init; }
 
-    public static Money Of(decimal value, string currency)
+    public static Money Of(decimal? value, string currency)
     {
         return new Money(value, currency);
     }

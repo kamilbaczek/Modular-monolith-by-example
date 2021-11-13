@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.DTOs;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.DTOs;
+using System;
 
 public class UpdateUserDto
 {

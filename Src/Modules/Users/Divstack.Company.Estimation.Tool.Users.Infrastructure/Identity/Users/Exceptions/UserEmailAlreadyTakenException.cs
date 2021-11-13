@@ -1,7 +1,7 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Exceptions;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Exceptions;
+using System;
+using System.Runtime.Serialization;
 
 [Serializable]
 public class UserEmailAlreadyTakenException : Exception

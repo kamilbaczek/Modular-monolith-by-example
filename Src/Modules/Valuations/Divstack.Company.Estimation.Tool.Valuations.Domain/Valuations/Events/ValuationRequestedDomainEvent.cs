@@ -1,8 +1,8 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
+using System;
+using Deadlines;
+using Shared.DDD.BuildingBlocks;
 
 public sealed class ValuationRequestedDomainEvent : DomainEventBase
 {

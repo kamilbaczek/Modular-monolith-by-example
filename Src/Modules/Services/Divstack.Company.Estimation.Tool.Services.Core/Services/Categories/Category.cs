@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
+using System;
 
 public sealed class Category
 {

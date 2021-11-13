@@ -1,13 +1,13 @@
-﻿using Divstack.Company.Estimation.Tool.Payments.Application;
-using Divstack.Company.Estimation.Tool.Payments.Application.Common.Contracts;
-using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
-using Divstack.Company.Estimation.Tool.Payments.Infrastructure.Mediation;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Api")]
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Api")]
 
 namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure;
+
+using Application;
+using Application.Common.Contracts;
+using Events;
+using Mediation;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 
 internal static class InfrastructureModule
 {

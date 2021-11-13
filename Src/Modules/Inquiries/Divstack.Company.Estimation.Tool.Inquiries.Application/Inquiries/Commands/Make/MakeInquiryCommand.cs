@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make.Dtos;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Commands.Make;
+using Common.Contracts;
+using Dtos;
 
 public sealed class MakeInquiryCommand : ICommand<Guid>
 {

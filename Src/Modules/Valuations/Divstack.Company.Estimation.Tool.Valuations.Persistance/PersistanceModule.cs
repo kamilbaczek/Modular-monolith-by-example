@@ -1,13 +1,14 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance;
+
+using DataAccess;
+using Domain.Valuations.Repositories;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 internal static class PersistanceModule
 {

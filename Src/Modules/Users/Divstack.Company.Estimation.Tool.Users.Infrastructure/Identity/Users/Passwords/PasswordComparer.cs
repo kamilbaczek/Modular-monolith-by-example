@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users.Interfaces;
-using Microsoft.AspNetCore.Identity;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Passwords;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Passwords;
+using Domain.Users;
+using Domain.Users.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 internal sealed class PasswordComparer : IPasswordComparer
 {

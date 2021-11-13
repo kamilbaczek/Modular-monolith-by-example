@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
+using Shared.DDD.ValueObjects.Emails;
 
 public sealed class Client : ValueObject
 {

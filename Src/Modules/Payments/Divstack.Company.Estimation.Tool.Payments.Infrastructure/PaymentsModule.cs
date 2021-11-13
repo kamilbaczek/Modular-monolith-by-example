@@ -1,8 +1,7 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Payments.Application.Common.Contracts;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure;
 
-namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure;
+using Application.Common.Contracts;
+using MediatR;
 
 internal sealed class PaymentsModule : IPaymentsModule
 {

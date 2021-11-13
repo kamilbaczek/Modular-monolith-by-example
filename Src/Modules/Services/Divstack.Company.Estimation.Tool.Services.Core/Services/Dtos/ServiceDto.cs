@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text.Json.Serialization;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
+using System;
+using System.Text.Json.Serialization;
+using Categories.Dtos;
 
 public sealed class ServiceDto
 {

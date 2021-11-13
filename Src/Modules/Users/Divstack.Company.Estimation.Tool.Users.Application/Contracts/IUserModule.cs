@@ -1,6 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+using System.Threading.Tasks;
 
 public interface IUserModule
 {

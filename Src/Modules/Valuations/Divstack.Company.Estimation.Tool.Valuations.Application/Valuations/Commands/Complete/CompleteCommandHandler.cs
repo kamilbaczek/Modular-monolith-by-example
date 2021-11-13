@@ -1,11 +1,11 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
+using System.Threading;
+using System.Threading.Tasks;
+using Domain.UserAccess;
+using Domain.Valuations;
+using Exceptions;
+using MediatR;
 
 internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
 {

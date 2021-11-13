@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Quantity;
+using System;
 
 public class QuantityCannotBeNegative : Exception
 {

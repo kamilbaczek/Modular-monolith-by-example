@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
-using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.PasswordExpired.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.PasswordExpired.Configuration;
+using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
 internal sealed class PasswordExpiredMailConfiguration : ConfigurationBase, IPasswordExpiredMailConfiguration
 {

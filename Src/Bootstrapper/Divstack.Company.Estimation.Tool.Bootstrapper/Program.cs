@@ -1,10 +1,10 @@
-﻿using Divstack.Company.Estimation.Tool.Bootstrapper.Configurations;
-using Divstack.Company.Estimation.Tool.Bootstrapper.Extensions;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper;
+
+using Configurations;
+using Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-
-namespace Divstack.Company.Estimation.Tool.Bootstrapper;
+using Shared.Infrastructure.Observability;
 
 public sealed class Program
 {

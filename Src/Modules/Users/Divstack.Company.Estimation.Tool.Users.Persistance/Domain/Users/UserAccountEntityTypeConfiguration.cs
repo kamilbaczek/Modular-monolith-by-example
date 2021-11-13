@@ -1,9 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Domain.Users;
-using Microsoft.AspNetCore.Identity;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace Divstack.Company.Estimation.Tool.Users.Persistance.Domain.Users;
+using Tool.Users.Domain.Users;
 
 internal class UserAccountEntityTypeConfiguration : IEntityTypeConfiguration<UserAccount>
 {
@@ -29,57 +28,5 @@ internal class UserAccountEntityTypeConfiguration : IEntityTypeConfiguration<Use
         builder.HasKey("Id");
         builder.Property(user => user.PasswordExpirationDate).IsRequired(false);
         builder.Property("LastLoginDate").IsRequired(false);
-    }
-}
-
-internal class UserAccfsfountEntityTypeConfiguration : IEntityTypeConfiguration<IdentityUserClaim<string>>
-{
-    public void Configure(EntityTypeBuilder<IdentityUserClaim<string>> builder)
-    {
-        builder.Property(m => m.Id).HasMaxLength(85);
-    }
-}
-
-internal class fs : IEntityTypeConfiguration<IdentityRoleClaim<string>>
-{
-    public void Configure(EntityTypeBuilder<IdentityRoleClaim<string>> builder)
-    {
-        builder.Property(m => m.Id).HasMaxLength(85);
-    }
-}
-
-internal class fsdffs : IEntityTypeConfiguration<IdentityUserLogin<string>>
-{
-    public void Configure(EntityTypeBuilder<IdentityUserLogin<string>> builder)
-    {
-        builder.Property(m => m.LoginProvider).HasMaxLength(85);
-        builder.Property(m => m.ProviderKey).HasMaxLength(85);
-    }
-}
-
-internal class fsdffsdffs : IEntityTypeConfiguration<IdentityUserToken<string>>
-{
-    public void Configure(EntityTypeBuilder<IdentityUserToken<string>> builder)
-    {
-        builder.Property(m => m.LoginProvider).HasMaxLength(85);
-        builder.Property(m => m.Name).HasMaxLength(85);
-    }
-}
-
-internal class fsd : IEntityTypeConfiguration<IdentityUserToken<string>>
-{
-    public void Configure(EntityTypeBuilder<IdentityUserToken<string>> builder)
-    {
-        builder.Property(m => m.LoginProvider).HasMaxLength(85);
-        builder.Property(m => m.Name).HasMaxLength(85);
-    }
-}
-
-internal class ApplicationRoleEntityConfiguration : IEntityTypeConfiguration<ApplicationRole>
-{
-    public void Configure(EntityTypeBuilder<ApplicationRole> builder)
-    {
-        builder.Property(userAccount => userAccount.Id).HasMaxLength(85);
-        builder.Property(m => m.Name).HasMaxLength(85);
     }
 }

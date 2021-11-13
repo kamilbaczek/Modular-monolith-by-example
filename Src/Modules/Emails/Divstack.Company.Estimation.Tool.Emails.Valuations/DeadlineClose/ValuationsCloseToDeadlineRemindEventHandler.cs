@@ -1,12 +1,12 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Sender;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder.Events;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUsersEmails;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose;
 
-namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
+using Reminders.Valuations.DeadlineClose.Reminder.Events;
+using Sender;
+using Users.Application.Contracts;
+using Users.Application.Users.Queries.GetUsersEmails;
 
 internal sealed class
     ValuationsCloseToDeadlineRemindEventHandler : INotificationHandler<ValuationCloseToDeadlineRemindEvent>

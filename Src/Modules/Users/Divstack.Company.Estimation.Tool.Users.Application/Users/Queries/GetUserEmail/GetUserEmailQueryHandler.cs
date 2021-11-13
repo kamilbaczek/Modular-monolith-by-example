@@ -1,9 +1,9 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
+using System.Threading;
+using System.Threading.Tasks;
+using Authentication;
+using MediatR;
 
 internal sealed class GetUserEmailQueryHandler : IRequestHandler<GetUserEmailQuery, string>
 {

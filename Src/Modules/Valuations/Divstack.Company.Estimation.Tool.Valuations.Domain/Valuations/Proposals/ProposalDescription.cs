@@ -1,8 +1,8 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Exceptions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+using System;
+using Exceptions;
+using Shared.DDD.BuildingBlocks;
 
 public sealed class ProposalDescription : ValueObject
 {

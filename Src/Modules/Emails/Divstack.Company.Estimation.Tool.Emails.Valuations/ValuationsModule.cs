@@ -1,12 +1,13 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
 namespace Divstack.Company.Estimation.Tool.Emails.Valuations;
+
+using System.Reflection;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Proposals.Suggested;
 
 internal static class ValuationsModule
 {

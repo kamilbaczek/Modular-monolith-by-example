@@ -1,6 +1,6 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser;
+using FluentValidation;
 
 public class GetUserDetailQueryValidator : AbstractValidator<GetUserDetailQuery>
 {

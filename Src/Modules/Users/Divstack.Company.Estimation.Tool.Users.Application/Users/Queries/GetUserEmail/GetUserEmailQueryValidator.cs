@@ -1,7 +1,7 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUser;
-using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
+using FluentValidation;
+using GetUser;
 
 public class GetUserEmailQueryValidator : AbstractValidator<GetUserDetailQuery>
 {

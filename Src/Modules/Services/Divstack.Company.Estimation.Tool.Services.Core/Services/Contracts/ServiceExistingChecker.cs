@@ -1,9 +1,9 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Contracts;
 
 internal sealed class ServiceExistingChecker : IServiceExistingChecker
 {

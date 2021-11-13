@@ -1,6 +1,6 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+using Shared.DDD.BuildingBlocks;
 
 public sealed class ValuationStatus : ValueObject
 {

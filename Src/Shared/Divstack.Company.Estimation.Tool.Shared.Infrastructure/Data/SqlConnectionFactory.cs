@@ -1,8 +1,8 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
+
+using System;
 using System.Data;
 using Microsoft.Data.SqlClient;
-
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
 
 public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 {

@@ -1,8 +1,8 @@
-﻿using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Helpers;
-using Structurizr;
-
-namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
 {
+    using Helpers;
+    using Structurizr;
+
     internal static class DrawUsersModule
     {
         internal static void UsersModule(this Container webApplication, Container database, Component bootstrapper)

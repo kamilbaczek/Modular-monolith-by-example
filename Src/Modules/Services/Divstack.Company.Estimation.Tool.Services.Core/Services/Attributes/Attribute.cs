@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Exceptions;
-
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes;
+using PossibleValues;
+using PossibleValues.Exceptions;
 
 public sealed class Attribute
 {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
+using System;
 
 public sealed class CreateServiceRequest
 {

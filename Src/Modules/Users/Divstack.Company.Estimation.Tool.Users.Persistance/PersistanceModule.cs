@@ -1,12 +1,13 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Users.Persistance.DataAccess;
-using Divstack.Company.Estimation.Tool.Users.Persistance.Repositories;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Users.Infrastructure")]
 
 namespace Divstack.Company.Estimation.Tool.Users.Persistance;
+
+using DataAccess;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Repositories;
 
 internal static class PersistanceModule
 {

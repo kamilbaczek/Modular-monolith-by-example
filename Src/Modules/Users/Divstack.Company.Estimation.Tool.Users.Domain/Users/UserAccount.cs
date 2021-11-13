@@ -1,10 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Divstack.Company.Estimation.Tool.Users.Domain.Users.Interfaces;
+using Interfaces;
 using Microsoft.AspNetCore.Identity;
-
-namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
 
 public sealed class UserAccount : IdentityUser
 {
