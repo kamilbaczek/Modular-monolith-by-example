@@ -4,4 +4,5 @@ using System;
 
 public record HistoricalEntryId(Guid Value)
 {
+    public static HistoricalEntryId Create() => new(Guid.NewGuid());
 }

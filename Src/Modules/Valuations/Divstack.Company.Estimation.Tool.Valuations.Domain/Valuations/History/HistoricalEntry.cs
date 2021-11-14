@@ -10,12 +10,12 @@ public sealed class HistoricalEntry : Entity
     {
         Status = Guard.Against.Null(status, nameof(Status));
         ChangeDate = SystemTime.Now();
-        Id = new HistoricalEntryId(Guid.NewGuid());
+        Id = HistoricalEntryId.Create();
     }
 
     internal ValuationStatus Status { get; private set; }
-    internal DateTime ChangeDate { get; }
-    private HistoricalEntryId Id { get; }
+    internal DateTime ChangeDate { get; init; }
+    private HistoricalEntryId Id { get; init; }
 
     internal static HistoricalEntry Create(ValuationStatus status)
     {

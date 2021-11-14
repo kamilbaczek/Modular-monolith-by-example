@@ -1,6 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Payments.PaymentInitialized.Sender;
 
+using Common.Extensions;
 using Configuration;
+using Microsoft.Extensions.Configuration;
 using Modules.Emails.Core.Sender.Contracts;
 using Modules.Emails.Core.Sender.TemplateReader;
 
@@ -11,29 +13,29 @@ internal sealed class PaymentInitializedSender : IPaymentInitializedSender
     private const string AmountToPayPlaceholder = "{AmountToPay}";
     private const string ClientFullNamePlaceholder = "{ClientFullName}";
     private const string PaymentLinkPlaceholder = "{PaymentLink}";
-    private readonly IPaymentInitializedMailConfiguration _configuration;
+    private readonly IPaymentInitializedMailConfiguration _paymentInitializedMailConfiguration;
     private readonly IEmailSender _emailSender;
     private readonly IMailTemplateReader _mailTemplateReader;
 
     public PaymentInitializedSender(IMailTemplateReader mailTemplateReader,
-        IPaymentInitializedMailConfiguration configuration,
+        IConfiguration configuration,
         IEmailSender emailSender)
     {
         _mailTemplateReader = mailTemplateReader;
-        _configuration = configuration;
+        _paymentInitializedMailConfiguration = new PaymentInitializedMailConfiguration(configuration);
         _emailSender = emailSender;
     }
 
     public void Send(PaymentInitializedEmailRequest request)
     {
-        var htmlTemplate = _mailTemplateReader.Read(_configuration.PathToTemplate);
-        var paymentLink = _configuration.PaymentUrl.Replace(PaymentIdPlaceholder, request.PaymentId.ToString());
+        var htmlTemplate = _mailTemplateReader.Read(_paymentInitializedMailConfiguration.PathToTemplate);
+        var paymentLink = _paymentInitializedMailConfiguration.PaymentUrl.ReplaceIgnoreCases(PaymentIdPlaceholder, request.PaymentId);
         var emailAsHtml = htmlTemplate
-            .Replace(InquiryIdPlaceholder, request.PaymentId.ToString())
-            .Replace(AmountToPayPlaceholder, request.AmountToPay)
-            .Replace(ClientFullNamePlaceholder, request.ClientFullName)
-            .Replace(PaymentLinkPlaceholder, paymentLink);
+            .ReplaceIgnoreCases(InquiryIdPlaceholder, request.PaymentId)
+            .ReplaceIgnoreCases(AmountToPayPlaceholder, request.AmountToPay)
+            .ReplaceIgnoreCases(ClientFullNamePlaceholder, request.ClientFullName)
+            .ReplaceIgnoreCases(PaymentLinkPlaceholder, paymentLink);
 
-        _emailSender.Send(request.ClientEmail, _configuration.Subject, emailAsHtml);
+        _emailSender.Send(request.ClientEmail, _paymentInitializedMailConfiguration.Subject, emailAsHtml);
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ForgotPassword.Configuration;
 
+using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
 using Shared.Abstractions.Configuration;
 
@@ -10,7 +11,7 @@ internal sealed class ForgotPasswordMailConfiguration : ConfigurationBase, IForg
     {
     }
 
-    public string Subject => configurationSection.GetValue<string>(nameof(Subject));
+    public string Subject => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(Subject), nameof(Subject));
 
-    public string Format => configurationSection.GetValue<string>(nameof(Format));
+    public string Format => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(Format), nameof(Format));
 }

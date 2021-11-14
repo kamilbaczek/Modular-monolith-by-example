@@ -1,7 +1,7 @@
 ﻿{
   "PaymentInitializedMailConfiguration": {
-    "Subject": "Divstack Estimation Tool Payment",
-    "PaymentUrl": "http://localhost:8080/pay/{paymentId}",
+    "Subject": "Payment",
+    "PaymentUrl": "http://localhost:8080/payments/pay/{PaymentId}",
     "PathToTemplate": "PaymentInitialized/Templates/payment_initialized.html"
   }
 }

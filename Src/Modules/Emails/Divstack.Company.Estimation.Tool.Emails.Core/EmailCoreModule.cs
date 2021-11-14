@@ -1,14 +1,12 @@
-﻿using System.Runtime.CompilerServices;
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
-
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core;
+namespace Divstack.Company.Estimation.Tool.Emails.Core;
 
 using Microsoft.Extensions.DependencyInjection;
-using Sender;
-using Sender.Configuration;
-using Sender.Contracts;
-using Sender.TemplateReader;
+using Modules.Emails.Core.Sender;
+using Modules.Emails.Core.Sender.Configuration;
+using Modules.Emails.Core.Sender.Contracts;
+using Modules.Emails.Core.Sender.TemplateReader;
 
 internal static class EmailCoreModule
 {

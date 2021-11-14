@@ -1,20 +1,20 @@
-﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Payments.Commands.Charge;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Payments.Commands.Pay;
 
 using Common.Exceptions;
 
-internal sealed class ChargeCommandHandler : IRequestHandler<ChargeCommand>
+internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
 {
     private readonly IPaymentsRepository _paymentsRepository;
-    private readonly IPaymentProccessor _paymentProcessor;
+    private readonly IPaymentProcessor _paymentProcessor;
 
-    public ChargeCommandHandler(IPaymentsRepository paymentsRepository, 
-        IPaymentProccessor paymentProcessor)
+    public PayCommandHandler(IPaymentsRepository paymentsRepository, 
+        IPaymentProcessor paymentProcessor)
     {
         _paymentsRepository = paymentsRepository;
         _paymentProcessor = paymentProcessor;
     }
 
-    public async Task<Unit> Handle(ChargeCommand command, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(PayCommand command, CancellationToken cancellationToken)
     {
         var paymentId = new PaymentId(command.PaymentId);
         var payment = await _paymentsRepository.GetAsync(paymentId, cancellationToken);
@@ -23,7 +23,7 @@ internal sealed class ChargeCommandHandler : IRequestHandler<ChargeCommand>
             throw new NotFoundException(command.PaymentId, nameof(Payment));
         }
         
-        payment.Charge(_paymentProcessor);
+        payment.Pay(_paymentProcessor);
 
         return Unit.Value;
     }

@@ -6,6 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
 
 using Core;
 using Microsoft.Extensions.DependencyInjection;
+using Tool.Emails.Core;
 using Tool.Emails.Payments;
 using Tool.Emails.Users;
 using Tool.Emails.Valuations;
