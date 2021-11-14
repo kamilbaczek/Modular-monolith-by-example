@@ -15,12 +15,12 @@ internal sealed class PaymentsController : BaseController
         _paymentsModule = paymentsModule;
     }
 
-    [HttpPut]
+    [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesDefaultResponseType]
     [AllowAnonymous]
-    public async Task<ActionResult> Charge([FromBody] PayCommand payCommand)
+    public async Task<ActionResult> Pay([FromBody] PayCommand payCommand)
     {
         await _paymentsModule.ExecuteCommandAsync(payCommand);
         return NoContent();

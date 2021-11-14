@@ -16,14 +16,14 @@ internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
 
     public async Task<Unit> Handle(PayCommand command, CancellationToken cancellationToken)
     {
-        var paymentId = new PaymentId(command.PaymentId);
+        var paymentId = PaymentId.Of(command.PaymentId);
+
         var payment = await _paymentsRepository.GetAsync(paymentId, cancellationToken);
         if (payment is null)
         {
             throw new NotFoundException(command.PaymentId, nameof(Payment));
         }
-        
-        payment.Pay(_paymentProcessor);
+        payment.Pay(_paymentProcessor, command.Token);
 
         return Unit.Value;
     }

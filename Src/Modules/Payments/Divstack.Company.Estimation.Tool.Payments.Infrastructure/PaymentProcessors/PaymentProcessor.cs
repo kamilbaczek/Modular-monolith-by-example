@@ -3,15 +3,27 @@
 using Domain.Payments;
 using Shared.DDD.ValueObjects;
 using Stripe;
-using PaymentMethod = Domain.Payments.PaymentMethod;
+using Card = Domain.Payments.Card;
+
 
 public sealed class PaymentProcessor : IPaymentProcessor
 {
-    public void Pay(PaymentSecret paymentSecret, PaymentMethod paymentMethod)
+    public void Pay(PaymentSecret paymentSecret, string token)
     {
+        var paymentMethodCreateOptions = new PaymentMethodCreateOptions
+        {
+            Type = "card",
+            Card = new PaymentMethodCardOptions
+            {
+                Token = token
+            },
+        };
+        var paymentMethodService = new PaymentMethodService();
+        var paymentMethod = paymentMethodService.Create(paymentMethodCreateOptions);
+
         var options = new PaymentIntentConfirmOptions
         {
-            PaymentMethod = paymentMethod.Value
+            PaymentMethod = paymentMethod.Id,
         };
         var service = new PaymentIntentService();
         service.Confirm(
@@ -19,6 +31,7 @@ public sealed class PaymentProcessor : IPaymentProcessor
             options
         );
     }
+
     public PaymentSecret Initialize(Money amountToPay)
     {
         var value = amountToPay.Value ?? 0;

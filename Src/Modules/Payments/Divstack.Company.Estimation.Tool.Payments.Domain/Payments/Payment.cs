@@ -30,9 +30,9 @@ public sealed class Payment : Entity, IAggregateRoot
         return new Payment(valuationId, inquiryId, amountToPay, paymentProcessor);
     }
 
-    public void Pay(IPaymentProcessor paymentProcessor, PaymentMethod paymentMethod)
+    public void Pay(IPaymentProcessor paymentProcessor,string token)
     {
-        paymentProcessor.Pay(PaymentSecret, paymentMethod);
+        paymentProcessor.Pay(PaymentSecret, token);
         PaymentStatus = PaymentStatus.Payed;
     }
 }
