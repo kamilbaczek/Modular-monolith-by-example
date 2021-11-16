@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Infrastructure")]
-
 namespace Divstack.Company.Estimation.Tool.Payments.Persistance;
 
+using DataAccess;
 using Domain.Payments.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +14,8 @@ internal static class PersistanceModule
     internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
         IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
+        services.AddDataAccess(connectionString);
         services.AddRepositories();
 
         return services;
@@ -21,5 +23,6 @@ internal static class PersistanceModule
 
     internal static void UsePersistanceModule(this IApplicationBuilder app)
     {
+        PersistanceConfiguration.Configure();
     }
 }

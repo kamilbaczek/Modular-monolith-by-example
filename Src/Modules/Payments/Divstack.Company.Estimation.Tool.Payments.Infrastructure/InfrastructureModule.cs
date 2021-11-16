@@ -28,5 +28,6 @@ internal static class InfrastructureModule
 
     internal static void UseInfrastructure(this IApplicationBuilder app)
     {
+        app.UsePersistanceModule();
     }
 }

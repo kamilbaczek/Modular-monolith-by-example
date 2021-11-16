@@ -27,6 +27,6 @@ internal sealed class InitializePaymentEventHandler : INotificationHandler<Valua
         var payment = Payment.Initialize(valuationId, inquiryId, amountToPay, _paymentProcessor);
 
         await _paymentsRepository.PersistAsync(payment, cancellationToken);
-        _integrationEventPublisher.Publish(payment.DomainEvents);
+        await _integrationEventPublisher.Publish(payment.DomainEvents, cancellationToken);
     }
 }

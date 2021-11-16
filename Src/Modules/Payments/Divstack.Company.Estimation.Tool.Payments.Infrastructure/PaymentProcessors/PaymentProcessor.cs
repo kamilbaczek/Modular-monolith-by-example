@@ -8,14 +8,22 @@ using Card = Domain.Payments.Card;
 
 public sealed class PaymentProcessor : IPaymentProcessor
 {
-    public void Pay(PaymentSecret paymentSecret, string token)
+    public void Pay(PaymentSecret paymentSecret,
+        string name,
+        string cardNumber,
+        long expMonth,
+        long expYear, 
+        string security)
     {
         var paymentMethodCreateOptions = new PaymentMethodCreateOptions
         {
             Type = "card",
             Card = new PaymentMethodCardOptions
             {
-                Token = token
+                Cvc = security,
+                ExpMonth = expMonth,
+                ExpYear = expYear,
+                Number = cardNumber
             },
         };
         var paymentMethodService = new PaymentMethodService();
@@ -39,8 +47,8 @@ public sealed class PaymentProcessor : IPaymentProcessor
         var options = new PaymentIntentCreateOptions
         {
             ConfirmationMethod = "manual",
-            Amount = (long)value, 
-            Currency = amountToPay.Currency
+            Amount = (long)1231233, 
+            Currency = amountToPay.Currency.ToLower()
         };
         var paymentIntent = paymentIntentService.Create(options);
         

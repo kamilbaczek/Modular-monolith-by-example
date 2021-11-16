@@ -17,12 +17,12 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
         _eventMapper = eventMapper;
     }
 
-    public void Publish(IReadOnlyCollection<IDomainEvent> domainEvents)
+    public async Task Publish(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)
         {
-            _mediator.Publish(integrationEvent);
+            await _mediator.Publish(integrationEvent, cancellationToken);
         }
     }
 }

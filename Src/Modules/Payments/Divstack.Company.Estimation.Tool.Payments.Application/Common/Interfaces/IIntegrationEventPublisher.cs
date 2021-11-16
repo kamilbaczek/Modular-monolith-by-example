@@ -4,5 +4,5 @@ using Shared.DDD.BuildingBlocks;
 
 public interface IIntegrationEventPublisher
 {
-    void Publish(IReadOnlyCollection<IDomainEvent> domainEvents);
+    Task Publish(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default);
 }

@@ -9,6 +9,10 @@ public record Card(    string       Number,
 }
 public interface IPaymentProcessor
 {
-    void Pay(PaymentSecret paymentSecret, string token);
+    void Pay(PaymentSecret paymentSecret, string name,
+        string cardNumber,
+        long expMonth,
+        long expYear, 
+        string security );
     PaymentSecret Initialize(Money amountToPay);
 }

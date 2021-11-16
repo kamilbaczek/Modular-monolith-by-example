@@ -23,7 +23,12 @@ internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
         {
             throw new NotFoundException(command.PaymentId, nameof(Payment));
         }
-        payment.Pay(_paymentProcessor, command.Token);
+        payment.Pay(_paymentProcessor, 
+            command.Name, 
+            command.CardNumber, 
+            command.ExpMonth, 
+            command.ExpYear,
+            command.Security);
 
         return Unit.Value;
     }

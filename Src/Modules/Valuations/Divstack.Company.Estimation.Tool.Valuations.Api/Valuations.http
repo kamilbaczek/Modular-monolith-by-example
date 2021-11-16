@@ -58,7 +58,7 @@ Content-Type: application/json
 
 {
   "Currency": "USD",
-  "Value": 42,
+  "Value": 5342,
   "Description": "string",
   "ValuationId": {{valuation}}
 }

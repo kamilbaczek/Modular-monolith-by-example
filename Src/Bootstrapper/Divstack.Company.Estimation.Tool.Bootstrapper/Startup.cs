@@ -47,5 +47,6 @@ public sealed class Startup
         app.UseAuthorization();
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         app.UseValuationModule();
+        app.UsePaymentModule();
     }
 }
