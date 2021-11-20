@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Exceptions;
 
-using System;
-
 public sealed class ProposalIsCancelledException : InvalidOperationException
 {
     public ProposalIsCancelledException(ProposalId proposalId) : base($"Proposal: {proposalId} is cancelled." +

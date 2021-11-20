@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 
-using System;
 using Proposals;
 
 public sealed class ProposalAlreadyHasDecisionException : InvalidOperationException

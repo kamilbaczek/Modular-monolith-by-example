@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Deadlines;
 using Events;
 using Exceptions;
@@ -14,20 +11,6 @@ using Shared.DDD.ValueObjects;
 
 public sealed class Valuation : Entity, IAggregateRoot
 {
-    private Valuation(
-        Deadline deadline,
-        InquiryId inquiryId)
-    {
-        Id = ValuationId.Create();
-        RequestedDate = SystemTime.Now();
-        Proposals = new LinkedList<Proposal>();
-        History = new LinkedList<HistoricalEntry>();
-        Deadline = deadline;
-        InquiryId = inquiryId;
-        ChangeStatus(ValuationStatus.WaitForProposal);
-        AddDomainEvent(new ValuationRequestedDomainEvent(Id, InquiryId, Deadline));
-    }
-
     public ValuationId Id { get; init; }
     private InquiryId InquiryId { get;  init;}
     private LinkedList<Proposal> Proposals { get;  init;}
@@ -45,6 +28,21 @@ public sealed class Valuation : Entity, IAggregateRoot
     private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
     private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
 
+    private Valuation(
+        Deadline deadline,
+        InquiryId inquiryId)
+    {
+        Id = ValuationId.Create();
+        RequestedDate = SystemTime.Now();
+        Proposals = new LinkedList<Proposal>();
+        History = new LinkedList<HistoricalEntry>();
+        Deadline = deadline;
+        InquiryId = inquiryId;
+        ChangeStatus(ValuationStatus.WaitForProposal);
+        var @event = new ValuationRequestedDomainEvent(Id, InquiryId, Deadline);
+        AddDomainEvent(@event);
+    }
+    
     public static Valuation Request(
         InquiryId inquiryId,
         Deadline deadline)
@@ -120,10 +118,10 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     public void Complete(EmployeeId employeeId)
     {
-        // if (IsCompleted)
-        // {
-        //     throw new ValuationCompletedException(Id);
-        // }
+        if (IsCompleted)
+        {
+            throw new ValuationCompletedException(Id);
+        }
 
         if (ProposalWaitForDecision is not null)
         {

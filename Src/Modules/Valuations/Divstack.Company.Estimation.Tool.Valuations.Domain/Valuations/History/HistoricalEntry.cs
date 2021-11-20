@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 
-using System;
 using Ardalis.GuardClauses;
 using Shared.DDD.BuildingBlocks;
 

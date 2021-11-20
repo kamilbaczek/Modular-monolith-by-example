@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
-using System;
-
 public record ProposalDecision
 {
     private const string Accept = "Accept";

@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
 
-using System;
 using Shared.DDD.BuildingBlocks;
 
 public sealed class Deadline : ValueObject

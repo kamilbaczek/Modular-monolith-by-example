@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 
-using System;
 using Deadlines;
 using Shared.DDD.BuildingBlocks;
 

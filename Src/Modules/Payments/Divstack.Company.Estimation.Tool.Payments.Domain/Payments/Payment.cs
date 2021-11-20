@@ -7,9 +7,9 @@ public sealed class Payment : Entity, IAggregateRoot
 {
     private Payment(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, PaymentSecret paymentSecret)
     {
+        Id = PaymentId.Create();
         PaymentSecret = Guard.Against.Null(paymentSecret, nameof(paymentSecret));
         ValuationId = Guard.Against.Null(valuationId, nameof(valuationId));
-        Id = PaymentId.Create();
         AmountToPay = Guard.Against.Null(amountToPay, nameof(amountToPay));
         InquiryId = Guard.Against.Null(inquiryId, nameof(inquiryId));
         PaymentStatus = PaymentStatus.WaitForPayment;
@@ -28,7 +28,7 @@ public sealed class Payment : Entity, IAggregateRoot
     public static async Task<Payment> InitializeAsync(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
     {
         var paymentSecret = await paymentProcessor.InitializeAsync(amountToPay);
-        var payment =  new Payment(valuationId, inquiryId, amountToPay, paymentSecret);
+        var payment = new Payment(valuationId, inquiryId, amountToPay, paymentSecret);
 
         return payment;
     }

@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-using System;
-
 public record ValuationId(Guid Value)
 {
     public static ValuationId Create()
