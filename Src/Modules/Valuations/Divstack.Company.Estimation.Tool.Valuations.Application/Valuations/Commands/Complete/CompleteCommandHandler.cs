@@ -2,10 +2,10 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Common.Exceptions;
+using Common.Interfaces;
 using Domain.UserAccess;
 using Domain.Valuations;
-using Exceptions;
-using Interfaces;
 using MediatR;
 
 internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
@@ -36,7 +36,7 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
         valuation.Complete(employeeId);
         
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-        _integrationEventPublisher.Publish(valuation.DomainEvents);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
        
         return Unit.Value;
     }

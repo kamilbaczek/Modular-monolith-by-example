@@ -2,8 +2,10 @@
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Api")]
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure;
+namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure;
 
+using Application;
+using Application.Common.Contracts;
 using Domain.Configurations;
 using Events;
 using Inquiries.Infrastructure.Snov;
@@ -11,10 +13,8 @@ using Mediation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Valuations.Application;
-using Valuations.Application.Contracts;
-using Valuations.Infrastructure.Trello;
-using Valuations.Persistance;
+using Persistance;
+using Trello;
 
 internal static class InfrastructureModule
 {

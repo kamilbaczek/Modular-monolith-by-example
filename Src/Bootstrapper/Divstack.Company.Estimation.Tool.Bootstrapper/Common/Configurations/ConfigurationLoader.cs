@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Configurations;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Common.Configurations;
 
 using System.Collections.ObjectModel;
 

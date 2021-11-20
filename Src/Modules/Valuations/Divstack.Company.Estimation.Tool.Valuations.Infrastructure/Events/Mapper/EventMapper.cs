@@ -2,11 +2,10 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Domain.Valuations.Events;
-using Domain.Valuations.Proposals.Events;
-using Estimations.Infrastructure.Events.Mapper;
 using IntegrationsEvents.ExternalEvents;
 using Shared.DDD.BuildingBlocks;
+using Valuations.Domain.Valuations.Events;
+using Valuations.Domain.Valuations.Proposals.Events;
 
 internal sealed class EventMapper : IEventMapper
 {

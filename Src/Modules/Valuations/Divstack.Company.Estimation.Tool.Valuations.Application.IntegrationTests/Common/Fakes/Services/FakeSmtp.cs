@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes.Services;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Fakes.Services;
 
 using System.Linq;
 using System.Net;

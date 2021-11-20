@@ -1,20 +1,20 @@
-﻿namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Api.Controllers;
 
 using System;
 using System.Threading.Tasks;
+using Application.Common.Contracts;
+using Application.Valuations.Commands.ApproveProposal;
+using Application.Valuations.Commands.CancelProposal;
+using Application.Valuations.Commands.Complete;
+using Application.Valuations.Commands.SuggestProposal;
+using Application.Valuations.Queries.Get;
+using Application.Valuations.Queries.Get.Dtos;
+using Application.Valuations.Queries.GetAll;
+using Application.Valuations.Queries.GetHistoryById;
+using Application.Valuations.Queries.GetHistoryById.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Valuations.Application.Contracts;
-using Valuations.Application.Valuations.Commands.ApproveProposal;
-using Valuations.Application.Valuations.Commands.CancelProposal;
-using Valuations.Application.Valuations.Commands.Complete;
-using Valuations.Application.Valuations.Commands.SuggestProposal;
-using Valuations.Application.Valuations.Queries.Get;
-using Valuations.Application.Valuations.Queries.Get.Dtos;
-using Valuations.Application.Valuations.Queries.GetAll;
-using Valuations.Application.Valuations.Queries.GetHistoryById;
-using Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
 
 internal sealed class ValuationsController : BaseController
 {

@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Estimations.Api.Controllers;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Api.Controllers;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

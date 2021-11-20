@@ -6,12 +6,12 @@ using Shared.DDD.BuildingBlocks;
 
 internal sealed class EventMapper : IEventMapper
 {
-    public IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events)
+    public List<IntegrationEvent?> Map(IReadOnlyCollection<IDomainEvent> events)
     {
         return events.Select(Map).ToList();
     }
 
-    private static IntegrationEvent Map(IDomainEvent @event)
+    private static IntegrationEvent? Map(IDomainEvent @event)
     {
         return @event switch
         {

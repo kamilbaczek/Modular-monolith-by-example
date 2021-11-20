@@ -15,3 +15,16 @@ Content-Type: application/json
 ### Tokens
 @token =  {{sign_in_admin.response.body.$.token}}
 @bearer = Bearer {{token}}
+
+PATCH {{url}}/api/payments-module/Payments  HTTP/1.1
+Authorization: {{bearer}}
+Content-Type: application/json
+
+{
+    "paymentId": "7c108624-582c-401c-8454-5c9f5afa04bf",
+    "name": "Kamil Baczek",
+    "cardNumber": "4916 7596 6820 8248",
+    "expMonth": 2,
+    "expYear": 24,
+    "security": "590"
+}

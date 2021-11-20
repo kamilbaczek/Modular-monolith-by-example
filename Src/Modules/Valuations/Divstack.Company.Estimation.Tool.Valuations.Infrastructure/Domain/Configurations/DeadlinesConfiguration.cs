@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Configurations;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Domain.Configurations;
 
 using Microsoft.Extensions.Configuration;
 using Valuations.Domain.Valuations;

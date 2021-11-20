@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features;
 
 using System;
 using System.Linq;

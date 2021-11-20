@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 
 using System;
-using Contracts;
+using Common.Contracts;
 
 public sealed class ApproveProposalCommand : ICommand
 {

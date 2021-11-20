@@ -20,8 +20,8 @@ public sealed class Valuation : Entity, IAggregateRoot
     {
         Id = ValuationId.Create();
         RequestedDate = SystemTime.Now();
-        Proposals = new List<Proposal>();
-        History = new List<HistoricalEntry>();
+        Proposals = new LinkedList<Proposal>();
+        History = new LinkedList<HistoricalEntry>();
         Deadline = deadline;
         InquiryId = inquiryId;
         ChangeStatus(ValuationStatus.WaitForProposal);
@@ -30,8 +30,8 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     public ValuationId Id { get; init; }
     private InquiryId InquiryId { get;  init;}
-    private IList<Proposal> Proposals { get;  init;}
-    private IList<HistoricalEntry> History { get;  init;}
+    private LinkedList<Proposal> Proposals { get;  init;}
+    private LinkedList<HistoricalEntry> History { get;  init;}
     private DateTime RequestedDate { get;  init;}
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
@@ -68,7 +68,7 @@ public sealed class Valuation : Entity, IAggregateRoot
 
         var proposalDescription = ProposalDescription.From(description);
         var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
-        Proposals.Insert(0, proposal);
+        Proposals.AddFirst(proposal);
         ChangeStatus(ValuationStatus.WaitForClientDecision);
 
         var @event = new ProposalSuggestedDomainEvent(
@@ -120,10 +120,10 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     public void Complete(EmployeeId employeeId)
     {
-        if (IsCompleted)
-        {
-            throw new ValuationCompletedException(Id);
-        }
+        // if (IsCompleted)
+        // {
+        //     throw new ValuationCompletedException(Id);
+        // }
 
         if (ProposalWaitForDecision is not null)
         {
@@ -147,7 +147,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     private void ChangeStatus(ValuationStatus valuationStatus)
     {
         var historicalEntry = HistoricalEntry.Create(valuationStatus);
-        History.Insert(0, historicalEntry);
+        History.AddFirst(historicalEntry);
     }
 
     private Proposal GetProposal(ProposalId proposalId)

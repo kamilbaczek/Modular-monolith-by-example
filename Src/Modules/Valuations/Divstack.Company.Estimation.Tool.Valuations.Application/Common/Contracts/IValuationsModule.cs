@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Common.Contracts;
 
 using System.Threading.Tasks;
 

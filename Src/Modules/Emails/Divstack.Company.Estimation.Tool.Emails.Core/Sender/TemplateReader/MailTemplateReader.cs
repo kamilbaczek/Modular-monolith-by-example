@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.TemplateReader;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender.TemplateReader;
 
 using System;
 using System.IO;

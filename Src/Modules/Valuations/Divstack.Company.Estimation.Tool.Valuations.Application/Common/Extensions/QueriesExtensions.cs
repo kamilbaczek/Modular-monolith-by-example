@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Extensions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Common.Extensions;
 
 using System.Collections.Generic;
 using System.Data;

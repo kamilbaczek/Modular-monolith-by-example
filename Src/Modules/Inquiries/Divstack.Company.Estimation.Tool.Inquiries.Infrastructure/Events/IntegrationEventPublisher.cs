@@ -9,18 +9,20 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
     private readonly IEventMapper _eventMapper;
     private readonly IMediator _mediator;
 
-    public IntegrationEventPublisher(IMediator mediator, IEventMapper eventMapper)
+    public IntegrationEventPublisher(
+        IEventMapper eventMapper,
+        IMediator mediator)
     {
-        _mediator = mediator;
         _eventMapper = eventMapper;
+        _mediator = mediator;
     }
 
-    public void Publish(IReadOnlyCollection<IDomainEvent> domainEvents)
+    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)
         {
-            _mediator.Publish(integrationEvent);
+            await _mediator.Publish(integrationEvent, cancellationToken);
         }
     }
 }

@@ -1,9 +1,10 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events;
 
 using System.Collections.Generic;
-using Application.Interfaces;
-using Estimations.Infrastructure.Events.Mapper;
+using Application.Common.Interfaces;
+using Mapper;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
@@ -18,12 +19,12 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
         _eventMapper = eventMapper;
     }
 
-    public void Publish(IReadOnlyCollection<IDomainEvent> domainEvents)
+    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)
         {
-            _mediator.Publish(integrationEvent);
+            await _mediator.Publish(integrationEvent, cancellationToken);
         }
     }
 }

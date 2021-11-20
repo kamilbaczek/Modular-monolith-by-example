@@ -3,7 +3,7 @@
 using System;
 using System.Web;
 using Configuration;
-using Modules.Emails.Core.Sender.Contracts;
+using Core.Sender.Contracts;
 
 internal class ForgotPasswordMailSender : IForgotPasswordMailSender
 {

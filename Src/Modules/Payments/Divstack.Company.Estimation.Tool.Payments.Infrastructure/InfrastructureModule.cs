@@ -1,5 +1,4 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Api")]
-
 namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure;
 
 using Application;
@@ -16,11 +15,11 @@ internal static class InfrastructureModule
     internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddStripe();
         services.AddApplicationModule();
         services.AddMediationModule();
         services.AddPersistanceModule(configuration);
         services.AddEvents();
+        services.AddPaymentsProcessors();
         services.AddScoped<IPaymentsModule, PaymentsModule>();
 
         return services;
@@ -29,5 +28,6 @@ internal static class InfrastructureModule
     internal static void UseInfrastructure(this IApplicationBuilder app)
     {
         app.UsePersistanceModule();
+        app.UsePaymentProcessors();
     }
 }

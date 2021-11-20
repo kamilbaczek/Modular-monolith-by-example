@@ -1,7 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
-
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 namespace Divstack.Company.Estimation.Tool.Valuations.Application;
 
 using Microsoft.Extensions.DependencyInjection;

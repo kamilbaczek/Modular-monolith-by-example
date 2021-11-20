@@ -1,7 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
-
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
 using BackgroundProcessing;
@@ -11,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Observability;
+using Persistance;
 using Swagger;
 
 internal static class Extensions
@@ -45,6 +45,7 @@ internal static class Extensions
         app.UseCustomExceptionHandler();
         app.UseBackgroundProcessing();
         app.UseObservability();
+        app.UseSharedPersistance();
     }
 
     public static void ConfigureSharedInfrastructure(this IWebHostBuilder hostBuilder)

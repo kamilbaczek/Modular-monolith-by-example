@@ -1,9 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Persistance.Domain.Payments.Configurations;
 
-using MongoDB.Bson;
+using Extensions;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using Shared.DDD.ValueObjects;
 using Tool.Payments.Domain.Payments;
 
 internal static class PaymentPersistanceConfiguration
@@ -19,34 +17,32 @@ internal static class PaymentPersistanceConfiguration
             classMap.MapProperty("PaymentSecret").SetIsRequired(true);
             classMap.MapProperty("PaymentStatus").SetIsRequired(true);
             classMap.MapProperty("AmountToPay").SetIsRequired(true);
-            BsonClassMap.RegisterClassMap<ValuationId>(classMap =>
+            BsonClassMap.RegisterClassMap<ValuationId>(bsonClassMap =>
             {
-                classMap.MapProperty(valuationId => valuationId.Value)
-                    .SetSerializer(new GuidSerializer(BsonType.String))
+                bsonClassMap.MapProperty(valuationId => valuationId.Value)
+                    .ConfigureIdSerializer()
                     .SetIsRequired(true);
             });
-            BsonClassMap.RegisterClassMap<InquiryId>(classMap =>
+            BsonClassMap.RegisterClassMap<InquiryId>(bsonClassMap =>
             {
-                classMap.MapProperty(inquiryId => inquiryId.Value)
-                    .SetSerializer(new GuidSerializer(BsonType.String))
+                bsonClassMap.MapProperty(inquiryId => inquiryId.Value)
+                    .ConfigureIdSerializer()
                     .SetIsRequired(true);
             });
-            BsonClassMap.RegisterClassMap<PaymentId>(classMap =>
+            BsonClassMap.RegisterClassMap<PaymentId>(bsonClassMap =>
             {
-                classMap.MapProperty(paymentId => paymentId.Value)
-                    .SetSerializer(new GuidSerializer(BsonType.String))
+                bsonClassMap.MapProperty(paymentId => paymentId.Value)
+                    .ConfigureIdSerializer()
                     .SetIsRequired(true);
             });
-            
-            BsonClassMap.RegisterClassMap<PaymentStatus>(classMap =>
+            BsonClassMap.RegisterClassMap<PaymentStatus>(bsonClassMap =>
             {
-                classMap.MapProperty("Value").SetIsRequired(true);
+                bsonClassMap.MapProperty("Value").SetIsRequired(true);
             });
-            BsonClassMap.RegisterClassMap<PaymentSecret>(classMap =>
+            BsonClassMap.RegisterClassMap<PaymentSecret>(bsonClassMap =>
             {
-                classMap.MapProperty("Value").SetIsRequired(true);
+                bsonClassMap.MapProperty("Value").SetIsRequired(true);
             });
         });
-       
     }
 }

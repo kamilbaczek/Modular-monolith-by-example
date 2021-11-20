@@ -1,10 +1,10 @@
-﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Mediation;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Mediation;
 
+using Application;
 using MediatR;
 using MediatR.Extensions.FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
-using Valuations.Application;
-using Valuations.Persistance;
+using Persistance;
 
 internal static class MediationModule
 {

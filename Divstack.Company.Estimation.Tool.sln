@@ -154,6 +154,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Payments.Persistance", "Src\Modules\Payments\Divstack.Company.Estimation.Tool.Payments.Persistance\Divstack.Company.Estimation.Tool.Payments.Persistance.csproj", "{2CC172CB-154A-49C3-86FA-464DB71622FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Persistance", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.Persistance\Divstack.Company.Estimation.Tool.Shared.Persistance.csproj", "{454821C3-6EFE-410E-BF94-AE272EC8F2D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PaymentProcessors", "PaymentProcessors", "{0FDB4DA1-E77C-4E49-81A3-ADD4FB6957A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Payments.Infrastructure.PaymentProcessor.Stripe", "Src\Modules\Payments\Divstack.Company.Estimation.Tool.Payments.Infrastructure.PaymentProcessor.Stripe\Divstack.Company.Estimation.Tool.Payments.Infrastructure.PaymentProcessor.Stripe.csproj", "{C3400046-C8BE-47EC-B2B0-DD6B3442102C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -348,6 +354,14 @@ Global
 		{2CC172CB-154A-49C3-86FA-464DB71622FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC172CB-154A-49C3-86FA-464DB71622FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC172CB-154A-49C3-86FA-464DB71622FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{454821C3-6EFE-410E-BF94-AE272EC8F2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{454821C3-6EFE-410E-BF94-AE272EC8F2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{454821C3-6EFE-410E-BF94-AE272EC8F2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{454821C3-6EFE-410E-BF94-AE272EC8F2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3400046-C8BE-47EC-B2B0-DD6B3442102C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3400046-C8BE-47EC-B2B0-DD6B3442102C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3400046-C8BE-47EC-B2B0-DD6B3442102C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3400046-C8BE-47EC-B2B0-DD6B3442102C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -419,5 +433,8 @@ Global
 		{DC2D014A-4C57-4A5D-9D96-D1882C5B1582} = {3CC204EA-5654-4B42-9863-271E0A9099CB}
 		{2625F5F6-C0B3-4F73-9B3E-E73BE5256511} = {1870E25F-D0C7-4F9C-9361-AB73D6FF9298}
 		{2CC172CB-154A-49C3-86FA-464DB71622FE} = {1870E25F-D0C7-4F9C-9361-AB73D6FF9298}
+		{454821C3-6EFE-410E-BF94-AE272EC8F2D9} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
+		{0FDB4DA1-E77C-4E49-81A3-ADD4FB6957A1} = {4C8D9AA2-B398-4A3C-BBC1-120A7F091092}
+		{C3400046-C8BE-47EC-B2B0-DD6B3442102C} = {0FDB4DA1-E77C-4E49-81A3-ADD4FB6957A1}
 	EndGlobalSection
 EndGlobal

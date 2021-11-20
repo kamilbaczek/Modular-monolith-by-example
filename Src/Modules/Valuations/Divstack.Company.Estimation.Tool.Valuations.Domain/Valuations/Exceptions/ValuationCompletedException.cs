@@ -4,8 +4,9 @@ using System;
 
 public sealed class ValuationCompletedException : InvalidOperationException
 {
+    private static string GetMessage(ValuationId valuationId) => $"Cannot execute operation on completed valuation :{valuationId}";
     public ValuationCompletedException(ValuationId valuationId) :
-        base($"Cannot execute operation on completed valuation :{valuationId}")
+        base(GetMessage(valuationId))
     {
     }
 }

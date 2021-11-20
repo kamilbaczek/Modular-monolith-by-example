@@ -1,23 +1,23 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events;
 
-using Application.Common.Interfaces;
+using Application.Common.IntegrationsEvents;
 using Mapper;
 using MediatR;
 using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    private readonly IEventMapper _eventMapper;
     private readonly IMediator _mediator;
+    private readonly IEventMapper _eventMapper;
 
-    public IntegrationEventPublisher(IMediator mediator,
-        IEventMapper eventMapper)
+    public IntegrationEventPublisher(IEventMapper eventMapper,
+        IMediator mediator)
     {
         _mediator = mediator;
         _eventMapper = eventMapper;
     }
-
-    public async Task Publish(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
+    
+    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)

@@ -1,9 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Configurations;
 
-using MongoDB.Bson;
+using Extensions;
 using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
-using Shared.DDD.ValueObjects;
 using Tool.Valuations.Domain.Valuations;
 using Tool.Valuations.Domain.Valuations.Deadlines;
 using Tool.Valuations.Domain.Valuations.History;
@@ -34,15 +32,10 @@ internal static class ValuationPersistanceConfiguration
             classMap.MapProperty("Price").SetIsRequired(true);
             classMap.MapProperty("Description").SetIsRequired(true);
         });
-        BsonClassMap.RegisterClassMap<Money>(classMap =>
-        {
-            classMap.MapProperty(money => money.Value).SetIsRequired(true);
-            classMap.MapProperty(money => money.Currency).SetIsRequired(true);
-        });
         BsonClassMap.RegisterClassMap<EmployeeId>(classMap =>
         {
             classMap.MapProperty(employeeId => employeeId.Value)
-                .SetSerializer(new GuidSerializer(BsonType.String))
+                .ConfigureIdSerializer()
                 .SetIsRequired(true);
         });
         BsonClassMap.RegisterClassMap<ProposalDescription>(classMap =>
@@ -65,25 +58,25 @@ internal static class ValuationPersistanceConfiguration
         BsonClassMap.RegisterClassMap<InquiryId>(classMap =>
         {
             classMap.MapProperty("Value")
-                .SetSerializer(new GuidSerializer(BsonType.String))
+                .ConfigureIdSerializer()
                 .SetIsRequired(true);
         });
         BsonClassMap.RegisterClassMap<HistoricalEntryId>(classMap =>
         {
             classMap.MapProperty("Value")
-                .SetSerializer(new GuidSerializer(BsonType.String))
+                .ConfigureIdSerializer()
                 .SetIsRequired(true);
         });
         BsonClassMap.RegisterClassMap<ValuationId>(cm =>
         {
             cm.MapProperty("Value")
-                .SetSerializer(new GuidSerializer(BsonType.String))
+                .ConfigureIdSerializer()
                 .SetIsRequired(true);
         });
         BsonClassMap.RegisterClassMap<ProposalId>(cm =>
         {
             cm.MapProperty("Value")
-                .SetSerializer(new GuidSerializer(BsonType.String))
+                .ConfigureIdSerializer()
                 .SetIsRequired(true);
         });
     }

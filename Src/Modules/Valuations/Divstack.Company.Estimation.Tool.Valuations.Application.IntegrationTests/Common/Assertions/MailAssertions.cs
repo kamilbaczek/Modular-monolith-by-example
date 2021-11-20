@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Assertions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Assertions;
 
 using System.Linq;
 using FluentAssertions;

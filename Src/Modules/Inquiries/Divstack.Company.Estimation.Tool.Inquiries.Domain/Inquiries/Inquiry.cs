@@ -32,14 +32,7 @@ public sealed class Inquiry : Entity, IAggregateRoot
     public InquiryId Id { get; }
     private IReadOnlyList<InquiryItem> InquiryItems { get; }
     private Client Client { get; }
-
-    internal static Inquiry Make(
-        IReadOnlyList<Service> services,
-        Client client)
-    {
-        return new Inquiry(services, client);
-    }
-
+    
     public static async Task<Inquiry> MakeAsync(
         IReadOnlyCollection<Service> services,
         Client client,

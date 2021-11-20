@@ -3,8 +3,8 @@
 using System.Threading.Tasks;
 using System.Web;
 using Configuration;
-using Modules.Emails.Core.Sender.Contracts;
-using Modules.Emails.Core.Sender.TemplateReader;
+using Core.Sender.Contracts;
+using Core.Sender.TemplateReader;
 
 internal sealed class ValuationProposalSuggestedMailSender : IValuationProposalSuggestedMailSender
 {

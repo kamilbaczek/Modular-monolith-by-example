@@ -1,13 +1,13 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
 
 using Events;
+using Exceptions;
 
 public sealed class Payment : Entity, IAggregateRoot
 {
-    private Payment(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
+    private Payment(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, PaymentSecret paymentSecret)
     {
-        var paymentIntent = paymentProcessor.Initialize(amountToPay);
-        PaymentSecret = Guard.Against.Null(paymentIntent, nameof(paymentIntent));
+        PaymentSecret = Guard.Against.Null(paymentSecret, nameof(paymentSecret));
         ValuationId = Guard.Against.Null(valuationId, nameof(valuationId));
         Id = PaymentId.Create();
         AmountToPay = Guard.Against.Null(amountToPay, nameof(amountToPay));
@@ -25,20 +25,21 @@ public sealed class Payment : Entity, IAggregateRoot
     private PaymentStatus PaymentStatus { get; set; }
     private Money AmountToPay { get; init;}
 
-    public static Payment Initialize(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
+    public static async Task<Payment> InitializeAsync(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
     {
-        return new Payment(valuationId, inquiryId, amountToPay, paymentProcessor);
+        var paymentSecret = await paymentProcessor.InitializeAsync(amountToPay);
+        var payment =  new Payment(valuationId, inquiryId, amountToPay, paymentSecret);
+
+        return payment;
     }
 
-    public void Pay(
+    public async Task PayCard(
         IPaymentProcessor paymentProcessor, 
-        string name,
-        string cardNumber,
-        long expMonth,
-        long expYear, 
-         string security )
+        Card card)
     {
-        paymentProcessor.Pay(PaymentSecret, name, cardNumber, expMonth, expYear,security);
+        if (PaymentStatus == PaymentStatus.Payed)
+            throw new PaymentAlreadyPayedException(Id);
+        await paymentProcessor.PayAsync(PaymentSecret, card);
         PaymentStatus = PaymentStatus.Payed;
     }
 }

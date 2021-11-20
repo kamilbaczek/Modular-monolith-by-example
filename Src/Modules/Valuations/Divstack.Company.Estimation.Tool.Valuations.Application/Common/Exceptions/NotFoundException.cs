@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Common.Exceptions;
 
 using System;
 

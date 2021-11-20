@@ -1,18 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
 
-public record Card(    string       Number,
-    int ExpMonth,
-    int ExpYear,
-    string Cvc)
-{
-    
-}
 public interface IPaymentProcessor
 {
-    void Pay(PaymentSecret paymentSecret, string name,
-        string cardNumber,
-        long expMonth,
-        long expYear, 
-        string security );
-    PaymentSecret Initialize(Money amountToPay);
+    Task PayAsync(PaymentSecret paymentSecret, Card card, CancellationToken cancellationToken = default);
+    Task<PaymentSecret> InitializeAsync(Money amountToPay, CancellationToken cancellationToken = default);
 }

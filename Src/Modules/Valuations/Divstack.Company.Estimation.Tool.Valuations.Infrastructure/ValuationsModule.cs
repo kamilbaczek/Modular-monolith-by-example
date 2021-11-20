@@ -1,8 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure;
 
 using System.Threading.Tasks;
+using Application.Common.Contracts;
 using MediatR;
-using Valuations.Application.Contracts;
 
 internal sealed class ValuationsModule : IValuationsModule
 {

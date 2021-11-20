@@ -12,7 +12,7 @@ using Tool.Valuations.Domain.Valuations;
 internal sealed class GetValuationsQueryHandler : IRequestHandler<GetValuationQuery, ValuationVm>
 {
     private const string ProjectionQuery =
-        @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: 1, RequestedDate: 1, _id:0}";
+        @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy:'$CompletedBy.Value', RequestedDate: 1, _id:0}";
 
     private readonly IValuationsContext _valuationsContext;
 

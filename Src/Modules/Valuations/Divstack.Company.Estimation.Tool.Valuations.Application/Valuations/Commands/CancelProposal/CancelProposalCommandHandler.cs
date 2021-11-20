@@ -2,10 +2,10 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Common.Exceptions;
 using Domain.UserAccess;
 using Domain.Valuations;
 using Domain.Valuations.Proposals;
-using Exceptions;
 using MediatR;
 
 internal sealed class CancelProposalCommandHandler : IRequestHandler<CancelProposalCommand>

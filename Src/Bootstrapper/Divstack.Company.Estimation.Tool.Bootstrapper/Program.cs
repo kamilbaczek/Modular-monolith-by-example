@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper;
 
-using Configurations;
-using Extensions;
+using Common.Configurations;
+using Common.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.Observability;

@@ -1,12 +1,12 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests;
 
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Common.Contracts;
 using Bootstrapper;
-using Contracts;
 using Domain.UserAccess;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
@@ -22,7 +22,7 @@ using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetUserByUsername;
 using Users.Infrastructure.Identity.Users.Seeder;
 using Users.Persistance.DataAccess;
-using ICommand = Contracts.ICommand;
+using ICommand = Application.Common.Contracts.ICommand;
 
 [SetUpFixture]
 [TestFixture]
@@ -97,7 +97,7 @@ public class ValuationsTesting
         await valuationsModule.ExecuteCommandAsync(request);
     }
 
-    public static async Task<TResponse> ExecuteQueryAsync<TResponse>(Contracts.IQuery<TResponse> request)
+    public static async Task<TResponse> ExecuteQueryAsync<TResponse>(Application.Common.Contracts.IQuery<TResponse> request)
     {
         using var scope = _serviceScopeFactory.CreateScope();
 

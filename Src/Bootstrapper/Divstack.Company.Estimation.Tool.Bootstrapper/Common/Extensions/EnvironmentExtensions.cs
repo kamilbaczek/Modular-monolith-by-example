@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Extensions;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Common.Extensions;
 
 using Microsoft.Extensions.Hosting;
 

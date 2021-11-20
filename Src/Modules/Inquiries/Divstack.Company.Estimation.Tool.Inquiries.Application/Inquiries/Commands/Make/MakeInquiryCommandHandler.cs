@@ -41,7 +41,7 @@ internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCom
         var inquiry = await Inquiry.MakeAsync(services, client, _serviceExistingChecker);
 
         await _inquiriesRepository.PersistAsync(inquiry, cancellationToken);
-        _integrationEventPublisher.Publish(inquiry.DomainEvents);
+        await _integrationEventPublisher.PublishAsync(inquiry.DomainEvents, cancellationToken);
 
         return inquiry.Id.Value;
     }

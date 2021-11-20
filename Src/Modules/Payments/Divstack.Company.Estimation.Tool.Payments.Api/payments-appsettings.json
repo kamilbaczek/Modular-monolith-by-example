@@ -1,5 +1,8 @@
 ﻿{
   "ConnectionStrings": {
     "Payments": ""
+  },
+  "StripeApi": {
+    "ApiKey": ""
   }
 }

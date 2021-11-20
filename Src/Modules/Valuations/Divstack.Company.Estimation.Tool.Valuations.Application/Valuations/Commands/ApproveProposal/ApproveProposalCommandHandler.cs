@@ -2,10 +2,10 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Common.Exceptions;
+using Common.Interfaces;
 using Domain.Valuations;
 using Domain.Valuations.Proposals;
-using Exceptions;
-using Interfaces;
 using MediatR;
 
 internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
@@ -35,7 +35,7 @@ internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApprovePro
         valuation.ApproveProposal(proposalId);
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-        _integrationEventPublisher.Publish(valuation.DomainEvents);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
 
         return Unit.Value;
     }

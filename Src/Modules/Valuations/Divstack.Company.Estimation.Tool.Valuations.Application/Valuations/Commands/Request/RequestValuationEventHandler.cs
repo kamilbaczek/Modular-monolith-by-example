@@ -2,10 +2,10 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Common.Interfaces;
 using Domain.Valuations;
 using Domain.Valuations.Deadlines;
 using Inquiries.IntegrationsEvents.External;
-using Interfaces;
 using MediatR;
 
 internal sealed class RequestValuationEventHandler : INotificationHandler<InquiryMadeEvent>
@@ -29,6 +29,6 @@ internal sealed class RequestValuationEventHandler : INotificationHandler<Inquir
         var inquiryId = new InquiryId(notification.InquiryId);
         var valuation = Valuation.Request(inquiryId, deadline);
         await _valuationsRepository.AddAsync(valuation, cancellationToken);
-        _integrationEventPublisher.Publish(valuation.DomainEvents);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
     }
 }

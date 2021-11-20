@@ -17,18 +17,17 @@ internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
     public async Task<Unit> Handle(PayCommand command, CancellationToken cancellationToken)
     {
         var paymentId = PaymentId.Of(command.PaymentId);
-
         var payment = await _paymentsRepository.GetAsync(paymentId, cancellationToken);
         if (payment is null)
         {
             throw new NotFoundException(command.PaymentId, nameof(Payment));
         }
-        payment.Pay(_paymentProcessor, 
-            command.Name, 
-            command.CardNumber, 
-            command.ExpMonth, 
-            command.ExpYear,
-            command.Security);
+
+        var card = Card.New(command.CardNumber, 
+            command.ExpMonth,
+            command.ExpYear, 
+            command.Cvc);
+        await payment.PayCard(_paymentProcessor, card);
 
         return Unit.Value;
     }

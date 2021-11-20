@@ -2,10 +2,10 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using Common.Exceptions;
+using Common.Interfaces;
 using Domain.UserAccess;
 using Domain.Valuations;
-using Exceptions;
-using Interfaces;
 using MediatR;
 using Shared.DDD.ValueObjects;
 
@@ -39,7 +39,7 @@ internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestPro
         valuation.SuggestProposal(money, command.Description, employeeId);
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-        _integrationEventPublisher.Publish(valuation.DomainEvents);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
         return Unit.Value;
     }
 }

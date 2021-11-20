@@ -21,5 +21,5 @@ public sealed class ValuationStatus : ValueObject
     internal static ValuationStatus Approved => new(ApprovedStatus);
     internal static ValuationStatus Completed => new(CompletedStatus);
 
-    private string Value { get; }
+    private string Value { get; init; }
 }

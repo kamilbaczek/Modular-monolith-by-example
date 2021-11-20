@@ -2,14 +2,14 @@
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Api;
+namespace Divstack.Company.Estimation.Tool.Valuations.Api;
 
+using Domain.UserAccess;
 using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UserAccess;
-using Valuations.Domain.UserAccess;
 
 internal static class ValuationModule
 {

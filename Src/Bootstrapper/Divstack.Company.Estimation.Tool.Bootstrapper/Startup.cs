@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper;
 
-using Estimations.Api;
 using Inquiries.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +10,7 @@ using Reminders;
 using Services.Api;
 using Shared.Infrastructure.Api;
 using Users.Api;
+using Valuations.Api;
 
 public sealed class Startup
 {

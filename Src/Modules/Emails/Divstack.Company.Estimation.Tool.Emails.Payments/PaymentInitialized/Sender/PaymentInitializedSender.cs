@@ -2,9 +2,9 @@
 
 using Common.Extensions;
 using Configuration;
+using Core.Sender.Contracts;
+using Core.Sender.TemplateReader;
 using Microsoft.Extensions.Configuration;
-using Modules.Emails.Core.Sender.Contracts;
-using Modules.Emails.Core.Sender.TemplateReader;
 
 internal sealed class PaymentInitializedSender : IPaymentInitializedSender
 {

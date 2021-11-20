@@ -1,1 +1,1 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Fakes;

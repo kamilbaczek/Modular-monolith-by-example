@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Payments.Commands.Initalize;
 
-using Common.Interfaces;
+using Common.IntegrationsEvents;
 using Domain.Payments;
 using MediatR;
 using Shared.DDD.ValueObjects;
@@ -24,9 +24,9 @@ internal sealed class InitializePaymentEventHandler : INotificationHandler<Valua
         var valuationId = ValuationId.Of(@event.ValuationId);
         var inquiryId = InquiryId.Of(@event.InquiryId);
         var amountToPay = Money.Of(@event.AmountToPayValue, @event.AmountToPayCurrency);
-        var payment = Payment.Initialize(valuationId, inquiryId, amountToPay, _paymentProcessor);
+        var payment = await Payment.InitializeAsync(valuationId, inquiryId, amountToPay, _paymentProcessor);
 
         await _paymentsRepository.PersistAsync(payment, cancellationToken);
-        await _integrationEventPublisher.Publish(payment.DomainEvents, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(payment.DomainEvents, cancellationToken);
     }
 }

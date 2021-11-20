@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests;
 
 using System.Threading.Tasks;
 using NUnit.Framework;

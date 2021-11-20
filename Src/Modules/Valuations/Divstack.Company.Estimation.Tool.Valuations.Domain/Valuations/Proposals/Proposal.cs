@@ -31,7 +31,7 @@ public sealed class Proposal : Entity
     private DateTime? Cancelled { get; set; }
     private ProposalDecision Decision { get; set; }
 
-    internal bool HasDecision => Decision is not null && Decision != ProposalDecision.NoDecision();
+    internal bool HasDecision => Decision != ProposalDecision.NoDecision();
     internal bool IsCancelled => Cancelled.HasValue;
 
     internal static Proposal Suggest(

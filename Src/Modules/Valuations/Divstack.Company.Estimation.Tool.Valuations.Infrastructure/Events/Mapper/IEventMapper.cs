@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Mapper;
 
 using System.Collections.Generic;
 using Shared.DDD.BuildingBlocks;

@@ -1,6 +1,6 @@
 ﻿using static System.String;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender;
+namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender;
 
 using System.Threading.Tasks;
 using Configuration;
