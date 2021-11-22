@@ -57,11 +57,9 @@ public class ApproveProposalTests : BaseValuationTest
     {
         Valuation valuation = A.Valuation()
             .WithProposal()
-            .WithCancelledProposal();
+            .WithRejectedProposalDecision();
         var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
-
-        valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
-
+        
         var approveProposal = () => valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();

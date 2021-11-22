@@ -56,6 +56,7 @@ internal sealed class ProposalSuggestionBuilder
 
     internal ProposalCancelledBuilder WithCancelledProposal()
     {
+        Suggest();
         return new ProposalCancelledBuilder(Valuation);
     }
 

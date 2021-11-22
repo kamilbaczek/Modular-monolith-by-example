@@ -47,7 +47,6 @@ public class SuggestProposalTests : BaseValuationTest
         var employee = new EmployeeId(Guid.NewGuid());
         Valuation valuation = A.Valuation()
             .WithProposal();
-        SuggestFakeProposal(employee, valuation);
 
         var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
