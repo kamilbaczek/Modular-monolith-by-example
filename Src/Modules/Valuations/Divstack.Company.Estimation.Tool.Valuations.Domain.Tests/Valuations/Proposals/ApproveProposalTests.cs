@@ -1,15 +1,15 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
 
-using System;
 using Assertions;
 using Common;
+using Common.Builders;
 using Domain.Valuations;
 using Domain.Valuations.Exceptions;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
-using Shared.DDD.ValueObjects;
+using Shared.DDD.BuildingBlocks.Tests;
 
 public class ApproveProposalTests : BaseValuationTest
 {
@@ -17,24 +17,26 @@ public class ApproveProposalTests : BaseValuationTest
     public void Given_ApproveProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsApproved()
     {
         var employeeId = new EmployeeId(Guid.NewGuid());
-        var valuation = RequestFakeValuation();
-        var proposalId = SuggestFakeProposal(employeeId, valuation);
+        Valuation valuation = A.Valuation()
+            .WithProposal()
+            .WithEmployee(employeeId);
+        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
 
-        valuation.ApproveProposal(proposalId);
+        valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         var @event = GetPublishedEvent<ProposalApprovedDomainEvent>(valuation);
-        @event.AssertIsCorrect(employeeId, proposalId);
+        @event.AssertIsCorrect(employeeId, proposalSuggestedDomainEvent.ProposalId);
     }
 
     [Test]
     public void Given_ApproveProposal_When_ProposalIsCancelled_Then_ProposalIsNotFound()
     {
-        var employee = new EmployeeId(Guid.NewGuid());
-        var valuation = RequestFakeValuation();
-        var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-        valuation.CancelProposal(proposalId, employee);
+        Valuation valuation = A.Valuation()
+            .WithProposal()
+            .WithCancelledProposal();
+        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
 
-        var approveProposal = () => valuation.ApproveProposal(proposalId);
+        var approveProposal = () => valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         approveProposal.Should().Throw<ProposalNotFoundException>();
     }
@@ -43,7 +45,7 @@ public class ApproveProposalTests : BaseValuationTest
     public void Given_ApproveProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
     {
         var valuation = RequestFakeValuation();
-        var proposalId = new ProposalId(Guid.NewGuid());
+        var proposalId = ProposalId.Create();
 
         var approveProposal = () => valuation.ApproveProposal(proposalId);
 
@@ -53,12 +55,14 @@ public class ApproveProposalTests : BaseValuationTest
     [Test]
     public void Given_ApproveProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotApproved()
     {
-        var employee = new EmployeeId(Guid.NewGuid());
-        var valuation = RequestFakeValuation();
-        var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-        valuation.RejectProposal(proposalId);
+        Valuation valuation = A.Valuation()
+            .WithProposal()
+            .WithCancelledProposal();
+        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
 
-        var approveProposal = () => valuation.ApproveProposal(proposalId);
+        valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
+
+        var approveProposal = () => valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }
@@ -66,12 +70,12 @@ public class ApproveProposalTests : BaseValuationTest
     [Test]
     public void Given_ApproveProposal_When_ProposalAlreadyApproved_Then_ProposalIsNotApproved()
     {
-        var employee = new EmployeeId(Guid.NewGuid());
-        var valuation = RequestFakeValuation();
-        var proposalId = SuggestFakeProposal(employee, valuation);
-        valuation.ApproveProposal(proposalId);
+        Valuation valuation = A.Valuation()
+            .WithProposal();
+        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
+        valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
-        var approveProposal = () => valuation.ApproveProposal(proposalId);
+        var approveProposal = () => valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }

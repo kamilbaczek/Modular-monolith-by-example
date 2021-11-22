@@ -6,8 +6,7 @@ using Exceptions;
 using History;
 using Proposals;
 using Proposals.Events;
-using Shared.DDD.BuildingBlocks;
-using Shared.DDD.ValueObjects;
+
 
 public sealed class Valuation : Entity, IAggregateRoot
 {

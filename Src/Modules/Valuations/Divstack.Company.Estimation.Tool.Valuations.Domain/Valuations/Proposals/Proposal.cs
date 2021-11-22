@@ -13,7 +13,7 @@ public sealed class Proposal : Entity
         ProposalDescription description,
         EmployeeId suggestedBy)
     {
-        Id = new ProposalId(Guid.NewGuid());
+        Id = ProposalId.Create();
         Price = Guard.Against.Null(value, nameof(value));
         Description = Guard.Against.Null(description, nameof(description));
         SuggestedBy = Guard.Against.Null(suggestedBy, nameof(suggestedBy));

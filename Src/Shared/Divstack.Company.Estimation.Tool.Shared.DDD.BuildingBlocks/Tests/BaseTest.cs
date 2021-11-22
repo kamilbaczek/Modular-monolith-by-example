@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.Tests;
 
 using System.Linq;
 using FluentAssertions;

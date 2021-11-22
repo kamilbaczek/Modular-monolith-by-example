@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-using Shared.DDD.BuildingBlocks;
-
 public sealed class ValuationStatus : ValueObject
 {
     private const string WaitForProposalStatus = "WaitForProposal";

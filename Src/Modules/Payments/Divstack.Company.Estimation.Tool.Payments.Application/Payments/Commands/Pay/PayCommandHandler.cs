@@ -23,10 +23,11 @@ internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
             throw new NotFoundException(command.PaymentId, nameof(Payment));
         }
 
-        var card = Card.New(command.CardNumber, 
-            command.ExpMonth,
-            command.ExpYear, 
-            command.Cvc);
+        var card = Card.New(
+            command.Card.CardNumber,
+            command.Card.ExpMonth,
+            command.Card.ExpYear,
+            command.Card.Cvc);
         await payment.PayCard(_paymentProcessor, card);
 
         return Unit.Value;

@@ -3,7 +3,7 @@
 using Domain.Valuations;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
-using Shared.DDD.BuildingBlocks;
+using Shared.DDD.BuildingBlocks.Tests;
 using Shared.DDD.ValueObjects;
 
 public abstract class BaseValuationTest : BaseTest

@@ -1,14 +1,15 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
 
-using System;
 using Assertions;
 using Common;
+using Common.Builders;
 using Domain.Valuations;
 using Domain.Valuations.Exceptions;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
+using Shared.DDD.BuildingBlocks.Tests;
 using Shared.DDD.ValueObjects;
 
 public class RejectProposalTests : BaseValuationTest
@@ -53,12 +54,12 @@ public class RejectProposalTests : BaseValuationTest
     [Test]
     public void Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
     {
-        var employee = new EmployeeId(Guid.NewGuid());
-        var valuation = RequestFakeValuation();
-        var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-        valuation.RejectProposal(proposalId);
+        Valuation valuation = A.Valuation()
+            .WithProposal();
+        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
+        valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
 
-        var rejectProposal = () => valuation.RejectProposal(proposalId);
+        var rejectProposal = () => valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
 
         rejectProposal.Should().Throw<ProposalAlreadyHasDecisionException>();
     }

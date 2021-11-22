@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 
-using Ardalis.GuardClauses;
 using Shared.DDD.BuildingBlocks;
 
 public sealed class HistoricalEntry : Entity

@@ -1,8 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations;
 
-using System;
 using Assertions;
 using Common;
+using Common.Builders;
 using Domain.Valuations;
 using Domain.Valuations.Events;
 using FluentAssertions;
@@ -26,7 +26,8 @@ public class RequestValuationTests : BaseValuationTest
     [Test]
     public void Given_Request_Then_ValuationIsCreated()
     {
-        var deadline = FakeDeadline.CreateDeadline();
+        const int worksDaysToDeadlineFromNow = 5;
+        var deadline = A.Deadline().WithDeadline(worksDaysToDeadlineFromNow);
         var inquiry = InquiryId.Create();
 
         var valuation = Valuation.Request(inquiry, deadline);
@@ -41,7 +42,7 @@ public class RequestValuationTests : BaseValuationTest
         DateTime expectedDeadline)
     {
         SystemTime.SetDateTime(nowDate);
-        var deadline = FakeDeadline.CreateDeadline(daysToDeadlineFromNow);
+        var deadline = A.Deadline().WithDeadline(daysToDeadlineFromNow);
         var inquiry = InquiryId.Create();
 
         var valuation = Valuation.Request(inquiry, deadline);

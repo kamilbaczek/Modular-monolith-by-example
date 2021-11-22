@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Api.Controllers;
 
-using System;
-using System.Threading.Tasks;
-using Application.Common.Contracts;
 using Application.Valuations.Commands.ApproveProposal;
 using Application.Valuations.Commands.CancelProposal;
 using Application.Valuations.Commands.Complete;

@@ -1,5 +1,4 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Infrastructure")]
-
 namespace Divstack.Company.Estimation.Tool.Payments.Application;
 
 internal static class ApplicationModule

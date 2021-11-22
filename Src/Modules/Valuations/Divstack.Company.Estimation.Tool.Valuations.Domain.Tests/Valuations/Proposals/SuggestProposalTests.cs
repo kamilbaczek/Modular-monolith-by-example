@@ -1,8 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
 
-using System;
 using Assertions;
 using Common;
+using Common.Builders;
 using Domain.Valuations;
 using Domain.Valuations.Exceptions;
 using Domain.Valuations.Proposals.Events;
@@ -13,11 +13,11 @@ using Shared.DDD.ValueObjects;
 public class SuggestProposalTests : BaseValuationTest
 {
     [Test]
-    public void Given_SuggestProposal_Then_CannotSuggestProposal()
+    public void Given_SuggestProposal_Then_SuggestProposal()
     {
-        var valuation = RequestFakeValuation();
         var money = Money.Of(30, "USD");
         var employee = new EmployeeId(Guid.NewGuid());
+        Valuation valuation = A.Valuation();
 
         valuation.SuggestProposal(money, "test", employee);
 
@@ -28,12 +28,12 @@ public class SuggestProposalTests : BaseValuationTest
     [Test]
     public void Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
     {
-        var valuation = RequestFakeValuation();
         var money = Money.Of(30, "USD");
         var employee = new EmployeeId(Guid.NewGuid());
-        var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-        valuation.ApproveProposal(proposalId);
-        valuation.Complete(employee);
+        Valuation valuation = A.Valuation()
+            .WithProposal()
+            .WithApprovedProposalDecision()
+            .Completed();
 
         var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
@@ -45,7 +45,8 @@ public class SuggestProposalTests : BaseValuationTest
     {
         var money = Money.Of(30, "USD");
         var employee = new EmployeeId(Guid.NewGuid());
-        var valuation = RequestFakeValuation();
+        Valuation valuation = A.Valuation()
+            .WithProposal();
         SuggestFakeProposal(employee, valuation);
 
         var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);

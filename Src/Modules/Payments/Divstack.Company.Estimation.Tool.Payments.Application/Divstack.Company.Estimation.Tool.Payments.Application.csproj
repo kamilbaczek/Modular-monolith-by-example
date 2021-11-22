@@ -17,5 +17,4 @@
     <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Domain\Divstack.Company.Estimation.Tool.Payments.Domain.csproj" />
   </ItemGroup>
-
 </Project>

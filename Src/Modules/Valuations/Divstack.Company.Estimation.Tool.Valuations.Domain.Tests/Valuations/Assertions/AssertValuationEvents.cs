@@ -43,11 +43,9 @@ internal static class AssertValuationEvents
     }
 
     internal static void AssertIsCorrect(this ValuationCompletedDomainEvent domainEvent,
-        EmployeeId closedBy,
         ValuationId valuationId)
     {
         domainEvent.Should().NotBeNull();
-        domainEvent.InquiryId.Should().Be(closedBy);
         domainEvent.ValuationId.Should().Be(valuationId);
     }
 }
