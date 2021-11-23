@@ -10,7 +10,6 @@ using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
 using Shared.DDD.BuildingBlocks.Tests;
-using Shared.DDD.ValueObjects;
 
 public class RejectProposalTests : BaseValuationTest
 {
@@ -56,9 +55,9 @@ public class RejectProposalTests : BaseValuationTest
     public void Given_RejectProposal_When_ProposalAlreadyRejected_Then_ProposalIsNotRejected()
     {
         Valuation valuation = A.Valuation()
-            .WithProposal();
+            .WithProposal()
+            .WithRejectedProposalDecision();
         var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
-        valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
 
         var rejectProposal = () => valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
 
