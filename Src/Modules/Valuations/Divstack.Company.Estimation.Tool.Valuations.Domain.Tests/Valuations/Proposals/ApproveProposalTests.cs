@@ -10,6 +10,7 @@ using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
 using Shared.DDD.BuildingBlocks.Tests;
+using Shared.DDD.ValueObjects;
 
 public class ApproveProposalTests : BaseValuationTest
 {
@@ -44,7 +45,8 @@ public class ApproveProposalTests : BaseValuationTest
     [Test]
     public void Given_ApproveProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
     {
-        var valuation = RequestFakeValuation();
+        Valuation valuation = A.Valuation()
+            .WithProposal();
         var proposalId = ProposalId.Create();
 
         var approveProposal = () => valuation.ApproveProposal(proposalId);
