@@ -20,3 +20,7 @@ Hangfire
 
 #### Components
 ![components](https://user-images.githubusercontent.com/74410956/130396746-40283672-decd-4ca8-a035-1c0ef6c6ae8e.png)
+
+#### Valuation Flow
+
+![diagram](https://user-images.githubusercontent.com/74410956/142997315-97c09d1f-cef3-416f-98bf-069b388ea019.png)
