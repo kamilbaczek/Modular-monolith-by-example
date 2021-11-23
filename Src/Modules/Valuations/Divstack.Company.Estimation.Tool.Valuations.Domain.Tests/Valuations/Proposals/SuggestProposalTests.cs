@@ -33,7 +33,7 @@ public class SuggestProposalTests : BaseValuationTest
         Valuation valuation = A.Valuation()
             .WithProposal()
             .WithApprovedProposalDecision()
-            .Completed();
+            .MarkedAsComplete();
 
         var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 

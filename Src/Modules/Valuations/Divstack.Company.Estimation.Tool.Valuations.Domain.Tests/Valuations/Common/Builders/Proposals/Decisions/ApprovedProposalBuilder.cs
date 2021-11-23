@@ -16,7 +16,7 @@ internal sealed class ApprovedProposalBuilder
     private static Valuation Valuation { get; set; }
     private static ProposalId ProposalId { get; set; }
 
-    public CompletedValuationBuilder Completed()
+    public CompletedValuationBuilder MarkedAsComplete()
     {
         Approve();
 
