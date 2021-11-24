@@ -5,12 +5,14 @@ dotnet: 6.0
 jobs:
   include:
     - stage: build
-      install:
-      - dotnet restore
-    - script: dotnet build
+    name: "Build .Net 6"
+    script: dotnet restore
+    script: dotnet build
     - stage: test
-    - script: dotnet test -v=normal
+      name: "Unit Tests"
+      script: dotnet test -v=normal
     - stage: deploy
+      name: "Deploy to Heroku"
       deploy:
         provider: heroku
         api_key: $Heroku__App__Key
