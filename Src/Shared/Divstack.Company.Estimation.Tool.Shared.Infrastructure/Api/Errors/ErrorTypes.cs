@@ -1,25 +1,24 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors
+using System;
+
+internal static class ErrorTypes
 {
-    internal static class ErrorTypes
+    private const string NotFound = "NotFound";
+    private const string Validation = "Validation";
+
+    internal static bool IsNotFoundException(this Exception exception)
     {
-        private const string NotFound = "NotFound";
-        private const string Validation = "Validation";
+        return IsType(exception, NotFound);
+    }
 
-        internal static bool IsNotFoundException(this Exception exception)
-        {
-            return IsType(exception, NotFound);
-        }
+    internal static bool IsValidationException(this Exception exception)
+    {
+        return IsType(exception, Validation);
+    }
 
-        internal static bool IsValidationException(this Exception exception)
-        {
-            return IsType(exception, Validation);
-        }
-
-        private static bool IsType(Exception exception, string type)
-        {
-            return exception.GetType().Name.Contains(type);
-        }
+    private static bool IsType(Exception exception, string type)
+    {
+        return exception.GetType().Name.Contains(type);
     }
 }

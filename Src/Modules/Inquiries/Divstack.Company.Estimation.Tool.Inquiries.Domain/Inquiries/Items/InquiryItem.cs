@@ -1,29 +1,26 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items
+using Services;
+
+public sealed class InquiryItem : Entity
 {
-    public sealed class InquiryItem : Entity
+    private InquiryItem()
     {
-        private InquiryItem()
-        {
-        }
+    }
 
-        private InquiryItem(Service service, Inquiry inquiry)
-        {
-            Id = new InquiryItemId(Guid.NewGuid());
-            Service = service;
-            Inquiry = inquiry;
-        }
+    private InquiryItem(Service service, Inquiry inquiry)
+    {
+        Id = new InquiryItemId(Guid.NewGuid());
+        Service = service;
+        Inquiry = inquiry;
+    }
 
-        private Service Service { get; }
-        private InquiryItemId Id { get; }
-        private Inquiry Inquiry { get; }
+    private Service Service { get; }
+    private InquiryItemId Id { get; }
+    private Inquiry Inquiry { get; }
 
-        internal static InquiryItem Create(Service service, Inquiry inquiry)
-        {
-            return new InquiryItem(service, inquiry);
-        }
+    internal static InquiryItem Create(Service service, Inquiry inquiry)
+    {
+        return new InquiryItem(service, inquiry);
     }
 }

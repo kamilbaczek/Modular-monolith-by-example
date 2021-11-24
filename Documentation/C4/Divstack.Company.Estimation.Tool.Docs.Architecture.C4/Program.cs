@@ -1,10 +1,10 @@
-﻿using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Configuration;
-using Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams;
-using Structurizr;
-using Structurizr.Api;
-
-namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4
 {
+    using Configuration;
+    using Diagrams;
+    using Structurizr;
+    using Structurizr.Api;
+
     internal class Program
     {
         private static void Main(string[] args)

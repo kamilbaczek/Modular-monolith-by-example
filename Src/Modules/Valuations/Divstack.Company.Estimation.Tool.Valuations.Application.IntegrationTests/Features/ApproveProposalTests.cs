@@ -1,33 +1,30 @@
-﻿using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features;
+
+using System.Threading.Tasks;
+using Common;
 using FluentAssertions;
 using NUnit.Framework;
+using Valuations.Commands.ApproveProposal;
+using static ValuationsTesting;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
+public class ApproveProposalTests : ValuationsTestBase
 {
-    using static ValuationsTesting;
-
-    public class ApproveProposalTests : ValuationsTestBase
+    [Test]
+    public async Task
+        Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToApproved()
     {
-        [Test]
-        public async Task
-            Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToApproved()
+        await ValuationModuleTester.RequestValuation();
+        var valuationBeforeApproval = await ValuationModuleTester.GetFirstRequestedValuation();
+        await ValuationModuleTester.SuggestValuationProposal(valuationBeforeApproval.ValuationId);
+        var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.ValuationId);
+        var approveCommand = new ApproveProposalCommand
         {
-            await ValuationModuleTester.RequestValuation();
-            var valuationBeforeApproval = await ValuationModuleTester.GetFirstRequestedValuation();
-            await ValuationModuleTester.SuggestValuationProposal(valuationBeforeApproval.Id);
-            var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.Id);
-            var approveCommand = new ApproveProposalCommand
-            {
-                ProposalId = recentProposal.Id,
-                ValuationId = valuationBeforeApproval.Id
-            };
+            ProposalId = recentProposal.ProposalId, ValuationId = valuationBeforeApproval.ValuationId
+        };
 
-            await ExecuteCommandAsync(approveCommand);
+        await ExecuteCommandAsync(approveCommand);
 
-            var valuationAfterApproval = await ValuationModuleTester.GetFirstRequestedValuation();
-            valuationAfterApproval.Status.Should().Be("Approved");
-        }
+        var valuationAfterApproval = await ValuationModuleTester.GetFirstRequestedValuation();
+        valuationAfterApproval.Status.Should().Be("Approved");
     }
 }

@@ -1,42 +1,44 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+
+using System;
 using System.Net.Mail;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+using BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails
+public sealed class Email : ValueObject
 {
-    public sealed class Email : ValueObject
+    private Email()
     {
-        private Email()
+    }
+
+    private Email(string emailAddress)
+    {
+        var isValid = IsValid(emailAddress);
+        if (!isValid)
         {
+            throw new InvalidEmailFormatException(emailAddress);
         }
 
-        private Email(string emailAddress)
-        {
-            var isValid = IsValid(emailAddress);
-            if (!isValid) throw new InvalidEmailFormatException(emailAddress);
+        Value = emailAddress;
+    }
 
-            Value = emailAddress;
+    public string Value { get; }
+
+    public static Email Of(string emailAddress)
+    {
+        return new Email(emailAddress);
+    }
+
+    private bool IsValid(string emailAddress)
+    {
+        try
+        {
+            var mailAddress = new MailAddress(emailAddress);
+
+            return true;
         }
-
-        public string Value { get; }
-
-        public static Email Of(string emailAddress)
+        catch (FormatException)
         {
-            return new Email(emailAddress);
-        }
-
-        private bool IsValid(string emailAddress)
-        {
-            try
-            {
-                var mailAddress = new MailAddress(emailAddress);
-
-                return true;
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

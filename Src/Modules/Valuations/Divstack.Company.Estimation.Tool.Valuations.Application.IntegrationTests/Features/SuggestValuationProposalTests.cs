@@ -1,48 +1,46 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features;
+
+using System;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Common.Fakes;
+using Common;
+using Common.Fakes;
 using FluentAssertions;
 using NUnit.Framework;
+using static ValuationsTesting;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Tests.Features
+public class SuggestValuationProposalTests : ValuationsTestBase
 {
-    using static ValuationsTesting;
+    private readonly TimeSpan OneMinuteInMs = new(60000);
 
-    public class SuggestValuationProposalTests : ValuationsTestBase
+    [Test]
+    public async Task
+        Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToWaitForClientDecision()
     {
-        private const int OneMinuteInMs = 60000;
+        await ValuationModuleTester.RequestValuation();
+        var valuationBeforeSuggestProposal = await ValuationModuleTester.GetFirstRequestedValuation();
+        var suggestProposalCommand =
+            FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationBeforeSuggestProposal.ValuationId);
 
-        [Test]
-        public async Task
-            Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToWaitForClientDecision()
-        {
-            await ValuationModuleTester.RequestValuation();
-            var valuationBeforeSuggestProposal = await ValuationModuleTester.GetFirstRequestedValuation();
-            var suggestProposalCommand =
-                FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationBeforeSuggestProposal.Id);
+        await ExecuteCommandAsync(suggestProposalCommand);
 
-            await ExecuteCommandAsync(suggestProposalCommand);
+        var valuationAfterSuggestProposal = await ValuationModuleTester.GetFirstRequestedValuation();
+        valuationAfterSuggestProposal.Status.Should().Be("WaitForClientDecision");
+    }
 
-            var valuationAfterSuggestProposal = await ValuationModuleTester.GetFirstRequestedValuation();
-            valuationAfterSuggestProposal.Status.Should().Be("WaitForClientDecision");
-        }
+    [Test]
+    public async Task
+        Given_SuggestProposal_When_CommandIsValid_Then_ProposalIsCorrectlySavedInDatabase()
+    {
+        await ValuationModuleTester.RequestValuation();
+        var valuation = await ValuationModuleTester.GetFirstRequestedValuation();
+        var suggestProposalCommand =
+            FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuation.ValuationId);
 
-        [Test]
-        public async Task
-            Given_SuggestProposal_When_CommandIsValid_Then_ProposalIsCorrectlySavedInDatabase()
-        {
-            await ValuationModuleTester.RequestValuation();
-            var valuation = await ValuationModuleTester.GetFirstRequestedValuation();
-            var suggestProposalCommand =
-                FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuation.Id);
+        await ExecuteCommandAsync(suggestProposalCommand);
 
-            await ExecuteCommandAsync(suggestProposalCommand);
-
-            var proposal = await ValuationModuleTester.GetRecentProposal(valuation.Id);
-            proposal.Should().BeEquivalentTo(suggestProposalCommand, opt => opt.ExcludingMissingMembers());
-            proposal.SuggestedBy.Should().Be(CurrentUserId);
-            DateTime.Parse(proposal.SuggestedFormatted).Should().BeCloseTo(DateTime.Now, OneMinuteInMs);
-        }
+        var proposal = await ValuationModuleTester.GetRecentProposal(valuation.ValuationId);
+        proposal.Should().BeEquivalentTo(suggestProposalCommand, opt => opt.ExcludingMissingMembers());
+        proposal.SuggestedBy.Should().Be(CurrentUserId);
+        proposal.DecisionDate.Should().BeCloseTo(DateTime.Now, OneMinuteInMs);
     }
 }

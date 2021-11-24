@@ -1,13 +1,12 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ForgotPassword;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ForgotPassword
+using FluentValidation;
+
+public class ForgotPasswordCommandValidator : AbstractValidator<ForgotPasswordCommand>
 {
-    public class ForgotPasswordCommandValidator : AbstractValidator<ForgotPasswordCommand>
+    public ForgotPasswordCommandValidator()
     {
-        public ForgotPasswordCommandValidator()
-        {
-            RuleFor(f => f.UserName)
-                .NotEmpty();
-        }
+        RuleFor(f => f.UserName)
+            .NotEmpty();
     }
 }

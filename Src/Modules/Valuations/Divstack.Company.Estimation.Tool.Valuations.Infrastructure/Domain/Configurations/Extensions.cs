@@ -1,15 +1,14 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Deadlines;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Domain.Configurations;
+
 using Microsoft.Extensions.DependencyInjection;
+using Valuations.Domain.Valuations.Deadlines;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Domain.Configurations
+internal static class Extensions
 {
-    internal static class Extensions
+    internal static IServiceCollection AddDeadlines(this IServiceCollection services)
     {
-        internal static IServiceCollection AddDeadlines(this IServiceCollection services)
-        {
-            services.AddSingleton<IDeadlinesConfiguration, DeadlinesConfiguration>();
+        services.AddSingleton<IDeadlinesConfiguration, DeadlinesConfiguration>();
 
-            return services;
-        }
+        return services;
     }
 }

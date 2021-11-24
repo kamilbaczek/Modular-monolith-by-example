@@ -1,15 +1,14 @@
-﻿using Divstack.Company.Estimation.Tool.Services.DAL.Seeder.Services;
+﻿namespace Divstack.Company.Estimation.Tool.Services.DAL.Seeder;
+
 using Microsoft.Extensions.DependencyInjection;
+using Services;
 
-namespace Divstack.Company.Estimation.Tool.Services.DAL.Seeder
+internal static class SeedersModule
 {
-    internal static class SeedersModule
+    internal static IServiceCollection AddSeeders(this IServiceCollection services)
     {
-        internal static IServiceCollection AddSeeders(this IServiceCollection services)
-        {
-            services.AddHostedService<ServicesSeeder>();
+        services.AddHostedService<ServicesSeeder>();
 
-            return services;
-        }
+        return services;
     }
 }

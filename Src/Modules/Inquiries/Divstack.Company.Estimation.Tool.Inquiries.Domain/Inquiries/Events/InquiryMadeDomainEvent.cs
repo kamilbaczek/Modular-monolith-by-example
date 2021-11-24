@@ -1,14 +1,11 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Events
+public sealed class InquiryMadeDomainEvent : DomainEventBase
 {
-    public sealed class InquiryMadeDomainEvent : DomainEventBase
+    public InquiryMadeDomainEvent(InquiryId inquiryId)
     {
-        public InquiryMadeDomainEvent(InquiryId inquiryId)
-        {
-            InquiryId = inquiryId;
-        }
-
-        public InquiryId InquiryId { get; }
+        InquiryId = inquiryId;
     }
+
+    public InquiryId InquiryId { get; }
 }

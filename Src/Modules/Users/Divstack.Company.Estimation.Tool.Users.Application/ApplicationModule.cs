@@ -1,15 +1,15 @@
 ﻿using System.Runtime.CompilerServices;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Users.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Users.Application
+namespace Divstack.Company.Estimation.Tool.Users.Application;
+
+using Microsoft.Extensions.DependencyInjection;
+
+internal static class ApplicationModule
 {
-    internal static class ApplicationModule
+    internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
     {
-        internal static IServiceCollection AddApplicationModule(this IServiceCollection services)
-        {
-            return services;
-        }
+        return services;
     }
 }

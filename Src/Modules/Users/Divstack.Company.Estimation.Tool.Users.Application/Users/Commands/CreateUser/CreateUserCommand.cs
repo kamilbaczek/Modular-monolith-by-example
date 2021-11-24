@@ -1,55 +1,54 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser;
+
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser.Requests;
+using Authentication;
+using Contracts;
 using MediatR;
+using Requests;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.CreateUser
+public class CreateUserCommand : ICommand
 {
-    public class CreateUserCommand : ICommand
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string UserName { get; set; }
+    public string Email { get; set; }
+    public bool IsActive { get; set; }
+    public List<string> Roles { get; set; }
+
+    internal sealed class Handler : IRequestHandler<CreateUserCommand>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public bool IsActive { get; set; }
-        public List<string> Roles { get; set; }
+        private readonly IMediator _mediator;
+        private readonly IPasswordsManagementService _passwordsManagementService;
+        private readonly IUserManagementService _userManagementService;
 
-        internal sealed class Handler : IRequestHandler<CreateUserCommand>
+        public Handler(IMediator mediator,
+            IUserManagementService userManagementService,
+            IPasswordsManagementService passwordsManagementService)
         {
-            private readonly IMediator _mediator;
-            private readonly IPasswordsManagementService _passwordsManagementService;
-            private readonly IUserManagementService _userManagementService;
+            _mediator = mediator;
+            _userManagementService = userManagementService;
+            _passwordsManagementService = passwordsManagementService;
+        }
 
-            public Handler(IMediator mediator,
-                IUserManagementService userManagementService,
-                IPasswordsManagementService passwordsManagementService)
-            {
-                _mediator = mediator;
-                _userManagementService = userManagementService;
-                _passwordsManagementService = passwordsManagementService;
-            }
+        public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = new CreateUserRequest(
+                request.UserName,
+                request.FirstName,
+                request.LastName,
+                request.Email,
+                request.IsActive);
 
-            public async Task<Unit> Handle(CreateUserCommand request, CancellationToken cancellationToken)
-            {
-                var user = new CreateUserRequest(
-                    request.UserName,
-                    request.FirstName,
-                    request.LastName,
-                    request.Email,
-                    request.IsActive);
+            var userPublicId = await _userManagementService.CreateUserAsync(user);
+            await _userManagementService.AssignUserToRolesAsync(userPublicId, request.Roles);
 
-                var userPublicId = await _userManagementService.CreateUserAsync(user);
-                await _userManagementService.AssignUserToRolesAsync(userPublicId, request.Roles);
+            var token = await _passwordsManagementService.GenerateConfirmAccountTokenAsync(userPublicId);
+            var @event = UserCreatedEvent.Create(userPublicId, request.Email, request.UserName, token);
+            await _mediator.Publish(@event, cancellationToken);
 
-                var token = await _passwordsManagementService.GenerateConfirmAccountTokenAsync(userPublicId);
-                var @event = UserCreatedEvent.Create(userPublicId, request.Email, request.UserName, token);
-                await _mediator.Publish(@event, cancellationToken);
-
-                return Unit.Value;
-            }
+            return Unit.Value;
         }
     }
 }

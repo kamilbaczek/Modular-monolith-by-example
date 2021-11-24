@@ -1,6 +1,5 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos
-{
-    public record ValuationHistoricalEntryDto(Guid HistoricalEntryId, string Status, DateTime ChangeDate);
-}
+using System;
+
+public record ValuationHistoricalEntryDto(Guid HistoricalEntryId, string Status, DateTime ChangeDate);

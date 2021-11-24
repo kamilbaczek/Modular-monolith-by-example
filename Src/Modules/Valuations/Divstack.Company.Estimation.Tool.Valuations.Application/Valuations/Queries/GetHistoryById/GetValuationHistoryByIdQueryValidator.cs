@@ -1,12 +1,11 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById
+using FluentValidation;
+
+public sealed class GetValuationHistoryByIdQueryValidator : AbstractValidator<GetValuationHistoryByIdQuery>
 {
-    public sealed class GetValuationHistoryByIdQueryValidator : AbstractValidator<GetValuationHistoryByIdQuery>
+    public GetValuationHistoryByIdQueryValidator()
     {
-        public GetValuationHistoryByIdQueryValidator()
-        {
-            RuleFor(query => query.ValuationId).NotEmpty();
-        }
+        RuleFor(query => query.ValuationId).NotEmpty();
     }
 }

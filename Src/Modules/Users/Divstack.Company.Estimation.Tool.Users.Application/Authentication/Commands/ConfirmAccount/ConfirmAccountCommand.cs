@@ -1,35 +1,34 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ConfirmAccount;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Contracts;
+using Contracts;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Authentication.Commands.ConfirmAccount
+public sealed class ConfirmAccountCommand : ICommand
 {
-    public sealed class ConfirmAccountCommand : ICommand
+    public Guid UserId { get; set; }
+    public string Token { get; set; }
+    public string Password { get; set; }
+
+    internal class Handler : IRequestHandler<ConfirmAccountCommand>
     {
-        public Guid UserId { get; set; }
-        public string Token { get; set; }
-        public string Password { get; set; }
+        private readonly IPasswordsManagementService _passwordsManagementService;
 
-        internal class Handler : IRequestHandler<ConfirmAccountCommand>
+        public Handler(IPasswordsManagementService passwordsManagementService)
         {
-            private readonly IPasswordsManagementService _passwordsManagementService;
+            _passwordsManagementService = passwordsManagementService;
+        }
 
-            public Handler(IPasswordsManagementService passwordsManagementService)
-            {
-                _passwordsManagementService = passwordsManagementService;
-            }
+        public async Task<Unit> Handle(ConfirmAccountCommand request, CancellationToken cancellationToken)
+        {
+            await _passwordsManagementService.ConfirmUserEmailAndSetPasswordAsync(
+                request.UserId,
+                request.Token,
+                request.Password);
 
-            public async Task<Unit> Handle(ConfirmAccountCommand request, CancellationToken cancellationToken)
-            {
-                await _passwordsManagementService.ConfirmUserEmailAndSetPasswordAsync(
-                    request.UserId,
-                    request.Token,
-                    request.Password);
-
-                return Unit.Value;
-            }
+            return Unit.Value;
         }
     }
 }

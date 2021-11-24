@@ -1,14 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration
+using Microsoft.Extensions.Configuration;
+
+public abstract class ConfigurationBase
 {
-    public abstract class ConfigurationBase
-    {
-        protected IConfigurationSection configurationSection;
+    protected IConfigurationSection configurationSection;
 
-        protected ConfigurationBase(IConfiguration configuration, string sectionName)
-        {
-            configurationSection = configuration.GetSection(sectionName);
-        }
+    protected ConfigurationBase(IConfiguration configuration, string sectionName)
+    {
+        configurationSection = configuration.GetSection(sectionName);
     }
 }

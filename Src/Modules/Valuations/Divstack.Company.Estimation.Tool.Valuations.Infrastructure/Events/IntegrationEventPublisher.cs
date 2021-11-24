@@ -1,28 +1,30 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events.Mapper;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events;
+
+using System.Collections.Generic;
+using Application.Common.Interfaces;
+using Mapper;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Events
+internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
+    private readonly IEventMapper _eventMapper;
+    private readonly IMediator _mediator;
+
+    public IntegrationEventPublisher(IMediator mediator,
+        IEventMapper eventMapper)
     {
-        private readonly IEventMapper _eventMapper;
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+        _eventMapper = eventMapper;
+    }
 
-        public IntegrationEventPublisher(IMediator mediator,
-            IEventMapper eventMapper)
+    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
+    {
+        var integrationEvents = _eventMapper.Map(domainEvents);
+        foreach (var integrationEvent in integrationEvents)
         {
-            _mediator = mediator;
-            _eventMapper = eventMapper;
-        }
-
-        public void Publish(IReadOnlyCollection<IDomainEvent> domainEvents)
-        {
-            var integrationEvents = _eventMapper.Map(domainEvents);
-            foreach (var integrationEvent in integrationEvents)
-                _mediator.Publish(integrationEvent);
+            await _mediator.Publish(integrationEvent, cancellationToken);
         }
     }
 }

@@ -1,13 +1,12 @@
-﻿using FluentValidation;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Commands.ChangeUserPassword
+using FluentValidation;
+
+public class ChangeUserPasswordCommandValidator : AbstractValidator<ChangeUserPasswordCommand>
 {
-    public class ChangeUserPasswordCommandValidator : AbstractValidator<ChangeUserPasswordCommand>
+    public ChangeUserPasswordCommandValidator()
     {
-        public ChangeUserPasswordCommandValidator()
-        {
-            RuleFor(command => command.PublicId).NotEmpty();
-            RuleFor(command => command.NewPassword).MaximumLength(255).NotEmpty();
-        }
+        RuleFor(command => command.PublicId).NotEmpty();
+        RuleFor(command => command.NewPassword).MaximumLength(255).NotEmpty();
     }
 }

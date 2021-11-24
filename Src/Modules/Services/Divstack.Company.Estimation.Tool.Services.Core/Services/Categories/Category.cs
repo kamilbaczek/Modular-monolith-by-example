@@ -1,27 +1,26 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories
+using System;
+
+public sealed class Category
 {
-    public sealed class Category
+    private Category(string name, string description)
     {
-        private Category(string name, string description)
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-            Description = description;
-        }
+        Id = Guid.NewGuid();
+        Name = name;
+        Description = description;
+    }
 
-        private Category()
-        {
-        }
+    private Category()
+    {
+    }
 
-        public Guid Id { get; }
-        public string Name { get; }
-        public string Description { get; }
+    public Guid Id { get; }
+    public string Name { get; }
+    public string Description { get; }
 
-        public static Category Create(string name, string description)
-        {
-            return new Category(name, description);
-        }
+    public static Category Create(string name, string description)
+    {
+        return new Category(name, description);
     }
 }

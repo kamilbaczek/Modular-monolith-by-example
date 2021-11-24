@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
 
-namespace Divstack.Company.Estimation.Tool.Users.Domain.Users
+using Microsoft.AspNetCore.Identity;
+
+public class ApplicationRole : IdentityRole
 {
-    public class ApplicationRole : IdentityRole
-    {
-        public string Description { get; set; }
-    }
+    public string Description { get; set; }
 }

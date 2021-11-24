@@ -1,12 +1,9 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations
+public record InquiryId(Guid Value)
 {
-    public record InquiryId(Guid Value)
+    public static InquiryId Create()
     {
-        public static InquiryId Create()
-        {
-            return new InquiryId(Guid.NewGuid());
-        }
+        return new InquiryId(Guid.NewGuid());
     }
 }

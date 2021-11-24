@@ -1,6 +1,3 @@
-using System;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes
-{
-    public record AttributeId(Guid Value);
-}
+public record AttributeId(Guid Value);

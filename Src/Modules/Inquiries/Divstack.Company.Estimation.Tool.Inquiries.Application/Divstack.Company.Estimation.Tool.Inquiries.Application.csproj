@@ -1,24 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Dapper" Version="2.0.78"/>
-        <PackageReference Include="FluentValidation" Version="9.4.0"/>
-        <PackageReference Include="MediatR" Version="9.0.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0"/>
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.78"/>
+    <PackageReference Include="FluentValidation" Version="9.4.0"/>
+    <PackageReference Include="MediatR" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Inquiries\Commands"/>
-    </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common"/>
+    <Folder Include="Inquiries\Commands"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
-        <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
-        <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Domain\Divstack.Company.Estimation.Tool.Inquiries.Domain.csproj"/>
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Domain\Divstack.Company.Estimation.Tool.Inquiries.Domain.csproj"/>
+  </ItemGroup>
 
 </Project>

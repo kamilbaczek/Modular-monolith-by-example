@@ -1,19 +1,18 @@
-﻿using Divstack.Company.Estimation.Tool.Users.Application;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Mediation;
+
+using Application;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Mediation
+internal static class MediationModule
 {
-    internal static class MediationModule
+    internal static IServiceCollection AddMediationModule(this IServiceCollection services)
     {
-        internal static IServiceCollection AddMediationModule(this IServiceCollection services)
-        {
-            var applicationAssembly = typeof(ApplicationModule).Assembly;
-            services.AddMediatR(applicationAssembly);
-            services.AddValidatorsFromAssembly(applicationAssembly);
+        var applicationAssembly = typeof(ApplicationModule).Assembly;
+        services.AddMediatR(applicationAssembly);
+        services.AddValidatorsFromAssembly(applicationAssembly);
 
-            return services;
-        }
+        return services;
     }
 }

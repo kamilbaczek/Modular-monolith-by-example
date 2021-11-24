@@ -1,4 +1,3 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos
-{
-    public record ValuationVm(ValuationInformationDto ValuationInformation);
-}
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos;
+
+public record ValuationVm(ValuationInformationDto ValuationInformation);

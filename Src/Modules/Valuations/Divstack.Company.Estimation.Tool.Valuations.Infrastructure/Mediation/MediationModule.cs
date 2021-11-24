@@ -1,23 +1,25 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Application;
-using Divstack.Company.Estimation.Tool.Valuations.Persistance;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Mediation;
+
+using Application;
 using MediatR;
 using MediatR.Extensions.FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
+using Persistance;
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Infrastructure.Mediation
+internal static class MediationModule
 {
-    internal static class MediationModule
+    internal static IServiceCollection AddMediationModule(this IServiceCollection services)
     {
-        internal static IServiceCollection AddMediationModule(this IServiceCollection services)
+        var commandsHandlersAssembly = typeof(ApplicationModule).Assembly;
+        var queryHandlersAssembly = typeof(PersistanceModule).Assembly;
+        var cqsAssemblies = new[]
         {
-            var commandsHandlersAssembly = typeof(ApplicationModule).Assembly;
-            var queryHandlersAssembly = typeof(PersistanceModule).Assembly;
-            var cqsAssemblies = new[] { commandsHandlersAssembly, queryHandlersAssembly };
+            commandsHandlersAssembly, queryHandlersAssembly
+        };
 
-            services.AddMediatR(cqsAssemblies);
-            services.AddFluentValidation(cqsAssemblies);
+        services.AddMediatR(cqsAssemblies);
+        services.AddFluentValidation(cqsAssemblies);
 
-            return services;
-        }
+        return services;
     }
 }

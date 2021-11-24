@@ -1,17 +1,17 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.Abstractions.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ForgotPassword.Configuration;
+
+using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
+using Shared.Abstractions.Configuration;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword.Configuration
+internal sealed class ForgotPasswordMailConfiguration : ConfigurationBase, IForgotPasswordMailConfiguration
 {
-    internal sealed class ForgotPasswordMailConfiguration : ConfigurationBase, IForgotPasswordMailConfiguration
+    public ForgotPasswordMailConfiguration(IConfiguration configuration) : base(configuration,
+        "ForgotPasswordMailConfiguration")
     {
-        public ForgotPasswordMailConfiguration(IConfiguration configuration) : base(configuration,
-            "ForgotPasswordMailConfiguration")
-        {
-        }
-
-        public string Subject => configurationSection.GetValue<string>(nameof(Subject));
-
-        public string Format => configurationSection.GetValue<string>(nameof(Format));
     }
+
+    public string Subject => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(Subject), nameof(Subject));
+
+    public string Format => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(Format), nameof(Format));
 }

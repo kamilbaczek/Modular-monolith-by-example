@@ -1,12 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+
+using System;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
+public interface IDomainEvent : INotification
 {
-    public interface IDomainEvent : INotification
-    {
-        Guid Id { get; }
+    Guid Id { get; }
 
-        DateTime OccurredOn { get; }
-    }
+    DateTime OccurredOn { get; }
 }

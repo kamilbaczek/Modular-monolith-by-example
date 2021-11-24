@@ -1,24 +1,23 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail;
+
+using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Users.Application.Authentication;
+using Authentication;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Users.Queries.GetUserEmail
+internal sealed class GetUserEmailQueryHandler : IRequestHandler<GetUserEmailQuery, string>
 {
-    internal sealed class GetUserEmailQueryHandler : IRequestHandler<GetUserEmailQuery, string>
+    private readonly IUserManagementService _userManagementService;
+
+    public GetUserEmailQueryHandler(IUserManagementService userManagementService)
     {
-        private readonly IUserManagementService _userManagementService;
+        _userManagementService = userManagementService;
+    }
 
-        public GetUserEmailQueryHandler(IUserManagementService userManagementService)
-        {
-            _userManagementService = userManagementService;
-        }
+    public async Task<string> Handle(GetUserEmailQuery request, CancellationToken cancellationToken)
+    {
+        var userDetails = await _userManagementService.GetUserDetailsByPublicIdAsync(request.PublicId);
 
-        public async Task<string> Handle(GetUserEmailQuery request, CancellationToken cancellationToken)
-        {
-            var userDetails = await _userManagementService.GetUserDetailsByPublicIdAsync(request.PublicId);
-
-            return userDetails.Email;
-        }
+        return userDetails.Email;
     }
 }

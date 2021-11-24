@@ -1,8 +1,6 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient
-{
-    public record GetInquiryClientQuery(Guid InquiryId) : IQuery<InquiryClientDto>;
-}
+using Common.Contracts;
+using Dtos;
+
+public record GetInquiryClientQuery(Guid InquiryId) : IQuery<InquiryClientDto>;

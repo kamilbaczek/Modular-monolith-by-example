@@ -1,22 +1,23 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Emails.Valuations;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+namespace Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper
+using Microsoft.Extensions.DependencyInjection;
+using Tool.Emails.Core;
+using Tool.Emails.Payments;
+using Tool.Emails.Users;
+using Tool.Emails.Valuations;
+
+internal static class EmailsModule
 {
-    internal static class EmailsModule
+    internal static IServiceCollection AddEmailsModule(this IServiceCollection services)
     {
-        internal static IServiceCollection AddEmailsModule(this IServiceCollection services)
-        {
-            services.AddEmailCore();
-            services.AddEmailUsers();
-            services.AddValuations();
+        services.AddCore();
+        services.AddUsers();
+        services.AddValuations();
+        services.AddPayments();
 
-            return services;
-        }
+        return services;
     }
 }

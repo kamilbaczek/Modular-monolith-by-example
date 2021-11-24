@@ -1,22 +1,21 @@
-﻿using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events
+using Shared.DDD.BuildingBlocks;
+using Shared.DDD.ValueObjects;
+
+public sealed class ProposalRejectedDomainEvent : DomainEventBase
 {
-    public sealed class ProposalRejectedDomainEvent : DomainEventBase
+    internal ProposalRejectedDomainEvent(
+        ValuationId valuationId,
+        ProposalId proposalId,
+        Money value)
     {
-        internal ProposalRejectedDomainEvent(
-            ValuationId valuationId,
-            ProposalId proposalId,
-            Money value)
-        {
-            ProposalId = proposalId;
-            Value = value;
-            ValuationId = valuationId;
-        }
-
-        public Money Value { get; }
-        public ValuationId ValuationId { get; }
-        public ProposalId ProposalId { get; }
+        ProposalId = proposalId;
+        Value = value;
+        ValuationId = valuationId;
     }
+
+    public Money Value { get; }
+    public ValuationId ValuationId { get; }
+    public ProposalId ProposalId { get; }
 }

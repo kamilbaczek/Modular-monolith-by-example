@@ -1,10 +1,8 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete
+using Common.Contracts;
+
+public sealed class CompleteCommand : ICommand
 {
-    public sealed class CompleteCommand : ICommand
-    {
-        public Guid ValuationId { get; set; }
-    }
+    public Guid ValuationId { get; set; }
 }

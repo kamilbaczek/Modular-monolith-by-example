@@ -1,17 +1,16 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
+using System;
+
+public abstract class DomainEventBase : IDomainEvent
 {
-    public abstract class DomainEventBase : IDomainEvent
+    protected DomainEventBase()
     {
-        protected DomainEventBase()
-        {
-            Id = Guid.NewGuid();
-            OccurredOn = DateTime.UtcNow;
-        }
-
-        public Guid Id { get; }
-
-        public DateTime OccurredOn { get; }
+        Id = Guid.NewGuid();
+        OccurredOn = DateTime.UtcNow;
     }
+
+    public Guid Id { get; }
+
+    public DateTime OccurredOn { get; }
 }

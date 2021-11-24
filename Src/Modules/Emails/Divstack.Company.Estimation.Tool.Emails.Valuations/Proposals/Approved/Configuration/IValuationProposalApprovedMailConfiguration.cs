@@ -1,9 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Configuration
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Configuration;
+
+internal interface IValuationProposalApprovedMailConfiguration
 {
-    internal interface IValuationProposalApprovedMailConfiguration
-    {
-        string Subject { get; }
-        string PathToTemplate { get; }
-        string ApprovedProposalLink { get; }
-    }
+    string Subject { get; }
+    string PathToTemplate { get; }
+    string ApprovedProposalLink { get; }
 }

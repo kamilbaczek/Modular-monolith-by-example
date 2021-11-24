@@ -1,29 +1,29 @@
 ﻿using System.Runtime.CompilerServices;
-using Divstack.Company.Estimation.Tool.Estimations.Api.UserAccess;
-using Divstack.Company.Estimation.Tool.Estimations.Infrastructure;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
-namespace Divstack.Company.Estimation.Tool.Estimations.Api
+namespace Divstack.Company.Estimation.Tool.Valuations.Api;
+
+using Domain.UserAccess;
+using Infrastructure;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using UserAccess;
+
+internal static class ValuationModule
 {
-    internal static class ValuationModule
+    public static IServiceCollection AddValuationsModule(this IServiceCollection services,
+        IConfiguration configuration)
     {
-        public static IServiceCollection AddValuationsModule(this IServiceCollection services,
-            IConfiguration configuration)
-        {
-            services.AddScoped<ICurrentUserService, CurrentUserService>();
-            services.AddInfrastructure(configuration);
+        services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddInfrastructure(configuration);
 
-            return services;
-        }
+        return services;
+    }
 
-        public static void UseValuationModule(this IApplicationBuilder app)
-        {
-            app.UseInfrastructure();
-        }
+    public static void UseValuationModule(this IApplicationBuilder app)
+    {
+        app.UseInfrastructure();
     }
 }

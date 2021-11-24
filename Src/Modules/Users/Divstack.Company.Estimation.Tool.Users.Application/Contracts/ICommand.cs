@@ -1,12 +1,11 @@
-﻿using MediatR;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Application.Contracts;
 
-namespace Divstack.Company.Estimation.Tool.Users.Application.Contracts
+using MediatR;
+
+public interface ICommand<TDto> : IRequest<TDto>
 {
-    public interface ICommand<TDto> : IRequest<TDto>
-    {
-    }
+}
 
-    public interface ICommand : IRequest
-    {
-    }
+public interface ICommand : IRequest
+{
 }

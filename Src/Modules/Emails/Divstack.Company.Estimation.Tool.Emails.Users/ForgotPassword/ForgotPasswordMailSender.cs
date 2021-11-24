@@ -1,35 +1,36 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ForgotPassword;
+
+using System;
 using System.Web;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword.Configuration;
+using Configuration;
+using Core.Sender.Contracts;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword
+internal class ForgotPasswordMailSender : IForgotPasswordMailSender
 {
-    internal class ForgotPasswordMailSender : IForgotPasswordMailSender
+    private readonly IForgotPasswordMailConfiguration _configuration;
+    private readonly IEmailSender _emailSender;
+
+    public ForgotPasswordMailSender(IEmailSender emailSender, IForgotPasswordMailConfiguration configuration)
     {
-        private readonly IForgotPasswordMailConfiguration _configuration;
-        private readonly IEmailSender _emailSender;
+        _emailSender = emailSender;
+        _configuration = configuration;
+    }
 
-        public ForgotPasswordMailSender(IEmailSender emailSender, IForgotPasswordMailConfiguration configuration)
+    public void
+        Send(string email, string token,
+            Guid userId)
+    {
+        if (string.IsNullOrWhiteSpace(_configuration.Format))
         {
-            _emailSender = emailSender;
-            _configuration = configuration;
+            throw new InvalidOperationException("Forgot password email format is not set");
         }
 
-        public void
-            Send(string email, string token,
-                Guid userId)
-        {
-            if (string.IsNullOrWhiteSpace(_configuration.Format))
-                throw new InvalidOperationException("Forgot password email format is not set");
+        const string tokenPlaceholder = "{token}";
+        const string userIdPlaceholder = "{userId}";
+        var emailText = _configuration.Format
+            .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token))
+            .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()));
 
-            const string tokenPlaceholder = "{token}";
-            const string userIdPlaceholder = "{userId}";
-            var emailText = _configuration.Format
-                .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token))
-                .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()));
-
-            _emailSender.Send(email, _configuration.Subject, emailText);
-        }
+        _emailSender.Send(email, _configuration.Subject, emailText);
     }
 }

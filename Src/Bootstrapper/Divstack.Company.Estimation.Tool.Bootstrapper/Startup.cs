@@ -1,49 +1,52 @@
-using Divstack.Company.Estimation.Tool.Estimations.Api;
-using Divstack.Company.Estimation.Tool.Inquiries.Api;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Reminders;
-using Divstack.Company.Estimation.Tool.Services.Api;
-using Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
-using Divstack.Company.Estimation.Tool.Users.Api;
+﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper;
+
+using Inquiries.Api;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Modules.Emails.Bootstrapper;
+using Payments.Api;
+using Reminders;
+using Services.Api;
+using Shared.Infrastructure.Api;
+using Users.Api;
+using Valuations.Api;
 
-namespace Divstack.Company.Estimation.Tool.Bootstrapper
+public sealed class Startup
 {
-    public sealed class Startup
+    public Startup(IConfiguration configuration)
     {
-        public Startup(IConfiguration configuration)
+        Configuration = configuration;
+    }
+
+    private IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSharedInfrastructure(Configuration);
+        services.AddUsersModule(Configuration);
+        services.AddServicesModule(Configuration);
+        services.AddInquiriesModule(Configuration);
+        services.AddValuationsModule(Configuration);
+        services.AddPaymentsModule(Configuration);
+        services.AddEmailsModule();
+        services.AddRemindersModule();
+    }
+
+    public void Configure(
+        IApplicationBuilder app,
+        IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            Configuration = configuration;
+            app.UseDeveloperExceptionPage();
         }
 
-        private IConfiguration Configuration { get; }
-
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddSharedInfrastructure(Configuration);
-            services.AddUsersModule(Configuration);
-            services.AddServicesModule(Configuration);
-            services.AddInquiriesModule(Configuration);
-            services.AddValuationsModule(Configuration);
-            services.AddEmailsModule();
-            services.AddRemindersModule();
-        }
-
-        public void Configure(
-            IApplicationBuilder app,
-            IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
-
-            app.UseSharedInfrastructure();
-            app.UseRouting();
-            app.UseAuthorization();
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-            app.UseValuationModule();
-        }
+        app.UseSharedInfrastructure();
+        app.UseRouting();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+        app.UseValuationModule();
+        app.UsePaymentModule();
     }
 }

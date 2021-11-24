@@ -1,47 +1,46 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Features.ValuationRequest;
+
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Services;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
-using Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Constants;
-using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+using Core;
+using Core.Constants;
+using IntegrationsEvents.ExternalEvents;
 using MediatR;
+using Services.Core.Services.Services;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Features.ValuationRequest
+internal sealed class ValuationRequestCreatedTrelloEventHandler : INotificationHandler<ValuationRequested>
 {
-    internal sealed class ValuationRequestCreatedTrelloEventHandler : INotificationHandler<ValuationRequested>
+    private readonly IServicesService _servicesService;
+    private readonly ITrelloTaskCreator _trelloTaskCreator;
+
+    public ValuationRequestCreatedTrelloEventHandler(ITrelloTaskCreator trelloTaskCreator,
+        IServicesService servicesService)
     {
-        private readonly IServicesService _servicesService;
-        private readonly ITrelloTaskCreator _trelloTaskCreator;
+        _trelloTaskCreator = trelloTaskCreator;
+        _servicesService = servicesService;
+    }
 
-        public ValuationRequestCreatedTrelloEventHandler(ITrelloTaskCreator trelloTaskCreator,
-            IServicesService servicesService)
-        {
-            _trelloTaskCreator = trelloTaskCreator;
-            _servicesService = servicesService;
-        }
+    public async Task Handle(ValuationRequested notification, CancellationToken cancellationToken)
+    {
+        // var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
+        // var servicesNames = services.Select(service => service.Name);
+        var taskName = GenerateTaskName(notification.ValuationId);
+        var description = GenerateDescription(notification, new List<string>());
+        await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
+    }
 
-        public async Task Handle(ValuationRequested notification, CancellationToken cancellationToken)
-        {
-            // var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
-            // var servicesNames = services.Select(service => service.Name);
-            var taskName = GenerateTaskName(notification.ValuationId);
-            var description = GenerateDescription(notification, new List<string>());
-            await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
-        }
+    private static string GenerateDescription(ValuationRequested notification,
+        IEnumerable<string> servicesNames)
+    {
+        return $"Valuation: {notification.ValuationId} " +
+               $"{Environment.NewLine}" +
+               $"Requested: {string.Join($"{Environment.NewLine}", servicesNames)}";
+    }
 
-        private static string GenerateDescription(ValuationRequested notification,
-            IEnumerable<string> servicesNames)
-        {
-            return $"Valuation: {notification.ValuationId} " +
-                   $"{Environment.NewLine}" +
-                   $"Requested: {string.Join($"{Environment.NewLine}", servicesNames)}";
-        }
-
-        private static string GenerateTaskName(Guid id)
-        {
-            return $"#{id} [Valuation]";
-        }
+    private static string GenerateTaskName(Guid id)
+    {
+        return $"#{id} [Valuation]";
     }
 }

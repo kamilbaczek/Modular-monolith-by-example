@@ -1,7 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Constants
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core.Constants;
+
+internal static class ListNames
 {
-    internal static class ListNames
-    {
-        internal const string Todo = "Todo";
-    }
+    internal const string Todo = "Todo";
 }

@@ -1,10 +1,9 @@
-﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Configuration;
+
+internal interface IAdminAccountConfiguration
 {
-    internal interface IAdminAccountConfiguration
-    {
-        bool Init { get; }
-        string UserName { get; }
-        string Email { get; }
-        string Password { get; }
-    }
+    bool Init { get; }
+    string UserName { get; }
+    string Email { get; }
+    string Password { get; }
 }

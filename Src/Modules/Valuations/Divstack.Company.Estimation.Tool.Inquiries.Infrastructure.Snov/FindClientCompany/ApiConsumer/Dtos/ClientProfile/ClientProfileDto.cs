@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer.Dtos.
+    ClientProfile;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.FindClientCompany.ApiConsumer.Dtos.
-    ClientProfile
-{
-    internal record ClientProfileDto(IReadOnlyCollection<CurrentJobDto> CurrentJobs);
-}
+using System.Collections.Generic;
+
+internal record ClientProfileDto(IReadOnlyCollection<CurrentJobDto> CurrentJobs);

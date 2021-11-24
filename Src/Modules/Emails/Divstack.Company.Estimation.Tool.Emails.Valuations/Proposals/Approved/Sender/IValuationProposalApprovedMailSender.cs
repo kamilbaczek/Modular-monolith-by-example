@@ -1,7 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved.Sender;
+
+internal interface IValuationProposalApprovedMailSender
 {
-    internal interface IValuationProposalApprovedMailSender
-    {
-        void Send(ValuationProposalApprovedEmailRequest request);
-    }
+    void Send(ValuationProposalApprovedEmailRequest request);
 }

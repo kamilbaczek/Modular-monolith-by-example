@@ -1,8 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ForgotPassword.Configuration
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ForgotPassword.Configuration;
+
+internal interface IForgotPasswordMailConfiguration
 {
-    internal interface IForgotPasswordMailConfiguration
-    {
-        string Subject { get; }
-        string Format { get; }
-    }
+    string Subject { get; }
+    string Format { get; }
 }

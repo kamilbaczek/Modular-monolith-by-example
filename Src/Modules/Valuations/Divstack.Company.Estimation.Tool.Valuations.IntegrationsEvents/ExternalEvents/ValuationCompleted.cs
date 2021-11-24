@@ -1,9 +1,10 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents
-{
-    public record ValuationCompleted(
-        Guid ClosedBy,
-        Guid ValuationId) : IntegrationEvent;
-}
+using System;
+using Shared.DDD.BuildingBlocks;
+
+public record ValuationCompleted(
+    Guid InquiryId,
+    Guid ValuationId,
+    decimal? AmountToPayValue,
+    string AmountToPayCurrency) : IntegrationEvent;

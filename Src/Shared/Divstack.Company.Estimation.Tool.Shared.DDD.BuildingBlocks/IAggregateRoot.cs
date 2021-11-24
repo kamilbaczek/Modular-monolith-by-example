@@ -1,6 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+
+public interface IAggregateRoot
 {
-    public interface IAggregateRoot
-    {
-    }
 }

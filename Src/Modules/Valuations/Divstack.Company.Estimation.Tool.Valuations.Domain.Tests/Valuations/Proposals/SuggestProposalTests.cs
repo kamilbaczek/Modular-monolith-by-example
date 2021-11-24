@@ -1,56 +1,55 @@
-﻿using System;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Assertions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals;
+
+using Assertions;
+using Common;
+using Common.Builders;
+using Domain.Valuations;
+using Domain.Valuations.Exceptions;
+using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
+using Shared.DDD.ValueObjects;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Proposals
+public class SuggestProposalTests : BaseValuationTest
 {
-    public class SuggestProposalTests : BaseValuationTest
+    [Test]
+    public void Given_SuggestProposal_Then_SuggestProposal()
     {
-        [Test]
-        public void Given_SuggestProposal_Then_CannotSuggestProposal()
-        {
-            var valuation = RequestFakeValuation();
-            var money = Money.Of(30, "USD");
-            var employee = new EmployeeId(Guid.NewGuid());
+        var money = Money.Of(30, "USD");
+        var employee = new EmployeeId(Guid.NewGuid());
+        Valuation valuation = A.Valuation();
 
-            valuation.SuggestProposal(money, "test", employee);
+        valuation.SuggestProposal(money, "test", employee);
 
-            var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuation);
-            @event.AssertIsCorrect(money, employee);
-        }
+        var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuation);
+        @event.AssertIsCorrect(money, employee);
+    }
 
-        [Test]
-        public void Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
-        {
-            var valuation = RequestFakeValuation();
-            var money = Money.Of(30, "USD");
-            var employee = new EmployeeId(Guid.NewGuid());
-            var proposalId = SuggestFakeProposal(employee, valuation, Money.Of(50, "USD"));
-            valuation.ApproveProposal(proposalId);
-            valuation.Complete(employee);
+    [Test]
+    public void Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
+    {
+        var money = Money.Of(30, "USD");
+        var employee = new EmployeeId(Guid.NewGuid());
+        Valuation valuation = A.Valuation()
+            .WithProposal()
+            .WithApprovedProposalDecision()
+            .MarkedAsComplete();
 
-            Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
+        var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
-            suggestProposal.Should().Throw<ValuationCompletedException>();
-        }
+        suggestProposal.Should().Throw<ValuationCompletedException>();
+    }
 
-        [Test]
-        public void Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
-        {
-            var money = Money.Of(30, "USD");
-            var employee = new EmployeeId(Guid.NewGuid());
-            var valuation = RequestFakeValuation();
-            SuggestFakeProposal(employee, valuation);
+    [Test]
+    public void Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
+    {
+        var money = Money.Of(30, "USD");
+        var employee = new EmployeeId(Guid.NewGuid());
+        Valuation valuation = A.Valuation()
+            .WithProposal();
 
-            Action suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
+        var suggestProposal = () => valuation.SuggestProposal(money, "test", employee);
 
-            suggestProposal.Should().Throw<ProposalWaitForDecisionException>();
-        }
+        suggestProposal.Should().Throw<ProposalWaitForDecisionException>();
     }
 }

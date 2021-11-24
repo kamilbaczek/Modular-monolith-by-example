@@ -1,39 +1,41 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
+
+using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+using Common.Exceptions;
+using Domain.UserAccess;
+using Domain.Valuations;
+using Domain.Valuations.Proposals;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal
+internal sealed class CancelProposalCommandHandler : IRequestHandler<CancelProposalCommand>
 {
-    internal sealed class CancelProposalCommandHandler : IRequestHandler<CancelProposalCommand>
+    private readonly ICurrentUserService _currentUserService;
+    private readonly IValuationsRepository _valuationsRepository;
+
+    public CancelProposalCommandHandler(IValuationsRepository valuationsRepository,
+        ICurrentUserService currentUserService)
     {
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IValuationsRepository _valuationsRepository;
+        _valuationsRepository = valuationsRepository;
+        _currentUserService = currentUserService;
+    }
 
-        public CancelProposalCommandHandler(IValuationsRepository valuationsRepository,
-            ICurrentUserService currentUserService)
+    public async Task<Unit> Handle(CancelProposalCommand command, CancellationToken cancellationToken)
+    {
+        var valuationId = new ValuationId(command.ValuationId);
+        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
+        if (valuation is null)
         {
-            _valuationsRepository = valuationsRepository;
-            _currentUserService = currentUserService;
+            throw new NotFoundException(command.ValuationId, nameof(Valuation));
         }
 
-        public async Task<Unit> Handle(CancelProposalCommand command, CancellationToken cancellationToken)
-        {
-            var valuationId = new ValuationId(command.ValuationId);
-            var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-            if (valuation is null)
-                throw new NotFoundException(command.ValuationId, nameof(Valuation));
-            var proposalId = new ProposalId(command.ProposalId);
-            var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
+        var proposalId = new ProposalId(command.ProposalId);
+        var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
 
-            valuation.CancelProposal(proposalId, employeeId);
+        valuation.CancelProposal(proposalId, employeeId);
 
-            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
+        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
 
-            return Unit.Value;
-        }
+        return Unit.Value;
     }
 }

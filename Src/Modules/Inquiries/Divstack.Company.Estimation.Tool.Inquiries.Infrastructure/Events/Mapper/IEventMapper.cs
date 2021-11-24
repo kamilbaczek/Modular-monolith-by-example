@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper
+using Shared.DDD.BuildingBlocks;
+
+public interface IEventMapper
 {
-    public interface IEventMapper
-    {
-        IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events);
-    }
+    IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events);
 }

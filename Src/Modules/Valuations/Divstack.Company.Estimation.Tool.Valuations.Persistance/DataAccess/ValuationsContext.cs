@@ -1,20 +1,19 @@
-﻿using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+
 using MongoDB.Driver;
+using Valuations.Domain.Valuations;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess
+internal sealed class ValuationsContext : IValuationsContext
 {
-    internal sealed class ValuationsContext : IValuationsContext
+    private const string DatabaseName = "EstimationTool";
+    private const string ValuationsCollectionName = "Valuations";
+
+    private readonly IMongoDatabase _database;
+
+    public ValuationsContext(MongoClient mongoClient)
     {
-        private const string DatabaseName = "EstimationTool";
-        private const string ValuationsCollectionName = "Valuations";
-
-        private readonly IMongoDatabase _database;
-
-        public ValuationsContext(MongoClient mongoClient)
-        {
-            _database = mongoClient.GetDatabase(DatabaseName);
-        }
-
-        public IMongoCollection<Valuation> Valuations => _database.GetCollection<Valuation>(ValuationsCollectionName);
+        _database = mongoClient.GetDatabase(DatabaseName);
     }
+
+    public IMongoCollection<Valuation> Valuations => _database.GetCollection<Valuation>(ValuationsCollectionName);
 }

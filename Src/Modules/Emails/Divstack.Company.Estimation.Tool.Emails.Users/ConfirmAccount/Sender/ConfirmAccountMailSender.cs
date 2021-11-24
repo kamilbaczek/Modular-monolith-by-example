@@ -1,34 +1,35 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ConfirmAccount.Sender;
+
+using System;
 using System.Web;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Core.Sender.Contracts;
-using Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Configuration;
+using Configuration;
+using Core.Sender.Contracts;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Sender
+internal class ConfirmAccountMailSender : IConfirmAccountMailSender
 {
-    internal class ConfirmAccountMailSender : IConfirmAccountMailSender
+    private readonly IConfirmAccountMailConfiguration _confirmAccountMailConfiguration;
+    private readonly IEmailSender _mailSender;
+
+    public ConfirmAccountMailSender(IConfirmAccountMailConfiguration confirmAccountMailConfiguration,
+        IEmailSender mailSender)
     {
-        private readonly IConfirmAccountMailConfiguration _confirmAccountMailConfiguration;
-        private readonly IEmailSender _mailSender;
+        _confirmAccountMailConfiguration = confirmAccountMailConfiguration;
+        _mailSender = mailSender;
+    }
 
-        public ConfirmAccountMailSender(IConfirmAccountMailConfiguration confirmAccountMailConfiguration,
-            IEmailSender mailSender)
+    public void Send(string email, string token, Guid userId)
+    {
+        if (string.IsNullOrWhiteSpace(_confirmAccountMailConfiguration.Format))
         {
-            _confirmAccountMailConfiguration = confirmAccountMailConfiguration;
-            _mailSender = mailSender;
+            throw new InvalidOperationException("Confirmation email format is not set");
         }
 
-        public void Send(string email, string token, Guid userId)
-        {
-            if (string.IsNullOrWhiteSpace(_confirmAccountMailConfiguration.Format))
-                throw new InvalidOperationException("Confirmation email format is not set");
+        const string userIdPlaceholder = "{userId}";
+        const string tokenPlaceholder = "{token}";
+        var emailText = _confirmAccountMailConfiguration.Format
+            .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()))
+            .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token));
 
-            const string userIdPlaceholder = "{userId}";
-            const string tokenPlaceholder = "{token}";
-            var emailText = _confirmAccountMailConfiguration.Format
-                .Replace(userIdPlaceholder, HttpUtility.UrlEncode(userId.ToString()))
-                .Replace(tokenPlaceholder, HttpUtility.UrlEncode(token));
-
-            _mailSender.Send(email, _confirmAccountMailConfiguration.Subject, emailText);
-        }
+        _mailSender.Send(email, _confirmAccountMailConfiguration.Subject, emailText);
     }
 }

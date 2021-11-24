@@ -1,40 +1,42 @@
-﻿using System.Threading;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
+
+using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+using Common.Exceptions;
+using Common.Interfaces;
+using Domain.Valuations;
+using Domain.Valuations.Proposals;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal
+internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
 {
-    internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    private readonly IValuationsRepository _valuationsRepository;
+
+    public ApproveProposalCommandHandler(
+        IValuationsRepository valuationsRepository,
+        IIntegrationEventPublisher integrationEventPublisher)
     {
-        private readonly IIntegrationEventPublisher _integrationEventPublisher;
-        private readonly IValuationsRepository _valuationsRepository;
+        _valuationsRepository = valuationsRepository;
+        _integrationEventPublisher = integrationEventPublisher;
+    }
 
-        public ApproveProposalCommandHandler(
-            IValuationsRepository valuationsRepository,
-            IIntegrationEventPublisher integrationEventPublisher)
+    public async Task<Unit> Handle(ApproveProposalCommand command, CancellationToken cancellationToken)
+    {
+        var valuationId = new ValuationId(command.ValuationId);
+        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
+        if (valuation is null)
         {
-            _valuationsRepository = valuationsRepository;
-            _integrationEventPublisher = integrationEventPublisher;
+            throw new NotFoundException(command.ValuationId, nameof(Valuation));
         }
 
-        public async Task<Unit> Handle(ApproveProposalCommand command, CancellationToken cancellationToken)
-        {
-            var valuationId = new ValuationId(command.ValuationId);
-            var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-            if (valuation is null)
-                throw new NotFoundException(command.ValuationId, nameof(Valuation));
-            var proposalId = new ProposalId(command.ProposalId);
+        var proposalId = new ProposalId(command.ProposalId);
 
-            valuation.ApproveProposal(proposalId);
+        valuation.ApproveProposal(proposalId);
 
-            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-            _integrationEventPublisher.Publish(valuation.DomainEvents);
+        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
 
-            return Unit.Value;
-        }
+        return Unit.Value;
     }
 }

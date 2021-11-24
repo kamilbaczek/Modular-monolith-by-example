@@ -1,6 +1,5 @@
-﻿using Divstack.Company.Estimation.Tool.Inquiries.Application.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetAll
-{
-    public record GetAllInquiriesQuery : IQuery<InquiryListVm>;
-}
+using Common.Contracts;
+
+public record GetAllInquiriesQuery : IQuery<InquiryListVm>;

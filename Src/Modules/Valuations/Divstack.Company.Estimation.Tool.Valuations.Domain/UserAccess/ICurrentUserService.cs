@@ -1,9 +1,6 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess
+public interface ICurrentUserService
 {
-    public interface ICurrentUserService
-    {
-        Guid GetPublicUserId();
-    }
+    Guid GetPublicUserId();
 }

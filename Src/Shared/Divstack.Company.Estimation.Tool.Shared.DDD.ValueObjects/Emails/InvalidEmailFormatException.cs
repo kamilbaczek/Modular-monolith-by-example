@@ -1,11 +1,10 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
-namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails
+using System;
+
+public sealed class InvalidEmailFormatException : InvalidOperationException
 {
-    public sealed class InvalidEmailFormatException : InvalidOperationException
+    public InvalidEmailFormatException(string emailAddress) : base($"'{emailAddress}' has invalid format")
     {
-        public InvalidEmailFormatException(string emailAddress) : base($"'{emailAddress}' has invalid format")
-        {
-        }
     }
 }

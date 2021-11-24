@@ -1,44 +1,43 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Interfaces;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
+
+using Common.Exceptions;
+using Common.Interfaces;
+using Domain.UserAccess;
+using Domain.Valuations;
 using MediatR;
+using Shared.DDD.ValueObjects;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal
+internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestProposalCommand>
 {
-    internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestProposalCommand>
+    private readonly ICurrentUserService _currentUserService;
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    private readonly IValuationsRepository _valuationsRepository;
+
+    public SuggestProposalCommandHandler(IValuationsRepository valuationsRepository,
+        ICurrentUserService currentUserService,
+        IIntegrationEventPublisher integrationEventPublisher)
     {
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IIntegrationEventPublisher _integrationEventPublisher;
-        private readonly IValuationsRepository _valuationsRepository;
+        _valuationsRepository = valuationsRepository;
+        _currentUserService = currentUserService;
+        _integrationEventPublisher = integrationEventPublisher;
+    }
 
-        public SuggestProposalCommandHandler(IValuationsRepository valuationsRepository,
-            ICurrentUserService currentUserService,
-            IIntegrationEventPublisher integrationEventPublisher)
+    public async Task<Unit> Handle(SuggestProposalCommand command, CancellationToken cancellationToken)
+    {
+        var valuationId = ValuationId.Of(command.ValuationId);
+        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
+        if (valuation is null)
         {
-            _valuationsRepository = valuationsRepository;
-            _currentUserService = currentUserService;
-            _integrationEventPublisher = integrationEventPublisher;
+            throw new NotFoundException(command.ValuationId, nameof(Valuation));
         }
 
-        public async Task<Unit> Handle(SuggestProposalCommand command, CancellationToken cancellationToken)
-        {
-            var valuationId = ValuationId.Of(command.ValuationId);
-            var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-            if (valuation is null)
-                throw new NotFoundException(command.ValuationId, nameof(Valuation));
+        var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
+        var money = Money.Of(command.Value, command.Currency);
 
-            var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
-            var money = Money.Of(command.Value, command.Currency);
+        valuation.SuggestProposal(money, command.Description, employeeId);
 
-            valuation.SuggestProposal(money, command.Description, employeeId);
-
-            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-            _integrationEventPublisher.Publish(valuation.DomainEvents);
-            return Unit.Value;
-        }
+        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+        return Unit.Value;
     }
 }

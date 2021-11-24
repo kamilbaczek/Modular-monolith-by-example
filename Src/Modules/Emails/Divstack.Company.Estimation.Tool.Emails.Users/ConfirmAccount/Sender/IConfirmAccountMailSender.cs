@@ -1,9 +1,8 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Users.ConfirmAccount.Sender;
 
-namespace Divstack.Company.Estimation.Tool.Modules.Emails.Users.ConfirmAccount.Sender
+using System;
+
+internal interface IConfirmAccountMailSender
 {
-    internal interface IConfirmAccountMailSender
-    {
-        void Send(string email, string token, Guid userId);
-    }
+    void Send(string email, string token, Guid userId);
 }

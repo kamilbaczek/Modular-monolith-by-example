@@ -1,36 +1,41 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Exceptions;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
+
+using Common.Exceptions;
+using Common.Interfaces;
+using Domain.UserAccess;
+using Domain.Valuations;
 using MediatR;
 
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete
+internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
 {
-    internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
+    private readonly ICurrentUserService _currentUserService;
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    private readonly IValuationsRepository _valuationsRepository;
+
+    public CompleteCommandHandler(IValuationsRepository valuationsRepository,
+        ICurrentUserService currentUserService,
+        IIntegrationEventPublisher integrationEventPublisher)
     {
-        private readonly ICurrentUserService _currentUserService;
-        private readonly IValuationsRepository _valuationsRepository;
+        _valuationsRepository = valuationsRepository;
+        _currentUserService = currentUserService;
+        _integrationEventPublisher = integrationEventPublisher;
+    }
 
-        public CompleteCommandHandler(IValuationsRepository valuationsRepository,
-            ICurrentUserService currentUserService)
+    public async Task<Unit> Handle(CompleteCommand command, CancellationToken cancellationToken)
+    {
+        var valuationId = new ValuationId(command.ValuationId);
+        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
+        if (valuation is null)
         {
-            _valuationsRepository = valuationsRepository;
-            _currentUserService = currentUserService;
+            throw new NotFoundException(command.ValuationId, nameof(Valuation));
         }
 
-        public async Task<Unit> Handle(CompleteCommand command, CancellationToken cancellationToken)
-        {
-            var valuationId = new ValuationId(command.ValuationId);
-            var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-            if (valuation is null)
-                throw new NotFoundException(command.ValuationId, nameof(Valuation));
-            var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
-
-            valuation.Complete(employeeId);
-            await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-
-            return Unit.Value;
-        }
+        var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
+        valuation.Complete(employeeId);
+        
+        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+       
+        return Unit.Value;
     }
 }

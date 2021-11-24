@@ -48,19 +48,27 @@ GET {{url}}/api/valuations-module/Valuations
 content-type: application/json
 Authorization: {{bearer}}
 
-### inquiry
-@valuation = 2f94d822-9ea4-4b5d-a5df-5c55f3b3e968
+### valuation
+@valuation = "c7cce064-3fb1-4a8d-be39-60da588e6371"
 
 ### Suggest proposal
 POST {{url}}/api/valuations-module/Valuations/valuations/proposals
-content-type: application/json
 Authorization: {{bearer}}
 Content-Type: application/json
 
 {
   "Currency": "USD",
-  "Value": 42,
+  "Value": 5342,
   "Description": "string",
+  "ValuationId": {{valuation}}
+}
+
+### Complete proposal
+PATCH {{url}}/api/valuations-module/Valuations/valuations/complete
+Authorization: {{bearer}}
+Content-Type: application/json
+
+{
   "ValuationId": {{valuation}}
 }
 

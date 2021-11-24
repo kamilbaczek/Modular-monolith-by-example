@@ -1,46 +1,48 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
+
+using System;
 using System.Data;
 using Microsoft.Data.SqlClient;
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data
+public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 {
-    public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
+    private readonly string _connectionString;
+    private IDbConnection _connection;
+
+    public SqlConnectionFactory(string connectionString)
     {
-        private readonly string _connectionString;
-        private IDbConnection _connection;
+        _connectionString = connectionString;
+    }
 
-        public SqlConnectionFactory(string connectionString)
+    public void Dispose()
+    {
+        if (_connection != null && _connection.State == ConnectionState.Open)
         {
-            _connectionString = connectionString;
+            _connection.Dispose();
+        }
+    }
+
+    public IDbConnection GetOpenConnection()
+    {
+        if (_connection is null || _connection.State != ConnectionState.Open)
+        {
+            _connection = new SqlConnection(_connectionString);
+            _connection.Open();
         }
 
-        public void Dispose()
-        {
-            if (_connection != null && _connection.State == ConnectionState.Open) _connection.Dispose();
-        }
+        return _connection;
+    }
 
-        public IDbConnection GetOpenConnection()
-        {
-            if (_connection is null || _connection.State != ConnectionState.Open)
-            {
-                _connection = new SqlConnection(_connectionString);
-                _connection.Open();
-            }
+    public IDbConnection CreateNewConnection()
+    {
+        var connection = new SqlConnection(_connectionString);
+        connection.Open();
 
-            return _connection;
-        }
+        return connection;
+    }
 
-        public IDbConnection CreateNewConnection()
-        {
-            var connection = new SqlConnection(_connectionString);
-            connection.Open();
-
-            return connection;
-        }
-
-        public string GetConnectionString()
-        {
-            return _connectionString;
-        }
+    public string GetConnectionString()
+    {
+        return _connectionString;
     }
 }

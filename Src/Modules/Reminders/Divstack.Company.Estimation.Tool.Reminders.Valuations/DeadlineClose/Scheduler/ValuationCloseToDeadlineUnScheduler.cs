@@ -1,54 +1,53 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
+
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration;
-using Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Reminder;
-using Divstack.Company.Estimation.Tool.Shared.Abstractions.BackgroundProcessing;
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
+using Configuration;
 using MediatR;
+using Reminder;
+using Shared.Abstractions.BackgroundProcessing;
+using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler
+internal sealed class ValuationCloseToDeadlineUnScheduler :
+    INotificationHandler<ProposalSuggestedDomainEvent>,
+    INotificationHandler<ProposalCancelledDomainEvent>
 {
-    internal sealed class ValuationCloseToDeadlineUnScheduler :
-        INotificationHandler<ProposalSuggestedDomainEvent>,
-        INotificationHandler<ProposalCancelledDomainEvent>
+    private readonly IBackgroundJobScheduler _backgroundJobScheduler;
+    private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
+    private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
+
+    public ValuationCloseToDeadlineUnScheduler(IBackgroundJobScheduler backgroundJobScheduler,
+        IValuationsDeadlineCloseReminder valuationsDeadlineCloseReminder,
+        IDeadlinesCloseReminderConfiguration deadlinesCloseReminderConfiguration)
     {
-        private readonly IBackgroundJobScheduler _backgroundJobScheduler;
-        private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
-        private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
+        _backgroundJobScheduler = backgroundJobScheduler;
+        _valuationsDeadlineCloseReminder = valuationsDeadlineCloseReminder;
+        _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
+    }
 
-        public ValuationCloseToDeadlineUnScheduler(IBackgroundJobScheduler backgroundJobScheduler,
-            IValuationsDeadlineCloseReminder valuationsDeadlineCloseReminder,
-            IDeadlinesCloseReminderConfiguration deadlinesCloseReminderConfiguration)
-        {
-            _backgroundJobScheduler = backgroundJobScheduler;
-            _valuationsDeadlineCloseReminder = valuationsDeadlineCloseReminder;
-            _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
-        }
+    public Task Handle(ProposalCancelledDomainEvent proposalCancelledDomainEvent,
+        CancellationToken cancellationToken)
+    {
+        UnSchedule(proposalCancelledDomainEvent.ValuationId.Value, cancellationToken);
 
-        public Task Handle(ProposalCancelledDomainEvent proposalCancelledDomainEvent,
-            CancellationToken cancellationToken)
-        {
-            UnSchedule(proposalCancelledDomainEvent.ValuationId.Value, cancellationToken);
+        return Task.CompletedTask;
+    }
 
-            return Task.CompletedTask;
-        }
+    public Task Handle(ProposalSuggestedDomainEvent proposalSuggestedDomainEvent,
+        CancellationToken cancellationToken)
+    {
+        UnSchedule(proposalSuggestedDomainEvent.ValuationId.Value, cancellationToken);
 
-        public Task Handle(ProposalSuggestedDomainEvent proposalSuggestedDomainEvent,
-            CancellationToken cancellationToken)
-        {
-            UnSchedule(proposalSuggestedDomainEvent.ValuationId.Value, cancellationToken);
+        return Task.CompletedTask;
+    }
 
-            return Task.CompletedTask;
-        }
-
-        private void UnSchedule(Guid valuationId, CancellationToken cancellationToken)
-        {
-            _backgroundJobScheduler.UnSchedule(
-                () => _valuationsDeadlineCloseReminder.RemindAsync(
-                    valuationId,
-                    _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
-                    cancellationToken));
-        }
+    private void UnSchedule(Guid valuationId, CancellationToken cancellationToken)
+    {
+        _backgroundJobScheduler.UnSchedule(
+            () => _valuationsDeadlineCloseReminder.RemindAsync(
+                valuationId,
+                _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
+                cancellationToken));
     }
 }

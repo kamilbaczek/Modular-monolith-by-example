@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
-namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess
+using Microsoft.EntityFrameworkCore;
+
+internal sealed class InquiriesContextFactory : DesignTimeDbContextFactoryBase<InquiriesContext>
 {
-    internal sealed class InquiriesContextFactory : DesignTimeDbContextFactoryBase<InquiriesContext>
+    protected override InquiriesContext CreateNewInstance(DbContextOptions<InquiriesContext> options)
     {
-        protected override InquiriesContext CreateNewInstance(DbContextOptions<InquiriesContext> options)
-        {
-            return new InquiriesContext(options);
-        }
+        return new InquiriesContext(options);
     }
 }

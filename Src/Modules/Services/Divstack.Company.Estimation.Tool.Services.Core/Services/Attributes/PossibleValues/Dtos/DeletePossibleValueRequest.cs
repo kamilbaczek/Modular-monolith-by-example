@@ -1,12 +1,11 @@
-﻿using System;
+﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Dtos;
 
-namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Dtos
+using System;
+
+public sealed class DeletePossibleValueRequest
 {
-    public sealed class DeletePossibleValueRequest
-    {
-        public Guid ServiceId { get; set; }
+    public Guid ServiceId { get; set; }
 
-        public Guid PossibleValueId { get; set; }
-        public Guid AttributeId { get; set; }
-    }
+    public Guid PossibleValueId { get; set; }
+    public Guid AttributeId { get; set; }
 }
