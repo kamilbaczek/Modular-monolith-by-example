@@ -1,6 +1,6 @@
 ﻿language: csharp
 mono: none
-dist: xenial
+dist: trusty
 dotnet: 6.0
 jobs:
   include:
