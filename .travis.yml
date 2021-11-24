@@ -6,11 +6,11 @@ jobs:
   include:
     - stage: build
       name: "Build .Net 6"
-      - script: dotnet restore
-      - script: dotnet build
+    - script: dotnet restore
+    - script: dotnet build
     - stage: test
       name: "Unit Tests"
-      - script: dotnet test -v=normal
+      script: dotnet test -v=normal
     - stage: deploy
       name: "Deploy to Heroku"
       deploy:
@@ -19,7 +19,5 @@ jobs:
         app: estimation-tool-kb
         on:
           branch: develop
-     - stage: slack
-       name: "Send Slack notifications"
-        notifications:
-          slack: estimationtool:$Slack__Key
+      notifications:
+        slack: estimationtool:$Slack__Key
