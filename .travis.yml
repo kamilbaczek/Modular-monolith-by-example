@@ -2,11 +2,11 @@
 mono: none
 dist: xenial
 dotnet: 6.0
-install:
-  - dotnet restore
 jobs:
   include:
     - stage: build
+      install:
+      - dotnet restore
     - script: dotnet build
     - stage: test
     - script: dotnet test -v=normal
