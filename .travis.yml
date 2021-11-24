@@ -4,10 +4,12 @@ dist: xenial
 dotnet: 6.0
 jobs:
   include:
+    - allow_failures:
+        - name: "Build .Net 6"
     - stage: build
       name: "Build .Net 6"
     - script: dotnet restore
-    - script: dotnet build
+              dotnet build
     - stage: test
       name: "Unit Tests"
       script: dotnet test -v=normal
