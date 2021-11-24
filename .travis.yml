@@ -19,5 +19,7 @@ jobs:
         app: estimation-tool-kb
         on:
           branch: develop
-      notifications:
-        slack: estimationtool:$Slack__Key
+     - stage: slack
+       name: "Send Slack notifications"
+        notifications:
+          slack: estimationtool:$Slack__Key
