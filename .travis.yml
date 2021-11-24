@@ -2,8 +2,8 @@
 mono: none
 dist: trusty
 before_install:
-  sudo snap install dotnet-runtime-60 --classic
-  sudo snap alias dotnet-sdk.dotnet dotnet
+  snap install dotnet-runtime-60 --classic
+  snap alias dotnet-sdk.dotnet dotnet
 jobs:
   include:
     - stage: build
