@@ -1,11 +1,7 @@
 ﻿language: csharp
 mono: none
-dist: trusty
-before_install:
-  - sudo apt-get update
-  - sudo snap
-  - sudo snap install dotnet-runtime-60 --classic
-  - sudo snap alias dotnet-sdk.dotnet dotnet
+dist: xenial
+dotnet: 6.0
 jobs:
   include:
     - stage: build
