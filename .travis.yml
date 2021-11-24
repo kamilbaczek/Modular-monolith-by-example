@@ -4,14 +4,18 @@ dist: xenial
 dotnet: 6.0
 install:
   - dotnet restore
-script:
-  - dotnet build
-  - dotnet test -v=normal
-deploy:
-  provider: heroku
-  api_key: $Heroku__App__Key
-  app: estimation-tool-kb
-  on:
-    branch: develop
-notifications:
-  slack: estimationtool:$Slack__Key
+jobs:
+  include:
+    - stage: build
+    - script: dotnet build
+    - stage: test
+    - script: dotnet test -v=normal
+    - stage: deploy
+      deploy:
+        provider: heroku
+        api_key: $Heroku__App__Key
+        app: estimation-tool-kb
+        on:
+          branch: develop
+      notifications:
+        slack: estimationtool:$Slack__Key
