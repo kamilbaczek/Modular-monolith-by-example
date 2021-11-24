@@ -1,11 +1,11 @@
 ﻿language: csharp
 mono: none
 dist: trusty
+before_install: sudo snap alias dotnet-sdk.dotnet dotnet
 jobs:
   include:
     - stage: build
       name: "Build .Net 6"
-    - script: sudo snap alias dotnet-sdk.dotnet dotnet
     - script: dotnet restore
     - script: dotnet build
     - stage: test
