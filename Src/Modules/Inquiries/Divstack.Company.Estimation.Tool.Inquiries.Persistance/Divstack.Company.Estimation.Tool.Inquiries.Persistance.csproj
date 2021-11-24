@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0"/>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.2.0"/>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0"/>
-    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" VVVersion="1.1.6"/>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0"/>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0"/>
