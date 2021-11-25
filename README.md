@@ -7,7 +7,7 @@
 ![Travis](https://user-images.githubusercontent.com/74410956/143401738-d71d8ab7-c8df-4626-ba42-13b92d933587.png)
 
 
-### CI
+### CI/CD
 [![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
 
 ### Test Environment
