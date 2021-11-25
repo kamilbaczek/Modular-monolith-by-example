@@ -1,7 +1,7 @@
 # Estimations Tool - makes estimations easier
 ## Dev Env
-![Application](https://estimation-tool-ui.herokuapp.com/)
-![Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
+[Application](https://estimation-tool-ui.herokuapp.com/)
+[Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
 
 ### CI
 [![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
