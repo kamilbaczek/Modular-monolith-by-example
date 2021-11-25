@@ -1,16 +1,17 @@
 # Estimations Tool - makes estimations easier
 ### Test Environment
-[Application](https://estimation-tool-ui.herokuapp.com/). 
-
-[Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
+### [Application](https://estimation-tool-ui.herokuapp.com/)     
+### [Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
 
 ### CI
 [![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
 
 ## Technologies
 .Net 6
-Docker
-Travis CI
+![Heroku](https://user-images.githubusercontent.com/74410956/143401316-4a69eb67-c2eb-41d1-ab5c-751a9c79235c.png)
+![Docker](https://user-images.githubusercontent.com/74410956/143401493-8f41000d-0d82-4005-b643-75d6045394c2.png)
+Travis
+ CI
 Heroku
 Hangfire
 Sentry
