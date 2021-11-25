@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers;
 
-using System.Threading;
-using System.Threading.Tasks;
 using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
 using DataAccess;

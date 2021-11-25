@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Core;
 
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Configuration;
 using Exceptions;
 using Manatee.Trello;

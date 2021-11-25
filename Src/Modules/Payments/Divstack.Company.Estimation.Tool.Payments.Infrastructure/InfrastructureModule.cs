@@ -1,4 +1,5 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Api")]
+
 namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure;
 
 using Application;

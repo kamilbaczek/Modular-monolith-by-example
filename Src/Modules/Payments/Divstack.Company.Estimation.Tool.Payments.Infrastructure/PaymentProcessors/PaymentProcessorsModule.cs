@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.PaymentProcessors;
 
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using PaymentProcessor.Stripe;
 
 internal static class PaymentProcessorsModule
@@ -12,7 +11,7 @@ internal static class PaymentProcessorsModule
 
         return services;
     }
-    
+
     internal static void UsePaymentProcessors(this IApplicationBuilder app)
     {
         app.UseStripe();

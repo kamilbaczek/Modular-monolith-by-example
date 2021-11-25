@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
 using Exceptions;
-using Shared.DDD.BuildingBlocks;
 
 public sealed class ProposalDescription : ValueObject
 {

@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 
-using Shared.DDD.BuildingBlocks;
-using Shared.DDD.ValueObjects;
-
 public sealed class ValuationCompletedDomainEvent : DomainEventBase
 {
     public ValuationCompletedDomainEvent(InquiryId inquiryId, ValuationId valuationId, Money price)

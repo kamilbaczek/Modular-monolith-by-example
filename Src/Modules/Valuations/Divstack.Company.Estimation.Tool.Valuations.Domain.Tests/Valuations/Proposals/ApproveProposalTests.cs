@@ -10,7 +10,6 @@ using Domain.Valuations.Proposals.Events;
 using FluentAssertions;
 using NUnit.Framework;
 using Shared.DDD.BuildingBlocks.Tests;
-using Shared.DDD.ValueObjects;
 
 public class ApproveProposalTests : BaseValuationTest
 {
@@ -61,7 +60,7 @@ public class ApproveProposalTests : BaseValuationTest
             .WithProposal()
             .WithRejectedProposalDecision();
         var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
-        
+
         var approveProposal = () => valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         approveProposal.Should().Throw<ProposalAlreadyHasDecisionException>();

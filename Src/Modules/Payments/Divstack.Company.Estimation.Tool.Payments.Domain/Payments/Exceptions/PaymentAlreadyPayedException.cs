@@ -2,8 +2,11 @@
 
 public sealed class PaymentAlreadyPayedException : InvalidOperationException
 {
-    private static string GetMessage(PaymentId paymentId) => $"Payment {paymentId.Value} already Payed";
     public PaymentAlreadyPayedException(PaymentId paymentId) : base(GetMessage(paymentId))
     {
+    }
+    private static string GetMessage(PaymentId paymentId)
+    {
+        return $"Payment {paymentId.Value} already Payed";
     }
 }

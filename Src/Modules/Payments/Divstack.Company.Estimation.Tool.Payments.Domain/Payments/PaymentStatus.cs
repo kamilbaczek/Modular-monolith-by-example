@@ -13,5 +13,5 @@ public sealed class PaymentStatus : ValueObject
     internal static PaymentStatus WaitForPayment => new(WaitForPaymentStatus);
     internal static PaymentStatus Payed => new(PayedStatus);
 
-    private string Value { get; init; }
+    private string Value { get; }
 }

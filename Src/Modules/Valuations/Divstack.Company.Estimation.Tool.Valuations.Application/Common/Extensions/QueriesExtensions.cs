@@ -1,9 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Common.Extensions;
 
-using System.Collections.Generic;
 using System.Data;
-using System.Threading;
-using System.Threading.Tasks;
 using Dapper;
 
 internal static class QueriesExtensions

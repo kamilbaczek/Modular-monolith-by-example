@@ -18,27 +18,27 @@ internal sealed class PaymentConfirmation : IPaymentConfirmation
         _paymentIntentStripeService = paymentIntentStripeService;
         _paymentMethodStripeService = paymentMethodStripeService;
     }
-    
+
     public async Task ConfirmAsync(PaymentSecret paymentSecret, Card card, CancellationToken cancellationToken = default)
     {
         var paymentMethodCreateOptions = CreateCardPaymentMethodRequest(card);
         var paymentMethod = await _paymentMethodStripeService.CreateAsync(paymentMethodCreateOptions, cancellationToken: cancellationToken);
-        
+
         var paymentIntentConfirmOptions = GetPaymentIntentConfirmOptions(paymentMethod);
         await _paymentIntentStripeService.ConfirmAsync(
             paymentSecret.Value,
-            paymentIntentConfirmOptions, 
+            paymentIntentConfirmOptions,
             cancellationToken: cancellationToken);
     }
-    
+
     private static PaymentIntentConfirmOptions GetPaymentIntentConfirmOptions(PaymentMethod paymentMethod)
     {
         Guard.Against.Null(paymentMethod, nameof(paymentMethod));
         var getPaymentIntentConfirmOptions = new PaymentIntentConfirmOptions
         {
-            PaymentMethod = paymentMethod.Id,
+            PaymentMethod = paymentMethod.Id
         };
-        
+
         return getPaymentIntentConfirmOptions;
     }
 
@@ -49,13 +49,10 @@ internal sealed class PaymentConfirmation : IPaymentConfirmation
             Type = Card,
             Card = new PaymentMethodCardOptions
             {
-                Cvc = card.Cvc,
-                ExpMonth = card.ExpMonth,
-                ExpYear = card.ExpYear,
-                Number = card.Number
+                Cvc = card.Cvc, ExpMonth = card.ExpMonth, ExpYear = card.ExpYear, Number = card.Number
             }
         };
-        
+
         return paymentMethodCreateOptions;
     }
 }

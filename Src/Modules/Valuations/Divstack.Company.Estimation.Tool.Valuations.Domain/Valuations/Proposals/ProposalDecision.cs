@@ -14,9 +14,9 @@ public record ProposalDecision
         Code = code;
     }
 
-    private DateTime? Date { get; init; }
+    private DateTime? Date { get; }
 
-    private string Code { get; init; }
+    private string Code { get; }
 
 
     internal static ProposalDecision AcceptDecision(DateTime date)

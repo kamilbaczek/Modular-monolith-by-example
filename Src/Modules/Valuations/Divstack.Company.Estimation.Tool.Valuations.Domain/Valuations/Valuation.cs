@@ -7,26 +7,8 @@ using History;
 using Proposals;
 using Proposals.Events;
 
-
 public sealed class Valuation : Entity, IAggregateRoot
 {
-    public ValuationId Id { get; init; }
-    private InquiryId InquiryId { get;  init;}
-    private LinkedList<Proposal> Proposals { get;  init;}
-    private LinkedList<HistoricalEntry> History { get;  init;}
-    private DateTime RequestedDate { get;  init;}
-    private DateTime? CompletedDate { get; set; }
-    private EmployeeId CompletedBy { get; set; }
-    private Deadline Deadline { get; init; }
-    private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
-
-    private Proposal ProposalWaitForDecision => NotCancelledProposals
-        .SingleOrDefault(proposal => !proposal.HasDecision);
-
-    private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
-    private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
-    private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
-
     private Valuation(
         Deadline deadline,
         InquiryId inquiryId)
@@ -41,7 +23,23 @@ public sealed class Valuation : Entity, IAggregateRoot
         var @event = new ValuationRequestedDomainEvent(Id, InquiryId, Deadline);
         AddDomainEvent(@event);
     }
-    
+    public ValuationId Id { get; init; }
+    private InquiryId InquiryId { get; }
+    private LinkedList<Proposal> Proposals { get; }
+    private LinkedList<HistoricalEntry> History { get; }
+    private DateTime RequestedDate { get; }
+    private DateTime? CompletedDate { get; set; }
+    private EmployeeId CompletedBy { get; set; }
+    private Deadline Deadline { get; }
+    private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
+
+    private Proposal ProposalWaitForDecision => NotCancelledProposals
+        .SingleOrDefault(proposal => !proposal.HasDecision);
+
+    private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
+    private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
+    private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
+
     public static Valuation Request(
         InquiryId inquiryId,
         Deadline deadline)

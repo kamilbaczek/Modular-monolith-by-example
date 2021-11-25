@@ -4,12 +4,11 @@ using Actions.Initialize;
 using Actions.Pay;
 using Domain.Payments;
 using Shared.DDD.ValueObjects;
-using Card = Domain.Payments.Card;
 
 internal sealed class PaymentProcessor : IPaymentProcessor
 {
-    private readonly IPaymentInitializer _paymentInitializer;
     private readonly IPaymentConfirmation _paymentConfirmation;
+    private readonly IPaymentInitializer _paymentInitializer;
 
     public PaymentProcessor(IPaymentInitializer paymentInitializer,
         IPaymentConfirmation paymentConfirmation)
@@ -21,8 +20,8 @@ internal sealed class PaymentProcessor : IPaymentProcessor
     {
         await _paymentConfirmation.ConfirmAsync(paymentSecret, card, cancellationToken);
     }
-    
-     public  async Task<PaymentSecret> InitializeAsync(Money amountToPay, CancellationToken cancellationToken = default)
+
+    public async Task<PaymentSecret> InitializeAsync(Money amountToPay, CancellationToken cancellationToken = default)
     {
         return await _paymentInitializer.InitializeAsync(amountToPay, cancellationToken);
     }

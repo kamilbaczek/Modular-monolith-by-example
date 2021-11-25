@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.History;
 
-using Shared.DDD.BuildingBlocks;
-
 public sealed class HistoricalEntry : Entity
 {
     private HistoricalEntry(ValuationStatus status)
@@ -13,7 +11,7 @@ public sealed class HistoricalEntry : Entity
 
     internal ValuationStatus Status { get; private set; }
     internal DateTime ChangeDate { get; init; }
-    private HistoricalEntryId Id { get; init; }
+    private HistoricalEntryId Id { get; }
 
     internal static HistoricalEntry Create(ValuationStatus status)
     {

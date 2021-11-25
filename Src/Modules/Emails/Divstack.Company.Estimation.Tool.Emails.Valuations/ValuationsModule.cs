@@ -1,5 +1,5 @@
-﻿
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Emails")]
+
 namespace Divstack.Company.Estimation.Tool.Emails.Valuations;
 
 using System.Reflection;

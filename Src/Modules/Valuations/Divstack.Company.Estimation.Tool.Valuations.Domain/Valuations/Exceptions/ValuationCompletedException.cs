@@ -2,9 +2,12 @@
 
 public sealed class ValuationCompletedException : InvalidOperationException
 {
-    private static string GetMessage(ValuationId valuationId) => $"Cannot execute operation on completed valuation :{valuationId}";
     public ValuationCompletedException(ValuationId valuationId) :
         base(GetMessage(valuationId))
     {
+    }
+    private static string GetMessage(ValuationId valuationId)
+    {
+        return $"Cannot execute operation on completed valuation :{valuationId}";
     }
 }

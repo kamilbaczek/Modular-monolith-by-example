@@ -22,7 +22,7 @@ public static class StripeModule
 
         return services;
     }
-    
+
     public static void UseStripe(this IApplicationBuilder app)
     {
         app.ConfigureStripe();

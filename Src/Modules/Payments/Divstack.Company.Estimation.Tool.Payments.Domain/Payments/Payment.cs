@@ -14,16 +14,16 @@ public sealed class Payment : Entity, IAggregateRoot
         InquiryId = Guard.Against.Null(inquiryId, nameof(inquiryId));
         PaymentStatus = PaymentStatus.WaitForPayment;
         var @event = new PaymentInitializedDomainEvent(Id, ValuationId, InquiryId, AmountToPay);
-       
+
         AddDomainEvent(@event);
     }
 
     public PaymentId Id { get; init; }
-    private ValuationId ValuationId { get; init;}
-    private InquiryId InquiryId { get; init;}
-    private PaymentSecret PaymentSecret { get; init;}
+    private ValuationId ValuationId { get; }
+    private InquiryId InquiryId { get; }
+    private PaymentSecret PaymentSecret { get; }
     private PaymentStatus PaymentStatus { get; set; }
-    private Money AmountToPay { get; init;}
+    private Money AmountToPay { get; }
 
     public static async Task<Payment> InitializeAsync(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
     {
@@ -34,7 +34,7 @@ public sealed class Payment : Entity, IAggregateRoot
     }
 
     public async Task PayCard(
-        IPaymentProcessor paymentProcessor, 
+        IPaymentProcessor paymentProcessor,
         Card card)
     {
         if (PaymentStatus == PaymentStatus.Payed)

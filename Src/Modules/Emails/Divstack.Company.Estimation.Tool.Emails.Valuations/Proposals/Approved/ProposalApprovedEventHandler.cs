@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved;
 
-using System.Threading;
-using System.Threading.Tasks;
 using MediatR;
 using Sender;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;

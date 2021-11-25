@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
 
-using System;
-
 public record ValuationProposalEntryDto(
     Guid ProposalId,
     string Message,

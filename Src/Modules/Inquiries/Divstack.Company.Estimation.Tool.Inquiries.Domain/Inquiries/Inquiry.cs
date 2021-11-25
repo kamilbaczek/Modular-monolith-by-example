@@ -32,7 +32,7 @@ public sealed class Inquiry : Entity, IAggregateRoot
     public InquiryId Id { get; }
     private IReadOnlyList<InquiryItem> InquiryItems { get; }
     private Client Client { get; }
-    
+
     public static async Task<Inquiry> MakeAsync(
         IReadOnlyCollection<Service> services,
         Client client,

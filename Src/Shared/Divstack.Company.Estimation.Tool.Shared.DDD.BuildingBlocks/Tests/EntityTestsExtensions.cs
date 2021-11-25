@@ -10,5 +10,5 @@ public static class EntityTestsExtensions
         return entity.DomainEvents.OfType<TEvent>()
             .OrderBy(domainEvent => domainEvent.OccurredOn)
             .FirstOrDefault();
-    }  
+    }
 }

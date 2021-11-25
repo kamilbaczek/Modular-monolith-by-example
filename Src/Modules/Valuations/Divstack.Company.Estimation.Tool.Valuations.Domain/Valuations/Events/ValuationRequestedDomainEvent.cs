@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 
 using Deadlines;
-using Shared.DDD.BuildingBlocks;
 
 public sealed class ValuationRequestedDomainEvent : DomainEventBase
 {

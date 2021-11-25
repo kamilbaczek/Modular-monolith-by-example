@@ -57,7 +57,7 @@ internal sealed class ValuationsController : BaseController
         var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationHistoryByIdQuery(id));
         return Ok(valuationHistoryVm);
     }
-    
+
     [HttpPatch]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]

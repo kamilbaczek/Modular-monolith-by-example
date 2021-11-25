@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender.TemplateReader;
 
-using System;
-using System.IO;
-
 internal sealed class MailTemplateReader : IMailTemplateReader
 {
     public string Read(string relativePathToTemplate)

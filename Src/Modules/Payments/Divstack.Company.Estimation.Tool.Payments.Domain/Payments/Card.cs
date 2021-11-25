@@ -10,13 +10,13 @@ public sealed class Card : ValueObject
         Cvc = cvc;
     }
 
-    public static Card New(string number, int expMonth, int expYear, string cvc)
-    {
-        return new Card(number, expMonth, expYear, cvc);
-    }
-    
     public string Number { get; }
     public int ExpMonth { get; }
     public int ExpYear { get; }
     public string Cvc { get; }
+
+    public static Card New(string number, int expMonth, int expYear, string cvc)
+    {
+        return new Card(number, expMonth, expYear, cvc);
+    }
 }

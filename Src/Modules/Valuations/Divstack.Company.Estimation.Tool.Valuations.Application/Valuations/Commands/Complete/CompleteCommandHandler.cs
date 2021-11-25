@@ -32,10 +32,10 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
 
         var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
         valuation.Complete(employeeId);
-        
+
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
         await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
-       
+
         return Unit.Value;
     }
 }

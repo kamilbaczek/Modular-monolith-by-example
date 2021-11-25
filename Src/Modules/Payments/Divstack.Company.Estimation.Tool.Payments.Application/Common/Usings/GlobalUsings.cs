@@ -7,4 +7,3 @@ global using System.Threading.Tasks;
 global using Microsoft.Extensions.DependencyInjection;
 global using MediatR;
 global using Divstack.Company.Estimation.Tool.Payments.Domain.Payments;
-

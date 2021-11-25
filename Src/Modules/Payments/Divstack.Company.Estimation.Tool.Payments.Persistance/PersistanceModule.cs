@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Payments.Infrastructure")]
+
 namespace Divstack.Company.Estimation.Tool.Payments.Persistance;
 
 using DataAccess;

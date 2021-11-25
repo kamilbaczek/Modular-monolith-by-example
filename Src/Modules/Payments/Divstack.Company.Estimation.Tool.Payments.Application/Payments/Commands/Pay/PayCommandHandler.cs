@@ -4,10 +4,10 @@ using Common.Exceptions;
 
 internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
 {
-    private readonly IPaymentsRepository _paymentsRepository;
     private readonly IPaymentProcessor _paymentProcessor;
+    private readonly IPaymentsRepository _paymentsRepository;
 
-    public PayCommandHandler(IPaymentsRepository paymentsRepository, 
+    public PayCommandHandler(IPaymentsRepository paymentsRepository,
         IPaymentProcessor paymentProcessor)
     {
         _paymentsRepository = paymentsRepository;

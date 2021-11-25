@@ -1,9 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.Features.ValuationRequest;
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Core;
 using Core.Constants;
 using IntegrationsEvents.ExternalEvents;

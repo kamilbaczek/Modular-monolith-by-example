@@ -1,8 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Payments.Commands.Initalize;
 
 using Common.IntegrationsEvents;
-using Domain.Payments;
-using MediatR;
 using Shared.DDD.ValueObjects;
 using Valuations.IntegrationsEvents.ExternalEvents;
 

@@ -7,8 +7,8 @@ using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    private readonly IMediator _mediator;
     private readonly IEventMapper _eventMapper;
+    private readonly IMediator _mediator;
 
     public IntegrationEventPublisher(IEventMapper eventMapper,
         IMediator mediator)
@@ -16,7 +16,7 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
         _mediator = mediator;
         _eventMapper = eventMapper;
     }
-    
+
     public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
         var integrationEvents = _eventMapper.Map(domainEvents);

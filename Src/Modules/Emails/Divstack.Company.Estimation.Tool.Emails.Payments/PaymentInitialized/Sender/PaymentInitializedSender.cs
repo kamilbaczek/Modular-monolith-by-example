@@ -13,9 +13,9 @@ internal sealed class PaymentInitializedSender : IPaymentInitializedSender
     private const string AmountToPayPlaceholder = "{AmountToPay}";
     private const string ClientFullNamePlaceholder = "{ClientFullName}";
     private const string PaymentLinkPlaceholder = "{PaymentLink}";
-    private readonly IPaymentInitializedMailConfiguration _paymentInitializedMailConfiguration;
     private readonly IEmailSender _emailSender;
     private readonly IMailTemplateReader _mailTemplateReader;
+    private readonly IPaymentInitializedMailConfiguration _paymentInitializedMailConfiguration;
 
     public PaymentInitializedSender(IMailTemplateReader mailTemplateReader,
         IConfiguration configuration,

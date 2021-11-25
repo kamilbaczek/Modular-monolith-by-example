@@ -2,7 +2,6 @@
 
 namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender;
 
-using System.Threading.Tasks;
 using Configuration;
 using Contracts;
 using MailKit.Net.Smtp;

@@ -15,5 +15,4 @@ internal class PaymentInitializedMailConfiguration : ConfigurationBase,
     public string Subject => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(nameof(Subject)), nameof(Subject));
     public string PaymentUrl => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(nameof(PaymentUrl)), nameof(PaymentUrl));
     public string PathToTemplate => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(nameof(PathToTemplate)), nameof(PathToTemplate));
-        
 }

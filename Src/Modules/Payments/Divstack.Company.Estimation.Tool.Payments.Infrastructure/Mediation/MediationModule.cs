@@ -12,8 +12,7 @@ internal static class MediationModule
         var queryHandlersAssembly = typeof(PersistanceModule).Assembly;
         var cqsAssemblies = new[]
         {
-            commandsHandlersAssembly,
-            queryHandlersAssembly
+            commandsHandlersAssembly, queryHandlersAssembly
         };
 
         services.AddMediatR(cqsAssemblies);

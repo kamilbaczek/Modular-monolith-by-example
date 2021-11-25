@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Common.Contracts;
 
-using System.Threading.Tasks;
-
 public interface IValuationsModule
 {
     Task ExecuteCommandAsync(ICommand command);

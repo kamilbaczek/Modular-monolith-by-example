@@ -6,7 +6,7 @@ internal static class StringExtensions
     {
         return text.Replace(old, @new, StringComparison.CurrentCultureIgnoreCase);
     }
-    
+
     internal static string ReplaceIgnoreCases(this string text, string old, Guid @new)
     {
         return text.Replace(old, @new.ToString(), StringComparison.CurrentCultureIgnoreCase);

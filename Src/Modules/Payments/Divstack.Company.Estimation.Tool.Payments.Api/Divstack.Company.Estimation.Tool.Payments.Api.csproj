@@ -13,16 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Domain\Divstack.Company.Estimation.Tool.Payments.Domain.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Infrastructure\Divstack.Company.Estimation.Tool.Payments.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Domain\Divstack.Company.Estimation.Tool.Payments.Domain.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Infrastructure\Divstack.Company.Estimation.Tool.Payments.Infrastructure.csproj"/>
   </ItemGroup>
 
 </Project>

@@ -7,12 +7,12 @@ using Tool.Payments.Domain.Payments;
 internal sealed class PaymentsRepository : IPaymentsRepository
 {
     private readonly IPaymentsContext _paymentsContext;
-    
+
     public PaymentsRepository(IPaymentsContext paymentsContext)
     {
         _paymentsContext = paymentsContext;
     }
-    
+
     public async Task<Payment?> GetAsync(PaymentId paymentId, CancellationToken cancellationToken = default)
     {
         return await _paymentsContext.Payments

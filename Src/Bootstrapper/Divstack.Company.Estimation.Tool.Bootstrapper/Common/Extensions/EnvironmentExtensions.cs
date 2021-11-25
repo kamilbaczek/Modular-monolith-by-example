@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper.Common.Extensions;
 
-using Microsoft.Extensions.Hosting;
-
 internal static class EnvironmentExtensions
 {
     private const string LocalEnvironmentName = "Local";

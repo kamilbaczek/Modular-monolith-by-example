@@ -1,4 +1,5 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
 namespace Divstack.Company.Estimation.Tool.Payments.Api;
 
 using Common.UserAccess;

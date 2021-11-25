@@ -1,10 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events;
 
-using System.Collections.Generic;
 using Application.Common.Interfaces;
 using Mapper;
 using MediatR;
-using Microsoft.Extensions.DependencyInjection;
 using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher

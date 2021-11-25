@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested.Sender;
 
-using System.Threading.Tasks;
 using System.Web;
 using Configuration;
 using Core.Sender.Contracts;

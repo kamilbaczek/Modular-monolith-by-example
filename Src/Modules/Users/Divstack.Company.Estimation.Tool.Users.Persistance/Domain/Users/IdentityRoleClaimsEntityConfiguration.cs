@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-internal class fs : IEntityTypeConfiguration<IdentityRoleClaim<string>>
+internal class IdentityRoleClaimsEntityConfiguration : IEntityTypeConfiguration<IdentityRoleClaim<string>>
 {
     public void Configure(EntityTypeBuilder<IdentityRoleClaim<string>> builder)
     {

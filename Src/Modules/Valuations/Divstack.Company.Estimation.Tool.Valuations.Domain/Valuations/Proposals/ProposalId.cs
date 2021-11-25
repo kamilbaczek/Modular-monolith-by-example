@@ -6,4 +6,4 @@ public record ProposalId(Guid Value)
     {
         return new ProposalId(Guid.NewGuid());
     }
-};
+}

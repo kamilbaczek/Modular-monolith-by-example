@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Mapper;
 
-using System.Collections.Generic;
 using Shared.DDD.BuildingBlocks;
 
 public interface IEventMapper

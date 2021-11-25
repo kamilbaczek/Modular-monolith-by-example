@@ -1,9 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Bootstrapper;
 
 using Inquiries.Api;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 using Modules.Emails.Bootstrapper;
 using Payments.Api;
 using Reminders;

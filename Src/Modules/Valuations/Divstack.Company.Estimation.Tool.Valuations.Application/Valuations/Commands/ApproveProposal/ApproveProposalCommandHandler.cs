@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 
-using System.Threading;
-using System.Threading.Tasks;
 using Common.Exceptions;
 using Common.Interfaces;
 using Domain.Valuations;

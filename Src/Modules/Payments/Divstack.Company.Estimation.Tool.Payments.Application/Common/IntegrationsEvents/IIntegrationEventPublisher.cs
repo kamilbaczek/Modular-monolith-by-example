@@ -1,9 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Common.IntegrationsEvents
-{
-    using Shared.DDD.BuildingBlocks;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Common.IntegrationsEvents;
 
-    public interface IIntegrationEventPublisher
-    {
-        Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default);
-    }
+using Shared.DDD.BuildingBlocks;
+
+public interface IIntegrationEventPublisher
+{
+    Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default);
 }

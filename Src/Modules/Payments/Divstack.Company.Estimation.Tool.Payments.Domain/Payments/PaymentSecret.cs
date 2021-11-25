@@ -6,10 +6,10 @@ public sealed class PaymentSecret : ValueObject
     {
         Value = Guard.Against.NullOrEmpty(value, nameof(Payment));
     }
+
+    public string Value { get; init; }
     public static PaymentSecret Of(string value)
     {
         return new PaymentSecret(value);
     }
-    
-    public string Value { get; init; }
 }

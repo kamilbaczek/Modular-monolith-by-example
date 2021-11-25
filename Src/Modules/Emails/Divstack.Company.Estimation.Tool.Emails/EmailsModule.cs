@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
 namespace Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper;
 
 using Microsoft.Extensions.DependencyInjection;

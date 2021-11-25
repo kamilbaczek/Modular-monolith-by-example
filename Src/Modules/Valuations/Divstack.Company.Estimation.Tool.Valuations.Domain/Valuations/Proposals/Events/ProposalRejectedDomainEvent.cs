@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-using Shared.DDD.BuildingBlocks;
-using Shared.DDD.ValueObjects;
-
 public sealed class ProposalRejectedDomainEvent : DomainEventBase
 {
     internal ProposalRejectedDomainEvent(

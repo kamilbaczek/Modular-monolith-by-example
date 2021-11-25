@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Suggested;
 
-using System.Threading;
-using System.Threading.Tasks;
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
