@@ -2,11 +2,19 @@
 mono: none
 dist: xenial
 dotnet: 6.0
+addons:
+  sonarcloud:
+    organization: "kamilbaczek"
+    token:
+      secure: $SONAR_TOKEN
+
 install:
   - dotnet restore
 script:
   - dotnet build
   - dotnet test -v=normal
+  - sonar-scanner
+
 deploy:
   provider: heroku
   api_key: $Heroku__App__Key
