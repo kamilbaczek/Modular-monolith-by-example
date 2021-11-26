@@ -5,8 +5,8 @@ dotnet: 6.0
 addons:
   sonarcloud:
     organization: "kamilbaczek"
-    token:
-      secure: $SONAR_TOKEN
+    token: ${SONAR_TOKEN}
+#      secure: $SONAR_TOKEN
 
 install:
   - dotnet restore
