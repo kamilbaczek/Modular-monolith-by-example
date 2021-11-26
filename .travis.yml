@@ -13,7 +13,9 @@ install:
 script:
   - dotnet build
   - dotnet test -v=normal
-  - sonar-scanner -X
+#  - sonar-scanner -X
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=kamilbaczek_Estimation-Tool
+
 
 deploy:
   provider: heroku
