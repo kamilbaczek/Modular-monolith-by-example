@@ -13,7 +13,7 @@ install:
 script:
   - dotnet build
   - dotnet test -v=normal
-  - sonar-scanner
+  - sonar-scanner -X
 
 deploy:
   provider: heroku
