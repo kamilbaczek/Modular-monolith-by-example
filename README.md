@@ -23,7 +23,7 @@ Stripe
 ### C4
 
 #### System Context
-![System-Context](https://user-images.githubusercontent.com/74410956/130393977-412af919-f7aa-4e78-bbdb-de8218ac4e90.png)
+![System-Context](https://user-images.githubusercontent.com/74410956/143677246-914c5710-9808-4767-aca1-83875d8b573c.png)
 
 #### Containers
 ![Containers](https://user-images.githubusercontent.com/74410956/130395295-3d48672c-5c84-4e55-8fbe-9cdbb327b5e6.png)
