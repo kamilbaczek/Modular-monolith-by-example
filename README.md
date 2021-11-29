@@ -10,8 +10,6 @@
 ### CI/CD
 [![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
 
 ### Test Environment
 #### [Application](https://estimation-tool-ui.herokuapp.com/)     
@@ -25,7 +23,8 @@ Stripe
 ### C4
 
 #### System Context
-![System-Context](https://user-images.githubusercontent.com/74410956/130393977-412af919-f7aa-4e78-bbdb-de8218ac4e90.png)
+[View](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1#G1NnpA0pNQneXiz0GQIKwQ2bvPLfvOQLpb)
+![download](https://user-images.githubusercontent.com/74410956/143678423-cdd8b31e-a6d9-4722-97d6-fc06b8e203fa.png)
 
 #### Containers
 ![Containers](https://user-images.githubusercontent.com/74410956/130395295-3d48672c-5c84-4e55-8fbe-9cdbb327b5e6.png)
