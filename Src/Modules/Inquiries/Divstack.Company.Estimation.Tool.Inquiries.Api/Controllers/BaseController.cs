@@ -11,6 +11,6 @@ internal abstract class BaseController : ControllerBase
 {
     protected CreatedResult Created(Guid id)
     {
-        return base.Created(id.ToString(), null);
+        return base.Created(id.ToString(), id.ToString());
     }
 }

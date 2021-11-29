@@ -19,10 +19,10 @@ public sealed class Proposal : Entity
     }
 
     internal ProposalId Id { get; init; }
-    private ProposalDescription Description { get; }
+    private ProposalDescription Description { get; init; }
     internal Money Price { get; init; }
     internal EmployeeId SuggestedBy { get; init; }
-    private DateTime Suggested { get; }
+    private DateTime Suggested { get; init; }
     private EmployeeId CancelledBy { get; set; }
     private DateTime? Cancelled { get; set; }
     private ProposalDecision Decision { get; set; }

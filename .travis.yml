@@ -6,7 +6,6 @@ addons:
   sonarcloud:
     organization: "kamilbaczek"
     token: ${SONAR_TOKEN}
-#      secure: $SONAR_TOKEN
 
 install:
   - dotnet restore
@@ -14,7 +13,6 @@ script:
   - dotnet build
   - dotnet test -v=normal
   - sonar-scanner -X
-
 
 deploy:
   provider: heroku
