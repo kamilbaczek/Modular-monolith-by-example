@@ -6,15 +6,18 @@ addons:
   sonarcloud:
     organization: "kamilbaczek"
     token: ${SONAR_TOKEN}
-
+before_install:
+- bash ./tools/travis-ci-install-sonar.sh
 install:
   - dotnet restore
 script:
+  - dotnet ../tools/sonar/SonarScanner.MSBuild.dll begin /o:"kamilbaczek" /k:"Estimation-Tool" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.verbose=true /d:sonar.login=${SONAR_TOKEN}
   - dotnet new tool-manifest && dotnet tool install dotnet-reportgenerator-globaltool
   - dotnet build
   - dotnet test -v=normal --collect:"XPlat Code Coverage"
   - dotnet reportgenerator "-reports:${TRAVIS_BUILD_DIR}/**/coverage.cobertura.xml" "-targetdir:${TRAVIS_BUILD_DIR}/coverage/Reports" -tag:${TRAVIS_BUILD_NUMBER} "-reporttypes:HTMLInline;HTMLChart;SonarQube"
-  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER} -Dsonar.flex.cobertura.reportPaths="${TRAVIS_BUILD_DIR}/coverage/Reports"
+  - dotnet ../tools/sonar/SonarScanner.MSBuild.dll end /d:sonar.login=${SONAR_TOKEN}
+#  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER} -Dsonar.flex.cobertura.reportPaths="${TRAVIS_BUILD_DIR}/coverage/Reports"
 
 deploy:
   provider: heroku
