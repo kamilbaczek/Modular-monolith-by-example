@@ -22,3 +22,5 @@ deploy:
     branch: develop
 notifications:
   slack: estimationtool:$Slack__Key
+git:
+  depth: false
