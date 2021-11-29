@@ -14,7 +14,7 @@ script:
   - dotnet build
   - dotnet test -v=normal --collect:"XPlat Code Coverage"
   - dotnet reportgenerator "-reports:${TRAVIS_BUILD_DIR}/**/coverage.cobertura.xml" "-targetdir:${TRAVIS_BUILD_DIR}/coverage/Reports" -tag:${TRAVIS_BUILD_NUMBER} "-reporttypes:HTMLInline;HTMLChart;SonarQube"
-  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER} -Dsonar.coverageReportPaths="${TRAVIS_BUILD_DIR}/coverage/Reports"
+  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER} -Dsonar.flex.cobertura.reportPaths="${TRAVIS_BUILD_DIR}/coverage/Reports"
 
 deploy:
   provider: heroku
