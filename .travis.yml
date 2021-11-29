@@ -12,7 +12,7 @@ install:
 script:
   - dotnet build
   - dotnet test -v=normal
-  - sonar-scanner -X
+  - sonar-scanner -X -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER}
 
 deploy:
   provider: heroku
