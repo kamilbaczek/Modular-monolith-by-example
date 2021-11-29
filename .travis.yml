@@ -12,9 +12,9 @@ install:
 script:
   - dotnet new tool-manifest && dotnet tool install dotnet-reportgenerator-globaltool
   - dotnet build
-  - dotnet test -v=normal /p:CollectCoverage=true /p:CoverletOutput=${TRAVIS_BUILD_DIR}\coverage\ /p:MergeWith=${TRAVIS_BUILD_DIR}\coverage\coverage.json /p:CoverletOutputFormat="json,cobertura"
-  - dotnet reportgenerator "-reports:${TRAVIS_BUILD_DIR}\coverage\coverage.cobertura.xml" "-targetdir:${TRAVIS_BUILD_DIR}\coverage\Reports" -tag:${TRAVIS_BUILD_NUMBER} "-reporttypes:HTMLInline;HTMLChart;SonarQube"
-  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER}
+  - dotnet test -v=normal --collect:"XPlat Code Coverage"
+  - dotnet reportgenerator "-reports:**\coverage.cobertura.xml" "-targetdir:${TRAVIS_BUILD_DIR}\coverage\Reports" -tag:${TRAVIS_BUILD_NUMBER} "-reporttypes:HTMLInline;HTMLChart;SonarQube"
+  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER} -Dsonar.coverageReportPaths=${TRAVIS_BUILD_DIR}\coverage\Reports
 
 deploy:
   provider: heroku
