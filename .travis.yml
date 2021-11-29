@@ -10,8 +10,10 @@ addons:
 install:
   - dotnet restore
 script:
+  - dotnet tool install -g dotnet-reportgenerator-globaltool
   - dotnet build
-  - dotnet test -v=normal
+  - dotnet test -v=normal /p:CollectCoverage=true /p:CoverletOutput=${TRAVIS_BUILD_DIR}\coverage\ /p:MergeWith=${TRAVIS_BUILD_DIR}\coverage\coverage.json /p:CoverletOutputFormat="json,cobertura"
+  - reportgenerator "-reports:${TRAVIS_BUILD_DIR}\coverage\coverage.cobertura.xml" "-targetdir:${TRAVIS_BUILD_DIR}\coverage\Reports" -tag:${TRAVIS_BUILD_NUMBER} "-reporttypes:HTMLInline;HTMLChart;SonarQube"
   - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER}
 
 deploy:
