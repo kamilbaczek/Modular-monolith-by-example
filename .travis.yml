@@ -9,13 +9,12 @@ addons:
 
 install:
   - dotnet restore
-script:
   - dotnet new tool-manifest && dotnet tool install dotnet-reportgenerator-globaltool
+script:
+  - dotnet sonarscanner begin /d:sonar.login="$SONAR_TOKEN" /d:sonar.projectVersion=${TRAVIS_BUILD_NUMBER} /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml" /d:sonar.exclusions=**/*.html /k:"kamilbaczek_Estimation-Tool"
   - dotnet build
   - dotnet test -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
-  #- dotnet reportgenerator "-reports:${TRAVIS_BUILD_DIR}/**/coverage.cobertura.xml" "-targetdir:${TRAVIS_BUILD_DIR}/coverage/Reports" -tag:${TRAVIS_BUILD_NUMBER} "-reporttypes:SonarQube"
-  - sonar-scanner -Dsonar.projectVersion=${TRAVIS_BUILD_NUMBER} -Dsonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml"
-
+  - dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 deploy:
   provider: heroku
   api_key: $Heroku__App__Key
