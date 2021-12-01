@@ -13,7 +13,7 @@ install:
 before_script:
   - export PATH="$PATH:$HOME/.dotnet/tools"
 script:
-  - dotnet sonarscanner begin /d:sonar.verbose=true /d:sonar.login="$SONAR_TOKEN" /v:"${TRAVIS_BUILD_NUMBER}" /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml" /d:sonar.exclusions=**/*.html /k:"kamilbaczek_Estimation-Tool"
+  - dotnet sonarscanner begin /d:sonar.organization="kamilbaczek" /d:sonar.verbose=true /d:sonar.login="$SONAR_TOKEN" /v:"${TRAVIS_BUILD_NUMBER}" /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml" /d:sonar.exclusions=**/*.html /k:"kamilbaczek_Estimation-Tool"
   - dotnet build
   - dotnet test -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
   - dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
