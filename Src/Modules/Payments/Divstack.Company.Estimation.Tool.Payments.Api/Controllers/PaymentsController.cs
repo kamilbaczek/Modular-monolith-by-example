@@ -10,7 +10,7 @@ internal sealed class PaymentsController : BaseController
 {
     private readonly IPaymentsModule _paymentsModule;
 
-    public PaymentsController(IPaymentsModule paymentsModule)
+    internal PaymentsController(IPaymentsModule paymentsModule)
     {
         _paymentsModule = paymentsModule;
     }
@@ -20,7 +20,7 @@ internal sealed class PaymentsController : BaseController
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesDefaultResponseType]
     [AllowAnonymous]
-    public async Task<ActionResult> Pay([FromBody] PayCommand payCommand)
+    internal async Task<ActionResult> Pay([FromBody] PayCommand payCommand)
     {
         await _paymentsModule.ExecuteCommandAsync(payCommand);
         return NoContent();

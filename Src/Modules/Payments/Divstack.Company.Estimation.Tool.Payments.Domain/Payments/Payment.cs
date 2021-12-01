@@ -41,5 +41,8 @@ public sealed class Payment : Entity, IAggregateRoot
             throw new PaymentAlreadyPayedException(Id);
         await paymentProcessor.PayAsync(PaymentSecret, card);
         PaymentStatus = PaymentStatus.Payed;
+        var @event = new PaymentCompletedDomainEvent(Id, InquiryId);
+
+        AddDomainEvent(@event);
     }
 }

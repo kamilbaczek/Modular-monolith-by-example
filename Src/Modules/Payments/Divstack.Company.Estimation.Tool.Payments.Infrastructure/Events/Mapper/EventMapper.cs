@@ -22,6 +22,10 @@ internal sealed class EventMapper : IEventMapper
                     domainEvent.InquiryId.Value,
                     domainEvent.AmountToPay.Value,
                     domainEvent.AmountToPay.Currency),
+            PaymentCompletedDomainEvent domainEvent =>
+                new PaymentCompleted(
+                    domainEvent.PaymentId.Value,
+                    domainEvent.InquiryId.Value),
             _ => null
         };
     }

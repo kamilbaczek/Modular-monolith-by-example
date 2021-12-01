@@ -36,12 +36,6 @@ internal sealed class ProposalSuggestionBuilder
         return this;
     }
 
-    internal ProposalSuggestionBuilder WithProposedBy(EmployeeId proposedBy)
-    {
-        ProposedBy = proposedBy;
-        return this;
-    }
-
     internal ApprovedProposalBuilder WithApprovedProposalDecision()
     {
         Suggest();

@@ -1,17 +1,21 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Application.Payments.Commands.Pay;
 
 using Common.Exceptions;
+using Common.IntegrationsEvents;
 
 internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
 {
     private readonly IPaymentProcessor _paymentProcessor;
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IPaymentsRepository _paymentsRepository;
 
     public PayCommandHandler(IPaymentsRepository paymentsRepository,
-        IPaymentProcessor paymentProcessor)
+        IPaymentProcessor paymentProcessor,
+        IIntegrationEventPublisher integrationEventPublisher)
     {
         _paymentsRepository = paymentsRepository;
         _paymentProcessor = paymentProcessor;
+        _integrationEventPublisher = integrationEventPublisher;
     }
 
     public async Task<Unit> Handle(PayCommand command, CancellationToken cancellationToken)
@@ -29,7 +33,8 @@ internal sealed class PayCommandHandler : IRequestHandler<PayCommand>
             command.Card.ExpYear,
             command.Card.Cvc);
         await payment.PayCard(_paymentProcessor, card);
-
+        await _integrationEventPublisher.PublishAsync(payment.DomainEvents, cancellationToken);
+       
         return Unit.Value;
     }
 }
