@@ -1,4 +1,9 @@
 # Estimations Tool - makes estimations easier
+
+## Table of contents
+* [Documentation](#documentation)
+* [Technologies](#technologies)
+
 ## Technologies
 #### Dotnet Version: 6.0.1
 ![.Net 6](https://user-images.githubusercontent.com/74410956/143401887-afbef644-f5ce-4d2b-aee1-09e0457d74eb.png)
@@ -10,6 +15,7 @@
 ### CI/CD
 [![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
+[![Coverage Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
 
 ### Test Environment
 #### [Application](https://estimation-tool-ui.herokuapp.com/)     
