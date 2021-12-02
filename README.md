@@ -2,7 +2,12 @@
 
 ## Table of contents
 * [Documentation](#documentation)
+  * [System Context](#system-context)
+  * [Containers](#containers)
+  * [Components](#components)
 * [Technologies](#technologies)
+* [CI/CD](#ci/cd)
+* [Test Environment](#test-environment)
 
 ## Technologies
 #### Dotnet Version: 6.0.1
@@ -11,8 +16,10 @@
 ![Docker](https://user-images.githubusercontent.com/74410956/143401493-8f41000d-0d82-4005-b643-75d6045394c2.png)
 ![Travis](https://user-images.githubusercontent.com/74410956/143401738-d71d8ab7-c8df-4626-ba42-13b92d933587.png)
 ![Sentry](https://user-images.githubusercontent.com/74410956/144380180-42e47963-1793-4be5-9a72-47da2620fdce.png)
-![Sonar](https://user-images.githubusercontent.com/74410956/144380315-086af756-1c60-4d2a-9a88-665a832da571.png)
 
+### Integrations
+![trello](https://user-images.githubusercontent.com/74410956/144380471-279a4d7f-02cb-48c8-aa10-3221d8b65a31.png)     
+![stripe](https://user-images.githubusercontent.com/74410956/144380424-f664291b-ef58-42f3-8f6d-ca75267652ad.png)
 
 ### CI/CD
 [![Build Status](https://app.travis-ci.com/kamilbaczek/Estimation-Tool.svg?branch=develop)](https://app.travis-ci.com/kamilbaczek/Estimation-Tool)
@@ -22,10 +29,6 @@
 ### Test Environment
 #### [Application](https://estimation-tool-ui.herokuapp.com/)     
 #### [Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
-
-### Integrations
-![trello](https://user-images.githubusercontent.com/74410956/144380471-279a4d7f-02cb-48c8-aa10-3221d8b65a31.png)
-![stripe](https://user-images.githubusercontent.com/74410956/144380424-f664291b-ef58-42f3-8f6d-ca75267652ad.png)
 
 ## Documentation
 ### C4
@@ -40,6 +43,5 @@
 #### Components
 ![components](https://user-images.githubusercontent.com/74410956/130396746-40283672-decd-4ca8-a035-1c0ef6c6ae8e.png)
 
-#### Valuation Flow
-
+#### Valuations Flow
 ![diagram](https://user-images.githubusercontent.com/74410956/142997315-97c09d1f-cef3-416f-98bf-069b388ea019.png)
