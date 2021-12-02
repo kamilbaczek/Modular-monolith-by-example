@@ -10,6 +10,8 @@
 ![Heroku](https://user-images.githubusercontent.com/74410956/143401316-4a69eb67-c2eb-41d1-ab5c-751a9c79235c.png)
 ![Docker](https://user-images.githubusercontent.com/74410956/143401493-8f41000d-0d82-4005-b643-75d6045394c2.png)
 ![Travis](https://user-images.githubusercontent.com/74410956/143401738-d71d8ab7-c8df-4626-ba42-13b92d933587.png)
+![Sentry](https://user-images.githubusercontent.com/74410956/144380180-42e47963-1793-4be5-9a72-47da2620fdce.png)
+![Sonar](https://user-images.githubusercontent.com/74410956/144380315-086af756-1c60-4d2a-9a88-665a832da571.png)
 
 
 ### CI/CD
@@ -22,8 +24,8 @@
 #### [Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
 
 ### Integrations
-Trello  
-Stripe
+![trello](https://user-images.githubusercontent.com/74410956/144380471-279a4d7f-02cb-48c8-aa10-3221d8b65a31.png)
+![stripe](https://user-images.githubusercontent.com/74410956/144380424-f664291b-ef58-42f3-8f6d-ca75267652ad.png)
 
 ## Documentation
 ### C4
