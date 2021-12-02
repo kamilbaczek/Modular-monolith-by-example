@@ -20,7 +20,7 @@ internal sealed class AttributesController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult> CreateAttribute([FromBody] CreateAttributeRequest createAttributeRequest)
+    internal async Task<ActionResult> CreateAttribute([FromBody] CreateAttributeRequest createAttributeRequest)
     {
         await _servicesService.AddAttributeAsync(createAttributeRequest);
         return Ok();
@@ -29,7 +29,7 @@ internal sealed class AttributesController : BaseController
     [HttpDelete("{serviceId}/{attributeId}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> RemoveAttribute(Guid serviceId, Guid attributeId)
+    internal async Task<ActionResult> RemoveAttribute(Guid serviceId, Guid attributeId)
     {
         var removeAttributeRequest = new RemoveAttributeRequest
         {

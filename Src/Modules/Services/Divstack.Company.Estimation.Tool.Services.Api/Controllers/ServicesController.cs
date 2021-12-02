@@ -26,7 +26,7 @@ internal sealed class ServicesController : BaseController
     /// <returns>List of services returned</returns>
     [HttpGet(BatchRoute)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<ServiceDto>>> GetBatch([FromQuery] IReadOnlyCollection<Guid> servicesIds)
+    internal async Task<ActionResult<List<ServiceDto>>> GetBatchAsync([FromQuery] IReadOnlyCollection<Guid> servicesIds)
     {
         var services = await _servicesService.GetBatchAsync(servicesIds, BatchItemsLimit);
         return Ok(services);
@@ -34,7 +34,7 @@ internal sealed class ServicesController : BaseController
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<ServiceDto>>> GetAll()
+    internal async Task<ActionResult<List<ServiceDto>>> GetAll()
     {
         var services = await _servicesService.GetAllAsync();
         return Ok(services);
@@ -44,7 +44,7 @@ internal sealed class ServicesController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesDefaultResponseType]
-    public async Task<ActionResult<Guid>> Create([FromBody] CreateServiceRequest createServiceRequest)
+    internal async Task<ActionResult<Guid>> Create([FromBody] CreateServiceRequest createServiceRequest)
     {
         var serviceId = await _servicesService.CreateAsync(createServiceRequest);
         return Created(serviceId);
@@ -53,7 +53,7 @@ internal sealed class ServicesController : BaseController
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Delete(Guid id)
+    internal async Task<ActionResult> Delete(Guid id)
     {
         await _servicesService.DeleteAsync(id);
         return NoContent();
