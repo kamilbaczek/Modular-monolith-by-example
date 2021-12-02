@@ -27,8 +27,12 @@
 [![Coverage Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
 
 ### Test Environment
-#### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) [Application](https://estimation-tool-ui.herokuapp.com/)     
-#### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) [Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
+#### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
+
+[Application](https://estimation-tool-ui.herokuapp.com/)     
+#### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
+
+[Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
 
 ## Documentation
 ### C4
