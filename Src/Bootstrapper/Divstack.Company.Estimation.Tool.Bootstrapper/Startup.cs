@@ -9,8 +9,15 @@ using Shared.Infrastructure.Api;
 using Users.Api;
 using Valuations.Api;
 
+/// <summary>
+/// Divstack.Company.Estimation.Tool.Bootstrapper entry point
+/// </summary>
 public sealed class Startup
 {
+    /// <summary>
+    /// Configuration
+    /// </summary>
+    /// <param name="configuration"></param>
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
@@ -18,6 +25,10 @@ public sealed class Startup
 
     private IConfiguration Configuration { get; }
 
+    /// <summary>
+    /// Configure services
+    /// </summary>
+    /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddSharedInfrastructure(Configuration);
@@ -30,6 +41,11 @@ public sealed class Startup
         services.AddRemindersModule();
     }
 
+    /// <summary>
+    /// Configure application
+    /// </summary>
+    /// <param name="app"></param>
+    /// <param name="env"></param>
     public void Configure(
         IApplicationBuilder app,
         IWebHostEnvironment env)

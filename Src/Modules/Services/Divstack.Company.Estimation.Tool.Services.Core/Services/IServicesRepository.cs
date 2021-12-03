@@ -10,7 +10,6 @@ public interface IServicesRepository
     Task AddAsync(Service service, CancellationToken cancellationToken = default);
     Task DeleteAsync(Service service, CancellationToken cancellationToken = default);
     Task<List<Service>> GetAllAsync(CancellationToken cancellationToken = default);
-
     Task<List<Service>> GetBatchAsync(IReadOnlyCollection<Guid> serviceIds,
         int limitItems = 25,
         CancellationToken cancellationToken = default);

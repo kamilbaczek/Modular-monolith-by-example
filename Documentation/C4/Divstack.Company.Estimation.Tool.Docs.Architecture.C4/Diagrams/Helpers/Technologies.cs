@@ -2,9 +2,9 @@
 {
     internal sealed class Technologies
     {
-        private static readonly string DotnetVersion = "5.0";
+        private const string DotnetVersion = "5.0";
         private static readonly string Dotnet = ".Net " + DotnetVersion;
-        internal static string DotnetApi = Dotnet + " (Api)";
-        internal static string DotnetDll = Dotnet + " (ClassLib)";
+        internal static readonly string DotnetApi = Dotnet + " (Api)";
+        internal static readonly string DotnetDll = Dotnet + " (ClassLib)";
     }
 }

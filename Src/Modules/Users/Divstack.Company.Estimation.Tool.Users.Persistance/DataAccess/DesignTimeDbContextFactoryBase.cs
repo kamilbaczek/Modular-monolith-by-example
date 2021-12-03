@@ -18,8 +18,6 @@ internal abstract class DesignTimeDbContextFactoryBase<TContext> :
         var basePath = Directory.GetCurrentDirectory() +
                        string.Format("{0}..{0}Divstack.Company.Estimation.Tool.Bootstrapper",
                            Path.DirectorySeparatorChar);
-        Console.WriteLine(basePath);
-
         return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
     }
 

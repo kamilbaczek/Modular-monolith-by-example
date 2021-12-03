@@ -39,7 +39,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{4DC00626-B000-46CB-B8D9-8C6775C81C29}"
 ProjectSection(SolutionItems) = preProject
 	Dockerfile = Dockerfile
-	.dockerignore = .dockerignore
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Bootstrapper", "Src\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj", "{786148B8-DD6A-43CD-93F2-E64629325B66}"
