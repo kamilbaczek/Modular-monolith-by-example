@@ -23,7 +23,7 @@ jobs:
     - name: Sonarscanner for dotnet
       run: |
 #           dotnet test Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
-           dotnet sonarscanner begin /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" #/d:sonar.cs.opencover.reportsPaths="**/TestResults/*/*.xml"
+           dotnet sonarscanner begin /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" 
            dotnet build
            dotnet test /p:CollectCoverage=true
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
