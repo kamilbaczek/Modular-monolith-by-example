@@ -29,6 +29,7 @@ jobs:
             /d:sonar.verbose="false"
             /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml"
 #            /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
+#
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
