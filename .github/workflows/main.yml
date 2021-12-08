@@ -17,7 +17,7 @@ jobs:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.X' # SDK Version to use.
+        dotnet-version: '6.x' # SDK Version to use.
     - name: Get coverage
       run: dotnet test Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
     - name: Sonarscanner for dotnet
