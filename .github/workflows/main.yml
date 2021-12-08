@@ -20,8 +20,6 @@ jobs:
         dotnet-version: '6.x' # SDK Version to use.
     - name: Install sonarscanner-dotnet
       run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner
-    - name: Get coverage
-      run: 
     - name: Sonarscanner for dotnet
       run: |
            dotnet sonarscanner begin /o:"kamilbaczek" /d:sonar.login="$SONAR_TOKEN" /d:sonar.cs.opencover.reportsPaths="**/TestResults/*/*.xml" /d:sonar.exclusions=**/*.html /k:"kamilbaczek_Estimation-Tool"
