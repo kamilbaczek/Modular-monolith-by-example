@@ -16,7 +16,7 @@ jobs:
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - name: Get coverage
-      run: dotnet test Src\Modules\Inquiries\Tests\Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+      run: dotnet test Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
     - name: Sonarscanner for dotnet
       uses: Secbyte/dotnet-sonarscanner@v2.3
       with:
@@ -27,7 +27,7 @@ jobs:
         sonarOrganisation: kamilbaczek
         beginArguments: >
             /d:sonar.verbose="false"
-            /d:sonar.cs.opencover.reportsPaths="**\TestResults\*\*.xml"
+            /d:sonar.cs.opencover.reportsPaths="**/TestResults/*/*.xml"
 #            /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
 #
       env:
