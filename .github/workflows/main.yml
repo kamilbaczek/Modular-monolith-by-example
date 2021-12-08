@@ -15,6 +15,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6' # SDK Version to use.
     - name: Get coverage
       run: dotnet test Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
     - name: Sonarscanner for dotnet
@@ -29,7 +32,6 @@ jobs:
             /d:sonar.verbose="false"
             /d:sonar.cs.opencover.reportsPaths="**/TestResults/*/*.xml"
 #            /d:sonar.coverage.exclusions='"**/*.cs","**/*.md"'
-#
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
