@@ -27,7 +27,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     private InquiryId InquiryId { get; init; }
     private LinkedList<Proposal> Proposals { get; init; }
     private LinkedList<HistoricalEntry> History { get; init;}
-    private DateTime RequestedDate { get;  init;}
+    private DateTime RequestedDate { get; init; }
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
     private Deadline Deadline { get; init; }

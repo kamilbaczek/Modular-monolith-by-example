@@ -19,7 +19,7 @@ internal sealed class
         _paymentInitializedSender = paymentInitializedSender;
         _inquiriesModule = inquiriesModule;
     }
-    
+
     public async Task Handle(PaymentCompleted paymentCompleted, CancellationToken cancellationToken)
     {
         var (firstName, lastName, email) = await GetClientInfo(paymentCompleted);

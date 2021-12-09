@@ -20,7 +20,7 @@ internal sealed class PossibleValuesController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesDefaultResponseType]
-    internal async Task<ActionResult> CreatePossibleValues(
+    public async Task<ActionResult> CreatePossibleValues(
         [FromBody] CreatePossibleValueRequest createPossibleValueRequest)
     {
         await _servicesService.AddAttributePossibleValueAsync(createPossibleValueRequest);
@@ -30,14 +30,12 @@ internal sealed class PossibleValuesController : BaseController
     [HttpDelete("{serviceId}/{attributeId}/{possibleValueId}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    internal async Task<ActionResult> RemovePossibleValues(Guid serviceId, Guid attributeId, Guid possibleValueId)
+    public async Task<ActionResult> RemovePossibleValues(Guid serviceId, Guid attributeId, Guid possibleValueId)
     {
         await _servicesService.RemoveAttributePossibleValueAsync(
             new DeletePossibleValueRequest
             {
-                PossibleValueId = possibleValueId,
-                ServiceId = serviceId, 
-                AttributeId = attributeId
+                PossibleValueId = possibleValueId, ServiceId = serviceId, AttributeId = attributeId
             });
 
         return NoContent();

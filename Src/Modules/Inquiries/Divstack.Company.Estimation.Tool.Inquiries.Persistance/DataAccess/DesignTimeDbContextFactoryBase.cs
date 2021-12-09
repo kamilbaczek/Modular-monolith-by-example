@@ -35,6 +35,7 @@ internal abstract class DesignTimeDbContextFactoryBase<TContext> :
                 $"Connection string '{DataAccessConstants.ConnectionStringName}' is null or empty.",
                 nameof(connectionString));
         }
+
         var optionsBuilder = new DbContextOptionsBuilder<TContext>();
 
         optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
