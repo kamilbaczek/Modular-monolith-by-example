@@ -51,7 +51,7 @@ content-type: application/json
 Authorization: {{bearer}}
 
 ### valuation
-@valuation = "c7cce064-3fb1-4a8d-be39-60da588e6371"
+@valuation = "1debed24-9379-4c04-821f-b15a4066428d"
 
 ### Suggest proposal
 POST {{url}}/api/valuations-module/Valuations/valuations/proposals

@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Payments.PaymentInitialized.Configuration;
 
-using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
 using Shared.Abstractions.Configuration;
 

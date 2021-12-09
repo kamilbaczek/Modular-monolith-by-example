@@ -2,6 +2,7 @@
 
 using Inquiries.Api;
 using Modules.Emails.Bootstrapper;
+using Notifications.Push;
 using Payments.Api;
 using Reminders;
 using Services.Api;
@@ -10,12 +11,12 @@ using Users.Api;
 using Valuations.Api;
 
 /// <summary>
-/// Divstack.Company.Estimation.Tool.Bootstrapper entry point
+///     Divstack.Company.Estimation.Tool.Bootstrapper entry point
 /// </summary>
 public sealed class Startup
 {
     /// <summary>
-    /// Configuration
+    ///     Configuration
     /// </summary>
     /// <param name="configuration"></param>
     public Startup(IConfiguration configuration)
@@ -26,7 +27,7 @@ public sealed class Startup
     private IConfiguration Configuration { get; }
 
     /// <summary>
-    /// Configure services
+    ///     Configure services
     /// </summary>
     /// <param name="services"></param>
     public void ConfigureServices(IServiceCollection services)
@@ -37,12 +38,13 @@ public sealed class Startup
         services.AddInquiriesModule(Configuration);
         services.AddValuationsModule(Configuration);
         services.AddPaymentsModule(Configuration);
+        services.AddPushModule(Configuration);
         services.AddEmailsModule();
         services.AddRemindersModule();
     }
 
     /// <summary>
-    /// Configure application
+    ///     Configure application
     /// </summary>
     /// <param name="app"></param>
     /// <param name="env"></param>
@@ -56,10 +58,8 @@ public sealed class Startup
         }
 
         app.UseSharedInfrastructure();
-        app.UseRouting();
-        app.UseAuthorization();
-        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         app.UseValuationModule();
         app.UsePaymentModule();
+        app.UsePushModule();
     }
 }

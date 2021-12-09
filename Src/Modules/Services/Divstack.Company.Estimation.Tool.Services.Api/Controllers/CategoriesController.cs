@@ -21,7 +21,7 @@ internal sealed class CategoriesController : BaseController
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    internal async Task<ActionResult<List<ServiceDto>>> GetAll()
+    public async Task<ActionResult<List<ServiceDto>>> GetAll()
     {
         var services = await _categoriesService.GetAllAsync();
         return Ok(services);
@@ -31,7 +31,7 @@ internal sealed class CategoriesController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [ProducesDefaultResponseType]
-    internal async Task<ActionResult<Guid>> Create([FromBody] CreateCategoryRequest createServiceRequest)
+    public async Task<ActionResult<Guid>> Create([FromBody] CreateCategoryRequest createServiceRequest)
     {
         var categoryId = await _categoriesService.CreateAsync(createServiceRequest);
         return Created(categoryId);
@@ -40,7 +40,7 @@ internal sealed class CategoriesController : BaseController
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    internal async Task<ActionResult> Delete(Guid id)
+    public async Task<ActionResult> Delete(Guid id)
     {
         await _categoriesService.DeleteAsync(id);
         return NoContent();

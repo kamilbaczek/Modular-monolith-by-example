@@ -1,4 +1,7 @@
 ﻿{
+  "Cors": {
+    "Origin": ""
+  },
   "Sentry": {
     "Dsn": "",
     "MaxRequestBodySize": "Always",

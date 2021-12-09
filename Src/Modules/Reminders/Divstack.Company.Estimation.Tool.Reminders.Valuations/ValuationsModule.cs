@@ -1,6 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
+
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Reminders")]
+
 namespace Divstack.Company.Estimation.Tool.Reminders.Valuations;
+
 using System.Reflection;
 using DeadlineClose.Reminder;
 using MediatR;

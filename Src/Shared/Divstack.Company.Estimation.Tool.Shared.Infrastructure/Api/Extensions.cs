@@ -39,9 +39,16 @@ internal static class Extensions
     public static void UseSharedInfrastructure(this IApplicationBuilder app)
     {
         app.UseCors(builder => builder
-            .AllowAnyOrigin()
+            .WithOrigins("http://localhost:8080")
+            .AllowAnyMethod()
             .AllowAnyHeader()
-            .AllowAnyMethod());
+            .AllowCredentials());
+        app.UseRouting();
+        app.UseAuthorization();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
         app.UseSwaggerModule();
         app.UseCustomExceptionHandler();
         app.UseBackgroundProcessing();
