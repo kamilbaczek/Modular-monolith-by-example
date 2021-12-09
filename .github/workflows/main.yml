@@ -22,9 +22,9 @@ jobs:
       run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
-           dotnet sonarscanner begin /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" 
+           dotnet sonarscanner begin /d:sonar.scm.provider=git /d:sonar.projectBaseDir= /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" 
            dotnet build
-           dotnet test /p:CollectCoverage=true
+           dotnet test -v=normal --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
