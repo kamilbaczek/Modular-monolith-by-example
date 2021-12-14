@@ -26,6 +26,8 @@ jobs:
            dotnet sonarscanner begin /d:sonar.scm.provider=git /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/TestResults/*/*.xml"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+      with:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - name: Heroku deployment
       uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
