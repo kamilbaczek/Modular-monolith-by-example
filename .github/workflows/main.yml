@@ -27,8 +27,8 @@ jobs:
            dotnet build
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
-        with:
-            projectBaseDir: my-custom-directory
+      with:
+            projectBaseDir: .
             args: >
             -Dsonar.organization=kamilbaczek
             -Dsonar.projectKey=$SONAR_TOKEN
