@@ -41,6 +41,7 @@ jobs:
        -Dsonar.exclusions=**/*.html
        -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
        -Dsonar.projectVersion=1.${{ github.run_number }}
+       -Dsonar.cs.vstest.reportsPaths=**/*.trx
 #    - name: Heroku deployment
 #      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
 #      with:
