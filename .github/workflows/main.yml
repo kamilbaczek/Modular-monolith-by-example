@@ -39,7 +39,7 @@ jobs:
        -Dsonar.projectKey=kamilbaczek_Estimation-Tool
        -Dsonar.language=cs
        -Dsonar.host.url=https://sonarcloud.io/
-       -Dsonar.exclusions=**/*.html
+       -Dsonar.exclusions=**/*.html,**/*.xml
        -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
        -Dsonar.projectVersion=1.${{ github.run_number }}
        -Dsonar.cs.vstest.reportsPaths=**/*.trx
