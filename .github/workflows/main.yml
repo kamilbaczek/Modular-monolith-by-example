@@ -25,8 +25,8 @@ jobs:
       run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
-           dotnet sonarscanner begin /d:sonar.scm.provider=git /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
            dotnet test --settings coverlet.runsettings --logger:trx
+           dotnet sonarscanner begin /d:sonar.scm.provider=git /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 #    - name: Heroku deployment
