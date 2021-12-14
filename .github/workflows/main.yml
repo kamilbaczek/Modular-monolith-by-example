@@ -29,13 +29,15 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       with:
            projectBaseDir: .
+           env:
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
            args: >
             -Dsonar.organization=kamilbaczek
             -Dsonar.projectKey=kamilbaczek_Estimation-Tool
-            -Dsonar.login=$SONAR_TOKEN
             -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
             -Dsonar.cs.vstest.reportsPaths=**/*.trx
             -Dsonar.projectVersion=1.${{ github.run_number }}
+            -Dsonar.verbose=true
 #    - name: Install sonarscanner-dotnet
 #      run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner
 #    - name: Sonarscanner for dotnet
