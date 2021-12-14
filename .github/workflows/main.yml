@@ -26,11 +26,11 @@ jobs:
            dotnet test --settings coverlet.runsettings --logger:trx
            dotnet build
     - name: Analyze with SonarCloud
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       uses: sonarsource/sonarcloud-github-action@master
       with:
            projectBaseDir: .
-           env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
            args: >
             -Dsonar.organization=kamilbaczek
             -Dsonar.projectKey=kamilbaczek_Estimation-Tool
