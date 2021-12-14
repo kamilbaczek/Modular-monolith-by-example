@@ -25,9 +25,22 @@ jobs:
       run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
-           dotnet sonarscanner begin /d:sonar.scm.disabled=true /v:1.${{ github.run_number }} /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
            dotnet build
-           dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+           dotnet test --settings coverlet.runsettings --logger:trx
+    - name: Setup sonarqube
+      uses: warchant/setup-sonar-scanner@v3
+    - name: Run sonarqube
+      env:
+    # to get access to secrets.SONAR_TOKEN, provide GITHUB_TOKEN
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: sonar-scanner
+       -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+       -Dsonar.organization=kamilbaczek
+       -Dsonar.projectKey=kamilbaczek_Estimation-Tool
+       -Dsonar.host.url=https://sonarcloud.io/
+       -Dsonar.exclusions=**/*.html
+       -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
+       -Dsonar.projectVersion=1.${{ github.run_number }}
 #    - name: Heroku deployment
 #      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
 #      with:
