@@ -31,7 +31,8 @@ jobs:
            projectBaseDir: .
            args: >
             -Dsonar.organization=kamilbaczek
-            -Dsonar.projectKey=$SONAR_TOKEN
+            -Dsonar.projectKey=kamilbaczek_Estimation-Tool"
+            -Dsonar.login=$SONAR_TOKEN
             -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
             -Dsonar.cs.vstest.reportsPaths=**/*.trx
             -Dsonar.projectVersion=1.${{ github.run_number }}
