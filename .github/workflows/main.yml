@@ -28,8 +28,8 @@ jobs:
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
       with:
-            projectBaseDir: .
-            args: >
+           projectBaseDir: .
+           args: >
             -Dsonar.organization=kamilbaczek
             -Dsonar.projectKey=$SONAR_TOKEN
             -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
