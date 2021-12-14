@@ -29,8 +29,8 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#    - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-#        with:
-#          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-#          heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
-#          heroku_email: "YOUR EMAIL"
+    - name: Heroku deployment
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU}}
+          heroku_app_name: "estimation-tool-kb"
