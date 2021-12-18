@@ -3,14 +3,14 @@
 using MongoDB.Driver;
 using Valuations.Domain.Valuations;
 
-internal sealed class ValuationsContext : IValuationsContext
+internal sealed class ValuationsNotificationsNotificationsContext : IValuationsNotificationsContext
 {
     private const string DatabaseName = "EstimationTool";
-    private const string ValuationsCollectionName = "Valuations";
+    private const string ValuationsCollectionName = "ValuationsNotifications";
 
     private readonly IMongoDatabase _database;
 
-    public ValuationsContext(MongoClient mongoClient)
+    public ValuationsNotificationsNotificationsContext(MongoClient mongoClient)
     {
         _database = mongoClient.GetDatabase(DatabaseName);
     }

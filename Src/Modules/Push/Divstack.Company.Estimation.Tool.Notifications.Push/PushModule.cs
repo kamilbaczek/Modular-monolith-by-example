@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Notifications.Push;
 
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
@@ -13,11 +12,9 @@ public static class PushModule
         IConfiguration configuration)
     {
         services.AddSignalR();
-
-
         services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
         services.AddPushValuations(configuration);
-        
+
         return services;
     }
 

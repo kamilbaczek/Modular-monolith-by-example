@@ -1,7 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
-
 namespace Divstack.Company.Estimation.Tool.Reminders;
 
 using Microsoft.Extensions.DependencyInjection;

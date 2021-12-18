@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
+﻿namespace Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Persistance.DataAccess;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ internal static class DataAccessModule
         string connectionString)
     {
         services.AddMongo(connectionString);
-        services.AddScoped<IValuationsNotificationsContext, ValuationsNotificationsNotificationsContext>();
+        services.AddScoped<INotificationsContext, NotificationsContext>();
 
         return services;
     }
@@ -25,6 +25,5 @@ internal static class DataAccessModule
 
     internal static void UseDataAccess(this IApplicationBuilder app)
     {
-        PersistanceConfiguration.Configure();
     }
 }
