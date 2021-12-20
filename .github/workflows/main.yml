@@ -26,7 +26,7 @@ jobs:
     - name: Sonarscanner for dotnet
       run: |
            dotnet test --settings coverlet.runsettings --logger:trx
-           dotnet sonarscanner begin /d:sonar.sources="Src" /d:sonar.sources.exclusions="**/Tests/**" /d:sonar.tests="**/Tests/**" /v:1.${{ github.run_number }} /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 
