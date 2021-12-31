@@ -8,40 +8,50 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.11
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v1
-        with:
-          path: ~\sonar\cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
-        id: cache-sonar-scanner
-        uses: actions/cache@v1
-        with:
-          path: .\.sonar\scanner
-          key: ${{ runner.os }}-sonar-scanner
-          restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarCloud scanner
-        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
-        shell: powershell
-        run: |
-          New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-#      - name: Build and analyze
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#        shell: powershell
-#        run: |
-#          .\.sonar\scanner\dotnet-sonarscanner begin /k:"kamilbaczek_Estimation-Tool" /o:"kamilbaczek" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-#          dotnet build
-#          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+     
+    - name: Checkout 
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.x' # SDK Version to use.
+    - name: Install sonarscanner-dotnet
+      run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner --version 5.4
+    - name: Sonarscanner for dotnet
+      run: |
+           dotnet test --settings coverlet.runsettings --logger:trx
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /d:sonar.exclusions=**/*.html /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.cs.vstest.reportsPaths="**/*.trx"
+           dotnet build
+           dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+
+#    - name: Heroku deployment
+#      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+#      with:
+#        heroku_api_key: ${{secrets.HEROKU}}
+#        heroku_app_name: "estimation-tool-kb"
+#        branch: "develop"
+#    - name: Sonarscanner for dotnet
+#      run: |
+#           dotnet build
+#           dotnet test --settings coverlet.runsettings --logger:trx
+#    - name: Setup sonarqube
+#      uses: warchant/setup-sonar-scanner@v3
+#    - name: Run sonarqube
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      run: sonar-scanner
+#       -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#       -Dsonar.organization=kamilbaczek
+#       -Dsonar.projectKey=kamilbaczek_Estimation-Tool
+#       -Dsonar.language=cs
+#       -Dsonar.host.url=https://sonarcloud.io/
+#       -Dsonar.exclusions=**/*.html,**/*.xml
+#       -Dsonar.cs.opencover.reportsPaths=**/coverage.opencover.xml
+#       -Dsonar.projectVersion=1.${{ github.run_number }}
+#       -Dsonar.cs.vstest.reportsPaths=**/*.trx

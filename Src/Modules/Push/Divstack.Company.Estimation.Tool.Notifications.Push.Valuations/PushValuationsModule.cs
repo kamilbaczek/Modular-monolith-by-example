@@ -17,7 +17,6 @@ internal static class PushValuationsModule
         IConfiguration configuration)
     {
         services.AddMediatR(Assembly.GetExecutingAssembly());
-
         return services;
     }
 
