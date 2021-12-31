@@ -14,6 +14,7 @@ public static class PushModule
         services.AddSignalR();
         services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
         services.AddPushValuations(configuration);
+        services.AddNotificationsModule(configuration);
 
         return services;
     }

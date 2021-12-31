@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class NotificationsApiModule
 {
-    public static IServiceCollection AddNotificationsModule(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddPushNotificationsApi(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<INotificationsContext, NotificationsContext>();
         services.AddMediatR(Assembly.GetExecutingAssembly());

@@ -40,7 +40,6 @@ public sealed class Startup
         services.AddValuationsModule(Configuration);
         services.AddPaymentsModule(Configuration);
         services.AddPushModule(Configuration);
-        services.AddNotificationsModule(Configuration);
         services.AddEmailsModule();
         services.AddRemindersModule();
     }
@@ -63,6 +62,5 @@ public sealed class Startup
         app.UseValuationModule();
         app.UsePaymentModule();
         app.UsePushModule();
-        app.UseNotifications();
     }
 }
