@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 
-using Common.Interfaces;
-using Domain.Valuations;
 using Domain.Valuations.Deadlines;
 using Inquiries.IntegrationsEvents.External;
 using MediatR;

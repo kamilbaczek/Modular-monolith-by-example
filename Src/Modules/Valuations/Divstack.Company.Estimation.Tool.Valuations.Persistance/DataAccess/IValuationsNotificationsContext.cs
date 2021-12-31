@@ -3,7 +3,7 @@
 using MongoDB.Driver;
 using Valuations.Domain.Valuations;
 
-internal interface IValuationsContext
+internal interface IValuationsNotificationsContext
 {
     public IMongoCollection<Valuation> Valuations { get; }
 }

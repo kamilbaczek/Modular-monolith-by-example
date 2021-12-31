@@ -22,11 +22,11 @@ internal sealed class
     private readonly BsonValueAggregateExpressionDefinition<BsonDocument, BsonDocument> _historyElement =
         new(HistoryAsElementName);
 
-    private readonly IValuationsContext _valuationsContext;
+    private readonly IValuationsNotificationsContext _valuationsNotificationsContext;
 
-    public GetValuationHistoryByIdQueryHandler(IValuationsContext valuationsContext)
+    public GetValuationHistoryByIdQueryHandler(IValuationsNotificationsContext valuationsNotificationsContext)
     {
-        _valuationsContext = valuationsContext;
+        _valuationsNotificationsContext = valuationsNotificationsContext;
     }
 
     public async Task<ValuationHistoryVm> Handle(GetValuationHistoryByIdQuery request,
@@ -34,7 +34,7 @@ internal sealed class
     {
         var valuationId = ValuationId.Of(request.ValuationId);
 
-        var valuationHistoricalEntries = await _valuationsContext.Valuations.Aggregate()
+        var valuationHistoricalEntries = await _valuationsNotificationsContext.Valuations.Aggregate()
             .Match(valuation => valuation.Id == valuationId)
             .Unwind(History)
             .ReplaceRoot(_historyElement)

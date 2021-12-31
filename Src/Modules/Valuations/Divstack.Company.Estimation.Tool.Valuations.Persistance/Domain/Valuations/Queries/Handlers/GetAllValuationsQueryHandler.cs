@@ -11,18 +11,21 @@ internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValua
     private const string ProjectionQuery =
         @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: '$CompletedBy.Value', RequestedDate: 1, _id:0}";
 
-    private readonly IValuationsContext _valuationsContext;
-
-    public GetAllValuationsQueryHandler(IValuationsContext valuationsContext)
+    private readonly IValuationsNotificationsContext _valuationsNotificationsContext;
+    public GetAllValuationsQueryHandler(IValuationsNotificationsContext valuationsNotificationsContext)
     {
-        _valuationsContext = valuationsContext;
+        _valuationsNotificationsContext = valuationsNotificationsContext;
     }
 
     public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
     {
         var filterDefinition = FilterDefinition<Valuation>.Empty;
-        var valuationListItemDtos = await _valuationsContext.Valuations
+        var sortDefinition = Builders<Valuation>.Sort.Descending("RequestedDate");
+
+        var valuationListItemDtos = await _valuationsNotificationsContext
+            .Valuations
             .Find(filterDefinition)
+            .Sort(sortDefinition)
             .Project<ValuationListItemDto>(ProjectionQuery)
             .ToListAsync(cancellationToken);
 

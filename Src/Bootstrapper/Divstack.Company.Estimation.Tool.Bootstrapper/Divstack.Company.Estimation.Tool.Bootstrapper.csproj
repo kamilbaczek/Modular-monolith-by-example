@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api.csproj" />
     <ProjectReference Include="..\..\Modules\Emails\Divstack.Company.Estimation.Tool.Emails\Divstack.Company.Estimation.Tool.Emails.csproj" />
     <ProjectReference Include="..\..\Modules\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Api\Divstack.Company.Estimation.Tool.Inquiries.Api.csproj" />
     <ProjectReference Include="..\..\Modules\Payments\Divstack.Company.Estimation.Tool.Payments.Api\Divstack.Company.Estimation.Tool.Payments.Api.csproj" />

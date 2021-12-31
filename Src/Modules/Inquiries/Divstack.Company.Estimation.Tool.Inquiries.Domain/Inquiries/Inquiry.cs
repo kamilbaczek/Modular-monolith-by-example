@@ -19,7 +19,6 @@ public sealed class Inquiry : Entity, IAggregateRoot
     {
         Guard.Against.NullOrEmpty(services, nameof(services));
         Client = Guard.Against.Null(client, nameof(client));
-
         Id = InquiryId.Create();
         InquiryItems = services
             .Select(service => InquiryItem.Create(service, this))

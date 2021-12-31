@@ -163,6 +163,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Notifications.Push.Valuations", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.csproj", "{07105D25-F8B9-472D-9863-E5EBCB2F10F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api", "Src\Modules\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api.csproj", "{C61277F5-8482-4578-926B-DF8F204146C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -365,6 +367,10 @@ Global
 		{07105D25-F8B9-472D-9863-E5EBCB2F10F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07105D25-F8B9-472D-9863-E5EBCB2F10F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07105D25-F8B9-472D-9863-E5EBCB2F10F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C61277F5-8482-4578-926B-DF8F204146C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C61277F5-8482-4578-926B-DF8F204146C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C61277F5-8482-4578-926B-DF8F204146C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C61277F5-8482-4578-926B-DF8F204146C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -441,5 +447,6 @@ Global
 		{285D355D-670B-468A-AE5F-4C0C0239D1EE} = {4060CF46-F2F9-46D6-939F-B356F89E34DD}
 		{6155761C-BF45-4D8B-BE96-9905A10BB326} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
 		{07105D25-F8B9-472D-9863-E5EBCB2F10F0} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
+		{C61277F5-8482-4578-926B-DF8F204146C6} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
 	EndGlobalSection
 EndGlobal

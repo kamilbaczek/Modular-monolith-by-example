@@ -31,8 +31,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Api\Cors\Configuration" />
-  </ItemGroup>
-
 </Project>
