@@ -39,7 +39,8 @@ public sealed class Startup
         services.AddInquiriesModule(Configuration);
         services.AddValuationsModule(Configuration);
         services.AddPaymentsModule(Configuration);
-        services.AddPushModule(Configuration);
+        services.AddPushNotificationsModule(Configuration);
+        services.AddPushNotificationsApi(Configuration);
         services.AddEmailsModule();
         services.AddRemindersModule();
     }
@@ -61,6 +62,7 @@ public sealed class Startup
         app.UseSharedInfrastructure();
         app.UseValuationModule();
         app.UsePaymentModule();
-        app.UsePushModule();
+        app.UsePushNotificationsModule();
+        app.UsePushNotificationsApi();
     }
 }

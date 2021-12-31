@@ -1,4 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Persistance;
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
+
+namespace Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Persistance;
 
 using System.Reflection;
 using DataAccess;
@@ -7,7 +11,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-public static class NotificationsApiModule
+internal static class PushApiModule
 {
     public static IServiceCollection AddPushNotificationsApi(this IServiceCollection services, IConfiguration configuration)
     {
@@ -19,7 +23,7 @@ public static class NotificationsApiModule
         return services;
     }
 
-    public static void UseNotifications(this IApplicationBuilder app)
+    public static void UsePushNotificationsApi(this IApplicationBuilder app)
     {
         NotificationPersistanceConfiguration.Configure();
     }

@@ -8,18 +8,17 @@ using Tool.Push.Valuations;
 
 public static class PushModule
 {
-    public static IServiceCollection AddPushModule(this IServiceCollection services,
+    public static IServiceCollection AddPushNotificationsModule(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddSignalR();
         services.AddSingleton<IUserIdProvider, NameUserIdProvider>();
         services.AddPushValuations(configuration);
-        services.AddNotificationsModule(configuration);
 
         return services;
     }
 
-    public static void UsePushModule(this IApplicationBuilder app)
+    public static void UsePushNotificationsModule(this IApplicationBuilder app)
     {
         app.UsePushValuations();
     }
