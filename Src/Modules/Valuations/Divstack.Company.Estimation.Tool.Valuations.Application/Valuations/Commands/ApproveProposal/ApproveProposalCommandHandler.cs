@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 
-using Common.Exceptions;
-using Common.Interfaces;
-using Domain.Valuations;
 using Domain.Valuations.Proposals;
 using MediatR;
 

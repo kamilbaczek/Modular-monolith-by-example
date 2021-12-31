@@ -14,7 +14,7 @@ internal sealed class ValuationRequestEventHandler : INotificationHandler<Valuat
     }
     public async Task Handle(ValuationRequested @event, CancellationToken cancellationToken)
     {
-        var notification = Notification.Create(@event.ValuationId, "Valuation", "Requested");
+        var notification = Notification.Create(@event.ValuationId, nameof(ValuationRequested));
         await _notificationContext.Notifications.InsertOneAsync(notification, null, cancellationToken);
     }
 }

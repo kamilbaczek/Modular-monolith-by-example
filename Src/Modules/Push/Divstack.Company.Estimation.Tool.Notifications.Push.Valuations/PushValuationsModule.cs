@@ -1,4 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Push.Valuations;
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Notifications.Push")]
+
+namespace Divstack.Company.Estimation.Tool.Push.Valuations;
 
 using System.Reflection;
 using Hubs;
@@ -7,16 +11,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-internal static class HubUrls
-{}
-
-public static class PushValuationsModule
+internal static class PushValuationsModule
 {
     public static IServiceCollection AddPushValuations(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddMediatR(Assembly.GetExecutingAssembly());
-        
+
         return services;
     }
 

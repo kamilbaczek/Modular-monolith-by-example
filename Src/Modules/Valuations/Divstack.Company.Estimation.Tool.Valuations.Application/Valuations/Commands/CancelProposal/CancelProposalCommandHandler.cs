@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.CancelProposal;
 
-using Common.Exceptions;
-using Domain.UserAccess;
-using Domain.Valuations;
 using Domain.Valuations.Proposals;
 using MediatR;
 

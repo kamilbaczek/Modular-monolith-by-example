@@ -14,7 +14,7 @@ internal sealed class ProposalApprovedEventHandler : INotificationHandler<Propos
     }
     public async Task Handle(ProposalApproved @event, CancellationToken cancellationToken)
     {
-        var notification = Notification.Create(@event.ValuationId, "Valuation", "Approved");
+        var notification = Notification.Create(@event.ValuationId, nameof(ProposalApproved));
         await _notificationContext.Notifications.InsertOneAsync(notification, null, cancellationToken);
     }
 }

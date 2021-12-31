@@ -1,9 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 
-using Common.Exceptions;
-using Common.Interfaces;
-using Domain.UserAccess;
-using Domain.Valuations;
 using MediatR;
 using Shared.DDD.ValueObjects;
 

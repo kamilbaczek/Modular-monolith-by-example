@@ -3,6 +3,7 @@
 using Inquiries.Api;
 using Modules.Emails.Bootstrapper;
 using Notifications.Push;
+using Notifications.Push.Valuations.Persistance;
 using Payments.Api;
 using Reminders;
 using Services.Api;
@@ -39,6 +40,7 @@ public sealed class Startup
         services.AddValuationsModule(Configuration);
         services.AddPaymentsModule(Configuration);
         services.AddPushModule(Configuration);
+        services.AddNotificationsModule(Configuration);
         services.AddEmailsModule();
         services.AddRemindersModule();
     }
@@ -61,5 +63,6 @@ public sealed class Startup
         app.UseValuationModule();
         app.UsePaymentModule();
         app.UsePushModule();
+        app.UseNotifications();
     }
 }

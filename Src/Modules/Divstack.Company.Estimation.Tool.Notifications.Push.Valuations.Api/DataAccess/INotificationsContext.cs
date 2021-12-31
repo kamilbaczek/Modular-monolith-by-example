@@ -5,5 +5,5 @@ using MongoDB.Driver;
 
 internal interface INotificationsContext
 {
-    public IMongoCollection<Notification> Notifications { get; }
+    IMongoCollection<Notification> Notifications { get; }
 }
