@@ -5,6 +5,7 @@
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
 using BackgroundProcessing;
+using Configurations;
 using Errors.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -16,7 +17,7 @@ using Swagger;
 
 internal static class Extensions
 {
-    public static IServiceCollection AddSharedInfrastructure(this IServiceCollection services,
+    internal static IServiceCollection AddSharedInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddSingleton(configuration);
@@ -36,10 +37,12 @@ internal static class Extensions
         return services;
     }
 
-    public static void UseSharedInfrastructure(this IApplicationBuilder app)
+    internal static void UseSharedInfrastructure(this IApplicationBuilder app)
     {
+        var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
+        var corsConfiguration = new CorsConfiguration(configuration);
         app.UseCors(builder => builder
-            .WithOrigins("http://localhost:8080")
+            .WithOrigins(corsConfiguration.Origin)
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());

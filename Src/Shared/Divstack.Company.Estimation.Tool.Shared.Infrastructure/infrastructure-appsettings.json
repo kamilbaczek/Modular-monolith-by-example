@@ -1,6 +1,6 @@
 ﻿{
   "Cors": {
-    "Origin": ""
+    "Origin": "http://localhost:8080"
   },
   "Sentry": {
     "Dsn": "",

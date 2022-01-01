@@ -2,7 +2,7 @@
 
 using Common.Configurations;
 using Common.Extensions;
-using Shared.Infrastructure.Observability;
+using Shared.Infrastructure.Api;
 
 public sealed class Program
 {
@@ -17,7 +17,7 @@ public sealed class Program
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
-                webBuilder.UseObservability();
+                webBuilder.ConfigureSharedInfrastructure();
             })
             .ConfigureAppConfiguration((hostContext, builder) =>
             {
