@@ -21,6 +21,7 @@ internal sealed class NotificationsController : BaseController
     public async Task<ActionResult<Notification>> GetAll()
     {
         var notifications = await _notificationsReadRepository.GetAllAsync();
+
         return Ok(notifications);
     }
 
@@ -36,6 +37,7 @@ internal sealed class NotificationsController : BaseController
             return NotFound();
         notification.MarkAsRead();
         await _notificationsWriteRepository.UpdateAsync(notification);
+
         return Ok();
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 internal static class PushPaymentsModule
 {
-    internal static IServiceCollection AddPushPayments(this IServiceCollection services)
+    internal static IServiceCollection AddPayments(this IServiceCollection services)
     {
         services.AddSignalR();
         services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -20,7 +20,7 @@ internal static class PushPaymentsModule
         return services;
     }
 
-    internal static void UsePushPayments(this IApplicationBuilder app)
+    internal static void UsePayments(this IApplicationBuilder app)
     {
         app.UseEndpoints(endpointRouteBuilder =>
         {

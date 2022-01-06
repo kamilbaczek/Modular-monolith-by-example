@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Domain\Divstack.Company.Estimation.Tool.Payments.Domain.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Payments.Infrastructure\Divstack.Company.Estimation.Tool.Payments.Infrastructure.csproj"/>
   </ItemGroup>

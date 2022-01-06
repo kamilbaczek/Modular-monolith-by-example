@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 internal static class PushApiModule
 {
-    public static IServiceCollection AddPushNotificationsApi(this IServiceCollection services)
+    public static IServiceCollection AddApi(this IServiceCollection services)
     {
         return services;
     }

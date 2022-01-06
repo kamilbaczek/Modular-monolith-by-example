@@ -19,11 +19,11 @@ public sealed class Payment : Entity, IAggregateRoot
     }
 
     public PaymentId Id { get; init; }
-    private ValuationId ValuationId { get; }
-    private InquiryId InquiryId { get; }
-    private PaymentSecret PaymentSecret { get; }
+    private ValuationId ValuationId { get; init; }
+    private InquiryId InquiryId { get; init; }
+    private PaymentSecret PaymentSecret { get; init; }
     private PaymentStatus PaymentStatus { get; set; }
-    private Money AmountToPay { get; }
+    private Money AmountToPay { get; init;}
 
     public static async Task<Payment> InitializeAsync(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
     {

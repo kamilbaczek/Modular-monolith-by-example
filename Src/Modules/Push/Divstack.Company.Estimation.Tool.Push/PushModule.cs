@@ -14,20 +14,20 @@ using Valuations;
 
 internal static class PushModule
 {
-    internal static IServiceCollection AddPushNotificationsModule(this IServiceCollection services,
+    internal static IServiceCollection AddPushModule(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddDataAccess(configuration);
-        services.AddPushValuations();
-        services.AddPushPayments();
-        services.AddPushNotificationsApi();
+        services.AddValuations();
+        services.AddPayments();
+        services.AddApi();
 
         return services;
     }
 
-    internal static void UsePushNotificationsModule(this IApplicationBuilder app)
+    internal static void UsePushModule(this IApplicationBuilder app)
     {
-        app.UsePushValuations();
-        app.UsePushPayments();
+        app.UseValuations();
+        app.UsePayments();
     }
 }

@@ -8,6 +8,8 @@ using Context;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using Repositories.Read;
+using Repositories.Write;
 
 internal static class DataAccessModule
 {
@@ -17,6 +19,8 @@ internal static class DataAccessModule
         var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
         services.AddMongo(connectionString);
         services.AddScoped<INotificationsContext, NotificationsContext>();
+        services.AddScoped<INotificationsReadRepository, NotificationsReadRepository>();
+        services.AddScoped<INotificationsWriteRepository, NotificationsWriteRepository>();
 
         return services;
     }

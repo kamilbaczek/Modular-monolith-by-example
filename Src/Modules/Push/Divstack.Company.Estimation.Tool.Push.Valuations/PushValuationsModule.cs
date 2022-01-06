@@ -12,14 +12,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 internal static class PushValuationsModule
 {
-    public static IServiceCollection AddPushValuations(this IServiceCollection services)
+    public static IServiceCollection AddValuations(this IServiceCollection services)
     {
         services.AddSignalR();
         services.AddMediatR(Assembly.GetExecutingAssembly());
         return services;
     }
 
-    public static void UsePushValuations(this IApplicationBuilder app)
+    public static void UseValuations(this IApplicationBuilder app)
     {
         app.UseEndpoints(endpointRouteBuilder =>
         {
