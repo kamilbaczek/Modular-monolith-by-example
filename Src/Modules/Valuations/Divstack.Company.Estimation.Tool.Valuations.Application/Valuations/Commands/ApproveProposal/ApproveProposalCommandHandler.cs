@@ -15,15 +15,12 @@ internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApprovePro
         _valuationsRepository = valuationsRepository;
         _integrationEventPublisher = integrationEventPublisher;
     }
-
     public async Task<Unit> Handle(ApproveProposalCommand command, CancellationToken cancellationToken)
     {
         var valuationId = new ValuationId(command.ValuationId);
         var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
         if (valuation is null)
-        {
             throw new NotFoundException(command.ValuationId, nameof(Valuation));
-        }
 
         var proposalId = new ProposalId(command.ProposalId);
 

@@ -36,6 +36,7 @@ internal sealed class
     {
         var inquiryClientQuery = new GetInquiryClientQuery(paymentInitialized.InquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
+
         return client;
     }
 }

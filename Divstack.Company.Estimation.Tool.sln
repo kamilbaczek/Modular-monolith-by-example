@@ -32,7 +32,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6F31D638
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{3704CA35-A411-40DA-BC45-2DB82C734467}"
 ProjectSection(SolutionItems) = preProject
-	.travis.yml = .travis.yml
 	heroku.yml = heroku.yml
 EndProjectSection
 EndProject
@@ -55,7 +54,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.Core", "Src\Modules\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj", "{70B7EE07-F0B6-4617-823C-1F96524CCD98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.DAL", "Src\Modules\Services\Divstack.Company.Estimation.Tool.Services.DAL\Divstack.Company.Estimation.Tool.Services.DAL.csproj", "{FAEDB2D0-2593-43B1-954B-4BBD9AA925E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.DataAccess", "Src\Modules\Services\Divstack.Company.Estimation.Tool.Services.DataAccess\Divstack.Company.Estimation.Tool.Services.DataAccess.csproj", "{FAEDB2D0-2593-43B1-954B-4BBD9AA925E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Users.Api", "Src\Modules\Users\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj", "{988EEAB5-856B-43AE-A409-C88F7DDCDE21}"
 EndProject
@@ -159,11 +158,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Push", "Push", "{285D355D-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notifications", "Notifications", "{4060CF46-F2F9-46D6-939F-B356F89E34DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Notifications.Push", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Notifications.Push\Divstack.Company.Estimation.Tool.Notifications.Push.csproj", "{6155761C-BF45-4D8B-BE96-9905A10BB326}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Push", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Push\Divstack.Company.Estimation.Tool.Push.csproj", "{6155761C-BF45-4D8B-BE96-9905A10BB326}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Notifications.Push.Valuations", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.csproj", "{07105D25-F8B9-472D-9863-E5EBCB2F10F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Push.Valuations", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Push.Valuations\Divstack.Company.Estimation.Tool.Push.Valuations.csproj", "{07105D25-F8B9-472D-9863-E5EBCB2F10F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api", "Src\Modules\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api\Divstack.Company.Estimation.Tool.Notifications.Push.Valuations.Api.csproj", "{C61277F5-8482-4578-926B-DF8F204146C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Push.Api", "Src\Modules\Divstack.Company.Estimation.Tool.Push.Api\Divstack.Company.Estimation.Tool.Push.Api.csproj", "{C61277F5-8482-4578-926B-DF8F204146C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Push.DataAccess", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Push.DataAccess\Divstack.Company.Estimation.Tool.Push.DataAccess.csproj", "{F57A7A4E-091D-4312-B113-1977FCA9C9D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Push.Payments", "Src\Modules\Push\Divstack.Company.Estimation.Tool.Push.Payments\Divstack.Company.Estimation.Tool.Push.Payments.csproj", "{FE0AF5E5-F514-4CF1-B2D9-75B8FAAB7D0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -371,6 +374,14 @@ Global
 		{C61277F5-8482-4578-926B-DF8F204146C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C61277F5-8482-4578-926B-DF8F204146C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C61277F5-8482-4578-926B-DF8F204146C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F57A7A4E-091D-4312-B113-1977FCA9C9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F57A7A4E-091D-4312-B113-1977FCA9C9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F57A7A4E-091D-4312-B113-1977FCA9C9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F57A7A4E-091D-4312-B113-1977FCA9C9D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0AF5E5-F514-4CF1-B2D9-75B8FAAB7D0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0AF5E5-F514-4CF1-B2D9-75B8FAAB7D0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0AF5E5-F514-4CF1-B2D9-75B8FAAB7D0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0AF5E5-F514-4CF1-B2D9-75B8FAAB7D0E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -448,5 +459,7 @@ Global
 		{6155761C-BF45-4D8B-BE96-9905A10BB326} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
 		{07105D25-F8B9-472D-9863-E5EBCB2F10F0} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
 		{C61277F5-8482-4578-926B-DF8F204146C6} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
+		{F57A7A4E-091D-4312-B113-1977FCA9C9D6} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
+		{FE0AF5E5-F514-4CF1-B2D9-75B8FAAB7D0E} = {285D355D-670B-468A-AE5F-4C0C0239D1EE}
 	EndGlobalSection
 EndGlobal

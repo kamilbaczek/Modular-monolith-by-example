@@ -5,7 +5,7 @@
 namespace Divstack.Company.Estimation.Tool.Services.Api;
 
 using Core.UserAccess;
-using DAL;
+using DataAccess;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UserAccess;

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Services.DAL\Divstack.Company.Estimation.Tool.Services.DAL.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Services.DataAccess\Divstack.Company.Estimation.Tool.Services.DataAccess.csproj"/>
   </ItemGroup>
 
   <ItemGroup>

@@ -9,7 +9,7 @@ internal sealed class DeadlinesCloseReminderConfiguration : IDeadlinesCloseRemin
 
     public DeadlinesCloseReminderConfiguration(IConfiguration configuration)
     {
-        var sectionKey = $"Reminders:{nameof(Valuation)}";
+        const string sectionKey = $"Reminders:{nameof(Valuation)}";
         _configuration = configuration.GetSection(sectionKey);
     }
 

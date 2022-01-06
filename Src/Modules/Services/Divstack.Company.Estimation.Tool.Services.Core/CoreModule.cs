@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.DAL")]
+[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Services.DataAccess")]
 
 namespace Divstack.Company.Estimation.Tool.Services.Core;
 
