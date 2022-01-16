@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>Divstack.Company.Estimation.Tool.Orders</RootNamespace>
-    </PropertyGroup>
-
-</Project>
