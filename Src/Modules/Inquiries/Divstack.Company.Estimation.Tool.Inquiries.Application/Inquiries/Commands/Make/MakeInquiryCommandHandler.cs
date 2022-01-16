@@ -7,6 +7,7 @@ using Dtos;
 using MediatR;
 using Services.Core.Services.Contracts;
 using Shared.DDD.ValueObjects.Emails;
+using Shared.DDD.ValueObjects.PhoneNumbers;
 
 internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCommand, Guid>
 {
@@ -32,8 +33,9 @@ internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCom
     public async Task<Guid> Handle(MakeInquiryCommand makeInquiryCommand, CancellationToken cancellationToken)
     {
         var email = Email.Of(makeInquiryCommand.Email);
+        var phoneNumber = PhoneNumber.Of(makeInquiryCommand.PhoneNumber);
         var clientCompany = await _clientCompanyFinder.FindCompany(email);
-        var client = Client.Of(email, makeInquiryCommand.FirstName, makeInquiryCommand.LastName, clientCompany);
+        var client = Client.Of(makeInquiryCommand.FirstName, makeInquiryCommand.LastName, email, phoneNumber, clientCompany);
         var services = makeInquiryCommand.AskedServiceDtos
             .Select(service => _serviceMapper.Map(service))
             .ToReadonly();

@@ -7,6 +7,7 @@ using Push;
 using Reminders;
 using Services.Api;
 using Shared.Infrastructure.Api;
+using Sms;
 using Users.Api;
 using Valuations.Api;
 
@@ -33,14 +34,17 @@ public sealed class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddSharedInfrastructure(Configuration);
+
         services.AddUsersModule(Configuration);
         services.AddServicesModule(Configuration);
         services.AddInquiriesModule(Configuration);
         services.AddPaymentsModule(Configuration);
         services.AddValuationsModule(Configuration);
+        services.AddRemindersModule();
+
         services.AddPushModule(Configuration);
         services.AddEmailsModule();
-        services.AddRemindersModule();
+        services.AddSmsModule(Configuration);
     }
 
     /// <summary>

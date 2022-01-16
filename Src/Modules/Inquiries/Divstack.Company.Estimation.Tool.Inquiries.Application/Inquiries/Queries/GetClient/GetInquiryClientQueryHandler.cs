@@ -15,10 +15,11 @@ internal sealed class GetInquiryClientQueryHandler : IRequestHandler<GetInquiryC
     public async Task<InquiryClientDto> Handle(GetInquiryClientQuery request, CancellationToken cancellationToken)
     {
         var connection = _databaseConnectionFactory.Create();
-        var query = @$"
+        const string query = @$"
                 SELECT Client_FirstName AS {nameof(InquiryClientDto.FirstName)},
                        Client_LastName AS {nameof(InquiryClientDto.LastName)},
-                       Client_Email_Value AS {nameof(InquiryClientDto.Email)}
+                       Client_Email_Value AS {nameof(InquiryClientDto.Email)},
+                       Client_PhoneNumber_Value AS {nameof(InquiryClientDto.PhoneNumber)}
                 FROM Inquiries
                 WHERE Id = @InquiryId";
         var client = await connection.ExecuteSingleQueryAsync<InquiryClientDto>(

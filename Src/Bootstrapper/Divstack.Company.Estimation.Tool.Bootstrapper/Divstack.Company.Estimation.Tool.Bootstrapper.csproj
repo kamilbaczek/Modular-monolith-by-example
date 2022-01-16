@@ -9,21 +9,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\Divstack.Company.Estimation.Tool.Push.Api\Divstack.Company.Estimation.Tool.Push.Api.csproj"/>
-    <ProjectReference Include="..\..\Modules\Emails\Divstack.Company.Estimation.Tool.Emails\Divstack.Company.Estimation.Tool.Emails.csproj"/>
-    <ProjectReference Include="..\..\Modules\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Api\Divstack.Company.Estimation.Tool.Inquiries.Api.csproj"/>
-    <ProjectReference Include="..\..\Modules\Payments\Divstack.Company.Estimation.Tool.Payments.Api\Divstack.Company.Estimation.Tool.Payments.Api.csproj"/>
-    <ProjectReference Include="..\..\Modules\Push\Divstack.Company.Estimation.Tool.Push\Divstack.Company.Estimation.Tool.Push.csproj"/>
-    <ProjectReference Include="..\..\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders\Divstack.Company.Estimation.Tool.Reminders.csproj"/>
-    <ProjectReference Include="..\..\Modules\Services\Divstack.Company.Estimation.Tool.Services.Api\Divstack.Company.Estimation.Tool.Services.Api.csproj"/>
-    <ProjectReference Include="..\..\Modules\Users\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj"/>
-    <ProjectReference Include="..\..\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Api\Divstack.Company.Estimation.Tool.Valuations.Api.csproj"/>
-    <ProjectReference Include="..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
+    <ProjectReference Include="..\..\Modules\Divstack.Company.Estimation.Tool.Push.Api\Divstack.Company.Estimation.Tool.Push.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Emails\Divstack.Company.Estimation.Tool.Emails\Divstack.Company.Estimation.Tool.Emails.csproj" />
+    <ProjectReference Include="..\..\Modules\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Api\Divstack.Company.Estimation.Tool.Inquiries.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Payments\Divstack.Company.Estimation.Tool.Payments.Api\Divstack.Company.Estimation.Tool.Payments.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Push\Divstack.Company.Estimation.Tool.Push\Divstack.Company.Estimation.Tool.Push.csproj" />
+    <ProjectReference Include="..\..\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders\Divstack.Company.Estimation.Tool.Reminders.csproj" />
+    <ProjectReference Include="..\..\Modules\Services\Divstack.Company.Estimation.Tool.Services.Api\Divstack.Company.Estimation.Tool.Services.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Sms\Divstack.Company.Estimation.Tool.Sms\Divstack.Company.Estimation.Tool.Sms.csproj" />
+    <ProjectReference Include="..\..\Modules\Users\Divstack.Company.Estimation.Tool.Users.Api\Divstack.Company.Estimation.Tool.Users.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Api\Divstack.Company.Estimation.Tool.Valuations.Api.csproj" />
+    <ProjectReference Include="..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj" />
   </ItemGroup>
 
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties appsettings_1json__JsonSchema=""/>
+      <UserProperties appsettings_1json__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
 

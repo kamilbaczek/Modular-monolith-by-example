@@ -22,6 +22,7 @@ internal sealed class InitializePaymentEventHandler : INotificationHandler<Valua
         var valuationId = ValuationId.Of(@event.ValuationId);
         var inquiryId = InquiryId.Of(@event.InquiryId);
         var amountToPay = Money.Of(@event.AmountToPayValue, @event.AmountToPayCurrency);
+
         var payment = await Payment.InitializeAsync(valuationId, inquiryId, amountToPay, _paymentProcessor);
 
         await _paymentsRepository.PersistAsync(payment, cancellationToken);

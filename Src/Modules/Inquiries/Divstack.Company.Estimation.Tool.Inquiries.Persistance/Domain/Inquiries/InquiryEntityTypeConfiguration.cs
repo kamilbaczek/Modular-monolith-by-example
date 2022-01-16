@@ -3,6 +3,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Shared.DDD.ValueObjects.Emails;
+using Shared.DDD.ValueObjects.PhoneNumbers;
 using Shared.Infrastructure.Mysql;
 using Tool.Inquiries.Domain.Inquiries;
 using Tool.Inquiries.Domain.Inquiries.Clients;
@@ -54,6 +55,11 @@ internal class InquiryEntityTypeConfiguration : IEntityTypeConfiguration<Inquiry
                     emailValueObjectBuilder =>
                     {
                         emailValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(255);
+                    });
+                clientValueObjectBuilder.OwnsOne<PhoneNumber>("PhoneNumber",
+                    phoneNumberValueObjectBuilder =>
+                    {
+                        phoneNumberValueObjectBuilder.Property<string>("Value").IsRequired().HasMaxLength(13);
                     });
                 clientValueObjectBuilder.OwnsOne<ClientCompany>("Company", clientCompanyValueObjectBuilder =>
                 {

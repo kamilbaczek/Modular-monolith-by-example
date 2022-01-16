@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Policies;
 using RefreshTokens;
+using SignalR;
 
 internal static class JwtTokenAuthorizationModule
 {
@@ -46,22 +47,10 @@ internal static class JwtTokenAuthorizationModule
                     ValidateIssuer = true,
                     ValidateAudience = true
                 };
-                // options.Events = new JwtBearerEvents
-                // {
-                //     OnMessageReceived = context =>
-                //     {
-                //         var accessToken = context.Request.Query["access_token"];
-                //
-                //         var path = context.HttpContext.Request.Path;
-                //         if (!string.IsNullOrEmpty(accessToken) &&
-                //             path.StartsWithSegments("/hubs/approved"))
-                //         {
-                //             context.Token = accessToken;
-                //         }
-                //
-                //         return Task.CompletedTask;
-                //     }
-                // };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = JwtSignalrAuthorization.ReadTokenFromQueryString
+                };
             });
 
         services.AddAuthorization(options =>

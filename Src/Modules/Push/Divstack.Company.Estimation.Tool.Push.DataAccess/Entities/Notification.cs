@@ -5,7 +5,7 @@ using Shared.DDD.BuildingBlocks;
 public sealed class Notification
 {
     public Guid Id { get; set; }
-    public Guid ValuationId { get; set; }
+    public Guid ActionId { get; set; }
     public bool MarkedAsRead { get; set; }
     public DateTime EventDate { get; set; }
     public string Type { get; set; }
@@ -15,7 +15,7 @@ public sealed class Notification
         return new Notification
         {
             Id = Guid.NewGuid(),
-            ValuationId = valuationId,
+            ActionId = valuationId,
             MarkedAsRead = false,
             EventDate = SystemTime.Now(),
             Type = type

@@ -10,6 +10,7 @@ using Date;
 using Domain;
 using Identity;
 using Identity.Jwt;
+using Identity.Jwt.SignalR;
 using Identity.Users;
 using Mediation;
 using Microsoft.Extensions.Configuration;

@@ -25,7 +25,5 @@ internal static class EmailPaymentsModule
             .WithTransientLifetime());
 
         return services;
-
-        return services;
     }
 }

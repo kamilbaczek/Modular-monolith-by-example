@@ -4,6 +4,7 @@
 
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
+using System;
 using BackgroundProcessing;
 using Configurations;
 using Errors.Middleware;
@@ -41,12 +42,21 @@ internal static class Extensions
     {
         var configuration = app.ApplicationServices.GetRequiredService<IConfiguration>();
         var corsConfiguration = new CorsConfiguration(configuration);
-        app.UseCors(builder => builder
-            .WithOrigins(corsConfiguration.Origin)
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials());
+
+        app.UseCors(builder =>
+        {
+            builder.AllowAnyHeader();
+            builder.AllowAnyMethod();
+            builder.WithOrigins(corsConfiguration.Origin);
+            builder.AllowCredentials();
+        });
+
+        var wsOptions = new WebSocketOptions();
+        wsOptions.AllowedOrigins.Add("http://localhost:8080");
+        wsOptions.AllowedOrigins.Add("http://localhost");
+        app.UseWebSockets(wsOptions);
         app.UseRouting();
+        app.UseAuthentication();
         app.UseAuthorization();
         app.UseEndpoints(endpoints =>
         {

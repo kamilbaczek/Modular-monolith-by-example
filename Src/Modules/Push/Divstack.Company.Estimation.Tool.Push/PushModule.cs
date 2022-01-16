@@ -17,10 +17,11 @@ internal static class PushModule
     internal static IServiceCollection AddPushModule(this IServiceCollection services,
         IConfiguration configuration)
     {
+        services.AddApi();
         services.AddDataAccess(configuration);
+
         services.AddValuations();
         services.AddPayments();
-        services.AddApi();
 
         return services;
     }

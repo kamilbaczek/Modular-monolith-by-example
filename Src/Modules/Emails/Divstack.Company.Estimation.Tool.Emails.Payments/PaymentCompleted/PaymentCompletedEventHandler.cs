@@ -22,7 +22,7 @@ internal sealed class
 
     public async Task Handle(PaymentCompleted paymentCompleted, CancellationToken cancellationToken)
     {
-        var (firstName, lastName, email) = await GetClientInfo(paymentCompleted);
+        var (firstName, lastName, email,_) = await GetClientInfo(paymentCompleted);
         var paymentInitializedEmailRequest = new PaymentCompletedEmailRequest(
             firstName,
             lastName,

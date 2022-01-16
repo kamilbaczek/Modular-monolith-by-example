@@ -10,7 +10,7 @@ internal static class NotificationPersistanceConfiguration
         BsonClassMap.RegisterClassMap<Notification>(classMap =>
         {
             classMap.MapIdProperty(notification => notification.Id).SetIsRequired(true);
-            classMap.MapProperty(notification => notification.ValuationId).SetIsRequired(true);
+            classMap.MapProperty(notification => notification.ActionId).SetIsRequired(true);
             classMap.MapProperty(notification => notification.MarkedAsRead).SetIsRequired(true);
             classMap.MapProperty(notification => notification.EventDate).SetIsRequired(true);
             classMap.MapProperty(notification => notification.Type).SetIsRequired(true);

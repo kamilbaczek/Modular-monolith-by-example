@@ -3,6 +3,7 @@ using System;
 using Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 {
     [DbContext(typeof(InquiriesContext))]
-    partial class InquiriesContextModelSnapshot : ModelSnapshot
+    [Migration("20220116104535_Add_Phone_Number_Column")]
+    partial class Add_Phone_Number_Column
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
