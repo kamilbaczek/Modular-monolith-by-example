@@ -6,6 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Sms;
 
 using Core;
 using Divstack.Estimation.Tool.Sms.Payments;
+using Divstack.Estimation.Tool.Sms.Valuations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,7 @@ internal static class SmsModule
     {
         services.AddSmsCoreModule(configuration);
         services.AddPayments();
+        services.AddValuations();
 
         return services;
     }

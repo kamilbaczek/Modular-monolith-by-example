@@ -11,15 +11,12 @@ internal sealed class SmsClient : ISmsClient
     {
         _phoneNumbersConfiguration = phoneNumbersConfiguration;
     }
-    public async Task SendAsync(string message, string to, string from = "", CancellationToken cancellationToken = default)
+    public async Task SendAsync(string message, string to, CancellationToken cancellationToken = default)
     {
-        from = string.IsNullOrEmpty(from) ? from : _phoneNumbersConfiguration.From;
-
         await MessageResource.CreateAsync(
             body: message,
-            from: new PhoneNumber(from),
+            from: new PhoneNumber(_phoneNumbersConfiguration.From),
             to: new PhoneNumber(to)
         );
-
     }
 }

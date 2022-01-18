@@ -22,7 +22,7 @@ public sealed class Proposal : Entity
     private ProposalDescription Description { get; init; }
     internal Money Price { get; init; }
     internal EmployeeId SuggestedBy { get; init; }
-    private DateTime Suggested { get; }
+    private DateTime Suggested { get; init; }
     private EmployeeId CancelledBy { get; set; }
     private DateTime? Cancelled { get; set; }
     private ProposalDecision Decision { get; set; }
@@ -30,11 +30,16 @@ public sealed class Proposal : Entity
     internal bool HasDecision => Decision != ProposalDecision.NoDecision();
     internal bool IsCancelled => Cancelled.HasValue;
 
+    private static Money MinimumProposalValue => Money.Of(100, "USD");
+
     internal static Proposal Suggest(
         Money value,
         ProposalDescription description,
         EmployeeId proposedBy)
     {
+        //TODO unit tests
+        if (value < MinimumProposalValue)
+            throw new ProposalValueLessenThanMinimalException(value, MinimumProposalValue);
         return new Proposal(value, description, proposedBy);
     }
 

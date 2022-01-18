@@ -2,5 +2,5 @@
 
 public interface ISmsClient
 {
-    Task SendAsync(string message, string to, string from = "", CancellationToken cancellationToken = default);
+    Task SendAsync(string message, string to, CancellationToken cancellationToken = default);
 }

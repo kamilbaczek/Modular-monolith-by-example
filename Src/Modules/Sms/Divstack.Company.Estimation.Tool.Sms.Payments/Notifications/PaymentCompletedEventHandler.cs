@@ -26,6 +26,5 @@ internal sealed class PaymentCompletedEventHandler : INotificationHandler<Paymen
         var message = GetShortMessage(paymentId);
 
         await _smsClient.SendAsync(message, client.PhoneNumber, cancellationToken: cancellationToken);
-
     }
 }

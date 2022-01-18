@@ -2,5 +2,5 @@
 
 public interface IPhoneNumbersConfiguration
 {
-    string From { get; }
+    string? From { get; }
 }

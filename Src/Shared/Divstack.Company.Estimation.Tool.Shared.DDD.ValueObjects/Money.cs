@@ -25,4 +25,14 @@ public class Money : ValueObject
     {
         return new Money(right.Value * left, right.Currency);
     }
+
+    public static bool operator<(Money left, Money right)
+    {
+        return (left.Value < right.Value);
+    }
+
+    public static bool operator>(Money left, Money right)
+    {
+        return (left.Value > right.Value);
+    }
 }

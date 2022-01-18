@@ -176,6 +176,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Sms", "Src\Modules\Sms\Divstack.Company.Estimation.Tool.Sms\Divstack.Company.Estimation.Tool.Sms.csproj", "{62B52904-CCDC-4E45-89B6-F905C69BB08D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Sms.Valuations", "Src\Modules\Sms\Divstack.Company.Estimation.Tool.Sms.Valuations\Divstack.Company.Estimation.Tool.Sms.Valuations.csproj", "{672DA035-20F1-431B-A478-7B380ABCEF34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -402,6 +404,10 @@ Global
 		{62B52904-CCDC-4E45-89B6-F905C69BB08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62B52904-CCDC-4E45-89B6-F905C69BB08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62B52904-CCDC-4E45-89B6-F905C69BB08D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672DA035-20F1-431B-A478-7B380ABCEF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672DA035-20F1-431B-A478-7B380ABCEF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672DA035-20F1-431B-A478-7B380ABCEF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672DA035-20F1-431B-A478-7B380ABCEF34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -485,5 +491,6 @@ Global
 		{AD0AA651-98A5-471F-B52D-A619C4B4DDDC} = {4D74FDB0-032D-4042-B81C-5F75CFF682A0}
 		{CD46563A-5CC3-4FE7-8976-6F554535C539} = {4D74FDB0-032D-4042-B81C-5F75CFF682A0}
 		{62B52904-CCDC-4E45-89B6-F905C69BB08D} = {4D74FDB0-032D-4042-B81C-5F75CFF682A0}
+		{672DA035-20F1-431B-A478-7B380ABCEF34} = {4D74FDB0-032D-4042-B81C-5F75CFF682A0}
 	EndGlobalSection
 EndGlobal

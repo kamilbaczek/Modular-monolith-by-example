@@ -10,5 +10,5 @@ internal sealed class PhoneNumbersConfiguration : IPhoneNumbersConfiguration
     {
         _configurationSection = configuration.GetSection(PhoneNumbers);
     }
-    public string From => _configurationSection.GetValue<string>(nameof(From));
+    public string? From => _configurationSection.GetValue<string>(nameof(From));
 }
