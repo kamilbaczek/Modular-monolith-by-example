@@ -3,14 +3,17 @@
 using Abstractions.BackgroundProcessing;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Storage;
 
 internal static class Extensions
 {
-    internal static IServiceCollection AddBackgroundProcessing(this IServiceCollection services)
+    internal static IServiceCollection AddBackgroundProcessing(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddHangfire(configuration => { configuration.UseInMemoryStorage(); });
+        services.AddHangfire(hangfireConfiguration => hangfireConfiguration.UseMongoAsStorage(configuration));
         services.AddHangfireServer();
+
         services.AddScoped<IBackgroundJobScheduler, BackgroundJobScheduler>();
         services.AddScoped<IBackgroundProcessQueue, BackgroundProcessQueue>();
 

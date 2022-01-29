@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Reminders\Divstack.Company.Estimation.Tool.Reminders.Valuations\Divstack.Company.Estimation.Tool.Reminders.Valuations.csproj"/>
+    <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj"/>
     <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Push.DataAccess\Divstack.Company.Estimation.Tool.Push.DataAccess.csproj"/>
   </ItemGroup>

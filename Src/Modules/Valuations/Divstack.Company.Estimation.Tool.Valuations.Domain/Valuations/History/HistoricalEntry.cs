@@ -11,7 +11,7 @@ public sealed class HistoricalEntry : Entity
 
     internal ValuationStatus Status { get; private set; }
     internal DateTime ChangeDate { get; init; }
-    private HistoricalEntryId Id { get; }
+    private HistoricalEntryId Id { get; init; }
 
     internal static HistoricalEntry Create(ValuationStatus status)
     {

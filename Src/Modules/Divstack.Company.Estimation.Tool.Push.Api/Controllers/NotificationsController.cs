@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Push.Api.Controllers;
 
+using Common.CurrentUser;
 using DataAccess.DataAccess.Repositories.Read;
 using DataAccess.DataAccess.Repositories.Write;
 using DataAccess.Entities;
@@ -8,19 +9,23 @@ using Microsoft.AspNetCore.Mvc;
 
 internal sealed class NotificationsController : BaseController
 {
+    private readonly ICurrentUserService _currentUserService;
     private readonly INotificationsReadRepository _notificationsReadRepository;
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     public NotificationsController(INotificationsReadRepository notificationsReadRepository,
-        INotificationsWriteRepository notificationsWriteRepository)
+        INotificationsWriteRepository notificationsWriteRepository,
+        ICurrentUserService currentUserService)
     {
         _notificationsReadRepository = notificationsReadRepository;
         _notificationsWriteRepository = notificationsWriteRepository;
+        _currentUserService = currentUserService;
     }
 
     [HttpGet]
     public async Task<ActionResult<Notification>> GetAll()
     {
-        var notifications = await _notificationsReadRepository.GetAllAsync();
+        var currentUserId = _currentUserService.GetPublicUserId();
+        var notifications = await _notificationsReadRepository.GetAllAsync(currentUserId);
 
         return Ok(notifications);
     }

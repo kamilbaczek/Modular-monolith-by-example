@@ -11,5 +11,8 @@
     "AttachStackTrace": true,
     "Debug": true,
     "DiagnosticsLevel": "Error"
+  },
+  "BackgroundProcessing": {
+    "StorageConnectionString": ""
   }
 }

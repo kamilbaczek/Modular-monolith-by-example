@@ -9,7 +9,7 @@ public sealed class Client : ValueObject
     {
     }
 
-    private Client(string firstName, string lastName,Email email, PhoneNumber phoneNumber, ClientCompany company)
+    private Client(string firstName, string lastName, Email email, PhoneNumber phoneNumber, ClientCompany company)
     {
         Email = Guard.Against.Null(email, nameof(email));
         FirstName = Guard.Against.Null(firstName, nameof(firstName));
@@ -25,7 +25,7 @@ public sealed class Client : ValueObject
     private string LastName { get; }
     private ClientCompany Company { get; }
 
-    public static Client Of(string firstName, string lastName,Email email, PhoneNumber phoneNumber, ClientCompany company)
+    public static Client Of(string firstName, string lastName, Email email, PhoneNumber phoneNumber, ClientCompany company)
     {
         return new Client(firstName, lastName, email, phoneNumber, company);
     }

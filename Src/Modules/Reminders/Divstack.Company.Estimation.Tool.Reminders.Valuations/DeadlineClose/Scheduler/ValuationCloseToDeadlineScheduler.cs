@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
-using System.Threading;
-using System.Threading.Tasks;
 using Configuration;
 using MediatR;
 using Reminder;
@@ -13,7 +11,6 @@ internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<V
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
     private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
-
     public ValuationCloseToDeadlineScheduler(IBackgroundJobScheduler backgroundJobScheduler,
         IValuationsDeadlineCloseReminder valuationsDeadlineCloseReminder,
         IDeadlinesCloseReminderConfiguration deadlinesCloseReminderConfiguration)

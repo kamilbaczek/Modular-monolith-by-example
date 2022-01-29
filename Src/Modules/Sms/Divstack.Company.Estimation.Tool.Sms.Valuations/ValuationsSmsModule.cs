@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Sms")]
+
 namespace Divstack.Estimation.Tool.Sms.Valuations;
 
 using System.Reflection;

@@ -4,6 +4,7 @@ using Entities;
 
 public interface INotificationsWriteRepository
 {
-    Task UpdateAsync(Notification notification);
-    Task AddAsync(Notification notification);
+    Task UpdateAsync(Notification notification, CancellationToken cancellationToken = default);
+    Task AddAsync(Notification notification, CancellationToken cancellationToken = default);
+    Task BulkAddAsync(IReadOnlyCollection<Notification> notifications, CancellationToken cancellationToken = default);
 }

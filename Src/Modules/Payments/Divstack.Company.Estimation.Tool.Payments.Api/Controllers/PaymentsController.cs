@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 
 internal sealed class PaymentsController : BaseController
 {
-    private readonly IPaymentsModule _paymentsModule;
     private readonly IMediator _mediator;
+    private readonly IPaymentsModule _paymentsModule;
 
     public PaymentsController(IPaymentsModule paymentsModule, IMediator mediator)
     {

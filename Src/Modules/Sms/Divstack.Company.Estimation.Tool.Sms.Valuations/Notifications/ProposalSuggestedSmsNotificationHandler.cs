@@ -8,20 +8,24 @@ using MediatR;
 
 internal sealed class ProposalSuggestedSmsNotificationHandler : INotificationHandler<ProposalSuggested>
 {
-    private readonly ISmsClient _smsClient;
     private readonly IInquiriesModule _inquiriesModule;
-    private static string GetShortMessage(Guid inquiryId) => $"Estimation tool - suggested proposal for inquiry '{inquiryId}'";
+    private readonly ISmsClient _smsClient;
     public ProposalSuggestedSmsNotificationHandler(ISmsClient smsClient, IInquiriesModule inquiriesModule)
     {
         _smsClient = smsClient;
         _inquiriesModule = inquiriesModule;
     }
-    public  async Task Handle(ProposalSuggested notification, CancellationToken cancellationToken)
+    public async Task Handle(ProposalSuggested notification, CancellationToken cancellationToken)
     {
         var query = new GetInquiryClientQuery(notification.InquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(query);
-        var message = GetShortMessage(notification.ValuationId);
+        var message = GetShortMessage(notification.ValuationId, notification.Value, notification.Currency, notification.Description);
 
-        await _smsClient.SendAsync(message, client.PhoneNumber, cancellationToken: cancellationToken);
+        await _smsClient.SendAsync(message, client.PhoneNumber, cancellationToken);
+    }
+
+    private static string GetShortMessage(Guid inquiryId, decimal? value, string currency, string description)
+    {
+        return $"Suggested proposal for inquiry '{inquiryId}' suggested price {value} {currency}. {description}";
     }
 }

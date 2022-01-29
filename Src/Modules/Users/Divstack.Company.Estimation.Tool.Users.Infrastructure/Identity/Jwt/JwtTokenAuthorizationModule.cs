@@ -7,6 +7,7 @@ using Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -26,6 +27,7 @@ internal static class JwtTokenAuthorizationModule
         services.AddScoped<ITokenGenerationService, TokenGenerationService>();
         services.AddScoped<IRefreshTokenGenerationService, RefreshTokenGenerationService>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddSingleton<IUserIdProvider, UserPublicIdProvider>();
 
         var tokenConfiguration = new TokenConfiguration(configuration);
 

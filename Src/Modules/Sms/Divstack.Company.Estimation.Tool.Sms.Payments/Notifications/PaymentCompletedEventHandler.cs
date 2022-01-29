@@ -8,9 +8,8 @@ using MediatR;
 
 internal sealed class PaymentCompletedEventHandler : INotificationHandler<PaymentCompleted>
 {
-    private readonly ISmsClient _smsClient;
     private readonly IInquiriesModule _inquiriesModule;
-    private static string GetShortMessage(Guid paymentId) => $"Estimation tool - payment '{paymentId}' completed";
+    private readonly ISmsClient _smsClient;
     public PaymentCompletedEventHandler(ISmsClient smsClient,
         IInquiriesModule inquiriesModule)
     {
@@ -25,6 +24,10 @@ internal sealed class PaymentCompletedEventHandler : INotificationHandler<Paymen
         var client = await _inquiriesModule.ExecuteQueryAsync(query);
         var message = GetShortMessage(paymentId);
 
-        await _smsClient.SendAsync(message, client.PhoneNumber, cancellationToken: cancellationToken);
+        await _smsClient.SendAsync(message, client.PhoneNumber, cancellationToken);
+    }
+    private static string GetShortMessage(Guid paymentId)
+    {
+        return $"Estimation tool - payment '{paymentId}' completed";
     }
 }

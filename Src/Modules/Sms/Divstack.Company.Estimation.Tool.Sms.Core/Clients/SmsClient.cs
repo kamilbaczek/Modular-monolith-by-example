@@ -7,7 +7,7 @@ using Twilio.Types;
 internal sealed class SmsClient : ISmsClient
 {
     private readonly IPhoneNumbersConfiguration _phoneNumbersConfiguration;
-    public SmsClient(IPhoneNumbersConfiguration  phoneNumbersConfiguration)
+    public SmsClient(IPhoneNumbersConfiguration phoneNumbersConfiguration)
     {
         _phoneNumbersConfiguration = phoneNumbersConfiguration;
     }

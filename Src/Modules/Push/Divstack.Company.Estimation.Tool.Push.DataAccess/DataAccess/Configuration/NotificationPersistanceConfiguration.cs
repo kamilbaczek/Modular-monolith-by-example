@@ -14,6 +14,7 @@ internal static class NotificationPersistanceConfiguration
             classMap.MapProperty(notification => notification.MarkedAsRead).SetIsRequired(true);
             classMap.MapProperty(notification => notification.EventDate).SetIsRequired(true);
             classMap.MapProperty(notification => notification.Type).SetIsRequired(true);
+            classMap.MapProperty(notification => notification.ReceiverId).SetIsRequired(true);
             classMap.SetIgnoreExtraElements(true);
         });
     }

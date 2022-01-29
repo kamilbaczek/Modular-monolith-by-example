@@ -12,14 +12,19 @@ internal sealed class NotificationsWriteRepository : INotificationsWriteReposito
         _notificationsContext = notificationsContext;
     }
 
-    public async Task UpdateAsync(Notification notificationToUpdate)
+    public async Task UpdateAsync(Notification notificationToUpdate, CancellationToken cancellationToken = default)
     {
         await _notificationsContext.Notifications
-            .ReplaceOneAsync(notification => notification.Id == notificationToUpdate.Id, notificationToUpdate);
+            .ReplaceOneAsync(notification => notification.Id == notificationToUpdate.Id, notificationToUpdate, cancellationToken: cancellationToken);
     }
 
-    public async Task AddAsync(Notification notification)
+    public async Task AddAsync(Notification notification, CancellationToken cancellationToken = default)
     {
-        await _notificationsContext.Notifications.InsertOneAsync(notification);
+        await _notificationsContext.Notifications.InsertOneAsync(notification, cancellationToken: cancellationToken);
+    }
+
+    public async Task BulkAddAsync(IReadOnlyCollection<Notification> notifications, CancellationToken cancellationToken = default)
+    {
+        await _notificationsContext.Notifications.InsertManyAsync(notifications, cancellationToken: cancellationToken);
     }
 }

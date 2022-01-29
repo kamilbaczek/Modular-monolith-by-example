@@ -4,7 +4,6 @@
 
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
-using System;
 using BackgroundProcessing;
 using Configurations;
 using Errors.Middleware;
@@ -32,7 +31,7 @@ internal static class Extensions
         services.AddSwaggerModule();
         services.AddMvcCore();
         services.AddCors();
-        services.AddBackgroundProcessing();
+        services.AddBackgroundProcessing(configuration);
         services.AddObservability();
 
         return services;

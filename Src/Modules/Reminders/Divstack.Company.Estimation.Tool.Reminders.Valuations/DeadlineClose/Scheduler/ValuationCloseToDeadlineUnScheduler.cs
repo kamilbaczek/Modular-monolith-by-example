@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using Configuration;
 using MediatR;
 using Reminder;

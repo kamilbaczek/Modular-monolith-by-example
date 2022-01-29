@@ -4,6 +4,6 @@ using Entities;
 
 public interface INotificationsReadRepository
 {
-    Task<IReadOnlyCollection<Notification>> GetAllAsync();
-    Task<Notification?> GetOrDefaultAsync(Guid notificationId);
+    Task<IReadOnlyCollection<Notification>> GetAllAsync(Guid receiverId, CancellationToken cancellationToken = default);
+    Task<Notification?> GetOrDefaultAsync(Guid notificationId, CancellationToken cancellationToken = default);
 }

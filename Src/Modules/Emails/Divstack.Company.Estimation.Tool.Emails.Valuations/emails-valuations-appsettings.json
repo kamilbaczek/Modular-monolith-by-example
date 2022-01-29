@@ -2,8 +2,8 @@
   "SuggestValuationMailConfiguration": {
     "Subject": "ProposalSuggest",
     "PathToTemplate": "Proposals/Templates/valuation_proposal_suggested_mail.html",
-    "RejectProposalLink": "https://localhost:5001/api/valuations-module/Valuations/valuations/proposals/reject?ProposalId={ProposalId}&ValuationId={ValuationId}",
-    "AcceptProposalLink": "https://localhost:5001/api/valuations-module/Valuations/valuations/proposals/approve?ProposalId={ProposalId}&ValuationId={ValuationId}"
+    "RejectProposalLink": "http://localhost:8080/valuations/{ValuationId}/proposals/{ProposalId}/reject",
+    "AcceptProposalLink": "http://localhost:8080/valuations/{ValuationId}/proposals/{ProposalId}/approve"
   },
   "ValuationProposalApprovedMailConfiguration": {
     "Subject": "Proposal Approved",

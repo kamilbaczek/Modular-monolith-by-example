@@ -69,25 +69,25 @@ internal sealed class ValuationsController : BaseController
         return Ok();
     }
 
-    [HttpGet]
+    [HttpPatch]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [Route("valuations/proposals/approve")]
     [ProducesDefaultResponseType]
     [AllowAnonymous]
-    public async Task<ActionResult> ApproveProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
+    public async Task<ActionResult> ApproveProposal([FromBody] ApproveProposalCommand approveProposalCommand)
     {
         await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
         return Ok();
     }
 
-    [HttpGet]
+    [HttpPatch]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     [Route("valuations/proposals/reject")]
     [ProducesDefaultResponseType]
     [AllowAnonymous]
-    public async Task<ActionResult> RejectProposal([FromQuery] ApproveProposalCommand approveProposalCommand)
+    public async Task<ActionResult> RejectProposal([FromBody] ApproveProposalCommand approveProposalCommand)
     {
         await _valuationsModule.ExecuteCommandAsync(approveProposalCommand);
         return Ok();

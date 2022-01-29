@@ -4,18 +4,20 @@ using Shared.DDD.BuildingBlocks;
 
 public sealed class Notification
 {
-    public Guid Id { get; set; }
-    public Guid ActionId { get; set; }
-    public bool MarkedAsRead { get; set; }
-    public DateTime EventDate { get; set; }
-    public string Type { get; set; }
+    public Guid Id { get; init; }
+    public Guid ActionId { get; init; }
+    public Guid ReceiverId { get; init; }
+    public bool MarkedAsRead { get; private set; }
+    public DateTime EventDate { get; init; }
+    public string Type { get; init; }
 
-    public static Notification Create(Guid valuationId, string type)
+    public static Notification Create(Guid actionId, string type, Guid receiverId)
     {
         return new Notification
         {
             Id = Guid.NewGuid(),
-            ActionId = valuationId,
+            ActionId = actionId,
+            ReceiverId = receiverId,
             MarkedAsRead = false,
             EventDate = SystemTime.Now(),
             Type = type

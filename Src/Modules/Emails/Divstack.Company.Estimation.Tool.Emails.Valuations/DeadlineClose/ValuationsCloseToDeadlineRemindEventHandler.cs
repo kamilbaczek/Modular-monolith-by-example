@@ -7,7 +7,7 @@ using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetUsersEmails;
 
 internal sealed class
-    ValuationsCloseToDeadlineRemindEventHandler : INotificationHandler<ValuationCloseToDeadlineRemindEvent>
+    ValuationsCloseToDeadlineRemindEventHandler : INotificationHandler<ValuationCloseToDeadlineRemind>
 {
     private readonly IUserModule _userModule;
     private readonly IValuationCloseToDeadlineMailSender _valuationCloseToDeadlineMailSender;
@@ -20,7 +20,7 @@ internal sealed class
         _userModule = userModule;
     }
 
-    public async Task Handle(ValuationCloseToDeadlineRemindEvent valuationCloseToDeadlineRemindEvent,
+    public async Task Handle(ValuationCloseToDeadlineRemind valuationCloseToDeadlineRemind,
         CancellationToken cancellationToken)
     {
         var query = new GetUsersEmailsQuery();
@@ -29,9 +29,9 @@ internal sealed class
         foreach (var email in emails)
         {
             var request = new ValuationCloseToDeadlineEmailRequest(
-                valuationCloseToDeadlineRemindEvent.DaysBeforeDeadline,
+                valuationCloseToDeadlineRemind.DaysBeforeDeadline,
                 email,
-                valuationCloseToDeadlineRemindEvent.ValuationId);
+                valuationCloseToDeadlineRemind.ValuationId);
 
             _valuationCloseToDeadlineMailSender.Send(request);
         }

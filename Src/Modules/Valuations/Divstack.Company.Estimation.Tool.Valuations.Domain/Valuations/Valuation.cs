@@ -109,7 +109,7 @@ public sealed class Valuation : Entity, IAggregateRoot
         proposal.Cancel(employeeId);
         ChangeStatus(ValuationStatus.WaitForProposal);
 
-        var @event = new ProposalCancelledDomainEvent(employeeId, proposalId, Id);
+        var @event = new ProposalCancelledDomainEvent(InquiryId, Id, proposalId, employeeId);
         AddDomainEvent(@event);
     }
 

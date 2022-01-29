@@ -5,7 +5,6 @@
 namespace Divstack.Company.Estimation.Tool.Sms.Core;
 
 using Clients;
-using Configurations;
 using Configurations.PhoneNumbers;
 using Configurations.Sms;
 using Microsoft.Extensions.Configuration;
