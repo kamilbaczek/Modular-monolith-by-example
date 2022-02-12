@@ -30,7 +30,7 @@ public class RequestValuationTests : BaseValuationTest
         var deadline = A.Deadline().WithDeadline(worksDaysToDeadlineFromNow);
         var inquiry = InquiryId.Create();
 
-        var valuation = Valuation.Request(inquiry, deadline);
+        var valuation = Valuation.Request(inquiry, deadline, 100);
 
         var @event = GetPublishedEvent<ValuationRequestedDomainEvent>(valuation);
         @event.AssertIsCorrect();
@@ -45,7 +45,7 @@ public class RequestValuationTests : BaseValuationTest
         var deadline = A.Deadline().WithDeadline(daysToDeadlineFromNow);
         var inquiry = InquiryId.Create();
 
-        var valuation = Valuation.Request(inquiry, deadline);
+        var valuation = Valuation.Request(inquiry, deadline, 100);
 
         var @event = GetPublishedEvent<ValuationRequestedDomainEvent>(valuation);
         @event.DeadlineDate.Should().Be(expectedDeadline);

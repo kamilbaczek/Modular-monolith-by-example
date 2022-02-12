@@ -12,14 +12,6 @@
             var servicesApi = webApplication.AddComponent(ApiServices,
                 "Serves API to manage services, categories, services possible values", ".Net Core API");
             bootstrapper.Uses(servicesApi, "");
-
-            var servicesCore = webApplication.AddComponent(CoreServices, "Provides module skeleton", "C#");
-            servicesApi.Uses(servicesCore, "To managing services and categories");
-
-            var servicesDal = webApplication.AddComponent("DAL - Services", "Provides data access layer",
-                "Entity Framework Core");
-            servicesCore.Uses(servicesDal, "");
-            servicesDal.Uses(database, "");
         }
     }
 }

@@ -7,10 +7,11 @@
         internal static void Modules(this Container webApplication, Container database, Component bootstraper)
         {
             webApplication.ServicesModule(database, bootstraper);
-            webApplication.ValuationModule(database, bootstraper);
+            webApplication.ValuationModule(bootstraper);
             webApplication.UsersModule(database, bootstraper);
             webApplication.RemindersModule(database, bootstraper);
             webApplication.EmailsModule(bootstraper);
+            webApplication.SmsModule(bootstraper);
         }
     }
 }

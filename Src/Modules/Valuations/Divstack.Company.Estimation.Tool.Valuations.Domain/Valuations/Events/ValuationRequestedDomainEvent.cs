@@ -7,7 +7,7 @@ public sealed class ValuationRequestedDomainEvent : DomainEventBase
     public ValuationRequestedDomainEvent(
         ValuationId valuationId,
         InquiryId inquiryId,
-        Deadline deadline)
+        Deadline? deadline)
     {
         ValuationId = valuationId;
         DeadlineDate = deadline.Date;

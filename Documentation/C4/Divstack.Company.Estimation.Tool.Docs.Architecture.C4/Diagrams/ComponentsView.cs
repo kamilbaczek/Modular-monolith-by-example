@@ -9,18 +9,18 @@
         public static void ConfigureComponentsView(this Workspace workspace, Container webApplication,
             Container database)
         {
-            var boostrapper = webApplication.AddComponent(
+            var bootstrapper = webApplication.AddComponent(
                 "Bootstrapper",
                 "compose all components together as one deployment unit",
                 Technologies.DotnetApi);
             var admin = webApplication.Model.GetPersonWithName("Admin");
             var customer = webApplication.Model.GetPersonWithName("Customer");
             var employee = webApplication.Model.GetPersonWithName("Employee");
-            admin.Uses(boostrapper, "");
-            employee.Uses(boostrapper, "");
-            customer.Uses(boostrapper, "");
+            admin.Uses(bootstrapper, "");
+            employee.Uses(bootstrapper, "");
+            customer.Uses(bootstrapper, "");
 
-            webApplication.Modules(database, boostrapper);
+            webApplication.Modules(database, bootstrapper);
             var componentView =
                 workspace.Views.CreateComponentView(webApplication, "Components", "Estimation Tool - Component View");
             componentView.AddAllComponents();

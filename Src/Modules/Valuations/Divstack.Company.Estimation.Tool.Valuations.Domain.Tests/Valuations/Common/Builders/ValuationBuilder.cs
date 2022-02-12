@@ -24,7 +24,7 @@ internal sealed class ValuationBuilder
 
     private static Valuation Build()
     {
-        return Valuation.Request(InquiryId, Deadline);
+        return Valuation.Request(InquiryId, Deadline, 100);
     }
 
     internal ProposalSuggestionBuilder WithProposal()

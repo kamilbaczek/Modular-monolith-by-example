@@ -23,7 +23,7 @@ internal sealed class RequestValuationEventHandler : INotificationHandler<Inquir
     {
         var deadline = Deadline.Create(_deadlinesConfiguration);
         var inquiryId = new InquiryId(notification.InquiryId);
-        var valuation = Valuation.Request(inquiryId, deadline);
+        var valuation = Valuation.Request(inquiryId, deadline, notification.CompanySize);
         await _valuationsRepository.AddAsync(valuation, cancellationToken);
         await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
     }

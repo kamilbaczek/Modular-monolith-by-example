@@ -13,7 +13,8 @@
 
             var webApplication = softwareSystem.AddContainer("Web Application",
                 "Provides all of the estimation functionality to customers.", Technologies.DotnetApi);
-            var database = softwareSystem.AddContainer("Database", "Stores interesting data.", "MySQL");
+            var mysql = softwareSystem.AddContainer("Database", "Stores interesting data.", "MySQL");
+            var mongoDb = softwareSystem.AddContainer("Database", "Stores interesting data.", "mongoDb");
             var clientApp = softwareSystem.AddContainer("Client App", "Display UI", "Vue.js");
             var elasticSearch = softwareSystem.AddContainer("ElasticSearch", "Logs, metrics", "ElasticSearch");
             var hangfire = softwareSystem.AddContainer("Hangfire", "Background Processing", "Hangfire .Net");
@@ -23,8 +24,8 @@
             employee.Uses(clientApp, "HTTPS");
 
             clientApp.Uses(webApplication, "Execute commands and queries", "REST");
-            webApplication.Uses(database, "Writes to", "EF Core");
-            webApplication.Uses(database, "Read from", "Dapper");
+            webApplication.Uses(mysql, "Writes to", "EF Core");
+            webApplication.Uses(mysql, "Read from", "Dapper");
             webApplication.Uses(elasticSearch, "Save logs, metrics", "REST");
             webApplication.Uses(hangfire, "Running recurring jobs, running functions out of process");
 
@@ -34,7 +35,7 @@
             containerView.EnableAutomaticLayout();
             containerView.AddAllPeople();
             containerView.AddAllContainers();
-            workspace.ConfigureComponentsView(webApplication, database);
+            workspace.ConfigureComponentsView(webApplication, mysql);
             containerView.EnableAutomaticLayout();
         }
     }

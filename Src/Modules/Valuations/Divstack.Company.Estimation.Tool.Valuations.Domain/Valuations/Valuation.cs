@@ -4,6 +4,7 @@ using Deadlines;
 using Events;
 using Exceptions;
 using History;
+using Priorities;
 using Proposals;
 using Proposals.Events;
 
@@ -11,7 +12,8 @@ public sealed class Valuation : Entity, IAggregateRoot
 {
     private Valuation(
         Deadline deadline,
-        InquiryId inquiryId)
+        InquiryId inquiryId,
+        int companySize)
     {
         Id = ValuationId.Create();
         RequestedDate = SystemTime.Now();
@@ -19,21 +21,23 @@ public sealed class Valuation : Entity, IAggregateRoot
         History = new LinkedList<HistoricalEntry>();
         Deadline = deadline;
         InquiryId = inquiryId;
+        Priority = new Priority(companySize, deadline);
         ChangeStatus(ValuationStatus.WaitForProposal);
         var @event = new ValuationRequestedDomainEvent(Id, InquiryId, Deadline);
         AddDomainEvent(@event);
     }
     public ValuationId Id { get; init; }
     private InquiryId InquiryId { get; init; }
+    private Priority? Priority { get; set; }
     private LinkedList<Proposal> Proposals { get; init; }
     private LinkedList<HistoricalEntry> History { get; init; }
     private DateTime RequestedDate { get; init; }
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
-    private Deadline Deadline { get; init; }
+    private Deadline? Deadline { get; set; }
     private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
 
-    private Proposal ProposalWaitForDecision => NotCancelledProposals
+    private Proposal? ProposalWaitForDecision => NotCancelledProposals
         .SingleOrDefault(proposal => !proposal.HasDecision);
 
     private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
@@ -42,9 +46,10 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     public static Valuation Request(
         InquiryId inquiryId,
-        Deadline deadline)
+        Deadline? deadline,
+        int companySize)
     {
-        return new Valuation(deadline, inquiryId);
+        return new Valuation(deadline, inquiryId, companySize);
     }
 
     public void SuggestProposal(Money value,
@@ -58,12 +63,14 @@ public sealed class Valuation : Entity, IAggregateRoot
 
         if (IsWaitingForDecision)
         {
-            throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
+            throw new ProposalWaitForDecisionException(ProposalWaitForDecision!.Id);
         }
 
         var proposalDescription = ProposalDescription.From(description);
         var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
         Proposals.AddFirst(proposal);
+        Priority = null;
+        Deadline = null;
         ChangeStatus(ValuationStatus.WaitForClientDecision);
 
         var @event = new ProposalSuggestedDomainEvent(
@@ -137,6 +144,31 @@ public sealed class Valuation : Entity, IAggregateRoot
 
         var @event = new ValuationCompletedDomainEvent(InquiryId, Id, recentProposal.Price);
         AddDomainEvent(@event);
+    }
+
+    public void ForcePriority(PriorityLevel priorityLevel)
+    {
+        if (!IsWaitingForDecision) throw new CannotChangePriorityException(Id);
+        Priority!.Force(priorityLevel);
+        var @event = new ValuationPriorityForcedDomainEvent(Id);
+        AddDomainEvent(@event);
+    }
+
+    public void RedefinePriority(int? companySize)
+    {
+        if (!IsWaitingForDecision) throw new CannotChangePriorityException(Id);
+        var oldPriority = Priority;
+        Priority = new Priority(companySize, Deadline);
+        if (Priority > oldPriority)
+        {
+           var @event = new ValuationPrioritiesLevelIncresedDomainEvent(Id);
+           AddDomainEvent(@event);
+        }
+        if (Priority < oldPriority)
+        {
+            var @event = new ValuationPrioritiesLevelDecresedDomainEvent(Id);
+            AddDomainEvent(@event);
+        }
     }
 
     private void ChangeStatus(ValuationStatus valuationStatus)

@@ -17,7 +17,7 @@ internal sealed class EventMapper : IEventMapper
         {
             InquiryMadeDomainEvent domainEvent =>
                 new InquiryMadeEvent(
-                    domainEvent.InquiryId.Value),
+                    domainEvent.InquiryId.Value, 100),
             _ => null
         };
     }

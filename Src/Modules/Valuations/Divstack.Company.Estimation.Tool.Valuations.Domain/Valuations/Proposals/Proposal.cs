@@ -37,7 +37,6 @@ public sealed class Proposal : Entity
         ProposalDescription description,
         EmployeeId proposedBy)
     {
-        //TODO unit tests
         if (value < MinimumProposalValue)
             throw new ProposalValueLessenThanMinimalException(value, MinimumProposalValue);
         return new Proposal(value, description, proposedBy);
@@ -80,7 +79,7 @@ public sealed class Proposal : Entity
             throw new ProposalAlreadyCancelledException(Id);
         }
 
-        Cancelled = DateTime.Now;
+        Cancelled = SystemTime.Now();
         CancelledBy = employeeId;
     }
 }
