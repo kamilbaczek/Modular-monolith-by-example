@@ -2,7 +2,7 @@
 
 internal sealed record ClientLoseRisk(string Name, int Scores)
 {
-    private const int DeadlineExceedScore = 5;
+    private const int DeadlineExceedScore = 15;
     private const int LargeClientCompanyScore = 5;
     private const int CloseToDeadlineNoRiskScore = 10;
 

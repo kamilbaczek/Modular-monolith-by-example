@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.RedefinePriority;
 
 using Inquiries.Application.Common.Contracts;
-using Inquiries.Application.Inquiries.Queries.Get;
+using Inquiries.Application.Inquiries.Queries.GetClient;
 using MediatR;
 
 internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<RedefinePriorityCommand>
@@ -36,10 +36,9 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
     }
     private async Task<int?> GetCompanySize(Guid inquiryId)
     {
-        var inquiryQuery = new GetInquiryQuery(inquiryId);
-        var inquiryVm = await _inquiryModule.ExecuteQueryAsync(inquiryQuery);
-        var companySize = inquiryVm.InquiryDetails.Information.CompanySize;
+        var inquiryQuery = new GetInquiryClientQuery(inquiryId);
+        var client = await _inquiryModule.ExecuteQueryAsync(inquiryQuery);
 
-        return companySize;
+        return client.CompanySize;
     }
 }

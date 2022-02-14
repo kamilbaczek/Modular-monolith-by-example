@@ -27,14 +27,16 @@ public sealed class Priority : ValueObject
     {
         var largeCompanyPolicy = new IsLargeCompanyPolicy();
         var companyLarge = largeCompanyPolicy.IsLargeCompany(companySize);
-        if (companyLarge);
+        if (companyLarge)
             Increse(ClientLoseRisk.LargeClientCompany);
         if (Deadline!.Exceeded)
             Increse(ClientLoseRisk.DeadlineExceed);
-
-        var closeToDeadline = ClientLoseRisk.CloseToDeadline(Deadline.DaysToDeadline);
-        if(closeToDeadline.Scores > 0)
-            Increse(closeToDeadline);
+        if (!Deadline!.Exceeded)
+        {
+            var closeToDeadline = ClientLoseRisk.CloseToDeadline(Deadline.DaysToDeadline);
+            if(closeToDeadline.Scores > 0)
+                Increse(closeToDeadline);
+        }
 
         return PriorityLevel.Calculate(Scores.ToList());
     }

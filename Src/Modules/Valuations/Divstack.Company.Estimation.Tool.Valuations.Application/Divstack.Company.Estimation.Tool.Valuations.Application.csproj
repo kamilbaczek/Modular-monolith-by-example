@@ -21,7 +21,4 @@
     <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Valuations\Commands\RecalculatePriority" />
-  </ItemGroup>
 </Project>

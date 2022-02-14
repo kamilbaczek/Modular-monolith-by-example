@@ -2,7 +2,7 @@
 
 public sealed record PriorityLevel(string Name, int Weight , int? Scores)
 {
-    private const int HighLevelScoreBoundary = 15;
+    private const int HighLevelScoreBoundary = 20;
     private const int MediumLevelScoreBoundary = 10;
 
     private static PriorityLevel Low(int scores) => Create(nameof(Low), 0, scores);

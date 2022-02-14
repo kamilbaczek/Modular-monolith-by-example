@@ -7,20 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="9.4.0"/>
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0"/>
-    <PackageReference Include="MediatR" Version="9.0.0"/>
-    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1"/>
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
-    <ProjectReference Include="..\..\..\Shared\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov\Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj"/>
+    <PackageReference Include="FluentValidation" Version="9.4.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <ProjectReference Include="..\..\..\Shared\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov\Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Snov.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

@@ -40,9 +40,9 @@ public sealed class Valuation : Entity, IAggregateRoot
     private Proposal? ProposalWaitForDecision => NotCancelledProposals
         .SingleOrDefault(proposal => !proposal.HasDecision);
 
-    private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
-    private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
-    private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
+    private HistoricalEntry LastHistoricalEntry => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
+    private bool IsWaitingForDecision => LastHistoricalEntry.Status == ValuationStatus.WaitForClientDecision;
+    private bool IsCompleted => LastHistoricalEntry.Status == ValuationStatus.Completed;
 
     public static Valuation Request(
         InquiryId inquiryId,
@@ -156,7 +156,7 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     public void RedefinePriority(int? companySize)
     {
-        if (!IsWaitingForDecision) throw new CannotChangePriorityException(Id);
+        if (LastHistoricalEntry.Status != ValuationStatus.WaitForProposal) throw new CannotChangePriorityException(Id);
         var oldPriority = Priority;
         Priority = new Priority(companySize, Deadline);
         if (Priority > oldPriority)
