@@ -22,14 +22,14 @@ internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<V
 
     public Task Handle(ValuationRequested valuationRequested, CancellationToken cancellationToken)
     {
-        var reminderDate =
-            valuationRequested.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
-        _backgroundJobScheduler.Schedule(
-            () => _valuationsDeadlineCloseReminder.RemindAsync(
-                valuationRequested.ValuationId,
-                _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
-                cancellationToken),
-            reminderDate);
+        // var reminderDate =
+        //     valuationRequested.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+        // _backgroundJobScheduler.Schedule(
+        //     () => _valuationsDeadlineCloseReminder.RemindAsync(
+        //         valuationRequested.ValuationId,
+        //         _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
+        //         cancellationToken),
+        //     reminderDate);
 
         return Task.CompletedTask;
     }

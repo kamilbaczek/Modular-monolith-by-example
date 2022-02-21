@@ -43,8 +43,7 @@ internal sealed class EventMapper : IEventMapper
             ValuationRequestedDomainEvent domainEvent =>
                 new ValuationRequested(
                     domainEvent.InquiryId.Value,
-                    domainEvent.ValuationId.Value,
-                    domainEvent.DeadlineDate.Date),
+                    domainEvent.ValuationId.Value),
             ValuationCompletedDomainEvent domainEvent =>
                 new ValuationCompleted(
                     domainEvent.InquiryId.Value,

@@ -54,7 +54,8 @@ internal sealed class ValuationsController : BaseController
     [Route("valuations/history/{id}")]
     public async Task<ActionResult<ValuationHistoryVm>> GetHistory(Guid id)
     {
-        var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(new GetValuationHistoryByIdQuery(id));
+        var query = new GetValuationHistoryByIdQuery(id);
+        var valuationHistoryVm = await _valuationsModule.ExecuteQueryAsync(query);
         return Ok(valuationHistoryVm);
     }
 

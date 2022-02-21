@@ -6,7 +6,6 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure;
 
 using Application;
 using Application.Common.Contracts;
-using Domain.Configurations;
 using Events;
 using Inquiries.Infrastructure.Snov;
 using Mediation;
@@ -25,7 +24,6 @@ internal static class InfrastructureModule
         services.AddApplicationModule();
         services.AddMediationModule();
         services.AddEvents();
-        services.AddDeadlines();
         services.AddTrello();
         services.AddSnov();
         services.AddScoped<IValuationsModule, ValuationsModule>();

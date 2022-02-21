@@ -1,9 +1,4 @@
 ﻿{
-  "Valuation": {
-    "Deadline": {
-      "WorksDaysToDeadlineFromNow": 2
-    }
-  },
   "Integrations": {
     "Trello": {
       "BoardId": "0fj56AI6",

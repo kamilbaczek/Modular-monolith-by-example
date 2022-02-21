@@ -17,7 +17,8 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
         _mediator = mediator;
     }
 
-    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
+    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents,
+        CancellationToken cancellationToken = default)
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
         foreach (var integrationEvent in integrationEvents)

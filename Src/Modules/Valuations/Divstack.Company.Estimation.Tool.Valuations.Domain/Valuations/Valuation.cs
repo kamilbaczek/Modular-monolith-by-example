@@ -1,42 +1,33 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-using Deadlines;
 using Events;
 using Exceptions;
 using History;
-using Priorities;
 using Proposals;
 using Proposals.Events;
 
 public sealed class Valuation : Entity, IAggregateRoot
 {
     private Valuation(
-        Deadline deadline,
-        InquiryId inquiryId,
-        int companySize)
+        InquiryId inquiryId)
     {
         Id = ValuationId.Create();
         RequestedDate = SystemTime.Now();
         Proposals = new LinkedList<Proposal>();
         History = new LinkedList<HistoricalEntry>();
-        Deadline = deadline;
         InquiryId = inquiryId;
-        Priority = new Priority(companySize, deadline);
         ChangeStatus(ValuationStatus.WaitForProposal);
-        var @event = new ValuationRequestedDomainEvent(Id, InquiryId, Deadline);
+        var @event = new ValuationRequestedDomainEvent(Id, InquiryId);
         AddDomainEvent(@event);
     }
     public ValuationId Id { get; init; }
     private InquiryId InquiryId { get; init; }
-    private Priority? Priority { get; set; }
     private LinkedList<Proposal> Proposals { get; init; }
     private LinkedList<HistoricalEntry> History { get; init; }
     private DateTime RequestedDate { get; init; }
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
-    private Deadline? Deadline { get; set; }
     private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
-
     private Proposal? ProposalWaitForDecision => NotCancelledProposals
         .SingleOrDefault(proposal => !proposal.HasDecision);
 
@@ -45,11 +36,9 @@ public sealed class Valuation : Entity, IAggregateRoot
     private bool IsCompleted => LastHistoricalEntry.Status == ValuationStatus.Completed;
 
     public static Valuation Request(
-        InquiryId inquiryId,
-        Deadline? deadline,
-        int companySize)
+        InquiryId inquiryId)
     {
-        return new Valuation(deadline, inquiryId, companySize);
+        return new Valuation(inquiryId);
     }
 
     public void SuggestProposal(Money value,
@@ -69,8 +58,6 @@ public sealed class Valuation : Entity, IAggregateRoot
         var proposalDescription = ProposalDescription.From(description);
         var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
         Proposals.AddFirst(proposal);
-        Priority = null;
-        Deadline = null;
         ChangeStatus(ValuationStatus.WaitForClientDecision);
 
         var @event = new ProposalSuggestedDomainEvent(
@@ -146,30 +133,7 @@ public sealed class Valuation : Entity, IAggregateRoot
         AddDomainEvent(@event);
     }
 
-    public void ForcePriority(PriorityLevel priorityLevel)
-    {
-        if (!IsWaitingForDecision) throw new CannotChangePriorityException(Id);
-        Priority!.Force(priorityLevel);
-        var @event = new ValuationPriorityForcedDomainEvent(Id);
-        AddDomainEvent(@event);
-    }
 
-    public void RedefinePriority(int? companySize)
-    {
-        if (LastHistoricalEntry.Status != ValuationStatus.WaitForProposal) throw new CannotChangePriorityException(Id);
-        var oldPriority = Priority;
-        Priority = new Priority(companySize, Deadline);
-        if (Priority > oldPriority)
-        {
-           var @event = new ValuationPrioritiesLevelIncresedDomainEvent(Id);
-           AddDomainEvent(@event);
-        }
-        if (Priority < oldPriority)
-        {
-            var @event = new ValuationPrioritiesLevelDecresedDomainEvent(Id);
-            AddDomainEvent(@event);
-        }
-    }
 
     private void ChangeStatus(ValuationStatus valuationStatus)
     {

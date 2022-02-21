@@ -3,7 +3,6 @@
 using Extensions;
 using MongoDB.Bson.Serialization;
 using Tool.Valuations.Domain.Valuations;
-using Tool.Valuations.Domain.Valuations.Deadlines;
 using Tool.Valuations.Domain.Valuations.History;
 using Tool.Valuations.Domain.Valuations.Proposals;
 
@@ -17,7 +16,6 @@ internal static class ValuationPersistanceConfiguration
             classMap.MapIdProperty(valuation => valuation.Id).SetElementName("ValuationId");
             classMap.MapProperty("RequestedDate").SetIsRequired(true);
             classMap.MapProperty("InquiryId").SetIsRequired(true);
-            classMap.MapProperty("Deadline").SetIsRequired(true);
             classMap.MapProperty("CompletedDate");
             classMap.MapProperty("CompletedBy");
             classMap.MapProperty("Proposals");
@@ -47,7 +45,6 @@ internal static class ValuationPersistanceConfiguration
             classMap.MapProperty("Date").SetIsRequired(false);
             classMap.MapProperty("Code").SetIsRequired(true);
         });
-        BsonClassMap.RegisterClassMap<Deadline>(classMap => { classMap.MapProperty("Date").SetIsRequired(true); });
         BsonClassMap.RegisterClassMap<HistoricalEntry>(cm =>
         {
             cm.MapProperty("Id").SetElementName("HistoricalEntryId");
