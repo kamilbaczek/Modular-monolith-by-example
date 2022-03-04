@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Payments.Persistance.Domain.Payments.Configurations.Extensions;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Domain.Configurations.Extensions;
 
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;

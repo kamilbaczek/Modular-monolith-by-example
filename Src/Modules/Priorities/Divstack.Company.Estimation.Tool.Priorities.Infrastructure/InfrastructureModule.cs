@@ -5,7 +5,9 @@
 namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure;
 
 using Common.Contracts;
+using Domain.BackgroundProcesses;
 using Domain.Configurations;
+using Domain.Services;
 using Events;
 using Mediation;
 using Microsoft.AspNetCore.Builder;
@@ -21,8 +23,10 @@ internal static class InfrastructureModule
         services.AddPersistanceModule(configuration);
         services.AddApplicationModule();
         services.AddMediationModule();
+        services.AddBackgroundProcesses();
         services.AddEvents();
         services.AddDeadlines();
+        services.AddDomainServices();
         services.AddScoped<IPrioritiesModule, PrioritiesModule>();
 
         return services;

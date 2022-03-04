@@ -3,5 +3,5 @@
 internal sealed class IsLargeCompanyPolicy
 {
     private const int LargeCompanySize = 100;
-    public bool IsLargeCompany(int? companySize) => companySize < LargeCompanySize;
+    public bool IsLargeCompany(int? companySize) =>  LargeCompanySize <= companySize ;
 }

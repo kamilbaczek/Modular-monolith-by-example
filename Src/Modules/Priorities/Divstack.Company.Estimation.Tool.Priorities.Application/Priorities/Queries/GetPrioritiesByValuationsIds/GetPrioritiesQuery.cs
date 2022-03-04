@@ -3,6 +3,4 @@
 using Common.Contracts;
 using Dtos;
 
-public record GetPrioritiesByValuationsIdsQuery(IReadOnlyCollection<Guid> ValuationIds) : IQuery<PrioritiesListVm>
-{
-}
+public record GetPrioritiesQuery : IQuery<PrioritiesListVm>;

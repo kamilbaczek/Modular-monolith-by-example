@@ -8,18 +8,21 @@ using Shared.DDD.BuildingBlocks;
 public sealed class Priority : Entity
 {
     public PriorityId Id { get; init; }
-    private ValuationId ValuationId { get; init; }
+    public ValuationId ValuationId { get; init; }
+    private InquiryId InquiryId { get; init; }
     private IList<ClientLoseRisk> Scores { get; init; }
     internal PriorityLevel Level { get; private set; }
     private Deadline? Deadline { get; init; }
     private PriorityLevel? ManualSetLevel { get; set; }
+    private bool Archived { get; set; }
 
-    private Priority(ValuationId valuationId, int? companySize, Deadline? deadline)
+    private Priority(ValuationId valuationId, InquiryId inquiryId, int? companySize, Deadline? deadline)
     {
         Id = PriorityId.Create();
         ValuationId = valuationId;
         Deadline = deadline;
         ManualSetLevel = null;
+        InquiryId = inquiryId;
         Scores = new List<ClientLoseRisk>();
         Level = ManualSetLevel ?? Calculate(companySize);
 
@@ -27,15 +30,21 @@ public sealed class Priority : Entity
         AddDomainEvent(@event);
     }
 
-    public static Priority Define(ValuationId valuationId, int? companySize, Deadline? deadline)
+    public static Priority Define(ValuationId valuationId, InquiryId inquiryId, int? companySize, Deadline? deadline)
     {
-        return new Priority(valuationId, companySize, deadline);
+        return new Priority(valuationId, inquiryId, companySize, deadline);
     }
 
     public void Redefine(int? companySize)
     {
         Level = ManualSetLevel ?? Calculate(companySize);
     }
+
+    public void Archive()
+    {
+        Archived = true;
+    }
+
     internal void Force(PriorityLevel? priorityLevel)
     {
         ManualSetLevel = priorityLevel;
@@ -43,6 +52,7 @@ public sealed class Priority : Entity
 
     private PriorityLevel Calculate(int? companySize)
     {
+        Clear();
         var largeCompanyPolicy = new IsLargeCompanyPolicy();
         var companyLarge = largeCompanyPolicy.IsLargeCompany(companySize);
         if (companyLarge)
@@ -62,5 +72,10 @@ public sealed class Priority : Entity
     private void Increse(ClientLoseRisk clientLoseRisk)
     {
         Scores.Add(clientLoseRisk);
+    }
+
+    private void Clear()
+    {
+        Scores.Clear();
     }
 }

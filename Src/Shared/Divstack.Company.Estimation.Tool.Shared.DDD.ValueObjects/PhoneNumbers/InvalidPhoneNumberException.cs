@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.PhoneNumbers;
 
 using System;
 

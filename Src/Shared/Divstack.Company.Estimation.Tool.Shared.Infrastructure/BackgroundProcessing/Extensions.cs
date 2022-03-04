@@ -16,6 +16,7 @@ internal static class Extensions
 
         services.AddScoped<IBackgroundJobScheduler, BackgroundJobScheduler>();
         services.AddScoped<IBackgroundProcessQueue, BackgroundProcessQueue>();
+        services.AddScoped<IRecurringBackgroundJobScheduler, RecurringBackgroundJobScheduler>();
 
         return services;
     }

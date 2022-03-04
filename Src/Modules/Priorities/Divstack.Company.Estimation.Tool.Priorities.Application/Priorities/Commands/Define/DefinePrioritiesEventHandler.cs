@@ -30,11 +30,13 @@ internal sealed class DefinePrioritiesEventHandler : INotificationHandler<Valuat
     {
         var deadline = Deadline.Create(_deadlinesConfiguration);
         var companySize = await GetCompanySize(notification.InquiryId);
-        var valuationId = new ValuationId(notification.ValuationId);
+        var valuationId = ValuationId.Create(notification.ValuationId);
+        var inquiryId = InquiryId.Create(notification.InquiryId);
 
-        var valuation = Priority.Define(valuationId, companySize, deadline);
-        await _prioritiesRepository.AddAsync(valuation, cancellationToken);
-        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+        var priority = Priority.Define(valuationId, inquiryId, companySize, deadline);
+
+        await _prioritiesRepository.AddAsync(priority, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(priority.DomainEvents, cancellationToken);
     }
 
     private async Task<int?> GetCompanySize(Guid inquiryId)

@@ -7,7 +7,6 @@ using Tool.Priorities.Domain.Deadlines;
 internal sealed class DeadlinesConfiguration : IDeadlinesConfiguration
 {
     private readonly IConfigurationSection _configuration;
-
     public DeadlinesConfiguration(IConfiguration configuration)
     {
         const string sectionKey = $"{nameof(Priority)}:{nameof(Deadline)}";

@@ -2,18 +2,31 @@
 
 using Ardalis.GuardClauses;
 using Common.Interfaces;
-using Inquiries.Application.Common.Contracts;
-using Inquiries.Application.Inquiries.Queries.GetClient;
+using Domain;
 using MediatR;
-using Redefine;
+using Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ArchivePriorityCommandCommandHandler : IRequestHandler<ArchivePriorityCommand>
+internal sealed class ArchivePriorityCommandCommandHandler : INotificationHandler<ProposalSuggested>
 {
-    public ArchivePriorityCommandCommandHandler()
+    private readonly IPrioritiesRepository _prioritiesRepository;
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    public ArchivePriorityCommandCommandHandler(IPrioritiesRepository prioritiesRepository,
+        IIntegrationEventPublisher integrationEventPublisher)
     {
+        _prioritiesRepository = prioritiesRepository;
+        _integrationEventPublisher = integrationEventPublisher;
     }
-    public async Task<Unit> Handle(ArchivePriorityCommand command, CancellationToken cancellationToken)
+
+    public async Task Handle(ProposalSuggested @event, CancellationToken cancellationToken)
     {
-        return Unit.Value;
+        var valuationId = ValuationId.Create(@event.ValuationId);
+        var priority = await _prioritiesRepository.GetAsync(valuationId, cancellationToken);
+        if (priority is null)
+            throw new NotFoundException(@event.ValuationId.ToString(), nameof(Priority));
+
+        priority.Archive();
+
+        await _prioritiesRepository.CommitAsync(priority, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(priority.DomainEvents, cancellationToken);
     }
 }

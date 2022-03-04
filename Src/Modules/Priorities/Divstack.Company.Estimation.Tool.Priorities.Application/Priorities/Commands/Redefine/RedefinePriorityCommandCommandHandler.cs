@@ -12,7 +12,6 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IPrioritiesRepository _prioritiesRepository;
     private readonly IInquiriesModule _inquiryModule;
-
     public RedefinePriorityCommandCommandHandler(
         IPrioritiesRepository prioritiesRepository,
         IInquiriesModule inquiryModule,
@@ -37,6 +36,7 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
 
         return Unit.Value;
     }
+
     private async Task<int?> GetCompanySize(Guid inquiryId)
     {
         var inquiryQuery = new GetInquiryClientQuery(inquiryId);

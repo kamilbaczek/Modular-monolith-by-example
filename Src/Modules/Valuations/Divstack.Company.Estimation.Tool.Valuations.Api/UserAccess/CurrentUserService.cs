@@ -15,7 +15,7 @@ internal sealed class CurrentUserService : ICurrentUserService
 
     public Guid GetPublicUserId()
     {
-        var userPublicId = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier);
+        var userPublicId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier);
         return !string.IsNullOrEmpty(userPublicId?.Value) ? Guid.Parse(userPublicId.Value) : Guid.Empty;
     }
 }

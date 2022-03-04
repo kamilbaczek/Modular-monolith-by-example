@@ -16,7 +16,14 @@ internal sealed class PrioritiesRepository : IPrioritiesRepository
     public async Task<Priority> GetAsync(PriorityId priorityId, CancellationToken cancellationToken = default)
     {
         return await _prioritiesContext.Priorities
-            .Find(priority => priority.Id.Value == priorityId.Value)
+            .Find(priority => priority.Id == priorityId)
+            .SingleOrDefaultAsync(cancellationToken);
+    }
+
+    public async Task<Priority> GetAsync(ValuationId valuationId, CancellationToken cancellationToken = default)
+    {
+        return await _prioritiesContext.Priorities
+            .Find(priority => priority.ValuationId == valuationId)
             .SingleOrDefaultAsync(cancellationToken);
     }
 

@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Domain.Configurations;
 
+using Extensions;
 using MongoDB.Bson.Serialization;
-using Payments.Persistance.Domain.Payments.Configurations.Extensions;
 using Tool.Priorities.Domain;
 using Tool.Priorities.Domain.Deadlines;
 
@@ -14,6 +14,7 @@ internal static class PriorityPersistanceConfiguration
             classMap.SetIgnoreExtraElements(true);
             classMap.MapIdProperty(priority => priority.Id).SetElementName("PriorityId");
             classMap.MapProperty("ValuationId").SetIsRequired(true);
+            classMap.MapProperty("InquiryId").SetIsRequired(true);
             classMap.MapProperty("Scores").SetIsRequired(true);
             classMap.MapProperty("PriorityLevel").SetIsRequired(true);
             classMap.MapProperty("Deadline").SetIsRequired(true);

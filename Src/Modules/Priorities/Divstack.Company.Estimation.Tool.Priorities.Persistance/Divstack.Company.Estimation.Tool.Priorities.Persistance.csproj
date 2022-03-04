@@ -19,4 +19,10 @@
       <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Domain\Divstack.Company.Estimation.Tool.Priorities.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="priorities-appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

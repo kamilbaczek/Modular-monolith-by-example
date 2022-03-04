@@ -19,7 +19,7 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 
     public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
-        var integrationEvents = _eventMapper.Map(domainEvents);
+        var integrationEvents = _eventMapper.Map(domainEvents).Where(@event => @event is not null);
         foreach (var integrationEvent in integrationEvents)
         {
             await _mediator.Publish(integrationEvent, cancellationToken);

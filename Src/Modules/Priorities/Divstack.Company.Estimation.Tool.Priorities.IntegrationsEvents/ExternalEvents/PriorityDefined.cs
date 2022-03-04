@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents.ExternalEvents;
 
 using Shared.DDD.BuildingBlocks;
 

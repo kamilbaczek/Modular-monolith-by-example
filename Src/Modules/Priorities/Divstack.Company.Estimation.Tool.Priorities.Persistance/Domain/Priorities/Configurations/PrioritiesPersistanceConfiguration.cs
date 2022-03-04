@@ -13,10 +13,12 @@ internal static class PrioritiesPersistanceConfiguration
             classMap.SetIgnoreExtraElements(true);
             classMap.MapIdProperty(priority => priority.Id).SetElementName("PriorityId");
             classMap.MapProperty("ValuationId").SetIsRequired(true);
+            classMap.MapProperty("InquiryId").SetIsRequired(true);
             classMap.MapProperty("Scores").SetIsRequired(true);
             classMap.MapProperty("Level").SetIsRequired(true);
             classMap.MapProperty("Deadline").SetIsRequired(true);
             classMap.MapProperty("ManualSetLevel");
+            classMap.MapProperty("Archived");
         });
 
         BsonClassMap.RegisterClassMap<Deadline>(classMap =>

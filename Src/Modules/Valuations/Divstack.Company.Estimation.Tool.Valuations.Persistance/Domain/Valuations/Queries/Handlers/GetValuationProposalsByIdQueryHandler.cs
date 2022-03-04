@@ -24,8 +24,6 @@ internal sealed class
         CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(request.ValuationId);
-
-
         var valuationProposalsVm = await _valuationsNotificationsContext.Valuations
             .Find(valuation => valuation.Id == valuationId)
             .Project<ValuationProposalsVm>(ProjectionQuery)
