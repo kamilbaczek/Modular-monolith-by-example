@@ -6,24 +6,22 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  Lint_Sharp:
-    runs-on: windows-2019
+  dotnet-format:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
 
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '6.0.x'
+      - name: Add dotnet-format problem matcher
+        uses: xt0rted/dotnet-format-problem-matcher@v1
 
-    - name: Add dotnet-format problem matcher
-      uses: xt0rted/dotnet-format-problem-matcher@v1
+      - name: Restore dotnet tools
+        uses: xt0rted/dotnet-tool-restore@v1
 
-    - name: Install dotnet format
-      run: dotnet tool update --global dotnet-format
-
-    - name: Run dotnet format
-      run: dotnet format . --verify-no-changes --verbosity diagnostic
+      - name: Run dotnet format
+        uses: xt0rted/dotnet-format@v1
+        with:
+          only-changed-files: "true"
   build:
     name: Build
     runs-on: ubuntu-latest
