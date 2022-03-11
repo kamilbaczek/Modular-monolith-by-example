@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  lint_csharp:
+  Lint_Sharp:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
@@ -23,7 +23,7 @@ jobs:
       run: dotnet tool update --global dotnet-format
 
     - name: Run dotnet format
-      run: dotnet format --check --verbosity diagnostic
+      run: dotnet format . --check --verbosity diagnostic
   build:
     name: Build
     runs-on: ubuntu-latest
