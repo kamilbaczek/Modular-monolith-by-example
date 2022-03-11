@@ -23,7 +23,7 @@ jobs:
       run: dotnet tool update --global dotnet-format
 
     - name: Run dotnet format
-      run: dotnet format . --check --verbosity diagnostic
+      run: dotnet format . --verify-no-changes --verbosity diagnostic
   build:
     name: Build
     runs-on: ubuntu-latest
