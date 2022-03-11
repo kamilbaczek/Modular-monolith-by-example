@@ -13,7 +13,8 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-     
+    - name: dotnet-format
+      uses: xt0rted/dotnet-format@v1.2.0
     - name: Checkout 
       uses: actions/checkout@v2
       with:
