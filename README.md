@@ -25,7 +25,9 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
 [![Coverage Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
 
-### Test Environment
+### Dotnet format as precommit hook
+Author cares about code quality of this projected. That why dotnet format is executed before each commit. To make code properly formatted always. This save a lot of time during code review. Rules for dotnet format are stored in .editorconfig file. Install [precommit](https://pre-commit.com/) before you will start commit even locally.
+
 #### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
 
 [Application](https://estimation-tool-ui.herokuapp.com/)     
