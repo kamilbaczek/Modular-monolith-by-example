@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/dotnet/format
-    rev: ""
+    rev: "v5.1.225507"
     hooks:
       - id: dotnet-format
         args: [--folder, --include]
