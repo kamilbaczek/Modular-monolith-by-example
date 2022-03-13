@@ -118,7 +118,7 @@ internal sealed class PasswordsManagementService : IPasswordsManagementService
 
         var confirmEmailResult = await _applicationUserManager.ConfirmEmailAsync(user, token);
         if (!confirmEmailResult.Succeeded)
-            // throw event await SendConfirmationEmailAsync(user);
+        // throw event await SendConfirmationEmailAsync(user);
         {
             throw new InvalidOperationException("Link Expired");
         }

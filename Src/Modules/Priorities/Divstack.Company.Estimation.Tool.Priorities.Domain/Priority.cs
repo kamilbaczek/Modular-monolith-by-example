@@ -62,7 +62,7 @@ public sealed class Priority : Entity
         if (!Deadline!.Exceeded)
         {
             var closeToDeadline = ClientLoseRisk.CloseToDeadline(Deadline.DaysToDeadline);
-            if(closeToDeadline.Scores > 0)
+            if (closeToDeadline.Scores > 0)
                 Increse(closeToDeadline);
         }
 

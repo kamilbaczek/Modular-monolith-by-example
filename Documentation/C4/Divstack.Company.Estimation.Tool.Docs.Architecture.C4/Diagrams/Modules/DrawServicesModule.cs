@@ -1,17 +1,16 @@
-﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules;
+
+using Structurizr;
+
+internal static class DrawServicesModule
 {
-    using Structurizr;
+    private const string ApiServices = "Api - Services";
+    internal const string CoreServices = "Core - Services";
 
-    internal static class DrawServicesModule
+    internal static void ServicesModule(this Container webApplication, Container database, Component bootstrapper)
     {
-        private const string ApiServices = "Api - Services";
-        internal const string CoreServices = "Core - Services";
-
-        internal static void ServicesModule(this Container webApplication, Container database, Component bootstrapper)
-        {
-            var servicesApi = webApplication.AddComponent(ApiServices,
-                "Serves API to manage services, categories, services possible values", ".Net Core API");
-            bootstrapper.Uses(servicesApi, "");
-        }
+        var servicesApi = webApplication.AddComponent(ApiServices,
+            "Serves API to manage services, categories, services possible values", ".Net Core API");
+        bootstrapper.Uses(servicesApi, "");
     }
 }

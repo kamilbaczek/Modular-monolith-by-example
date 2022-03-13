@@ -3,5 +3,5 @@
 public sealed class AskedServiceDto
 {
     public Guid Id { get; set; }
-    public IReadOnlyCollection<AttributeDto> Attributes { get; set; }
+    public IReadOnlyCollection<AttributeDto>? Attributes { get; set; }
 }

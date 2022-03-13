@@ -22,7 +22,7 @@ internal sealed class RedefinePrioritiesScheduler : IHostedService
 
         backgroundJobScheduler.ScheduleHourly(RedefinePriorities, () => prioritiesRedefiner.RedefineAll());
 
-        return  Task.CompletedTask;
+        return Task.CompletedTask;
     }
     public Task StopAsync(CancellationToken cancellationToken)
     {

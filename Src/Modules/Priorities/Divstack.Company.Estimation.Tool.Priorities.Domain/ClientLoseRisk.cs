@@ -6,9 +6,9 @@ public sealed record ClientLoseRisk(string Name, int Scores)
     private const int LargeClientCompanyScore = 5;
     private const int CloseToDeadlineNoRiskScore = 10;
 
-    internal static ClientLoseRisk DeadlineExceed => Create(nameof(DeadlineExceedScore),DeadlineExceedScore);
+    internal static ClientLoseRisk DeadlineExceed => Create(nameof(DeadlineExceedScore), DeadlineExceedScore);
     internal static ClientLoseRisk CloseToDeadline(int days) => CreateCloseToDeadline(nameof(CloseToDeadlineNoRiskScore), days);
-    internal static ClientLoseRisk LargeClientCompany => Create(nameof(LargeClientCompany),LargeClientCompanyScore);
+    internal static ClientLoseRisk LargeClientCompany => Create(nameof(LargeClientCompany), LargeClientCompanyScore);
 
     private static ClientLoseRisk Create(string name, int value)
     {

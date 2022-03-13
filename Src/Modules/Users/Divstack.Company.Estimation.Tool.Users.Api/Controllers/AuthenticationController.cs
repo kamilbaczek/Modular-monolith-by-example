@@ -26,7 +26,8 @@ internal sealed class AuthenticationController : BaseController
 
         var response = new SignInResponse
         {
-            Token = signInCommandResponse.AccessToken, RefreshToken = signInCommandResponse.RefreshToken
+            Token = signInCommandResponse.AccessToken,
+            RefreshToken = signInCommandResponse.RefreshToken
         };
 
         if (string.IsNullOrEmpty(signInCommandResponse.Error))

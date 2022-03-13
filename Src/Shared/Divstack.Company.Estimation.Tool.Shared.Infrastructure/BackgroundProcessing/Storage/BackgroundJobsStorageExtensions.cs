@@ -16,7 +16,8 @@ internal static class BackgroundJobsStorageExtensions
     {
         MigrationOptions = new MongoMigrationOptions
         {
-            MigrationStrategy = new MigrateMongoMigrationStrategy(), BackupStrategy = new CollectionMongoBackupStrategy()
+            MigrationStrategy = new MigrateMongoMigrationStrategy(),
+            BackupStrategy = new CollectionMongoBackupStrategy()
         },
         Prefix = CollectionPrefix,
         CheckConnection = true

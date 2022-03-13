@@ -9,7 +9,7 @@ public sealed class Notification
     public Guid ReceiverId { get; init; }
     public bool MarkedAsRead { get; private set; }
     public DateTime EventDate { get; init; }
-    public string Type { get; init; }
+    public string? Type { get; init; }
 
     public static Notification Create(Guid actionId, string type, Guid receiverId)
     {

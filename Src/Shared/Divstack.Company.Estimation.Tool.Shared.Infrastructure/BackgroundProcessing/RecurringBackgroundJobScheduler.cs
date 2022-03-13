@@ -12,4 +12,5 @@ internal sealed class RecurringBackgroundJobScheduler : IRecurringBackgroundJobS
     {
         var manager = new RecurringJobManager();
         manager.AddOrUpdate(jobId, Job.FromExpression(methodCall), Cron.Hourly(15));
-    }}
+    }
+}

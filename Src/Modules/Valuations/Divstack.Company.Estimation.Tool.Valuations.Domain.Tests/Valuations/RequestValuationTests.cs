@@ -11,7 +11,7 @@ using Shared.DDD.BuildingBlocks;
 
 public class RequestValuationTests : BaseValuationTest
 {
-    private static object[] _datesTestCases =
+    private static readonly object[] _datesTestCases =
     {
         new object[]
         {

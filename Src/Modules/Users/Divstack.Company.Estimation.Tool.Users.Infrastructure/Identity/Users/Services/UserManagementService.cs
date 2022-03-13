@@ -232,6 +232,6 @@ internal sealed class UserManagementService : IUserManagementService
 
     private async Task SendConfirmationEmailAsync(UserAccount userAccount)
     {
-        var confirmAccountToken = await _applicationUserManager.GenerateEmailConfirmationTokenAsync(userAccount);
+        _ = await _applicationUserManager.GenerateEmailConfirmationTokenAsync(userAccount);
     }
 }

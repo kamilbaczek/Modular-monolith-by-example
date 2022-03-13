@@ -43,7 +43,7 @@ internal sealed class JwtTokenManagementService : IJwtTokenManagementService
                 false // we do not validate lifetime - token can be expired and we will generate new one based on refresh token
         }, out var securityToken);
 
-        if (!(securityToken is JwtSecurityToken jwtSecurityToken) ||
+        if (securityToken is not JwtSecurityToken jwtSecurityToken ||
             !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256,
                 StringComparison.InvariantCultureIgnoreCase))
         {

@@ -33,7 +33,8 @@ internal sealed class AttributesController : BaseController
     {
         var removeAttributeRequest = new RemoveAttributeRequest
         {
-            ServiceId = serviceId, AttributeId = attributeId
+            ServiceId = serviceId,
+            AttributeId = attributeId
         };
         await _servicesService.RemoveAttributeAsync(removeAttributeRequest);
 

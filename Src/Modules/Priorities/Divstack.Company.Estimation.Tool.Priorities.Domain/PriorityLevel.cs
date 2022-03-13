@@ -1,13 +1,13 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain;
 
-public record PriorityLevel(string Name, int Weight , int? Scores)
+public record PriorityLevel(string Name, int Weight, int? Scores)
 {
     private const int HighLevelScoreBoundary = 20;
     private const int MediumLevelScoreBoundary = 10;
 
     private static PriorityLevel Low(int scores) => Create(nameof(Low), 0, scores);
     private static PriorityLevel Medium(int scores) => Create(nameof(Medium), 1, scores);
-    private static PriorityLevel High(int scores) => Create(nameof(High),2, scores);
+    private static PriorityLevel High(int scores) => Create(nameof(High), 2, scores);
 
     private static PriorityLevel Create(string value, int weight, int scores)
     {
