@@ -3,6 +3,7 @@
 using Inquiries.Api;
 using Modules.Emails.Bootstrapper;
 using Payments.Api;
+using Priorities.Api;
 using Push;
 using Reminders;
 using Services.Api;
@@ -40,6 +41,7 @@ public sealed class Startup
         services.AddInquiriesModule(Configuration);
         services.AddPaymentsModule(Configuration);
         services.AddValuationsModule(Configuration);
+        services.AddPrioritiesModule(Configuration);
         services.AddRemindersModule();
 
         services.AddPushModule(Configuration);
@@ -62,8 +64,10 @@ public sealed class Startup
         }
 
         app.UseSharedInfrastructure();
+
         app.UsePaymentModule();
         app.UseValuationModule();
+        app.UsePrioritiesModule();
         app.UsePushModule();
     }
 }

@@ -1,0 +1,10 @@
+﻿{
+  "Priority": {
+    "Deadline": {
+      "WorksDaysToDeadlineFromNow": 2
+    }
+  },
+  "ConnectionStrings": {
+    "Priorities": ""
+  }
+}

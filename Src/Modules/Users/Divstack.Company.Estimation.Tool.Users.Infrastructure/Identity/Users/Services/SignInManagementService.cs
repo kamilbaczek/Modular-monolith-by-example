@@ -90,6 +90,6 @@ internal class SignInManagementService : ISignInManagementService
 
     private async Task SendResetPasswordMail(UserAccount userAccount)
     {
-        var resetPasswordToken = await userManager.GeneratePasswordResetTokenAsync(userAccount);
+        _ = await userManager.GeneratePasswordResetTokenAsync(userAccount);
     }
 }

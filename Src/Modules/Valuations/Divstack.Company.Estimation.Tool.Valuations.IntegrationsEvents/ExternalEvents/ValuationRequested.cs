@@ -4,5 +4,4 @@ using Shared.DDD.BuildingBlocks;
 
 public record ValuationRequested(
     Guid InquiryId,
-    Guid ValuationId,
-    DateTime Deadline) : IntegrationEvent;
+    Guid ValuationId) : IntegrationEvent;

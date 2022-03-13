@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-using Deadlines;
 using Events;
 using Exceptions;
 using History;
@@ -10,17 +9,15 @@ using Proposals.Events;
 public sealed class Valuation : Entity, IAggregateRoot
 {
     private Valuation(
-        Deadline deadline,
         InquiryId inquiryId)
     {
         Id = ValuationId.Create();
         RequestedDate = SystemTime.Now();
         Proposals = new LinkedList<Proposal>();
         History = new LinkedList<HistoricalEntry>();
-        Deadline = deadline;
         InquiryId = inquiryId;
         ChangeStatus(ValuationStatus.WaitForProposal);
-        var @event = new ValuationRequestedDomainEvent(Id, InquiryId, Deadline);
+        var @event = new ValuationRequestedDomainEvent(Id, InquiryId);
         AddDomainEvent(@event);
     }
     public ValuationId Id { get; init; }
@@ -30,21 +27,18 @@ public sealed class Valuation : Entity, IAggregateRoot
     private DateTime RequestedDate { get; init; }
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
-    private Deadline Deadline { get; init; }
     private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
-
-    private Proposal ProposalWaitForDecision => NotCancelledProposals
+    private Proposal? ProposalWaitForDecision => NotCancelledProposals
         .SingleOrDefault(proposal => !proposal.HasDecision);
 
-    private HistoricalEntry RecentStatus => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
-    private bool IsWaitingForDecision => RecentStatus.Status == ValuationStatus.WaitForClientDecision;
-    private bool IsCompleted => RecentStatus.Status == ValuationStatus.Completed;
+    private HistoricalEntry LastHistoricalEntry => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
+    private bool IsWaitingForDecision => LastHistoricalEntry.Status == ValuationStatus.WaitForClientDecision;
+    private bool IsCompleted => LastHistoricalEntry.Status == ValuationStatus.Completed;
 
     public static Valuation Request(
-        InquiryId inquiryId,
-        Deadline deadline)
+        InquiryId inquiryId)
     {
-        return new Valuation(deadline, inquiryId);
+        return new Valuation(inquiryId);
     }
 
     public void SuggestProposal(Money value,
@@ -58,7 +52,7 @@ public sealed class Valuation : Entity, IAggregateRoot
 
         if (IsWaitingForDecision)
         {
-            throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
+            throw new ProposalWaitForDecisionException(ProposalWaitForDecision!.Id);
         }
 
         var proposalDescription = ProposalDescription.From(description);
@@ -138,6 +132,8 @@ public sealed class Valuation : Entity, IAggregateRoot
         var @event = new ValuationCompletedDomainEvent(InquiryId, Id, recentProposal.Price);
         AddDomainEvent(@event);
     }
+
+
 
     private void ChangeStatus(ValuationStatus valuationStatus)
     {

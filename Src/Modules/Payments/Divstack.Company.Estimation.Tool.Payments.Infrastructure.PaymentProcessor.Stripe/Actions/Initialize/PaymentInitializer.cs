@@ -26,7 +26,9 @@ internal sealed class PaymentInitializer : IPaymentInitializer
     {
         var options = new PaymentIntentCreateOptions
         {
-            ConfirmationMethod = Manual, Amount = value, Currency = amountToPay.Currency.ToLower()
+            ConfirmationMethod = Manual,
+            Amount = value,
+            Currency = amountToPay.Currency.ToLower()
         };
 
         return options;

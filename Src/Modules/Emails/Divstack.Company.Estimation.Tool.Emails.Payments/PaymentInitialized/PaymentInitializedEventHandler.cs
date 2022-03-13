@@ -21,7 +21,7 @@ internal sealed class
     }
     public async Task Handle(PaymentInitialized paymentInitialized, CancellationToken cancellationToken)
     {
-        var (firstName, lastName, email, _) = await GetClientInfo(paymentInitialized);
+        var (firstName, lastName, email, _, _) = await GetClientInfo(paymentInitialized);
         var paymentInitializedEmailRequest = new PaymentInitializedEmailRequest(
             firstName,
             lastName,

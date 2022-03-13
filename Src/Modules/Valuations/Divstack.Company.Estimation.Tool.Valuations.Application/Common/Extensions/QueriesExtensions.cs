@@ -7,7 +7,7 @@ internal static class QueriesExtensions
 {
     internal static async Task<IEnumerable<TDto>> ExecuteQueryAsync<TDto>(this IDbConnection connection,
         string query,
-        dynamic dynamicParameters = null,
+        dynamic? dynamicParameters = null,
         CancellationToken cancellationToken = default,
         int? timeout = null)
     {
@@ -21,7 +21,7 @@ internal static class QueriesExtensions
 
     internal static async Task<TDto> ExecuteSingleQueryAsync<TDto>(this IDbConnection connection,
         string query,
-        dynamic dynamicParameters = null,
+        dynamic? dynamicParameters = null,
         CancellationToken cancellationToken = default,
         int? timeout = null)
     {

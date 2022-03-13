@@ -23,7 +23,7 @@ public sealed class Payment : Entity, IAggregateRoot
     private InquiryId InquiryId { get; init; }
     private PaymentSecret PaymentSecret { get; init; }
     private PaymentStatus PaymentStatus { get; set; }
-    private Money AmountToPay { get; init;}
+    private Money AmountToPay { get; init; }
 
     public static async Task<Payment> InitializeAsync(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, IPaymentProcessor paymentProcessor)
     {

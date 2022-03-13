@@ -15,9 +15,11 @@ internal static class SwaggerModule
         {
             var projectName = Assembly.GetEntryAssembly()?.GetName().Name;
             swagger.AddJwtAuthorization();
+            swagger.EnableAnnotations();
             swagger.SwaggerDoc("api", new OpenApiInfo
             {
-                Title = "API", Version = "v1.0"
+                Title = "API",
+                Version = "v1.1"
             });
             var xmlFile = $"{projectName}.xml";
             var xmlFilePath = Path.Combine(AppContext.BaseDirectory, xmlFile);

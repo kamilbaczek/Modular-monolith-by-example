@@ -4,6 +4,7 @@ using Application.Valuations.Queries.GetProposalsById;
 using Application.Valuations.Queries.GetProposalsById.Dtos;
 using DataAccess;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
 
@@ -20,12 +21,10 @@ internal sealed class
         _valuationsNotificationsContext = valuationsNotificationsContext;
     }
 
-    public async Task<ValuationProposalsVm> Handle(GetValuationProposalsByIdQuery request,
+    public async Task<ValuationProposalsVm> Handle([FromQuery] GetValuationProposalsByIdQuery request,
         CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(request.ValuationId);
-
-
         var valuationProposalsVm = await _valuationsNotificationsContext.Valuations
             .Find(valuation => valuation.Id == valuationId)
             .Project<ValuationProposalsVm>(ProjectionQuery)

@@ -1,29 +1,14 @@
-﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules
-{
-    using Helpers;
-    using Structurizr;
+﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules;
 
-    internal static class DrawUsersModule
+using Helpers;
+using Structurizr;
+
+internal static class DrawUsersModule
+{
+    internal static void UsersModule(this Container webApplication, Container database, Component bootstrapper)
     {
-        internal static void UsersModule(this Container webApplication, Container database, Component bootstrapper)
-        {
-            var usersApi = webApplication.AddComponent("Api - Users", "Serves API to manage users and authentications",
-                ".Net Core API");
-            bootstrapper.Uses(usersApi, "");
-            var usersInfrastrucutre =
-                webApplication.AddComponent("Infrastructure - Users", "Provides module skeleton",
-                    Technologies.DotnetDll);
-            usersApi.Uses(usersInfrastrucutre, "");
-            var usersApplication =
-                webApplication.AddComponent("Application - Users", "Run action on bussiness logic (Domain)",
-                    Technologies.DotnetDll);
-            usersInfrastrucutre.Uses(usersApplication, "");
-            var usersPersistance =
-                webApplication.AddComponent("Persistance - Users", "Database Access", "Entity Framework Core");
-            usersInfrastrucutre.Uses(usersPersistance, "");
-            var usersDomain = webApplication.AddComponent("Domain - Users", "Bussiness logic", Technologies.DotnetDll);
-            usersApplication.Uses(usersDomain, "");
-            usersPersistance.Uses(database, "");
-        }
+        var usersApi = webApplication.AddComponent("Api - Users", "Serves API to manage users and authentications",
+            ".Net Core API");
+        bootstrapper.Uses(usersApi, "");
     }
 }

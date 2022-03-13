@@ -12,7 +12,6 @@ internal sealed class InquiriesRepository : IInquiriesRepository
         _inquiriesContext = inquiriesContext;
     }
 
-
     public async Task PersistAsync(Inquiry inquiry, CancellationToken cancellationToken = default)
     {
         await _inquiriesContext.Inquiries.AddAsync(inquiry, cancellationToken);

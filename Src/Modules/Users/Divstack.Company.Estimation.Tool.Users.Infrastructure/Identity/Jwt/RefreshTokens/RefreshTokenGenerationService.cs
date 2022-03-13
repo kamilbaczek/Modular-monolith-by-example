@@ -56,7 +56,9 @@ internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationSer
     {
         var refreshToken = new RefreshToken
         {
-            Token = refreshTokenString, UserPublicId = userPublicId, ExpiryDate = _dateTimeProvider.Now.AddMinutes(_tokenConfiguration.RefreshExpirationInMinutes)
+            Token = refreshTokenString,
+            UserPublicId = userPublicId,
+            ExpiryDate = _dateTimeProvider.Now.AddMinutes(_tokenConfiguration.RefreshExpirationInMinutes)
         };
         await _refreshTokenRepository.AddAsync(refreshToken);
     }

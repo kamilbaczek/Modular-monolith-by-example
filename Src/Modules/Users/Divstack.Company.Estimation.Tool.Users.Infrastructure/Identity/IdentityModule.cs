@@ -20,7 +20,9 @@ internal static class IdentityModule
     {
         var lockoutOptions = new LockoutOptions
         {
-            AllowedForNewUsers = true, DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15), MaxFailedAccessAttempts = 3
+            AllowedForNewUsers = true,
+            DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15),
+            MaxFailedAccessAttempts = 3
         };
 
         services.AddIdentity<UserAccount, ApplicationRole>(config =>

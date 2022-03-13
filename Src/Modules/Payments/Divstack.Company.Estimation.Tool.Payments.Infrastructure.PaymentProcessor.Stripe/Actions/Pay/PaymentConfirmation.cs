@@ -49,7 +49,10 @@ internal sealed class PaymentConfirmation : IPaymentConfirmation
             Type = Card,
             Card = new PaymentMethodCardOptions
             {
-                Cvc = card.Cvc, ExpMonth = card.ExpMonth, ExpYear = card.ExpYear, Number = card.Number
+                Cvc = card.Cvc,
+                ExpMonth = card.ExpMonth,
+                ExpYear = card.ExpYear,
+                Number = card.Number
             }
         };
 

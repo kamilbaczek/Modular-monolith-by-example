@@ -19,7 +19,8 @@ internal sealed class GetInquiryClientQueryHandler : IRequestHandler<GetInquiryC
                 SELECT Client_FirstName AS {nameof(InquiryClientDto.FirstName)},
                        Client_LastName AS {nameof(InquiryClientDto.LastName)},
                        Client_Email_Value AS {nameof(InquiryClientDto.Email)},
-                       Client_PhoneNumber_Value AS {nameof(InquiryClientDto.PhoneNumber)}
+                       Client_PhoneNumber_Value AS {nameof(InquiryClientDto.PhoneNumber)},
+                       Client_Company_Size AS {nameof(InquiryClientDto.CompanySizeAsString)}
                 FROM Inquiries
                 WHERE Id = @InquiryId";
         var client = await connection.ExecuteSingleQueryAsync<InquiryClientDto>(

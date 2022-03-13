@@ -2,7 +2,6 @@
 
 using System.Text.RegularExpressions;
 using BuildingBlocks;
-using Inquiries.Domain.Inquiries.Clients;
 
 public sealed class PhoneNumber : ValueObject
 {

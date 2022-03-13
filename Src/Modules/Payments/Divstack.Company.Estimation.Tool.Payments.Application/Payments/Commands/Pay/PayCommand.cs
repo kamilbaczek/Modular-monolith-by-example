@@ -6,5 +6,5 @@ using Dtos.CreditCard;
 public sealed class PayCommand : ICommand
 {
     public Guid PaymentId { get; init; }
-    public CreditCardDto Card { get; init; }
+    public CreditCardDto? Card { get; init; }
 }
