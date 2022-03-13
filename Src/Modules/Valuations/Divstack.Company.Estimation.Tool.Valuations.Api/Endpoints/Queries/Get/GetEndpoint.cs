@@ -3,6 +3,7 @@
 using Application.Valuations.Queries.Get;
 using Application.Valuations.Queries.Get.Dtos;
 
+[Route(ValuationsRouting.Url)]
 internal sealed class GetEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResult<ActionResult<ValuationVm>>
 {
     private readonly IValuationsModule _valuationsModule;
@@ -12,7 +13,6 @@ internal sealed class GetEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResu
     }
 
     [HttpGet("{id}")]
-    [Route(ValuationsRouting.Url)]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [SwaggerOperation(
         Summary = nameof(GetEndpoint),
@@ -21,7 +21,7 @@ internal sealed class GetEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResu
             nameof(ValuationModule)
         })
     ]
-    public override async Task<ActionResult<ValuationVm>> HandleAsync([FromQuery] Guid id, CancellationToken cancellationToken = new())
+    public override async Task<ActionResult<ValuationVm>> HandleAsync(Guid id, CancellationToken cancellationToken = new())
     {
         var query = new GetValuationQuery(id);
         var result = await _valuationsModule.ExecuteQueryAsync(query);

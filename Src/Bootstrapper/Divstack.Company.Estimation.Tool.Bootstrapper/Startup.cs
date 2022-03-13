@@ -64,6 +64,7 @@ public sealed class Startup
         }
 
         app.UseSharedInfrastructure();
+
         app.UsePaymentModule();
         app.UseValuationModule();
         app.UsePrioritiesModule();

@@ -2,6 +2,7 @@
 
 using Application.Valuations.Commands.ApproveProposal;
 
+[Route($"{ValuationsRouting.Url}/proposals/approve")]
 internal sealed class ApproveEndpoint : EndpointBaseAsync.WithRequest<ApproveProposalCommand>.WithoutResult
 {
     private readonly IValuationsModule _valuationsModule;
@@ -11,7 +12,6 @@ internal sealed class ApproveEndpoint : EndpointBaseAsync.WithRequest<ApprovePro
     }
 
     [HttpPatch]
-    [Route($"{ValuationsRouting.Url}/proposals/approve")]
     [AllowAnonymous]
     [SwaggerOperation(
         Summary = nameof(ApproveEndpoint),
@@ -20,7 +20,7 @@ internal sealed class ApproveEndpoint : EndpointBaseAsync.WithRequest<ApprovePro
             nameof(ValuationModule)
         })
     ]
-    public override async Task HandleAsync([FromBody] ApproveProposalCommand command, CancellationToken cancellationToken = new())
+    public override async Task HandleAsync(ApproveProposalCommand command, CancellationToken cancellationToken = new())
     {
         await _valuationsModule.ExecuteCommandAsync(command);
     }

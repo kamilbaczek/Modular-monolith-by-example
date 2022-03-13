@@ -2,6 +2,7 @@
 
 using Application.Valuations.Commands.CancelProposal;
 
+[Route($"{ValuationsRouting.Url}/proposals/cancel")]
 internal sealed class CancelEndpoint : EndpointBaseAsync.WithRequest<CancelProposalCommand>.WithoutResult
 {
     private readonly IValuationsModule _valuationsModule;
@@ -11,7 +12,6 @@ internal sealed class CancelEndpoint : EndpointBaseAsync.WithRequest<CancelPropo
     }
 
     [HttpPatch]
-    [Route($"{ValuationsRouting.Url}/proposals/cancel")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [SwaggerOperation(
         Summary = nameof(CancelEndpoint),

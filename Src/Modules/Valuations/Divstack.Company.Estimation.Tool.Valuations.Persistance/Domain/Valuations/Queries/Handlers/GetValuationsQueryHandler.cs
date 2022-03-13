@@ -4,6 +4,7 @@ using Application.Valuations.Queries.Get;
 using Application.Valuations.Queries.Get.Dtos;
 using DataAccess;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
 
@@ -19,7 +20,7 @@ internal sealed class GetValuationsQueryHandler : IRequestHandler<GetValuationQu
         _valuationsNotificationsContext = valuationsNotificationsContext;
     }
 
-    public async Task<ValuationVm> Handle(GetValuationQuery request, CancellationToken cancellationToken)
+    public async Task<ValuationVm> Handle([FromQuery] GetValuationQuery request, CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(request.ValuationId);
         var valuationInformationDto = await _valuationsNotificationsContext.Valuations

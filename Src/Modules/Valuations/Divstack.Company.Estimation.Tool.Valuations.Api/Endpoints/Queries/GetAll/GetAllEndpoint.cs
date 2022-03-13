@@ -2,6 +2,7 @@
 
 using Application.Valuations.Queries.GetAll;
 
+[Route(ValuationsRouting.Url)]
 internal sealed class GetAllEndpoint : EndpointBaseAsync.WithoutRequest.WithResult<ActionResult<ValuationListVm>>
 {
     private readonly IValuationsModule _valuationsModule;
@@ -11,7 +12,6 @@ internal sealed class GetAllEndpoint : EndpointBaseAsync.WithoutRequest.WithResu
     }
 
     [HttpGet]
-    [Route(ValuationsRouting.Url)]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [SwaggerOperation(
         Summary = nameof(GetAllEndpoint),

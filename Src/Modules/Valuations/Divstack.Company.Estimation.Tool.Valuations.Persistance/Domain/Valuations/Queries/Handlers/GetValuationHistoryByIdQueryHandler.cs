@@ -4,6 +4,7 @@ using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
 using DataAccess;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
@@ -29,7 +30,7 @@ internal sealed class
         _valuationsNotificationsContext = valuationsNotificationsContext;
     }
 
-    public async Task<ValuationHistoryVm> Handle(GetValuationHistoryByIdQuery request,
+    public async Task<ValuationHistoryVm> Handle([FromQuery] GetValuationHistoryByIdQuery request,
         CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(request.ValuationId);

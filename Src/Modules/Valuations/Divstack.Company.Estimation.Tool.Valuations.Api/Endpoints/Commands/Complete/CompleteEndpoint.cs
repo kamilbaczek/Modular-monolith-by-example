@@ -3,6 +3,7 @@
 using Application.Valuations.Commands.Complete;
 using Suggest;
 
+[Route($"{ValuationsRouting.Url}/proposals/complete")]
 internal sealed class CompleteEndpoint : EndpointBaseAsync.WithRequest<CompleteCommand>.WithoutResult
 {
     private readonly IValuationsModule _valuationsModule;
@@ -12,7 +13,6 @@ internal sealed class CompleteEndpoint : EndpointBaseAsync.WithRequest<CompleteC
     }
 
     [HttpPost]
-    [Route($"{ValuationsRouting.Url}/proposals/complete")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [SwaggerOperation(
         Summary = nameof(SuggestEndpoint),

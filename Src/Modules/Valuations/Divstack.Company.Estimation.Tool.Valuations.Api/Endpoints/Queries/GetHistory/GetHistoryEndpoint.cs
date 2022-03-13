@@ -3,6 +3,7 @@
 using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
 
+[Route(ValuationsRouting.Url)]
 internal sealed class GetHistoryEndpoint : EndpointBaseAsync.WithRequest<Guid>
                                                             .WithResult<ActionResult<ValuationHistoryVm>>
 {
@@ -12,8 +13,7 @@ internal sealed class GetHistoryEndpoint : EndpointBaseAsync.WithRequest<Guid>
         _valuationsModule = valuationsModule;
     }
 
-    [HttpGet("{id}")]
-    [Route($"{ValuationsRouting.Url}/history")]
+    [HttpGet("{id}/history")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [SwaggerOperation(
         Summary = nameof(GetHistoryEndpoint),
@@ -22,7 +22,7 @@ internal sealed class GetHistoryEndpoint : EndpointBaseAsync.WithRequest<Guid>
             nameof(ValuationModule)
         })
     ]
-    public override async Task<ActionResult<ValuationHistoryVm>> HandleAsync([FromQuery] Guid id, CancellationToken cancellationToken = new())
+    public override async Task<ActionResult<ValuationHistoryVm>> HandleAsync(Guid id, CancellationToken cancellationToken = new())
     {
         var query = new GetValuationHistoryByIdQuery(id);
         var historyVm = await _valuationsModule.ExecuteQueryAsync(query);

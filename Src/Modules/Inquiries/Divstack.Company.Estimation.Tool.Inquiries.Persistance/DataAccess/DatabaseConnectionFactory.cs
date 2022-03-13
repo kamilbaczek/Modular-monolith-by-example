@@ -17,7 +17,7 @@ internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 
     public IDbConnection Create()
     {
-        if (_connection is {State: ConnectionState.Open})
+        if (_connection is { State: ConnectionState.Open })
         {
             return _connection;
         }
@@ -31,7 +31,7 @@ internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 
     public void Dispose()
     {
-        if (_connection is {State: ConnectionState.Open})
+        if (_connection is { State: ConnectionState.Open })
         {
             _connection.Dispose();
         }
