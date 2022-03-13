@@ -3,4 +3,4 @@ repos:
     rev: "v5.1.225507"
     hooks:
       - id: dotnet-format
-        args: [--folder, --include, --verbosity d, --severity info]
+        args: [--folder, --include]
