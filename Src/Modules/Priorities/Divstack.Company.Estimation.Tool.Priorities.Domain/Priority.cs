@@ -17,7 +17,7 @@ public sealed class Priority : Entity
         Scores = new List<ClientLoseRisk>();
         Level = ManualSetLevel ?? Calculate(companySize);
 
-        var @event = new PriorityDefinedDomainEvent(valuationId, Id, Deadline);
+        var @event = new PriorityDefinedDomainEvent(valuationId, Id, Deadline.Date);
         AddDomainEvent(@event);
     }
     public PriorityId Id { get; init; }
@@ -29,14 +29,26 @@ public sealed class Priority : Entity
     private PriorityLevel? ManualSetLevel { get; set; }
     private bool Archived { get; set; }
 
-    public static Priority Define(ValuationId valuationId, InquiryId inquiryId, int? companySize, Deadline? deadline)
+    public static Priority Define(
+        ValuationId valuationId,
+        InquiryId inquiryId,
+        int? companySize,
+        Deadline deadline)
     {
         return new Priority(valuationId, inquiryId, companySize, deadline);
     }
 
     public void Redefine(int? companySize)
     {
+        var oldLevel = Level;
+
         Level = ManualSetLevel ?? Calculate(companySize);
+
+        if (oldLevel < Level)
+        {
+            var @event = new PriorityIncreasedDomainEvent(Id, Level);
+            AddDomainEvent(@event);
+        }
     }
 
     public void Archive()

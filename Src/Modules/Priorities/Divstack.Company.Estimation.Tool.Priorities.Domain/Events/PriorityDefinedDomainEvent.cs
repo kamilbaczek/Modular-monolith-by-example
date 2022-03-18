@@ -5,14 +5,14 @@ using Shared.DDD.BuildingBlocks;
 
 public sealed class PriorityDefinedDomainEvent : DomainEventBase
 {
-    public PriorityDefinedDomainEvent(ValuationId valuationId, PriorityId priorityId, Deadline deadline)
+    public PriorityDefinedDomainEvent(ValuationId valuationId, PriorityId priorityId, DateTime deadlineDate)
     {
         ValuationId = valuationId;
         PriorityId = priorityId;
-        Deadline = deadline;
+        DeadlineDate = deadlineDate;
     }
 
     public ValuationId ValuationId { get; }
     public PriorityId PriorityId { get; }
-    public Deadline Deadline { get; }
+    public DateTime DeadlineDate { get; }
 }

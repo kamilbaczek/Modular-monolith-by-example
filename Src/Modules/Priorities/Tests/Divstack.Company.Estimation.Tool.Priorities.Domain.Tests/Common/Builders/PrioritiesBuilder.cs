@@ -47,7 +47,7 @@ internal sealed class PrioritiesBuilder
 
     private static Priority Build()
     {
-        return Priority.Define(ValuationId, InquiryId, 100, Deadline);
+        return Priority.Define(ValuationId, InquiryId, CompanySize, Deadline);
     }
 
     public static implicit operator Priority(PrioritiesBuilder builder)

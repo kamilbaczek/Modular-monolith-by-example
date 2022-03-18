@@ -3,6 +3,7 @@
 using System;
 using Common.Builders;
 using Events;
+using FluentAssertions;
 using NUnit.Framework;
 using Shared.DDD.BuildingBlocks;
 
@@ -34,30 +35,32 @@ public class RedefinePrioritiesTests : BasePriorityTest
         var priority = Priority.Define(valuationId, inquiryId, CompanySize, deadline);
 
         var @event = GetPublishedEvent<PriorityDefinedDomainEvent>(priority);
-        // @event.DeadlineDate.Should().Be(expectedDeadline);
+        @event.DeadlineDate.Should().Be(expectedDeadline);
     }
 
     [Test]
-    public void Given_Redefine_When_CloserToDeadline_Then_PriorityIncresed()
+    public void Given_Redefine_When_CloserToDeadline_Then_PriorityIncreased()
     {
         SystemTime.SetDateTime(new DateTime(2022, 01, 01));
-        Priority priority = A.Priority().WithCompanySize(CompanySize).WithDeadline(3);
+        Priority priority = A.Priority().WithCompanySize(CompanySize);
         SystemTime.SetDateTime(new DateTime(2022, 01, 10));
 
         priority.Redefine(CompanySize);
-        // var @event = GetPublishedEvent<ValuationPrioritiesLevelIncresedDomainEvent>(valuation);
-        // @event.Should().NotBeNull();
+
+        var @event = GetPublishedEvent<PriorityIncreasedDomainEvent>(priority);
+        @event.Should().NotBeNull();
     }
 
     [Test]
-    public void Given_RedefinePriorites_When_ValuationDeadlineExceeded_Then_PriorityIncresed()
+    public void Given_Redefine_When_ValuationDeadlineExceeded_Then_PriorityIncreased()
     {
         SystemTime.SetDateTime(new DateTime(2022, 01, 01));
-        Priority priority = A.Priority().WithDeadline(3);
+        Priority priority = A.Priority();
         SystemTime.SetDateTime(new DateTime(2022, 03, 10));
 
-        priority.Redefine(10);
-        // var @event = GetPublishedEvent<ValuationPrioritiesLevelIncresedDomainEvent>(valuation);
-        // @event.Should().NotBeNull();
+        priority.Redefine(CompanySize);
+
+        var @event = GetPublishedEvent<PriorityIncreasedDomainEvent>(priority);
+        @event.Should().NotBeNull();
     }
 }
