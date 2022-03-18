@@ -25,7 +25,7 @@ jobs:
     - name: Sonarscanner for dotnet
       run: |
            dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs"
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 
