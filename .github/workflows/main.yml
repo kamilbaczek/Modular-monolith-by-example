@@ -20,10 +20,10 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.x' # SDK Version to use.
+    - name: Install dotnet-reportgenerator
+      run: dotnet tool install --global dotnet-reportgenerator-globaltool --tool-path tools
     - name: Install sonarscanner-dotnet
       run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner --version 5.4
-    - name: Install dotnet-reportgenerator
-      run: dotnet tool install -g dotnet-reportgenerator-globaltool
     - name: Sonarscanner for dotnet
       run: |
            dotnet test --collect:"XPlat Code Coverage"
