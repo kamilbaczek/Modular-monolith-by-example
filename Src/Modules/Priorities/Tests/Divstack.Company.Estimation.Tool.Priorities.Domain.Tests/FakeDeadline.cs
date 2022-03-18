@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain.Tests;
 
-using Domain.Valuations.Deadlines;
+using Deadlines;
 using Moq;
 
 internal static class FakeDeadline

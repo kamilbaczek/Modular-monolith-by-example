@@ -9,9 +9,9 @@ using MediatR;
 
 internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<RedefinePriorityCommand>
 {
+    private readonly IInquiriesModule _inquiryModule;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IPrioritiesRepository _prioritiesRepository;
-    private readonly IInquiriesModule _inquiryModule;
     public RedefinePriorityCommandCommandHandler(
         IPrioritiesRepository prioritiesRepository,
         IInquiriesModule inquiryModule,

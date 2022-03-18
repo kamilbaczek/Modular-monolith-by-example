@@ -1,9 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers;
 
 using Application.Valuations.Queries.GetAll;
-using DataAccess;
 using MediatR;
-using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
 
 internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>

@@ -1,28 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Castle.Core" Version="4.4.0" />
-      <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-      <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="4.4.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="MongoDB.Driver" Version="2.14.1"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Application\Divstack.Company.Estimation.Tool.Priorities.Application.csproj" />
-      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Domain\Divstack.Company.Estimation.Tool.Priorities.Domain.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Application\Divstack.Company.Estimation.Tool.Priorities.Application.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Domain\Divstack.Company.Estimation.Tool.Priorities.Domain.csproj"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <None Update="priorities-appsettings.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="priorities-appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

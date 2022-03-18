@@ -2,7 +2,6 @@
 
 using DataAccess;
 using MediatR;
-using MongoDB.Bson;
 using MongoDB.Driver;
 using Tool.Priorities.Domain;
 using Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds;
@@ -12,6 +11,7 @@ internal sealed class GetPrioritiesQueryHandler : IRequestHandler<GetPrioritiesQ
 {
     private const string ProjectionQuery =
         @"{ PriorityId: '$_id.Value', ValuationId: '$ValuationId.Value', InquiryId: '$InquiryId.Value', Level: '$Level.Name',_id:0, Archived: 1 }";
+
     private const string Archived = "Archived";
     private const string Level = "Level";
 

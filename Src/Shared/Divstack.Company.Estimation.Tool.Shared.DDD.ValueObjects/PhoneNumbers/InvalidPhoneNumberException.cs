@@ -7,5 +7,8 @@ public sealed class InvalidPhoneNumberException : Exception
     public InvalidPhoneNumberException(string value) : base(GetInvalidPhoneNumberMessage(value))
     {
     }
-    private static string GetInvalidPhoneNumberMessage(string value) => $"Phone number `${value}`";
+    private static string GetInvalidPhoneNumberMessage(string value)
+    {
+        return $"Phone number `${value}`";
+    }
 }

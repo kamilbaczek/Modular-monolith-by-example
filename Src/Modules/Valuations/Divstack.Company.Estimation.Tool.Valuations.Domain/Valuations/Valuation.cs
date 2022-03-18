@@ -21,13 +21,14 @@ public sealed class Valuation : Entity, IAggregateRoot
         AddDomainEvent(@event);
     }
     public ValuationId Id { get; init; }
-    private InquiryId InquiryId { get; init; }
-    private LinkedList<Proposal> Proposals { get; init; }
-    private LinkedList<HistoricalEntry> History { get; init; }
-    private DateTime RequestedDate { get; init; }
+    private InquiryId InquiryId { get; }
+    private LinkedList<Proposal> Proposals { get; }
+    private LinkedList<HistoricalEntry> History { get; }
+    private DateTime RequestedDate { get; }
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
     private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
+
     private Proposal? ProposalWaitForDecision => NotCancelledProposals
         .SingleOrDefault(proposal => !proposal.HasDecision);
 
@@ -132,7 +133,6 @@ public sealed class Valuation : Entity, IAggregateRoot
         var @event = new ValuationCompletedDomainEvent(InquiryId, Id, recentProposal.Price);
         AddDomainEvent(@event);
     }
-
 
 
     private void ChangeStatus(ValuationStatus valuationStatus)

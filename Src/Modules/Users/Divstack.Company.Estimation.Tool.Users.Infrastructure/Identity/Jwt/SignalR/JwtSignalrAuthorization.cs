@@ -9,7 +9,10 @@ internal static class JwtSignalrAuthorization
 {
     private const string AccessTokenParamName = "access_token";
     private const string Hubs = "/hubs/";
-    private static string GetBearerToken(string token) => $"Bearer {token}";
+    private static string GetBearerToken(string token)
+    {
+        return $"Bearer {token}";
+    }
 
     internal static Task ReadTokenFromQueryString(MessageReceivedContext context)
     {

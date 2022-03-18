@@ -1,9 +1,9 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Mapper;
 
+using Domain.Valuations.Events;
+using Domain.Valuations.Proposals.Events;
 using IntegrationsEvents.ExternalEvents;
 using Shared.DDD.BuildingBlocks;
-using Valuations.Domain.Valuations.Events;
-using Valuations.Domain.Valuations.Proposals.Events;
 
 internal sealed class EventMapper : IEventMapper
 {

@@ -194,6 +194,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents", "Src\Modules\Priorities\Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents\Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents.csproj", "{34693037-C172-48C7-B013-F16D3FB8F87F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8A59B326-9B66-4B97-A5C1-95F81EDE90B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Priorities.Domain.Tests", "Src\Modules\Priorities\Tests\Divstack.Company.Estimation.Tool.Priorities.Domain.Tests\Divstack.Company.Estimation.Tool.Priorities.Domain.Tests.csproj", "{CD381C10-3CCE-40E2-8053-A192705AF077}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -448,6 +452,10 @@ Global
 		{34693037-C172-48C7-B013-F16D3FB8F87F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34693037-C172-48C7-B013-F16D3FB8F87F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34693037-C172-48C7-B013-F16D3FB8F87F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD381C10-3CCE-40E2-8053-A192705AF077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD381C10-3CCE-40E2-8053-A192705AF077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD381C10-3CCE-40E2-8053-A192705AF077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD381C10-3CCE-40E2-8053-A192705AF077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -540,5 +548,7 @@ Global
 		{5C176427-B400-404A-94AD-311AE4A296B0} = {5524CFF2-818A-4B23-AC09-8403CF73C024}
 		{6948AA40-ADF0-4EA4-9E9A-8D980954530E} = {5524CFF2-818A-4B23-AC09-8403CF73C024}
 		{34693037-C172-48C7-B013-F16D3FB8F87F} = {5524CFF2-818A-4B23-AC09-8403CF73C024}
+		{8A59B326-9B66-4B97-A5C1-95F81EDE90B7} = {93F6CC39-6D61-4A32-97BB-23E70BB20E0E}
+		{CD381C10-3CCE-40E2-8053-A192705AF077} = {8A59B326-9B66-4B97-A5C1-95F81EDE90B7}
 	EndGlobalSection
 EndGlobal

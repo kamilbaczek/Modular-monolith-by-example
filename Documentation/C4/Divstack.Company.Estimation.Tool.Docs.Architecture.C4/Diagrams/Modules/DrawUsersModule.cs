@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Docs.Architecture.C4.Diagrams.Modules;
 
-using Helpers;
 using Structurizr;
 
 internal static class DrawUsersModule

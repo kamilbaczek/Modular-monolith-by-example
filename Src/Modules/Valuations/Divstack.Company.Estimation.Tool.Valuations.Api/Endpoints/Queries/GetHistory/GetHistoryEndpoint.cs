@@ -4,8 +4,7 @@ using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
 
 [Route(ValuationsRouting.Url)]
-internal sealed class GetHistoryEndpoint : EndpointBaseAsync.WithRequest<Guid>
-                                                            .WithResult<ActionResult<ValuationHistoryVm>>
+internal sealed class GetHistoryEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResult<ActionResult<ValuationHistoryVm>>
 {
     private readonly IValuationsModule _valuationsModule;
     public GetHistoryEndpoint(IValuationsModule valuationsModule)

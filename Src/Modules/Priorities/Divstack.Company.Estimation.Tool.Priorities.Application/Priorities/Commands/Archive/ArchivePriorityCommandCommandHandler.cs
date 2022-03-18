@@ -8,8 +8,8 @@ using Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class ArchivePriorityCommandCommandHandler : INotificationHandler<ProposalSuggested>
 {
-    private readonly IPrioritiesRepository _prioritiesRepository;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    private readonly IPrioritiesRepository _prioritiesRepository;
     public ArchivePriorityCommandCommandHandler(IPrioritiesRepository prioritiesRepository,
         IIntegrationEventPublisher integrationEventPublisher)
     {

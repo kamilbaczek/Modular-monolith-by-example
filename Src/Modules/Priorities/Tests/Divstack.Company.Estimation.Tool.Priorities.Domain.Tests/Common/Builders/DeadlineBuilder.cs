@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common.Builders;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain.Tests.Common.Builders;
 
-using Domain.Valuations.Deadlines;
+using Deadlines;
 using Moq;
 
 internal sealed class DeadlineBuilder

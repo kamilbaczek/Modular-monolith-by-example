@@ -2,11 +2,9 @@
 
 using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
-using DataAccess;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
-using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
 
 internal sealed class

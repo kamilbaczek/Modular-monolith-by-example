@@ -2,10 +2,8 @@
 
 using Application.Valuations.Queries.GetProposalsById;
 using Application.Valuations.Queries.GetProposalsById.Dtos;
-using DataAccess;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
 
 internal sealed class

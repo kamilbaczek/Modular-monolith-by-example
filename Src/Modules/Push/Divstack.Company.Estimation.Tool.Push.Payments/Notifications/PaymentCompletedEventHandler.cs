@@ -32,6 +32,7 @@ internal sealed class PaymentCompletedEventHandler : INotificationHandler<Paymen
             var notification = Notification.Create(@event.PaymentId, nameof(PaymentCompleted), userDto.PublicId);
             await _notificationsWriteRepository.AddAsync(notification, cancellationToken);
         }
+
         await _paymentsHub.Clients.All.SendAsync(nameof(PaymentCompleted), @event, cancellationToken);
     }
 }

@@ -1,30 +1,20 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common.Builders;
 
 using Domain.Valuations;
-using Domain.Valuations.Deadlines;
 using Proposals;
 
 internal sealed class ValuationBuilder
 {
-    private const int WorksDaysToDeadlineFromNow = 3;
-
     internal ValuationBuilder()
     {
         InquiryId = InquiryId.Create();
-        Deadline = A.Deadline().WithDeadline(WorksDaysToDeadlineFromNow);
     }
     private static InquiryId InquiryId { get; set; }
-    private static Deadline Deadline { get; set; }
 
-    internal ValuationBuilder WithDeadline(int worksDaysToDeadlineFromNow)
-    {
-        Deadline = A.Deadline().WithDeadline(worksDaysToDeadlineFromNow);
-        return this;
-    }
 
     private static Valuation Build()
     {
-        return Valuation.Request(InquiryId, Deadline, 100);
+        return Valuation.Request(InquiryId);
     }
 
     internal ProposalSuggestionBuilder WithProposal()

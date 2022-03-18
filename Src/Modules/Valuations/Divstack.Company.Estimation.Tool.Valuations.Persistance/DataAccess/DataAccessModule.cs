@@ -2,7 +2,6 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
 
 internal static class DataAccessModule
 {

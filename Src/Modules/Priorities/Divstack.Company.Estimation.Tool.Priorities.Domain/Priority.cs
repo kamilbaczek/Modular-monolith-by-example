@@ -7,16 +7,7 @@ using Shared.DDD.BuildingBlocks;
 
 public sealed class Priority : Entity
 {
-    public PriorityId Id { get; init; }
-    public ValuationId ValuationId { get; init; }
-    private InquiryId InquiryId { get; init; }
-    private IList<ClientLoseRisk> Scores { get; init; }
-    internal PriorityLevel Level { get; private set; }
-    private Deadline? Deadline { get; init; }
-    private PriorityLevel? ManualSetLevel { get; set; }
-    private bool Archived { get; set; }
-
-    private Priority(ValuationId valuationId, InquiryId inquiryId, int? companySize, Deadline? deadline)
+    private Priority(ValuationId valuationId, InquiryId inquiryId, int? companySize, Deadline deadline)
     {
         Id = PriorityId.Create();
         ValuationId = valuationId;
@@ -26,9 +17,17 @@ public sealed class Priority : Entity
         Scores = new List<ClientLoseRisk>();
         Level = ManualSetLevel ?? Calculate(companySize);
 
-        var @event = new PriorityDefinedDomainEvent(valuationId, Id);
+        var @event = new PriorityDefinedDomainEvent(valuationId, Id, Deadline);
         AddDomainEvent(@event);
     }
+    public PriorityId Id { get; init; }
+    public ValuationId ValuationId { get; init; }
+    private InquiryId InquiryId { get; }
+    private IList<ClientLoseRisk> Scores { get; }
+    internal PriorityLevel Level { get; private set; }
+    private Deadline Deadline { get; }
+    private PriorityLevel? ManualSetLevel { get; set; }
+    private bool Archived { get; set; }
 
     public static Priority Define(ValuationId valuationId, InquiryId inquiryId, int? companySize, Deadline? deadline)
     {

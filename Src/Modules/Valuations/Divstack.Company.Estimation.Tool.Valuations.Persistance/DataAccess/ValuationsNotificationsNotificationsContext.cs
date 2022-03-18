@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.DataAccess;
 
-using MongoDB.Driver;
 using Valuations.Domain.Valuations;
 
 internal sealed class ValuationsNotificationsNotificationsContext : IValuationsNotificationsContext

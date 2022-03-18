@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
 
-using DataAccess;
-using MongoDB.Driver;
 using Tool.Valuations.Domain.Valuations;
 
 internal sealed class ValuationsRepository : IValuationsRepository

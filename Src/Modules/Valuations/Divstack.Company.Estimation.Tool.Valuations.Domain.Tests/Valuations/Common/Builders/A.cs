@@ -6,9 +6,4 @@ internal static class A
     {
         return new ValuationBuilder();
     }
-
-    internal static DeadlineBuilder Deadline()
-    {
-        return new DeadlineBuilder();
-    }
 }

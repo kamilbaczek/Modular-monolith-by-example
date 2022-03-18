@@ -1,10 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance;
 
-using DataAccess;
 using Domain.Valuations.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
