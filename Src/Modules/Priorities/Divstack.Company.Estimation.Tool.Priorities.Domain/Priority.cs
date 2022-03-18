@@ -64,13 +64,12 @@ public sealed class Priority : Entity
     private PriorityLevel Calculate(int? companySize)
     {
         Clear();
-        var largeCompanyPolicy = new IsLargeCompanyPolicy();
-        var companyLarge = largeCompanyPolicy.IsLargeCompany(companySize);
+        var companyLarge = IsLargeCompanyPolicy.IsLargeCompany(companySize);
         if (companyLarge)
             Increse(ClientLoseRisk.LargeClientCompany);
-        if (Deadline!.Exceeded)
+        if (Deadline.Exceeded)
             Increse(ClientLoseRisk.DeadlineExceed);
-        if (!Deadline!.Exceeded)
+        if (!Deadline.Exceeded)
         {
             var closeToDeadline = ClientLoseRisk.CloseToDeadline(Deadline.DaysToDeadline);
             if (closeToDeadline.Scores > 0)
