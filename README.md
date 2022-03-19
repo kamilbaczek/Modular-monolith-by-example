@@ -23,7 +23,8 @@
 
 ### CI/CD
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
-[![Coverage Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
+
+[![codecov.io](https://codecov.io/github/kamilbaczek/Estimation-Tool?branch=develop)] (https://codecov.io/github/kamilbaczek/Estimation-Tool?branch=develop)
 
 ### Dotnet format as precommit hook
 Author cares about code quality of this projected. That why dotnet format is executed before each commit. To make code properly formatted always. This save a lot of time during code review. Rules for dotnet format are stored in .editorconfig file. Install [precommit](https://pre-commit.com/) before you will start commit even locally.
