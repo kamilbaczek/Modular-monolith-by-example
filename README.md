@@ -23,7 +23,7 @@
 
 ### CI/CD
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
-
+##### Domain Code Coverage
 [![Domain Code Coverage](https://codecov.io/gh/kamilbaczek/Estimation-Tool/branch/develop/graph/badge.svg?token=S66MBBE6CV)](https://codecov.io/gh/kamilbaczek/Estimation-Tool)
 
 ### Dotnet format as precommit hook
