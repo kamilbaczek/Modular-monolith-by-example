@@ -20,12 +20,30 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.x' # SDK Version to use.
+    - name: Install dotnet-reportgenerator
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+        dotnet new tool-manifest
+        dotnet tool install dotnet-reportgenerator-globaltool
+
     - name: Install sonarscanner-dotnet
-      run: dotnet new tool-manifest && dotnet tool install --global dotnet-sonarscanner --version 5.4
+      run:  dotnet tool install --global dotnet-sonarscanner --version 5.4
     - name: Sonarscanner for dotnet
       run: |
-           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml" /d:sonar.coverage.exclusions="**Tests*.cs"
+           dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+           dotnet reportgenerator "-reports:**/TestResults/**/coverage.opencover.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.coverageReportPaths="./sonarqubecoverage/SonarQube.xml" /d:sonar.coverage.exclusions="**Tests*.cs"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+    - name: Codecov
+      uses: codecov/codecov-action@v2.1.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        files: "**/TestResults/**/coverage.opencover.xml"
+        flags: unittests # optional
+        name: codecov-umbrella # optional
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
+
 
