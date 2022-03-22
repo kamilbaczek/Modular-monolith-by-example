@@ -41,7 +41,6 @@ public sealed class Priority : Entity
     public void Redefine(int? companySize)
     {
         var oldLevel = Level;
-
         Level = ManualSetLevel ?? Calculate(companySize);
 
         if (oldLevel < Level)
@@ -54,11 +53,16 @@ public sealed class Priority : Entity
     public void Archive()
     {
         Archived = true;
+        var @event = new PriorityArchivedDomainEvent(Id);
+        AddDomainEvent(@event);
     }
 
-    internal void Force(PriorityLevel? priorityLevel)
+    public void Force(PriorityLevel priorityLevel)
     {
+        Level = priorityLevel;
         ManualSetLevel = priorityLevel;
+        var @event = new PriorityForcedDomainEvent(Id, Level);
+        AddDomainEvent(@event);
     }
 
     private PriorityLevel Calculate(int? companySize)

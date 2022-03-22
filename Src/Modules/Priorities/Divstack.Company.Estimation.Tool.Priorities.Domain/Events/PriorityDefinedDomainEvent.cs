@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain.Events;
 
-using Deadlines;
 using Shared.DDD.BuildingBlocks;
 
 public sealed class PriorityDefinedDomainEvent : DomainEventBase
