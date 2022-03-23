@@ -14,7 +14,6 @@
 ![.Net 6](https://user-images.githubusercontent.com/74410956/143401887-afbef644-f5ce-4d2b-aee1-09e0457d74eb.png)
 ![Heroku](https://user-images.githubusercontent.com/74410956/143401316-4a69eb67-c2eb-41d1-ab5c-751a9c79235c.png)
 ![Docker](https://user-images.githubusercontent.com/74410956/143401493-8f41000d-0d82-4005-b643-75d6045394c2.png)
-![Travis](https://user-images.githubusercontent.com/74410956/143401738-d71d8ab7-c8df-4626-ba42-13b92d933587.png)
 ![Sentry](https://user-images.githubusercontent.com/74410956/144380180-42e47963-1793-4be5-9a72-47da2620fdce.png)
 
 ### Integrations
@@ -25,9 +24,6 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kamilbaczek_Estimation-Tool&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kamilbaczek_Estimation-Tool)
 ##### Domain Code Coverage
 [![Domain Code Coverage](https://codecov.io/gh/kamilbaczek/Estimation-Tool/branch/develop/graph/badge.svg?token=S66MBBE6CV)](https://codecov.io/gh/kamilbaczek/Estimation-Tool)
-
-### Dotnet format as precommit hook
-Author cares about code quality of this projected. That why dotnet format is executed before each commit. To make code properly formatted always. This save a lot of time during code review. Rules for dotnet format are stored in .editorconfig file. Install [precommit](https://pre-commit.com/) before you will start commit even locally.
 
 #### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
 
@@ -50,3 +46,9 @@ Author cares about code quality of this projected. That why dotnet format is exe
 
 #### Valuations Flow
 ![diagram](https://user-images.githubusercontent.com/74410956/142997315-97c09d1f-cef3-416f-98bf-069b388ea019.png)
+
+## Notes for developers
+### Dotnet format as precommit hook
+Author cares about code quality of this projected. That why dotnet format is executed before each commit. To make code properly formatted always. This save a lot of time during code review. Rules for dotnet format are stored in .editorconfig file. Install [precommit](https://pre-commit.com/) before you will start commit even locally.
+
+
