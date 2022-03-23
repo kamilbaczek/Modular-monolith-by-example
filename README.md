@@ -5,7 +5,7 @@
   * [System Context](#system-context)
   * [Containers](#containers)
   * [Components](#components)
-  * [Event Storming(#event-storming)]
+  * [Event Storming](#event-storming)]
 * [Technologies](#technologies)
 * [CI/CD](#ci/cd)
 * [Test Environment](#test-environment)
