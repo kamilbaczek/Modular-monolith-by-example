@@ -7,20 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="9.0.0"/>
-    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1"/>
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.FluentValidation.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Application\Divstack.Company.Estimation.Tool.Priorities.Application.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents\Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Persistance\Divstack.Company.Estimation.Tool.Priorities.Persistance.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Application\Divstack.Company.Estimation.Tool.Priorities.Application.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents\Divstack.Company.Estimation.Tool.Priorities.IntegrationsEvents.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Persistance\Divstack.Company.Estimation.Tool.Priorities.Persistance.csproj" />
   </ItemGroup>
 
 </Project>
