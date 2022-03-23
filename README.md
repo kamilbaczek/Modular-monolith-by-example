@@ -5,6 +5,7 @@
   * [System Context](#system-context)
   * [Containers](#containers)
   * [Components](#components)
+  * [Event Storming(#event-storming)]
 * [Technologies](#technologies)
 * [CI/CD](#ci/cd)
 * [Test Environment](#test-environment)
@@ -50,7 +51,7 @@
 ##### Priorities
 <img width="934" alt="image" src="https://user-images.githubusercontent.com/74410956/159788894-a9a3c640-b6da-4f45-8363-9e4877abfdba.png">
 
-#### Valuations Flow
+##### Valuations Flow
 ![diagram](https://user-images.githubusercontent.com/74410956/142997315-97c09d1f-cef3-416f-98bf-069b388ea019.png)
 
 ## Notes for developers
