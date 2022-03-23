@@ -44,6 +44,12 @@
 #### Components
 ![components](https://user-images.githubusercontent.com/74410956/130396746-40283672-decd-4ca8-a035-1c0ef6c6ae8e.png)
 
+#### Event Storming
+[Miro](https://miro.com/app/board/o9J_lcC1E7g=/?invite_link_id=913994717613)
+
+##### Priorities
+<img width="934" alt="image" src="https://user-images.githubusercontent.com/74410956/159788894-a9a3c640-b6da-4f45-8363-9e4877abfdba.png">
+
 #### Valuations Flow
 ![diagram](https://user-images.githubusercontent.com/74410956/142997315-97c09d1f-cef3-416f-98bf-069b388ea019.png)
 
