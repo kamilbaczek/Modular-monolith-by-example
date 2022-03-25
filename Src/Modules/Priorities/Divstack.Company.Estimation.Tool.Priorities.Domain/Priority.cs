@@ -22,10 +22,10 @@ public sealed class Priority : Entity
     }
     public PriorityId Id { get; init; }
     public ValuationId ValuationId { get; init; }
-    private InquiryId InquiryId { get; }
-    private IList<ClientLoseRisk> Scores { get; }
+    private InquiryId InquiryId { get; init; }
+    private IList<ClientLoseRisk> Scores { get; init; }
     internal PriorityLevel Level { get; private set; }
-    private Deadline Deadline { get; }
+    private Deadline Deadline { get; init; }
     private PriorityLevel? ManualSetLevel { get; set; }
     private bool Archived { get; set; }
 

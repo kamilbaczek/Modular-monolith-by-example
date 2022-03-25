@@ -32,7 +32,8 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
         priority.Redefine(companySize);
 
         await _prioritiesRepository.CommitAsync(priority, cancellationToken);
-        await _integrationEventPublisher.PublishAsync(priority.DomainEvents, cancellationToken);
+        if (priority.DomainEvents.Any())
+            await _integrationEventPublisher.PublishAsync(priority.DomainEvents, cancellationToken);
 
         return Unit.Value;
     }
