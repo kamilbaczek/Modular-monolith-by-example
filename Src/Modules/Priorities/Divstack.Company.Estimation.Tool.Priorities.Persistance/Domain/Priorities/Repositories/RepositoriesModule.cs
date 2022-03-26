@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 internal static class RepositoriesModule
 {
     private const string Repository = "Repository";
+
     internal static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.Scan(scan => scan

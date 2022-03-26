@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Controllers;
 
 using System;
 using System.Reflection;
