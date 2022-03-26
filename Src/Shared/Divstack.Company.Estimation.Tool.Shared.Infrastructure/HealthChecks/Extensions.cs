@@ -17,12 +17,12 @@ internal static class Extensions
     {
         services.AddHealthChecks()
             .AddProcessAllocatedMemoryHealthCheck(MaximumMegabytesAllocated);
+
         services.AddHealthChecksUI()
             .AddInMemoryStorage();
 
         return services;
     }
-
 
     internal static void UseSharedHealthChecks(this IApplicationBuilder app)
     {

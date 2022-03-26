@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Configurations;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Cors.Configurations;
 
 using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
