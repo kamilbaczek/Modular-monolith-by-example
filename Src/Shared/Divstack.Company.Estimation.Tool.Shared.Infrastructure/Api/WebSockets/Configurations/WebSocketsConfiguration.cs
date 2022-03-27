@@ -11,7 +11,7 @@ internal sealed class WebSocketsConfiguration : IWebSocketsConfiguration
 
     internal WebSocketsConfiguration(IConfiguration configuration)
     {
-        _configuration = configuration.GetSection(WebSockets);
+        _configuration = configuration.GetSection(nameof(WebSockets));
     }
 
     public string AllowedOrigin => Guard.Against.Null(_configuration.GetValue<string>(nameof(AllowedOrigin)), nameof(AllowedOrigin));
