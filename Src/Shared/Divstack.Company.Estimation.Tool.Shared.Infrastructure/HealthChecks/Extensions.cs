@@ -17,7 +17,6 @@ internal static class Extensions
     {
         services.AddHealthChecks()
             .AddProcessAllocatedMemoryHealthCheck(MaximumMegabytesAllocated);
-
         services.AddHealthChecksUI()
             .AddInMemoryStorage();
 

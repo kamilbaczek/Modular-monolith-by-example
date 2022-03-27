@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Persistance.Domain.Priorities.Repositories;
 
+using Common.Interfaces;
 using DataAccess;
 using MongoDB.Driver;
 using Tool.Priorities.Domain;
@@ -7,10 +8,12 @@ using Tool.Priorities.Domain;
 internal sealed class PrioritiesRepository : IPrioritiesRepository
 {
     private readonly IPrioritiesContext _prioritiesContext;
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
 
-    public PrioritiesRepository(IPrioritiesContext prioritiesContext)
+    public PrioritiesRepository(IPrioritiesContext prioritiesContext, IIntegrationEventPublisher integrationEventPublisher)
     {
         _prioritiesContext = prioritiesContext;
+        _integrationEventPublisher = integrationEventPublisher;
     }
 
     public async Task<Priority> GetAsync(PriorityId priorityId, CancellationToken cancellationToken = default)
@@ -36,5 +39,13 @@ internal sealed class PrioritiesRepository : IPrioritiesRepository
     {
         await _prioritiesContext.Priorities.ReplaceOneAsync(priority => priority.Id == updatedPriority.Id,
             updatedPriority, cancellationToken: cancellationToken);
+
+        await PublishEvents(updatedPriority, cancellationToken);
+    }
+
+    private async Task PublishEvents(Priority updatedPriority, CancellationToken cancellationToken)
+    {
+        if (updatedPriority.DomainEvents.Any())
+            await _integrationEventPublisher.PublishAsync(updatedPriority.DomainEvents, cancellationToken);
     }
 }

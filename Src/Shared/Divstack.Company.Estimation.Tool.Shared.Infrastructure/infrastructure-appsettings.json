@@ -3,7 +3,7 @@
     "Origin": "http://localhost:8080"
   },
   "WebSockets": {
-    "AllowedOrigins": "http://localhost:8080"
+    "AllowedOrigin": "http://localhost:8080"
   },
   "Sentry": {
     "Dsn": "",
