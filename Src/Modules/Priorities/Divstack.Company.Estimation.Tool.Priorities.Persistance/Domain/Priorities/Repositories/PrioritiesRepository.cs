@@ -33,18 +33,14 @@ internal sealed class PrioritiesRepository : IPrioritiesRepository
     public async Task AddAsync(Priority priority, CancellationToken cancellationToken = default)
     {
         await _prioritiesContext.Priorities.InsertOneAsync(priority, cancellationToken: cancellationToken);
+        if (priority.DomainEvents.Any())
+            await _integrationEventPublisher.PublishAsync(priority.DomainEvents, cancellationToken);
     }
 
     public async Task CommitAsync(Priority updatedPriority, CancellationToken cancellationToken = default)
     {
         await _prioritiesContext.Priorities.ReplaceOneAsync(priority => priority.Id == updatedPriority.Id,
             updatedPriority, cancellationToken: cancellationToken);
-
-        await PublishEvents(updatedPriority, cancellationToken);
-    }
-
-    private async Task PublishEvents(Priority updatedPriority, CancellationToken cancellationToken)
-    {
         if (updatedPriority.DomainEvents.Any())
             await _integrationEventPublisher.PublishAsync(updatedPriority.DomainEvents, cancellationToken);
     }

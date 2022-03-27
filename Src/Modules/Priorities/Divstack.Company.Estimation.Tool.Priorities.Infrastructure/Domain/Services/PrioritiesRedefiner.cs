@@ -5,10 +5,10 @@ using Priorities.Commands.Redefine;
 using Priorities.Queries.GetPrioritiesByValuationsIds;
 using Tool.Priorities.Domain;
 
-internal sealed class PrioritesRedefiner : IPrioritiesRedefiner
+internal sealed class PrioritiesRedefiner : IPrioritiesRedefiner
 {
     private readonly IPrioritiesModule _prioritiesModule;
-    public PrioritesRedefiner(IPrioritiesModule prioritiesModule)
+    public PrioritiesRedefiner(IPrioritiesModule prioritiesModule)
     {
         _prioritiesModule = prioritiesModule;
     }

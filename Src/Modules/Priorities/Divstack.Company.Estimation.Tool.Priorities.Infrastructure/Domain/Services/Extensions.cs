@@ -7,7 +7,7 @@ internal static class Extensions
 {
     internal static IServiceCollection AddDomainServices(this IServiceCollection services)
     {
-        services.AddScoped<IPrioritiesRedefiner, PrioritesRedefiner>();
+        services.AddScoped<IPrioritiesRedefiner, PrioritiesRedefiner>();
 
         return services;
     }
