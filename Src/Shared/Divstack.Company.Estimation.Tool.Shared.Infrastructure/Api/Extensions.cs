@@ -43,17 +43,17 @@ internal static class Extensions
         app.UseRouting();
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-            endpoints.MapSharedHealthChecks();
-        });
         app.UseSwaggerModule();
         app.UseCustomExceptionHandler();
         app.UseBackgroundProcessing();
         app.UseObservability();
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+            endpoints.MapSharedHealthChecks();
+        });
     }
 
     public static void ConfigureSharedInfrastructure(this IWebHostBuilder hostBuilder)

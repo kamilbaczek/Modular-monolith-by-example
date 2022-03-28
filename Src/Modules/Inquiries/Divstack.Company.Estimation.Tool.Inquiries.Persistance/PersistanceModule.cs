@@ -3,6 +3,7 @@
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance;
 
 using DataAccess;
+using HealthChecks;
 using Microsoft.Extensions.Configuration;
 using Repositories;
 
@@ -13,6 +14,7 @@ internal static class PersistanceModule
     {
         var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
         services.AddDataAccess(connectionString);
+        services.AddPersistanceHealthChecks(connectionString);
         services.AddRepositories();
 
         return services;

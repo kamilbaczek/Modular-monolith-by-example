@@ -5,6 +5,7 @@
 namespace Divstack.Company.Estimation.Tool.Services.DataAccess;
 
 using Core;
+using HealthChecks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,11 +19,12 @@ internal static class DataAccessModule
     internal static IServiceCollection AddDataAccess(this IServiceCollection services,
         IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString(ServicesConnectionString);
+
         services.AddCore();
         services.RegisterRepositories();
         services.AddSeeders();
-
-        var connectionString = configuration.GetConnectionString(ServicesConnectionString);
+        services.AddDataAccessHealthChecks(connectionString);
         services.AddDbContext<ServicesContext>(connectionString);
 
         return services;

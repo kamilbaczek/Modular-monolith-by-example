@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="6.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="6.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.System" Version="6.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.1-rc2.3" />

@@ -17,5 +17,25 @@
   },
   "BackgroundProcessing": {
     "StorageConnectionString": ""
+  },
+  "HealthChecks-UI": {
+    "DisableMigrations": true,
+    "HealthChecks": [
+      {
+        "Name": "Estimation Tool - Health Checks",
+        "Uri": "/healthcheck"
+      }
+    ],
+    "Webhooks": [
+      {
+        "Name": "",
+        "Uri": "",
+        "Payload": "",
+        "RestoredPayload": ""
+      }
+    ],
+    "EvaluationTimeOnSeconds": 10,
+    "MinimumSecondsBetweenFailureNotifications": 60,
+    "MaximumExecutionHistoriesPerEndpoint": 15
   }
 }
