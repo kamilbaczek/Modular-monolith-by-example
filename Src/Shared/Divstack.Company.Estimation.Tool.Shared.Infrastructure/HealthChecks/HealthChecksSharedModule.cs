@@ -1,6 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.HealthChecks;
 
+using BackgroundProcessing.HealthChecks;
 using global::HealthChecks.UI.Client;
+using Memory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Routing;
@@ -9,20 +11,15 @@ using Microsoft.Extensions.DependencyInjection;
 internal static class HealthChecksSharedModule
 {
     private const string HealthCheck = "/healthcheck";
-    private const string HealthCheckUI = "/healthchecks-ui";
+    private const string HealthCheckUi = "/healthchecks-ui";
     private const string HealthCheckApi = "/api-health";
-    private const int MaximumMegabytesAllocated = 512;
-    private const string Shared = "Shared";
+
 
     internal static IServiceCollection AddSharedHealthChecks(this IServiceCollection services)
     {
         services.AddHealthChecks()
-            .AddProcessAllocatedMemoryHealthCheck(MaximumMegabytesAllocated, "Memory", null, new[] { Shared })
-            .AddHangfire(hangfire =>
-            {
-                hangfire.MaximumJobsFailed = 5;
-                hangfire.MinimumAvailableServers = 1;
-            }, "Background Processing", null, new[] { Shared });
+            .AddMemoryHealthCheck()
+            .AddBackgroundProcessingHealthCheck();
 
         services.AddHealthChecksUI()
             .AddInMemoryStorage();
@@ -40,7 +37,7 @@ internal static class HealthChecksSharedModule
         app.UseHealthChecks(HealthCheck, options);
         app.UseHealthChecksUI(options =>
         {
-            options.UIPath = HealthCheckUI;
+            options.UIPath = HealthCheckUi;
             options.ApiPath = HealthCheckApi;
         });
     }
