@@ -10,7 +10,7 @@ internal static class HealthChecksModule
 
     internal static IServiceCollection AddPersistanceHealthChecks(this IServiceCollection services, string connectionString)
     {
-        services.AddHealthChecks().AddMongoDb(connectionString, DatabaseName, null, new[] { Valuations, Database }, null);
+        services.AddHealthChecks().AddMongoDb(connectionString, DatabaseName, null, new[] { Valuations, Database });
 
         return services;
     }

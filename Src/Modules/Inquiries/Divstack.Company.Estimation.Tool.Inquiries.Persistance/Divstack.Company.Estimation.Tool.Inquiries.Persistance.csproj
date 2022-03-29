@@ -19,7 +19,7 @@
     <PackageReference Include="Scrutor" Version="3.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.3" />
-    <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="6.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.MySql" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
