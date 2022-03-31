@@ -200,6 +200,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj", "{F9805E2C-29B9-4189-92E6-9BF24A11675D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adr", "Adr", "{75D2B370-D9CD-4AF2-9D20-EA00AE35A03B}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Architecture\Decisions\0001-record-architecture-decisions.md = Documentation\Architecture\Decisions\0001-record-architecture-decisions.md
+		Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md = Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -557,5 +563,6 @@ Global
 		{8A59B326-9B66-4B97-A5C1-95F81EDE90B7} = {93F6CC39-6D61-4A32-97BB-23E70BB20E0E}
 		{CD381C10-3CCE-40E2-8053-A192705AF077} = {8A59B326-9B66-4B97-A5C1-95F81EDE90B7}
 		{F9805E2C-29B9-4189-92E6-9BF24A11675D} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
+		{75D2B370-D9CD-4AF2-9D20-EA00AE35A03B} = {11F86752-A7D7-4EBB-9C9E-4B893506EC17}
 	EndGlobalSection
 EndGlobal
