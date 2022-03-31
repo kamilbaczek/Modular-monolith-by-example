@@ -3,6 +3,7 @@
 using Common.Configurations;
 using Common.Extensions;
 using Shared.Infrastructure.Api;
+using Shared.Infrastructure.Configuration;
 
 public sealed class Program
 {
@@ -24,11 +25,13 @@ public sealed class Program
                 var envName = hostContext.HostingEnvironment.EnvironmentName;
                 builder.AddAllConfigurationsFromSolution(envName);
                 builder.AddEnvironmentVariables();
-
                 if (hostContext.HostingEnvironment.IsForDevs())
-                {
                     builder.AddUserSecrets<Startup>();
-                }
+
+                var configuration = builder.Build();
+                builder.AddApplicationConfiguration(configuration);
+                var test = builder.Build();
+
             });
     }
 }

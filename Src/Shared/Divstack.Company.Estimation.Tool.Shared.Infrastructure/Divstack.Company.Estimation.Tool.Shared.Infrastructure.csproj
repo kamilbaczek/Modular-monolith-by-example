@@ -32,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.Persistance\Divstack.Company.Estimation.Tool.Shared.Persistance.csproj" />
   </ItemGroup>
 
