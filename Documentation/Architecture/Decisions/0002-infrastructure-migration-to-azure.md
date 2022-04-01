@@ -9,7 +9,7 @@ Accepted
 ## Context
 
 Estimation Tool has advanced infrastructure like logging, observability, configuration, feature flags and etc.
-Estimation Tool now uses few platforms like sentry, heroku etc. Platforms have diffrent vendors. They are hard to mantain and integrate with other.
+Estimation Tool now uses few platforms like sentry, heroku etc. Platforms have different vendors. They are hard to mantain and integrate with other.
 Infrastructure have to be unified.
 Options:
 - Use Azure
