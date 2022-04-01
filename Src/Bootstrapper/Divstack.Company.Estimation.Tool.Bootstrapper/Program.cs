@@ -5,6 +5,9 @@ using Common.Extensions;
 using Shared.Infrastructure.Api;
 using Shared.Infrastructure.Configuration;
 
+/// <summary>
+/// Entry point to  application
+/// </summary>
 public sealed class Program
 {
     public static void Main(string[] args)
@@ -12,6 +15,11 @@ public sealed class Program
         CreateHostBuilder(args).Build().Run();
     }
 
+    /// <summary>
+    /// CreateHostBuilder
+    /// </summary>
+    /// <param name="args"></param>
+    /// <returns></returns>
     public static IHostBuilder CreateHostBuilder(string[] args)
     {
         return Host.CreateDefaultBuilder(args)
