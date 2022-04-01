@@ -30,8 +30,6 @@ public sealed class Program
 
                 var configuration = builder.Build();
                 builder.AddApplicationConfiguration(configuration);
-                var test = builder.Build();
-
             });
     }
 }
