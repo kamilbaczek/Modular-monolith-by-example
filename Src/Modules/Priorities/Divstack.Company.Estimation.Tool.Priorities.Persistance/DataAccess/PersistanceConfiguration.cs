@@ -6,6 +6,6 @@ internal static class PersistanceConfiguration
 {
     internal static void Configure()
     {
-        PrioritiesPersistanceConfiguration.Configure();
+        // PrioritiesPersistanceConfiguration.Configure();
     }
 }
