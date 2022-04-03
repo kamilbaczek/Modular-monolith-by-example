@@ -6,7 +6,7 @@ name: Build and deploy container app to Azure Web App - estimation-tool-api
 on:
   push:
     branches:
-      - master
+      - develop
   workflow_dispatch:
 
 jobs:
