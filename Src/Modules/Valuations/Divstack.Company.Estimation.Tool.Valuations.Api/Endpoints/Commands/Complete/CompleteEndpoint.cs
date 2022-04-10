@@ -12,7 +12,7 @@ internal sealed class CompleteEndpoint : EndpointBaseAsync.WithRequest<CompleteC
         _valuationsModule = valuationsModule;
     }
 
-    [HttpPost]
+    [HttpPatch]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [SwaggerOperation(
         Summary = nameof(SuggestEndpoint),

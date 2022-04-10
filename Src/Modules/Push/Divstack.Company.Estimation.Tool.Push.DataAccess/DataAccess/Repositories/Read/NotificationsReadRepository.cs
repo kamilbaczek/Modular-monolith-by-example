@@ -12,20 +12,21 @@ internal sealed class NotificationsReadRepository : INotificationsReadRepository
         _notificationsContext = notificationsContext;
     }
 
-    public async Task<IReadOnlyCollection<Notification>> GetAllAsync(Guid receiverId, CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyCollection<Notification>> GetNotReadAsync(Guid receiverId, CancellationToken cancellationToken = default)
     {
         var notifications = await _notificationsContext
             .Notifications
-            .Find(notification => notification.ReceiverId == receiverId)
+            .Find(notification => notification.ReceiverId == receiverId && notification.MarkedAsRead == false)
             .SortByDescending(notification => notification.EventDate)
             .ToListAsync(cancellationToken);
 
         return notifications;
     }
-    public async Task<Notification?> GetOrDefaultAsync(Guid notificationId, CancellationToken cancellationToken = default)
+
+    public async Task<Notification?> GetOrDefaultAsync(Guid notificationId, Guid receiverId, CancellationToken cancellationToken = default)
     {
         return await _notificationsContext.Notifications
-            .Find(notification => notification.Id == notificationId)
+            .Find(notification => notification.Id == notificationId && notification.ReceiverId == receiverId)
             .SingleOrDefaultAsync(cancellationToken);
     }
 }

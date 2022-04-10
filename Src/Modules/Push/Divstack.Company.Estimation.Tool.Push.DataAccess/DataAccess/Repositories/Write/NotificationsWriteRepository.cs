@@ -17,6 +17,13 @@ internal sealed class NotificationsWriteRepository : INotificationsWriteReposito
         await _notificationsContext.Notifications
             .ReplaceOneAsync(notification => notification.Id == notificationToUpdate.Id, notificationToUpdate, cancellationToken: cancellationToken);
     }
+    public async Task BulkUpdateAsync(IReadOnlyCollection<Notification> notifications, CancellationToken cancellationToken = default)
+    {
+        foreach (var notificationToUpdate in notifications)
+        {
+            await _notificationsContext.Notifications.ReplaceOneAsync(notification => notification.Id == notificationToUpdate.Id, notificationToUpdate, cancellationToken: cancellationToken);
+        }
+    }
 
     public async Task AddAsync(Notification notification, CancellationToken cancellationToken = default)
     {

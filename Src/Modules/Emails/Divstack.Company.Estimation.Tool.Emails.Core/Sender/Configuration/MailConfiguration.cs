@@ -9,14 +9,6 @@ internal sealed class MailConfiguration : ConfigurationBase, IMailConfiguration
     {
     }
 
-    public string ServerAddress => configurationSection[nameof(ServerAddress)];
-
-    public int ServerPort => int.Parse(configurationSection[nameof(ServerPort)]);
-
-    public string ServerLogin => configurationSection[nameof(ServerLogin)];
-
-    public string ServerPassword => configurationSection[nameof(ServerPassword)];
-
     public string MailFrom => configurationSection[nameof(MailFrom)];
-    public bool DisableSsl => bool.Parse(configurationSection[nameof(DisableSsl)]);
+    public string ApiKey => configurationSection[nameof(ApiKey)];
 }

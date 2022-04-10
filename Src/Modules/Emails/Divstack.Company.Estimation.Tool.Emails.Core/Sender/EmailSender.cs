@@ -1,18 +1,17 @@
-﻿using static System.String;
-
-namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender;
 
 using Configuration;
 using Contracts;
-using MailKit.Net.Smtp;
-using MimeKit;
-using MimeKit.Text;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using Shared.Abstractions.BackgroundProcessing;
+using static String;
 
 internal sealed class EmailSender : IEmailSender
 {
     private readonly IBackgroundProcessQueue _backgroundProcessQueue;
     private readonly IMailConfiguration _mailConfiguration;
+    private const string EmailType = "text/html";
 
     public EmailSender(IMailConfiguration mailConfiguration, IBackgroundProcessQueue backgroundProcessQueue)
     {
@@ -28,51 +27,25 @@ internal sealed class EmailSender : IEmailSender
         }
     }
 
-    private bool IsConfiguredAuthentication()
-    {
-        return !IsNullOrEmpty(_mailConfiguration.ServerLogin)
-               && !IsNullOrEmpty(_mailConfiguration.ServerPassword);
-    }
-
     public async Task SendMessageAsync(string email, string subject, string text)
     {
+        var client = new SendGridClient(_mailConfiguration.ApiKey);
+
         var message = BuildMessage(email, subject, text);
-        using var client = new SmtpClient();
-        if (_mailConfiguration.DisableSsl)
-        {
-            DisableSsl(client);
-        }
 
-        await client.ConnectAsync(_mailConfiguration.ServerAddress, _mailConfiguration.ServerPort);
-        if (IsConfiguredAuthentication())
-        {
-            await client.AuthenticateAsync(_mailConfiguration.ServerLogin, _mailConfiguration.ServerPassword);
-        }
-
-        await client.SendAsync(message);
-        await client.DisconnectAsync(true);
+        await client.SendEmailAsync(message);
     }
 
-    private MimeMessage BuildMessage(string email, string subject, string text)
+    private SendGridMessage BuildMessage(string email, string subject, string text)
     {
-        var message = new MimeMessage();
-        var mailFrom = IsConfiguredAuthentication()
-            ? new MailboxAddress(_mailConfiguration.MailFrom, _mailConfiguration.ServerLogin)
-            : MailboxAddress.Parse(_mailConfiguration.MailFrom);
-        message.From.Add(mailFrom);
-        message.To.Add(MailboxAddress.Parse(email));
-        message.Subject = subject;
-        message.Body = new TextPart(TextFormat.Html)
-        {
-            Text = text
-        };
+        var message = new SendGridMessage();
+        message.AddTo(email);
+        message.AddContent(EmailType, text);
+
+        var fromEmailAddress = new EmailAddress(_mailConfiguration.MailFrom);
+        message.SetFrom(fromEmailAddress);
+        message.SetSubject(subject);
 
         return message;
-    }
-
-    private static void DisableSsl(SmtpClient client)
-    {
-        client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-        client.CheckCertificateRevocation = false;
     }
 }
