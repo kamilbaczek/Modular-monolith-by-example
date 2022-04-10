@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
 internal static class AzureAppConfigurationModule
 {
+    private const string LabelFilter = "dev";
     private const string Environment = "ASPNETCORE_ENVIRONMENT";
     private const string AzureAppConfiguration = "AzureAppConfiguration";
 
@@ -22,7 +23,11 @@ internal static class AzureAppConfigurationModule
         builder.AddAzureAppConfiguration(options =>
         {
             options.Connect(connectionString);
-            options.Select(KeyFilter.Any, "dev");
+            options.Select(KeyFilter.Any, LabelFilter);
+            options.ConfigureRefresh(refresh =>
+            {
+                refresh.Register(KeyFilter.Any, refreshAll: true);
+            });
         });
     }
 }
