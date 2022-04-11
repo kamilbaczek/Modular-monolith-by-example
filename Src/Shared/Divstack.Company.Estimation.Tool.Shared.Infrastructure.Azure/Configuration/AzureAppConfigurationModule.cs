@@ -4,6 +4,7 @@
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Configuration;
 
 using Exception;
+using global::Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
@@ -27,6 +28,11 @@ internal static class AzureAppConfigurationModule
             options.ConfigureRefresh(refresh =>
             {
                 refresh.Register(KeyFilter.Any, refreshAll: true);
+            });
+            options.ConfigureKeyVault(keyVaultOptions =>
+            {
+                var defaultAzureCredential = new DefaultAzureCredential();
+                keyVaultOptions.SetCredential(defaultAzureCredential);
             });
         });
     }
