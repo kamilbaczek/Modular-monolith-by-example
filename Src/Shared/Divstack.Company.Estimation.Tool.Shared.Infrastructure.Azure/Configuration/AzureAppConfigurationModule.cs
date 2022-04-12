@@ -31,11 +31,7 @@ internal static class AzureAppConfigurationModule
             });
             options.ConfigureKeyVault(keyVaultOptions =>
             {
-                var credentialOptions = new DefaultAzureCredentialOptions
-                {
-                    ExcludeSharedTokenCacheCredential = true
-                };
-                var credential = new DefaultAzureCredential(credentialOptions);
+                var credential = new DefaultAzureCredential();
                 keyVaultOptions.SetCredential(credential);
             });
         });
