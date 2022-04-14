@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.HealthChecks;
 
+using System.Net;
 using BackgroundProcessing.HealthChecks;
 using global::HealthChecks.UI.Client;
 using Memory;
@@ -21,7 +22,7 @@ internal static class HealthChecksSharedModule
             .AddMemoryHealthCheck()
             .AddBackgroundProcessingHealthCheck();
 
-        services.AddHealthChecksUI()
+        services.AddHealthChecksUI(setup => setup.AddHealthCheckEndpoint("estimation-tool", $"http://{Dns.GetHostName()}/healthchecks-estimation-tool"))
             .AddInMemoryStorage();
 
         return services;
