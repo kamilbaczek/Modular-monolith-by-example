@@ -4,13 +4,11 @@
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Configuration;
 
 using Exception;
-using global::Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
 internal static class AzureAppConfigurationModule
 {
-    private const string LabelFilter = "dev";
     private const string Environment = "ASPNETCORE_ENVIRONMENT";
     private const string AzureAppConfiguration = "AzureAppConfiguration";
 
@@ -24,15 +22,10 @@ internal static class AzureAppConfigurationModule
         builder.AddAzureAppConfiguration(options =>
         {
             options.Connect(connectionString);
-            options.Select(KeyFilter.Any, LabelFilter);
+            options.Select(KeyFilter.Any, environment);
             options.ConfigureRefresh(refresh =>
             {
                 refresh.Register(KeyFilter.Any, refreshAll: true);
-            });
-            options.ConfigureKeyVault(keyVaultOptions =>
-            {
-                var credential = new DefaultAzureCredential();
-                keyVaultOptions.SetCredential(credential);
             });
         });
     }
