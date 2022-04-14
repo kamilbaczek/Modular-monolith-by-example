@@ -22,7 +22,7 @@ internal static class HealthChecksSharedModule
             .AddMemoryHealthCheck()
             .AddBackgroundProcessingHealthCheck();
 
-        services.AddHealthChecksUI(setup => setup.AddHealthCheckEndpoint("estimation-tool", $"http://{Dns.GetHostName()}/healthchecks-estimation-tool"))
+        services.AddHealthChecksUI(setup => setup.AddHealthCheckEndpoint("Estimation Tool - Health Checks", $"http://{Dns.GetHostName()}/healthcheck"))
             .AddInMemoryStorage();
 
         return services;
