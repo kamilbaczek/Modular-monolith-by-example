@@ -4,6 +4,7 @@
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
 using BackgroundProcessing;
+using Configuration;
 using Controllers;
 using Cors;
 using Errors.Middleware;
@@ -31,6 +32,7 @@ internal static class Extensions
         services.AddBackgroundProcessing(configuration);
         services.AddSharedHealthChecks();
         services.AddObservability();
+        services.AddConfiguration();
 
         return services;
     }

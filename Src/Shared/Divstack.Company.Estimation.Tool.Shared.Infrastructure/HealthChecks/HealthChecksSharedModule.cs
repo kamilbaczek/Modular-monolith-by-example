@@ -1,7 +1,9 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.HealthChecks;
 
 using System.Net;
+using Azure.Configuration.FeatureFlags;
 using BackgroundProcessing.HealthChecks;
+using FeatureFlag;
 using global::HealthChecks.UI.Client;
 using Memory;
 using Microsoft.AspNetCore.Builder;
@@ -15,14 +17,13 @@ internal static class HealthChecksSharedModule
     private const string HealthCheckUi = "/healthchecks-ui";
     private const string HealthCheckApi = "/api-health";
 
-
     internal static IServiceCollection AddSharedHealthChecks(this IServiceCollection services)
     {
         services.AddHealthChecks()
             .AddMemoryHealthCheck()
             .AddBackgroundProcessingHealthCheck();
 
-        services.AddHealthChecksUI(setup => setup.AddHealthCheckEndpoint("Estimation Tool - Health Checks", $"http://{Dns.GetHostName()}/healthcheck"))
+        services.AddHealthChecksUI()
             .AddInMemoryStorage();
 
         return services;
@@ -36,11 +37,23 @@ internal static class HealthChecksSharedModule
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         };
         app.UseHealthChecks(HealthCheck, options);
+
+        var enabled = IsUIEnabled();
+        if (!enabled) return;
+
         app.UseHealthChecksUI(options =>
         {
             options.UIPath = HealthCheckUi;
             options.ApiPath = HealthCheckApi;
         });
+
+        bool IsUIEnabled()
+        {
+            var featureFlagsChecker = app.ApplicationServices.GetRequiredService<IFeatureFlagsChecker>();
+            var enabled = featureFlagsChecker.IsEnabled(FeatureFlags.HealthChecksIU);
+
+            return enabled;
+        }
     }
 
     public static IEndpointRouteBuilder MapSharedHealthChecks(
