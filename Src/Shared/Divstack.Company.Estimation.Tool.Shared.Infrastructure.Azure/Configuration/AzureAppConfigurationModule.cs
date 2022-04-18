@@ -29,7 +29,7 @@ internal static class AzureAppConfigurationModule
             options.Select(KeyFilter.Any, environment);
             options.ConfigureRefresh(refresh =>
             {
-                refresh.Register(KeyFilter.Any, refreshAll: true);
+                refresh.Register(KeyFilter.Any, true);
             });
             options.ConfigureKeyVault(keyVaultOptions =>
             {

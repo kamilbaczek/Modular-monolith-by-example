@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.HealthChecks;
 
-using System.Net;
 using Azure.Configuration.FeatureFlags;
 using BackgroundProcessing.HealthChecks;
 using FeatureFlag;
