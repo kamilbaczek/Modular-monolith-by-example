@@ -18,14 +18,14 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
 
     public async Task<Unit> Handle(CompleteCommand command, CancellationToken cancellationToken)
     {
-        var valuationId = new ValuationId(command.ValuationId);
+        var valuationId = ValuationId.Of(command.ValuationId);
         var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
         if (valuation is null)
         {
             throw new NotFoundException(command.ValuationId, nameof(Valuation));
         }
 
-        var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
+        var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
         valuation.Complete(employeeId);
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
