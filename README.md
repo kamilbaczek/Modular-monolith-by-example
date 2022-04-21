@@ -28,10 +28,10 @@
 
 #### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
 
-[Application](https://estimationtool.divstack.pl)     
+[Application](https://estimation-tool-api.azurewebsites.net)     
 #### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
 
-[Swagger](https://estimationtool.divstack.pl/index.html)
+[Swagger](https://estimation-tool-api.azurewebsites.net/index.html)
 
 ## Documentation
 ### C4
