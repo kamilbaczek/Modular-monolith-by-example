@@ -1,7 +1,7 @@
 # Estimations Tool - makes estimations easier
 
 ## Demo
-[![estimationtool.divstack.pl](http://estimationtool.divstack.pl/)
+[estimationtool.divstack.pl](http://estimationtool.divstack.pl/)
 
 ## Table of contents
 * [Documentation](#documentation)
