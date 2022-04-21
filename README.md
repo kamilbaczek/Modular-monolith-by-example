@@ -31,10 +31,10 @@
 
 #### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
 
-[Application](https://estimation-tool-ui.herokuapp.com/)     
+[Application](https://estimationtool.divstack.pl)     
 #### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
 
-[Swagger](https://estimation-tool-kb.herokuapp.com/index.html)
+[Swagger](https://estimationtool.divstack.pl/index.html)
 
 ## Documentation
 ### C4
