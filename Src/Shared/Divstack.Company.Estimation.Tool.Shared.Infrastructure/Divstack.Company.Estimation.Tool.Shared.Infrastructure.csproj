@@ -13,6 +13,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.1-rc2.3" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.1-rc2.3" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.1-rc2.3" />
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.7.0" />
     <PackageReference Include="Hangfire" Version="1.8.0-beta3" />
     <PackageReference Include="Hangfire.Mongo" Version="0.7.28" />
     <PackageReference Include="MediatR" Version="9.0.0" />

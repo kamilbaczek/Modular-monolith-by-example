@@ -2,7 +2,6 @@
 
 using Common.Configurations;
 using Common.Extensions;
-using Shared.Infrastructure.Api;
 using Shared.Infrastructure.Configuration;
 
 /// <summary>
@@ -26,7 +25,6 @@ public sealed class Program
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();
-                webBuilder.ConfigureSharedInfrastructure();
             })
             .ConfigureAppConfiguration((hostContext, builder) =>
             {

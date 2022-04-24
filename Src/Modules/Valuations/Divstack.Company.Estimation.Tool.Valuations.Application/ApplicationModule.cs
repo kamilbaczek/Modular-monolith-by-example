@@ -3,6 +3,7 @@
 namespace Divstack.Company.Estimation.Tool.Valuations.Application;
 
 using Microsoft.Extensions.DependencyInjection;
+using Valuations.Commands.SuggestProposal;
 
 internal static class ApplicationModule
 {

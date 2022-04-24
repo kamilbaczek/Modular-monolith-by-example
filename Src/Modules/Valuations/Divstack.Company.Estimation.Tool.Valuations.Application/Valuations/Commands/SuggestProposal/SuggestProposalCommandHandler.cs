@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 
 using MediatR;
+using Request;
 using Shared.DDD.ValueObjects;
 
 internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestProposalCommand>

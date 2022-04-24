@@ -27,7 +27,7 @@ internal sealed class CompanyFinderHttpClient : ICompanyFinderHttpClient
         //     JsonType);
         // var clientProfile = await GetClientProfile(profileRequestAsJson);
 
-        var mockedClientJob = new CurrentJobDto("Test Company inc", "15-50");
+        var mockedClientJob = new CurrentJobDto("Test Company inc", "150-300");
         var mockedClientProfile = new ClientProfileDto(new List<CurrentJobDto>
         {
             mockedClientJob

@@ -10,7 +10,6 @@ using Cors;
 using Errors.Middleware;
 using HealthChecks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Observability;
@@ -48,7 +47,6 @@ internal static class Extensions
         app.UseSwaggerModule();
         app.UseCustomExceptionHandler();
         app.UseBackgroundProcessing();
-        app.UseObservability();
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();
         app.UseEndpoints(endpoints =>
@@ -56,10 +54,5 @@ internal static class Extensions
             endpoints.MapControllers();
             endpoints.MapSharedHealthChecks();
         });
-    }
-
-    public static void ConfigureSharedInfrastructure(this IWebHostBuilder hostBuilder)
-    {
-        hostBuilder.UseObservability();
     }
 }
