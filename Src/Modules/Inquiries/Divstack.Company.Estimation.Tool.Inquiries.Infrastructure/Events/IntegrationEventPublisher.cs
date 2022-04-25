@@ -25,7 +25,7 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
 
-        var client = new ServiceBusClient("Endpoint=sb://estimation-tool.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=FWPn0bk7yx0XKwPMznUacNhfnIj7cE3yKnsLZw6CPOA=");
+        var client = new ServiceBusClient("");
         var sender = client.CreateSender("inquiries");
         var messageBatch = await sender.CreateMessageBatchAsync(cancellationToken);
 
