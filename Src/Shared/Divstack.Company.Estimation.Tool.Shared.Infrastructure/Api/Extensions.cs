@@ -8,6 +8,7 @@ using Configuration;
 using Controllers;
 using Cors;
 using Errors.Middleware;
+using EventBus;
 using HealthChecks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -30,6 +31,7 @@ internal static class Extensions
         services.AddCors();
         services.AddBackgroundProcessing(configuration);
         services.AddSharedHealthChecks();
+        services.AddEventBus();
         services.AddObservability();
         services.AddConfiguration();
 

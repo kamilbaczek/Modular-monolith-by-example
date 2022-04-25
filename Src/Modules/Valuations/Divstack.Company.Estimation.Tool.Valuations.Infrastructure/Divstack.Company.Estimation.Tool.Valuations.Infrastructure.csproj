@@ -24,8 +24,4 @@
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Persistance\Divstack.Company.Estimation.Tool.Valuations.Persistance.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ExternalEventsReciviers" />
-  </ItemGroup>
-
 </Project>

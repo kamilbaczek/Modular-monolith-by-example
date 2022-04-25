@@ -4,6 +4,7 @@ using System;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Configuration;
 using global::Azure.Messaging.ServiceBus;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,14 +21,12 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
     protected IntegrationEventSubscriber(IServiceProvider serviceProvider,
         ITopicConfiguration topicConfiguration)
     {
-        var topicConfiguration1 = topicConfiguration;
-
         _mediator = serviceProvider.GetRequiredService<IMediator>();
         var eventBusConfiguration = serviceProvider.GetRequiredService<IEventBusConfiguration>();
 
         var client = new ServiceBusClient(eventBusConfiguration.ConnectionString);
 
-        _serviceBusProcessor = client.CreateProcessor(topicConfiguration1.TopicName, topicConfiguration1.SubscriptionName, new ServiceBusProcessorOptions());
+        _serviceBusProcessor = client.CreateProcessor(topicConfiguration.TopicName, topicConfiguration.SubscriptionName, new ServiceBusProcessorOptions());
         _serviceBusProcessor.ProcessMessageAsync += MessageHandler;
         _serviceBusProcessor.ProcessErrorAsync += ErrorHandler;
     }

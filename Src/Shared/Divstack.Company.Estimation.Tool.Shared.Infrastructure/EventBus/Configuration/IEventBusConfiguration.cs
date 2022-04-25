@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Configuration;
 
 internal interface IEventBusConfiguration
 {

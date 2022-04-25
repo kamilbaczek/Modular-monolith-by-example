@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish;
 
 using Application.Common.Interfaces;
 using Mapper;
