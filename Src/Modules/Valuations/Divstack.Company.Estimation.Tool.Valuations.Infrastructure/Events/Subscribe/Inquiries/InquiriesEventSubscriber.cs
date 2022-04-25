@@ -7,7 +7,7 @@ internal sealed class InquiryEventSubscriber<TEvent> : IntegrationEventSubscribe
 {
     public InquiryEventSubscriber(
         IServiceProvider serviceProvider,
-        InquiryTopicConfiguration topicConfiguration) :
+        IInquiryTopicConfiguration topicConfiguration) :
         base(serviceProvider, topicConfiguration)
     {
     }
