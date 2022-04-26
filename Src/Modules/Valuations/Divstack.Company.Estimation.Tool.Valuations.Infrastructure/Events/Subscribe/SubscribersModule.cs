@@ -10,6 +10,6 @@ internal static class SubscribersModule
     internal static void AddSubscribers(this IServiceCollection services)
     {
         services.AddSingleton<IInquiryTopicConfiguration, InquiryTopicConfiguration>();
-        // services.Subscribe<InquiryMadeEvent>();
+        services.Subscribe<InquiryMadeEvent>();
     }
 }
