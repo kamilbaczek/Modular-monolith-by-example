@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Configuration;
 
-internal interface IEventBusConfiguration
+public interface IEventBusConfiguration
 {
     string ConnectionString { get; }
 }

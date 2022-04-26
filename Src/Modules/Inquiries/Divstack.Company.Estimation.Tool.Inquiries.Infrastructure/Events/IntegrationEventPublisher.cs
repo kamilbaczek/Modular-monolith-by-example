@@ -4,20 +4,24 @@ using Azure.Messaging.ServiceBus;
 using Mapper;
 using Microsoft.Extensions.Configuration;
 using Shared.DDD.BuildingBlocks;
+using Shared.Infrastructure.EventBus.Configuration;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
     private const string EventType = "EventType";
     private readonly IEventMapper _eventMapper;
     private readonly IConfiguration _configuration;
+    private readonly IEventBusConfiguration _eventBusConfiguration;
     private static string _applicationJson = "application/json";
 
     public IntegrationEventPublisher(
         IEventMapper eventMapper,
-        IConfiguration configuration)
+        IConfiguration configuration,
+        IEventBusConfiguration eventBusConfiguration)
     {
         _eventMapper = eventMapper;
         _configuration = configuration;
+        _eventBusConfiguration = eventBusConfiguration;
     }
 
     public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents,
@@ -25,7 +29,7 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
     {
         var integrationEvents = _eventMapper.Map(domainEvents);
 
-        var client = new ServiceBusClient("");
+        var client = new ServiceBusClient(_eventBusConfiguration.ConnectionString);
         var sender = client.CreateSender("inquiries");
         var messageBatch = await sender.CreateMessageBatchAsync(cancellationToken);
 
