@@ -1,10 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.HealthChecks;
 
 using BackgroundProcessing.HealthChecks;
-using global::HealthChecks.UI.Client;
 using Memory;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,23 +22,13 @@ internal static class HealthChecksSharedModule
 
     internal static void UseSharedHealthChecks(this IApplicationBuilder app)
     {
-        var options = new HealthCheckOptions
-        {
-            Predicate = _ => true,
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-        };
-        app.UseHealthChecks(HealthCheck, options);
+        app.UseHealthChecks(HealthCheck);
     }
 
     public static IEndpointRouteBuilder MapSharedHealthChecks(
         this IEndpointRouteBuilder endpoints)
     {
-        var options = new HealthCheckOptions
-        {
-            Predicate = _ => true,
-            ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-        };
-        endpoints.MapHealthChecks(HealthCheckApi, options);
+        endpoints.MapHealthChecks(HealthCheckApi);
 
         return endpoints;
     }
