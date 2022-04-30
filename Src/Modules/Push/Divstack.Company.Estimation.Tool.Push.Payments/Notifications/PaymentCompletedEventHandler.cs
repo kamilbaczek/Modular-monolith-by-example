@@ -3,13 +3,13 @@
 using DataAccess.DataAccess.Repositories.Write;
 using DataAccess.Entities;
 using Hubs;
-using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Payments.IntegrationsEvents.External;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetAllUsers;
 
-internal sealed class PaymentCompletedEventHandler : INotificationHandler<PaymentCompleted>
+internal sealed class PaymentCompletedEventHandler : IIntegrationEventHandler<PaymentCompleted>
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IHubContext<PaymentsHub> _paymentsHub;
@@ -23,7 +23,7 @@ internal sealed class PaymentCompletedEventHandler : INotificationHandler<Paymen
         _userModule = userModule;
     }
 
-    public async Task Handle(PaymentCompleted @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(PaymentCompleted @event, CancellationToken cancellationToken)
     {
         var query = new GetAllUsersQuery();
         var userList = await _userModule.ExecuteQueryAsync(query);

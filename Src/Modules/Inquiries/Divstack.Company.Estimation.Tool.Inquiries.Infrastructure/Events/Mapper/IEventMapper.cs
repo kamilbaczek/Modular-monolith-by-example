@@ -2,7 +2,7 @@
 
 using Shared.DDD.BuildingBlocks;
 
-public interface IEventMapper
+internal interface IEventMapper
 {
     IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events);
 }

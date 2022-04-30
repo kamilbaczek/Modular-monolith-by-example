@@ -2,11 +2,11 @@
 
 using Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
 using Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
+using Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe;
 using Company.Estimation.Tool.Sms.Core.Clients;
 using Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
-using MediatR;
 
-internal sealed class ProposalSuggestedSmsNotificationHandler : INotificationHandler<ProposalSuggested>
+internal sealed class ProposalSuggestedSmsNotificationHandler : IIntegrationEventHandler<ProposalSuggested>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly ISmsClient _smsClient;
@@ -15,7 +15,7 @@ internal sealed class ProposalSuggestedSmsNotificationHandler : INotificationHan
         _smsClient = smsClient;
         _inquiriesModule = inquiriesModule;
     }
-    public async Task Handle(ProposalSuggested notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalSuggested notification, CancellationToken cancellationToken)
     {
         var query = new GetInquiryClientQuery(notification.InquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(query);

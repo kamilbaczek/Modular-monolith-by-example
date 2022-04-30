@@ -5,10 +5,11 @@ using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 using MediatR;
 using Sender;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Payments.IntegrationsEvents.External;
 
 internal sealed class
-    PaymentInitializedEventHandler : INotificationHandler<PaymentInitialized>
+    PaymentInitializedEventHandler : IIntegrationEventHandler<PaymentInitialized>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentInitializedSender _paymentInitializedSender;
@@ -19,7 +20,7 @@ internal sealed class
         _paymentInitializedSender = paymentInitializedSender;
         _inquiriesModule = inquiriesModule;
     }
-    public async Task Handle(PaymentInitialized paymentInitialized, CancellationToken cancellationToken)
+    public async ValueTask Handle(PaymentInitialized paymentInitialized, CancellationToken cancellationToken)
     {
         var (firstName, lastName, email, _, _) = await GetClientInfo(paymentInitialized);
         var paymentInitializedEmailRequest = new PaymentInitializedEmailRequest(

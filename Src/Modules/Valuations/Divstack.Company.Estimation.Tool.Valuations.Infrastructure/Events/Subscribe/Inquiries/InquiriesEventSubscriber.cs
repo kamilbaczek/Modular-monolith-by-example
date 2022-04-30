@@ -2,6 +2,7 @@
 
 using Configuration;
 using Shared.Infrastructure.EventBus;
+using Shared.Infrastructure.EventBus.Subscribe;
 
 internal sealed class InquiryEventSubscriber<TEvent> : IntegrationEventSubscriber<TEvent> where TEvent : class
 {

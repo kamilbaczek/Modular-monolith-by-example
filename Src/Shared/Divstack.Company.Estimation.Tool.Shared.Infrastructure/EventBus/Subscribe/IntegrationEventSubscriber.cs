@@ -1,34 +1,32 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe;
 
 using System;
-using System.Text.Json;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Configuration;
+using EventTypes;
+using Extensions;
 using global::Azure.Messaging.ServiceBus;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where TEvent : class
 {
-    private readonly IMediator _mediator;
-
+    private readonly IEnumerable<IIntegrationEventHandler<TEvent>> _eventHandlers;
     private readonly ServiceBusProcessor _serviceBusProcessor;
 
-    private const string EventType = "EventType";
+    private static readonly EventType EventType = EventType.From<TEvent>();
 
     protected IntegrationEventSubscriber(IServiceProvider serviceProvider,
         ITopicConfiguration topicConfiguration)
     {
-        _mediator = serviceProvider.GetRequiredService<IMediator>();
         var eventBusConfiguration = serviceProvider.GetRequiredService<IEventBusConfiguration>();
+        _eventHandlers = serviceProvider.GetServices<IIntegrationEventHandler<TEvent>>();
 
         var client = new ServiceBusClient(eventBusConfiguration.ConnectionString);
 
-        _serviceBusProcessor = client.CreateProcessor(topicConfiguration.TopicName, topicConfiguration.SubscriptionName, new ServiceBusProcessorOptions());
-        _serviceBusProcessor.ProcessMessageAsync += MessageHandler;
-        _serviceBusProcessor.ProcessErrorAsync += ErrorHandler;
+        _serviceBusProcessor = CreateProcessor(topicConfiguration, client);
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
@@ -43,29 +41,31 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
     private async Task MessageHandler(ProcessMessageEventArgs args)
     {
         var message = args.Message;
-        var eventType = GetEventType(message);
+        var receivedMessageEventType = EventType.FromReceivedMessage(message);
 
-        if (eventType == nameof(TEvent))
+        if (EventType == receivedMessageEventType)
         {
-            var body = message.Body;
-            var @event = await JsonSerializer.DeserializeAsync<TEvent>(body.ToStream());
-
-            await _mediator.Publish(@event);
+            var @event = await message.DeserializeMessageAsync<TEvent>();
+            foreach (var handler in _eventHandlers)
+            {
+                await handler.Handle(@event);
+            }
         }
 
         await args.CompleteMessageAsync(args.Message);
-    }
-    private static string GetEventType(ServiceBusReceivedMessage message)
-    {
-        var eventType = message.ApplicationProperties[EventType].ToString();
-        if (string.IsNullOrEmpty(eventType))
-            throw new InvalidOperationException("Even has to have 'EventType' property set in metadata");
-
-        return eventType;
     }
 
     private static Task ErrorHandler(ProcessErrorEventArgs args)
     {
         return Task.CompletedTask;
+    }
+
+    private ServiceBusProcessor CreateProcessor(ITopicConfiguration topicConfiguration, ServiceBusClient client, CancellationToken cancellationToken = default)
+    {
+        var serviceBusProcessor = client.CreateProcessor(topicConfiguration.TopicName, topicConfiguration.SubscriptionName, new ServiceBusProcessorOptions());
+        serviceBusProcessor.ProcessMessageAsync += MessageHandler;
+        serviceBusProcessor.ProcessErrorAsync += ErrorHandler;
+
+        return serviceBusProcessor;
     }
 }

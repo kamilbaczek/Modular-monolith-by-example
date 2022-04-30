@@ -2,9 +2,10 @@
 
 using Common.IntegrationsEvents;
 using Shared.DDD.ValueObjects;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class InitializePaymentEventHandler : INotificationHandler<ValuationCompleted>
+internal sealed class InitializePaymentEventHandler : IIntegrationEventHandler<ValuationCompleted>
 {
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IPaymentProcessor _paymentProcessor;
@@ -17,7 +18,7 @@ internal sealed class InitializePaymentEventHandler : INotificationHandler<Valua
         _integrationEventPublisher = integrationEventPublisher;
         _paymentProcessor = paymentProcessor;
     }
-    public async Task Handle(ValuationCompleted @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationCompleted @event, CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(@event.ValuationId);
         var inquiryId = InquiryId.Of(@event.InquiryId);
