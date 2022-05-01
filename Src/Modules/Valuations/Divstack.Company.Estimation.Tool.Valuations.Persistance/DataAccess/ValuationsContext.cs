@@ -2,14 +2,14 @@
 
 using Valuations.Domain.Valuations;
 
-internal sealed class ValuationsNotificationsNotificationsContext : IValuationsNotificationsContext
+internal sealed class ValuationsContext : IValuationsContext
 {
     private const string DatabaseName = "EstimationTool";
     private const string ValuationsCollectionName = "ValuationsNotifications";
 
     private readonly IMongoDatabase _database;
 
-    public ValuationsNotificationsNotificationsContext(MongoClient mongoClient)
+    public ValuationsContext(MongoClient mongoClient)
     {
         _database = mongoClient.GetDatabase(DatabaseName);
     }

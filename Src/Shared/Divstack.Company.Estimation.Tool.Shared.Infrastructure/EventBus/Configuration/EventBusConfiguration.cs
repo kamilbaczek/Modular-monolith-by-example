@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Configuration;
 
-using Microsoft.Extensions.Configuration;
-
 internal sealed class EventBusConfiguration : IEventBusConfiguration
 {
     private const string EventBus = "EventBus";

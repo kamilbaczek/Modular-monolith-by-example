@@ -3,6 +3,8 @@
 using Common.Interfaces;
 using Mapper;
 using Microsoft.Extensions.DependencyInjection;
+using Publish;
+using Subscribe;
 
 internal static class EventsModule
 {
@@ -10,5 +12,6 @@ internal static class EventsModule
     {
         services.AddScoped<IIntegrationEventPublisher, IntegrationEventPublisher>();
         services.AddScoped<IEventMapper, EventMapper>();
+        services.AddSubscribers();
     }
 }

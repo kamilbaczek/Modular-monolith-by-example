@@ -4,13 +4,12 @@
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello;
 
-using System.Reflection;
 using Core;
 using Extensions;
 using Features.ValuationRequest;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Infrastructure.EventBus.Subscribe.Extensions;
 
 internal static class TrelloModule
 {
@@ -19,7 +18,7 @@ internal static class TrelloModule
 
     internal static IServiceCollection AddTrello(this IServiceCollection services)
     {
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddIntegrationEventsHandlers(typeof(TrelloModule));
         services.Scan(scan => scan.FromAssemblyOf<ValuationRequestCreatedTrelloEventHandler>()
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
             .AsImplementedInterfaces()

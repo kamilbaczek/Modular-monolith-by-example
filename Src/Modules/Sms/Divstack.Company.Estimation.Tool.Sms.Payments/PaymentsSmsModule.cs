@@ -5,6 +5,7 @@
 namespace Divstack.Estimation.Tool.Sms.Payments;
 
 using System.Reflection;
+using Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe.Extensions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +13,7 @@ internal static class PaymentsSmsModule
 {
     internal static IServiceCollection AddPayments(this IServiceCollection services)
     {
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddIntegrationEventsHandlers(typeof(PaymentsSmsModule));
 
         return services;
     }

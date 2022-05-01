@@ -2,7 +2,7 @@
 
 using Valuations.Domain.Valuations;
 
-internal interface IValuationsNotificationsContext
+internal interface IValuationsContext
 {
     public IMongoCollection<Valuation> Valuations { get; }
 }

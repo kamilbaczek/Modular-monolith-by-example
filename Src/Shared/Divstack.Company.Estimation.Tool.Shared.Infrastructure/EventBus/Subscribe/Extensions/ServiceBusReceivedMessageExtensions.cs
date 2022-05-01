@@ -1,8 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe.Extensions;
 
-using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
 using global::Azure.Messaging.ServiceBus;
 
 internal static class ServiceBusReceivedMessageExtensions

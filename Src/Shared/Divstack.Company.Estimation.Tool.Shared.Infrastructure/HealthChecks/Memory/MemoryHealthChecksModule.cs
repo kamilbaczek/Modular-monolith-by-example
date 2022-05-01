@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.HealthChecks.Memory;
 
-using Microsoft.Extensions.DependencyInjection;
-
 internal static class MemoryHealthChecksModule
 {
     private const string Shared = "Shared";

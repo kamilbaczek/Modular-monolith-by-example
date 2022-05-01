@@ -9,13 +9,14 @@ using Hubs;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Infrastructure.EventBus.Subscribe.Extensions;
 
 internal static class PushPaymentsModule
 {
     internal static IServiceCollection AddPayments(this IServiceCollection services)
     {
         services.AddSignalR();
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddIntegrationEventsHandlers(typeof(PushPaymentsModule));
 
         return services;
     }

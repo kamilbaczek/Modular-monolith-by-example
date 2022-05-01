@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus;
 
 using Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Publish;
 
 internal static class EventBusModule

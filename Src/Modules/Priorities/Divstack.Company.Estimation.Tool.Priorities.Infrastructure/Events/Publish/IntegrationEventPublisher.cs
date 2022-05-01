@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Publish;
 
-using Application.Common.Interfaces;
+using Common.Interfaces;
 using Mapper;
 using Shared.DDD.BuildingBlocks;
 using Shared.Infrastructure.EventBus.Publish;
@@ -24,6 +24,6 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
             .ToList()
             .AsReadOnly();
 
-        await _eventBusPublisher.PublishAsync("valuations", integrationEvents, cancellationToken);
+        await _eventBusPublisher.PublishAsync("priorities", integrationEvents, cancellationToken);
     }
 }
