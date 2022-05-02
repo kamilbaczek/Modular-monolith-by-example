@@ -38,6 +38,7 @@ internal sealed class CustomExceptionHandlerMiddleware
 
     private Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
+        _logger.LogError(exception.Message);
         var code = HttpStatusCode.InternalServerError;
         if (exception.IsNotFoundException())
         {
@@ -52,7 +53,6 @@ internal sealed class CustomExceptionHandlerMiddleware
         var response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
             ? ExceptionDto.CreateWithMessage(exception.Message)
             : ExceptionDto.CreateInternalServerError();
-        _logger.LogError(exception.Message);
         return SendResponse(context, code, response);
     }
 

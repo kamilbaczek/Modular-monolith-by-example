@@ -47,9 +47,7 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
         {
             var @event = await message.DeserializeMessageAsync<TEvent>();
             foreach (var handler in _eventHandlers)
-            {
                 await handler.Handle(@event);
-            }
         }
 
         await args.CompleteMessageAsync(args.Message);

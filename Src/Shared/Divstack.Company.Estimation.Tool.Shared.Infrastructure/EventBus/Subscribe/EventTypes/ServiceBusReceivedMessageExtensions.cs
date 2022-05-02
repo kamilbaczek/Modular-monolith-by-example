@@ -12,7 +12,7 @@ internal static class ServiceBusReceivedMessageExtensions
         var eventType = message.ApplicationProperties[EventTypePropertyName].ToString();
         if (string.IsNullOrEmpty(eventType))
             throw new EventTypeNotDefinedException();
-        return eventType;
 
+        return eventType;
     }
 }

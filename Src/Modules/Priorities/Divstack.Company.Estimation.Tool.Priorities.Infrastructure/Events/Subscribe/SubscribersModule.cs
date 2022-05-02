@@ -11,5 +11,6 @@ internal static class SubscribersModule
     {
         services.AddSingleton<IValuationsTopicConfiguration, ValuationsTopicConfiguration>();
         services.Subscribe<ValuationRequested>();
+        services.Subscribe<ProposalSuggested>();
     }
 }

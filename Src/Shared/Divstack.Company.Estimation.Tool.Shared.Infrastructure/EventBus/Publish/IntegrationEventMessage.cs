@@ -9,11 +9,7 @@ internal sealed class IntegrationEventMessage : ServiceBusMessage
     private const string EventType = "EventType";
     private static string _applicationJson = "application/json";
 
-    private IntegrationEventMessage(string @event) : base(@event)
-    {
-    }
-
-    private IntegrationEventMessage(IntegrationEvent @event)
+    private IntegrationEventMessage(IntegrationEvent @event) : base(@event.ToString())
     {
         ContentType = _applicationJson;
         ApplicationProperties[EventType] = @event.GetTypeName();
