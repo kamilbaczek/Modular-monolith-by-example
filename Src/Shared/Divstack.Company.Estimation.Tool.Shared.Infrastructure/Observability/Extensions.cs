@@ -7,7 +7,6 @@ internal static class Extensions
 {
     internal static IServiceCollection AddObservability(this IServiceCollection services)
     {
-        services.AddSingleton<ITelemetryInitializer, TelemetryAddMetadata>();
         services.AzureApplicationInsights();
 
         return services;
