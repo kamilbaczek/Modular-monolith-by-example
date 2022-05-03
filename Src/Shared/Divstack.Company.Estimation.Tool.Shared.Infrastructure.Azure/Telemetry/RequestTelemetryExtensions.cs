@@ -15,9 +15,9 @@ internal static class RequestTelemetryExtensions
         var userIdAsString = userId == Guid.Empty ? AnonymousUser : userId.ToString();
         requestTelemetry.Context.GlobalProperties.Add(UserPropertyName, userIdAsString);
     }
-    private static Guid GetPublicUserId(IHttpContextAccessor _httpContextAccessor)
+    private static Guid GetPublicUserId(IHttpContextAccessor httpContextAccessor)
     {
-        var userPublicId = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier);
+        var userPublicId = httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier);
         return !string.IsNullOrEmpty(userPublicId?.Value) ? Guid.Parse(userPublicId.Value) : Guid.Empty;
     }
 
