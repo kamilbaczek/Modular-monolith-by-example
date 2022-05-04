@@ -4,24 +4,24 @@ using Configuration;
 using EventTypes;
 using Extensions;
 using global::Azure.Messaging.ServiceBus;
+using Logger;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where TEvent : class
 {
     private readonly IEnumerable<IIntegrationEventHandler<TEvent>> _eventHandlers;
     private readonly ServiceBusProcessor _serviceBusProcessor;
-    private readonly ILogger _logger;
+    private readonly ISubscriberLogger _logger;
 
     private static readonly EventType EventType = EventType.From<TEvent>();
 
     protected IntegrationEventSubscriber(IServiceProvider serviceProvider,
         ITopicConfiguration topicConfiguration)
     {
-        _logger = serviceProvider.GetRequiredService<ILogger<IIntegrationEventHandler<TEvent>>>();
-        var eventBusConfiguration = serviceProvider.GetRequiredService<IEventBusConfiguration>();
+        _logger = serviceProvider.GetRequiredService<ISubscriberLogger>();
         _eventHandlers = serviceProvider.GetServices<IIntegrationEventHandler<TEvent>>();
 
+        var eventBusConfiguration = serviceProvider.GetRequiredService<IEventBusConfiguration>();
         var client = new ServiceBusClient(eventBusConfiguration.ConnectionString);
 
         _serviceBusProcessor = CreateProcessor(topicConfiguration, client);
@@ -41,11 +41,11 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
         var message = args.Message;
         var receivedMessageEventType = EventType.FromReceivedMessage(message);
 
-        LogProcessing(message, receivedMessageEventType);
+        _logger.LogProcessing(message, receivedMessageEventType);
 
         if (EventType == receivedMessageEventType)
         {
-            var @event = await message.DeserializeMessageAsync<TEvent>();
+            var @event = await message.DeserializeAsync<TEvent>();
             foreach (var handler in _eventHandlers)
                 await handler.Handle(@event);
         }
@@ -55,7 +55,7 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
 
     private Task ErrorHandler(ProcessErrorEventArgs args)
     {
-        LogError(args.Exception);
+        _logger.LogError(args.Exception);
         return Task.CompletedTask;
     }
 
@@ -66,17 +66,5 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
         serviceBusProcessor.ProcessErrorAsync += ErrorHandler;
 
         return serviceBusProcessor;
-    }
-
-    private void LogProcessing(ServiceBusReceivedMessage message, EventType receivedMessageEventType)
-    {
-        var processingLogInformation = $"Processing: '{message.MessageId}' type of {receivedMessageEventType.Value}";
-        _logger.LogInformation(processingLogInformation);
-    }
-
-    private void LogError(Exception exception)
-    {
-        var processingError = $"Error during message processing message: '{exception.Message}'";
-        _logger.LogError(processingError);
     }
 }

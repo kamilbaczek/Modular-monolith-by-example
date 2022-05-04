@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Publish;
 
 using Common.Interfaces;
+using Configuration;
 using Mapper;
 using Shared.DDD.BuildingBlocks;
 using Shared.Infrastructure.EventBus.Publish;
@@ -8,13 +9,16 @@ using Shared.Infrastructure.EventBus.Publish;
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
     private readonly IEventMapper _eventMapper;
+    private readonly IPrioritiesTopicConfiguration _prioritiesTopicConfiguration;
     private readonly IEventBusPublisher _eventBusPublisher;
 
     public IntegrationEventPublisher(IEventBusPublisher eventBusPublisher,
-        IEventMapper eventMapper)
+        IEventMapper eventMapper,
+        IPrioritiesTopicConfiguration prioritiesTopicConfiguration)
     {
         _eventBusPublisher = eventBusPublisher;
         _eventMapper = eventMapper;
+        _prioritiesTopicConfiguration = prioritiesTopicConfiguration;
     }
 
     public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
@@ -24,6 +28,6 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
             .ToList()
             .AsReadOnly();
 
-        await _eventBusPublisher.PublishAsync("priorities", integrationEvents, cancellationToken);
+        await _eventBusPublisher.PublishAsync(_prioritiesTopicConfiguration.TopicName, integrationEvents, cancellationToken);
     }
 }

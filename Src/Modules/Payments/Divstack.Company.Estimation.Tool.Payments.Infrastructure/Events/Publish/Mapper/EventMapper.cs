@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Publish.Mapper;
 
 using Domain.Payments.Events;
 using IntegrationsEvents.External;

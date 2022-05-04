@@ -1,7 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Subscribe.Inquiries;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Subscribe.Valuations;
 
+using Configuration;
 using Shared.Infrastructure.EventBus.Subscribe;
-using Valuations.Configuration;
 
 internal sealed class ValuationsEventSubscriber<TEvent> : IntegrationEventSubscriber<TEvent> where TEvent : class
 {

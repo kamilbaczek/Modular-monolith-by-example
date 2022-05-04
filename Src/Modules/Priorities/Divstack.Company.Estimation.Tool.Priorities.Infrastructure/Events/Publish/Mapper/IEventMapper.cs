@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Publish.Mapper;
 
 using Shared.DDD.BuildingBlocks;
 

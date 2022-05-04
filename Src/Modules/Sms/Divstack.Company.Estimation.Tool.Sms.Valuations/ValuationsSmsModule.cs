@@ -4,9 +4,7 @@
 
 namespace Divstack.Estimation.Tool.Sms.Valuations;
 
-using System.Reflection;
 using Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe.Extensions;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 internal static class ValuationsSmsModule

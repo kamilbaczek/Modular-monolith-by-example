@@ -38,4 +38,8 @@
     <None Remove="Seeders\Request\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Events\Publish" />
+  </ItemGroup>
+
 </Project>

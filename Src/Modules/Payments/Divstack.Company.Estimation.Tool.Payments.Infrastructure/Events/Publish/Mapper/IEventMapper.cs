@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Publish.Mapper;
 
 using Shared.DDD.BuildingBlocks;
 

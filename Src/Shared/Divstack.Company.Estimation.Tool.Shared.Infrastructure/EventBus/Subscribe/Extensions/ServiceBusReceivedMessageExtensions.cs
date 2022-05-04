@@ -4,7 +4,7 @@ using global::Azure.Messaging.ServiceBus;
 
 internal static class ServiceBusReceivedMessageExtensions
 {
-    internal static async Task<TEvent> DeserializeMessageAsync<TEvent>(this ServiceBusReceivedMessage message, CancellationToken cancellationToken = default)
+    internal static async Task<TEvent> DeserializeAsync<TEvent>(this ServiceBusReceivedMessage message, CancellationToken cancellationToken = default)
     {
         var body = message.Body.ToStream();
         var @event = await JsonSerializer.DeserializeAsync<TEvent>(body, cancellationToken: cancellationToken);

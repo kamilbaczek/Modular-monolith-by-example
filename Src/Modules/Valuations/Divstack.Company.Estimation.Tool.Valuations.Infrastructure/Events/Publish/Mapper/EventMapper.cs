@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish.Mapper;
 
 using Domain.Valuations.Events;
 using Domain.Valuations.Proposals.Events;

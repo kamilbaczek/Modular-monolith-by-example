@@ -3,7 +3,6 @@
 using Core;
 using Core.Constants;
 using IntegrationsEvents.ExternalEvents;
-using Shared.Infrastructure.EventBus;
 using Shared.Infrastructure.EventBus.Subscribe;
 
 internal sealed class ValuationRequestCreatedTrelloEventHandler : IIntegrationEventHandler<ValuationRequested>

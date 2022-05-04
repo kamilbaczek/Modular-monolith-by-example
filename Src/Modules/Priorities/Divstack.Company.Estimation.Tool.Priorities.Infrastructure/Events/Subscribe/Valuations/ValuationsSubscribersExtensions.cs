@@ -1,7 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Subscribe.Inquiries;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Subscribe.Valuations;
 
 using Microsoft.Extensions.DependencyInjection;
-using Priorities.Infrastructure.Events.Subscribe.Inquiries;
 
 internal static class ValuationsSubscribersExtensions
 {

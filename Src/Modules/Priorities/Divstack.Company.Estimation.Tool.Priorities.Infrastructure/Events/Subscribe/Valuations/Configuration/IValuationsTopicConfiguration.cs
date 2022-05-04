@@ -2,6 +2,6 @@
 
 using Shared.Infrastructure.EventBus.Configuration;
 
-public interface IValuationsTopicConfiguration : ITopicConfiguration
+internal interface IValuationsTopicConfiguration : ITopicConfiguration
 {
 }
