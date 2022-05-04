@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 
-using Configuration;
-using Mapper;
+using Publish.Configuration;
+using Publish.Mapper;
 
 internal static class EventsModule
 {

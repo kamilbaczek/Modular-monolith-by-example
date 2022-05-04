@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Events.Publish.Configuration;
 
+using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
 
 internal sealed class PrioritiesTopicConfiguration : IPrioritiesTopicConfiguration
@@ -10,5 +11,7 @@ internal sealed class PrioritiesTopicConfiguration : IPrioritiesTopicConfigurati
     {
         _configuration = configuration;
     }
-    public string TopicName => _configuration.GetValue<string>($"{Priorities}:{nameof(TopicName)}");
+    private const string PrioritiesTopicKey = $"{Priorities}:{nameof(TopicName)}";
+
+    public string TopicName => _configuration.GetValue<string>(Guard.Against.NullOrEmpty(PrioritiesTopicKey, nameof(TopicName)));
 }

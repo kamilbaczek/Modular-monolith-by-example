@@ -19,6 +19,6 @@ internal sealed class TelemetryAddMetadata : ITelemetryInitializer
     {
         if (telemetry is not RequestTelemetry requestTelemetry) return;
         requestTelemetry.AddUser(_httpContextAccessor);
-        AsyncUtil.RunSync(() => requestTelemetry.AddRequestBody(_httpContextAccessor));
+        // AsyncUtil.RunSync(() => requestTelemetry.AddRequestBody(_httpContextAccessor));
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Publish.Configuration;
 
+using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
 
 internal sealed class PaymentsTopicConfiguration : IPaymentsTopicConfiguration
@@ -10,5 +11,7 @@ internal sealed class PaymentsTopicConfiguration : IPaymentsTopicConfiguration
     {
         _configuration = configuration;
     }
-    public string TopicName => _configuration.GetValue<string>($"{Payments}:{nameof(TopicName)}");
+    private const string PaymentsTopicKey = $"{Payments}:{nameof(TopicName)}";
+
+    public string TopicName => _configuration.GetValue<string>(Guard.Against.NullOrEmpty(PaymentsTopicKey, nameof(TopicName)));
 }

@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Publish.Configuration;
 
 internal interface IInquiriesTopicConfiguration
 {

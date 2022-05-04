@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 
-using Mapper;
+using Publish.Mapper;
 using Shared.DDD.BuildingBlocks;
 using Shared.Infrastructure.EventBus.Publish;
 

@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events.Publish.Mapper;
 
 using Domain.Inquiries.Events;
 using IntegrationsEvents.External;
