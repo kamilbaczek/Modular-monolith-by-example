@@ -6,6 +6,5 @@ internal static class PersistanceConfiguration
 {
     internal static void Configure()
     {
-        ValuationPersistanceConfiguration.Configure();
     }
 }

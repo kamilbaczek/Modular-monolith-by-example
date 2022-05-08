@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish;
 
 using Application.Common.Interfaces;
+using Events.Mapper;
 using Mapper;
 using MediatR;
 using Shared.DDD.BuildingBlocks;
