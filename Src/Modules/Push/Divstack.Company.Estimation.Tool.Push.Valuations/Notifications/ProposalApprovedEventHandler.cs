@@ -5,9 +5,10 @@ using DataAccess.Entities;
 using Hubs;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApproved>
+internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<ProposalApproved>
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IHubContext<ValuationsHub> _valuationsHub;
@@ -16,7 +17,7 @@ internal sealed class ProposalApprovedEventHandler : INotificationHandler<Propos
         _valuationsHub = valuationsHub;
         _notificationsWriteRepository = notificationsWriteRepository;
     }
-    public async Task Handle(ProposalApproved @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalApproved @event, CancellationToken cancellationToken)
     {
         var notification = Notification.Create(@event.ValuationId, nameof(ProposalApproved), @event.SuggestedBy);
         await _notificationsWriteRepository.AddAsync(notification, cancellationToken);

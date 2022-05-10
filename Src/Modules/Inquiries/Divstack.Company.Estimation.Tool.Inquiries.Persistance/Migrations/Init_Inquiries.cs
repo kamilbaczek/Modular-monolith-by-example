@@ -47,7 +47,7 @@ public partial class Init_Inquiries : Migration
                     name: "FK_InquiryItemsServices_Inquiries_InquiryId",
                     column: x => x.InquiryId,
                     principalTable: "Inquiries",
-                    principalColumn: "Id",
+                    principalColumn: "ValuationId",
                     onDelete: ReferentialAction.Cascade);
             })
             .Annotation("MySql:CharSet", "utf8mb4");
@@ -67,7 +67,7 @@ public partial class Init_Inquiries : Migration
                     name: "FK_InquiryItemsServicesAttributes_InquiryItemsServices_ServiceI~",
                     column: x => x.ServiceInquiryItemId,
                     principalTable: "InquiryItemsServices",
-                    principalColumn: "Id",
+                    principalColumn: "ValuationId",
                     onDelete: ReferentialAction.Cascade);
             })
             .Annotation("MySql:CharSet", "utf8mb4");

@@ -33,6 +33,7 @@ internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestPro
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
         await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+
         return Unit.Value;
     }
 }

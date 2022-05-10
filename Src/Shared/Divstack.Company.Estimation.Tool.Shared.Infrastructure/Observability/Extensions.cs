@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Observability;
 
 using Azure.Telemetry;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.ApplicationInsights.Extensibility;
 
 internal static class Extensions
 {

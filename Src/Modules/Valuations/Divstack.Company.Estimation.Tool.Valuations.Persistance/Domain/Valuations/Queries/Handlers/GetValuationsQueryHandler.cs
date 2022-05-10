@@ -11,18 +11,18 @@ internal sealed class GetValuationsQueryHandler : IRequestHandler<GetValuationQu
     private const string ProjectionQuery =
         @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy:'$CompletedBy.Value', RequestedDate: 1, _id:0}";
 
-    private readonly IValuationsNotificationsContext _valuationsNotificationsContext;
+    private readonly IValuationsContext _valuationsContext;
 
-    public GetValuationsQueryHandler(IValuationsNotificationsContext valuationsNotificationsContext)
+    public GetValuationsQueryHandler(IValuationsContext valuationsContext)
     {
-        _valuationsNotificationsContext = valuationsNotificationsContext;
+        _valuationsContext = valuationsContext;
     }
 
     public async Task<ValuationVm> Handle([FromQuery] GetValuationQuery request, CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(request.ValuationId);
-        var valuationInformationDto = await _valuationsNotificationsContext.Valuations
-            .Find(valuation => valuation.Id == valuationId)
+        var valuationInformationDto = await _valuationsContext.Valuations
+            .Find(valuation => valuation.ValuationId == valuationId)
             .Project<ValuationInformationDto>(ProjectionQuery)
             .SingleOrDefaultAsync(cancellationToken);
 

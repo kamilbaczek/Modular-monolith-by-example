@@ -2,7 +2,6 @@
 
 using Domain.Valuations.Events;
 using Domain.Valuations.Proposals.Events;
-using Events.Mapper;
 using IntegrationsEvents.ExternalEvents;
 using Shared.DDD.BuildingBlocks;
 

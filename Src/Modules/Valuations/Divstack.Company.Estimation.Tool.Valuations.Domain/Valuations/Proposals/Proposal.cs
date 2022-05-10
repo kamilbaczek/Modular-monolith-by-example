@@ -5,6 +5,10 @@ using Valuations.Exceptions;
 
 public sealed class Proposal : Entity
 {
+    private Proposal()
+    {
+    }
+
     private Proposal(
         Money value,
         ProposalDescription description,

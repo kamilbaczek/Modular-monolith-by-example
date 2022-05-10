@@ -1,12 +1,12 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
 
 using Inquiries.IntegrationsEvents.External;
-using MediatR;
+using Shared.Infrastructure.EventBus.Subscribe;
 
-internal sealed class RequestValuationEventHandler : INotificationHandler<InquiryMadeEvent>
+internal sealed class RequestValuationEventHandler : IIntegrationEventHandler<InquiryMadeEvent>
 {
-    private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IValuationsRepository _valuationsRepository;
+    private readonly IIntegrationEventPublisher _integrationEventPublisher;
 
     public RequestValuationEventHandler(IValuationsRepository valuationsRepository,
         IIntegrationEventPublisher integrationEventPublisher)
@@ -15,9 +15,9 @@ internal sealed class RequestValuationEventHandler : INotificationHandler<Inquir
         _integrationEventPublisher = integrationEventPublisher;
     }
 
-    public async Task Handle(InquiryMadeEvent notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(InquiryMadeEvent @event, CancellationToken cancellationToken = default)
     {
-        var inquiryId = new InquiryId(notification.InquiryId);
+        var inquiryId = new InquiryId(@event.InquiryId);
         var valuation = Valuation.Request(inquiryId);
         await _valuationsRepository.AddAsync(valuation, cancellationToken);
         await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);

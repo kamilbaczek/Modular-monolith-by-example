@@ -2,12 +2,13 @@
 
 using Events;
 using Exceptions;
-using History;
 using Proposals;
 using Proposals.Events;
 
 public sealed class Valuation : Entity, IAggregateRoot
 {
+    private Valuation() { }
+
     private Valuation(
         InquiryId inquiryId)
     {
@@ -16,7 +17,9 @@ public sealed class Valuation : Entity, IAggregateRoot
         Apply(@event);
         AddDomainEvent(@event);
     }
-    public ValuationId Id { get; set; }
+
+    public Guid Id { get; set; }
+    public ValuationId ValuationId => ValuationId.Of(Id);
     private InquiryId InquiryId { get; set; }
     private LinkedList<Proposal> Proposals { get; set; }
     private ValuationStatus Status { get; set; }
@@ -39,19 +42,15 @@ public sealed class Valuation : Entity, IAggregateRoot
         EmployeeId proposedBy)
     {
         if (Status == ValuationStatus.Completed)
-        {
-            throw new ValuationCompletedException(Id);
-        }
+            throw new ValuationCompletedException(ValuationId);
 
-        if (Status == ValuationStatus.WaitForProposal)
-        {
+        if (Status == ValuationStatus.WaitForClientDecision)
             throw new ProposalWaitForDecisionException(ProposalWaitForDecision!.Id);
-        }
 
         var proposalDescription = ProposalDescription.From(description);
         var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
 
-        var @event = new ProposalSuggestedDomainEvent(proposal, Id, InquiryId);
+        var @event = new ProposalSuggestedDomainEvent(proposal, ValuationId, InquiryId);
         Apply(@event);
         AddDomainEvent(@event);
     }
@@ -59,7 +58,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     public void ApproveProposal(ProposalId proposalId)
     {
         var proposal = GetProposal(proposalId);
-        var @event = new ProposalApprovedDomainEvent(Id, proposal);
+        var @event = new ProposalApprovedDomainEvent(ValuationId, proposal);
         Apply(@event);
         AddDomainEvent(@event);
     }
@@ -68,7 +67,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     {
         var proposal = GetProposal(proposalId);
         var @event = new ProposalRejectedDomainEvent(
-            Id,
+            ValuationId,
             proposal);
         Apply(@event);
         AddDomainEvent(@event);
@@ -77,7 +76,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     public void CancelProposal(ProposalId proposalId, EmployeeId employeeId)
     {
         var proposal = GetProposal(proposalId);
-        var @event = new ProposalCancelledDomainEvent(this.InquiryId, this.Id, proposal);
+        var @event = new ProposalCancelledDomainEvent(this.InquiryId, this.ValuationId, proposal);
         AddDomainEvent(@event);
     }
 
@@ -85,7 +84,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     {
         if (Status == ValuationStatus.Completed)
         {
-            throw new ValuationCompletedException(Id);
+            throw new ValuationCompletedException(ValuationId);
         }
 
         if (ProposalWaitForDecision is not null)
@@ -95,11 +94,11 @@ public sealed class Valuation : Entity, IAggregateRoot
 
         if (!NotCancelledProposals.Any())
         {
-            throw new CannotCompleteValuationWithNoProposalException(Id);
+            throw new CannotCompleteValuationWithNoProposalException(ValuationId);
         }
 
         var recentProposal = Proposals.First();
-        var @event = new ValuationCompletedDomainEvent(InquiryId, Id, employeeId, recentProposal.Price);
+        var @event = new ValuationCompletedDomainEvent(InquiryId, ValuationId, employeeId, recentProposal.Price);
         Apply(@event);
         AddDomainEvent(@event);
     }
@@ -137,7 +136,7 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     private void Apply(ValuationRequestedDomainEvent @event)
     {
-        Id = @event.ValuationId;
+        Id = @event.ValuationId.Value;
         RequestedDate = SystemTime.Now();
         Proposals = new LinkedList<Proposal>();
         InquiryId = @event.InquiryId;

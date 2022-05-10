@@ -6,6 +6,7 @@ using Tool.Valuations.Domain.Valuations;
 internal sealed class ValuationsRepository : IValuationsRepository
 {
     private readonly IDocumentSession _documentSession;
+
     public ValuationsRepository()
     {
         const string connectionString =
@@ -17,7 +18,7 @@ internal sealed class ValuationsRepository : IValuationsRepository
 
     public async Task<Valuation> GetAsync(ValuationId valuationId, CancellationToken cancellationToken = default)
     {
-        var id = valuationId.Value.ToString();
+        var id = valuationId.Value;
         var valuation = await _documentSession.Events.AggregateStreamAsync<Valuation>(id, token: cancellationToken);
 
         return valuation;
@@ -30,16 +31,17 @@ internal sealed class ValuationsRepository : IValuationsRepository
         var events = valuation.DomainEvents;
 
         _documentSession.Events.StartStream<Valuation>(
-            valuation.Id.Value,
+            valuation.ValuationId.Value,
             events
         );
 
         await _documentSession.SaveChangesAsync(cancellationToken);
     }
+
     public async Task CommitAsync(Valuation valuation, CancellationToken cancellationToken = default)
     {
         _documentSession.Events.Append(
-            valuation.Id.Value,
+            valuation.ValuationId.Value,
             valuation.DomainEvents
         );
 

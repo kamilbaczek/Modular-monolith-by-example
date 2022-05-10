@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
-public record ProposalDecision
+public sealed class ProposalDecision : ValueObject
 {
     private const string Accept = "Accept";
 
@@ -8,15 +8,19 @@ public record ProposalDecision
 
     private const string EmptyDecision = "NoDecision";
 
+    private ProposalDecision()
+    {
+    }
+
     private ProposalDecision(DateTime? date, string code)
     {
         Date = date;
         Code = code;
     }
 
-    private DateTime? Date { get; init; }
+    private DateTime? Date { get; set; }
 
-    private string Code { get; init; }
+    private string Code { get; set; }
 
 
     internal static ProposalDecision AcceptDecision(DateTime date)

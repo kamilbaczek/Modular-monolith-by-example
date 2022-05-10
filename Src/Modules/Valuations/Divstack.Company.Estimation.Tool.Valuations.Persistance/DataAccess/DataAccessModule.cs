@@ -9,7 +9,7 @@ internal static class DataAccessModule
         string connectionString)
     {
         services.AddMongo(connectionString);
-        services.AddScoped<IValuationsNotificationsContext, ValuationsNotificationsNotificationsContext>();
+        services.AddScoped<IValuationsContext, ValuationsContext>();
 
         return services;
     }

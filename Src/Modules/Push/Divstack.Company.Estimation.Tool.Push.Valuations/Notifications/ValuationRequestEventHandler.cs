@@ -5,11 +5,12 @@ using DataAccess.Entities;
 using Hubs;
 using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetAllUsers;
 
-internal sealed class ValuationRequestEventHandler : INotificationHandler<ValuationRequested>
+internal sealed class ValuationRequestEventHandler : IIntegrationEventHandler<ValuationRequested>
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IUserModule _userModule;
@@ -22,7 +23,7 @@ internal sealed class ValuationRequestEventHandler : INotificationHandler<Valuat
         _notificationsWriteRepository = notificationsWriteRepository;
         _userModule = userModule;
     }
-    public async Task Handle(ValuationRequested @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationRequested @event, CancellationToken cancellationToken)
     {
         var usersList = await _userModule.ExecuteQueryAsync(new GetAllUsersQuery());
         var notifications = usersList.Users

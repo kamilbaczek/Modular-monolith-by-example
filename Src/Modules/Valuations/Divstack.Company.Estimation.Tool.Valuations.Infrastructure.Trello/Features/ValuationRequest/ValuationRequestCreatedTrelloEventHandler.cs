@@ -3,27 +3,21 @@
 using Core;
 using Core.Constants;
 using IntegrationsEvents.ExternalEvents;
-using MediatR;
-using Services.Core.Services.Services;
+using Shared.Infrastructure.EventBus.Subscribe;
 
-internal sealed class ValuationRequestCreatedTrelloEventHandler : INotificationHandler<ValuationRequested>
+internal sealed class ValuationRequestCreatedTrelloEventHandler : IIntegrationEventHandler<ValuationRequested>
 {
-    private readonly IServicesService _servicesService;
     private readonly ITrelloTaskCreator _trelloTaskCreator;
 
-    public ValuationRequestCreatedTrelloEventHandler(ITrelloTaskCreator trelloTaskCreator,
-        IServicesService servicesService)
+    public ValuationRequestCreatedTrelloEventHandler(ITrelloTaskCreator trelloTaskCreator)
     {
         _trelloTaskCreator = trelloTaskCreator;
-        _servicesService = servicesService;
     }
 
-    public async Task Handle(ValuationRequested notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationRequested @event, CancellationToken cancellationToken)
     {
-        // var services = await _servicesService.GetBatchAsync(notification.ServiceIds, 50, cancellationToken);
-        // var servicesNames = services.Select(service => service.Name);
-        var taskName = GenerateTaskName(notification.ValuationId);
-        var description = GenerateDescription(notification, new List<string>());
+        var taskName = GenerateTaskName(@event.ValuationId);
+        var description = GenerateDescription(@event, new List<string>());
         await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
     }
 

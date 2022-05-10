@@ -2,11 +2,12 @@
 
 using MediatR;
 using Sender;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetUserEmail;
 
-internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApproved>
+internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<ProposalApproved>
 {
     private readonly IUserModule _userModule;
     private readonly IValuationProposalApprovedMailSender _valuationProposalApprovedMailSender;
@@ -18,7 +19,7 @@ internal sealed class ProposalApprovedEventHandler : INotificationHandler<Propos
         _userModule = userModule;
     }
 
-    public async Task Handle(ProposalApproved proposalApprovedDomainEvent, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalApproved proposalApprovedDomainEvent, CancellationToken cancellationToken)
     {
         var employeeId = proposalApprovedDomainEvent.SuggestedBy;
         var query = new GetUserEmailQuery(employeeId);

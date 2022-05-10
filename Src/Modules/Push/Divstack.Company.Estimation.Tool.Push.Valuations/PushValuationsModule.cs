@@ -9,13 +9,15 @@ using Hubs;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Infrastructure.EventBus.Subscribe.Extensions;
 
 internal static class PushValuationsModule
 {
     public static IServiceCollection AddValuations(this IServiceCollection services)
     {
         services.AddSignalR();
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddIntegrationEventsHandlers(typeof(PushValuationsModule));
+
         return services;
     }
 

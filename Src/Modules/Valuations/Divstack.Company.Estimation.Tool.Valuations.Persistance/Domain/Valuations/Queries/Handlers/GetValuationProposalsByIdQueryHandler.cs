@@ -12,19 +12,19 @@ internal sealed class
     private const string ProjectionQuery =
         @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value',CompletedBy: '$CompletedBy.Value', RequestedDate: 1, _id:0}";
 
-    private readonly IValuationsNotificationsContext _valuationsNotificationsContext;
+    private readonly IValuationsContext _valuationsContext;
 
-    public GetValuationProposalsByIdQueryHandler(IValuationsNotificationsContext valuationsNotificationsContext)
+    public GetValuationProposalsByIdQueryHandler(IValuationsContext valuationsContext)
     {
-        _valuationsNotificationsContext = valuationsNotificationsContext;
+        _valuationsContext = valuationsContext;
     }
 
     public async Task<ValuationProposalsVm> Handle([FromQuery] GetValuationProposalsByIdQuery request,
         CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(request.ValuationId);
-        var valuationProposalsVm = await _valuationsNotificationsContext.Valuations
-            .Find(valuation => valuation.Id == valuationId)
+        var valuationProposalsVm = await _valuationsContext.Valuations
+            .Find(valuation => valuation.ValuationId == valuationId)
             .Project<ValuationProposalsVm>(ProjectionQuery)
             .SingleOrDefaultAsync(cancellationToken);
 

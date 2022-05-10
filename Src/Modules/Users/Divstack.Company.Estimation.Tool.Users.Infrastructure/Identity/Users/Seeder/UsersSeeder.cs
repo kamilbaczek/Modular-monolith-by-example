@@ -41,17 +41,18 @@ internal sealed class UsersSeeder : IUsersSeeder
             _roleManagementService.AddNewRole(ApplicationRoleKeys.SystemAdministrator).Wait();
         }
 
-        var adminExist = await _userManagementService.UserExists(_systemAdminUserName);
+        var adminExist = await _userManagementService.UserExists("estimationfulladmin-test-2@divstack.pl"
+        );
         if (adminExist)
         {
             return;
         }
 
         var createUserRequest = new CreateUserRequest(
-            _systemAdminUserName,
+            "estimationfulladmin-test-2@divstack.pl",
             "Admin",
             "System",
-            _adminAccountConfiguration.Email,
+            "estimationfulladmin-test-2@divstack.pl",
             true);
 
         var userId = AsyncUtil.RunSync(() => _userManagementService.CreateUserAsync(createUserRequest));

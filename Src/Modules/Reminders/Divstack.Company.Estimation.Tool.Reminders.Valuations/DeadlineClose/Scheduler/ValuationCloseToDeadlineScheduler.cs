@@ -4,9 +4,10 @@ using Configuration;
 using MediatR;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<ValuationRequested>
+internal sealed class ValuationCloseToDeadlineScheduler : IIntegrationEventHandler<ValuationRequested>
 {
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
@@ -20,7 +21,7 @@ internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<V
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
 
-    public Task Handle(ValuationRequested valuationRequested, CancellationToken cancellationToken)
+    public ValueTask Handle(ValuationRequested valuationRequested, CancellationToken cancellationToken)
     {
         // var reminderDate =
         //     valuationRequested.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
@@ -31,6 +32,6 @@ internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<V
         //         cancellationToken),
         //     reminderDate);
 
-        return Task.CompletedTask;
+        return new ValueTask();
     }
 }
