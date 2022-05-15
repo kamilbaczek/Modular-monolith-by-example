@@ -2,6 +2,7 @@
 
 using Configuration;
 using Publish;
+using Subscribe;
 using Subscribe.Logger;
 
 internal static class EventBusModule

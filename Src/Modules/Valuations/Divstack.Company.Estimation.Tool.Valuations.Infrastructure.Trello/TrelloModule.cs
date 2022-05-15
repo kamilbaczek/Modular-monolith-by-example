@@ -9,7 +9,7 @@ using Extensions;
 using Features.ValuationRequest;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.EventBus.Subscribe.Extensions;
+using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class TrelloModule
 {

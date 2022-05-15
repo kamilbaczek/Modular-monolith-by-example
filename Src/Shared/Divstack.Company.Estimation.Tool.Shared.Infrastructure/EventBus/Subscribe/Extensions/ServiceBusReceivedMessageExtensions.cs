@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe.Extensions;
 
 using global::Azure.Messaging.ServiceBus;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 internal static class ServiceBusReceivedMessageExtensions
 {

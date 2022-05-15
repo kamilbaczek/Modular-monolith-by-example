@@ -5,7 +5,7 @@
 namespace Divstack.Estimation.Tool.Sms.Payments;
 
 using System.Reflection;
-using Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe.Extensions;
+using Company.Estimation.Tool.Shared.Infrastructure.EventBus.Publish.Extensions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

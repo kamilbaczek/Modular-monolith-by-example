@@ -5,7 +5,7 @@
 namespace Divstack.Company.Estimation.Tool.Users.Application;
 
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.EventBus.Subscribe.Extensions;
+using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class ApplicationModule
 {

@@ -1,9 +1,10 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Publish;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe;
 
 using Configuration;
 using DDD.BuildingBlocks;
 using Exceptions;
 using global::Azure.Messaging.ServiceBus;
+using Publish;
 
 internal sealed class EventBusPublisher : IEventBusPublisher
 {

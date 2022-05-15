@@ -2,7 +2,7 @@
 
 namespace Divstack.Company.Estimation.Tool.Payments.Application;
 
-using Shared.Infrastructure.EventBus.Subscribe.Extensions;
+using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class ApplicationModule
 {

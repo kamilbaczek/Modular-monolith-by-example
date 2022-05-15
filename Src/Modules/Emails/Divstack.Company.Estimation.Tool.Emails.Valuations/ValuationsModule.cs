@@ -6,7 +6,7 @@ using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Proposals.Suggested;
-using Shared.Infrastructure.EventBus.Subscribe.Extensions;
+using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class ValuationsModule
 {

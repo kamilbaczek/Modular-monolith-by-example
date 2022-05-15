@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Publish.Exceptions;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Subscribe.Exceptions;
 
 internal sealed class MessageToLargeException : InvalidOperationException
 {

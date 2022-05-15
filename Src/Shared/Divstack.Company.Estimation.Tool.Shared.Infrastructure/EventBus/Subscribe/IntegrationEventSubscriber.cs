@@ -5,6 +5,7 @@ using EventTypes;
 using Extensions;
 using global::Azure.Messaging.ServiceBus;
 using Logger;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where TEvent : class
