@@ -18,11 +18,11 @@ internal sealed class InitializePaymentEventHandler : IIntegrationEventHandler<V
         _integrationEventPublisher = integrationEventPublisher;
         _paymentProcessor = paymentProcessor;
     }
-    public async ValueTask Handle(ValuationCompleted @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationCompleted proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var valuationId = ValuationId.Of(@event.ValuationId);
-        var inquiryId = InquiryId.Of(@event.InquiryId);
-        var amountToPay = Money.Of(@event.AmountToPayValue, @event.AmountToPayCurrency);
+        var valuationId = ValuationId.Of(proposalApprovedEvent.ValuationId);
+        var inquiryId = InquiryId.Of(proposalApprovedEvent.InquiryId);
+        var amountToPay = Money.Of(proposalApprovedEvent.AmountToPayValue, proposalApprovedEvent.AmountToPayCurrency);
 
         var payment = await Payment.InitializeAsync(valuationId, inquiryId, amountToPay, _paymentProcessor);
 

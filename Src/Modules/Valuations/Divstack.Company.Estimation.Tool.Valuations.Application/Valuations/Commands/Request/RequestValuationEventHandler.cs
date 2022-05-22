@@ -15,9 +15,9 @@ internal sealed class RequestValuationEventHandler : IIntegrationEventHandler<In
         _integrationEventPublisher = integrationEventPublisher;
     }
 
-    public async ValueTask Handle(InquiryMadeEvent @event, CancellationToken cancellationToken = default)
+    public async ValueTask Handle(InquiryMadeEvent proposalApprovedEvent, CancellationToken cancellationToken = default)
     {
-        var inquiryId = new InquiryId(@event.InquiryId);
+        var inquiryId = new InquiryId(proposalApprovedEvent.InquiryId);
         var valuation = Valuation.Request(inquiryId);
         await _valuationsRepository.AddAsync(valuation, cancellationToken);
         await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);

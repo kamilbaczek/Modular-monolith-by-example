@@ -17,12 +17,12 @@ internal sealed class ArchivePriorityCommandCommandHandler : IIntegrationEventHa
         _integrationEventPublisher = integrationEventPublisher;
     }
 
-    public async ValueTask Handle(ProposalSuggested @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalSuggested proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var valuationId = ValuationId.Create(@event.ValuationId);
+        var valuationId = ValuationId.Create(proposalApprovedEvent.ValuationId);
         var priority = await _prioritiesRepository.GetAsync(valuationId, cancellationToken);
         if (priority is null)
-            throw new NotFoundException(@event.ValuationId.ToString(), nameof(Priority));
+            throw new NotFoundException(proposalApprovedEvent.ValuationId.ToString(), nameof(Priority));
 
         priority.Archive();
 

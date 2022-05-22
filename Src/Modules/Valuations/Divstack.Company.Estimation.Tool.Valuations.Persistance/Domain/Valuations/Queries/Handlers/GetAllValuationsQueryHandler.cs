@@ -1,32 +1,23 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers;
 
+using Application.Valuations.Queries.Get.Dtos;
 using Application.Valuations.Queries.GetAll;
+using Marten;
 using MediatR;
 using Tool.Valuations.Domain.Valuations;
 
 internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>
 {
-    private const string ProjectionQuery =
-        @"{ ValuationId: '$_id.Value', Status:{$first:'$History.Status.Value'}, InquiryId: '$InquiryId.Value', CompletedBy: '$CompletedBy.Value', RequestedDate: 1, _id:0}";
-
-    private readonly IValuationsContext _valuationsContext;
-    public GetAllValuationsQueryHandler(IValuationsContext valuationsContext)
+    private readonly IDocumentStore _documentStore;
+    public GetAllValuationsQueryHandler(IDocumentStore documentStore)
     {
-        _valuationsContext = valuationsContext;
+        _documentStore = documentStore;
     }
 
-    public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
+    public Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
     {
-        var filterDefinition = FilterDefinition<Valuation>.Empty;
-        var sortDefinition = Builders<Valuation>.Sort.Descending("RequestedDate");
+        // var valuations = await _documentStore.LightweightSession().LoadAsync<IReadOnlyList<ValuationListItemDto>>();
 
-        var valuationListItemDtos = await _valuationsContext
-            .Valuations
-            .Find(filterDefinition)
-            .Sort(sortDefinition)
-            .Project<ValuationListItemDto>(ProjectionQuery)
-            .ToListAsync(cancellationToken);
-
-        return new ValuationListVm(valuationListItemDtos);
+        return Task.FromResult(new ValuationListVm(new List<ValuationListItemDto>()));
     }
 }

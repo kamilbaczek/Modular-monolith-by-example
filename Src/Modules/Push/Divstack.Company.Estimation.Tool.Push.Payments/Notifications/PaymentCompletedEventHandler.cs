@@ -23,16 +23,16 @@ internal sealed class PaymentCompletedEventHandler : IIntegrationEventHandler<Pa
         _userModule = userModule;
     }
 
-    public async ValueTask Handle(PaymentCompleted @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(PaymentCompleted proposalApprovedEvent, CancellationToken cancellationToken)
     {
         var query = new GetAllUsersQuery();
         var userList = await _userModule.ExecuteQueryAsync(query);
         foreach (var userDto in userList.Users)
         {
-            var notification = Notification.Create(@event.PaymentId, nameof(PaymentCompleted), userDto.PublicId);
+            var notification = Notification.Create(proposalApprovedEvent.PaymentId, nameof(PaymentCompleted), userDto.PublicId);
             await _notificationsWriteRepository.AddAsync(notification, cancellationToken);
         }
 
-        await _paymentsHub.Clients.All.SendAsync(nameof(PaymentCompleted), @event, cancellationToken);
+        await _paymentsHub.Clients.All.SendAsync(nameof(PaymentCompleted), proposalApprovedEvent, cancellationToken);
     }
 }

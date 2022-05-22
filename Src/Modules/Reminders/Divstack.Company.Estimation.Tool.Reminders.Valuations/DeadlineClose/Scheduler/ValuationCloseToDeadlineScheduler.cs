@@ -21,13 +21,13 @@ internal sealed class ValuationCloseToDeadlineScheduler : IIntegrationEventHandl
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
 
-    public ValueTask Handle(ValuationRequested valuationRequested, CancellationToken cancellationToken)
+    public ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
     {
         // var reminderDate =
-        //     valuationRequested.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+        //     proposalApprovedEvent.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
         // _backgroundJobScheduler.Schedule(
         //     () => _valuationsDeadlineCloseReminder.RemindAsync(
-        //         valuationRequested.ValuationId,
+        //         proposalApprovedEvent.ValuationId,
         //         _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
         //         cancellationToken),
         //     reminderDate);

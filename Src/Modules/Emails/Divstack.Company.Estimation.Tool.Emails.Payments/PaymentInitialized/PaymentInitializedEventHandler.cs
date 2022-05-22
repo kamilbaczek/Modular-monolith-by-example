@@ -20,16 +20,16 @@ internal sealed class
         _paymentInitializedSender = paymentInitializedSender;
         _inquiriesModule = inquiriesModule;
     }
-    public async ValueTask Handle(PaymentInitialized paymentInitialized, CancellationToken cancellationToken)
+    public async ValueTask Handle(PaymentInitialized proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var (firstName, lastName, email, _, _) = await GetClientInfo(paymentInitialized);
+        var (firstName, lastName, email, _, _) = await GetClientInfo(proposalApprovedEvent);
         var paymentInitializedEmailRequest = new PaymentInitializedEmailRequest(
             firstName,
             lastName,
-            paymentInitialized.AmountToPayCurrency,
-            paymentInitialized.AmountToPayValue,
+            proposalApprovedEvent.AmountToPayCurrency,
+            proposalApprovedEvent.AmountToPayValue,
             email,
-            paymentInitialized.PaymentId);
+            proposalApprovedEvent.PaymentId);
         _paymentInitializedSender.Send(paymentInitializedEmailRequest);
     }
 

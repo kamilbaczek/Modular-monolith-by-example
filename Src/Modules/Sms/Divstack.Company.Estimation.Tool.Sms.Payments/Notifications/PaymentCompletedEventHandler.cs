@@ -17,9 +17,9 @@ internal sealed class PaymentCompletedEventHandler : IIntegrationEventHandler<Pa
         _inquiriesModule = inquiriesModule;
     }
 
-    public async ValueTask Handle(PaymentCompleted notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(PaymentCompleted proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var (paymentId, inquiryId) = notification;
+        var (paymentId, inquiryId) = proposalApprovedEvent;
         var query = new GetInquiryClientQuery(inquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(query);
         var message = GetShortMessage(paymentId);

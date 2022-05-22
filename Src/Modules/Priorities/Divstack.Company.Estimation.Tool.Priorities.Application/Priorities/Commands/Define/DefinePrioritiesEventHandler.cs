@@ -23,12 +23,12 @@ internal sealed class DefinePrioritiesEventHandler : IIntegrationEventHandler<Va
         _inquiryModule = inquiryModule;
     }
 
-    public async ValueTask Handle(ValuationRequested notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
     {
         var deadline = Deadline.Create(_deadlinesConfiguration);
-        var companySize = await GetCompanySize(notification.InquiryId);
-        var valuationId = ValuationId.Create(notification.ValuationId);
-        var inquiryId = InquiryId.Create(notification.InquiryId);
+        var companySize = await GetCompanySize(proposalApprovedEvent.InquiryId);
+        var valuationId = ValuationId.Create(proposalApprovedEvent.ValuationId);
+        var inquiryId = InquiryId.Create(proposalApprovedEvent.InquiryId);
 
         var priority = Priority.Define(valuationId, inquiryId, companySize, deadline);
 

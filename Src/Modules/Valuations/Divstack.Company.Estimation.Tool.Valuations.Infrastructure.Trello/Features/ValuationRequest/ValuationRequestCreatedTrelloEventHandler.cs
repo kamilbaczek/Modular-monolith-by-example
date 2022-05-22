@@ -14,10 +14,10 @@ internal sealed class ValuationRequestCreatedTrelloEventHandler : IIntegrationEv
         _trelloTaskCreator = trelloTaskCreator;
     }
 
-    public async ValueTask Handle(ValuationRequested @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var taskName = GenerateTaskName(@event.ValuationId);
-        var description = GenerateDescription(@event, new List<string>());
+        var taskName = GenerateTaskName(proposalApprovedEvent.ValuationId);
+        var description = GenerateDescription(proposalApprovedEvent, new List<string>());
         await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
     }
 

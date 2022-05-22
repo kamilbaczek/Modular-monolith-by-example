@@ -21,14 +21,14 @@ internal sealed class
         _inquiriesModule = inquiriesModule;
     }
 
-    public async ValueTask Handle(PaymentCompleted paymentCompleted, CancellationToken cancellationToken)
+    public async ValueTask Handle(PaymentCompleted proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var (firstName, lastName, email, _, _) = await GetClientInfo(paymentCompleted);
+        var (firstName, lastName, email, _, _) = await GetClientInfo(proposalApprovedEvent);
         var paymentInitializedEmailRequest = new PaymentCompletedEmailRequest(
             firstName,
             lastName,
             email,
-            paymentCompleted.PaymentId);
+            proposalApprovedEvent.PaymentId);
         _paymentInitializedSender.Send(paymentInitializedEmailRequest);
     }
 

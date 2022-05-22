@@ -2,4 +2,4 @@
 
 using Common.Contracts;
 
-public record GetAllValuationsQuery : IQuery<ValuationListVm>;
+public record struct GetAllValuationsQuery : IQuery<ValuationListVm>;

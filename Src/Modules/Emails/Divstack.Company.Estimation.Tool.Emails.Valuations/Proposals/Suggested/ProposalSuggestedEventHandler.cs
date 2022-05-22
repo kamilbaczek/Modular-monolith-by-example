@@ -20,25 +20,25 @@ internal sealed class ProposalSuggestedEventHandler : IIntegrationEventHandler<P
         _inquiriesModule = inquiriesModule;
     }
 
-    public async ValueTask Handle(ProposalSuggested proposalSuggestedDomainEvent, CancellationToken cancellationToken)
-    {
-        var client = await GetClientInfo(proposalSuggestedDomainEvent);
-        var request = new ValuationProposalSuggestedEmailRequest(
-            proposalSuggestedDomainEvent.ValuationId,
-            proposalSuggestedDomainEvent.ProposalId,
-            proposalSuggestedDomainEvent.InquiryId,
-            client.FullName,
-            client.Email,
-            proposalSuggestedDomainEvent.Value,
-            proposalSuggestedDomainEvent.Currency,
-            proposalSuggestedDomainEvent.Description);
-        await _proposalSuggestedMailSender.SendAsync(request);
-    }
-
     private async Task<InquiryClientDto> GetClientInfo(ProposalSuggested proposalSuggestedDomainEvent)
     {
         var inquiryClientQuery = new GetInquiryClientQuery(proposalSuggestedDomainEvent.InquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
         return client;
+    }
+
+    public async ValueTask Handle(ProposalSuggested proposalApprovedEvent, CancellationToken cancellationToken)
+    {
+        var client = await GetClientInfo(proposalApprovedEvent);
+        var request = new ValuationProposalSuggestedEmailRequest(
+            proposalApprovedEvent.ValuationId,
+            proposalApprovedEvent.ProposalId,
+            proposalApprovedEvent.InquiryId,
+            client.FullName,
+            client.Email,
+            proposalApprovedEvent.Value,
+            proposalApprovedEvent.Currency,
+            proposalApprovedEvent.Description);
+        await _proposalSuggestedMailSender.SendAsync(request);
     }
 }

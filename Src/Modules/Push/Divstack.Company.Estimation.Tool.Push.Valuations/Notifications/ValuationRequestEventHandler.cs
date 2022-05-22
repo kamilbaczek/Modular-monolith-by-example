@@ -23,16 +23,16 @@ internal sealed class ValuationRequestEventHandler : IIntegrationEventHandler<Va
         _notificationsWriteRepository = notificationsWriteRepository;
         _userModule = userModule;
     }
-    public async ValueTask Handle(ValuationRequested @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
     {
         var usersList = await _userModule.ExecuteQueryAsync(new GetAllUsersQuery());
         var notifications = usersList.Users
             .Select(user =>
-                Notification.Create(@event.ValuationId,
+                Notification.Create(proposalApprovedEvent.ValuationId,
                     nameof(ValuationRequested),
                     user.PublicId))
             .ToList();
         await _notificationsWriteRepository.BulkAddAsync(notifications, cancellationToken);
-        await _valuationsHub.Clients.All.SendAsync(nameof(ValuationRequested), @event, cancellationToken);
+        await _valuationsHub.Clients.All.SendAsync(nameof(ValuationRequested), proposalApprovedEvent, cancellationToken);
     }
 }

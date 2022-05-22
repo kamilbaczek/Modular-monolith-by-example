@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved;
 
-using MediatR;
 using Sender;
 using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
@@ -19,18 +18,18 @@ internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<Pr
         _userModule = userModule;
     }
 
-    public async ValueTask Handle(ProposalApproved proposalApprovedDomainEvent, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalApproved proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var employeeId = proposalApprovedDomainEvent.SuggestedBy;
+        var employeeId = proposalApprovedEvent.SuggestedBy;
         var query = new GetUserEmailQuery(employeeId);
         var suggestedByEmployeeEmail = await _userModule.ExecuteQueryAsync(query);
 
         var request = new ValuationProposalApprovedEmailRequest(
             suggestedByEmployeeEmail,
-            proposalApprovedDomainEvent.ValuationId,
-            proposalApprovedDomainEvent.ProposalId,
-            proposalApprovedDomainEvent.Currency,
-            proposalApprovedDomainEvent.Value);
+            proposalApprovedEvent.ValuationId,
+            proposalApprovedEvent.ProposalId,
+            proposalApprovedEvent.Currency,
+            proposalApprovedEvent.Value);
 
         _valuationProposalApprovedMailSender.Send(request);
     }

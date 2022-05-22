@@ -2,5 +2,5 @@
 
 public interface IIntegrationEventHandler<in TEvent>
 {
-    ValueTask Handle(TEvent @event, CancellationToken cancellationToken = default);
+    ValueTask Handle(TEvent proposalApprovedEvent, CancellationToken cancellationToken = default);
 }

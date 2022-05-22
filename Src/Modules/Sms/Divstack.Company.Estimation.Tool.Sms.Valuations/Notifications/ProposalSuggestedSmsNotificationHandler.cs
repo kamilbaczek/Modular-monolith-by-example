@@ -15,11 +15,11 @@ internal sealed class ProposalSuggestedSmsNotificationHandler : IIntegrationEven
         _smsClient = smsClient;
         _inquiriesModule = inquiriesModule;
     }
-    public async ValueTask Handle(ProposalSuggested notification, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalSuggested proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var query = new GetInquiryClientQuery(notification.InquiryId);
+        var query = new GetInquiryClientQuery(proposalApprovedEvent.InquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(query);
-        var message = GetShortMessage(notification.ValuationId, notification.Value, notification.Currency, notification.Description);
+        var message = GetShortMessage(proposalApprovedEvent.ValuationId, proposalApprovedEvent.Value, proposalApprovedEvent.Currency, proposalApprovedEvent.Description);
 
         await _smsClient.SendAsync(message, client.PhoneNumber, cancellationToken);
     }

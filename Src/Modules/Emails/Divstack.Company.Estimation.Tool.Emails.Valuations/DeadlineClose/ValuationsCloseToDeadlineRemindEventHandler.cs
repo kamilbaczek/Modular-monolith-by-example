@@ -21,7 +21,7 @@ internal sealed class
         _userModule = userModule;
     }
 
-    public async ValueTask Handle(ValuationCloseToDeadlineRemind valuationCloseToDeadlineRemind,
+    public async ValueTask Handle(ValuationCloseToDeadlineRemind proposalApprovedEvent,
         CancellationToken cancellationToken)
     {
         var query = new GetUsersEmailsQuery();
@@ -30,9 +30,9 @@ internal sealed class
         foreach (var email in emails)
         {
             var request = new ValuationCloseToDeadlineEmailRequest(
-                valuationCloseToDeadlineRemind.DaysBeforeDeadline,
+                proposalApprovedEvent.DaysBeforeDeadline,
                 email,
-                valuationCloseToDeadlineRemind.ValuationId);
+                proposalApprovedEvent.ValuationId);
 
             _valuationCloseToDeadlineMailSender.Send(request);
         }

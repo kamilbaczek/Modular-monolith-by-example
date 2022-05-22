@@ -17,11 +17,11 @@ internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<Pr
         _valuationsHub = valuationsHub;
         _notificationsWriteRepository = notificationsWriteRepository;
     }
-    public async ValueTask Handle(ProposalApproved @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalApproved proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var notification = Notification.Create(@event.ValuationId, nameof(ProposalApproved), @event.SuggestedBy);
+        var notification = Notification.Create(proposalApprovedEvent.ValuationId, nameof(ProposalApproved), proposalApprovedEvent.SuggestedBy);
         await _notificationsWriteRepository.AddAsync(notification, cancellationToken);
-        var userId = @event.SuggestedBy.ToString();
-        await _valuationsHub.Clients.User(userId).SendAsync(nameof(ProposalApproved), @event, cancellationToken);
+        var userId = proposalApprovedEvent.SuggestedBy.ToString();
+        await _valuationsHub.Clients.User(userId).SendAsync(nameof(ProposalApproved), proposalApprovedEvent, cancellationToken);
     }
 }
