@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Azure.Identity" Version="1.3.0" />
-      <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.7.0" />
-      <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0" />
-      <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.2" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.0.0" />
-      <PackageReference Include="Microsoft.FeatureManagement" Version="2.5.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.3.0"/>
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.7.0"/>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.20.0"/>
+    <PackageReference Include="Microsoft.Azure.Services.AppAuthentication" Version="1.6.2"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.0.0"/>
+    <PackageReference Include="Microsoft.FeatureManagement" Version="2.5.1"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <None Update="azure-appsettings.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="azure-appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

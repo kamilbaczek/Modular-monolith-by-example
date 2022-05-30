@@ -7,19 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Manatee.Trello" Version="4.4.0" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Manatee.Trello" Version="4.4.0"/>
+    <PackageReference Include="MediatR" Version="9.0.0"/>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
+    <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
   </ItemGroup>
 
 </Project>

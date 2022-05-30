@@ -8,17 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Communication.Sms" Version="1.0.1" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Azure.Communication.Sms" Version="1.0.1"/>
+    <PackageReference Include="MediatR" Version="9.0.0"/>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj" />
-    <ProjectReference Include="..\..\Payments\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Sms.Core\Divstack.Company.Estimation.Tool.Sms.Core.csproj" />
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
+    <ProjectReference Include="..\..\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj"/>
+    <ProjectReference Include="..\..\Payments\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Sms.Core\Divstack.Company.Estimation.Tool.Sms.Core.csproj"/>
   </ItemGroup>
 
 </Project>
