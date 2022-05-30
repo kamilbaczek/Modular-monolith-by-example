@@ -5,13 +5,13 @@ using Microsoft.Extensions.Configuration;
 
 internal sealed class PrioritiesTopicConfiguration : IPrioritiesTopicConfiguration
 {
-    private readonly IConfiguration _configuration;
     private const string Priorities = "Priorities";
+    private const string PrioritiesTopicKey = $"{Priorities}:{nameof(TopicName)}";
+    private readonly IConfiguration _configuration;
     public PrioritiesTopicConfiguration(IConfiguration configuration)
     {
         _configuration = configuration;
     }
-    private const string PrioritiesTopicKey = $"{Priorities}:{nameof(TopicName)}";
 
     public string TopicName => _configuration.GetValue<string>(Guard.Against.NullOrEmpty(PrioritiesTopicKey, nameof(TopicName)));
 }

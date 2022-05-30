@@ -1,12 +1,4 @@
 ﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:36588",
-      "sslPort": 44354
-    }
-  },
   "profiles": {
     "Divstack.Company.Estimation.Tool.Bootstrapper": {
       "commandName": "Project",

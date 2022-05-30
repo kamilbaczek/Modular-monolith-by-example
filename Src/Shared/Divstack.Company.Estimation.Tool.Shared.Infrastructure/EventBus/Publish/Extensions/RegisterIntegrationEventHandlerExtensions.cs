@@ -1,7 +1,5 @@
-﻿
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Publish.Extensions;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus.Publish.Extensions;
 
-using Microsoft.Extensions.DependencyInjection;
 using Subscribe;
 
 public static class RegisterIntegrationEventHandlerExtensions

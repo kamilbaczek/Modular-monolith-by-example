@@ -3,7 +3,6 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
-using MediatR;
 using Sender;
 using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Payments.IntegrationsEvents.External;

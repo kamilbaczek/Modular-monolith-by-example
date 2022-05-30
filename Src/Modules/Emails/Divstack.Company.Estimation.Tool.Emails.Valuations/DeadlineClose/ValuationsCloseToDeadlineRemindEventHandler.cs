@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose;
 
-using MediatR;
 using Reminders.Valuations.DeadlineClose.Reminder.Events;
 using Sender;
 using Shared.Infrastructure.EventBus.Subscribe;

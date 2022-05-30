@@ -52,7 +52,7 @@ content-type: application/json
 Authorization: {{bearer}}
 
 ### valuation
-@valuation = 7101e706-68aa-4566-b6fe-08b6203762ed
+@valuation = "25a9673b-7e91-409b-a09a-cae9a2edfcf4"
 
 ### Suggest proposal
 POST {{url}}/api/valuations-module/valuations/proposals
@@ -86,6 +86,6 @@ Content-Type: application/json
 
 
 ### Get valuation 
-GET {{url}}/api/valuations-module/valuations/{{valuation}}
+GET {{url}}/api/valuations-module/valuations/25a9673b-7e91-409b-a09a-cae9a2edfcf4
 content-type: application/json
 Authorization: {{bearer}}

@@ -5,7 +5,6 @@ using Hangfire;
 using Hangfire.Mongo;
 using Hangfire.Mongo.Migration.Strategies;
 using Hangfire.Mongo.Migration.Strategies.Backup;
-using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 internal static class BackgroundJobsStorageExtensions

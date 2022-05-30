@@ -5,7 +5,7 @@ using Common.Extensions;
 using Shared.Infrastructure.Configuration;
 
 /// <summary>
-/// Entry point to  application
+///     Entry point to  application
 /// </summary>
 public sealed class Program
 {
@@ -15,7 +15,7 @@ public sealed class Program
     }
 
     /// <summary>
-    /// CreateHostBuilder
+    ///     CreateHostBuilder
     /// </summary>
     /// <param name="args"></param>
     /// <returns></returns>

@@ -4,7 +4,6 @@ using Domain;
 using Domain.Deadlines;
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
-using MediatR;
 using Shared.Infrastructure.EventBus.Subscribe;
 using Valuations.IntegrationsEvents.ExternalEvents;
 

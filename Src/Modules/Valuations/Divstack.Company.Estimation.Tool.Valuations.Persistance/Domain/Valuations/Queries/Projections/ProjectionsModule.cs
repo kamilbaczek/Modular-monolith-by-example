@@ -1,27 +1,30 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Projections;
 
+using Handlers.Get;
+using Handlers.GetAll;
+using Handlers.GetHistory;
+using Handlers.GetProposals;
 using Marten;
-using Marten.Events.Daemon.Resiliency;
 using Marten.Events.Projections;
 using Microsoft.Extensions.DependencyInjection;
 using Weasel.Core;
 
 internal static class ProjectionsModule
 {
-    private const string ConnectionString =
-         "PORT = 5432; HOST = localhost; TIMEOUT = 15; POOLING = True; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
-
-    internal static IServiceCollection AddProjections(this IServiceCollection services)
+    internal static IServiceCollection AddProjections(this IServiceCollection services, string connectionString)
     {
-        services.AddMartenStore<DocumentStore>(storeOptions =>
-        {
-            storeOptions.Projections.Add<ValuationInformationProjection>(ProjectionLifecycle.Async);
-            storeOptions.Connection(ConnectionString);
-            //TODO only on dev
-            storeOptions.AutoCreateSchemaObjects = AutoCreate.All;
+        services.AddMarten(options =>
+            {
+                options.Connection(connectionString);
 
-        })
-        .AddAsyncDaemon(DaemonMode.Solo);
+                options.Projections.Add<ProposalsAggregation>(ProjectionLifecycle.Inline);
+                options.Projections.Add<HistoryAggregation>(ProjectionLifecycle.Inline);
+                options.Projections.Add<ValuationInformationAggregation>(ProjectionLifecycle.Inline);
+                options.Projections.Add<ValuationListItemAggregation>(ProjectionLifecycle.Inline);
+
+                options.AutoCreateSchemaObjects = AutoCreate.All;
+            }
+        );
 
         return services;
     }

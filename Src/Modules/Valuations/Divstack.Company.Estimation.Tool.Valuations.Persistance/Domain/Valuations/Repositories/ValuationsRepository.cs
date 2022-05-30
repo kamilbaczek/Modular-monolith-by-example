@@ -7,13 +7,9 @@ internal sealed class ValuationsRepository : IValuationsRepository
 {
     private readonly IDocumentSession _documentSession;
 
-    public ValuationsRepository()
+    public ValuationsRepository(IDocumentSession documentSession)
     {
-        const string connectionString =
-            "PORT = 5432; HOST = localhost; TIMEOUT = 15; POOLING = True; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
-
-        var store = DocumentStore.For(connectionString);
-        _documentSession = store.LightweightSession();
+        _documentSession = documentSession;
     }
 
     public async Task<Valuation> GetAsync(ValuationId valuationId, CancellationToken cancellationToken = default)
@@ -31,7 +27,7 @@ internal sealed class ValuationsRepository : IValuationsRepository
         var events = valuation.DomainEvents;
 
         _documentSession.Events.StartStream<Valuation>(
-            valuation.ValuationId.Value,
+            valuation.Id,
             events
         );
 

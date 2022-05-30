@@ -7,8 +7,8 @@ using Tool.Priorities.Domain;
 
 internal sealed class PrioritiesRepository : IPrioritiesRepository
 {
-    private readonly IPrioritiesContext _prioritiesContext;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    private readonly IPrioritiesContext _prioritiesContext;
 
     public PrioritiesRepository(IPrioritiesContext prioritiesContext, IIntegrationEventPublisher integrationEventPublisher)
     {

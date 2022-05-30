@@ -8,9 +8,9 @@ using Shared.Infrastructure.EventBus.Publish;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
+    private readonly IEventBusPublisher _eventBusPublisher;
     private readonly IEventMapper _eventMapper;
     private readonly IPrioritiesTopicConfiguration _prioritiesTopicConfiguration;
-    private readonly IEventBusPublisher _eventBusPublisher;
 
     public IntegrationEventPublisher(IEventBusPublisher eventBusPublisher,
         IEventMapper eventMapper,

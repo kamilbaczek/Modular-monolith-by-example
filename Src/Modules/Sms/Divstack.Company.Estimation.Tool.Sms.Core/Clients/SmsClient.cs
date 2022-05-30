@@ -27,7 +27,7 @@ internal sealed class SmsClient : ISmsClient
     {
         await MessageResource.CreateAsync(
             body: message,
-            @from: new PhoneNumber(_phoneNumbersConfiguration.From),
+            from: new PhoneNumber(_phoneNumbersConfiguration.From),
             to: new PhoneNumber(to)
         );
     }

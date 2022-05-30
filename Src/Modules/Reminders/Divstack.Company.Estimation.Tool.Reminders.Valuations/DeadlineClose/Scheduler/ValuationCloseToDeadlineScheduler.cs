@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
 using Configuration;
-using MediatR;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
 using Shared.Infrastructure.EventBus.Subscribe;

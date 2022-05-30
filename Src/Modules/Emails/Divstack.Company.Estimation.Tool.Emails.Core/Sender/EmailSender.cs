@@ -9,9 +9,9 @@ using static String;
 
 internal sealed class EmailSender : IEmailSender
 {
+    private const string EmailType = "text/html";
     private readonly IBackgroundProcessQueue _backgroundProcessQueue;
     private readonly IMailConfiguration _mailConfiguration;
-    private const string EmailType = "text/html";
 
     public EmailSender(IMailConfiguration mailConfiguration, IBackgroundProcessQueue backgroundProcessQueue)
     {

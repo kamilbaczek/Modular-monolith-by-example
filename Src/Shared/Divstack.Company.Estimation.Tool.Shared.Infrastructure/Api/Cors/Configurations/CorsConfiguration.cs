@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Cors.Configurations;
 
 using Ardalis.GuardClauses;
-using Microsoft.Extensions.Configuration;
 
 internal sealed class CorsConfiguration : ICorsConfiguration
 {
@@ -12,5 +11,5 @@ internal sealed class CorsConfiguration : ICorsConfiguration
     {
         _configuration = configuration.GetSection(Cors);
     }
-    public string Origin => Guard.Against.NullOrEmpty(_configuration.GetValue<string>(nameof(Origin)), nameof(Origin));
+    public string Origin => Guard.Against.NullOrEmpty(nameof(Origin), nameof(Origin));
 }

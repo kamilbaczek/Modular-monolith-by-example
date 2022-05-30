@@ -5,13 +5,13 @@ using Microsoft.Extensions.Configuration;
 
 internal sealed class PaymentsTopicConfiguration : IPaymentsTopicConfiguration
 {
-    private readonly IConfiguration _configuration;
     private const string Payments = "Payments";
+    private const string PaymentsTopicKey = $"{Payments}:{nameof(TopicName)}";
+    private readonly IConfiguration _configuration;
     public PaymentsTopicConfiguration(IConfiguration configuration)
     {
         _configuration = configuration;
     }
-    private const string PaymentsTopicKey = $"{Payments}:{nameof(TopicName)}";
 
     public string TopicName => _configuration.GetValue<string>(Guard.Against.NullOrEmpty(PaymentsTopicKey, nameof(TopicName)));
 }

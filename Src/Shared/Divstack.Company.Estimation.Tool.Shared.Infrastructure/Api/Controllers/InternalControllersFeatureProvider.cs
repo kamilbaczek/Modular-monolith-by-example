@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Controllers;
 
-using System;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;

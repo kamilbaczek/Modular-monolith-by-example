@@ -18,9 +18,9 @@ public sealed class ProposalDecision : ValueObject
         Code = code;
     }
 
-    private DateTime? Date { get; set; }
+    private DateTime? Date { get; }
 
-    private string Code { get; set; }
+    private string Code { get; }
 
 
     internal static ProposalDecision AcceptDecision(DateTime date)

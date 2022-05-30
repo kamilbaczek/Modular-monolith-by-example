@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Controllers;
 
-using Microsoft.Extensions.DependencyInjection;
-
 internal static class Extensions
 {
     internal static IServiceCollection AddInternalControllers(this IServiceCollection services)
@@ -14,5 +12,4 @@ internal static class Extensions
 
         return services;
     }
-
 }

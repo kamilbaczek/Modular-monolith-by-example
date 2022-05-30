@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors;
 
-using System;
-
 internal static class ErrorTypes
 {
     private const string NotFound = "NotFound";

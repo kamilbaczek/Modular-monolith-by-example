@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
 
-using System;
 using System.Linq.Expressions;
 using Abstractions.BackgroundProcessing;
 using Hangfire;

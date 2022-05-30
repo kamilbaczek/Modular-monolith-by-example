@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 
 internal sealed class InquiriesTopicConfiguration : IInquiriesTopicConfiguration
 {
-    private readonly IConfiguration _configuration;
     private const string Inquiries = "Inquiries";
     private const string InquiriesTopicKey = $"{Inquiries}:{nameof(TopicName)}";
+    private readonly IConfiguration _configuration;
 
     public InquiriesTopicConfiguration(IConfiguration configuration)
     {

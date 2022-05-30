@@ -2,19 +2,19 @@
 
 using Configuration;
 using EventTypes;
+using Exceptions;
 using Extensions;
 using global::Azure.Messaging.ServiceBus;
 using Logger;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where TEvent : class
 {
-    private readonly IEnumerable<IIntegrationEventHandler<TEvent>> _eventHandlers;
-    private readonly ServiceBusProcessor _serviceBusProcessor;
-    private readonly ISubscriberLogger _logger;
-
     private static readonly EventType EventType = EventType.From<TEvent>();
+    private readonly IEnumerable<IIntegrationEventHandler<TEvent>> _eventHandlers;
+    private readonly ISubscriberLogger _logger;
+    private readonly ServiceBusProcessor _serviceBusProcessor;
+
     private readonly ServiceBusProcessorOptions _serviceBusProcessorOptions = new()
     {
         AutoCompleteMessages = false
@@ -46,7 +46,7 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
         var message = args.Message;
         var receivedMessageEventType = EventType.FromReceivedMessage(message);
 
-        _logger.LogProcessing(message, receivedMessageEventType);
+        _logger.LogProcessingStarted(message, receivedMessageEventType);
 
         if (EventType == receivedMessageEventType)
         {
@@ -56,12 +56,13 @@ public abstract class IntegrationEventSubscriber<TEvent> : IHostedService where 
         }
 
         await args.CompleteMessageAsync(args.Message);
+        _logger.LogProcessingCompleted(message, receivedMessageEventType);
     }
 
     private Task ErrorHandler(ProcessErrorEventArgs args)
     {
         _logger.LogError(args.Exception);
-        return Task.CompletedTask;
+        throw new ProcessingException(args.Exception);
     }
 
     private ServiceBusProcessor CreateProcessor(ITopicConfiguration topicConfiguration, ServiceBusClient client, ServiceBusProcessorOptions options, CancellationToken cancellationToken = default)

@@ -2,9 +2,11 @@
 
 public sealed class SendSmsFailedException : InvalidOperationException
 {
-    private static string GetMessage(Exception smsClientException) => $"Send sms failed - {typeof(Exception)}:'{smsClientException.Message}'";
-
     public SendSmsFailedException(Exception smsClientException) : base(GetMessage(smsClientException))
     {
+    }
+    private static string GetMessage(Exception smsClientException)
+    {
+        return $"Send sms failed - {typeof(Exception)}:'{smsClientException.Message}'";
     }
 }

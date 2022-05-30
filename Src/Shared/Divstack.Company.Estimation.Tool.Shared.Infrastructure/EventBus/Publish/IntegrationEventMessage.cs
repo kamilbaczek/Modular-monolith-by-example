@@ -7,7 +7,7 @@ using global::Azure.Messaging.ServiceBus;
 internal sealed class IntegrationEventMessage : ServiceBusMessage
 {
     private const string EventType = "EventType";
-    private static string _applicationJson = "application/json";
+    private static readonly string _applicationJson = "application/json";
 
     private IntegrationEventMessage(IntegrationEvent @event) : base(@event.ToString())
     {

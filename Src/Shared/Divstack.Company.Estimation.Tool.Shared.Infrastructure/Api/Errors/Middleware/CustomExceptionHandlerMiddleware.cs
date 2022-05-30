@@ -1,9 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 
-using System;
 using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Environments;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

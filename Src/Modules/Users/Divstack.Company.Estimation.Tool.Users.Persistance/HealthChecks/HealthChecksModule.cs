@@ -10,7 +10,10 @@ internal static class HealthChecksModule
 
     internal static IServiceCollection AddPersistanceHealthChecks(this IServiceCollection services, string connectionString)
     {
-        services.AddHealthChecks().AddMySql(connectionString, DatabaseName, null, new[] { Users, Database });
+        services.AddHealthChecks().AddMySql(connectionString, DatabaseName, null, new[]
+        {
+            Users, Database
+        });
 
         return services;
     }

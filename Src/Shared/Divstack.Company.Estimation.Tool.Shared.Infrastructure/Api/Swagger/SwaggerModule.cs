@@ -1,10 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Swagger;
 
-using System;
-using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
 internal static class SwaggerModule

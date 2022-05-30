@@ -3,7 +3,6 @@
 using DataAccess.DataAccess.Repositories.Write;
 using DataAccess.Entities;
 using Hubs;
-using MediatR;
 using Microsoft.AspNetCore.SignalR;
 using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;

@@ -26,7 +26,7 @@ public sealed class Proposal : Entity
     public ProposalDescription Description { get; init; }
     public Money Price { get; init; }
     public EmployeeId SuggestedBy { get; init; }
-    private DateTime Suggested { get; init; }
+    private DateTime Suggested { get; }
     public EmployeeId CancelledBy { get; set; }
     private DateTime? Cancelled { get; set; }
     private ProposalDecision Decision { get; set; }

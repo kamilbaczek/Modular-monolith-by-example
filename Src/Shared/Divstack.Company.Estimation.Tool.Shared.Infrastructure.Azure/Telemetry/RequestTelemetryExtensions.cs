@@ -27,7 +27,7 @@ internal static class RequestTelemetryExtensions
         var request = httpContextAccessor.HttpContext.Request;
         if (request.Method != HttpMethod.Post.ToString()) return;
         using var streamReader = new StreamReader(request.Body);
-        string requestBody = await streamReader.ReadToEndAsync();
+        var requestBody = await streamReader.ReadToEndAsync();
         requestTelemetry.Properties.Add("body", requestBody);
     }
 }

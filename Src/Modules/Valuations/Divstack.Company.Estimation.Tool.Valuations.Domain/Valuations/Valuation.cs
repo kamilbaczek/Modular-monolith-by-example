@@ -76,7 +76,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     public void CancelProposal(ProposalId proposalId, EmployeeId employeeId)
     {
         var proposal = GetProposal(proposalId);
-        var @event = new ProposalCancelledDomainEvent(this.InquiryId, this.ValuationId, proposal);
+        var @event = new ProposalCancelledDomainEvent(InquiryId, ValuationId, proposal);
         AddDomainEvent(@event);
     }
 
@@ -160,6 +160,9 @@ public sealed class Valuation : Entity, IAggregateRoot
         {
             case ValuationRequestedDomainEvent valuationRequestedDomainEvent:
                 Apply(valuationRequestedDomainEvent);
+                break;
+            case ProposalSuggestedDomainEvent suggestedDomainEvent:
+                Apply(suggestedDomainEvent);
                 break;
             case ProposalRejectedDomainEvent proposalRejectedDomainEvent:
                 Apply(proposalRejectedDomainEvent);

@@ -11,9 +11,15 @@ internal sealed class SubscriberLogger : ISubscriberLogger
     {
         _logger = logger;
     }
-    public void LogProcessing(ServiceBusReceivedMessage message, EventType receivedMessageEventType)
+    public void LogProcessingStarted(ServiceBusReceivedMessage message, EventType receivedMessageEventType)
     {
-        var processingLogInformation = $"Processing: '{message.MessageId}' type of {receivedMessageEventType.Value}";
+        var processingLogInformation = $"Processing: '{message.MessageId}' type of {receivedMessageEventType.Value} | Started";
+        _logger.LogInformation(processingLogInformation);
+    }
+
+    public void LogProcessingCompleted(ServiceBusReceivedMessage message, EventType receivedMessageEventType)
+    {
+        var processingLogInformation = $"Processing: '{message.MessageId}' type of {receivedMessageEventType.Value} | Finished";
         _logger.LogInformation(processingLogInformation);
     }
 
@@ -22,5 +28,4 @@ internal sealed class SubscriberLogger : ISubscriberLogger
         var processingError = $"Error during message processing message: '{exception.Message}'";
         _logger.LogError(processingError);
     }
-
 }

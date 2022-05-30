@@ -3,7 +3,6 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
-using MediatR;
 using Sender;
 using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
@@ -20,13 +19,6 @@ internal sealed class ProposalSuggestedEventHandler : IIntegrationEventHandler<P
         _inquiriesModule = inquiriesModule;
     }
 
-    private async Task<InquiryClientDto> GetClientInfo(ProposalSuggested proposalSuggestedDomainEvent)
-    {
-        var inquiryClientQuery = new GetInquiryClientQuery(proposalSuggestedDomainEvent.InquiryId);
-        var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
-        return client;
-    }
-
     public async ValueTask Handle(ProposalSuggested proposalApprovedEvent, CancellationToken cancellationToken)
     {
         var client = await GetClientInfo(proposalApprovedEvent);
@@ -40,5 +32,12 @@ internal sealed class ProposalSuggestedEventHandler : IIntegrationEventHandler<P
             proposalApprovedEvent.Currency,
             proposalApprovedEvent.Description);
         await _proposalSuggestedMailSender.SendAsync(request);
+    }
+
+    private async Task<InquiryClientDto> GetClientInfo(ProposalSuggested proposalSuggestedDomainEvent)
+    {
+        var inquiryClientQuery = new GetInquiryClientQuery(proposalSuggestedDomainEvent.InquiryId);
+        var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
+        return client;
     }
 }

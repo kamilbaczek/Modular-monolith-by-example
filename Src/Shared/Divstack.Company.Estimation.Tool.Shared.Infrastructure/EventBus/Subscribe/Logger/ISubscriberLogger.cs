@@ -5,6 +5,8 @@ using global::Azure.Messaging.ServiceBus;
 
 internal interface ISubscriberLogger
 {
-    void LogProcessing(ServiceBusReceivedMessage message, EventType receivedMessageEventType);
+    void LogProcessingStarted(ServiceBusReceivedMessage message, EventType receivedMessageEventType);
+    void LogProcessingCompleted(ServiceBusReceivedMessage message, EventType receivedMessageEventType);
+
     void LogError(Exception exception);
 }

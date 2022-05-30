@@ -2,5 +2,5 @@
 
 public record ValuationHistoryVm(IReadOnlyCollection<ValuationHistoricalEntryDto> ValuationHistoricalEntries)
 {
-    public Guid RecentHistoricalEntryId => ValuationHistoricalEntries.First().HistoricalEntryId;
+    public Guid RecentHistoricalEntryId => ValuationHistoricalEntries.First().Id;
 }

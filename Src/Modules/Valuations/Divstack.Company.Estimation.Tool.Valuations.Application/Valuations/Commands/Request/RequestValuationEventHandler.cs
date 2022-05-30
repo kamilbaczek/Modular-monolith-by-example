@@ -5,8 +5,8 @@ using Shared.Infrastructure.EventBus.Subscribe;
 
 internal sealed class RequestValuationEventHandler : IIntegrationEventHandler<InquiryMadeEvent>
 {
-    private readonly IValuationsRepository _valuationsRepository;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
+    private readonly IValuationsRepository _valuationsRepository;
 
     public RequestValuationEventHandler(IValuationsRepository valuationsRepository,
         IIntegrationEventPublisher integrationEventPublisher)
