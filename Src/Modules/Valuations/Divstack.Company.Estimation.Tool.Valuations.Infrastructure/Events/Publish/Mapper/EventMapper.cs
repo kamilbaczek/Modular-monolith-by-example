@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Mapper;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish.Mapper;
 
 using Domain.Valuations.Events;
 using Domain.Valuations.Proposals.Events;
@@ -18,13 +18,13 @@ internal sealed class EventMapper : IEventMapper
         {
             ProposalApprovedDomainEvent domainEvent =>
                 new ProposalApproved(domainEvent.ValuationId.Value,
-                    domainEvent.ProposalId.Value,
-                    domainEvent.SuggestedBy.Value,
-                    domainEvent.Value.Currency,
-                    domainEvent.Value.Value),
+                    domainEvent.Proposal.Id.Value,
+                    domainEvent.Proposal.SuggestedBy.Value,
+                    domainEvent.Proposal.Price.Currency,
+                    domainEvent.Proposal.Price.Value),
             ProposalCancelledDomainEvent domainEvent =>
-                new ProposalCancelled(domainEvent.CancelledBy.Value,
-                    domainEvent.ProposalId.Value,
+                new ProposalCancelled(domainEvent.Proposal.CancelledBy.Value,
+                    domainEvent.Proposal.Id.Value,
                     domainEvent.ValuationId.Value),
             ProposalRejectedDomainEvent domainEvent =>
                 new ProposalRejected(
@@ -35,11 +35,11 @@ internal sealed class EventMapper : IEventMapper
             ProposalSuggestedDomainEvent domainEvent =>
                 new ProposalSuggested(
                     domainEvent.ValuationId.Value,
-                    domainEvent.ProposalId.Value,
+                    domainEvent.Proposal.Id.Value,
                     domainEvent.InquiryId.Value,
-                    domainEvent.Value.Value,
-                    domainEvent.Value.Currency,
-                    domainEvent.Description.Message),
+                    domainEvent.Proposal.Price.Value,
+                    domainEvent.Proposal.Price.Currency,
+                    domainEvent.Proposal.Description.Message),
             ValuationRequestedDomainEvent domainEvent =>
                 new ValuationRequested(
                     domainEvent.InquiryId.Value,

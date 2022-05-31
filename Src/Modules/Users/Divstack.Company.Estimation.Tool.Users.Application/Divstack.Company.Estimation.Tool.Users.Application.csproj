@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Domain\Divstack.Company.Estimation.Tool.Users.Domain.csproj"/>
   </ItemGroup>
 

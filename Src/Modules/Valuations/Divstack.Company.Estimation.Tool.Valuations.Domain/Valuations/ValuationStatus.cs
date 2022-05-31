@@ -8,6 +8,10 @@ public sealed class ValuationStatus : ValueObject
     private const string ApprovedStatus = "Approved";
     private const string CompletedStatus = "Completed";
 
+    private ValuationStatus()
+    {
+    }
+
     private ValuationStatus(string value)
     {
         Value = value;

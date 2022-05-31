@@ -2,6 +2,7 @@
 
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance;
 
+using Domain.Valuations.Queries.Projections;
 using Domain.Valuations.Repositories;
 using HealthChecks;
 using Microsoft.AspNetCore.Builder;
@@ -17,6 +18,7 @@ internal static class PersistanceModule
         services.AddDataAccess(connectionString);
         services.AddPersistanceHealthChecks(connectionString);
         services.AddRepositories();
+        services.AddProjections(connectionString);
 
         return services;
     }

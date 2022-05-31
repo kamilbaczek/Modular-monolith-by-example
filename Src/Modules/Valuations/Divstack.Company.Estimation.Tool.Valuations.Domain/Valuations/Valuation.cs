@@ -2,39 +2,34 @@
 
 using Events;
 using Exceptions;
-using History;
 using Proposals;
 using Proposals.Events;
 
 public sealed class Valuation : Entity, IAggregateRoot
 {
+    private Valuation() { }
+
     private Valuation(
         InquiryId inquiryId)
     {
-        Id = ValuationId.Create();
-        RequestedDate = SystemTime.Now();
-        Proposals = new LinkedList<Proposal>();
-        History = new LinkedList<HistoricalEntry>();
-        InquiryId = inquiryId;
-        ChangeStatus(ValuationStatus.WaitForProposal);
-        var @event = new ValuationRequestedDomainEvent(Id, InquiryId);
+        var valuationId = ValuationId.Create();
+        var @event = new ValuationRequestedDomainEvent(valuationId, inquiryId);
+        Apply(@event);
         AddDomainEvent(@event);
     }
-    public ValuationId Id { get; init; }
-    private InquiryId InquiryId { get; init; }
-    private LinkedList<Proposal> Proposals { get; init; }
-    private LinkedList<HistoricalEntry> History { get; init; }
-    private DateTime RequestedDate { get; init; }
+
+    public Guid Id { get; set; }
+    public ValuationId ValuationId => ValuationId.Of(Id);
+    private InquiryId InquiryId { get; set; }
+    private LinkedList<Proposal> Proposals { get; set; }
+    private ValuationStatus Status { get; set; }
+    private DateTime RequestedDate { get; set; }
     private DateTime? CompletedDate { get; set; }
     private EmployeeId CompletedBy { get; set; }
     private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
 
     private Proposal? ProposalWaitForDecision => NotCancelledProposals
         .SingleOrDefault(proposal => !proposal.HasDecision);
-
-    private HistoricalEntry LastHistoricalEntry => History.OrderBy(historicalEntry => historicalEntry.ChangeDate).Last();
-    private bool IsWaitingForDecision => LastHistoricalEntry.Status == ValuationStatus.WaitForClientDecision;
-    private bool IsCompleted => LastHistoricalEntry.Status == ValuationStatus.Completed;
 
     public static Valuation Request(
         InquiryId inquiryId)
@@ -46,73 +41,50 @@ public sealed class Valuation : Entity, IAggregateRoot
         string description,
         EmployeeId proposedBy)
     {
-        if (IsCompleted)
-        {
-            throw new ValuationCompletedException(Id);
-        }
+        if (Status == ValuationStatus.Completed)
+            throw new ValuationCompletedException(ValuationId);
 
-        if (IsWaitingForDecision)
-        {
+        if (Status == ValuationStatus.WaitForClientDecision)
             throw new ProposalWaitForDecisionException(ProposalWaitForDecision!.Id);
-        }
 
         var proposalDescription = ProposalDescription.From(description);
         var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
-        Proposals.AddFirst(proposal);
-        ChangeStatus(ValuationStatus.WaitForClientDecision);
 
-        var @event = new ProposalSuggestedDomainEvent(
-            proposedBy,
-            proposal.Id,
-            value,
-            proposalDescription,
-            Id,
-            InquiryId);
+        var @event = new ProposalSuggestedDomainEvent(proposal, ValuationId, InquiryId);
+        Apply(@event);
         AddDomainEvent(@event);
     }
 
     public void ApproveProposal(ProposalId proposalId)
     {
         var proposal = GetProposal(proposalId);
-        proposal.Approve();
-        ChangeStatus(ValuationStatus.Approved);
-
-        var @event = new ProposalApprovedDomainEvent(
-            Id,
-            proposalId,
-            proposal.Price,
-            proposal.SuggestedBy);
+        var @event = new ProposalApprovedDomainEvent(ValuationId, proposal);
+        Apply(@event);
         AddDomainEvent(@event);
     }
 
     public void RejectProposal(ProposalId proposalId)
     {
         var proposal = GetProposal(proposalId);
-        proposal.Reject();
-        ChangeStatus(ValuationStatus.Rejected);
-
         var @event = new ProposalRejectedDomainEvent(
-            Id,
-            proposalId,
-            proposal.Price);
+            ValuationId,
+            proposal);
+        Apply(@event);
         AddDomainEvent(@event);
     }
 
     public void CancelProposal(ProposalId proposalId, EmployeeId employeeId)
     {
         var proposal = GetProposal(proposalId);
-        proposal.Cancel(employeeId);
-        ChangeStatus(ValuationStatus.WaitForProposal);
-
-        var @event = new ProposalCancelledDomainEvent(InquiryId, Id, proposalId, employeeId);
+        var @event = new ProposalCancelledDomainEvent(InquiryId, ValuationId, proposal);
         AddDomainEvent(@event);
     }
 
     public void Complete(EmployeeId employeeId)
     {
-        if (IsCompleted)
+        if (Status == ValuationStatus.Completed)
         {
-            throw new ValuationCompletedException(Id);
+            throw new ValuationCompletedException(ValuationId);
         }
 
         if (ProposalWaitForDecision is not null)
@@ -122,23 +94,53 @@ public sealed class Valuation : Entity, IAggregateRoot
 
         if (!NotCancelledProposals.Any())
         {
-            throw new CannotCompleteValuationWithNoProposalException(Id);
+            throw new CannotCompleteValuationWithNoProposalException(ValuationId);
         }
 
-        CompletedBy = employeeId;
-        CompletedDate = SystemTime.Now();
-        ChangeStatus(ValuationStatus.Completed);
         var recentProposal = Proposals.First();
-
-        var @event = new ValuationCompletedDomainEvent(InquiryId, Id, recentProposal.Price);
+        var @event = new ValuationCompletedDomainEvent(InquiryId, ValuationId, employeeId, recentProposal.Price);
+        Apply(@event);
         AddDomainEvent(@event);
     }
 
-
-    private void ChangeStatus(ValuationStatus valuationStatus)
+    private void Apply(ValuationCompletedDomainEvent @event)
     {
-        var historicalEntry = HistoricalEntry.Create(valuationStatus);
-        History.AddFirst(historicalEntry);
+        CompletedBy = @event.EmployeeId;
+        CompletedDate = @event.OccurredOn;
+        Status = ValuationStatus.Completed;
+    }
+
+    private void Apply(ProposalCancelledDomainEvent @event)
+    {
+        @event.Proposal.Cancel(EmployeeId.Of(Guid.Empty));
+        Status = ValuationStatus.WaitForProposal;
+    }
+    private void Apply(ProposalApprovedDomainEvent @event)
+    {
+        @event.Proposal.Approve();
+        Status = ValuationStatus.Approved;
+    }
+
+    private void Apply(ProposalSuggestedDomainEvent @event)
+    {
+        Proposals.AddFirst(@event.Proposal);
+        Status = ValuationStatus.WaitForClientDecision;
+    }
+
+    private void Apply(ProposalRejectedDomainEvent @event)
+    {
+        var proposal = GetProposal(@event.ProposalId);
+        proposal.Reject();
+        Status = ValuationStatus.Rejected;
+    }
+
+    private void Apply(ValuationRequestedDomainEvent @event)
+    {
+        Id = @event.ValuationId.Value;
+        RequestedDate = SystemTime.Now();
+        Proposals = new LinkedList<Proposal>();
+        InquiryId = @event.InquiryId;
+        Status = ValuationStatus.WaitForProposal;
     }
 
     private Proposal GetProposal(ProposalId proposalId)
@@ -152,6 +154,30 @@ public sealed class Valuation : Entity, IAggregateRoot
         return proposal;
     }
 
+    public void When(object @event)
+    {
+        switch (@event)
+        {
+            case ValuationRequestedDomainEvent valuationRequestedDomainEvent:
+                Apply(valuationRequestedDomainEvent);
+                break;
+            case ProposalSuggestedDomainEvent suggestedDomainEvent:
+                Apply(suggestedDomainEvent);
+                break;
+            case ProposalRejectedDomainEvent proposalRejectedDomainEvent:
+                Apply(proposalRejectedDomainEvent);
+                break;
+            case ProposalCancelledDomainEvent proposalCancelledDomainEvent:
+                Apply(proposalCancelledDomainEvent);
+                break;
+            case ProposalApprovedDomainEvent proposalApprovedDomainEvent:
+                Apply(proposalApprovedDomainEvent);
+                break;
+            case ValuationCompletedDomainEvent valuationCompletedDomainEvent:
+                Apply(valuationCompletedDomainEvent);
+                break;
+        }
+    }
     private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
     {
         return Proposals

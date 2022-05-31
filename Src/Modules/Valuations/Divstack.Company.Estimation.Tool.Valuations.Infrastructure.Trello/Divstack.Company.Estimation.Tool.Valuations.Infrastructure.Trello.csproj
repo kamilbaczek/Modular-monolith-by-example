@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
     <ProjectReference Include="..\..\Services\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
   </ItemGroup>

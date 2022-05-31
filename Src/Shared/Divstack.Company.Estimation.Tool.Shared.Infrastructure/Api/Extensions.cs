@@ -1,6 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
-[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
 
 using BackgroundProcessing;
@@ -11,8 +10,6 @@ using Errors.Middleware;
 using EventBus;
 using HealthChecks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Observability;
 using Persistance;
 using Swagger;

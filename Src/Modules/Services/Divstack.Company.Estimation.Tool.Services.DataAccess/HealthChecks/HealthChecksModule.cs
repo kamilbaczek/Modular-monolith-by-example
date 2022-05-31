@@ -9,7 +9,10 @@ internal static class HealthChecksModule
     private const string Database = "Database";
     internal static IServiceCollection AddDataAccessHealthChecks(this IServiceCollection services, string connectionString)
     {
-        services.AddHealthChecks().AddMySql(connectionString, DatabaseName, null, new[] { Services, Database });
+        services.AddHealthChecks().AddMySql(connectionString, DatabaseName, null, new[]
+        {
+            Services, Database
+        });
 
         return services;
     }

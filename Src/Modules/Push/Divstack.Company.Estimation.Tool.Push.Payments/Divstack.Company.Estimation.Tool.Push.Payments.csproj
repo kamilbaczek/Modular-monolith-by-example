@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.1.0"/>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
     <ProjectReference Include="..\..\Payments\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents\Divstack.Company.Estimation.Tool.Payments.IntegrationsEvents.csproj"/>
     <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Push.DataAccess\Divstack.Company.Estimation.Tool.Push.DataAccess.csproj"/>

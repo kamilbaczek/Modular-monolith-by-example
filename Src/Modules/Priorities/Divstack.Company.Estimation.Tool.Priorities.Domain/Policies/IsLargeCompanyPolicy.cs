@@ -3,5 +3,8 @@
 internal static class IsLargeCompanyPolicy
 {
     private const int LargeCompanySize = 100;
-    public static bool IsLargeCompany(int? companySize) => LargeCompanySize <= companySize;
+    public static bool IsLargeCompany(int? companySize)
+    {
+        return LargeCompanySize <= companySize;
+    }
 }

@@ -5,6 +5,10 @@ using Valuations.Exceptions;
 
 public sealed class Proposal : Entity
 {
+    private Proposal()
+    {
+    }
+
     private Proposal(
         Money value,
         ProposalDescription description,
@@ -18,12 +22,12 @@ public sealed class Proposal : Entity
         Decision = ProposalDecision.NoDecision();
     }
 
-    internal ProposalId Id { get; init; }
-    private ProposalDescription Description { get; init; }
-    internal Money Price { get; init; }
-    internal EmployeeId SuggestedBy { get; init; }
-    private DateTime Suggested { get; init; }
-    private EmployeeId CancelledBy { get; set; }
+    public ProposalId Id { get; init; }
+    public ProposalDescription Description { get; init; }
+    public Money Price { get; init; }
+    public EmployeeId SuggestedBy { get; init; }
+    private DateTime Suggested { get; }
+    public EmployeeId CancelledBy { get; set; }
     private DateTime? Cancelled { get; set; }
     private ProposalDecision Decision { get; set; }
 

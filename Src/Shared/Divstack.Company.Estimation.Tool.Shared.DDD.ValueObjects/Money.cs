@@ -4,6 +4,9 @@ using BuildingBlocks;
 
 public class Money : ValueObject
 {
+    private Money()
+    {
+    }
     private Money(decimal? value, string currency)
     {
         Value = value;

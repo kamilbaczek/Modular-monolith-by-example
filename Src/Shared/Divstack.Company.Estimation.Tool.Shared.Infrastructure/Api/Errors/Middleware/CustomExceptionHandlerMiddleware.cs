@@ -1,9 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 
-using System;
 using System.Net;
-using System.Text.Json;
-using System.Threading.Tasks;
 using Environments;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +35,7 @@ internal sealed class CustomExceptionHandlerMiddleware
 
     private Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
+        _logger.LogError(exception.Message);
         var code = HttpStatusCode.InternalServerError;
         if (exception.IsNotFoundException())
         {
@@ -52,7 +50,6 @@ internal sealed class CustomExceptionHandlerMiddleware
         var response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
             ? ExceptionDto.CreateWithMessage(exception.Message)
             : ExceptionDto.CreateInternalServerError();
-        _logger.LogError(exception.Message);
         return SendResponse(context, code, response);
     }
 

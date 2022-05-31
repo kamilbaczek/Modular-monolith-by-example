@@ -3,11 +3,11 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
-using MediatR;
 using Sender;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ProposalSuggestedEventHandler : INotificationHandler<ProposalSuggested>
+internal sealed class ProposalSuggestedEventHandler : IIntegrationEventHandler<ProposalSuggested>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IValuationProposalSuggestedMailSender _proposalSuggestedMailSender;
@@ -19,18 +19,18 @@ internal sealed class ProposalSuggestedEventHandler : INotificationHandler<Propo
         _inquiriesModule = inquiriesModule;
     }
 
-    public async Task Handle(ProposalSuggested proposalSuggestedDomainEvent, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalSuggested proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var client = await GetClientInfo(proposalSuggestedDomainEvent);
+        var client = await GetClientInfo(proposalApprovedEvent);
         var request = new ValuationProposalSuggestedEmailRequest(
-            proposalSuggestedDomainEvent.ValuationId,
-            proposalSuggestedDomainEvent.ProposalId,
-            proposalSuggestedDomainEvent.InquiryId,
+            proposalApprovedEvent.ValuationId,
+            proposalApprovedEvent.ProposalId,
+            proposalApprovedEvent.InquiryId,
             client.FullName,
             client.Email,
-            proposalSuggestedDomainEvent.Value,
-            proposalSuggestedDomainEvent.Currency,
-            proposalSuggestedDomainEvent.Description);
+            proposalApprovedEvent.Value,
+            proposalApprovedEvent.Currency,
+            proposalApprovedEvent.Description);
         await _proposalSuggestedMailSender.SendAsync(request);
     }
 

@@ -1,9 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Utils;
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
 internal static class AsyncUtil
 {
     private static readonly TaskFactory TaskFactory = new(CancellationToken.None,

@@ -3,11 +3,11 @@
 using DataAccess.DataAccess.Repositories.Write;
 using DataAccess.Entities;
 using Hubs;
-using MediatR;
 using Microsoft.AspNetCore.SignalR;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ProposalApprovedEventHandler : INotificationHandler<ProposalApproved>
+internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<ProposalApproved>
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IHubContext<ValuationsHub> _valuationsHub;
@@ -16,11 +16,11 @@ internal sealed class ProposalApprovedEventHandler : INotificationHandler<Propos
         _valuationsHub = valuationsHub;
         _notificationsWriteRepository = notificationsWriteRepository;
     }
-    public async Task Handle(ProposalApproved @event, CancellationToken cancellationToken)
+    public async ValueTask Handle(ProposalApproved proposalApprovedEvent, CancellationToken cancellationToken)
     {
-        var notification = Notification.Create(@event.ValuationId, nameof(ProposalApproved), @event.SuggestedBy);
+        var notification = Notification.Create(proposalApprovedEvent.ValuationId, nameof(ProposalApproved), proposalApprovedEvent.SuggestedBy);
         await _notificationsWriteRepository.AddAsync(notification, cancellationToken);
-        var userId = @event.SuggestedBy.ToString();
-        await _valuationsHub.Clients.User(userId).SendAsync(nameof(ProposalApproved), @event, cancellationToken);
+        var userId = proposalApprovedEvent.SuggestedBy.ToString();
+        await _valuationsHub.Clients.User(userId).SendAsync(nameof(ProposalApproved), proposalApprovedEvent, cancellationToken);
     }
 }

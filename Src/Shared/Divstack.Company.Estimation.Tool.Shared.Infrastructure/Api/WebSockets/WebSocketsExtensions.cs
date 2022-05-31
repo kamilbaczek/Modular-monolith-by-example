@@ -2,7 +2,6 @@
 
 using Configurations;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 
 internal static class WebSocketsExtensions
 {

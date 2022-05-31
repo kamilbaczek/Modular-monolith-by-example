@@ -6,10 +6,9 @@ using DataAccess.DataAccess.Repositories.Write;
 
 internal sealed class MarkAsReadEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithoutResult
 {
-    private readonly INotificationsWriteRepository _notificationsWriteRepository;
-    private readonly INotificationsReadRepository _notificationsReadRepository;
-
     private readonly Guid _currentUserId;
+    private readonly INotificationsReadRepository _notificationsReadRepository;
+    private readonly INotificationsWriteRepository _notificationsWriteRepository;
     public MarkAsReadEndpoint(ICurrentUserService currentUserService,
         INotificationsWriteRepository notificationsWriteRepository,
         INotificationsReadRepository notificationsReadRepository)

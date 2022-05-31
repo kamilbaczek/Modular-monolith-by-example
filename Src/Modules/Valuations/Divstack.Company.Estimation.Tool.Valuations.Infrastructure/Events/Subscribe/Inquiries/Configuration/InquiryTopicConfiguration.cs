@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 
 internal sealed class InquiryTopicConfiguration : IInquiryTopicConfiguration
 {
-    private readonly IConfiguration _configuration;
     private const string InquiryTopic = "InquiryTopic";
+    private readonly IConfiguration _configuration;
 
     public InquiryTopicConfiguration(IConfiguration configuration)
     {

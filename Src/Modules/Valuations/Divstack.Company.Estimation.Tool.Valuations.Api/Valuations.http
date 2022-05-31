@@ -1,7 +1,7 @@
 @qaUrl = https://estimation-tool-kb.herokuapp.com
 @localUrl = http://localhost:5000
-@url = https://estimation-tool-kb.herokuapp.com
-@adminEmail = admin@divstack.pl
+@url = http://localhost:5000
+@adminEmail = estimationfulladmin-test-2@divstack.pl
 @password = 3wsx$EDC5rfvtest4
 
 ### Sign In Admin
@@ -31,7 +31,8 @@ content-type: application/json
 {
   "FirstName": "test",
   "LastName": "test",
-  "Email": "test@mail.com",
+  "Email": "kamilbaczek98@gmail.com",
+  "PhoneNumber": "+48793751966",
   "AskedServiceDtos": [
     {
       "Id": "{{service}}",
@@ -51,10 +52,10 @@ content-type: application/json
 Authorization: {{bearer}}
 
 ### valuation
-@valuation = "1debed24-9379-4c04-821f-b15a4066428d"
+@valuation = "25a9673b-7e91-409b-a09a-cae9a2edfcf4"
 
 ### Suggest proposal
-POST {{url}}/api/valuations-module/Valuations/valuations/proposals
+POST {{url}}/api/valuations-module/valuations/proposals
 Authorization: {{bearer}}
 Content-Type: application/json
 
@@ -65,8 +66,17 @@ Content-Type: application/json
   "ValuationId": {{valuation}}
 }
 
+### Approve proposal
+PATCH {{url}}/api/valuations-module/valuations/proposals/approve
+Content-Type: application/json
+
+{
+  "ProposalId": "fc7ae7cc-5aa0-4ec6-9916-b9385a29db58",
+  "ValuationId": {{valuation}}
+}
+
 ### Complete proposal
-PATCH {{url}}/api/valuations-module/Valuations/valuations/complete
+PATCH {{url}}/api/valuations-module/valuations/complete
 Authorization: {{bearer}}
 Content-Type: application/json
 
@@ -74,12 +84,8 @@ Content-Type: application/json
   "ValuationId": {{valuation}}
 }
 
-### Get all valuation history
-GET {{url}}/api/valuations-module/Valuations/valuations/history/{{valuation}}
-content-type: application/json
-Authorization: {{bearer}}
 
 ### Get valuation 
-GET {{url}}/api/valuations-module/Valuations/{{valuation}}
+GET {{url}}/api/valuations-module/valuations/25a9673b-7e91-409b-a09a-cae9a2edfcf4
 content-type: application/json
 Authorization: {{bearer}}

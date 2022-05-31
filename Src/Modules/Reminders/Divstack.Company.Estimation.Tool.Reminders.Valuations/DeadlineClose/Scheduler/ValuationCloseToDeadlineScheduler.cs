@@ -1,12 +1,12 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
 using Configuration;
-using MediatR;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
+using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<ValuationRequested>
+internal sealed class ValuationCloseToDeadlineScheduler : IIntegrationEventHandler<ValuationRequested>
 {
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
@@ -20,17 +20,17 @@ internal sealed class ValuationCloseToDeadlineScheduler : INotificationHandler<V
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
 
-    public Task Handle(ValuationRequested valuationRequested, CancellationToken cancellationToken)
+    public ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
     {
         // var reminderDate =
-        //     valuationRequested.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+        //     proposalApprovedEvent.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
         // _backgroundJobScheduler.Schedule(
         //     () => _valuationsDeadlineCloseReminder.RemindAsync(
-        //         valuationRequested.ValuationId,
+        //         proposalApprovedEvent.ValuationId,
         //         _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
         //         cancellationToken),
         //     reminderDate);
 
-        return Task.CompletedTask;
+        return new ValueTask();
     }
 }

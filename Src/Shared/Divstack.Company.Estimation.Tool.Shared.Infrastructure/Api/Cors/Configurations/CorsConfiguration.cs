@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Cors.Configurations;
 
 using Ardalis.GuardClauses;
-using Microsoft.Extensions.Configuration;
 
 internal sealed class CorsConfiguration : ICorsConfiguration
 {

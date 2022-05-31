@@ -21,10 +21,10 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Inquiry", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("ValuationId")
                         .HasColumnType("char(36)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ValuationId");
 
                     b.ToTable("Inquiries");
                 });
@@ -97,13 +97,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.InquiryItem", "InquiryItems", b1 =>
                         {
-                            b1.Property<Guid>("Id")
+                            b1.Property<Guid>("ValuationId")
                                 .HasColumnType("char(36)");
 
                             b1.Property<Guid>("InquiryId")
                                 .HasColumnType("char(36)");
 
-                            b1.HasKey("Id");
+                            b1.HasKey("ValuationId");
 
                             b1.HasIndex("InquiryId");
 
@@ -129,7 +129,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 
                                     b2.OwnsMany("Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Item.Services.Attributes.Attribute", "Attributes", b3 =>
                                         {
-                                            b3.Property<Guid>("Id")
+                                            b3.Property<Guid>("ValuationId")
                                                 .HasColumnType("char(36)");
 
                                             b3.Property<Guid>("ServiceInquiryItemId")
@@ -138,7 +138,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
                                             b3.Property<Guid?>("ValueId")
                                                 .HasColumnType("char(36)");
 
-                                            b3.HasKey("Id");
+                                            b3.HasKey("ValuationId");
 
                                             b3.HasIndex("ServiceInquiryItemId");
 

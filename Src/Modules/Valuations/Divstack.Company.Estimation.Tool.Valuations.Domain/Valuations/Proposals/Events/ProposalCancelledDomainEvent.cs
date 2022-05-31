@@ -5,17 +5,14 @@ public sealed class ProposalCancelledDomainEvent : DomainEventBase
     public ProposalCancelledDomainEvent(
         InquiryId inquiryId,
         ValuationId valuationId,
-        ProposalId proposalId,
-        EmployeeId cancelledBy)
+        Proposal proposal)
     {
         InquiryId = inquiryId;
-        CancelledBy = cancelledBy;
-        ProposalId = proposalId;
         ValuationId = valuationId;
+        Proposal = proposal;
     }
 
     public InquiryId InquiryId { get; }
-    public EmployeeId CancelledBy { get; }
-    public ProposalId ProposalId { get; }
     public ValuationId ValuationId { get; }
+    public Proposal Proposal { get; }
 }

@@ -2,26 +2,17 @@
 
 public sealed class ProposalSuggestedDomainEvent : DomainEventBase
 {
-    internal ProposalSuggestedDomainEvent(
-        EmployeeId proposedBy,
-        ProposalId proposalId,
-        Money value,
-        ProposalDescription description,
+    public ProposalSuggestedDomainEvent(
+        Proposal proposal,
         ValuationId valuationId,
         InquiryId inquiryId)
     {
+        Proposal = proposal;
         InquiryId = inquiryId;
-        ProposedBy = proposedBy;
-        Value = value;
-        ProposalId = proposalId;
-        Description = description;
         ValuationId = valuationId;
     }
 
+    public Proposal Proposal { get; }
     public InquiryId InquiryId { get; }
-    public ProposalId ProposalId { get; }
-    public EmployeeId ProposedBy { get; }
-    public Money Value { get; }
-    public ProposalDescription Description { get; }
     public ValuationId ValuationId { get; }
 }
