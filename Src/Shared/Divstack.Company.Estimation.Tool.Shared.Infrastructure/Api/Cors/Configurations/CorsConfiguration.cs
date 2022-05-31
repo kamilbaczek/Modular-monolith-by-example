@@ -11,5 +11,5 @@ internal sealed class CorsConfiguration : ICorsConfiguration
     {
         _configuration = configuration.GetSection(Cors);
     }
-    public string Origin => Guard.Against.NullOrEmpty(nameof(Origin), nameof(Origin));
+    public string Origin => Guard.Against.NullOrEmpty(_configuration.GetValue<string>(nameof(Origin)), nameof(Origin));
 }

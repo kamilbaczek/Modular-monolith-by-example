@@ -14,9 +14,7 @@ internal static class PersistanceModule
     internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
         IConfiguration configuration)
     {
-        // var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
-        const string connectionString =
-            "PORT = 5432; HOST = localhost; TIMEOUT = 15; POOLING = True; DATABASE = 'postgres'; PASSWORD = 'Password12!'; USER ID = 'postgres'";
+        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
         services.AddDataAccess(connectionString);
         services.AddPersistanceHealthChecks(connectionString);
         services.AddRepositories();

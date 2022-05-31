@@ -3,4 +3,4 @@
 using Dtos;
 using Inquiries.Application.Common.Contracts;
 
-public record GetValuationProposalsByIdQuery(Guid ValuationId) : IQuery<ValuationProposalsVm>;
+public record struct GetValuationProposalsByIdQuery(Guid ValuationId) : IQuery<ValuationProposalsVm>;
