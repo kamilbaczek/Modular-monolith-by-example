@@ -10,6 +10,7 @@ using Errors.Middleware;
 using EventBus;
 using HealthChecks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 using Observability;
 using Persistance;
 using Swagger;
@@ -17,7 +18,7 @@ using WebSockets;
 
 internal static class Extensions
 {
-    internal static IServiceCollection AddSharedInfrastructure(this IServiceCollection services,
+    internal static void AddSharedInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddSingleton(configuration);
@@ -28,11 +29,8 @@ internal static class Extensions
         services.AddCors();
         services.AddBackgroundProcessing(configuration);
         services.AddSharedHealthChecks();
-        services.AddEventBus();
         services.AddObservability();
         services.AddConfiguration();
-
-        return services;
     }
 
     internal static void UseSharedInfrastructure(this IApplicationBuilder app)
@@ -53,5 +51,12 @@ internal static class Extensions
             endpoints.MapControllers();
             endpoints.MapSharedHealthChecks();
         });
+    }
+
+    internal static IHostBuilder UseSharedInfrastructure(this IHostBuilder hostBuilder)
+    {
+        hostBuilder.UseEvents();
+
+        return hostBuilder;
     }
 }

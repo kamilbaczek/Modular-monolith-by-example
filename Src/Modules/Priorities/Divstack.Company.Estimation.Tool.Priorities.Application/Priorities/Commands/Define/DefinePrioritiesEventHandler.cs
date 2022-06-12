@@ -4,10 +4,9 @@ using Domain;
 using Domain.Deadlines;
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
-using Shared.Infrastructure.EventBus.Subscribe;
-using Valuations.IntegrationsEvents.ExternalEvents;
+using NServiceBus;
 
-internal sealed class DefinePrioritiesEventHandler : IIntegrationEventHandler<ValuationRequested>
+internal sealed class DefinePrioritiesEventHandler : IHandleMessages<ValuationRequested>
 {
     private readonly IDeadlinesConfiguration _deadlinesConfiguration;
     private readonly IInquiriesModule _inquiryModule;
@@ -21,17 +20,16 @@ internal sealed class DefinePrioritiesEventHandler : IIntegrationEventHandler<Va
         _deadlinesConfiguration = deadlinesConfiguration;
         _inquiryModule = inquiryModule;
     }
-
-    public async ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
+    public async Task Handle(ValuationRequested message, IMessageHandlerContext context)
     {
         var deadline = Deadline.Create(_deadlinesConfiguration);
-        var companySize = await GetCompanySize(proposalApprovedEvent.InquiryId);
-        var valuationId = ValuationId.Create(proposalApprovedEvent.ValuationId);
-        var inquiryId = InquiryId.Create(proposalApprovedEvent.InquiryId);
+        var companySize = await GetCompanySize(message.InquiryId);
+        var valuationId = ValuationId.Create(message.ValuationId);
+        var inquiryId = InquiryId.Create(message.InquiryId);
 
         var priority = Priority.Define(valuationId, inquiryId, companySize, deadline);
 
-        await _prioritiesRepository.AddAsync(priority, cancellationToken);
+        await _prioritiesRepository.AddAsync(priority);
     }
 
     private async Task<int?> GetCompanySize(Guid inquiryId)

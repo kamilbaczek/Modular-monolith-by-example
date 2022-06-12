@@ -3,11 +3,11 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
+using NServiceBus;
 using Sender;
-using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ProposalSuggestedEventHandler : IIntegrationEventHandler<ProposalSuggested>
+internal sealed class ProposalSuggestedEventHandler : IHandleMessages<ProposalSuggested>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IValuationProposalSuggestedMailSender _proposalSuggestedMailSender;
@@ -19,18 +19,18 @@ internal sealed class ProposalSuggestedEventHandler : IIntegrationEventHandler<P
         _inquiriesModule = inquiriesModule;
     }
 
-    public async ValueTask Handle(ProposalSuggested proposalApprovedEvent, CancellationToken cancellationToken)
+    public async Task Handle(ProposalSuggested proposalSuggested, IMessageHandlerContext context)
     {
-        var client = await GetClientInfo(proposalApprovedEvent);
+        var client = await GetClientInfo(proposalSuggested);
         var request = new ValuationProposalSuggestedEmailRequest(
-            proposalApprovedEvent.ValuationId,
-            proposalApprovedEvent.ProposalId,
-            proposalApprovedEvent.InquiryId,
+            proposalSuggested.ValuationId,
+            proposalSuggested.ProposalId,
+            proposalSuggested.InquiryId,
             client.FullName,
             client.Email,
-            proposalApprovedEvent.Value,
-            proposalApprovedEvent.Currency,
-            proposalApprovedEvent.Description);
+            proposalSuggested.Value,
+            proposalSuggested.Currency,
+            proposalSuggested.Description);
         await _proposalSuggestedMailSender.SendAsync(request);
     }
 

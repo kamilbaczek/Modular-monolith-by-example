@@ -1,14 +1,14 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
 using Configuration;
-using MediatR;
+using NServiceBus;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
-using Tool.Valuations.Domain.Valuations.Proposals.Events;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class ValuationCloseToDeadlineUnScheduler :
-    INotificationHandler<ProposalSuggestedDomainEvent>,
-    INotificationHandler<ProposalCancelledDomainEvent>
+    IHandleMessages<ProposalSuggested>,
+    IHandleMessages<ProposalCancelled>
 {
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
@@ -22,24 +22,18 @@ internal sealed class ValuationCloseToDeadlineUnScheduler :
         _valuationsDeadlineCloseReminder = valuationsDeadlineCloseReminder;
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
-
-    public Task Handle(ProposalCancelledDomainEvent proposalCancelledDomainEvent,
-        CancellationToken cancellationToken)
+    public Task Handle(ProposalCancelled proposalCancelled, IMessageHandlerContext context)
     {
-        UnSchedule(proposalCancelledDomainEvent.ValuationId.Value, cancellationToken);
-
+        UnSchedule(proposalCancelled.ValuationId);
+        return Task.CompletedTask;
+    }
+    public Task Handle(ProposalSuggested proposalSuggested, IMessageHandlerContext context)
+    {
+        UnSchedule(proposalSuggested.ValuationId);
         return Task.CompletedTask;
     }
 
-    public Task Handle(ProposalSuggestedDomainEvent proposalSuggestedDomainEvent,
-        CancellationToken cancellationToken)
-    {
-        UnSchedule(proposalSuggestedDomainEvent.ValuationId.Value, cancellationToken);
-
-        return Task.CompletedTask;
-    }
-
-    private void UnSchedule(Guid valuationId, CancellationToken cancellationToken)
+    private void UnSchedule(Guid valuationId, CancellationToken cancellationToken = default)
     {
         _backgroundJobScheduler.UnSchedule(
             () => _valuationsDeadlineCloseReminder.RemindAsync(

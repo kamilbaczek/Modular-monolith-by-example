@@ -1,16 +1,34 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus;
+﻿namespace Divstack.Company;
 
-using Configuration;
-using Publish;
-using Subscribe;
-using Subscribe.Logger;
+using System.Reflection;
+using Estimation.Tool.Shared.Infrastructure.EventBus.Configuration;
+using Microsoft.Extensions.Hosting;
+using NServiceBus;
 
 internal static class EventBusModule
 {
-    internal static void AddEventBus(this IServiceCollection services)
+    private const string AuditQueue = "audit";
+
+    internal static void UseEvents(this IHostBuilder hostBuilder)
     {
-        services.AddScoped<IEventBusPublisher, EventBusPublisher>();
-        services.AddScoped<ISubscriberLogger, SubscriberLogger>();
-        services.AddSingleton<IEventBusConfiguration, EventBusConfiguration>();
+        hostBuilder.UseNServiceBus(context =>
+        {
+            var name = Assembly.GetEntryAssembly()?.GetName().Name;
+            var endpointConfiguration = new EndpointConfiguration(name);
+
+            SetupTransport(endpointConfiguration, context);
+
+            endpointConfiguration.EnableInstallers();
+            endpointConfiguration.AuditProcessedMessagesTo(AuditQueue);
+
+            return endpointConfiguration;
+        });
+    }
+
+    private static void SetupTransport(EndpointConfiguration endpointConfiguration, HostBuilderContext context)
+    {
+        var transport = endpointConfiguration.UseTransport<AzureServiceBusTransport>();
+        var configuration = new EventBusConfiguration(context.Configuration);
+        transport.ConnectionString(configuration.ConnectionString);
     }
 }

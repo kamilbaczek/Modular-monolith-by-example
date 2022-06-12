@@ -1,5 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks;
 
-public interface IntegrationEvent
+using NServiceBus;
+
+public interface IntegrationEvent : IMessage
 {
 }

@@ -3,6 +3,7 @@
 using Domain.Valuations.Events;
 using Domain.Valuations.Proposals.Events;
 using IntegrationsEvents.ExternalEvents;
+using Messages;
 using Shared.DDD.BuildingBlocks;
 
 internal sealed class EventMapper : IEventMapper

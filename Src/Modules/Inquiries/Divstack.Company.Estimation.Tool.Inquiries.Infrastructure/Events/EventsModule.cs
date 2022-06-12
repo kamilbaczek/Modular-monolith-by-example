@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Events;
 
+using Publish;
 using Publish.Configuration;
 using Publish.Mapper;
 

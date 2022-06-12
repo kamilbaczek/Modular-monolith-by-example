@@ -1,12 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
 
 using Configuration;
+using NServiceBus;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
-using Shared.Infrastructure.EventBus.Subscribe;
-using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ValuationCloseToDeadlineScheduler : IIntegrationEventHandler<ValuationRequested>
+internal sealed class ValuationCloseToDeadlineScheduler : IHandleMessages<ValuationRequested>
 {
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
@@ -20,17 +19,21 @@ internal sealed class ValuationCloseToDeadlineScheduler : IIntegrationEventHandl
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
 
-    public ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
-    {
-        // var reminderDate =
-        //     proposalApprovedEvent.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
-        // _backgroundJobScheduler.Schedule(
-        //     () => _valuationsDeadlineCloseReminder.RemindAsync(
-        //         proposalApprovedEvent.ValuationId,
-        //         _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
-        //         cancellationToken),
-        //     reminderDate);
+    // public ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
+    // {
+    // var reminderDate =
+    //     proposalApprovedEvent.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+    // _backgroundJobScheduler.Schedule(
+    //     () => _valuationsDeadlineCloseReminder.RemindAsync(
+    //         proposalApprovedEvent.ValuationId,
+    //         _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
+    //         cancellationToken),
+    //     reminderDate);
 
-        return new ValueTask();
+    // }
+
+    public Task Handle(ValuationRequested message, IMessageHandlerContext context)
+    {
+        return Task.CompletedTask;
     }
 }

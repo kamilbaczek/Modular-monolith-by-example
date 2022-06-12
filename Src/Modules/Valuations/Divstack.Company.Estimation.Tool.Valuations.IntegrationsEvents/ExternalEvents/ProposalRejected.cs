@@ -1,8 +1,9 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+﻿namespace Divstack.Company;
 
-using Shared.DDD.BuildingBlocks;
+using Estimation.Tool.Shared.DDD.BuildingBlocks;
+using NServiceBus;
 
-public record ProposalRejected(
+public record struct ProposalRejected(
     Guid ValuationId,
     Guid ProposalId,
     decimal? Value,

@@ -1,18 +1,12 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-using System.Text.Json;
+using NServiceBus;
 using Shared.DDD.BuildingBlocks;
 
-public record ProposalSuggested(
+public record struct ProposalSuggested(
     Guid ValuationId,
     Guid ProposalId,
     Guid InquiryId,
     decimal? Value,
     string Currency,
-    string Description) : IntegrationEvent
-{
-    public override string ToString()
-    {
-        return JsonSerializer.Serialize(this);
-    }
-}
+    string Description) : IntegrationEvent;
