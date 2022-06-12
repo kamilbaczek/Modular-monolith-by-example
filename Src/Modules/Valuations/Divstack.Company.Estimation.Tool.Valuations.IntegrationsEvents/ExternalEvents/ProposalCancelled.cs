@@ -6,4 +6,4 @@ using NServiceBus;
 public record struct ProposalCancelled(
     Guid CancelledBy,
     Guid ProposalId,
-    Guid ValuationId) : IntegrationEvent, IMessage;
+    Guid ValuationId) : IntegrationEvent;
