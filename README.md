@@ -1,6 +1,7 @@
 # Estimations Tool - makes estimations easier
 
 ## Table of contents
+* [Presentation](#presentation)
 * [Documentation](#documentation)
   * [System Context](#system-context)
   * [Containers](#containers)
@@ -9,6 +10,9 @@
 * [Technologies](#technologies)
 * [CI/CD](#ci/cd)
 * [Test Environment](#test-environment)
+
+## Presentation
+[![Presentation](https://i3.ytimg.com/vi/-FaXMV2-k64/maxresdefault.jpg)](https://www.youtube.com/watch?v=-FaXMV2-k64&t=11s&ab_channel=ArtOfSoftwareDesign)
 
 ## Technologies
 #### Dotnet Version: 6.0.1
