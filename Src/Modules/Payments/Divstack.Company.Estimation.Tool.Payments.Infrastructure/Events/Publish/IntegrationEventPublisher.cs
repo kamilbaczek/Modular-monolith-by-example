@@ -1,25 +1,30 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Events.Publish;
 
 using Application.Common.IntegrationsEvents;
+using Mapper;
+using NServiceBus;
 using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    // private readonly IBus _eventBusPublisher;
-    // private readonly IEventMapper _eventMapper;
-    // private readonly IPaymentsTopicConfiguration _paymentsTopicConfiguration;
-    //
-    // public IntegrationEventPublisher(IBus eventBusPublisher,
-    //     IEventMapper eventMapper,
-    //     IPaymentsTopicConfiguration paymentsTopicConfiguration)
-    // {
-    //     _eventBusPublisher = eventBusPublisher;
-    //     _eventMapper = eventMapper;
-    //     _paymentsTopicConfiguration = paymentsTopicConfiguration;
-    // }
+    private readonly IMessageSession _messageSession;
+    private readonly IEventMapper _eventMapper;
 
-    public Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
+    public IntegrationEventPublisher(IMessageSession messageSession,
+        IEventMapper eventMapper)
     {
-        return Task.CompletedTask;
+        _messageSession = messageSession;
+        _eventMapper = eventMapper;
+    }
+
+    public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
+    {
+        var integrationEvents = _eventMapper
+            .Map(domainEvents)
+            .ToList()
+            .AsReadOnly();
+
+        foreach (var @event in integrationEvents)
+            await _messageSession.SendLocal(@event);
     }
 }

@@ -13,7 +13,6 @@ using Microsoft.Extensions.DependencyInjection;
 internal static class TrelloModule
 {
     private const string Configuration = "Configuration";
-    private const string EventHandler = "EventHandler";
 
     internal static IServiceCollection AddTrello(this IServiceCollection services)
     {
@@ -21,11 +20,6 @@ internal static class TrelloModule
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
             .AsImplementedInterfaces()
             .WithSingletonLifetime());
-
-        services.Scan(scan => scan.FromAssemblyOf<ValuationRequestCreatedTrelloEventHandler>()
-            .AddClasses(classes => classes.Where(type => type.Name.EndsWith(EventHandler)))
-            .AsImplementedInterfaces()
-            .WithTransientLifetime());
 
         services.AddScoped<ITrelloTaskCreator, TrelloTaskCreator>();
 
