@@ -1,12 +1,12 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved;
 
+using Messages;
+using NServiceBus;
 using Sender;
-using Shared.Infrastructure.EventBus.Subscribe;
-using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetUserEmail;
 
-internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<ProposalApproved>
+internal sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApproved>
 {
     private readonly IUserModule _userModule;
     private readonly IValuationProposalApprovedMailSender _valuationProposalApprovedMailSender;
@@ -18,18 +18,18 @@ internal sealed class ProposalApprovedEventHandler : IIntegrationEventHandler<Pr
         _userModule = userModule;
     }
 
-    public async ValueTask Handle(ProposalApproved proposalApprovedEvent, CancellationToken cancellationToken)
+    public async Task Handle(ProposalApproved proposalApproved, IMessageHandlerContext context)
     {
-        var employeeId = proposalApprovedEvent.SuggestedBy;
+        var employeeId = proposalApproved.SuggestedBy;
         var query = new GetUserEmailQuery(employeeId);
         var suggestedByEmployeeEmail = await _userModule.ExecuteQueryAsync(query);
 
         var request = new ValuationProposalApprovedEmailRequest(
             suggestedByEmployeeEmail,
-            proposalApprovedEvent.ValuationId,
-            proposalApprovedEvent.ProposalId,
-            proposalApprovedEvent.Currency,
-            proposalApprovedEvent.Value);
+            proposalApproved.ValuationId,
+            proposalApproved.ProposalId,
+            proposalApproved.Currency,
+            proposalApproved.Value);
 
         _valuationProposalApprovedMailSender.Send(request);
     }

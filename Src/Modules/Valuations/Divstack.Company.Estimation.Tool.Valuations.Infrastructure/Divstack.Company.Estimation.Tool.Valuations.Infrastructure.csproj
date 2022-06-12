@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetCore.CAP" Version="6.0.0"/>
     <PackageReference Include="FluentValidation" Version="9.4.0"/>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.4.0"/>
     <PackageReference Include="MediatR" Version="9.0.0"/>

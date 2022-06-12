@@ -1,29 +1,48 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish;
 
 using Application.Common.Interfaces;
+using IntegrationsEvents.ExternalEvents;
 using Mapper;
+using Messages;
+using NServiceBus;
 using Shared.DDD.BuildingBlocks;
-using Shared.Infrastructure.EventBus.Publish;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    private readonly IEventBusPublisher _eventBusPublisher;
+    private readonly IMessageSession _bus;
     private readonly IEventMapper _eventMapper;
 
-    public IntegrationEventPublisher(IEventBusPublisher eventBusPublisher,
+    public IntegrationEventPublisher(IMessageSession bus,
         IEventMapper eventMapper)
     {
-        _eventBusPublisher = eventBusPublisher;
+        _bus = bus;
         _eventMapper = eventMapper;
     }
 
     public async Task PublishAsync(IReadOnlyCollection<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
-        var integrationEvents = _eventMapper.Map(domainEvents)
-            .Where(@event => @event is not null)
+        var integrationEvents = _eventMapper
+            .Map(domainEvents)
             .ToList()
             .AsReadOnly();
 
-        await _eventBusPublisher.PublishAsync("valuations", integrationEvents, cancellationToken);
+        foreach (var @event in integrationEvents)
+        {
+            switch (@event)
+            {
+                case ValuationRequested valuationRequested:
+                    await _bus.SendLocal(valuationRequested);
+                    break;
+                case ProposalSuggested proposalSuggested:
+                    await _bus.SendLocal(proposalSuggested);
+                    break;
+                case ProposalApproved proposalApproved:
+                    await _bus.SendLocal(proposalApproved);
+                    break;
+                case ValuationCompleted valuationCompleted:
+                    await _bus.SendLocal(valuationCompleted);
+                    break;
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using Application.Valuations.Queries.GetProposalsById.Dtos;
 using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
+[Obsolete]
 public class ProposalsAggregation : AggregateProjection<ValuationProposalEntryDto>
 {
     public void Apply(ProposalApprovedDomainEvent @event, ValuationProposalEntryDto proposalEntryDto)

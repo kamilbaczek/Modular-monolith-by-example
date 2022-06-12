@@ -3,31 +3,32 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
+using MassTransit;
 using Sender;
-using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Payments.IntegrationsEvents.External;
 
-internal sealed class
-    PaymentCompletedEventHandler : IIntegrationEventHandler<PaymentCompleted>
+public sealed class
+    PaymentCompletedEventHandler : IConsumer<PaymentCompleted>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentCompletedSender _paymentInitializedSender;
 
-    public PaymentCompletedEventHandler(IPaymentCompletedSender paymentInitializedSender,
+    internal PaymentCompletedEventHandler(IPaymentCompletedSender paymentInitializedSender,
         IInquiriesModule inquiriesModule)
     {
         _paymentInitializedSender = paymentInitializedSender;
         _inquiriesModule = inquiriesModule;
     }
 
-    public async ValueTask Handle(PaymentCompleted proposalApprovedEvent, CancellationToken cancellationToken)
+    public async Task Consume(ConsumeContext<PaymentCompleted> context)
     {
-        var (firstName, lastName, email, _, _) = await GetClientInfo(proposalApprovedEvent);
+        var paymentCompleted = context.Message;
+        var (firstName, lastName, email, _, _) = await GetClientInfo(paymentCompleted);
         var paymentInitializedEmailRequest = new PaymentCompletedEmailRequest(
             firstName,
             lastName,
             email,
-            proposalApprovedEvent.PaymentId);
+            paymentCompleted.PaymentId);
         _paymentInitializedSender.Send(paymentInitializedEmailRequest);
     }
 
@@ -35,6 +36,7 @@ internal sealed class
     {
         var inquiryClientQuery = new GetInquiryClientQuery(paymentInitialized.InquiryId);
         var client = await _inquiriesModule.ExecuteQueryAsync(inquiryClientQuery);
+
         return client;
     }
 }

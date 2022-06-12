@@ -1,17 +1,11 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+﻿namespace Divstack.Company.Messages;
 
-using System.Text.Json;
-using Shared.DDD.BuildingBlocks;
+using Estimation.Tool.Shared.DDD.BuildingBlocks;
+using NServiceBus;
 
-public record ProposalApproved(
+public record struct ProposalApproved(
     Guid ValuationId,
     Guid ProposalId,
     Guid SuggestedBy,
     string Currency,
-    decimal? Value) : IntegrationEvent
-{
-    public override string ToString()
-    {
-        return JsonSerializer.Serialize(this);
-    }
-}
+    decimal? Value) : IntegrationEvent;

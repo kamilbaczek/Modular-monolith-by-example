@@ -7,14 +7,12 @@ namespace Divstack.Company.Estimation.Tool.Push.Payments;
 using Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class PushPaymentsModule
 {
     internal static IServiceCollection AddPayments(this IServiceCollection services)
     {
         services.AddSignalR();
-        services.AddIntegrationEventsHandlers(typeof(PushPaymentsModule));
 
         return services;
     }

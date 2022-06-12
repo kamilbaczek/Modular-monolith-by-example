@@ -3,34 +3,36 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
+using MassTransit;
 using Sender;
-using Shared.Infrastructure.EventBus.Subscribe;
 using Tool.Payments.IntegrationsEvents.External;
 
-internal sealed class
-    PaymentInitializedEventHandler : IIntegrationEventHandler<PaymentInitialized>
+public sealed class
+    PaymentInitializedEventHandler : IConsumer<PaymentInitialized>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentInitializedSender _paymentInitializedSender;
 
-    public PaymentInitializedEventHandler(IPaymentInitializedSender paymentInitializedSender,
+    internal PaymentInitializedEventHandler(IPaymentInitializedSender paymentInitializedSender,
         IInquiriesModule inquiriesModule)
     {
         _paymentInitializedSender = paymentInitializedSender;
         _inquiriesModule = inquiriesModule;
     }
-    public async ValueTask Handle(PaymentInitialized proposalApprovedEvent, CancellationToken cancellationToken)
+    public async Task Consume(ConsumeContext<PaymentInitialized> context)
     {
-        var (firstName, lastName, email, _, _) = await GetClientInfo(proposalApprovedEvent);
+        var paymentInitialized = context.Message;
+        var (firstName, lastName, email, _, _) = await GetClientInfo(paymentInitialized);
         var paymentInitializedEmailRequest = new PaymentInitializedEmailRequest(
             firstName,
             lastName,
-            proposalApprovedEvent.AmountToPayCurrency,
-            proposalApprovedEvent.AmountToPayValue,
+            paymentInitialized.AmountToPayCurrency,
+            paymentInitialized.AmountToPayValue,
             email,
-            proposalApprovedEvent.PaymentId);
+            paymentInitialized.PaymentId);
         _paymentInitializedSender.Send(paymentInitializedEmailRequest);
     }
+
 
     private async Task<InquiryClientDto> GetClientInfo(PaymentInitialized paymentInitialized)
     {

@@ -2,10 +2,9 @@
 
 using Core;
 using Core.Constants;
-using IntegrationsEvents.ExternalEvents;
-using Shared.Infrastructure.EventBus.Subscribe;
+using NServiceBus;
 
-internal sealed class ValuationRequestCreatedTrelloEventHandler : IIntegrationEventHandler<ValuationRequested>
+internal sealed class ValuationRequestCreatedTrelloEventHandler : IHandleMessages<ValuationRequested>
 {
     private readonly ITrelloTaskCreator _trelloTaskCreator;
 
@@ -14,11 +13,11 @@ internal sealed class ValuationRequestCreatedTrelloEventHandler : IIntegrationEv
         _trelloTaskCreator = trelloTaskCreator;
     }
 
-    public async ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
+    public async Task Handle(ValuationRequested @event, IMessageHandlerContext context)
     {
-        var taskName = GenerateTaskName(proposalApprovedEvent.ValuationId);
-        var description = GenerateDescription(proposalApprovedEvent, new List<string>());
-        await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, cancellationToken);
+        var taskName = GenerateTaskName(@event.ValuationId);
+        var description = GenerateDescription(@event, new List<string>());
+        await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description);
     }
 
     private static string GenerateDescription(ValuationRequested notification,

@@ -1,18 +1,18 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose;
 
+using NServiceBus;
 using Reminders.Valuations.DeadlineClose.Reminder.Events;
 using Sender;
-using Shared.Infrastructure.EventBus.Subscribe;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetUsersEmails;
 
-internal sealed class
-    ValuationsCloseToDeadlineRemindEventHandler : IIntegrationEventHandler<ValuationCloseToDeadlineRemind>
+public sealed class
+    ValuationsCloseToDeadlineRemindEventHandler : IHandleMessages<ValuationCloseToDeadlineRemind>
 {
     private readonly IUserModule _userModule;
     private readonly IValuationCloseToDeadlineMailSender _valuationCloseToDeadlineMailSender;
 
-    public ValuationsCloseToDeadlineRemindEventHandler(
+    internal ValuationsCloseToDeadlineRemindEventHandler(
         IValuationCloseToDeadlineMailSender valuationCloseToDeadlineMailSender,
         IUserModule userModule)
     {
@@ -20,8 +20,7 @@ internal sealed class
         _userModule = userModule;
     }
 
-    public async ValueTask Handle(ValuationCloseToDeadlineRemind proposalApprovedEvent,
-        CancellationToken cancellationToken)
+    public async Task Handle(ValuationCloseToDeadlineRemind valuationCloseToDeadlineRemind, IMessageHandlerContext context)
     {
         var query = new GetUsersEmailsQuery();
         var emails = await _userModule.ExecuteQueryAsync(query);
@@ -29,9 +28,9 @@ internal sealed class
         foreach (var email in emails)
         {
             var request = new ValuationCloseToDeadlineEmailRequest(
-                proposalApprovedEvent.DaysBeforeDeadline,
+                valuationCloseToDeadlineRemind.DaysBeforeDeadline,
                 email,
-                proposalApprovedEvent.ValuationId);
+                valuationCloseToDeadlineRemind.ValuationId);
 
             _valuationCloseToDeadlineMailSender.Send(request);
         }

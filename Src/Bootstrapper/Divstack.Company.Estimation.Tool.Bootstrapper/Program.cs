@@ -2,6 +2,7 @@
 
 using Common.Configurations;
 using Common.Extensions;
+using Shared.Infrastructure.Api;
 using Shared.Infrastructure.Configuration;
 
 /// <summary>
@@ -9,10 +10,7 @@ using Shared.Infrastructure.Configuration;
 /// </summary>
 public sealed class Program
 {
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
+    public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
 
     /// <summary>
     ///     CreateHostBuilder
@@ -36,6 +34,7 @@ public sealed class Program
 
                 var configuration = builder.Build();
                 builder.AddApplicationConfiguration(configuration);
-            });
+            })
+            .UseSharedInfrastructure();
     }
 }

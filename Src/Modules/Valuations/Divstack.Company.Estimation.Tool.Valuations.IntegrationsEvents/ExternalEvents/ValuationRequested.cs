@@ -1,14 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
+﻿namespace Divstack.Company;
 
-using System.Text.Json;
-using Shared.DDD.BuildingBlocks;
+using Estimation.Tool.Shared.DDD.BuildingBlocks;
+using NServiceBus;
 
-public record ValuationRequested(
+public record struct ValuationRequested(
     Guid InquiryId,
-    Guid ValuationId) : IntegrationEvent
-{
-    public override string ToString()
-    {
-        return JsonSerializer.Serialize(this);
-    }
-}
+    Guid ValuationId) : IntegrationEvent;

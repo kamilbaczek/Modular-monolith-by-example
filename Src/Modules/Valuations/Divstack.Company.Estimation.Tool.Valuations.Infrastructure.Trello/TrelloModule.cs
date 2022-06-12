@@ -9,7 +9,6 @@ using Extensions;
 using Features.ValuationRequest;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class TrelloModule
 {
@@ -18,7 +17,6 @@ internal static class TrelloModule
 
     internal static IServiceCollection AddTrello(this IServiceCollection services)
     {
-        services.AddIntegrationEventsHandlers(typeof(TrelloModule));
         services.Scan(scan => scan.FromAssemblyOf<ValuationRequestCreatedTrelloEventHandler>()
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
             .AsImplementedInterfaces()
