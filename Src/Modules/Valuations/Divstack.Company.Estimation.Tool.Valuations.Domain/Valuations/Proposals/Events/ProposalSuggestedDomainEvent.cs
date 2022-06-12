@@ -3,16 +3,24 @@
 public sealed class ProposalSuggestedDomainEvent : DomainEventBase
 {
     public ProposalSuggestedDomainEvent(
-        Proposal proposal,
+        ProposalId proposalId,
+        Money price,
+        ProposalDescription description,
+        EmployeeId suggestedBy,
         ValuationId valuationId,
         InquiryId inquiryId)
     {
-        Proposal = proposal;
-        InquiryId = inquiryId;
+        ProposalId = proposalId;
+        Price = price;
+        Description = description;
+        SuggestedBy = suggestedBy;
         ValuationId = valuationId;
+        InquiryId = inquiryId;
     }
-
-    public Proposal Proposal { get; }
+    public ProposalId ProposalId { get; }
+    public Money Price { get; }
+    public ProposalDescription Description { get; }
+    public EmployeeId SuggestedBy { get; }
     public InquiryId InquiryId { get; }
     public ValuationId ValuationId { get; }
 }

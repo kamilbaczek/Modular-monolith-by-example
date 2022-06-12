@@ -4,14 +4,15 @@ using Application.Valuations.Queries.GetProposalsById.Dtos;
 using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-[Obsolete]
-public class ProposalsAggregation : AggregateProjection<ValuationProposalEntryDto>
+internal sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProposalEntryDto>
 {
+    private const string NoDecision = "No decision";
+    private const string Approved = "Approved";
     public void Apply(ProposalApprovedDomainEvent @event, ValuationProposalEntryDto proposalEntryDto)
     {
         proposalEntryDto = proposalEntryDto with
         {
-            Decision = "Approved",
+            Decision = Approved,
             DecisionDate = @event.OccurredOn
         };
     }
@@ -20,14 +21,15 @@ public class ProposalsAggregation : AggregateProjection<ValuationProposalEntryDt
     {
         var proposal = new ValuationProposalEntryDto(
             suggestedDomainEvent.Id,
-            suggestedDomainEvent.Proposal.Id.Value,
-            suggestedDomainEvent.Proposal.Description.Message,
-            suggestedDomainEvent.Proposal.Price.Currency,
-            suggestedDomainEvent.Proposal.Price.Value.Value,
+            suggestedDomainEvent.Id,
+            suggestedDomainEvent.Description.Message,
+            suggestedDomainEvent.Price.Currency,
+            suggestedDomainEvent.Price.Value.Value,
             suggestedDomainEvent.OccurredOn,
-            suggestedDomainEvent.Proposal.SuggestedBy.Value,
+            suggestedDomainEvent.SuggestedBy.Value,
             null,
-            "No decision");
+            NoDecision
+            );
 
         return proposal;
     }

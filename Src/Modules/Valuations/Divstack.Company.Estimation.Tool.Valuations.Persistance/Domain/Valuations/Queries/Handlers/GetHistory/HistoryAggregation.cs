@@ -6,7 +6,7 @@ using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Events;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-public sealed class HistoryAggregation : AggregateProjection<ValuationHistoryDto>
+internal sealed class HistoryAggregation : SingleStreamAggregation<ValuationHistoryDto>
 {
     public void Apply(ValuationCompletedDomainEvent completed, ValuationHistoryDto valuationHistoryDto)
     {

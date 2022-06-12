@@ -5,6 +5,7 @@ using Exceptions;
 using Proposals;
 using Proposals.Events;
 
+//TODO implement strongly typed ids for marten
 public sealed class Valuation : Entity, IAggregateRoot
 {
     private Valuation() { }
@@ -37,7 +38,8 @@ public sealed class Valuation : Entity, IAggregateRoot
         return new Valuation(inquiryId);
     }
 
-    public void SuggestProposal(Money value,
+    public void SuggestProposal(
+        Money price,
         string description,
         EmployeeId proposedBy)
     {
@@ -47,10 +49,15 @@ public sealed class Valuation : Entity, IAggregateRoot
         if (Status == ValuationStatus.WaitForClientDecision)
             throw new ProposalWaitForDecisionException(ProposalWaitForDecision!.Id);
 
+        var proposalId = ProposalId.Create();
         var proposalDescription = ProposalDescription.From(description);
-        var proposal = Proposal.Suggest(value, proposalDescription, proposedBy);
-
-        var @event = new ProposalSuggestedDomainEvent(proposal, ValuationId, InquiryId);
+        var @event = new ProposalSuggestedDomainEvent(
+            proposalId,
+            price,
+            proposalDescription,
+            proposedBy,
+            ValuationId,
+            InquiryId);
         Apply(@event);
         AddDomainEvent(@event);
     }
@@ -58,7 +65,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     public void ApproveProposal(ProposalId proposalId)
     {
         var proposal = GetProposal(proposalId);
-        var @event = new ProposalApprovedDomainEvent(ValuationId, proposal);
+        var @event = new ProposalApprovedDomainEvent(ValuationId, proposalId, proposal.SuggestedBy, proposal.Price);
         Apply(@event);
         AddDomainEvent(@event);
     }
@@ -68,15 +75,17 @@ public sealed class Valuation : Entity, IAggregateRoot
         var proposal = GetProposal(proposalId);
         var @event = new ProposalRejectedDomainEvent(
             ValuationId,
-            proposal);
+            proposalId,
+            proposal.Price);
         Apply(@event);
         AddDomainEvent(@event);
     }
 
-    public void CancelProposal(ProposalId proposalId, EmployeeId employeeId)
+    public void CancelProposal(ProposalId proposalId)
     {
         var proposal = GetProposal(proposalId);
-        var @event = new ProposalCancelledDomainEvent(InquiryId, ValuationId, proposal);
+        var @event = new ProposalCancelledDomainEvent(InquiryId, ValuationId, proposalId, proposal.SuggestedBy);
+        Apply(@event);
         AddDomainEvent(@event);
     }
 
@@ -112,18 +121,23 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     private void Apply(ProposalCancelledDomainEvent @event)
     {
-        @event.Proposal.Cancel(EmployeeId.Of(Guid.Empty));
+        var proposal = GetProposal(@event.ProposalId);
+        //TODO pass employee id
+        var employeeId = EmployeeId.Of(Guid.Empty);
+        proposal.Cancel(employeeId);
         Status = ValuationStatus.WaitForProposal;
     }
     private void Apply(ProposalApprovedDomainEvent @event)
     {
-        @event.Proposal.Approve();
+        var proposal = GetProposal(@event.ProposalId);
+        proposal.Approve();
         Status = ValuationStatus.Approved;
     }
 
     private void Apply(ProposalSuggestedDomainEvent @event)
     {
-        Proposals.AddFirst(@event.Proposal);
+        var proposal = Proposal.Suggest(@event.ProposalId, @event.Price, @event.Description, @event.SuggestedBy);
+        Proposals.AddFirst(proposal);
         Status = ValuationStatus.WaitForClientDecision;
     }
 
@@ -147,11 +161,16 @@ public sealed class Valuation : Entity, IAggregateRoot
     {
         var proposal = NotCancelledProposals.SingleOrDefault(proposal => proposal.Id == proposalId);
         if (proposal is null)
-        {
             throw new ProposalNotFoundException(proposalId);
-        }
 
         return proposal;
+    }
+
+    private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
+    {
+        return Proposals
+            .Where(proposal => !proposal.IsCancelled)
+            .ToList();
     }
 
     public void When(object @event)
@@ -178,10 +197,5 @@ public sealed class Valuation : Entity, IAggregateRoot
                 break;
         }
     }
-    private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
-    {
-        return Proposals
-            .Where(proposal => !proposal.IsCancelled)
-            .ToList();
-    }
+
 }

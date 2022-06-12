@@ -27,7 +27,7 @@ internal sealed class CancelProposalCommandHandler : IRequestHandler<CancelPropo
         var proposalId = new ProposalId(command.ProposalId);
         var employeeId = new EmployeeId(_currentUserService.GetPublicUserId());
 
-        valuation.CancelProposal(proposalId, employeeId);
+        valuation.CancelProposal(proposalId);
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
 

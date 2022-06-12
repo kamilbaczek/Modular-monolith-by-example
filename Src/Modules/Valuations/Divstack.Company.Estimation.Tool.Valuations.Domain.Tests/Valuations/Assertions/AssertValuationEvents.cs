@@ -19,17 +19,15 @@ internal static class AssertValuationEvents
         EmployeeId employee)
     {
         domainEvent.Should().NotBeNull();
-        domainEvent.Value.Should().Be(money);
+        domainEvent.Price.Should().Be(money);
         domainEvent.ProposalId.Should().NotBeNull();
-        domainEvent.ProposedBy.Should().Be(employee);
+        domainEvent.SuggestedBy.Should().Be(employee);
     }
 
     internal static void AssertIsCorrect(this ProposalApprovedDomainEvent domainEvent,
-        EmployeeId employeeId,
         ProposalId proposalId)
     {
         domainEvent.Should().NotBeNull();
-        domainEvent.SuggestedBy.Should().Be(employeeId);
         domainEvent.ProposalId.Should().Be(proposalId);
     }
 

@@ -25,7 +25,7 @@ public class ApproveProposalTests : BaseValuationTest
         valuation.ApproveProposal(proposalSuggestedDomainEvent.ProposalId);
 
         var @event = GetPublishedEvent<ProposalApprovedDomainEvent>(valuation);
-        @event.AssertIsCorrect(employeeId, proposalSuggestedDomainEvent.ProposalId);
+        @event.AssertIsCorrect(proposalSuggestedDomainEvent.ProposalId);
     }
 
     [Test]

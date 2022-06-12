@@ -23,7 +23,7 @@ public class RejectProposalTests : BaseValuationTest
         valuation.RejectProposal(proposalSuggestedDomainEvent.ProposalId);
 
         var @event = GetPublishedEvent<ProposalRejectedDomainEvent>(valuation);
-        @event.AssertIsCorrect(proposalSuggestedDomainEvent.ProposalId, valuation.Id);
+        @event.AssertIsCorrect(proposalSuggestedDomainEvent.ProposalId, valuation.ValuationId);
     }
 
     [Test]

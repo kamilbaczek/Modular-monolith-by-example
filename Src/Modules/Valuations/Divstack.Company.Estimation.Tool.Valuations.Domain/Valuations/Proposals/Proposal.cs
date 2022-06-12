@@ -10,11 +10,12 @@ public sealed class Proposal : Entity
     }
 
     private Proposal(
+        ProposalId proposalId,
         Money value,
         ProposalDescription description,
         EmployeeId suggestedBy)
     {
-        Id = ProposalId.Create();
+        Id = proposalId;
         Price = Guard.Against.Null(value, nameof(value));
         Description = Guard.Against.Null(description, nameof(description));
         SuggestedBy = Guard.Against.Null(suggestedBy, nameof(suggestedBy));
@@ -37,13 +38,14 @@ public sealed class Proposal : Entity
     private static Money MinimumProposalValue => Money.Of(100, "USD");
 
     internal static Proposal Suggest(
+        ProposalId proposalId,
         Money value,
         ProposalDescription description,
         EmployeeId proposedBy)
     {
         if (value < MinimumProposalValue)
             throw new ProposalValueLessenThanMinimalException(value, MinimumProposalValue);
-        return new Proposal(value, description, proposedBy);
+        return new Proposal(proposalId, value, description, proposedBy);
     }
 
     internal void Approve()

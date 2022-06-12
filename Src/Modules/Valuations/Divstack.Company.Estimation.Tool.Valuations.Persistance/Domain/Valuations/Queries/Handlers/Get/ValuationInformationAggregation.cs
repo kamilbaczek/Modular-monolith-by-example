@@ -6,7 +6,7 @@ using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Events;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-public sealed class ValuationInformationAggregation : AggregateProjection<ValuationInformationDto>
+internal sealed class ValuationInformationAggregation : SingleStreamAggregation<ValuationInformationDto>
 {
     public void Apply(ProposalSuggestedDomainEvent @event, ValuationInformationDto informationDto)
     {

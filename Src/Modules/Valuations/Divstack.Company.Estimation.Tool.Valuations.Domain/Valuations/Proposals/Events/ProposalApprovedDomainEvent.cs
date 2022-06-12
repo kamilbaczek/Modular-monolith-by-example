@@ -4,12 +4,18 @@ public sealed class ProposalApprovedDomainEvent : DomainEventBase
 {
     internal ProposalApprovedDomainEvent(
         ValuationId valuationId,
-        Proposal proposal)
+        ProposalId proposalId,
+        EmployeeId suggestedBy,
+        Money price)
     {
         ValuationId = valuationId;
-        Proposal = proposal;
+        ProposalId = proposalId;
+        SuggestedBy = suggestedBy;
+        Price = price;
     }
 
     public ValuationId ValuationId { get; }
-    public Proposal Proposal { get; }
+    public ProposalId ProposalId { get; }
+    public EmployeeId SuggestedBy { get; }
+    public Money Price { get; }
 }

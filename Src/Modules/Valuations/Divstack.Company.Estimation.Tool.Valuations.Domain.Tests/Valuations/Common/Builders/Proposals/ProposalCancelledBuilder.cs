@@ -20,7 +20,7 @@ internal sealed class ProposalCancelledBuilder
 
     private static Valuation CancelProposal()
     {
-        Valuation.CancelProposal(ProposalId, EmployeeId);
+        Valuation.CancelProposal(ProposalId);
 
         return Valuation;
     }

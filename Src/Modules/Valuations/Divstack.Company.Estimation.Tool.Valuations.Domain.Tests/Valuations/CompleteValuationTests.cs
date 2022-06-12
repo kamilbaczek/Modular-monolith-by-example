@@ -20,6 +20,6 @@ public class CompleteValuationTests : BaseValuationTest
         valuation.Complete(employee);
 
         var @event = GetPublishedEvent<ValuationCompletedDomainEvent>(valuation);
-        @event.AssertIsCorrect(valuation.Id);
+        @event.AssertIsCorrect(valuation.ValuationId);
     }
 }

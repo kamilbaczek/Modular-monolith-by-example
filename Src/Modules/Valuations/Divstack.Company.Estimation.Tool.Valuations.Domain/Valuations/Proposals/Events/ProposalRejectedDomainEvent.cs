@@ -4,9 +4,12 @@ public sealed class ProposalRejectedDomainEvent : DomainEventBase
 {
     internal ProposalRejectedDomainEvent(
         ValuationId valuationId,
-        Proposal proposal)
+        ProposalId proposalId,
+        Money value)
     {
         ValuationId = valuationId;
+        ProposalId = proposalId;
+        Value = value;
     }
 
     public Money Value { get; }
