@@ -1,7 +1,7 @@
-﻿namespace Divstack.Company;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.EventBus;
 
 using System.Reflection;
-using Estimation.Tool.Shared.Infrastructure.EventBus.Configuration;
+using Configuration;
 using Microsoft.Extensions.Hosting;
 using NServiceBus;
 

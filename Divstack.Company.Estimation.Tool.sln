@@ -77,8 +77,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj", "{02771AB1-3140-49CC-9374-75F54421316B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql.csproj", "{5744289E-1178-4C30-BFE0-370F5395EBC5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Infrastructure", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj", "{563E2A6D-C82E-42BE-B27D-97B99A853146}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Abstractions", "Src\Shared\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj", "{67D187B5-EFFE-4550-AED3-E78055EC0601}"
@@ -120,8 +118,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests", "Src\Modules\Inquiries\Tests\Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests\Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.csproj", "{F7D87039-0357-4980-9115-D960F810BD4C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E7F007E3-26C2-4D1F-B9EA-A9C4549E80E1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.IntegrationTesting", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting.csproj", "{A3E71198-91E5-4360-B297-BBC962E6FE7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{B16D3781-01DD-4435-B040-BBC15DAA9133}"
 EndProject
@@ -291,10 +287,6 @@ Global
 		{02771AB1-3140-49CC-9374-75F54421316B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02771AB1-3140-49CC-9374-75F54421316B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02771AB1-3140-49CC-9374-75F54421316B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5744289E-1178-4C30-BFE0-370F5395EBC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5744289E-1178-4C30-BFE0-370F5395EBC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5744289E-1178-4C30-BFE0-370F5395EBC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5744289E-1178-4C30-BFE0-370F5395EBC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{563E2A6D-C82E-42BE-B27D-97B99A853146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{563E2A6D-C82E-42BE-B27D-97B99A853146}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{563E2A6D-C82E-42BE-B27D-97B99A853146}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -355,10 +347,6 @@ Global
 		{F7D87039-0357-4980-9115-D960F810BD4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7D87039-0357-4980-9115-D960F810BD4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7D87039-0357-4980-9115-D960F810BD4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3E71198-91E5-4360-B297-BBC962E6FE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3E71198-91E5-4360-B297-BBC962E6FE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3E71198-91E5-4360-B297-BBC962E6FE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3E71198-91E5-4360-B297-BBC962E6FE7B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F0A2C1E2-635E-45B2-9758-B7CB18B1CDC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F0A2C1E2-635E-45B2-9758-B7CB18B1CDC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0A2C1E2-635E-45B2-9758-B7CB18B1CDC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -496,7 +484,6 @@ Global
 		{DAB1C2F9-AAB7-4E19-A860-969C22E2D114} = {6F31D638-3020-4A9F-A04B-AF686C7E2B62}
 		{F5BD1896-7B67-4B29-A164-C28636AB7E6D} = {B8332C62-C172-42C2-81CB-0B020ECA5E24}
 		{02771AB1-3140-49CC-9374-75F54421316B} = {B8332C62-C172-42C2-81CB-0B020ECA5E24}
-		{5744289E-1178-4C30-BFE0-370F5395EBC5} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
 		{563E2A6D-C82E-42BE-B27D-97B99A853146} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
 		{67D187B5-EFFE-4550-AED3-E78055EC0601} = {9010E474-6B9C-4DF5-81F1-6D187837495E}
 		{30FF999C-F038-4776-AFBB-4BA234C490DB} = {5262984E-25B8-47CE-BE33-57E76F7EC3DD}
@@ -517,7 +504,6 @@ Global
 		{F7D87039-0357-4980-9115-D960F810BD4C} = {3F2431F0-575D-4369-B713-8D97099F5A03}
 		{E7F007E3-26C2-4D1F-B9EA-A9C4549E80E1} = {D8C07E63-3DAE-4497-9D41-D5E89C571357}
 		{8348534E-02E7-4219-9AE4-BBAF506770CD} = {E7F007E3-26C2-4D1F-B9EA-A9C4549E80E1}
-		{A3E71198-91E5-4360-B297-BBC962E6FE7B} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
 		{B16D3781-01DD-4435-B040-BBC15DAA9133} = {BFEFB882-5EBB-4CE6-9F02-869B10C5B2A3}
 		{F0A2C1E2-635E-45B2-9758-B7CB18B1CDC4} = {B16D3781-01DD-4435-B040-BBC15DAA9133}
 		{225441D8-014D-478C-8763-4F2DA346FDD0} = {B16D3781-01DD-4435-B040-BBC15DAA9133}

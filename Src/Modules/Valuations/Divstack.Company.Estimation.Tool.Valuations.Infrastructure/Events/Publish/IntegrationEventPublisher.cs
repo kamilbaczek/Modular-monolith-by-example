@@ -9,13 +9,13 @@ using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    private readonly IMessageSession _bus;
+    private readonly IMessageSession _messageSession;
     private readonly IEventMapper _eventMapper;
 
-    public IntegrationEventPublisher(IMessageSession bus,
+    public IntegrationEventPublisher(IMessageSession messageSession,
         IEventMapper eventMapper)
     {
-        _bus = bus;
+        _messageSession = messageSession;
         _eventMapper = eventMapper;
     }
 
@@ -27,22 +27,6 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
             .AsReadOnly();
 
         foreach (var @event in integrationEvents)
-        {
-            switch (@event)
-            {
-                case ValuationRequested valuationRequested:
-                    await _bus.SendLocal(valuationRequested);
-                    break;
-                case ProposalSuggested proposalSuggested:
-                    await _bus.SendLocal(proposalSuggested);
-                    break;
-                case ProposalApproved proposalApproved:
-                    await _bus.SendLocal(proposalApproved);
-                    break;
-                case ValuationCompleted valuationCompleted:
-                    await _bus.SendLocal(valuationCompleted);
-                    break;
-            }
-        }
+            await _messageSession.SendLocal(@event);
     }
 }

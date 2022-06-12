@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-using NServiceBus;
 using Shared.DDD.BuildingBlocks;
 
 public record struct ProposalSuggested(

@@ -23,11 +23,6 @@
     <ProjectReference Include="..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="6.0.0"/>
-    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0"/>
-  </ItemGroup>
-
   <ProjectExtensions>
     <VisualStudio>
       <UserProperties appsettings_1json__JsonSchema=""/>

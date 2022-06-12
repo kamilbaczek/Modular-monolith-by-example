@@ -6,7 +6,6 @@ using System.Reflection;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentInitialized;
-using Shared.Infrastructure.EventBus.Publish.Extensions;
 
 internal static class EmailPaymentsModule
 {
@@ -24,8 +23,6 @@ internal static class EmailPaymentsModule
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Sender)))
             .AsImplementedInterfaces()
             .WithTransientLifetime());
-        services.AddIntegrationEventsHandlers(typeof(EmailPaymentsModule));
-
 
         return services;
     }
