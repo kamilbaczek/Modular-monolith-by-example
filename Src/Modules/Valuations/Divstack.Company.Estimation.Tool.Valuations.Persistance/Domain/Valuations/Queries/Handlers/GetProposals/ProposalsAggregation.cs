@@ -25,7 +25,7 @@ public sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProp
             suggestedDomainEvent.Id,
             suggestedDomainEvent.Description.Message,
             suggestedDomainEvent.Price.Currency,
-            suggestedDomainEvent.Price.Value.Value,
+            suggestedDomainEvent.Price.Value!.Value,
             suggestedDomainEvent.OccurredOn,
             suggestedDomainEvent.SuggestedBy.Value,
             null,
