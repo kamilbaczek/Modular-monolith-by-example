@@ -9,12 +9,13 @@ using Tool.Payments.IntegrationsEvents.External;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetAllUsers;
 
-public sealed class PaymentCompletedEventHandler : IHandleMessages<PaymentCompleted>
+internal sealed class PaymentCompletedEventHandler : IHandleMessages<PaymentCompleted>
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IHubContext<PaymentsHub> _paymentsHub;
     private readonly IUserModule _userModule;
-    internal PaymentCompletedEventHandler(IHubContext<PaymentsHub> paymentsHub,
+
+    public PaymentCompletedEventHandler(IHubContext<PaymentsHub> paymentsHub,
         INotificationsWriteRepository notificationsWriteRepository,
         IUserModule userModule)
     {

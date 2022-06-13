@@ -6,7 +6,7 @@ using Company.Estimation.Tool.Payments.IntegrationsEvents.External;
 using Company.Estimation.Tool.Sms.Core.Clients;
 using NServiceBus;
 
-public sealed class PaymentCompletedEventHandler : IHandleMessages<PaymentCompleted>
+internal sealed class PaymentCompletedEventHandler : IHandleMessages<PaymentCompleted>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly ISmsClient _smsClient;
@@ -25,11 +25,6 @@ public sealed class PaymentCompletedEventHandler : IHandleMessages<PaymentComple
         var message = GetShortMessage(paymentId);
 
         await _smsClient.SendAsync(message, client.PhoneNumber);
-    }
-
-    public ValueTask Handle(PaymentCompleted proposalApprovedEvent, CancellationToken cancellationToken)
-    {
-        return new ValueTask();
     }
 
     private static string GetShortMessage(Guid paymentId)

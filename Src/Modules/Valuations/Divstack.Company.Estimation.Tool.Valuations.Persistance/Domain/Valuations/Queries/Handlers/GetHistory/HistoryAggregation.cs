@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetHistory;
+﻿// ReSharper disable UnusedMember.Global
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetHistory;
 
 using Application.Valuations.Queries.GetHistoryById.Dtos;
 using Common;
@@ -6,7 +7,7 @@ using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Events;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-internal sealed class HistoryAggregation : SingleStreamAggregation<ValuationHistoryDto>
+public sealed class HistoryAggregation : SingleStreamAggregation<ValuationHistoryDto>
 {
     public void Apply(ValuationCompletedDomainEvent completed, ValuationHistoryDto valuationHistoryDto)
     {

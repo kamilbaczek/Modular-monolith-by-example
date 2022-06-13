@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
 public sealed class ValuationStatus : ValueObject
 {

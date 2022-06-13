@@ -7,13 +7,13 @@ using MassTransit;
 using Sender;
 using Tool.Payments.IntegrationsEvents.External;
 
-public sealed class
+internal sealed class
     PaymentCompletedEventHandler : IConsumer<PaymentCompleted>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentCompletedSender _paymentInitializedSender;
 
-    internal PaymentCompletedEventHandler(IPaymentCompletedSender paymentInitializedSender,
+    public PaymentCompletedEventHandler(IPaymentCompletedSender paymentInitializedSender,
         IInquiriesModule inquiriesModule)
     {
         _paymentInitializedSender = paymentInitializedSender;

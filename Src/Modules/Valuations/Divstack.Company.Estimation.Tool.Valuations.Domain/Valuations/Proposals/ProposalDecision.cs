@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
 public sealed class ProposalDecision : ValueObject
 {

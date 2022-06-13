@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetAll;
+﻿// ReSharper disable UnusedMember.Global
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetAll;
 
 using Application.Valuations.Queries.GetAll;
 using Common;
@@ -6,7 +7,7 @@ using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Events;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-internal sealed class ValuationListItemAggregation : SingleStreamAggregation<ValuationListItemDto>
+public sealed class ValuationListItemAggregation : SingleStreamAggregation<ValuationListItemDto>
 {
     public void Apply(ValuationCompletedDomainEvent @event, ValuationListItemDto listItemDto)
     {

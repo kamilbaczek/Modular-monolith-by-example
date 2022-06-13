@@ -1,10 +1,11 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetProposals;
+﻿// ReSharper disable UnusedMember.Global
+namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetProposals;
 
 using Application.Valuations.Queries.GetProposalsById.Dtos;
 using Marten.Events.Aggregation;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
-internal sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProposalEntryDto>
+public sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProposalEntryDto>
 {
     private const string NoDecision = "No decision";
     private const string Approved = "Approved";

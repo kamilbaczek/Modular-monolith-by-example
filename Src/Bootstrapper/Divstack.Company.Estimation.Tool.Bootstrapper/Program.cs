@@ -10,6 +10,10 @@ using Shared.Infrastructure.Configuration;
 /// </summary>
 public sealed class Program
 {
+    /// <summary>
+    /// Entry point to application
+    /// </summary>
+    /// <param name="args"></param>
     public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
 
     /// <summary>

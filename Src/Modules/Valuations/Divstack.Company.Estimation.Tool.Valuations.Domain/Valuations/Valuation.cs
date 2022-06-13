@@ -1,5 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
+using System.Diagnostics.CodeAnalysis;
 using Events;
 using Exceptions;
 using Proposals;
@@ -8,7 +10,6 @@ using Proposals.Events;
 //TODO implement strongly typed ids for marten
 public sealed class Valuation : Entity, IAggregateRoot
 {
-#pragma warning disable CS8618
     private Valuation() { }
 
     private Valuation(
@@ -19,7 +20,6 @@ public sealed class Valuation : Entity, IAggregateRoot
         Apply(@event);
         AddDomainEvent(@event);
     }
-#pragma warning restore CS8618
 
     public Guid Id { get; set; }
     public ValuationId ValuationId => ValuationId.Of(Id);
@@ -199,5 +199,4 @@ public sealed class Valuation : Entity, IAggregateRoot
                 break;
         }
     }
-
 }
