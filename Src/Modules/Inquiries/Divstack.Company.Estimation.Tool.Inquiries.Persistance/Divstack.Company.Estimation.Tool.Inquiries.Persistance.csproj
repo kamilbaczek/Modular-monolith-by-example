@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Mysql.csproj"/>
     <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj"/>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Inquiries.Domain\Divstack.Company.Estimation.Tool.Inquiries.Domain.csproj"/>

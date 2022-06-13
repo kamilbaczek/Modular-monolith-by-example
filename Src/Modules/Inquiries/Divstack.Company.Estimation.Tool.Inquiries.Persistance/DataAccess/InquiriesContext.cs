@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.DataAccess;
 
 using Domain.Inquiries;
 using Inquiries.Domain.Inquiries;

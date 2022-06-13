@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Shared.DDD.ValueObjects.Emails;
 using Shared.DDD.ValueObjects.PhoneNumbers;
-using Shared.Infrastructure.Mysql;
 using Tool.Inquiries.Domain.Inquiries;
 using Tool.Inquiries.Domain.Inquiries.Clients;
 using Tool.Inquiries.Domain.Inquiries.Items;
@@ -18,32 +17,27 @@ internal class InquiryEntityTypeConfiguration : IEntityTypeConfiguration<Inquiry
         builder.ToTable("Inquiries");
         builder.HasKey("Id");
         builder.Property<InquiryId>("Id")
-            .HasConversion(id => id.Value, value => new InquiryId(value))
-            .IsIdentity();
+            .HasConversion(id => id.Value, value => new InquiryId(value));
         builder.OwnsMany<InquiryItem>("InquiryItems", inquiryServiceBuilder =>
         {
             inquiryServiceBuilder.WithOwner("Inquiry").HasForeignKey();
             inquiryServiceBuilder.ToTable("InquiryItems");
             inquiryServiceBuilder.HasKey("Id");
             inquiryServiceBuilder.Property<InquiryItemId>("Id")
-                .HasConversion(id => id.Value, value => new InquiryItemId(value))
-                .IsIdentity();
+                .HasConversion(id => id.Value, value => new InquiryItemId(value));
             inquiryServiceBuilder.OwnsOne<Service>("Service", servicesBuilder =>
             {
                 inquiryServiceBuilder.ToTable("InquiryItemsServices");
                 servicesBuilder.Property<ServiceId>("ServiceId")
-                    .HasConversion(id => id.Value, value => new ServiceId(value))
-                    .IsIdentity();
+                    .HasConversion(id => id.Value, value => new ServiceId(value));
                 servicesBuilder.OwnsMany<Attribute>("Attributes", attributeBuilder =>
                 {
                     attributeBuilder.ToTable("InquiryItemsServicesAttributes");
                     attributeBuilder.HasKey("Id");
                     attributeBuilder.Property<AttributeId>("Id")
-                        .HasConversion(id => id.Value, value => new AttributeId(value))
-                        .IsIdentity();
+                        .HasConversion(id => id.Value, value => new AttributeId(value));
                     attributeBuilder.Property<AttributeValueId>("ValueId")
-                        .HasConversion(id => id.Value, value => new AttributeValueId(value))
-                        .IsIdentity();
+                        .HasConversion(id => id.Value, value => new AttributeValueId(value));
                     attributeBuilder.WithOwner("Service").HasForeignKey();
                 });
             });
