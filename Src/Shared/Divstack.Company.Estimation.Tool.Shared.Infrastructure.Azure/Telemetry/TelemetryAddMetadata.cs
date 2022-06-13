@@ -4,6 +4,7 @@ using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.AspNetCore.Http;
+using Utils;
 
 internal sealed class TelemetryAddMetadata : ITelemetryInitializer
 {
@@ -16,8 +17,9 @@ internal sealed class TelemetryAddMetadata : ITelemetryInitializer
 
     public void Initialize(ITelemetry telemetry)
     {
-        if (telemetry is not RequestTelemetry requestTelemetry) return;
+        if (telemetry is not RequestTelemetry requestTelemetry)
+            return;
         requestTelemetry.AddUser(_httpContextAccessor);
-        // AsyncUtil.RunSync(() => requestTelemetry.AddRequestBody(_httpContextAccessor));
+        AsyncUtil.RunSync(() => requestTelemetry.AddRequestBody(_httpContextAccessor));
     }
 }
