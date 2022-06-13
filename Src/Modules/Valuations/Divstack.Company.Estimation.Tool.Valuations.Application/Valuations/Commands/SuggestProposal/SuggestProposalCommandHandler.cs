@@ -28,7 +28,7 @@ internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestPro
         var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
         var money = Money.Of(command.Value, command.Currency);
 
-        valuation.SuggestProposal(money, command.Description, employeeId);
+        valuation.SuggestProposal(money, command.Description!, employeeId);
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);
         await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);

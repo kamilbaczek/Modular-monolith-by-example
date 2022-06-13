@@ -1,4 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
+﻿// ReSharper disable UnusedMember.Local
+#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries;
 
 using Clients;
 using Events;

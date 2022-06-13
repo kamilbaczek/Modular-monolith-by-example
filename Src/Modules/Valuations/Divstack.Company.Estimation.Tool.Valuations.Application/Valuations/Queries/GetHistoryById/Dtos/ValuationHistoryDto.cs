@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetHistoryById.Dtos;
 
 public sealed class ValuationHistoryDto
 {

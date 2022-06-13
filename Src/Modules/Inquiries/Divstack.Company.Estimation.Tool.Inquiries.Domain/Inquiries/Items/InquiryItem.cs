@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
 
 using Services;
 

@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 
 using Shared.DDD.ValueObjects.Emails;
 using Shared.DDD.ValueObjects.PhoneNumbers;

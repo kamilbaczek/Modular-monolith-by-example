@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Clients;
 
 public sealed class ClientCompany : ValueObject
 {

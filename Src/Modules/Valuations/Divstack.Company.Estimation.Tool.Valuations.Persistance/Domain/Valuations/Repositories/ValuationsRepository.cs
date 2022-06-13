@@ -17,13 +17,11 @@ internal sealed class ValuationsRepository : IValuationsRepository
         var id = valuationId.Value;
         var valuation = await _documentSession.Events.AggregateStreamAsync<Valuation>(id, token: cancellationToken);
 
-        return valuation;
+        return valuation!;
     }
 
     public async Task AddAsync(Valuation valuation, CancellationToken cancellationToken = default)
     {
-        // _documentSession.CorrelationId = traceMetadata?.CorrelationId?.Value;
-        // _documentSession.CausationId = traceMetadata?.CausationId?.Value;
         var events = valuation.DomainEvents;
 
         _documentSession.Events.StartStream<Valuation>(
