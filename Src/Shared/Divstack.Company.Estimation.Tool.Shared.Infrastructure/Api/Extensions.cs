@@ -12,6 +12,7 @@ using HealthChecks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Observability;
+using Observability.Middleware;
 using Persistance;
 using Swagger;
 using WebSockets;
@@ -43,6 +44,7 @@ internal static class Extensions
         app.UseAuthorization();
         app.UseSwaggerModule();
         app.UseExceptionHandling();
+        app.UseObservability();
         app.UseBackgroundProcessing();
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();

@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Data;
 
 using System.Data;
 using Microsoft.Data.SqlClient;
@@ -15,7 +16,7 @@ public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 
     public void Dispose()
     {
-        if (_connection != null && _connection.State == ConnectionState.Open)
+        if (_connection.State == ConnectionState.Open)
         {
             _connection.Dispose();
         }
@@ -23,11 +24,9 @@ public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 
     public IDbConnection GetOpenConnection()
     {
-        if (_connection is null || _connection.State != ConnectionState.Open)
-        {
-            _connection = new SqlConnection(_connectionString);
-            _connection.Open();
-        }
+        if (_connection.State == ConnectionState.Open) return _connection;
+        _connection = new SqlConnection(_connectionString);
+        _connection.Open();
 
         return _connection;
     }

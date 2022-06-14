@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Builder;
 
 internal static class ExceptionHandlerMiddlewareExtensions
 {
-    public static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder builder)
+    internal static IApplicationBuilder UseExceptionHandling(this IApplicationBuilder builder)
     {
         return builder.UseMiddleware<ErrorHandling>();
     }
