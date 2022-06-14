@@ -1,3 +1,3 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items;
 
-public record InquiryItemId(Guid Value);
+public record struct InquiryItemId(Guid Value);

@@ -7,14 +7,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-internal sealed class CustomExceptionHandlerMiddleware
+internal sealed class ErrorHandling
 {
-    private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
+    private readonly ILogger<ErrorHandling> _logger;
     private readonly RequestDelegate _next;
     private readonly IWebHostEnvironment _webHostEnvironment;
-
-    public CustomExceptionHandlerMiddleware(RequestDelegate next,
-        IWebHostEnvironment webHostEnvironment, ILogger<CustomExceptionHandlerMiddleware> logger)
+    public ErrorHandling(RequestDelegate next,
+        IWebHostEnvironment webHostEnvironment, ILogger<ErrorHandling> logger)
     {
         _next = next;
         _webHostEnvironment = webHostEnvironment;
@@ -35,7 +34,8 @@ internal sealed class CustomExceptionHandlerMiddleware
 
     private Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
-        _logger.LogError(exception.Message);
+        var message = GetMessage(exception);
+        _logger.LogError(message);
         var code = HttpStatusCode.InternalServerError;
         if (exception.IsNotFoundException())
         {
@@ -48,7 +48,7 @@ internal sealed class CustomExceptionHandlerMiddleware
         }
 
         var response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
-            ? ExceptionDto.CreateWithMessage(exception.Message)
+            ? ExceptionDto.CreateWithMessage(message)
             : ExceptionDto.CreateInternalServerError();
         return SendResponse(context, code, response);
     }
@@ -61,4 +61,6 @@ internal sealed class CustomExceptionHandlerMiddleware
 
         return context.Response.WriteAsync(jsonResponseBody);
     }
+
+    private static string GetMessage(Exception exception) => $"{exception.Message} {exception.StackTrace}";
 }

@@ -42,7 +42,7 @@ internal static class Extensions
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseSwaggerModule();
-        app.UseCustomExceptionHandler();
+        app.UseExceptionHandling();
         app.UseBackgroundProcessing();
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();
