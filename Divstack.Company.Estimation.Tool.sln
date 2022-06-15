@@ -195,6 +195,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adr", "Adr", "{75D2B370-D9C
 	ProjectSection(SolutionItems) = preProject
 		Documentation\Architecture\Decisions\0001-record-architecture-decisions.md = Documentation\Architecture\Decisions\0001-record-architecture-decisions.md
 		Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md = Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md
+		Documentation\Architecture\Decisions\0003-move-inmemory-event-bus-outside-process.md = Documentation\Architecture\Decisions\0003-move-inmemory-event-bus-outside-process.md
 	EndProjectSection
 EndProject
 Global
