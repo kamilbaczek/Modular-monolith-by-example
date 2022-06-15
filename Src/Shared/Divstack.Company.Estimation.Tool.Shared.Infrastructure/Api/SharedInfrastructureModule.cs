@@ -9,6 +9,7 @@ using Cors;
 using Errors.Middleware;
 using EventBus;
 using HealthChecks;
+using Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Observability;
@@ -16,7 +17,7 @@ using Persistance;
 using Swagger;
 using WebSockets;
 
-internal static class Extensions
+internal static class SharedInfrastructureModule
 {
     internal static void AddSharedInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
@@ -31,7 +32,7 @@ internal static class Extensions
         services.AddSharedHealthChecks();
         services.AddObservability();
         services.AddConfiguration();
-
+        services.AddLogging();
     }
 
     internal static void UseSharedInfrastructure(this IApplicationBuilder app)
@@ -44,7 +45,7 @@ internal static class Extensions
         app.UseAuthorization();
         app.UseSwaggerModule();
         app.UseExceptionHandling();
-        app.UseHttpLogging();
+        app.UseLogging();
         app.UseBackgroundProcessing();
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();
