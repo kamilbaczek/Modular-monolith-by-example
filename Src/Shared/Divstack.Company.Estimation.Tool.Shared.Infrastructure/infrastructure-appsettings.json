@@ -19,7 +19,7 @@
     "StorageConnectionString": ""
   },
   "HealthChecks-UI": {
-    "DisableMigrations": true,
+    "DisableMigrations": false,
     "HealthChecks": [
       {
         "Name": "Estimation Tool - Health Checks",

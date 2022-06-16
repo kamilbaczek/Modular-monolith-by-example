@@ -3,6 +3,7 @@
 using BackgroundProcessing.HealthChecks;
 using Memory;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Routing;
 
 internal static class HealthChecksSharedModule
@@ -15,13 +16,16 @@ internal static class HealthChecksSharedModule
         services.AddHealthChecks()
             .AddMemoryHealthCheck()
             .AddBackgroundProcessingHealthCheck();
-
         return services;
     }
 
     internal static void UseSharedHealthChecks(this IApplicationBuilder app)
     {
-        app.UseHealthChecks(HealthCheck);
+        var options = new HealthCheckOptions
+        {
+            AllowCachingResponses = true
+        };
+        app.UseHealthChecks(HealthCheck, options);
     }
 
     public static IEndpointRouteBuilder MapSharedHealthChecks(
