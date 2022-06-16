@@ -49,3 +49,8 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_8f56983a472d43bca514b1a43cf4c802 }}
         images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_99d8a2dd2ade4cae9f9b879e57612706 }}/estimation-tool-api:${{ github.sha }}'
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2.2.0
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: ${{ secrets.SLACK_TITLE }}
