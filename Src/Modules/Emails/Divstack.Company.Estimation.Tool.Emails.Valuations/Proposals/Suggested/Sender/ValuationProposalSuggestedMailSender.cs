@@ -34,24 +34,43 @@ internal sealed class ValuationProposalSuggestedMailSender : IValuationProposalS
 
     public Task SendAsync(ValuationProposalSuggestedEmailRequest request)
     {
-        var acceptLink = _configuration.AcceptProposalLink
-            .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
-            .Replace(ProposalIdPlaceholder, HttpUtility.UrlEncode(request.ProposalId.ToString()));
-
-        var rejectLink = _configuration.RejectProposalLink
-            .Replace(ValuationIdPlaceholder, HttpUtility.UrlEncode(request.ValuationId.ToString()))
-            .Replace(ProposalIdPlaceholder, HttpUtility.UrlEncode(request.ProposalId.ToString()));
+        var acceptLink = GetAcceptLink(request);
+        var rejectLink = GetRejectLink(request);
 
         var htmlTemplate = _mailTemplateReader.Read(_configuration.PathToTemplate);
-        var emailAsHtml = htmlTemplate
+        var emailAsHtml = FillEmailTemplate(request, htmlTemplate, acceptLink, rejectLink);
+
+        _emailSender.Send(request.Email, _configuration.Subject, emailAsHtml);
+
+        return Task.CompletedTask;
+    }
+    private static string FillEmailTemplate(ValuationProposalSuggestedEmailRequest request, string htmlTemplate, string acceptLink, string rejectLink)
+    {
+        return htmlTemplate
             .Replace(AcceptLinkPlaceholder, acceptLink)
             .Replace(RejectLinkPlaceholder, rejectLink)
             .Replace(FullNamePlaceholder, request.FullName)
             .Replace(DescriptionPlaceholder, request.Description)
             .Replace(PriceCurrencyPlaceholder, request.Currency)
             .Replace(PriceValuePlaceholder, request.Value.ToString());
+    }
+    private string GetAcceptLink(ValuationProposalSuggestedEmailRequest request)
+    {
+        var valuationId = HttpUtility.UrlEncode(request.ValuationId.ToString());
+        var proposalId = HttpUtility.UrlEncode(request.ProposalId.ToString());
 
-        _emailSender.Send(request.Email, _configuration.Subject, emailAsHtml);
-        return Task.CompletedTask;
+        return _configuration.AcceptProposalLink
+             .Replace(ValuationIdPlaceholder, valuationId)
+             .Replace(ProposalIdPlaceholder, proposalId);
+    }
+
+    private string GetRejectLink(ValuationProposalSuggestedEmailRequest request)
+    {
+        var valuationId = HttpUtility.UrlEncode(request.ValuationId.ToString());
+        var proposalId = HttpUtility.UrlEncode(request.ProposalId.ToString());
+
+        return _configuration.RejectProposalLink
+            .Replace(ValuationIdPlaceholder, valuationId)
+            .Replace(ProposalIdPlaceholder, proposalId);
     }
 }
