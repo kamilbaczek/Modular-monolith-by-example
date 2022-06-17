@@ -4,6 +4,7 @@
 
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Telemetry;
 
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.DependencyInjection;
 
 internal static class AzureApplicationInsightsModule

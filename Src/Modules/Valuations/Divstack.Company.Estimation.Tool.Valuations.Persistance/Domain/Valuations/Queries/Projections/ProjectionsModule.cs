@@ -16,10 +16,10 @@ internal static class ProjectionsModule
         services.AddMarten(options =>
             {
                 options.Connection(connectionString);
-                options.Projections.Add<ProposalsAggregation>(ProjectionLifecycle.Async);
-                options.Projections.Add<HistoryAggregation>(ProjectionLifecycle.Async);
-                options.Projections.Add<ValuationInformationAggregation>(ProjectionLifecycle.Async);
-                options.Projections.Add<ValuationListItemAggregation>(ProjectionLifecycle.Async);
+                options.Projections.Add<ProposalsAggregation>(ProjectionLifecycle.Inline);
+                options.Projections.Add<HistoryAggregation>(ProjectionLifecycle.Inline);
+                options.Projections.Add<ValuationInformationAggregation>(ProjectionLifecycle.Inline);
+                options.Projections.Add<ValuationListItemAggregation>(ProjectionLifecycle.Inline);
 
                 options.AutoCreateSchemaObjects = AutoCreate.All;
             }
