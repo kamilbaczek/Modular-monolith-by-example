@@ -5,7 +5,6 @@ using Structurizr;
 internal static class DrawServicesModule
 {
     private const string ApiServices = "Api - Services";
-    internal const string CoreServices = "Core - Services";
 
     internal static void ServicesModule(this Container webApplication, Container database, Component bootstrapper)
     {
