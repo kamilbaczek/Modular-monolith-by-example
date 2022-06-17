@@ -16,7 +16,6 @@ internal static class PersistanceModule
     {
         var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
         services.AddDataAccess(connectionString);
-        services.AddPersistanceHealthChecks(connectionString);
         services.AddRepositories();
         services.AddProjections(connectionString);
 
