@@ -2,7 +2,7 @@
 
 public sealed class ProposalApprovedDomainEvent : DomainEventBase
 {
-    internal ProposalApprovedDomainEvent(
+    public ProposalApprovedDomainEvent(
         ValuationId valuationId,
         ProposalId proposalId,
         EmployeeId suggestedBy,
