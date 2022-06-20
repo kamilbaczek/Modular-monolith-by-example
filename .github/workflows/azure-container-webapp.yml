@@ -16,6 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Smoke
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 14
+    - run: npm install rest-cli
+    - run: restcli ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
+    
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
@@ -49,6 +56,7 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_8f56983a472d43bca514b1a43cf4c802 }}
         images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_99d8a2dd2ade4cae9f9b879e57612706 }}/estimation-tool-api:${{ github.sha }}'
+        
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2.2.0
       env:
