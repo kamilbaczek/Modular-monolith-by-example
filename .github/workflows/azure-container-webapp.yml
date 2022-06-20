@@ -74,7 +74,7 @@ jobs:
         run: npm install --global rest-cli
 
       - name: Smoke Tests
-        run: restcli --full ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
+        run: restcli --retry 0 --full ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2.2.0
