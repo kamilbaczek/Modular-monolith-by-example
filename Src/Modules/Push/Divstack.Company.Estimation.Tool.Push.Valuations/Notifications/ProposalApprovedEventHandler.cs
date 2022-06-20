@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.SignalR;
 using NServiceBus;
 using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-public sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApproved>
+internal sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApproved>
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IHubContext<ValuationsHub> _valuationsHub;
-    internal ProposalApprovedEventHandler(IHubContext<ValuationsHub> valuationsHub, INotificationsWriteRepository notificationsWriteRepository)
+    public ProposalApprovedEventHandler(IHubContext<ValuationsHub> valuationsHub, INotificationsWriteRepository notificationsWriteRepository)
     {
         _valuationsHub = valuationsHub;
         _notificationsWriteRepository = notificationsWriteRepository;
