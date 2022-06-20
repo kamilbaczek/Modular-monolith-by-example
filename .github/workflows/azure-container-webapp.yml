@@ -21,9 +21,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 14
-    
+        
+    - name: Smoke Tests Install
+      run: npm install --global rest-cli
+      
     - name: Smoke Tests
-      run: npm install --global rest-cli && restcli ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
+    - run: restcli ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
     
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
