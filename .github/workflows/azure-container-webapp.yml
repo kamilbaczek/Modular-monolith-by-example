@@ -56,7 +56,10 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_TITLE: ${{ secrets.SLACK_TITLE }}
-        
+      
+    - name: Checkout source code
+      uses: actions/checkout@v3
+      
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
