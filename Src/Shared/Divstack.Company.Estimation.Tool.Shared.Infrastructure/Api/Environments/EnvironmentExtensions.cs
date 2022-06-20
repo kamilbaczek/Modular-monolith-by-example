@@ -5,10 +5,16 @@ using Microsoft.Extensions.Hosting;
 
 internal static class EnvironmentExtensions
 {
-    private static readonly string LocalEnvironmentName = "Local";
+    private const string LocalEnvironmentName = "Local";
+    private const string ProductionEnvironmentName = "Production";
 
     internal static bool IsLocal(this IWebHostEnvironment env)
     {
         return env.IsEnvironment(LocalEnvironmentName);
+    }
+
+    internal static bool IsProduction(this IWebHostEnvironment env)
+    {
+        return env.IsEnvironment(ProductionEnvironmentName);
     }
 }

@@ -47,9 +47,8 @@ internal sealed class ErrorHandling
             code = HttpStatusCode.BadRequest;
         }
 
-        var response = _webHostEnvironment.IsDevelopment() || _webHostEnvironment.IsLocal()
-            ? ExceptionDto.CreateWithMessage(message)
-            : ExceptionDto.CreateInternalServerError();
+        var response = _webHostEnvironment.IsProduction() ? ExceptionDto.CreateInternalServerError() : ExceptionDto.CreateWithMessage(message);
+
         return SendResponse(context, code, response);
     }
 
