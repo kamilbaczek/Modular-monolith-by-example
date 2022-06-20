@@ -87,7 +87,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reminders", "Reminders", "{D88D1A4A-D511-4BF6-B813-097A5C68ED0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Reminders.Valuations", "Src\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders.Valuations\Divstack.Company.Estimation.Tool.Reminders.Valuations.csproj", "{3264FE92-66A7-491B-984E-1013808D8A7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Reminders.Priorities", "Src\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders.Priorities\Divstack.Company.Estimation.Tool.Reminders.Priorities.csproj", "{3264FE92-66A7-491B-984E-1013808D8A7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Reminders", "Src\Modules\Reminders\Divstack.Company.Estimation.Tool.Reminders\Divstack.Company.Estimation.Tool.Reminders.csproj", "{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8}"
 EndProject
@@ -197,6 +197,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adr", "Adr", "{75D2B370-D9C
 		Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md = Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md
 		Documentation\Architecture\Decisions\0003-move-inmemory-event-bus-outside-process.md = Documentation\Architecture\Decisions\0003-move-inmemory-event-bus-outside-process.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Emails.Priorities", "Src\Modules\Emails\Divstack.Company.Estimation.Tool.Emails.Priorities\Divstack.Company.Estimation.Tool.Emails.Priorities.csproj", "{4A6D88B0-C407-4BBF-AD8F-222C8447C124}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C5CB253D-5320-4870-931E-669BC99E515F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Tests.E2E.Api", "Tests\E2E\Divstack.Estimation.Tool.Tests.E2E.Api\Divstack.Estimation.Tool.Tests.E2E.Api.csproj", "{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -452,6 +458,14 @@ Global
 		{F9805E2C-29B9-4189-92E6-9BF24A11675D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9805E2C-29B9-4189-92E6-9BF24A11675D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9805E2C-29B9-4189-92E6-9BF24A11675D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6D88B0-C407-4BBF-AD8F-222C8447C124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6D88B0-C407-4BBF-AD8F-222C8447C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6D88B0-C407-4BBF-AD8F-222C8447C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6D88B0-C407-4BBF-AD8F-222C8447C124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -546,5 +560,7 @@ Global
 		{CD381C10-3CCE-40E2-8053-A192705AF077} = {8A59B326-9B66-4B97-A5C1-95F81EDE90B7}
 		{F9805E2C-29B9-4189-92E6-9BF24A11675D} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
 		{75D2B370-D9CD-4AF2-9D20-EA00AE35A03B} = {11F86752-A7D7-4EBB-9C9E-4B893506EC17}
+		{4A6D88B0-C407-4BBF-AD8F-222C8447C124} = {3CC204EA-5654-4B42-9863-271E0A9099CB}
+		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC} = {C5CB253D-5320-4870-931E-669BC99E515F}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Priorities.DeadlineClose.Configuration;
 
 internal interface IDeadlinesCloseReminderConfiguration
 {

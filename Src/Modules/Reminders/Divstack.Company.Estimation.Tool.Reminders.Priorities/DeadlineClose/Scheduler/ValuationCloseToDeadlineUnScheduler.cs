@@ -1,10 +1,10 @@
-﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Priorities.DeadlineClose.Scheduler;
 
 using Configuration;
 using NServiceBus;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
-using Tool.Valuations.IntegrationsEvents.ExternalEvents;
+using Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class ValuationCloseToDeadlineUnScheduler :
     IHandleMessages<ProposalSuggested>,

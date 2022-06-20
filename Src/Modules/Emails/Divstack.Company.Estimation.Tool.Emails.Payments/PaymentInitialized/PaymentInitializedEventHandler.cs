@@ -3,12 +3,12 @@
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
-using MassTransit;
+using NServiceBus;
 using Sender;
 using Tool.Payments.IntegrationsEvents.External;
 
-public sealed class
-    PaymentInitializedEventHandler : IConsumer<PaymentInitialized>
+internal sealed class
+    PaymentInitializedEventHandler : IHandleMessages<PaymentInitialized>
 {
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentInitializedSender _paymentInitializedSender;
@@ -19,9 +19,9 @@ public sealed class
         _paymentInitializedSender = paymentInitializedSender;
         _inquiriesModule = inquiriesModule;
     }
-    public async Task Consume(ConsumeContext<PaymentInitialized> context)
+
+    public async Task Handle(PaymentInitialized paymentInitialized, IMessageHandlerContext context)
     {
-        var paymentInitialized = context.Message;
         var (firstName, lastName, email, _, _) = await GetClientInfo(paymentInitialized);
         var paymentInitializedEmailRequest = new PaymentInitializedEmailRequest(
             firstName,
@@ -32,7 +32,6 @@ public sealed class
             paymentInitialized.PaymentId);
         _paymentInitializedSender.Send(paymentInitializedEmailRequest);
     }
-
 
     private async Task<InquiryClientDto> GetClientInfo(PaymentInitialized paymentInitialized)
     {

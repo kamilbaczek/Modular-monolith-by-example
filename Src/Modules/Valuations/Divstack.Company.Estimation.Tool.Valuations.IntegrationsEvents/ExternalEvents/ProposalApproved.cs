@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Messages;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
-using Estimation.Tool.Shared.DDD.BuildingBlocks;
+using Shared.DDD.BuildingBlocks;
 
 public record struct ProposalApproved(
     Guid ValuationId,

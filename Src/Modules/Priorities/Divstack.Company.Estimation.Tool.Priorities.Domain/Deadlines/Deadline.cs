@@ -9,7 +9,7 @@ public sealed class Deadline : ValueObject
         Date = SystemTime.Now().AddDays(daysToDeadlineFromNow);
     }
 
-    internal DateTime Date { get; init; }
+    public DateTime Date { get; init; }
     internal bool Exceeded => SystemTime.Now() > Date;
     internal int DaysToDeadline => (SystemTime.Now() - Date).Days;
 

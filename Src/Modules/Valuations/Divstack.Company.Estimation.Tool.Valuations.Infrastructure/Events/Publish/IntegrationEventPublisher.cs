@@ -3,7 +3,6 @@
 using Application.Common.Interfaces;
 using IntegrationsEvents.ExternalEvents;
 using Mapper;
-using Messages;
 using NServiceBus;
 using Shared.DDD.BuildingBlocks;
 

@@ -1,11 +1,12 @@
-﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Scheduler;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Priorities.DeadlineClose.Scheduler;
 
 using Configuration;
 using NServiceBus;
 using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
+using Tool.Priorities.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ValuationCloseToDeadlineScheduler : IHandleMessages<ValuationRequested>
+internal sealed class ValuationCloseToDeadlineScheduler : IHandleMessages<PriorityDefined>
 {
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
@@ -19,21 +20,17 @@ internal sealed class ValuationCloseToDeadlineScheduler : IHandleMessages<Valuat
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
 
-    // public ValueTask Handle(ValuationRequested proposalApprovedEvent, CancellationToken cancellationToken)
-    // {
-    // var reminderDate =
-    //     proposalApprovedEvent.Deadline.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
-    // _backgroundJobScheduler.Schedule(
-    //     () => _valuationsDeadlineCloseReminder.RemindAsync(
-    //         proposalApprovedEvent.ValuationId,
-    //         _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
-    //         cancellationToken),
-    //     reminderDate);
-
-    // }
-
-    public Task Handle(ValuationRequested message, IMessageHandlerContext context)
+    public Task Handle(PriorityDefined priorityDefined, IMessageHandlerContext context)
     {
+        var reminderDate =
+            priorityDefined.DeadlineDate.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+        _backgroundJobScheduler.Schedule(
+            () => _valuationsDeadlineCloseReminder.RemindAsync(
+                priorityDefined.ValuationId,
+                _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
+                default),
+            reminderDate);
+
         return Task.CompletedTask;
     }
 }

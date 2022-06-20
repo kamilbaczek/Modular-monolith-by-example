@@ -1,0 +1,6 @@
+﻿{
+  "PriorityCloseToDeadlineMailConfiguration": {
+    "Subject": "Priority close to Deadline !!!",
+    "PathToTemplate": "DeadlineClose/Templates/priority_close_to_deadline_mail.html"
+  }
+}

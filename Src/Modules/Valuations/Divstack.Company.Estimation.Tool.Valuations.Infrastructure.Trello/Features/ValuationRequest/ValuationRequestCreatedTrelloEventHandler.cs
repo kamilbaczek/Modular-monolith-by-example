@@ -2,6 +2,7 @@
 
 using Core;
 using Core.Constants;
+using IntegrationsEvents.ExternalEvents;
 using NServiceBus;
 
 internal sealed class ValuationRequestCreatedTrelloEventHandler : IHandleMessages<ValuationRequested>

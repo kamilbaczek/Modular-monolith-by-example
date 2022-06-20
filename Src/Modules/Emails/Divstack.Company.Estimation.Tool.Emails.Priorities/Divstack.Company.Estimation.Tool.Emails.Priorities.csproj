@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="DeadlineClose\Templates\priority_close_to_deadline_mail.html" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="emails-priority-appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Scrutor" Version="3.3.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Reminders\Divstack.Company.Estimation.Tool.Reminders.Priorities\Divstack.Company.Estimation.Tool.Reminders.Priorities.csproj" />
+      <ProjectReference Include="..\..\Users\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj" />
+      <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Emails.Core\Divstack.Company.Estimation.Tool.Emails.Core.csproj" />
+    </ItemGroup>
+
+</Project>

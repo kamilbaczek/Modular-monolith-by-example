@@ -17,7 +17,8 @@ internal sealed class EventMapper : IEventMapper
         {
             PriorityDefinedDomainEvent domainEvent =>
                 new PriorityDefined(domainEvent.ValuationId.Value,
-                    domainEvent.PriorityId.Value),
+                    domainEvent.PriorityId.Value,
+                    domainEvent.Deadline.Date),
             _ => null
         };
     }

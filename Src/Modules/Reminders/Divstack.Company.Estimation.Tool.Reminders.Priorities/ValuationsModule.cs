@@ -2,11 +2,9 @@
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Reminders")]
 
-namespace Divstack.Company.Estimation.Tool.Reminders.Valuations;
+namespace Divstack.Company.Estimation.Tool.Reminders.Priorities;
 
-using System.Reflection;
 using DeadlineClose.Reminder;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 internal static class ValuationsModule
@@ -16,7 +14,6 @@ internal static class ValuationsModule
 
     internal static IServiceCollection AddValuations(this IServiceCollection services)
     {
-        services.AddMediatR(Assembly.GetExecutingAssembly());
         services.Scan(scan => scan.FromAssemblyOf<ValuationsDeadlineCloseReminder>()
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
             .AsImplementedInterfaces()

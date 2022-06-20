@@ -3,6 +3,7 @@
 using Common.IntegrationsEvents;
 using NServiceBus;
 using Shared.DDD.ValueObjects;
+using Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class InitializePaymentEventHandler : IHandleMessages<ValuationCompleted>
 {

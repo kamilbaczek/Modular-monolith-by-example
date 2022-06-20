@@ -5,6 +5,7 @@ using Domain.Deadlines;
 using Inquiries.Application.Common.Contracts;
 using Inquiries.Application.Inquiries.Queries.GetClient;
 using NServiceBus;
+using Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class DefinePrioritiesEventHandler : IHandleMessages<ValuationRequested>
 {

@@ -1,8 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.Proposals.Approved;
 
-using Messages;
 using NServiceBus;
 using Sender;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetUserEmail;
 

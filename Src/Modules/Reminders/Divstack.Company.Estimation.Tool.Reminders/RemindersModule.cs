@@ -5,6 +5,7 @@
 namespace Divstack.Company.Estimation.Tool.Reminders;
 
 using Microsoft.Extensions.DependencyInjection;
+using Priorities;
 using Valuations;
 
 internal static class RemindersModule

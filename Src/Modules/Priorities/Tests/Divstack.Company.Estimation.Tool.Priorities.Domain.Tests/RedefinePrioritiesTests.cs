@@ -35,7 +35,7 @@ public class RedefinePrioritiesTests : BasePriorityTest
         var priority = Priority.Define(valuationId, inquiryId, CompanySize, deadline);
 
         var @event = GetPublishedEvent<PriorityDefinedDomainEvent>(priority);
-        @event.DeadlineDate.Should().Be(expectedDeadline);
+        @event.Deadline.Should().Be(expectedDeadline);
     }
 
     [Test]

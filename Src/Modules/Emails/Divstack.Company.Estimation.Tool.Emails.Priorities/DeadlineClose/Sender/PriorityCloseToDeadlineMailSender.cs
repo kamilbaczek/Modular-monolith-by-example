@@ -1,19 +1,19 @@
-﻿namespace Divstack.Company.Estimation.Tool.Emails.Valuations.DeadlineClose.Sender;
+﻿namespace Divstack.Company.Estimation.Tool.Emails.Priorities.DeadlineClose.Sender;
 
 using Configuration;
 using Core.Sender.Contracts;
 using Core.Sender.TemplateReader;
 
-internal sealed class ValuationCloseToDeadlineMailSender : IValuationCloseToDeadlineMailSender
+internal sealed class PriorityCloseToDeadlineMailSender : IPriorityCloseToDeadlineMailSender
 {
     private const string ValuationIdPlaceholder = "{ValuationId}";
     private const string DaysToDeadlinePlaceholder = "{DaysToDeadline}";
 
-    private readonly IValuationCloseToDeadlineMailConfiguration _configuration;
+    private readonly IPriorityCloseToDeadlineMailConfiguration _configuration;
     private readonly IEmailSender _emailSender;
     private readonly IMailTemplateReader _mailTemplateReader;
 
-    public ValuationCloseToDeadlineMailSender(IValuationCloseToDeadlineMailConfiguration configuration,
+    public PriorityCloseToDeadlineMailSender(IPriorityCloseToDeadlineMailConfiguration configuration,
         IEmailSender emailSender,
         IMailTemplateReader mailTemplateReader)
     {
@@ -22,7 +22,7 @@ internal sealed class ValuationCloseToDeadlineMailSender : IValuationCloseToDead
         _mailTemplateReader = mailTemplateReader;
     }
 
-    public void Send(ValuationCloseToDeadlineEmailRequest request)
+    public void Send(PriorityCloseToDeadlineEmailRequest request)
     {
         var htmlTemplate = _mailTemplateReader.Read(_configuration.PathToTemplate);
         var emailAsHtml = htmlTemplate

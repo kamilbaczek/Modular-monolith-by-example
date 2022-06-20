@@ -3,9 +3,9 @@
 using DataAccess.DataAccess.Repositories.Write;
 using DataAccess.Entities;
 using Hubs;
-using Messages;
 using Microsoft.AspNetCore.SignalR;
 using NServiceBus;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 
 public sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApproved>
 {

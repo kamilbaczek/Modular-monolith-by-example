@@ -5,6 +5,7 @@ using DataAccess.Entities;
 using Hubs;
 using Microsoft.AspNetCore.SignalR;
 using NServiceBus;
+using Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using Users.Application.Contracts;
 using Users.Application.Users.Queries.GetAllUsers;
 

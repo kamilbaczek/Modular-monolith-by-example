@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Reminders.Valuations.DeadlineClose.Configuration;
+﻿namespace Divstack.Company.Estimation.Tool.Reminders.Priorities.DeadlineClose.Configuration;
 
 using Microsoft.Extensions.Configuration;
 using Tool.Valuations.Domain.Valuations;

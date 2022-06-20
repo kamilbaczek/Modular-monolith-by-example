@@ -17,7 +17,7 @@ public sealed class Priority : Entity
         Scores = new List<ClientLoseRisk>();
         Level = ManualSetLevel ?? Calculate(companySize);
 
-        var @event = new PriorityDefinedDomainEvent(valuationId, Id, Deadline.Date);
+        var @event = new PriorityDefinedDomainEvent(valuationId, Id, Deadline);
         AddDomainEvent(@event);
     }
     public PriorityId Id { get; init; }
