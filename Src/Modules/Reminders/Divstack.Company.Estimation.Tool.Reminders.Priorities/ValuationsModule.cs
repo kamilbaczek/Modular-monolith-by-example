@@ -14,12 +14,12 @@ internal static class ValuationsModule
 
     internal static IServiceCollection AddValuations(this IServiceCollection services)
     {
-        services.Scan(scan => scan.FromAssemblyOf<ValuationsDeadlineCloseReminder>()
+        services.Scan(scan => scan.FromAssemblyOf<PriorityDeadlineCloseReminder>()
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());
 
-        services.Scan(scan => scan.FromAssemblyOf<ValuationsDeadlineCloseReminder>()
+        services.Scan(scan => scan.FromAssemblyOf<PriorityDeadlineCloseReminder>()
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Reminder)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());

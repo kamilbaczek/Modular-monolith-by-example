@@ -204,6 +204,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C5CB253D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Tests.E2E.Api", "Tests\E2E\Divstack.Estimation.Tool.Tests.E2E.Api\Divstack.Estimation.Tool.Tests.E2E.Api.csproj", "{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{EA43C91B-FCEE-46D9-8B3B-3C55F134105D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

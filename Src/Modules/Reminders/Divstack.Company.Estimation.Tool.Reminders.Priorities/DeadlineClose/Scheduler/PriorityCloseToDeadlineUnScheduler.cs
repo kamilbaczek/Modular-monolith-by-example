@@ -6,20 +6,21 @@ using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
 using Valuations.IntegrationsEvents.ExternalEvents;
 
-internal sealed class ValuationCloseToDeadlineUnScheduler :
+//TODO subscribe to priority archived
+internal sealed class PriorityCloseToDeadlineUnScheduler :
     IHandleMessages<ProposalSuggested>,
     IHandleMessages<ProposalCancelled>
 {
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
-    private readonly IValuationsDeadlineCloseReminder _valuationsDeadlineCloseReminder;
+    private readonly IPriorityDeadlineCloseReminder _priorityDeadlineCloseReminder;
 
-    public ValuationCloseToDeadlineUnScheduler(IBackgroundJobScheduler backgroundJobScheduler,
-        IValuationsDeadlineCloseReminder valuationsDeadlineCloseReminder,
+    public PriorityCloseToDeadlineUnScheduler(IBackgroundJobScheduler backgroundJobScheduler,
+        IPriorityDeadlineCloseReminder priorityDeadlineCloseReminder,
         IDeadlinesCloseReminderConfiguration deadlinesCloseReminderConfiguration)
     {
         _backgroundJobScheduler = backgroundJobScheduler;
-        _valuationsDeadlineCloseReminder = valuationsDeadlineCloseReminder;
+        _priorityDeadlineCloseReminder = priorityDeadlineCloseReminder;
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
     public Task Handle(ProposalCancelled proposalCancelled, IMessageHandlerContext context)
@@ -36,7 +37,7 @@ internal sealed class ValuationCloseToDeadlineUnScheduler :
     private void UnSchedule(Guid valuationId, CancellationToken cancellationToken = default)
     {
         _backgroundJobScheduler.UnSchedule(
-            () => _valuationsDeadlineCloseReminder.RemindAsync(
+            () => _priorityDeadlineCloseReminder.RemindAsync(
                 valuationId,
                 _deadlinesCloseReminderConfiguration.DaysBeforeDeadline,
                 cancellationToken));

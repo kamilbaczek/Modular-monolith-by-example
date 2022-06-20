@@ -1,7 +1,7 @@
 @qaUrl = https://estimation-tool-kb.herokuapp.com
 @localUrl = http://localhost:5000
 @url = http://localhost:5000
-@adminEmail = estimationfulladmin-test-2@divstack.pl
+@adminEmail = admin@divstack.pl
 @password = 3wsx$EDC5rfvtest4
 
 ### Sign In Admin

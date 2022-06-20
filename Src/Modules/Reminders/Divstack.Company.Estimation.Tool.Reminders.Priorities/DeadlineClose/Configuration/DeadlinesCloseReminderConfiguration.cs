@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Reminders.Priorities.DeadlineClose.Configuration;
 
 using Microsoft.Extensions.Configuration;
-using Tool.Valuations.Domain.Valuations;
+using Tool.Priorities.Domain;
 
 internal sealed class DeadlinesCloseReminderConfiguration : IDeadlinesCloseReminderConfiguration
 {
@@ -9,7 +9,7 @@ internal sealed class DeadlinesCloseReminderConfiguration : IDeadlinesCloseRemin
 
     public DeadlinesCloseReminderConfiguration(IConfiguration configuration)
     {
-        const string sectionKey = $"Reminders:{nameof(Valuation)}";
+        const string sectionKey = $"Reminders:{nameof(Priority)}";
         _configuration = configuration.GetSection(sectionKey);
     }
 

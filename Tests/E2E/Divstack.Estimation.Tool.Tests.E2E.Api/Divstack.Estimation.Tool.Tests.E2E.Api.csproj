@@ -7,8 +7,4 @@
         <RootNamespace>Divstack.Estimation.Tool.Tests.E2E</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Http" />
-    </ItemGroup>
-
 </Project>

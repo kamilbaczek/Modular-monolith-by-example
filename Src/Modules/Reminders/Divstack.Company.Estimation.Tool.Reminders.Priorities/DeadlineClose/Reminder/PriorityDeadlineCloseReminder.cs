@@ -3,10 +3,10 @@
 using Events;
 using NServiceBus;
 
-internal sealed class ValuationsDeadlineCloseReminder : IValuationsDeadlineCloseReminder
+internal sealed class PriorityDeadlineCloseReminder : IPriorityDeadlineCloseReminder
 {
     private readonly IMessageSession _messageSession;
-    public ValuationsDeadlineCloseReminder(IMessageSession messageSession)
+    public PriorityDeadlineCloseReminder(IMessageSession messageSession)
     {
         _messageSession = messageSession;
     }
