@@ -13,7 +13,7 @@ internal sealed class
     private readonly IInquiriesModule _inquiriesModule;
     private readonly IPaymentInitializedSender _paymentInitializedSender;
 
-    internal PaymentInitializedEventHandler(IPaymentInitializedSender paymentInitializedSender,
+    public PaymentInitializedEventHandler(IPaymentInitializedSender paymentInitializedSender,
         IInquiriesModule inquiriesModule)
     {
         _paymentInitializedSender = paymentInitializedSender;
