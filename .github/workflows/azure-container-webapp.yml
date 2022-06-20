@@ -59,6 +59,7 @@ jobs:
     
   Smokes:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     needs: deploy
 
     steps:
