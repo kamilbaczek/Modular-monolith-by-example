@@ -15,18 +15,7 @@ jobs:
     
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 14
-        
-    - name: Smoke Tests Install
-      run: npm install --global rest-cli
-      
-    - name: Smoke Tests
-      run: restcli ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
+      uses: actions/checkout@v3
     
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -67,3 +56,20 @@ jobs:
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_TITLE: ${{ secrets.SLACK_TITLE }}
+        
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
+        
+    - name: Smoke Tests Install
+      run: npm install --global rest-cli
+      
+    - name: Smoke Tests
+      run: restcli --full ./Tests/E2E/Divstack.Estimation.Tool.Tests.E2E.Api/Http/*.http
+      
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2.2.0
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: ${{ secrets.SLACK_TITLE_SMOKE_TESTS_PASSED }}
