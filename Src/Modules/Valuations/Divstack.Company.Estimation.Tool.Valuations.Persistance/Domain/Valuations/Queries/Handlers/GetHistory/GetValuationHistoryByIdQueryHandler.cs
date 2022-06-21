@@ -22,7 +22,13 @@ internal sealed class
             .Query<ValuationHistoryDto>()
             .Where(valuation => valuation.Id == request.ValuationId)
             .FirstAsync(cancellationToken);
-        var vm = new ValuationHistoryVm(historyDto.History.ToList());
+
+        var historicalEntries = historyDto
+            .History
+            .OrderByDescending(historicalEntry => historicalEntry.ChangeDate)
+            .ToList();
+
+        var vm = new ValuationHistoryVm(historicalEntries);
 
         return vm;
     }

@@ -3,4 +3,4 @@
 using Common.Contracts;
 using Dtos;
 
-public record GetValuationHistoryByIdQuery(Guid ValuationId) : IQuery<ValuationHistoryVm>;
+public record struct GetValuationHistoryByIdQuery(Guid ValuationId) : IQuery<ValuationHistoryVm>;
