@@ -33,6 +33,6 @@ internal sealed class ValuationRequestEventHandler : IHandleMessages<ValuationRe
                     user.PublicId))
             .ToList();
         await _notificationsWriteRepository.BulkAddAsync(notifications, CancellationToken.None);
-        await _valuationsHub.Clients.All.SendAsync(nameof(ValuationRequested), valuationRequested, CancellationToken.None);
+        await _valuationsHub.Clients.All.SendAsync(nameof(ValuationRequested), valuationRequested);
     }
 }
