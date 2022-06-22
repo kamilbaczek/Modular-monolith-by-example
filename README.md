@@ -47,7 +47,7 @@
 ![Containers](https://user-images.githubusercontent.com/74410956/130395295-3d48672c-5c84-4e55-8fbe-9cdbb327b5e6.png)
 
 #### Components
-![components](https://user-images.githubusercontent.com/74410956/130396746-40283672-decd-4ca8-a035-1c0ef6c6ae8e.png)
+![components](https://ibb.co/cYL7ynK)
 
 #### Event Storming
 [Miro](https://miro.com/app/board/o9J_lcC1E7g=/?invite_link_id=913994717613)
