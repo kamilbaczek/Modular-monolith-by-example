@@ -7,8 +7,8 @@ internal static class QueriesExtensions
     internal static async Task<IEnumerable<TDto>> ExecuteQueryAsync<TDto>(this IDbConnection connection,
         string query,
         dynamic? dynamicParameters = null,
-        CancellationToken cancellationToken = default,
-        int? timeout = null)
+        int? timeout = null,
+        CancellationToken cancellationToken = default)
     {
         var commandDefinition = new CommandDefinition(query,
             dynamicParameters,

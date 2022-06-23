@@ -36,7 +36,7 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
             query, new
             {
                 request.InquiryId
-            }, cancellationToken);
+            }, cancellationToken: cancellationToken);
 
         return inquiriesServiceItemDtos.ToList().AsReadOnly();
     }
@@ -46,7 +46,7 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
         IDbConnection connection,
         CancellationToken cancellationToken)
     {
-        var query = @$"
+        const string query = @$"
                 SELECT Id AS {nameof(InquiryInformationDto.Id)},
                        Client_FirstName AS {nameof(InquiryInformationDto.FirstName)},
                        Client_LastName  AS {nameof(InquiryInformationDto.LastName)},

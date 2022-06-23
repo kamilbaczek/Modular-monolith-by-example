@@ -34,7 +34,7 @@ internal sealed class ServicesController : BaseController
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<ServiceDto>>> GetAll()
+    public async Task<ActionResult<List<ServiceDto>>> GetAllAsync()
     {
         var services = await _servicesService.GetAllAsync();
         return Ok(services);
@@ -53,7 +53,7 @@ internal sealed class ServicesController : BaseController
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult> Delete(Guid id)
+    public async Task<ActionResult> DeleteAsync(Guid id)
     {
         await _servicesService.DeleteAsync(id);
         return NoContent();
