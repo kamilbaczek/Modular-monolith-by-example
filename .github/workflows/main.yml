@@ -33,7 +33,7 @@ jobs:
       run: |
            dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
            dotnet reportgenerator "-reports:**/TestResults/**/coverage.opencover.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
-           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.coverageReportPaths="./sonarqubecoverage/SonarQube.xml" /d:sonar.coverage.exclusions="**Tests*.cs, **/Migrations/*"
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.coverageReportPaths="./sonarqubecoverage/SonarQube.xml" /d:sonar.coverage.exclusions="**Tests*.cs, **/Migrations/*.cs"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
     - name: Codecov
