@@ -28,13 +28,13 @@ public sealed class Email : ValueObject
         return new Email(emailAddress);
     }
 
-    private bool IsValid(string emailAddress)
+    private static bool IsValid(string emailAddress)
     {
         try
         {
             var mailAddress = new MailAddress(emailAddress);
 
-            return true;
+            return !string.IsNullOrEmpty(mailAddress.Address);
         }
         catch (FormatException)
         {

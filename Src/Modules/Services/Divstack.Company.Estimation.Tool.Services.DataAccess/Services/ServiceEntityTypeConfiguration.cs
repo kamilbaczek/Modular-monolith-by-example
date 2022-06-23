@@ -8,28 +8,35 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 internal class ServiceEntityTypeConfiguration : IEntityTypeConfiguration<Service>
 {
+    private static readonly int MaxLength = 255;
+    private static readonly int MaxLengthLongField = 512;
+    private static readonly string Services = "Services";
+    private static readonly string Attributes = "Attributes";
+    private static readonly string AttributePossibleValues = "AttributePossibleValues";
+    private static readonly string PossibleValues = "PossibleValues";
+
     public void Configure(EntityTypeBuilder<Service> builder)
     {
-        builder.ToTable("Services");
+        builder.ToTable(Services);
         builder.HasKey(service => service.Id);
         builder.HasOne(service => service.Category)
             .WithMany();
-        builder.Property(service => service.Name).HasMaxLength(255).IsRequired();
-        builder.Property(service => service.Description).HasMaxLength(512).IsRequired();
+        builder.Property(service => service.Name).HasMaxLength(MaxLength).IsRequired();
+        builder.Property(service => service.Description).HasMaxLength(MaxLengthLongField).IsRequired();
         builder.Property(service => service.CreatedBy).IsRequired();
-        builder.OwnsMany<Attribute>("Attributes", ownedAttribute =>
+        builder.OwnsMany<Attribute>(Attributes, ownedAttribute =>
         {
-            ownedAttribute.ToTable("Attributes");
+            ownedAttribute.ToTable(Attributes);
             ownedAttribute.HasKey("Id");
             ownedAttribute.WithOwner("Service").HasForeignKey();
-            ownedAttribute.Property<string>("Name").HasMaxLength(255).IsRequired();
-            ownedAttribute.OwnsMany<PossibleValue>("PossibleValues",
+            ownedAttribute.Property<string>("Name").HasMaxLength(MaxLength).IsRequired();
+            ownedAttribute.OwnsMany<PossibleValue>(PossibleValues,
                 ownedPotentialValues =>
                 {
-                    ownedAttribute.ToTable("AttributePossibleValues");
+                    ownedAttribute.ToTable(AttributePossibleValues);
                     ownedPotentialValues.WithOwner("Attribute").HasForeignKey();
                     ownedPotentialValues.HasKey("Id");
-                    ownedPotentialValues.Property<string>("Value").HasMaxLength(255).IsRequired();
+                    ownedPotentialValues.Property<string>("Value").HasMaxLength(MaxLength).IsRequired();
                 });
         });
     }

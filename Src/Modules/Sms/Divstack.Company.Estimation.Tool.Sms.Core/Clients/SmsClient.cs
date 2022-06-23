@@ -16,14 +16,15 @@ internal sealed class SmsClient : ISmsClient
     {
         try
         {
-            await SendMessage(message, to);
+            await SendMessageAsync(message, to);
         }
         catch (Exception exception)
         {
             throw new SendSmsFailedException(exception);
         }
     }
-    private async Task SendMessage(string message, string to)
+
+    private async Task SendMessageAsync(string message, string to)
     {
         await MessageResource.CreateAsync(
             body: message,

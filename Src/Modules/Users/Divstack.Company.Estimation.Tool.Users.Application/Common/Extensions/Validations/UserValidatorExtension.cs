@@ -16,14 +16,13 @@ internal static class UserValidatorExtension
 
     private const string InvalidFormatMessage = "is in invalid format";
 
-    public static IRuleBuilderOptions<T, string> Username<T>(this IRuleBuilder<T, string> ruleBuilder)
+    public static void Username<T>(this IRuleBuilder<T, string> ruleBuilder)
     {
-        return ruleBuilder.Matches(UserNameRegex).WithMessage(WrongUserNameMessage);
+        ruleBuilder.Matches(UserNameRegex).WithMessage(WrongUserNameMessage);
     }
 
-    public static IRuleBuilderOptions<T, string> MustBeCorrectPasswordFormat<T>(
-        this IRuleBuilder<T, string> ruleBuilder)
+    public static void MustBeCorrectPasswordFormat<T>(this IRuleBuilder<T, string> ruleBuilder)
     {
-        return ruleBuilder.Matches(PasswordRegex).WithMessage($"Password {InvalidFormatMessage}");
+        ruleBuilder.Matches(PasswordRegex).WithMessage($"Password {InvalidFormatMessage}");
     }
 }
