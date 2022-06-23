@@ -4,6 +4,7 @@
 
 namespace Divstack.Company.Estimation.Tool.Services.DataAccess;
 
+using System;
 using Core;
 using HealthChecks;
 using Microsoft.EntityFrameworkCore;
@@ -34,7 +35,7 @@ internal static class DataAccessModule
     {
         services.Scan(scan => scan
             .FromAssemblyOf<ServicesRepository>()
-            .AddClasses(filter => filter.Where(@class => @class.Name.EndsWith("Repository")))
+            .AddClasses(filter => filter.Where(@class => @class.Name.EndsWith("Repository", StringComparison.InvariantCultureIgnoreCase)))
             .AsImplementedInterfaces()
             .WithTransientLifetime());
     }

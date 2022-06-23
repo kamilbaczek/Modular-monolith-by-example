@@ -19,7 +19,7 @@ public interface IServicesService
     Task<Guid> CreateAsync(CreateServiceRequest createServiceRequest,
         CancellationToken cancellationToken = default);
 
-    Task Update(UpdateServiceRequest serviceToUpdate, CancellationToken cancellationToken = default);
+    Task UpdateAsync(UpdateServiceRequest serviceToUpdate, CancellationToken cancellationToken = default);
 
     Task AddAttributeAsync(CreateAttributeRequest createAttributeRequest,
         CancellationToken cancellationToken = default);

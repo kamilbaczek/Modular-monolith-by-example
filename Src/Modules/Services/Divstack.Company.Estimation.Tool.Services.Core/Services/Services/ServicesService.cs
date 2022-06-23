@@ -61,14 +61,14 @@ internal sealed class ServicesService : IServicesService
         return service.Id;
     }
 
-    public async Task Update(UpdateServiceRequest updateServiceRequest,
+    public async Task UpdateAsync(UpdateServiceRequest serviceToUpdate,
         CancellationToken cancellationToken = default)
     {
-        var category = await _categoriesRepository.GetAsync(updateServiceRequest.CategoryId, cancellationToken);
-        ThrowIfCategoryNotFound(updateServiceRequest.CategoryId, category);
-        var service = await _servicesRepository.GetAsync(updateServiceRequest.ServiceId, cancellationToken);
-        ThrowIfServiceNotFound(updateServiceRequest.ServiceId, service);
-        service.Update(updateServiceRequest.Name, updateServiceRequest.Description, category);
+        var category = await _categoriesRepository.GetAsync(serviceToUpdate.CategoryId, cancellationToken);
+        ThrowIfCategoryNotFound(serviceToUpdate.CategoryId, category);
+        var service = await _servicesRepository.GetAsync(serviceToUpdate.ServiceId, cancellationToken);
+        ThrowIfServiceNotFound(serviceToUpdate.ServiceId, service);
+        service.Update(serviceToUpdate.Name, serviceToUpdate.Description, category);
     }
 
     public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
