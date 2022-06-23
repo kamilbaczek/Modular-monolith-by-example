@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Events.Publish;
 
 using Application.Common.Interfaces;
-using IntegrationsEvents.ExternalEvents;
 using Mapper;
 using NServiceBus;
 using Shared.DDD.BuildingBlocks;

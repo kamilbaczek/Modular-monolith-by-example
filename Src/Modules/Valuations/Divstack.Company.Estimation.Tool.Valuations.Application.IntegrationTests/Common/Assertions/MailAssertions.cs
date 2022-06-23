@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Assertions;
 
-using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using netDumbster.smtp;

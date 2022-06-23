@@ -11,7 +11,7 @@ using static ValuationsTesting;
 
 public class RequestValuationTests : ValuationsTestBase
 {
-    [Test]
+    [Ignore("Wait for  new database mock mechanism")]
     public async Task Given_RequestValuation_When_CommandIsValid_Then_RequestIsSavedInDatabase()
     {
         var inquiryMadeEvent = new InquiryMadeEvent(Guid.NewGuid());

@@ -20,8 +20,5 @@ internal static class ValuationModule
         return services;
     }
 
-    public static void UseValuationModule(this IApplicationBuilder app)
-    {
-        app.UseInfrastructure();
-    }
+    public static void UseValuationModule(this IApplicationBuilder app) => app.UseInfrastructure();
 }

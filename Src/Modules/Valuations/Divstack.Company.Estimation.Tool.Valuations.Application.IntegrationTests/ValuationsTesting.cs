@@ -3,25 +3,17 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Contracts;
 using Bootstrapper;
 using Domain.UserAccess;
-using MediatR;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Mongo2Go;
-using MongoDB.Driver;
 using Moq;
+using NServiceBus;
 using NUnit.Framework;
 using Shared.DDD.BuildingBlocks;
-using Users.Application.Contracts;
-using Users.Application.Users.Queries.GetUserByUsername;
-using Users.Infrastructure.Identity.Users.Seeder;
-using Users.Persistance.DataAccess;
 using ICommand = Application.Common.Contracts.ICommand;
 
 [SetUpFixture]
@@ -29,37 +21,29 @@ using ICommand = Application.Common.Contracts.ICommand;
 public class ValuationsTesting
 {
     [OneTimeSetUp]
-    public async Task RunBeforeAnyTests()
+    public Task RunBeforeAnyTests()
     {
         Configuration = CreateConfigurations();
         var startup = new Startup(Configuration);
         var services = new ServiceCollection();
         startup.ConfigureServices(services);
 
-        EnsureDatabaseModule(services);
         ReplaceHostEnviromentToMock(services);
         ReplaceCurrentUserServiceToMock(services);
         _serviceScopeFactory = services.BuildServiceProvider()
             .GetService<IServiceScopeFactory>();
-        await EnsureDatabase(services);
+        return Task.CompletedTask;
     }
-
 
     [OneTimeTearDown]
     public void RunAfterAnyTests()
     {
     }
 
-    private const string ConnectionStringName = "Valuations";
+    internal static Guid CurrentUserId => Guid.NewGuid();
 
-    private static readonly MongoDbRunner Runner1 = MongoDbRunner.StartForDebugging();
-    public static IServiceScope CreateServiceScope => _serviceScopeFactory.CreateScope();
-
-    internal static Guid CurrentUserId { get; set; }
-
-    internal static IConfigurationRoot Configuration;
-    private static IServiceScopeFactory _serviceScopeFactory;
-    internal static MongoDbRunner MongoDbInstance;
+    internal static IConfigurationRoot? Configuration;
+    private static IServiceScopeFactory? _serviceScopeFactory;
 
     private static IConfigurationRoot CreateConfigurations()
     {
@@ -78,11 +62,11 @@ public class ValuationsTesting
             hostEnvironment.ApplicationName == "Divstack.Company.Estimation.Tool.Bootstrapper"));
     }
 
-    private static void ReplaceCurrentUserServiceToMock(ServiceCollection services)
+    private static void ReplaceCurrentUserServiceToMock(IServiceCollection services)
     {
         var currentUserServiceDescriptor = services.FirstOrDefault(serviceDescriptor =>
             serviceDescriptor.ServiceType == typeof(ICurrentUserService));
-        services.Remove(currentUserServiceDescriptor);
+        services.Remove(currentUserServiceDescriptor!);
         services.AddTransient(_ =>
             Mock.Of<ICurrentUserService>(
                 currentUserService => currentUserService.GetPublicUserId() == CurrentUserId));
@@ -97,7 +81,7 @@ public class ValuationsTesting
         await valuationsModule.ExecuteCommandAsync(request);
     }
 
-    public static async Task<TResponse> ExecuteQueryAsync<TResponse>(Application.Common.Contracts.IQuery<TResponse> request)
+    public static async Task<TResponse> ExecuteQueryAsync<TResponse>(IQuery<TResponse> request)
     {
         using var scope = _serviceScopeFactory.CreateScope();
 
@@ -111,50 +95,7 @@ public class ValuationsTesting
     {
         using var scope = _serviceScopeFactory.CreateScope();
 
-        var integrationEventPublisher = scope.ServiceProvider.GetRequiredService<INotificationHandler<TEvent>>();
-        await integrationEventPublisher.Handle(domainEvent, CancellationToken.None);
-    }
-
-    protected static void EnsureDatabaseModule(ServiceCollection services)
-    {
-        MongoDbInstance = MongoDbRunner.Start();
-        var currentUserServiceDescriptor = services.FirstOrDefault(serviceDescriptor =>
-            serviceDescriptor.ServiceType == typeof(MongoClient));
-        services.Remove(currentUserServiceDescriptor);
-
-        var mongoClient = new MongoClient(MongoDbInstance.ConnectionString);
-        services.AddSingleton(mongoClient);
-    }
-
-    private static async Task EnsureDatabase(ServiceCollection services)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-
-        var usersContext = scope.ServiceProvider.GetRequiredService<UsersContext>();
-        await usersContext.Database.MigrateAsync();
-
-        var usersSeeder = scope.ServiceProvider.GetRequiredService<IUsersSeeder>();
-        await usersSeeder.SeedAdminUserAsync();
-    }
-
-    public static async Task RunAsAdministratorAsync()
-    {
-        await RunAsUserAsync("admin@divstack.pl");
-    }
-
-    public static async Task RunAsUserAsync(string userName)
-    {
-        using var scope = _serviceScopeFactory.CreateScope();
-
-        var userModule = scope.ServiceProvider.GetRequiredService<IUserModule>();
-        var user = await userModule.ExecuteQueryAsync(new GetUserDetailQueryByUsernameCommand(userName));
-        CurrentUserId = user.PublicId;
-    }
-
-    public static Task ResetState()
-    {
-        MongoDbInstance.Dispose();
-
-        return Task.CompletedTask;
+        var integrationEventPublisher = scope.ServiceProvider.GetRequiredService<IHandleMessages<TEvent>>();
+        await integrationEventPublisher.Handle(domainEvent, null);
     }
 }

@@ -4,7 +4,6 @@ using System.Net;
 using Environments;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 internal sealed class ErrorHandling

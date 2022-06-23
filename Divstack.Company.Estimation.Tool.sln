@@ -25,6 +25,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{11F86752-A7D7-4EBB-9C9E-4B893506EC17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C4", "C4", "{5262984E-25B8-47CE-BE33-57E76F7EC3DD}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\C4\components_diagram.dsl = Documentation\C4\components_diagram.dsl
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Valuations", "Valuations", "{D8C07E63-3DAE-4497-9D41-D5E89C571357}"
 EndProject
@@ -80,8 +83,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Infrastructure", "Src\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj", "{563E2A6D-C82E-42BE-B27D-97B99A853146}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Shared.Abstractions", "Src\Shared\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj", "{67D187B5-EFFE-4550-AED3-E78055EC0601}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Docs.Architecture.C4", "Documentation\C4\Divstack.Company.Estimation.Tool.Docs.Architecture.C4\Divstack.Company.Estimation.Tool.Docs.Architecture.C4.csproj", "{30FF999C-F038-4776-AFBB-4BA234C490DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello", "Src\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.Trello.csproj", "{C252470B-AEFF-439A-A333-AD8E75C94668}"
 EndProject
@@ -206,6 +207,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{EA43C91B-FCEE-46D9-8B3B-3C55F134105D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests", "Src\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.csproj", "{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -304,10 +307,6 @@ Global
 		{67D187B5-EFFE-4550-AED3-E78055EC0601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67D187B5-EFFE-4550-AED3-E78055EC0601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67D187B5-EFFE-4550-AED3-E78055EC0601}.Release|Any CPU.Build.0 = Release|Any CPU
-		{30FF999C-F038-4776-AFBB-4BA234C490DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30FF999C-F038-4776-AFBB-4BA234C490DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30FF999C-F038-4776-AFBB-4BA234C490DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30FF999C-F038-4776-AFBB-4BA234C490DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C252470B-AEFF-439A-A333-AD8E75C94668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C252470B-AEFF-439A-A333-AD8E75C94668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C252470B-AEFF-439A-A333-AD8E75C94668}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -468,6 +467,10 @@ Global
 		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -503,7 +506,6 @@ Global
 		{02771AB1-3140-49CC-9374-75F54421316B} = {B8332C62-C172-42C2-81CB-0B020ECA5E24}
 		{563E2A6D-C82E-42BE-B27D-97B99A853146} = {E9130234-D9E0-43C0-A91A-DC135F7DEF3D}
 		{67D187B5-EFFE-4550-AED3-E78055EC0601} = {9010E474-6B9C-4DF5-81F1-6D187837495E}
-		{30FF999C-F038-4776-AFBB-4BA234C490DB} = {5262984E-25B8-47CE-BE33-57E76F7EC3DD}
 		{D88D1A4A-D511-4BF6-B813-097A5C68ED0C} = {BFEFB882-5EBB-4CE6-9F02-869B10C5B2A3}
 		{3264FE92-66A7-491B-984E-1013808D8A7F} = {D88D1A4A-D511-4BF6-B813-097A5C68ED0C}
 		{EF5F3C6A-0EA2-4D4A-AFB3-A0EC68C7F8C8} = {D88D1A4A-D511-4BF6-B813-097A5C68ED0C}
@@ -564,5 +566,6 @@ Global
 		{75D2B370-D9CD-4AF2-9D20-EA00AE35A03B} = {11F86752-A7D7-4EBB-9C9E-4B893506EC17}
 		{4A6D88B0-C407-4BBF-AD8F-222C8447C124} = {3CC204EA-5654-4B42-9863-271E0A9099CB}
 		{8E52EF3E-AEAF-4A3D-80B6-CF31E5CA2CCC} = {C5CB253D-5320-4870-931E-669BC99E515F}
+		{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87} = {6F31D638-3020-4A9F-A04B-AF686C7E2B62}
 	EndGlobalSection
 EndGlobal

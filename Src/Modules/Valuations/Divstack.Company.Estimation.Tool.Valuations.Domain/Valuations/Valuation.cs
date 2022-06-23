@@ -1,7 +1,6 @@
 ﻿#pragma warning disable CS8618
 namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-using System.Diagnostics.CodeAnalysis;
 using Events;
 using Exceptions;
 using Proposals;

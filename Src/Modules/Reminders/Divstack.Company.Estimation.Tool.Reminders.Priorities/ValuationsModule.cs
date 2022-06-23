@@ -1,7 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Reminders")]
-
 namespace Divstack.Company.Estimation.Tool.Reminders.Priorities;
 
 using DeadlineClose.Reminder;

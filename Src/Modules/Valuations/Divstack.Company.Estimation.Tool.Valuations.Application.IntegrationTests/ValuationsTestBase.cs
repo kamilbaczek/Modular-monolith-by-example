@@ -2,19 +2,18 @@
 
 using System.Threading.Tasks;
 using NUnit.Framework;
-using static ValuationsTesting;
 
 public abstract class ValuationsTestBase
 {
     [SetUp]
-    public async Task TestSetUp()
+    public Task TestSetUp()
     {
-        await ResetState();
+        return Task.CompletedTask;
     }
 
     [TearDown]
-    public async Task Cleanup()
+    public Task Cleanup()
     {
-        await ResetState();
+        return Task.CompletedTask;
     }
 }
