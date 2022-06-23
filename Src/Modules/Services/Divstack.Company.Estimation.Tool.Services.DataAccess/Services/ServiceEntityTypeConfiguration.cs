@@ -8,12 +8,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 internal class ServiceEntityTypeConfiguration : IEntityTypeConfiguration<Service>
 {
-    private static readonly int MaxLength = 255;
-    private static readonly int MaxLengthLongField = 512;
-    private static readonly string Services = "Services";
-    private static readonly string Attributes = "Attributes";
-    private static readonly string AttributePossibleValues = "AttributePossibleValues";
-    private static readonly string PossibleValues = "PossibleValues";
+    private const int MaxLength = 255;
+    private const int MaxLengthLongField = 512;
+    private const string Services = "Services";
+    private const string Attributes = "Attributes";
+    private const string AttributePossibleValues = "AttributePossibleValues";
+    private const string PossibleValues = "PossibleValues";
 
     public void Configure(EntityTypeBuilder<Service> builder)
     {

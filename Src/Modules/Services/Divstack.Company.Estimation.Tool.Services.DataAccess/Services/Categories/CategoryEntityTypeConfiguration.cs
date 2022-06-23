@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 internal sealed class CategoryEntityTypeConfiguration : IEntityTypeConfiguration<Category>
 {
-    private static readonly int MaxLength = 255;
-    private static readonly string TableName = "CategoryEntityTypeConfiguration";
+    private const int MaxLength = 255;
+    private const string TableName = "CategoryEntityTypeConfiguration";
 
     public void Configure(EntityTypeBuilder<Category> builder)
     {
