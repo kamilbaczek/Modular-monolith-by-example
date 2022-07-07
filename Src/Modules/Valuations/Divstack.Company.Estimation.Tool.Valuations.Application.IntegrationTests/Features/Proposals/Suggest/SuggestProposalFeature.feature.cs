@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Request
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Proposals.Suggest
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,25 +20,22 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTes
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.10.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Request Valuation. When inquiry is made then automatically valuation is requested" +
-        ".")]
-    public partial class RequestValuation_WhenInquiryIsMadeThenAutomaticallyValuationIsRequested_Feature
+    [NUnit.Framework.DescriptionAttribute("Suggest Proposal")]
+    public partial class SuggestProposalFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "RequestValidation.feature"
+#line 1 "SuggestProposalFeature.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual async System.Threading.Tasks.Task FeatureSetupAsync()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunnerForAssembly(null, NUnit.Framework.TestContext.CurrentContext.WorkerId);
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Request", "Request Valuation. When inquiry is made then automatically valuation is requested" +
-                    ".", "    Valuation request is start of valuation process. When valiation is requested " +
-                    "valiation wait for employees price proposal", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Proposals/Suggest", "Suggest Proposal", "\tWhen inquiry was made ", ProgrammingLanguage.CSharp, featureTags);
             await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
@@ -77,14 +74,14 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTes
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Request Valuation")]
+        [NUnit.Framework.DescriptionAttribute("Suggest Proposals")]
         [NUnit.Framework.CategoryAttribute("Valuations")]
-        public async System.Threading.Tasks.Task RequestValuation()
+        public async System.Threading.Tasks.Task SuggestProposals()
         {
             string[] tagsOfScenario = new string[] {
                     "Valuations"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Request Valuation", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Suggest Proposals", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -99,8 +96,16 @@ this.ScenarioInitialize(scenarioInfo);
  await testRunner.GivenAsync("Request valuation for inquiry \'05dbf5ae-e66f-41b2-9938-96b10411e911\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    await testRunner.ThenAsync("Valuation with inquiry \'05dbf5ae-e66f-41b2-9938-96b10411e911\' is displayed in the" +
-                        " valuations list with \'WaitForProposal\' state", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ await testRunner.AndAsync("Employee suggest valuation for inquiry \'05dbf5ae-e66f-41b2-9938-96b10411e911\' pro" +
+                        "posal with price \'300\' \'USD\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 8
+ await testRunner.ThenAsync("Proposal is suggested for valuation with inquiryId \'05dbf5ae-e66f-41b2-9938-96b10" +
+                        "411e911\' with price \'300\' \'USD\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 9
+ await testRunner.AndAsync("Valuation with inquiry \'05dbf5ae-e66f-41b2-9938-96b10411e911\' is displayed in the" +
+                        " valuations list with \'WaitForClientDecision\' state", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

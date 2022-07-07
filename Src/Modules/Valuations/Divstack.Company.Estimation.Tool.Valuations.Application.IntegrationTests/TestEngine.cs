@@ -12,7 +12,7 @@ public class TestEngine
 {
     internal static IServiceScopeFactory? ServiceScopeFactory;
 
-    [BeforeFeature]
+    [BeforeTestRun]
     public static async Task RunBeforeAnyTests()
     {
         await PersistenceContainer.StartAsync();
@@ -30,7 +30,7 @@ public class TestEngine
             .GetService<IServiceScopeFactory>();
     }
 
-    [AfterFeature]
+    [AfterTestRun]
     public static void RunAfterAnyTests()
     {
         PersistenceContainer.Stop();

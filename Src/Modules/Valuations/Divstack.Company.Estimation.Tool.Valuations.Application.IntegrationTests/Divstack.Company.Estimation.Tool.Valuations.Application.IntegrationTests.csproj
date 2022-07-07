@@ -34,4 +34,13 @@
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Features\Proposals\Suggest\SuggestProposalFeature.feature.cs">
+      <DependentUpon>RequestValidation.feature</DependentUpon>
+      <AutoGen>true</AutoGen>
+      <DesignTime>true</DesignTime>
+      <Visible>true</Visible>
+    </Compile>
+  </ItemGroup>
+
 </Project>

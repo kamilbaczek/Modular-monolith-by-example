@@ -2,7 +2,7 @@
 
 using Application.Common.Interfaces;
 using Domain.Valuations;
-using Features.Proposals.Fakes;
+using Features.Proposals.Suggest.Fakes;
 using Inquiries.IntegrationsEvents.External;
 using Moq;
 using NServiceBus.Testing;
@@ -39,14 +39,6 @@ internal static class ValuationModuleTester
     {
         var inquiryMadeEvent = new InquiryMadeEvent(inquiryId);
         await RequestValuation(inquiryMadeEvent);
-    }
-
-    internal static async Task SuggestValuationProposal(Guid valuationId)
-    {
-        var suggestProposalCommand =
-            ValuationSuggestionFaker.Create(valuationId);
-
-        await ExecuteCommandAsync(suggestProposalCommand);
     }
 
     internal static async Task ApproveValuationProposal(Guid valuationId, Guid proposalId)
