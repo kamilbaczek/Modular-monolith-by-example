@@ -4,5 +4,9 @@
   },
   "StripeApi": {
     "ApiKey": ""
+  },
+  "FeatureManagement":
+  {
+    "PaymentsModule": true
   }
 }

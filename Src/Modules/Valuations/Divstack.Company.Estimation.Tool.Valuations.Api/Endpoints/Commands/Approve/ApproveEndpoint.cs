@@ -21,7 +21,5 @@ internal sealed class ApproveEndpoint : EndpointBaseAsync.WithRequest<ApprovePro
         })
     ]
     public override async Task HandleAsync(ApproveProposalCommand command, CancellationToken cancellationToken = new())
-    {
-        await _valuationsModule.ExecuteCommandAsync(command);
-    }
+        => await _valuationsModule.ExecuteCommandAsync(command);
 }

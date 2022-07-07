@@ -2,7 +2,4 @@
 
 using Common.Contracts;
 
-public sealed class CompleteCommand : ICommand
-{
-    public Guid ValuationId { get; set; }
-}
+public record struct CompleteCommand(Guid ValuationId) : ICommand;

@@ -1,31 +1,27 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features;
 
-using System.Threading.Tasks;
 using Common;
-using FluentAssertions;
-using NUnit.Framework;
 using Valuations.Commands.ApproveProposal;
-using static ValuationsTesting;
+using static IntegrationTests.Common.ValuationModule;
+using static IntegrationTests.Common.ValuationModuleTester;
 
-public class ApproveProposalTests : ValuationsTestBase
+public class ApproveProposalTests
 {
-    [Ignore("Wait for  new database mock mechanism")]
+    private static readonly Guid FakeInquiryId = Guid.NewGuid();
+
+    [Test]
     public async Task
-        Given_SuggestProposal_When_CommandIsValid_Then_ValuationStateIsChangedToApproved()
+        Given_Approve_Then_ValuationStateIsApproved()
     {
-        await ValuationModuleTester.RequestValuation();
-        var valuationBeforeApproval = await ValuationModuleTester.GetFirstRequestedValuation();
-        await ValuationModuleTester.SuggestValuationProposal(valuationBeforeApproval.Id);
-        var recentProposal = await ValuationModuleTester.GetRecentProposal(valuationBeforeApproval.Id);
-        var approveCommand = new ApproveProposalCommand
-        {
-            ProposalId = recentProposal.ProposalId,
-            ValuationId = valuationBeforeApproval.Id
-        };
+        await RequestValuation(FakeInquiryId);
+        var valuationBeforeApproval = await GetByInquiryId(FakeInquiryId);
+        await SuggestValuationProposal(valuationBeforeApproval.Id);
+        var recentProposal = await GetRecentProposal(valuationBeforeApproval.Id);
+        var approveCommand = new ApproveProposalCommand(recentProposal.ProposalId, valuationBeforeApproval.Id);
 
         await ExecuteCommandAsync(approveCommand);
 
-        var valuationAfterApproval = await ValuationModuleTester.GetFirstRequestedValuation();
-        valuationAfterApproval.Status.Should().Be("Approved");
+        var valuationAfterApproval = await GetByInquiryId(FakeInquiryId);
+        valuationAfterApproval.Status.Should().BeApproved();
     }
 }

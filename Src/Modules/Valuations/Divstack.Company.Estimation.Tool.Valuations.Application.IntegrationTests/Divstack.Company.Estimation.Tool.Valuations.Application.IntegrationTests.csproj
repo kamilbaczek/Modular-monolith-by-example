@@ -8,6 +8,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="DotNet.Testcontainers" Version="1.7.0-beta.2269" />
     <PackageReference Include="Faker.Net" Version="1.5.138" />
     <PackageReference Include="FluentAssertions" Version="6.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
@@ -15,8 +16,10 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="netDumbster" Version="3.0.0" />
+    <PackageReference Include="NServiceBus.Testing" Version="7.4.1" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.10.2-beta" />
   </ItemGroup>
 
   <ItemGroup>

@@ -5,12 +5,9 @@
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Configuration;
 
 using Exception;
-using FeatureFlags;
 using global::Azure.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.FeatureManagement;
 
 internal static class AzureAppConfigurationModule
 {
@@ -39,13 +36,5 @@ internal static class AzureAppConfigurationModule
             });
             options.UseFeatureFlags();
         });
-    }
-
-    internal static IServiceCollection AddAzureApplicationConfiguration(this IServiceCollection services)
-    {
-        services.AddScoped<IFeatureFlagsChecker, FeatureFlagsChecker>();
-        services.AddFeatureManagement();
-
-        return services;
     }
 }

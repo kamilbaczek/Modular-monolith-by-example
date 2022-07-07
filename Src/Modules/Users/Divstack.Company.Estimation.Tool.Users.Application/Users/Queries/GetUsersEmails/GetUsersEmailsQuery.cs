@@ -4,5 +4,4 @@ using System.Collections.Generic;
 using Contracts;
 
 public sealed class GetUsersEmailsQuery : IQuery<IReadOnlyList<string>>
-{
-}
+{ }

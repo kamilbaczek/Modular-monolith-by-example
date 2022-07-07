@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Api.Controllers;
 
+using Application.Common.Contracts;
 using Application.Inquiries.Commands.Make;
 using Application.Inquiries.Queries.Get;
 using Application.Inquiries.Queries.Get.Dtos;

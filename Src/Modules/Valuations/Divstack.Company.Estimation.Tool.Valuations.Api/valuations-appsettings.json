@@ -8,5 +8,9 @@
   },
   "ConnectionStrings": {
     "Valuations": ""
+  },
+  "FeatureManagement":
+  {
+    "ValuationModule": true
   }
 }

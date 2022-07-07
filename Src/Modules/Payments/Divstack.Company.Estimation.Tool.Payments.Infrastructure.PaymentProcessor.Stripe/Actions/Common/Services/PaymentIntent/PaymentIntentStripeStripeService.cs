@@ -3,5 +3,4 @@
 using global::Stripe;
 
 internal sealed class PaymentIntentStripeStripeService : PaymentIntentService, IPaymentIntentStripeService
-{
-}
+{ }

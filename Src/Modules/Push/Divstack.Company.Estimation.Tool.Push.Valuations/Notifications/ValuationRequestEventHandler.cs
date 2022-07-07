@@ -14,7 +14,9 @@ internal sealed class ValuationRequestEventHandler : IHandleMessages<ValuationRe
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IUserModule _userModule;
     private readonly IHubContext<ValuationsHub> _valuationsHub;
-    public ValuationRequestEventHandler(IHubContext<ValuationsHub> valuationsHub,
+
+    public ValuationRequestEventHandler(
+        IHubContext<ValuationsHub> valuationsHub,
         INotificationsWriteRepository notificationsWriteRepository,
         IUserModule userModule)
     {
@@ -32,7 +34,7 @@ internal sealed class ValuationRequestEventHandler : IHandleMessages<ValuationRe
                     nameof(ValuationRequested),
                     user.PublicId))
             .ToList();
-        await _notificationsWriteRepository.BulkAddAsync(notifications, CancellationToken.None);
+        await _notificationsWriteRepository.BulkAddAsync(notifications);
         await _valuationsHub.Clients.All.SendAsync(nameof(ValuationRequested), valuationRequested);
     }
 }

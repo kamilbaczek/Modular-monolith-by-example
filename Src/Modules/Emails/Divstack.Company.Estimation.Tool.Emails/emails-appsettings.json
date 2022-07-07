@@ -6,5 +6,9 @@
     "DisableSsl": "false",
     "ServerLogin": "",
     "ServerPassword": ""
+  },
+  "FeatureManagement":
+  {
+    "EmailsModule": true
   }
 }

@@ -9,10 +9,7 @@ public static class AppConfigurationModule
         builder.AddAzureApplicationConfiguration(configuration);
     }
 
-    internal static IServiceCollection AddConfiguration(this IServiceCollection services)
+    internal static void AddConfiguration(this IServiceCollection services)
     {
-        services.AddAzureApplicationConfiguration();
-
-        return services;
     }
 }

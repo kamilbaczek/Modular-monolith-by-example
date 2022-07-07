@@ -21,7 +21,7 @@ internal sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApp
     {
         var notification = Notification.Create(proposalApprovedEvent.ValuationId, nameof(ProposalApproved), proposalApprovedEvent.SuggestedBy);
         await _notificationsWriteRepository.AddAsync(notification);
-        var userId = proposalApprovedEvent.SuggestedBy.ToString();
-        await _valuationsHub.Clients.User(userId).SendAsync(nameof(ProposalApproved), proposalApprovedEvent);
+        var employeeId = proposalApprovedEvent.SuggestedBy.ToString();
+        await _valuationsHub.Clients.User(employeeId).SendAsync(nameof(ProposalApproved), proposalApprovedEvent);
     }
 }

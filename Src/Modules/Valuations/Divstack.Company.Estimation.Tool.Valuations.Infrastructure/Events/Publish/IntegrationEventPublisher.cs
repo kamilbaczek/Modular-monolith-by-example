@@ -7,8 +7,8 @@ using Shared.DDD.BuildingBlocks;
 
 internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
 {
-    private readonly IMessageSession _messageSession;
     private readonly IEventMapper _eventMapper;
+    private readonly IMessageSession _messageSession;
 
     public IntegrationEventPublisher(IMessageSession messageSession,
         IEventMapper eventMapper)

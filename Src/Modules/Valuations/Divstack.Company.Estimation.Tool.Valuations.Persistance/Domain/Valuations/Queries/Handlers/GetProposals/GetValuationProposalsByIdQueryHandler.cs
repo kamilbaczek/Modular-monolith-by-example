@@ -21,6 +21,7 @@ internal sealed class
             .LightweightSession()
             .Query<ValuationProposalEntryDto>()
             .Where(proposalEntryDto => proposalEntryDto.Id == request.ValuationId)
+            .OrderBy(nameof(ValuationProposalEntryDto.Suggested))
             .ToListAsync(cancellationToken);
         var vm = new ValuationProposalsVm(valuations);
 

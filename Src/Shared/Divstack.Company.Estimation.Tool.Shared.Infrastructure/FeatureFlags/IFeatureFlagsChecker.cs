@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Configuration.FeatureFlags;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.FeatureFlags;
 
 public interface IFeatureFlagsChecker
 {

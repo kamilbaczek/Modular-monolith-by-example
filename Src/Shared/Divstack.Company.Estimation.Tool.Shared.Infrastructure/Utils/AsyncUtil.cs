@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Utils;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Utils;
 
 internal static class AsyncUtil
 {

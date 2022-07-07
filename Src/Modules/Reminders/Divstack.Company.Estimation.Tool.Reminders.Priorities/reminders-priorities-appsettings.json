@@ -3,5 +3,9 @@
     "Priority": {
       "DaysBeforeDeadline": 2
     }
+  },
+  "FeatureManagement":
+  {
+    "RemindersModule": true
   }
 }

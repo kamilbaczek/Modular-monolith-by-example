@@ -2,7 +2,7 @@
 
 using Common.Configurations;
 using Common.Extensions;
-using Shared.Infrastructure.Api;
+using Shared.Infrastructure;
 using Shared.Infrastructure.Configuration;
 
 /// <summary>

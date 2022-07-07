@@ -1,21 +1,22 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
 
-namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api;
+namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure;
 
+using Api.Controllers;
+using Api.Cors;
+using Api.Errors.Middleware;
+using Api.Swagger;
+using Api.WebSockets;
 using BackgroundProcessing;
 using Configuration;
-using Controllers;
-using Cors;
-using Errors.Middleware;
 using EventBus;
+using FeatureFlags;
 using HealthChecks;
 using Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Observability;
 using Persistance;
-using Swagger;
-using WebSockets;
 
 internal static class SharedInfrastructureModule
 {
@@ -33,6 +34,7 @@ internal static class SharedInfrastructureModule
         services.AddObservability();
         services.AddConfiguration();
         services.AddLogging();
+        services.AddFeatureFlags();
     }
 
     internal static void UseSharedInfrastructure(this IApplicationBuilder app)
@@ -47,13 +49,13 @@ internal static class SharedInfrastructureModule
         app.UseExceptionHandling();
         app.UseLogging();
         app.UseBackgroundProcessing();
-        app.UseSharedPersistance();
-        app.UseSharedHealthChecks();
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
             endpoints.MapSharedHealthChecks();
         });
+        app.UseSharedPersistance();
+        app.UseSharedHealthChecks();
     }
 
     internal static IHostBuilder UseSharedInfrastructure(this IHostBuilder hostBuilder)

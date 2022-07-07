@@ -61,7 +61,8 @@ public sealed class Proposal : Entity
             throw new ProposalAlreadyHasDecisionException(Id);
         }
 
-        Decision = ProposalDecision.AcceptDecision(DateTime.Now);
+        var now = SystemTime.Now();
+        Decision = ProposalDecision.AcceptDecision(now);
     }
 
     internal void Reject()

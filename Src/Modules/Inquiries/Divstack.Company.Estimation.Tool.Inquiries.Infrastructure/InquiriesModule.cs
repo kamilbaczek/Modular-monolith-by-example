@@ -21,9 +21,4 @@ internal sealed class InquiriesModule : IInquiriesModule
     {
         return await _mediator.Send(query);
     }
-
-    public async Task ExecuteCommandAsync(ICommand command)
-    {
-        await _mediator.Send(command);
-    }
 }

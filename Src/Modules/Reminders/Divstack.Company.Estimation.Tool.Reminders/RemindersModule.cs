@@ -6,13 +6,15 @@ namespace Divstack.Company.Estimation.Tool.Reminders;
 
 using Microsoft.Extensions.DependencyInjection;
 using Priorities;
+using Shared.Infrastructure.FeatureFlags;
 
 internal static class RemindersModule
 {
-    internal static IServiceCollection AddRemindersModule(this IServiceCollection services)
+    internal static void AddRemindersModule(this IServiceCollection services)
     {
-        services.AddValuations();
+        var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
+        if (!moduleEnabled) return;
 
-        return services;
+        services.AddValuations();
     }
 }
