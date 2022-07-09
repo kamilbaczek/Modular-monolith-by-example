@@ -37,12 +37,28 @@ jobs:
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
      
-    - name: Generate Tests Report
+    - name: Valuations - Integrations Tests
       uses: zyborg/dotnet-tests-report@v1
       with:
         project_path: Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests
-        report_name: Estimation Tool
-        report_title: Estimation Tool
+        report_name: Valuations
+        report_title: Integration Tests
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+  
+    - name: Valuations - Unit Tests Report
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests
+        report_name: Valuations
+        report_title: Unit Tests
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Inquiries - Unit Tests
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests
+        report_name: Inquiries
+        report_title: Unit Tests
         github_token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Codecov
