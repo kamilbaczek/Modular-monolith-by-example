@@ -43,6 +43,8 @@ jobs:
         project_path: Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests
         report_name: Valuations
         report_title: Integration Tests
+        gist_name: valuations_integrations_tests.md
+        gist_badge_label: 'Valuations - Integration Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
   
     - name: Valuations - Unit Tests Report
@@ -50,6 +52,8 @@ jobs:
       with:
         project_path: Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests
         report_name: Valuations
+        gist_name: valuations_unit_tests.md
+        gist_badge_label: 'Valuations - Unit Tests: %Counters_passed%/%Counters_total%'
         report_title: Unit Tests
         github_token: ${{ secrets.GITHUB_TOKEN }}
         
@@ -59,6 +63,8 @@ jobs:
         project_path: Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests
         report_name: Inquiries
         report_title: Unit Tests
+        gist_name: inquires_unit_tests.md
+        gist_badge_label: 'Inquiries - Unit Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Codecov
