@@ -11,7 +11,7 @@ public sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProp
     private const string NoDecision = "No decision";
     private const string Approved = "Approved";
 
-    public void Apply(ProposalApprovedDomainEvent _, ValuationProposalEntryDto proposalEntryDto)
+    public static void Apply(ProposalApprovedDomainEvent _, ValuationProposalEntryDto proposalEntryDto)
     {
         var currentDate = SystemTime.Now();
         proposalEntryDto = proposalEntryDto with
