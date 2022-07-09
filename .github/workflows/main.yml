@@ -40,7 +40,6 @@ jobs:
     - name: Generate Tests Report
       uses: zyborg/dotnet-tests-report@v1
       with:
-        project_path: \
         report_name: Estimation Tool
         report_title: Estimation Tool
         github_token: ${{ secrets.GITHUB_TOKEN }}
