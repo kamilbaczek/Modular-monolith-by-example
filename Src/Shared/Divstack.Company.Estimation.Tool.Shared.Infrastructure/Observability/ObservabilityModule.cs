@@ -6,7 +6,7 @@ internal static class ObservabilityModule
 {
     internal static IServiceCollection AddObservability(this IServiceCollection services)
     {
-        services.AzureApplicationInsights();
+        AzureApplicationInsightsModule.AzureApplicationInsights();
 
         return services;
     }
