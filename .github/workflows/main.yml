@@ -80,10 +80,15 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: monitor
+    - name: Checkout 
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/dotnet@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --file=Divstack.Company.Estimation.Tool.sln
