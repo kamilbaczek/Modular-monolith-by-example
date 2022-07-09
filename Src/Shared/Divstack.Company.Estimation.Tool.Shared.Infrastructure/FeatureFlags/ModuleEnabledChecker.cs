@@ -3,7 +3,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-public static class ModuleFeatureFlags
+public static class ModuleEnabledChecker
 {
     public static bool IsModuleEnabled(this IServiceCollection services, FeatureFlag featureFlag)
     {
