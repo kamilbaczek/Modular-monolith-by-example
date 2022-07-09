@@ -3,5 +3,4 @@
 using Microsoft.AspNetCore.Authorization;
 
 public class TokenValidRequirement : IAuthorizationRequirement
-{
-}
+{ }

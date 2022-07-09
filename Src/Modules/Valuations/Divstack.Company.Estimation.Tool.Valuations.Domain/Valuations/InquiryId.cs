@@ -6,4 +6,9 @@ public record InquiryId(Guid Value)
     {
         return new InquiryId(Guid.NewGuid());
     }
+
+    public static InquiryId Create(Guid value)
+    {
+        return new InquiryId(value);
+    }
 }

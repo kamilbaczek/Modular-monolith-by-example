@@ -11,6 +11,7 @@ public sealed class ValuationListItemAggregation : SingleStreamAggregation<Valua
 {
     public void Apply(ValuationCompletedDomainEvent @event, ValuationListItemDto listItemDto)
     {
+        listItemDto.CompletedBy = @event.EmployeeId.Value;
         listItemDto.Status = ValuationStates.Completed;
     }
 

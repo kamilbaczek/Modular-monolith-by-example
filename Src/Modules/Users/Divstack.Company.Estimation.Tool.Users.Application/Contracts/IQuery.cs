@@ -3,5 +3,4 @@
 using MediatR;
 
 public interface IQuery<TDto> : IRequest<TDto>
-{
-}
+{ }

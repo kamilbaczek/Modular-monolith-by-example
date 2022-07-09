@@ -37,6 +37,10 @@ workspace {
     bootstrapper -> users "Compose"
     bootstrapper -> notifications "Compose"
 
+    valuations -> inquiries "Get Inquiry Informations"
+    inquiries -> valuations "Listen for 'Inquiry Made' event"
+    valuations -> priorities "Listen for priority"
+
     valuations -> valuationsDatabase "Reads from and writes to"
     users -> usersDatabase "Reads from and writes to"
     priorities -> prioritiesDatabase "Reads from and writes to"
@@ -59,7 +63,7 @@ views {
     }
 
     component estimationToolContainer estimationToolContainerValuations {
-        include bootstrapper inquiries notifications employee client
+        include bootstrapper valuations inquiries notifications employee client
         autoLayout tb
         }
 

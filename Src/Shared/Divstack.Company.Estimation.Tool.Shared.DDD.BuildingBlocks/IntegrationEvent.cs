@@ -3,5 +3,4 @@
 using NServiceBus;
 
 public interface IntegrationEvent : IMessage
-{
-}
+{ }

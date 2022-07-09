@@ -6,13 +6,12 @@ using Application;
 using Application.Common.Contracts;
 using Events;
 using Mediation;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Persistance;
 
 internal static class InfrastructureModule
 {
-    internal static IServiceCollection AddInfrastructure(this IServiceCollection services,
+    internal static void AddInfrastructure(this IServiceCollection services,
         IConfiguration configuration)
     {
         services.AddPersistanceModule(configuration);
@@ -20,11 +19,5 @@ internal static class InfrastructureModule
         services.AddMediationModule();
         services.AddEvents();
         services.AddScoped<IInquiriesModule, InquiriesModule>();
-
-        return services;
-    }
-
-    internal static void UseInfrastructure(this IApplicationBuilder app)
-    {
     }
 }

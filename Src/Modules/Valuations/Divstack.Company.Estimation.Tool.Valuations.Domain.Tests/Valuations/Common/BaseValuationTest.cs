@@ -3,5 +3,4 @@
 using Shared.DDD.BuildingBlocks.Tests;
 
 public abstract class BaseValuationTest : BaseTest
-{
-}
+{ }

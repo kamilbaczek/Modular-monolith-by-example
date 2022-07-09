@@ -9,8 +9,8 @@ using Users.Application.Users.Queries.GetUsersEmails;
 internal sealed class
     PriorityCloseToDeadlineRemindEventHandler : IHandleMessages<PriorityCloseToDeadlineRemind>
 {
-    private readonly IUserModule _userModule;
     private readonly IPriorityCloseToDeadlineMailSender _priorityCloseToDeadlineMailSender;
+    private readonly IUserModule _userModule;
 
     internal PriorityCloseToDeadlineRemindEventHandler(
         IPriorityCloseToDeadlineMailSender priorityCloseToDeadlineMailSender,

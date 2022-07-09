@@ -1,45 +1,44 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common;
 
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Fakes;
+using Application.Common.Interfaces;
+using Domain.Valuations;
 using Inquiries.IntegrationsEvents.External;
+using NServiceBus.Testing;
+using Valuations.Commands.Request;
 using Valuations.Queries.GetAll;
 using Valuations.Queries.GetProposalsById;
 using Valuations.Queries.GetProposalsById.Dtos;
+using static ValuationModule;
 
 internal static class ValuationModuleTester
 {
-    internal static async Task<ValuationListItemDto> GetFirstRequestedValuation()
+    internal static async Task RequestValuation(InquiryMadeEvent inquiryMadeEvent)
     {
-        var result = await ValuationsTesting.ExecuteQueryAsync(new GetAllValuationsQuery());
-        var valuationListItemDto = result.Valuations.First();
+        using var scope = TestEngine.ServiceScopeFactory?.CreateScope();
+
+        var eventPublisher = Mock.Of<IIntegrationEventPublisher>();
+        var valuationsRepository = scope?.ServiceProvider.GetRequiredService<IValuationsRepository>();
+
+        var valuationEventHandler = new RequestValuationEventHandler(valuationsRepository!, eventPublisher);
+        await valuationEventHandler.Handle(inquiryMadeEvent, new TestableMessageHandlerContext());
+    }
+
+    internal static async Task<ValuationListItemDto> GetByInquiryId(Guid inquiryId)
+    {
+        var query = GetAllValuationsQuery.Create();
+        var result = await ExecuteQueryAsync(query);
+        var valuationListItemDto = result.Valuations.FirstOrDefault(valuation => valuation.InquiryId == inquiryId);
 
         return valuationListItemDto;
     }
 
-    internal static async Task RequestValuation()
+    internal static async Task<ValuationProposalEntryDto> GetRecentProposal(Guid valuationId)
     {
-        var inquiryMadeEvent = new InquiryMadeEvent(Guid.NewGuid());
-        await ValuationsTesting.ConsumeEvent(inquiryMadeEvent);
-    }
+        var query = new GetValuationProposalsByIdQuery(valuationId);
+        var valuationProposalsVm =
+            await ExecuteQueryAsync(query);
+        var valuationProposalEntryDto = valuationProposalsVm.Proposals.First();
 
-    internal static async Task SuggestValuationProposal(Guid valuationId)
-    {
-        var suggestProposalCommand =
-            FakeValuationSuggestion.GenerateFakeSuggestProposalCommand(valuationId);
-
-        await ValuationsTesting.ExecuteCommandAsync(suggestProposalCommand);
-    }
-
-    internal static Task<ValuationProposalEntryDto> GetRecentProposal(Guid valuationId)
-    {
-        // var query = new GetValuationProposalsByIdQuery(valuationId);
-        // var valuationProposalsVm =
-        //     await ValuationsTesting.ExecuteQueryAsync<ValuationProposalsVm>(query);
-        // var valuationProposalEntryDto = valuationProposalsVm.Proposals.First();
-
-        return Task.FromResult(new ValuationProposalEntryDto(Guid.Empty, Guid.Empty, "", "", Decimal.One, DateTime.Now, Guid.Empty, null, ""));
+        return valuationProposalEntryDto;
     }
 }

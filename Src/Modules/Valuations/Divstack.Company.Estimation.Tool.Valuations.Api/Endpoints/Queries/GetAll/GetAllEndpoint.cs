@@ -22,7 +22,7 @@ internal sealed class GetAllEndpoint : EndpointBaseAsync.WithoutRequest.WithResu
     ]
     public override async Task<ActionResult<ValuationListVm>> HandleAsync(CancellationToken cancellationToken = new())
     {
-        var query = new GetAllValuationsQuery();
+        var query = GetAllValuationsQuery.Create();
         var valuationsListVm = await _valuationsModule.ExecuteQueryAsync(query);
 
         return Ok(valuationsListVm);

@@ -7,7 +7,7 @@ using Priorities.Api;
 using Push;
 using Reminders;
 using Services.Api;
-using Shared.Infrastructure.Api;
+using Shared.Infrastructure;
 using Sms;
 using Users.Api;
 using Valuations.Api;

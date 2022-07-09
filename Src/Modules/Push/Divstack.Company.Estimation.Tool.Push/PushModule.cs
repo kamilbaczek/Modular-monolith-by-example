@@ -10,20 +10,22 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Payments;
+using Shared.Infrastructure.FeatureFlags;
 using Valuations;
 
 internal static class PushModule
 {
-    internal static IServiceCollection AddPushModule(this IServiceCollection services,
+    internal static void AddPushModule(this IServiceCollection services,
         IConfiguration configuration)
     {
+        var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
+        if (!moduleEnabled) return;
+
         services.AddApi();
         services.AddDataAccess(configuration);
 
         services.AddValuations();
         services.AddPayments();
-
-        return services;
     }
 
     internal static void UsePushModule(this IApplicationBuilder app)

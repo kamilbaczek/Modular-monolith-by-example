@@ -2,8 +2,4 @@
 
 using Common.Contracts;
 
-public sealed class ApproveProposalCommand : ICommand
-{
-    public Guid ProposalId { get; set; }
-    public Guid ValuationId { get; set; }
-}
+public record struct ApproveProposalCommand(Guid ProposalId, Guid ValuationId) : ICommand;

@@ -3,18 +3,21 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuati
 
 using Application.Valuations.Queries.GetProposalsById.Dtos;
 using Marten.Events.Aggregation;
+using Shared.DDD.BuildingBlocks;
 using Tool.Valuations.Domain.Valuations.Proposals.Events;
 
 public sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProposalEntryDto>
 {
     private const string NoDecision = "No decision";
     private const string Approved = "Approved";
-    public void Apply(ProposalApprovedDomainEvent @event, ValuationProposalEntryDto proposalEntryDto)
+
+    public static void Apply(ProposalApprovedDomainEvent _, ValuationProposalEntryDto proposalEntryDto)
     {
+        var currentDate = SystemTime.Now();
         proposalEntryDto = proposalEntryDto with
         {
             Decision = Approved,
-            DecisionDate = @event.OccurredOn
+            DecisionDate = currentDate
         };
     }
 
@@ -22,7 +25,7 @@ public sealed class ProposalsAggregation : SingleStreamAggregation<ValuationProp
     {
         var proposal = new ValuationProposalEntryDto(
             suggestedDomainEvent.Id,
-            suggestedDomainEvent.Id,
+            suggestedDomainEvent.ProposalId.Value,
             suggestedDomainEvent.Description.Message,
             suggestedDomainEvent.Price.Currency,
             suggestedDomainEvent.Price.Value!.Value,

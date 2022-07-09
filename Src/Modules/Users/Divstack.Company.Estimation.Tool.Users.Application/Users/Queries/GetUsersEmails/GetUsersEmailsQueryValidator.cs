@@ -4,5 +4,4 @@ using FluentValidation;
 using GetUser;
 
 public class GetUsersEmailsQueryValidator : AbstractValidator<GetUserDetailQuery>
-{
-}
+{ }

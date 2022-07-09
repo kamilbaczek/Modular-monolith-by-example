@@ -23,7 +23,6 @@ internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApprovePro
             throw new NotFoundException(command.ValuationId, nameof(Valuation));
 
         var proposalId = new ProposalId(command.ProposalId);
-
         valuation.ApproveProposal(proposalId);
 
         await _valuationsRepository.CommitAsync(valuation, cancellationToken);

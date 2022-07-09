@@ -12,9 +12,9 @@ internal sealed class ProposalSuggestedSmsNotificationHandler : IHandleMessages<
 {
     private const string ValuationIdPlaceholder = "{ValuationId}";
     private const string ProposalIdPlaceholder = "{ProposalId}";
+    private readonly ISuggestValuationSmsConfiguration _configuration;
 
     private readonly IInquiriesModule _inquiriesModule;
-    private readonly ISuggestValuationSmsConfiguration _configuration;
     private readonly ISmsClient _smsClient;
 
     public ProposalSuggestedSmsNotificationHandler(ISmsClient smsClient,

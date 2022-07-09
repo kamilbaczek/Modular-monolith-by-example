@@ -8,5 +8,4 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/payments-module/[controller]")]
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 internal abstract class BaseController : ControllerBase
-{
-}
+{ }
