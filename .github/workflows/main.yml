@@ -36,6 +36,15 @@ jobs:
            dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.coverageReportPaths="./sonarqubecoverage/SonarQube.xml" /d:sonar.coverage.exclusions="**Tests*.cs, **/Migrations/*.cs"
            dotnet build
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+     
+    - name: Generate Tests Report
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: \
+        report_name: Estimation Tool
+        report_title: Estimation Tool
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      
     - name: Codecov
       uses: codecov/codecov-action@v2.1.0
       with:
