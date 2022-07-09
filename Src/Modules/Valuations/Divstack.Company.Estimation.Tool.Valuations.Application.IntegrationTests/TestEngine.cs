@@ -5,12 +5,11 @@ using Common.Engine;
 using Common.Engine.Mocks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TechTalk.SpecFlow;
 
 [Binding]
 public class TestEngine
 {
-    internal static IServiceScopeFactory? ServiceScopeFactory;
+    internal static IServiceScopeFactory ServiceScopeFactory;
 
     [BeforeTestRun]
     public static async Task RunBeforeAnyTests()
@@ -24,7 +23,7 @@ public class TestEngine
 
         services.ReplaceHostEnvironment();
         services.ReplaceIntegrationEventPublisher();
-        services.ReplaceCurrentUserServiceToMock();
+        services.ReplaceCurrentUserService();
 
         ServiceScopeFactory = services.BuildServiceProvider()
             .GetService<IServiceScopeFactory>();

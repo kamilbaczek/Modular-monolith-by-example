@@ -2,11 +2,8 @@
 
 using Application.Common.Interfaces;
 using Domain.Valuations;
-using Features.Proposals.Suggest.Fakes;
 using Inquiries.IntegrationsEvents.External;
-using Moq;
 using NServiceBus.Testing;
-using Valuations.Commands.ApproveProposal;
 using Valuations.Commands.Request;
 using Valuations.Queries.GetAll;
 using Valuations.Queries.GetProposalsById;
@@ -33,18 +30,6 @@ internal static class ValuationModuleTester
         var valuationListItemDto = result.Valuations.FirstOrDefault(valuation => valuation.InquiryId == inquiryId);
 
         return valuationListItemDto;
-    }
-
-    internal static async Task RequestValuation(Guid inquiryId)
-    {
-        var inquiryMadeEvent = new InquiryMadeEvent(inquiryId);
-        await RequestValuation(inquiryMadeEvent);
-    }
-
-    internal static async Task ApproveValuationProposal(Guid valuationId, Guid proposalId)
-    {
-        var approveProposal = new ApproveProposalCommand(proposalId, valuationId);
-        await ExecuteCommandAsync(approveProposal);
     }
 
     internal static async Task<ValuationProposalEntryDto> GetRecentProposal(Guid valuationId)

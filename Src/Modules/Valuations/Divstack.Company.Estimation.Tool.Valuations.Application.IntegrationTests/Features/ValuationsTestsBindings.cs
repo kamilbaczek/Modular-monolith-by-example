@@ -10,14 +10,14 @@ using static IntegrationTests.Common.ValuationModuleTester;
 public class ValuationsTestsBindings
 {
     [Given(@"Request valuation for inquiry '(.*)'")]
-    public async Task GivenRequestValuationForInquiry(Guid inquiryId)
+    public static async Task GivenRequestValuationForInquiry(Guid inquiryId)
     {
         var inquiryMadeEvent = new InquiryMadeEvent(inquiryId);
         await RequestValuation(inquiryMadeEvent);
     }
 
     [Given(@"Employee suggest valuation proposal with price '(.*)' '(.*)'")]
-    public async Task GivenEmployeeSuggestValuationProposalWithPrice(string value, string currency, Guid inquiryId)
+    public static async Task GivenEmployeeSuggestValuationProposalWithPrice(string value, string currency, Guid inquiryId)
     {
         var valuation = await GetByInquiryId(inquiryId);
         var money = decimal.Parse(value);
@@ -28,7 +28,7 @@ public class ValuationsTestsBindings
 
 
     [Then(@"Valuation with inquiry '(.*)' is displayed in the valuations list with '(.*)' state")]
-    public async Task ThenValuationWithInquiryIsDisplayedInTheValuationsListWithState(Guid inquiryId, string state)
+    public static async Task ThenValuationWithInquiryIsDisplayedInTheValuationsListWithState(Guid inquiryId, string state)
     {
         var valuation = await GetByInquiryId(inquiryId);
         valuation.Should().NotBeNull();
@@ -36,7 +36,7 @@ public class ValuationsTestsBindings
     }
 
     [Then(@"Proposal is suggested for valuation with inquiryId '(.*)' with price '(.*)' '(.*)'")]
-    public async Task ThenProposalIsSuggestedForValuationWithInquiryIdWithPrice(Guid inquiryId, decimal value, string currency)
+    public static async Task ThenProposalIsSuggestedForValuationWithInquiryIdWithPrice(Guid inquiryId, decimal value, string currency)
     {
         var valuation = await GetByInquiryId(inquiryId);
         var proposal = await GetRecentProposal(valuation.Id);
@@ -45,7 +45,7 @@ public class ValuationsTestsBindings
 
     }
     [Given(@"Employee suggest valuation for inquiry '(.*)' proposal with price '(.*)' '(.*)'")]
-    public async Task GivenEmployeeSuggestValuationForInquiryProposalWithPrice(Guid inquiryId, decimal value, string currency)
+    public static async Task GivenEmployeeSuggestValuationForInquiryProposalWithPrice(Guid inquiryId, decimal value, string currency)
     {
         var valuation = await GetByInquiryId(inquiryId);
         var suggestProposalCommand =
