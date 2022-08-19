@@ -34,7 +34,7 @@
         "RestoredPayload": ""
       }
     ],
-    "EvaluationTimeOnSeconds": 10,
+    "EvaluationTimeOnSeconds": 15,
     "MinimumSecondsBetweenFailureNotifications": 60,
     "MaximumExecutionHistoriesPerEndpoint": 15
   },
