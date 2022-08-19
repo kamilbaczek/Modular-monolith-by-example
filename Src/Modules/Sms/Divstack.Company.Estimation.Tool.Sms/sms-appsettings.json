@@ -1,12 +1,4 @@
 ﻿{
-  "Mail": {
-    "ServerAddress": "smtp.mailtrap.io",
-    "ServerPort": 25,
-    "MailFrom": "no-reply@estimation-tool.com",
-    "DisableSsl": "false",
-    "ServerLogin": "",
-    "ServerPassword": ""
-  },
   "FeatureManagement":
   {
     "SmsModule": true

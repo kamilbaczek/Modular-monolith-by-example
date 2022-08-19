@@ -7,17 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0"/>
-    <PackageReference Include="Azure.Communication.Sms" Version="1.0.1"/>
-    <PackageReference Include="Azure.Core" Version="1.14.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
-    <PackageReference Include="Twilio.AspNet.Core" Version="5.77.0"/>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0" />
+    <PackageReference Include="Azure.Communication.Sms" Version="1.0.1" />
+    <PackageReference Include="Azure.Core" Version="1.14.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Twilio.AspNet.Core" Version="5.77.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="sms-appsettings.json">
+    <None Update="sms-core-appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
