@@ -7,4 +7,4 @@ public record struct ProposalApproved(
     Guid ProposalId,
     Guid SuggestedBy,
     string Currency,
-    decimal? Value) : IntegrationEvent;
+    decimal? Value) : IIntegrationEvent;

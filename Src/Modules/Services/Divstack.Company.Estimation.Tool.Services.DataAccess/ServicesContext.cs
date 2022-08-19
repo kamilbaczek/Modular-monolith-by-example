@@ -1,23 +1,20 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.DataAccess;
 
-using Core.Services;
-using Core.Services.Categories;
-using Microsoft.EntityFrameworkCore;
-using Services;
+using Divstack.Company.Estimation.Tool.Services.Core.Services;
+using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
+using MongoDB.Driver;
 
-public sealed class ServicesContext : DbContext
+internal sealed class ServicesContext : IServicesContext
 {
-    public ServicesContext(DbContextOptions<ServicesContext> options)
-        : base(options)
-    {
-    }
+    private const string DatabaseName = "EstimationTool";
+    private const string ServicesCollectionName = "Services";
+    private const string CategoriesCollectionName = "Categories";
 
-    internal DbSet<Service> Services { get; set; }
-    internal DbSet<Category> Categories { get; set; }
+    private readonly IMongoDatabase _database;
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ServiceEntityTypeConfiguration).Assembly);
-    }
+    public ServicesContext(MongoClient mongoClient) =>
+        _database = mongoClient.GetDatabase(DatabaseName);
+
+    public IMongoCollection<Service> Services => _database.GetCollection<Service>(ServicesCollectionName);
+    public IMongoCollection<Category> Categories => _database.GetCollection<Category>(CategoriesCollectionName);
 }

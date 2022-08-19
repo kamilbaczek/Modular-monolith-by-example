@@ -15,8 +15,5 @@ public sealed class CategoryDto
     public Guid Id { get; }
     public string Name { get; }
 
-    internal static CategoryDto Map(Category category)
-    {
-        return new CategoryDto(category.Id, category.Name);
-    }
+    internal static CategoryDto Map(Category category) => new(category.Id, category.Name);
 }

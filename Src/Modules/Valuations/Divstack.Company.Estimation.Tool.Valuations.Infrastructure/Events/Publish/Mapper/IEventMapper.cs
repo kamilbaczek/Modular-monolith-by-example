@@ -4,5 +4,5 @@ using Shared.DDD.BuildingBlocks;
 
 public interface IEventMapper
 {
-    IReadOnlyCollection<IntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events);
+    IReadOnlyCollection<IIntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events);
 }

@@ -11,13 +11,9 @@ public sealed class Category
         Description = description;
     }
 
-    private Category()
-    {
-    }
-
-    public Guid Id { get; }
-    public string Name { get; }
-    public string Description { get; }
+    public Guid Id { get; init; }
+    public string Name { get; init; }
+    public string Description { get; init; }
 
     public static Category Create(string name, string description)
     {

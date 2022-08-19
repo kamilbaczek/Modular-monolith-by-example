@@ -2,4 +2,4 @@
 
 using Shared.DDD.BuildingBlocks;
 
-public record PriorityCloseToDeadlineRemind(Guid ValuationId, int DaysBeforeDeadline) : IntegrationEvent;
+public record PriorityCloseToDeadlineRemind(Guid ValuationId, int DaysBeforeDeadline) : IIntegrationEvent;

@@ -6,4 +6,4 @@ public record struct ProposalRejected(
     Guid ValuationId,
     Guid ProposalId,
     decimal? Value,
-    string Currency) : IntegrationEvent;
+    string Currency) : IIntegrationEvent;

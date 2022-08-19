@@ -1,7 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Priorities.Api")]
-
 namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure;
 
 using Common.Contracts;
@@ -32,8 +31,6 @@ internal static class InfrastructureModule
         return services;
     }
 
-    internal static void UseInfrastructure(this IApplicationBuilder app)
-    {
+    internal static void UseInfrastructure(this IApplicationBuilder app) =>
         app.UsePersistanceModule();
-    }
 }

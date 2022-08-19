@@ -84,7 +84,6 @@ internal sealed class ServicesService : IServicesService
         var service = await _servicesRepository.GetAsync(createAttributeRequest.ServiceId, cancellationToken);
         ThrowIfServiceNotFound(createAttributeRequest.ServiceId, service);
         service.AddAttribute(createAttributeRequest.Name);
-        await _servicesRepository.CommitAsync(cancellationToken);
     }
 
     public async Task RemoveAttributeAsync(RemoveAttributeRequest removeAttributeRequest,
@@ -93,7 +92,6 @@ internal sealed class ServicesService : IServicesService
         var service = await _servicesRepository.GetAsync(removeAttributeRequest.ServiceId, cancellationToken);
         ThrowIfServiceNotFound(removeAttributeRequest.ServiceId, service);
         service.DeleteAttribute(removeAttributeRequest.AttributeId);
-        await _servicesRepository.CommitAsync(cancellationToken);
     }
 
     public async Task AddAttributePossibleValueAsync(CreatePossibleValueRequest createPossibleValueRequest,
@@ -103,7 +101,6 @@ internal sealed class ServicesService : IServicesService
         ThrowIfServiceNotFound(createPossibleValueRequest.ServiceId, service);
         service.AddAttributePotentialValue(createPossibleValueRequest.AttributeId,
             createPossibleValueRequest.Value);
-        await _servicesRepository.CommitAsync(cancellationToken);
     }
 
     public async Task RemoveAttributePossibleValueAsync(DeletePossibleValueRequest deleteAttributeRequest,
@@ -112,7 +109,6 @@ internal sealed class ServicesService : IServicesService
         var service = await _servicesRepository.GetAsync(deleteAttributeRequest.ServiceId, cancellationToken);
         ThrowIfServiceNotFound(deleteAttributeRequest.ServiceId, service);
         service.DeleteAttributePossibleValue(deleteAttributeRequest.AttributeId, deleteAttributeRequest.ServiceId);
-        await _servicesRepository.CommitAsync(cancellationToken);
     }
 
     private static void ThrowIfCategoryNotFound(Guid id, Category category)

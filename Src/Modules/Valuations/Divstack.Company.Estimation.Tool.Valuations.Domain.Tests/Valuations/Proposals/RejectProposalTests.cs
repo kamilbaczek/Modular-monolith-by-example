@@ -7,8 +7,6 @@ using Domain.Valuations;
 using Domain.Valuations.Exceptions;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
-using FluentAssertions;
-using NUnit.Framework;
 using Shared.DDD.BuildingBlocks.Tests;
 
 public class RejectProposalTests : BaseValuationTest

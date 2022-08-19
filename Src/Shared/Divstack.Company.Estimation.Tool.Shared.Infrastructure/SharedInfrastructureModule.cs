@@ -1,5 +1,4 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Bootstrapper")]
-
 namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure;
 
 using Api.Controllers;

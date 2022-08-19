@@ -11,10 +11,8 @@ internal sealed class PossibleValuesController : BaseController
 {
     private readonly IServicesService _servicesService;
 
-    public PossibleValuesController(IServicesService servicesService)
-    {
+    public PossibleValuesController(IServicesService servicesService) =>
         _servicesService = servicesService;
-    }
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]

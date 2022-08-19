@@ -2,5 +2,6 @@
 
 using NServiceBus;
 
-public interface IntegrationEvent : IMessage
-{ }
+public interface IIntegrationEvent : IMessage
+{
+}

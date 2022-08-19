@@ -11,13 +11,13 @@ public sealed class PossibleValue
         Value = value;
     }
 
-    private PossibleValue()
+    public PossibleValue()
     {
     }
 
-    internal Guid Id { get; }
-    internal string Value { get; }
-    private Attribute Attribute { get; }
+    internal Guid Id { get; set; }
+    internal string Value { get; set; }
+    private Attribute Attribute { get; set; }
 
     internal static PossibleValue Create(Attribute attribute, string value)
     {

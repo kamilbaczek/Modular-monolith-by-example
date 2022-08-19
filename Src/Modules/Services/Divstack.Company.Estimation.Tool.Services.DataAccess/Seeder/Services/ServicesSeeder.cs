@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.DataAccess.Seeder.Services;
 
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,21 +24,20 @@ internal sealed class ServicesSeeder : IHostedService
         using var scope = _serviceScopeFactory.CreateScope();
         var categoriesService = scope.ServiceProvider.GetRequiredService<ICategoriesService>();
         var categories = await categoriesService.GetAllAsync(cancellationToken);
-        if (categories.Any())
+        if (!categories.Any())
         {
-            return;
+            var categoryDto = await CreateCategory(cancellationToken, categoriesService);
+            categories.Add(categoryDto);
         }
 
-        var categoryDto = await CreateCategory(cancellationToken, categoriesService);
-
+        var category = categories.First();
         var servicesService = scope.ServiceProvider.GetRequiredService<IServicesService>();
         var services = await servicesService.GetAllAsync(cancellationToken);
-        if (services.Any())
+        if (!services.Any())
         {
-            return;
+            await CreateService(servicesService, category.Id);
         }
 
-        await CreateService(servicesService, categoryDto.Id);
     }
 
     public Task StopAsync(CancellationToken cancellationToken)

@@ -22,8 +22,6 @@ internal static class PrioritiesModule
         services.AddInfrastructure(configuration);
     }
 
-    public static void UsePrioritiesModule(this IApplicationBuilder app)
-    {
+    public static void UsePrioritiesModule(this IApplicationBuilder app) =>
         app.UseInfrastructure();
-    }
 }

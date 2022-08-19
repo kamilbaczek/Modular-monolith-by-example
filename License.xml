@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<license type="Non-Production Development" Applications="All" expiration="2022-11-11" id="5124be3f-7183-4bb3-8696-fea90afc2bf9">
+  <name>kamilbaczek98@gmail.com</name>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>fJwo9TpuYdWFpxe70TxaeRXjqIg=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>QxM+Ti2FUCko8TSqUi2872O0qf0dqEFZoFRHo3kL1Gr/Hz/pKMYSwNAJSZ9Jy5ZR98/dPNkUXDO+OdCe0j23+LQ/Eq2kvX1jH2MihkyrTkc5H3nUf7kDYz1B/F1hUiCUIb9jsT1kDUDfDbR5omxSXOBr+O9rFl8fncdV3sg8KRE=</SignatureValue>
+  </Signature>
+</license>

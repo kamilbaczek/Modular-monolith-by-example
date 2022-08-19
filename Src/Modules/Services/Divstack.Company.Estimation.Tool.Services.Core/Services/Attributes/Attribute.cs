@@ -15,14 +15,14 @@ public sealed class Attribute
         PossibleValues = new List<PossibleValue>();
     }
 
-    private Attribute()
+    public Attribute()
     {
     }
 
-    internal IList<PossibleValue> PossibleValues { get; }
-    internal Guid Id { get; }
-    internal string Name { get; }
-    private Service Service { get; }
+    internal IList<PossibleValue> PossibleValues { get; set; }
+    internal Guid Id { get; set; }
+    internal string Name { get; set; }
+    private Service Service { get; set; }
 
     internal static Attribute Create(Service service, string name)
     {

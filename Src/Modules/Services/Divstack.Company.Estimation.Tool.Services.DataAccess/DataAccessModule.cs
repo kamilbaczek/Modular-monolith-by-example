@@ -4,18 +4,18 @@
 
 namespace Divstack.Company.Estimation.Tool.Services.DataAccess;
 
-using System;
 using Core;
 using HealthChecks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
+using Repositories;
 using Seeder;
-using Services;
 
 internal static class DataAccessModule
 {
     private const string ServicesConnectionString = "Services";
+    private const string Repository = "Repository";
 
     internal static IServiceCollection AddDataAccess(this IServiceCollection services,
         IConfiguration configuration)
@@ -24,9 +24,10 @@ internal static class DataAccessModule
 
         services.AddCore();
         services.RegisterRepositories();
-        services.AddSeeders();
         services.AddDataAccessHealthChecks(connectionString);
-        services.AddDbContext<ServicesContext>(connectionString);
+        services.AddMongo(connectionString);
+        services.AddScoped<IServicesContext, ServicesContext>();
+        services.AddSeeders();
 
         return services;
     }
@@ -35,20 +36,17 @@ internal static class DataAccessModule
     {
         services.Scan(scan => scan
             .FromAssemblyOf<ServicesRepository>()
-            .AddClasses(filter => filter.Where(@class => @class.Name.EndsWith("Repository", StringComparison.InvariantCultureIgnoreCase)))
+            .AddClasses(filter => filter.Where(@class => @class.Name.EndsWith(Repository, StringComparison.InvariantCultureIgnoreCase)))
             .AsImplementedInterfaces()
             .WithTransientLifetime());
     }
 
-    private static void AddDbContext<TContext>(this IServiceCollection services, string connectionString)
-        where TContext : DbContext
+    private static void AddMongo(this IServiceCollection services, string connectionString)
     {
-        services.AddDbContextPool<TContext>(options =>
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-        );
+        services.AddScoped<IServicesContext, ServicesContext>();
+        var settings = MongoClientSettings.FromConnectionString(connectionString);
+        var mongoClient = new MongoClient(settings);
 
-        using var scope = services.BuildServiceProvider().CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<TContext>();
-        dbContext.Database.Migrate();
+        services.AddSingleton(mongoClient);
     }
 }

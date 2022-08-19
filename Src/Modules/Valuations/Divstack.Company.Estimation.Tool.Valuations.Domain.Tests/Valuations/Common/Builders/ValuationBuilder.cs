@@ -5,17 +5,12 @@ using Proposals;
 
 internal sealed class ValuationBuilder
 {
-    internal ValuationBuilder()
-    {
-        InquiryId = InquiryId.Create();
-    }
+    internal ValuationBuilder() => InquiryId = InquiryId.Create();
     private static InquiryId InquiryId { get; set; }
 
 
-    private static Valuation Build()
-    {
-        return Valuation.Request(InquiryId);
-    }
+    private static Valuation Build() =>
+        Valuation.Request(InquiryId);
 
     internal ProposalSuggestionBuilder WithProposal()
     {
@@ -23,8 +18,6 @@ internal sealed class ValuationBuilder
         return new ProposalSuggestionBuilder(valuation);
     }
 
-    public static implicit operator Valuation(ValuationBuilder builder)
-    {
-        return Build();
-    }
+    public static implicit operator Valuation(ValuationBuilder builder) =>
+        Build();
 }

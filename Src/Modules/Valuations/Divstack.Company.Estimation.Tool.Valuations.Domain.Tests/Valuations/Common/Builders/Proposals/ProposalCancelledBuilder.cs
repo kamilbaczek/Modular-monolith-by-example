@@ -12,7 +12,7 @@ internal sealed class ProposalCancelledBuilder
         var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
         ProposalId = proposalSuggestedDomainEvent.ProposalId;
         Valuation = valuation;
-        EmployeeId = new EmployeeId(Guid.NewGuid());
+        EmployeeId = EmployeeId.Of(Guid.NewGuid());
     }
     private static Valuation Valuation { get; set; }
     private static ProposalId ProposalId { get; set; }

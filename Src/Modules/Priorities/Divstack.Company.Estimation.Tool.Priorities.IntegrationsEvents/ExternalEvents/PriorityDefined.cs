@@ -2,4 +2,4 @@
 
 using Shared.DDD.BuildingBlocks;
 
-public record struct PriorityDefined(Guid ValuationId, Guid PriorityId, DateTime DeadlineDate) : IntegrationEvent;
+public record struct PriorityDefined(Guid ValuationId, Guid PriorityId, DateTime DeadlineDate) : IIntegrationEvent;

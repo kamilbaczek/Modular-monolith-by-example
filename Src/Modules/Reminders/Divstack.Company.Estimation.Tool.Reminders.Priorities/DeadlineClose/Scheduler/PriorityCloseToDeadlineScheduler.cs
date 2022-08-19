@@ -11,6 +11,7 @@ internal sealed class PriorityCloseToDeadlineScheduler : IHandleMessages<Priorit
     private readonly IBackgroundJobScheduler _backgroundJobScheduler;
     private readonly IDeadlinesCloseReminderConfiguration _deadlinesCloseReminderConfiguration;
     private readonly IPriorityDeadlineCloseReminder _priorityDeadlineCloseReminder;
+
     public PriorityCloseToDeadlineScheduler(IBackgroundJobScheduler backgroundJobScheduler,
         IPriorityDeadlineCloseReminder priorityDeadlineCloseReminder,
         IDeadlinesCloseReminderConfiguration deadlinesCloseReminderConfiguration)
@@ -24,6 +25,7 @@ internal sealed class PriorityCloseToDeadlineScheduler : IHandleMessages<Priorit
     {
         var reminderDate =
             priorityDefined.DeadlineDate.AddDays(-_deadlinesCloseReminderConfiguration.DaysBeforeDeadline);
+
         _backgroundJobScheduler.Schedule(
             () => _priorityDeadlineCloseReminder.RemindAsync(
                 priorityDefined.ValuationId,

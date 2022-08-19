@@ -17,16 +17,13 @@ using Valuations.Api;
 /// </summary>
 public sealed class Startup
 {
+    private IConfiguration Configuration { get; }
+
     /// <summary>
     ///     Configuration
     /// </summary>
     /// <param name="configuration"></param>
-    public Startup(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
-
-    private IConfiguration Configuration { get; }
+    public Startup(IConfiguration configuration) => Configuration = configuration;
 
     /// <summary>
     ///     Configure services
@@ -58,11 +55,6 @@ public sealed class Startup
         IApplicationBuilder app,
         IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-
         app.UseSharedInfrastructure();
 
         app.UsePaymentModule();

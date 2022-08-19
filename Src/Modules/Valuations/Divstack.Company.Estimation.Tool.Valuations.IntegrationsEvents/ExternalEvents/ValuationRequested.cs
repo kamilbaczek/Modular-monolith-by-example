@@ -4,4 +4,4 @@ using Shared.DDD.BuildingBlocks;
 
 public record struct ValuationRequested(
     Guid InquiryId,
-    Guid ValuationId) : IntegrationEvent;
+    Guid ValuationId) : IIntegrationEvent;

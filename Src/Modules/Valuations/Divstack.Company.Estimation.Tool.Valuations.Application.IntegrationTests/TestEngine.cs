@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 [Binding]
 public class TestEngine
 {
+    private const string AppSettingsJsonFileName = "appsettings.json";
+
     internal static IServiceScopeFactory ServiceScopeFactory;
 
     [BeforeTestRun]
@@ -39,7 +41,7 @@ public class TestEngine
     {
         var builder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", true, true)
+            .AddJsonFile(AppSettingsJsonFileName, true, true)
             .AddEnvironmentVariables()
             .AddUserSecrets<TestEngine>();
 

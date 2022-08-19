@@ -10,7 +10,7 @@ using Attribute = Attributes.Attribute;
 
 public sealed class Service
 {
-    private Service()
+    public Service()
     {
     }
 
@@ -28,12 +28,12 @@ public sealed class Service
         CreatedBy = currentUserService.GetPublicUserId();
     }
 
-    public Guid Id { get; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public Category Category { get; private set; }
-    public List<Attribute> Attributes { get; }
-    public Guid CreatedBy { get; }
+    public Guid Id { get; init; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public Category Category { get; set; }
+    public List<Attribute> Attributes { get; init; }
+    public Guid CreatedBy { get; init; }
 
     internal static Service Create(string name, string description, Category category,
         ICurrentUserService currentUserService)

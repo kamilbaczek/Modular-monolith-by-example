@@ -8,4 +8,4 @@ public record struct ProposalSuggested(
     Guid InquiryId,
     decimal? Value,
     string Currency,
-    string Description) : IntegrationEvent;
+    string Description) : IIntegrationEvent;

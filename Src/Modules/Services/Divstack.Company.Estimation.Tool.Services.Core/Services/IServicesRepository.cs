@@ -14,5 +14,4 @@ public interface IServicesRepository
         int limitItems = 25,
         CancellationToken cancellationToken = default);
     Task<Service> GetAsync(Guid publicId, CancellationToken cancellationToken = default);
-    Task CommitAsync(CancellationToken cancellationToken = default);
 }

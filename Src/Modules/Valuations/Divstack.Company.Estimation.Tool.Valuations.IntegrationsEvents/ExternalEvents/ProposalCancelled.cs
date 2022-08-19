@@ -5,4 +5,4 @@ using Shared.DDD.BuildingBlocks;
 public record struct ProposalCancelled(
     Guid CancelledBy,
     Guid ProposalId,
-    Guid ValuationId) : IntegrationEvent;
+    Guid ValuationId) : IIntegrationEvent;

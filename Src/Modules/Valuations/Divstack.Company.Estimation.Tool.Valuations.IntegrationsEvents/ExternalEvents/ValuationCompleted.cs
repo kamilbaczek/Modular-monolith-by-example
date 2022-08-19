@@ -6,4 +6,4 @@ public record struct ValuationCompleted(
     Guid InquiryId,
     Guid ValuationId,
     decimal? AmountToPayValue,
-    string AmountToPayCurrency) : IntegrationEvent;
+    string AmountToPayCurrency) : IIntegrationEvent;
