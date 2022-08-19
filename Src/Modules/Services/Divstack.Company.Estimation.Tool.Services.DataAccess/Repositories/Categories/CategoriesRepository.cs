@@ -24,6 +24,6 @@ internal sealed class CategoriesRepository : ICategoriesRepository
             .ToListAsync(cancellationToken);
 
     public async Task<Category> GetAsync(Guid id, CancellationToken cancellationToken = default) =>
-        await _servicesContext.Categories.FindSync(category => category.Id == id)
+        await _servicesContext.Categories.FindSync(category => category.Id == id, cancellationToken: cancellationToken)
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
 }

@@ -24,7 +24,6 @@ public sealed class ServiceDto
     public string Name { get; }
     public string Description { get; }
     public Guid CreatedBy { get; }
-
     public CategoryDto Category { get; }
 
     internal static ServiceDto Map(Service service)

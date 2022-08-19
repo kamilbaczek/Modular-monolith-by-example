@@ -32,10 +32,7 @@ public class TestEngine
     }
 
     [AfterTestRun]
-    public static void RunAfterAnyTests()
-    {
-        PersistenceContainer.Stop();
-    }
+    public static void RunAfterAnyTests() => PersistenceContainer.Stop();
 
     private static IConfigurationRoot BuildConfiguration()
     {

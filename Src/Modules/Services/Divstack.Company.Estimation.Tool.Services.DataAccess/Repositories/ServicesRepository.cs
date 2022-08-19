@@ -18,11 +18,9 @@ internal sealed class ServicesRepository : IServicesRepository
     public async Task DeleteAsync(Service service, CancellationToken cancellationToken = default)
         => await _servicesContext.Services.DeleteOneAsync(serviceInStorage => serviceInStorage.Id == service.Id, cancellationToken);
 
-    public async Task<List<Service>> GetAllAsync(CancellationToken cancellationToken = default)
-    {
-        return await _servicesContext.Services.FindSync(FilterDefinition<Service>.Empty, null, cancellationToken)
+    public async Task<List<Service>> GetAllAsync(CancellationToken cancellationToken = default) =>
+        await _servicesContext.Services.FindSync(FilterDefinition<Service>.Empty, null, cancellationToken)
             .ToListAsync(cancellationToken: cancellationToken);
-    }
 
     public async Task<List<Service>> GetBatchAsync(IReadOnlyCollection<Guid> serviceIds,
         int limitItems = 25,
@@ -41,7 +39,7 @@ internal sealed class ServicesRepository : IServicesRepository
         };
 
         return await _servicesContext.Services
-            .FindSync(filter, options)
+            .FindSync(filter, options, cancellationToken)
             .ToListAsync(cancellationToken);
     }
 

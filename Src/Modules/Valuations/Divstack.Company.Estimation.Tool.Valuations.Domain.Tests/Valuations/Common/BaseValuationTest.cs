@@ -8,5 +8,5 @@ public abstract class BaseValuationTest : BaseTest
     protected const string Currency = "USD";
     protected const string Description = "test";
 
-    protected Guid Id => Guid.NewGuid();
+    protected static Guid Id => Guid.NewGuid();
 }

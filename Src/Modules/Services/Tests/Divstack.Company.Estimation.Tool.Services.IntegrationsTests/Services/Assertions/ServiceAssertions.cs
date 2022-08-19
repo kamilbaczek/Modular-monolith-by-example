@@ -1,24 +1,33 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.IntegrationsTests.Services.Assertions;
 
-using Divstack.Company.Estimation.Tool.Services.Core.Services;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
-using Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 using Divstack.Company.Estimation.Tool.Services.Core.Services.Dtos;
 using FluentAssertions;
+using FluentAssertions.Primitives;
 
-internal static class ServiceAssertions
+
+internal static class ServiceAssertionsExtensions
 {
-    internal static void AssertEquals(this ServiceDto left, Service right, Category category)
+    public static ServiceAssertions Should(this ServiceDto instance) => new(instance);
+}
+
+internal sealed class ServiceAssertions :
+    ReferenceTypeAssertions<ServiceDto, ServiceAssertions>
+{
+    public ServiceAssertions(ServiceDto instance)
+        : base(instance)
     {
-        left.Id.Should().Be(right.Id);
-        left.Name.Should().Be(right.Name);
-        left.Description.Should().Be(right.Description);
-        left.Category.AssertEquals(category);
     }
 
-    private static void AssertEquals(this CategoryDto left, Category right)
+    protected override string Identifier => nameof(ServiceDto);
+
+    public void BeService(Guid serviceId, CreateServiceRequest request)
     {
-        left.Id.Should().Be(right.Id);
-        left.Name.Should().Be(right.Name);
+        Subject.Id.Should().Be(serviceId);
+        Subject.Name.Should().Be(request.Name);
+        Subject.Description.Should().Be(request.Description);
+        Subject.Category.Id.Should().Be(request.CategoryId);
+        Subject.Category.Should().NotBeNull();
+        Subject.Category.Id.Should().Be(request.CategoryId);
+        Subject.Category.Name.Should().Be(request.Name);
     }
 }

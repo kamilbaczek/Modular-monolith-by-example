@@ -24,6 +24,7 @@ internal static class SharedInfrastructureModule
     {
         services.AddSingleton(configuration);
         services.AddInternalControllers();
+        services.AddFeatureFlags();
         services.AddHttpClient();
         services.AddSwaggerModule();
         services.AddMvcCore();
@@ -33,7 +34,6 @@ internal static class SharedInfrastructureModule
         services.AddObservability();
         services.AddConfiguration();
         services.AddLogging();
-        services.AddFeatureFlags();
     }
 
     internal static void UseSharedInfrastructure(this IApplicationBuilder app)

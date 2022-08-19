@@ -5,11 +5,8 @@ namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.Telemetry
 
 using Microsoft.Extensions.DependencyInjection;
 
-public static class AzureApplicationInsightsModule
+internal static class AzureApplicationInsightsModule
 {
-    internal static void AzureApplicationInsights(this IServiceCollection services)
-    {
-        //TODO: Connect to Azure Application Insights
-        // services.AddApplicationInsightsTelemetry();
-    }
+    internal static void AzureApplicationInsights(this IServiceCollection services) =>
+        services.AddApplicationInsightsTelemetry();
 }
