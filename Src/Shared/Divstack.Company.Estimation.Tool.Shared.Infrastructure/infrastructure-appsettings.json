@@ -1,0 +1,45 @@
+﻿{
+  "Cors": {
+    "Origin": "http://localhost:8080"
+  },
+  "WebSockets": {
+    "AllowedOrigin": "http://localhost:8080"
+  },
+  "Sentry": {
+    "Dsn": "",
+    "MaxRequestBodySize": "Always",
+    "SendDefaultPii": true,
+    "MinimumBreadcrumbLevel": "Debug",
+    "MinimumEventLevel": "Warning",
+    "AttachStackTrace": true,
+    "Debug": true,
+    "DiagnosticsLevel": "Error"
+  },
+  "BackgroundProcessing": {
+    "StorageConnectionString": ""
+  },
+  "HealthChecks-UI": {
+    "DisableMigrations": false,
+    "HealthChecks": [
+      {
+        "Name": "Estimation Tool - Health Checks",
+        "Uri": "/healthcheck"
+      }
+    ],
+    "Webhooks": [
+      {
+        "Name": "",
+        "Uri": "",
+        "Payload": "",
+        "RestoredPayload": ""
+      }
+    ],
+    "EvaluationTimeOnSeconds": 10,
+    "MinimumSecondsBetweenFailureNotifications": 60,
+    "MaximumExecutionHistoriesPerEndpoint": 15
+  },
+  "FeatureManagement":
+  {
+    "ObservabilityModule": true
+  }
+}

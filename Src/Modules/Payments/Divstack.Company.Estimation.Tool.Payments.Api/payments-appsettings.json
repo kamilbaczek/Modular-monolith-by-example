@@ -1,0 +1,12 @@
+﻿{
+  "ConnectionStrings": {
+    "Payments": ""
+  },
+  "StripeApi": {
+    "ApiKey": ""
+  },
+  "FeatureManagement":
+  {
+    "PaymentsModule": true
+  }
+}

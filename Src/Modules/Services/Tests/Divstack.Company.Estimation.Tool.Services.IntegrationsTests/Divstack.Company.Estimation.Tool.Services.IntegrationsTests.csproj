@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <UserSecretsId>2bd98ace-6527-48f9-b414-c7400358db12</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Bogus" Version="33.0.2" />
+      <PackageReference Include="DotNet.Testcontainers" Version="1.7.0-beta.2269" />
+      <PackageReference Include="Faker.Net" Version="2.0.154" />
+      <PackageReference Include="FluentAssertions" Version="6.2.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+      <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
+      <PackageReference Include="Moq" Version="4.16.1" />
+      <PackageReference Include="NUnit" Version="3.13.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
+      <ProjectReference Include="..\..\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+</Project>

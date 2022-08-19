@@ -1,0 +1,94 @@
+name: Build
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.x' # SDK Version to use.
+    - name: Install dotnet-reportgenerator
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+        dotnet new tool-manifest
+        dotnet tool install dotnet-reportgenerator-globaltool
+
+    - name: Install sonarscanner-dotnet
+      run:  dotnet tool install --global dotnet-sonarscanner --version 5.4
+    - name: Sonarscanner for dotnet
+      run: |
+           dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+           dotnet reportgenerator "-reports:**/TestResults/**/coverage.opencover.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool" /d:sonar.coverageReportPaths="./sonarqubecoverage/SonarQube.xml" /d:sonar.coverage.exclusions="**Tests*.cs, **/Migrations/*.cs"
+           dotnet build
+           dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+     
+    - name: Valuations - Integrations Tests
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests
+        report_name: Valuations
+        report_title: Integration Tests
+        gist_name: valuations_integrations_tests.md
+        gist_badge_label: 'Valuations - Integration Tests: %Counters_passed%/%Counters_total%'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+  
+    - name: Valuations - Unit Tests Report
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests
+        report_name: Valuations
+        gist_name: valuations_unit_tests.md
+        gist_badge_label: 'Valuations - Unit Tests: %Counters_passed%/%Counters_total%'
+        report_title: Unit Tests
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Inquiries - Unit Tests
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Inquiries/Tests/Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests
+        report_name: Inquiries
+        report_title: Unit Tests
+        gist_name: inquires_unit_tests.md
+        gist_badge_label: 'Inquiries - Unit Tests: %Counters_passed%/%Counters_total%'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Codecov
+      uses: codecov/codecov-action@v2.1.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+        files: "**/TestResults/**/coverage.opencover.xml"
+        flags: unittests # optional
+        name: codecov-umbrella # optional
+        fail_ci_if_error: true # optional (default = false)
+        verbose: true # optional (default = false)
+      
+  security:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        
+    - name: Run Snyk to check for vulnerabilities
+      uses: snyk/actions/dotnet@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --file=Divstack.Company.Estimation.Tool.sln

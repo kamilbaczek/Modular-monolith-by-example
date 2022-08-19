@@ -1,0 +1,9 @@
+﻿{
+  "PhoneNumbers": {
+    "From": ""
+  },
+  "Twillo": {
+    "AccountSid": "",
+    "AuthToken": ""
+  }
+}

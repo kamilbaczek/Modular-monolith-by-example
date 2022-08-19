@@ -1,0 +1,9 @@
+﻿{
+  "ConnectionStrings": {
+    "Services": ""
+  },
+  "FeatureManagement":
+  {
+    "ServicesModule": true
+  }
+}

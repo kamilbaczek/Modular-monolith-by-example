@@ -1,0 +1,6 @@
+﻿{
+  "SuggestValuationSmsConfiguration": {
+    "RejectProposalLink": "http://localhost:8080/valuations/{ValuationId}/proposals/{ProposalId}/reject",
+    "AcceptProposalLink": "http://localhost:8080/valuations/{ValuationId}/proposals/{ProposalId}/approve"
+  }
+}

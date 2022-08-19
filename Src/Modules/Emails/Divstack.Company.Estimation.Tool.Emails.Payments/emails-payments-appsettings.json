@@ -1,0 +1,11 @@
+﻿{
+  "PaymentInitializedMailConfiguration": {
+    "Subject": "Payment",
+    "PaymentUrl": "http://localhost:8080/payments/pay/{PaymentId}",
+    "PathToTemplate": "PaymentInitialized/Templates/payment_initialized.html"
+  },
+  "PaymentCompletedMailConfiguration": {
+    "Subject": "Payment Completed",
+    "PathToTemplate": "PaymentInitialized/Templates/payment_completed.html"
+  }
+}

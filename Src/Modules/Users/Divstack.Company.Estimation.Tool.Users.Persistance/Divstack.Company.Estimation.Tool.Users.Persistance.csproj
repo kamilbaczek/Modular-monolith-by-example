@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.MySql" Version="6.0.1"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0"/>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.0"/>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" VVVersion="1.1.6"/>
+    <PackageReference Include="Scrutor" Version="3.3.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Domain\Divstack.Company.Estimation.Tool.Users.Domain.csproj"/>
+  </ItemGroup>
+
+</Project>

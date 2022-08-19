@@ -1,0 +1,14 @@
+﻿{
+  "Priority": {
+    "Deadline": {
+      "WorksDaysToDeadlineFromNow": 2
+    }
+  },
+  "FeatureManagement":
+  {
+    "PrioritiesModule": true
+  },
+  "ConnectionStrings": {
+    "Priorities": ""
+  }
+}
