@@ -6,7 +6,6 @@ using Reminder;
 using Shared.Abstractions.BackgroundProcessing;
 using Valuations.IntegrationsEvents.ExternalEvents;
 
-//TODO subscribe to priority archived
 internal sealed class PriorityCloseToDeadlineUnScheduler :
     IHandleMessages<ProposalSuggested>,
     IHandleMessages<ProposalCancelled>

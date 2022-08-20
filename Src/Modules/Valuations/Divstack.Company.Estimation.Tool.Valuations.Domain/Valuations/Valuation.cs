@@ -123,8 +123,7 @@ public sealed class Valuation : Entity, IAggregateRoot
     private void Apply(ProposalCancelledDomainEvent @event)
     {
         var proposal = GetProposal(@event.ProposalId);
-        //TODO pass employee id
-        var employeeId = EmployeeId.Of(Guid.Empty);
+        var employeeId = @event.CancelledBy;
         proposal.Cancel(employeeId);
         Status = ValuationStatus.WaitForProposal;
     }
