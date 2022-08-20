@@ -8,8 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 internal static class PaymentsSmsModule
 {
-    internal static IServiceCollection AddPayments(this IServiceCollection services)
-    {
-        return services;
-    }
+    internal static IServiceCollection AddPayments(this IServiceCollection services) =>
+        services;
 }
