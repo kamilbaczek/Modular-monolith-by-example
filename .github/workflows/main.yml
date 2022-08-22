@@ -46,6 +46,16 @@ jobs:
         gist_name: valuations_integrations_tests.md
         gist_badge_label: 'Valuations - Integration Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Services - Integrations Tests
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Services/Divstack.Company.Estimation.Tool.Services.IntegrationsTests
+        report_name: Services
+        report_title: Integration Tests
+        gist_name: services_integrations_tests.md
+        gist_badge_label: 'Services - Integration Tests: %Counters_passed%/%Counters_total%'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
   
     - name: Valuations - Unit Tests Report
       uses: zyborg/dotnet-tests-report@v1
