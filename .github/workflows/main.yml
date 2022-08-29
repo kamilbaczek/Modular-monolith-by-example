@@ -20,9 +20,6 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '6.x' # SDK Version to use.
-        
-    - name: Stryker .net
-      uses: leonardo-souza-dev/stryker-dotnet-action@v2.1.7
 
     - name: Install dotnet-reportgenerator
       run: |
