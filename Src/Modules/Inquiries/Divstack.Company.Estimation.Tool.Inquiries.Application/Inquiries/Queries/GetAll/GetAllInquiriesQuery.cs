@@ -2,4 +2,4 @@
 
 using Common.Contracts;
 
-public record GetAllInquiriesQuery : IQuery<InquiryListVm>;
+public record struct GetAllInquiriesQuery : IQuery<InquiryListVm>;

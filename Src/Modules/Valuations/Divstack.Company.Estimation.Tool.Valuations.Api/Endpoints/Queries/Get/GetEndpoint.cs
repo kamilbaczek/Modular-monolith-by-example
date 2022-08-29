@@ -23,7 +23,7 @@ internal sealed class GetEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResu
     ]
     public override async Task<ActionResult<ValuationVm>> HandleAsync(Guid id, CancellationToken cancellationToken = new())
     {
-        var query = new GetValuationQuery(id);
+        var query = GetValuationQuery.Create(id);
         var result = await _valuationsModule.ExecuteQueryAsync(query);
 
         return result;

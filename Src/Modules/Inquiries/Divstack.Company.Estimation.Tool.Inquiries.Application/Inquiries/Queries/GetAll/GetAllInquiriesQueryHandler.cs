@@ -15,7 +15,7 @@ internal sealed class GetAllInquiriesQueryHandler : IRequestHandler<GetAllInquir
     public async Task<InquiryListVm> Handle(GetAllInquiriesQuery request, CancellationToken cancellationToken)
     {
         var connection = _databaseConnectionFactory.Create();
-        var query = @$"SELECT
+        const string query = @$"SELECT
                                Inquiries.Id AS {nameof(InquiryListItemDto.Id)},
                                Client_FirstName AS {nameof(InquiryListItemDto.FirstName)},
                                Client_LastName AS {nameof(InquiryListItemDto.LastName)}

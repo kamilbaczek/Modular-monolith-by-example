@@ -7,10 +7,8 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
 {
     private readonly IDatabaseConnectionFactory _databaseConnectionFactory;
 
-    public GetInquiriesQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory)
-    {
+    public GetInquiriesQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory) =>
         _databaseConnectionFactory = databaseConnectionFactory;
-    }
 
     public async Task<InquiryVm> Handle(GetInquiryQuery request, CancellationToken cancellationToken)
     {
@@ -28,7 +26,7 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
         IDbConnection connection,
         CancellationToken cancellationToken)
     {
-        var query = @$"SELECT
+        const string query = @$"SELECT
                 Service_ServiceId AS {nameof(InquiriesServiceItemDto.ServiceId)}
                 FROM InquiryItemsServices
                 WHERE InquiryId = @InquiryId";
@@ -54,7 +52,8 @@ internal sealed class GetInquiriesQueryHandler : IRequestHandler<GetInquiryQuery
                 FROM Inquiries
                 WHERE Id = @InquiryId";
         var inquiryInformationDto = await connection.ExecuteSingleQueryAsync<InquiryInformationDto>(
-            query, new
+            query,
+            new
             {
                 request.InquiryId
             }, cancellationToken);

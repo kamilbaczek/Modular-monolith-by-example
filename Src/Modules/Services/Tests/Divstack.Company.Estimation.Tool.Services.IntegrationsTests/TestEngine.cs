@@ -30,10 +30,7 @@ public class TestEngine
     }
 
     [OneTimeTearDown]
-    public static void RunAfterAnyTests()
-    {
-        PersistenceContainer.Stop();
-    }
+    public static void RunAfterAnyTests() => PersistenceContainer.Stop();
 
     private static IConfigurationRoot BuildConfiguration()
     {

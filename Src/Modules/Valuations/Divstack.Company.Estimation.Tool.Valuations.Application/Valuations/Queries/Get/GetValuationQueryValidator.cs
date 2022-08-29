@@ -4,8 +4,6 @@ using FluentValidation;
 
 public sealed class GetValuationQueryValidator : AbstractValidator<GetValuationQuery>
 {
-    public GetValuationQueryValidator()
-    {
+    public GetValuationQueryValidator() =>
         RuleFor(query => query.ValuationId).NotEmpty();
-    }
 }

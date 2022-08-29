@@ -1,5 +1,4 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Valuations.Infrastructure")]
-
 namespace Divstack.Company.Estimation.Tool.Valuations.Persistance;
 
 using Domain.Valuations.Queries.Projections;

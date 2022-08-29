@@ -7,10 +7,7 @@ internal sealed class ValuationsRepository : IValuationsRepository
 {
     private readonly IDocumentSession _documentSession;
 
-    public ValuationsRepository(IDocumentSession documentSession)
-    {
-        _documentSession = documentSession;
-    }
+    public ValuationsRepository(IDocumentSession documentSession) => _documentSession = documentSession;
 
     public async Task<Valuation> GetAsync(ValuationId valuationId, CancellationToken cancellationToken = default)
     {
@@ -23,7 +20,6 @@ internal sealed class ValuationsRepository : IValuationsRepository
     public async Task AddAsync(Valuation valuation, CancellationToken cancellationToken = default)
     {
         var events = valuation.DomainEvents;
-
         _documentSession.Events.StartStream<Valuation>(
             valuation.Id,
             events

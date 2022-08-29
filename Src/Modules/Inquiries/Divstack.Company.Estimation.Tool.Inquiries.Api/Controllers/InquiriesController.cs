@@ -13,10 +13,8 @@ internal sealed class InquiriesController : BaseController
 {
     private readonly IInquiriesModule _inquiriesModule;
 
-    public InquiriesController(IInquiriesModule inquiriesModule)
-    {
+    public InquiriesController(IInquiriesModule inquiriesModule) =>
         _inquiriesModule = inquiriesModule;
-    }
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -26,6 +24,7 @@ internal sealed class InquiriesController : BaseController
     public async Task<ActionResult> Make([FromBody] MakeInquiryCommand makeInquiryCommand)
     {
         var inquiryId = await _inquiriesModule.ExecuteCommandAsync(makeInquiryCommand);
+
         return Created(inquiryId);
     }
 
@@ -33,7 +32,9 @@ internal sealed class InquiriesController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<InquiryVm>> Get(Guid id)
     {
-        var inquiries = await _inquiriesModule.ExecuteQueryAsync(new GetInquiryQuery(id));
+        var query = new GetInquiryQuery(id);
+        var inquiries = await _inquiriesModule.ExecuteQueryAsync(query);
+
         return Ok(inquiries);
     }
 
@@ -41,7 +42,9 @@ internal sealed class InquiriesController : BaseController
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<InquiryListVm>> GetAll()
     {
-        var inquiryListVm = await _inquiriesModule.ExecuteQueryAsync(new GetAllInquiriesQuery());
+        var query = new GetAllInquiriesQuery();
+        var inquiryListVm = await _inquiriesModule.ExecuteQueryAsync(query);
+
         return Ok(inquiryListVm);
     }
 }

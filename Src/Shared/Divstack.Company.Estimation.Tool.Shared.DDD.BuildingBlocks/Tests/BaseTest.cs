@@ -6,17 +6,16 @@ using FluentAssertions;
 public abstract class BaseTest
 {
     protected static TEvent GetPublishedEvent<TEvent>(Entity entity) where TEvent : class,
-        IDomainEvent
-    {
-        return entity.DomainEvents.OfType<TEvent>()
-            .OrderBy(domainEvent => domainEvent.OccurredOn)
-            .FirstOrDefault();
-    }
+        IDomainEvent =>
+        entity.DomainEvents.OfType<TEvent>()
+                           .MinBy(domainEvent => domainEvent.OccurredOn);
 
     protected static void AssertEventNotPublished<TEvent>(Entity entity) where TEvent : class
     {
         entity.DomainEvents.OfType<TEvent>()
-            .FirstOrDefault().Should().BeNull();
+                    .FirstOrDefault()
+                    .Should()
+                    .BeNull();
     }
 
     protected static void AssertEventNotTwicePublished<TEvent>(Entity entity) where TEvent : class

@@ -3,14 +3,26 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
 using Events;
 using Exceptions;
+using Extensions.WithoutDecisionProposals;
 using Proposals;
 using Proposals.Events;
 
-//TODO implement strongly typed ids for marten
 public sealed class Valuation : Entity, IAggregateRoot
 {
     private Valuation() { }
 
+    public Guid Id { get; set; }
+    public ValuationId ValuationId => ValuationId.Of(Id);
+    private InquiryId InquiryId { get; set; }
+    private IList<Proposal> Proposals { get; set; }
+    private ValuationStatus Status { get; set; }
+    private DateTime RequestedDate { get; set; }
+    private DateTime? CompletedDate { get; set; }
+    private EmployeeId CompletedBy { get; set; }
+
+    private IReadOnlyCollection<Proposal> NotCancelledProposals => Proposals.GetNotCancelled();
+    private Proposal? ProposalWaitForDecision => NotCancelledProposals
+        .GetWithNoDecision();
     private Valuation(
         InquiryId inquiryId)
     {
@@ -20,24 +32,8 @@ public sealed class Valuation : Entity, IAggregateRoot
         AddDomainEvent(@event);
     }
 
-    public Guid Id { get; set; }
-    public ValuationId ValuationId => ValuationId.Of(Id);
-    private InquiryId InquiryId { get; set; }
-    private LinkedList<Proposal> Proposals { get; set; }
-    private ValuationStatus Status { get; set; }
-    private DateTime RequestedDate { get; set; }
-    private DateTime? CompletedDate { get; set; }
-    private EmployeeId CompletedBy { get; set; }
-    private IReadOnlyCollection<Proposal> NotCancelledProposals => GetNotCancelledProposals();
 
-    private Proposal? ProposalWaitForDecision => NotCancelledProposals
-        .SingleOrDefault(proposal => !proposal.HasDecision);
-
-    public static Valuation Request(
-        InquiryId inquiryId)
-    {
-        return new Valuation(inquiryId);
-    }
+    public static Valuation Request(InquiryId inquiryId) => new(inquiryId);
 
     public void SuggestProposal(
         Money price,
@@ -93,19 +89,14 @@ public sealed class Valuation : Entity, IAggregateRoot
     public void Complete(EmployeeId employeeId)
     {
         if (Status == ValuationStatus.Completed)
-        {
             throw new ValuationCompletedException(ValuationId);
-        }
 
         if (ProposalWaitForDecision is not null)
-        {
             throw new ProposalWaitForDecisionException(ProposalWaitForDecision.Id);
-        }
 
-        if (!NotCancelledProposals.Any())
-        {
+        var anyProposal = NotCancelledProposals.Any();
+        if (!anyProposal)
             throw new CannotCompleteValuationWithNoProposalException(ValuationId);
-        }
 
         var recentProposal = Proposals.First();
         var @event = new ValuationCompletedDomainEvent(InquiryId, ValuationId, employeeId, recentProposal.Price);
@@ -136,8 +127,12 @@ public sealed class Valuation : Entity, IAggregateRoot
 
     private void Apply(ProposalSuggestedDomainEvent @event)
     {
-        var proposal = Proposal.Suggest(@event.ProposalId, @event.Price, @event.Description, @event.SuggestedBy);
-        Proposals.AddFirst(proposal);
+        var proposal = Proposal.Suggest(
+                        @event.ProposalId,
+                        @event.Price,
+                        @event.Description,
+                        @event.SuggestedBy);
+        Proposals.Add(proposal);
         Status = ValuationStatus.WaitForClientDecision;
     }
 
@@ -152,25 +147,18 @@ public sealed class Valuation : Entity, IAggregateRoot
     {
         Id = @event.ValuationId.Value;
         RequestedDate = SystemTime.Now();
-        Proposals = new LinkedList<Proposal>();
+        Proposals = Enumerable.Empty<Proposal>().ToList();
         InquiryId = @event.InquiryId;
         Status = ValuationStatus.WaitForProposal;
     }
 
     private Proposal GetProposal(ProposalId proposalId)
     {
-        var proposal = NotCancelledProposals.SingleOrDefault(proposal => proposal.Id == proposalId);
+        var proposal = NotCancelledProposals.Get(proposalId);
         if (proposal is null)
             throw new ProposalNotFoundException(proposalId);
 
         return proposal;
-    }
-
-    private IReadOnlyCollection<Proposal> GetNotCancelledProposals()
-    {
-        return Proposals
-            .Where(proposal => !proposal.IsCancelled)
-            .ToList();
     }
 
     internal void When(object @event)

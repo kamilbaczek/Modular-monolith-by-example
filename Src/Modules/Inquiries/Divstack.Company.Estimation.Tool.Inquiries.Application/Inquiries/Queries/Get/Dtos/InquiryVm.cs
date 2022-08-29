@@ -1,3 +1,3 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.Get.Dtos;
 
-public record InquiryVm(InquiryDetailsDto InquiryDetails);
+public record struct InquiryVm(InquiryDetailsDto InquiryDetails);

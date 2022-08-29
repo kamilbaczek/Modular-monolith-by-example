@@ -2,10 +2,7 @@
 
 public sealed class InquiriesServiceItemDto
 {
-    public InquiriesServiceItemDto(Guid serviceId)
-    {
-        ServiceId = serviceId;
-    }
+    public InquiriesServiceItemDto(Guid serviceId) => ServiceId = serviceId;
 
     public Guid ServiceId { get; }
 }

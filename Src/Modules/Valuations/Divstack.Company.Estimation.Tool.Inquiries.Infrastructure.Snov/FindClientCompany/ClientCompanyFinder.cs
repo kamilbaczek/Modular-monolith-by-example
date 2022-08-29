@@ -10,10 +10,8 @@ internal sealed class ClientCompanyFinder : IClientCompanyFinder
 {
     private readonly ICompanyFinderHttpClient _companyFinderHttpClient;
 
-    public ClientCompanyFinder(ICompanyFinderHttpClient companyFinderHttpClient)
-    {
+    public ClientCompanyFinder(ICompanyFinderHttpClient companyFinderHttpClient) =>
         _companyFinderHttpClient = companyFinderHttpClient;
-    }
 
     public async Task<ClientCompany> FindCompany(Email email)
     {
