@@ -41,7 +41,7 @@ jobs:
     - name: Install stryker
       run:  dotnet tool install --global dotnet-stryker
      
-    - name: Valuation Domain Tests Mutation
+    - name: Valuations - Domain Tests Mutations
       run:  cd Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests && dotnet stryker 
      
     - name: Valuations - Integrations Tests
