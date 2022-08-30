@@ -2,13 +2,7 @@
 
 public record ValuationId(Guid Value)
 {
-    public static ValuationId Create()
-    {
-        return new ValuationId(Guid.NewGuid());
-    }
+    public static ValuationId Create() => new(Guid.NewGuid());
 
-    public static ValuationId Of(Guid guid)
-    {
-        return new ValuationId(guid);
-    }
+    public static ValuationId Of(Guid guid) => new(guid);
 }

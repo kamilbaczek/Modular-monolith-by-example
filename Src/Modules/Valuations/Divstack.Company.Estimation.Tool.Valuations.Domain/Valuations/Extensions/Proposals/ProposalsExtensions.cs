@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Extensions.WithoutDecisionProposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Extensions.Proposals;
 
-using Proposals;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
 internal static class ProposalsExtensions
 {

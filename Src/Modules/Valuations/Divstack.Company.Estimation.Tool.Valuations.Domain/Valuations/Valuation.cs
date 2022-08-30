@@ -3,7 +3,7 @@ namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
 using Events;
 using Exceptions;
-using Extensions.WithoutDecisionProposals;
+using Extensions.Proposals;
 using Proposals;
 using Proposals.Events;
 

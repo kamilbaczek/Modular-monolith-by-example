@@ -3,7 +3,6 @@
 using Abstractions.BackgroundProcessing;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
-using Storage;
 
 internal static class Extensions
 {
@@ -19,8 +18,5 @@ internal static class Extensions
         return services;
     }
 
-    internal static void UseBackgroundProcessing(this IApplicationBuilder app)
-    {
-        app.UseHangfireDashboard();
-    }
+    internal static void UseBackgroundProcessing(this IApplicationBuilder app) => app.UseHangfireDashboard();
 }
