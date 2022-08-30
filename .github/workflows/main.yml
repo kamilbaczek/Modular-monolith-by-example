@@ -42,10 +42,10 @@ jobs:
       run:  dotnet tool install --global dotnet-stryker
      
     - name: Valuations - Domain Tests Mutations
-      run:  cd Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests && dotnet stryker --verbosity trace --reporter "cleartext"
+      run:  cd Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests && dotnet stryker
     
     - name: Priorities - Domain Tests Mutations
-      run:  cd Src/Modules/Priorities/Tests/Divstack.Company.Estimation.Tool.Priorities.Domain.Tests && dotnet stryker --verbosity trace --reporter "cleartext"
+      run:  cd Src/Modules/Priorities/Tests/Divstack.Company.Estimation.Tool.Priorities.Domain.Tests && dotnet stryker
  
     - name: Valuations - Integrations Tests
       uses: zyborg/dotnet-tests-report@v1
