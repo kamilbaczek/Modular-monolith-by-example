@@ -4,6 +4,6 @@
       "cleartext"
     ],
     "project": "Divstack.Company.Estimation.Tool.Priorities.Domain.csproj",
-    "solution": "../../../../../Divstack.Company.Estimation.Tool.sln"
+    "solution": "../../../../Divstack.Company.Estimation.Tool.sln"
   }
 }
