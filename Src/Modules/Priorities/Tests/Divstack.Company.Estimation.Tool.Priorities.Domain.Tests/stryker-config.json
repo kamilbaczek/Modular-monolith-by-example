@@ -3,7 +3,7 @@
     "reporters": [
       "cleartext"
     ],
-    "project": "../Divstack.Company.Estimation.Tool.Priorities.Domain/Divstack.Company.Estimation.Tool.Priorities.Domain.csproj",
+    "project": "Divstack.Company.Estimation.Tool.Priorities.Domain.csproj",
     "solution": "../../../../Divstack.Company.Estimation.Tool.sln"
   }
 }
