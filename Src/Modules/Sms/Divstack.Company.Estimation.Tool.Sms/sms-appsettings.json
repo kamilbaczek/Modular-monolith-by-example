@@ -1,6 +1,5 @@
 ﻿{
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "SmsModule": true
   }
 }

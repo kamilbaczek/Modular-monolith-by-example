@@ -1,17 +1,14 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain.Tests;
 
-using System;
 using Common.Builders;
 using Events;
-using FluentAssertions;
-using NUnit.Framework;
 using Shared.DDD.BuildingBlocks;
 
 public class RedefinePrioritiesTests : BasePriorityTest
 {
     private const int CompanySize = 1000;
 
-    private static readonly object[] _datesTestCases =
+    private static readonly object[] DatesTestCases =
     {
         new object[]
         {
@@ -24,13 +21,13 @@ public class RedefinePrioritiesTests : BasePriorityTest
     };
 
     [Test]
-    [TestCaseSource(nameof(_datesTestCases))]
+    [TestCaseSource(nameof(DatesTestCases))]
     public void Given_Define_Then_DeadlineIsFixed(DateTime nowDate, int daysToDeadlineFromNow, DateTime expectedDeadline)
     {
         SystemTime.SetDateTime(nowDate);
         var deadline = A.Deadline().WithDeadline(daysToDeadlineFromNow);
-        var inquiryId = InquiryId.Create(new Guid());
-        var valuationId = ValuationId.Create(new Guid());
+        var inquiryId = InquiryId.Create();
+        var valuationId = ValuationId.Create();
 
         var priority = Priority.Define(valuationId, inquiryId, CompanySize, deadline);
 
@@ -41,9 +38,10 @@ public class RedefinePrioritiesTests : BasePriorityTest
     [Test]
     public void Given_Redefine_When_CloserToDeadline_Then_PriorityIncreased()
     {
-        SystemTime.SetDateTime(new DateTime(2022, 01, 01));
+        var currentDate = new DateTime(2022, 01, 01);
+        SystemTime.SetDateTime(currentDate);
         Priority priority = A.Priority().WithCompanySize(CompanySize);
-        SystemTime.SetDateTime(new DateTime(2022, 01, 10));
+        SystemTime.SetDateTime(currentDate.AddDays(10));
 
         priority.Redefine(CompanySize);
 

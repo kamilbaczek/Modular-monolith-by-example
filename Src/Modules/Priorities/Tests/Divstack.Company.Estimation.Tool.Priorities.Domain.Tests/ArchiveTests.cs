@@ -2,8 +2,6 @@
 
 using Common.Builders;
 using Events;
-using FluentAssertions;
-using NUnit.Framework;
 
 public class ArchiveTests : BasePriorityTest
 {

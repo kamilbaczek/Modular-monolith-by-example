@@ -4,8 +4,7 @@
       "WorksDaysToDeadlineFromNow": 2
     }
   },
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "PrioritiesModule": true
   },
   "ConnectionStrings": {

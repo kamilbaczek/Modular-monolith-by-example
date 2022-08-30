@@ -19,8 +19,7 @@
   "ConnectionStrings": {
     "Users": ""
   },
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "UsersModule": true
   }
 }

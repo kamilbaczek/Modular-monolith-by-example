@@ -6,22 +6,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="DotNet.Testcontainers" Version="1.7.0-beta.2269" />
-    <PackageReference Include="Faker.Net" Version="1.5.138" />
-    <PackageReference Include="FluentAssertions" Version="6.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
-    <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="NServiceBus.Testing" Version="7.4.1" />
-    <PackageReference Include="NUnit" Version="3.13.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.10.2-beta" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
-    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageReference Include="DotNet.Testcontainers" Version="1.7.0-beta.2269"/>
+    <PackageReference Include="Faker.Net" Version="1.5.138"/>
+    <PackageReference Include="FluentAssertions" Version="6.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0"/>
+    <PackageReference Include="Moq" Version="4.16.1"/>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
+    <PackageReference Include="NServiceBus.Testing" Version="7.4.1"/>
+    <PackageReference Include="NUnit" Version="3.13.2"/>
+    <PackageReference Include="NUnit3TestAdapter" Version="4.0.0"/>
+    <PackageReference Include="SpecFlow.NUnit" Version="3.10.2-beta"/>
+    <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0"/>
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1"/>
   </ItemGroup>
 
   <ItemGroup>
@@ -31,9 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />
-    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj" />
+    <ProjectReference Include="..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj"/>
+    <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting\Divstack.Company.Estimation.Tool.Shared.IntegrationTesting.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Application\Divstack.Company.Estimation.Tool.Valuations.Application.csproj"/>
   </ItemGroup>
 
   <ItemGroup>

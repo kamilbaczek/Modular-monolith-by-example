@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain.Tests.Common.Builders;
 
-using System;
 using Deadlines;
 
 internal sealed class PrioritiesBuilder

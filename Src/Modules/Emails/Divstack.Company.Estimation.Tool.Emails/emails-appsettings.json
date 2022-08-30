@@ -7,8 +7,7 @@
     "ServerLogin": "",
     "ServerPassword": ""
   },
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "EmailsModule": true
   }
 }

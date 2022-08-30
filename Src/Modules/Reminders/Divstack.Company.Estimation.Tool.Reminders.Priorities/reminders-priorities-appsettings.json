@@ -4,8 +4,7 @@
       "DaysBeforeDeadline": 2
     }
   },
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "RemindersModule": true
   }
 }

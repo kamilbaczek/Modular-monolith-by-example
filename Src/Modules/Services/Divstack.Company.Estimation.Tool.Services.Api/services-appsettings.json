@@ -2,8 +2,7 @@
   "ConnectionStrings": {
     "Services": ""
   },
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "ServicesModule": true
   }
 }

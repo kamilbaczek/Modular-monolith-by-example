@@ -38,8 +38,7 @@
     "MinimumSecondsBetweenFailureNotifications": 60,
     "MaximumExecutionHistoriesPerEndpoint": 15
   },
-  "FeatureManagement":
-  {
+  "FeatureManagement": {
     "ObservabilityModule": true
   }
 }

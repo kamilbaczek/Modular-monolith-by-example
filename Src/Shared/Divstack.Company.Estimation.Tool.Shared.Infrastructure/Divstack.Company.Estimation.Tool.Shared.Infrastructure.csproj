@@ -8,42 +8,42 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="6.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="6.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.Publisher.ApplicationInsights" Version="6.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.System" Version="6.0.0" />
-    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.1-rc2.3" />
-    <PackageReference Include="Hangfire" Version="1.8.0-beta3" />
-    <PackageReference Include="Hangfire.Mongo" Version="0.7.28" />
-    <PackageReference Include="MassTransit" Version="8.0.2" />
-    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.2" />
-    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0-preview3.21293.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.3" />
-    <PackageReference Include="Microsoft.OpenApi" Version="1.3.0-preview" />
-    <PackageReference Include="NServiceBus" Version="7.7.3" />
-    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0" />
-    <PackageReference Include="NServiceBus.Transport.AzureServiceBus" Version="2.0.2" />
-    <PackageReference Include="Scrutor" Version="3.3.0" />
-    <PackageReference Include="Sentry.AspNetCore" Version="3.12.0-alpha.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.3.0"/>
+    <PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="6.0.0"/>
+    <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="6.0.0"/>
+    <PackageReference Include="AspNetCore.HealthChecks.Publisher.ApplicationInsights" Version="6.0.0"/>
+    <PackageReference Include="AspNetCore.HealthChecks.System" Version="6.0.0"/>
+    <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.1-rc2.3"/>
+    <PackageReference Include="Hangfire" Version="1.8.0-beta3"/>
+    <PackageReference Include="Hangfire.Mongo" Version="0.7.28"/>
+    <PackageReference Include="MassTransit" Version="8.0.2"/>
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.2"/>
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1"/>
+    <PackageReference Include="MediatR" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0-preview3.21293.2"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="6.0.0"/>
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="6.0.3"/>
+    <PackageReference Include="Microsoft.OpenApi" Version="1.3.0-preview"/>
+    <PackageReference Include="NServiceBus" Version="7.7.3"/>
+    <PackageReference Include="NServiceBus.Extensions.Hosting" Version="1.1.0"/>
+    <PackageReference Include="NServiceBus.Transport.AzureServiceBus" Version="2.0.2"/>
+    <PackageReference Include="Scrutor" Version="3.3.0"/>
+    <PackageReference Include="Sentry.AspNetCore" Version="3.12.0-alpha.1"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Modules\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents\Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.csproj" />
-    <ProjectReference Include="..\..\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
-    <ProjectReference Include="..\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj" />
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.Persistance\Divstack.Company.Estimation.Tool.Shared.Persistance.csproj" />
+    <ProjectReference Include="..\..\Modules\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents\Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.csproj"/>
+    <ProjectReference Include="..\..\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj"/>
+    <ProjectReference Include="..\Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions\Divstack.Company.Estimation.Tool.Shared.Abstractions.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks\Divstack.Company.Estimation.Tool.Shared.DDD.BuildingBlocks.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.Persistance\Divstack.Company.Estimation.Tool.Shared.Persistance.csproj"/>
   </ItemGroup>
 
   <ItemGroup>
