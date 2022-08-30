@@ -45,7 +45,7 @@ jobs:
       run:  cd Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests && dotnet stryker 
     
     - name: Priorities - Domain Tests Mutations
-      run:  cd Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Priorities.Domain.Tests && dotnet stryker 
+      run:  cd Src/Modules/Priorities/Divstack.Company.Estimation.Tool.Priorities.Domain.Tests && dotnet stryker 
  
     - name: Valuations - Integrations Tests
       uses: zyborg/dotnet-tests-report@v1
