@@ -9,7 +9,8 @@ internal static class HealthChecksModule
 
     internal static IServiceCollection AddPersistanceHealthChecks(this IServiceCollection services, string connectionString)
     {
-        services.AddHealthChecks().AddNpgSql(connectionString, timeout: TimeSpan.FromMinutes(5), tags: new[] { Valuations, Database });
+        //TODO add health checks for the database
+        //sservices.AddHealthChecks().AddNpgSql(connectionString, timeout: TimeSpan.FromMinutes(5), tags: new[] { Valuations, Database });
 
         return services;
     }
