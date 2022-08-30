@@ -9,8 +9,5 @@ using Mongo;
 
 internal static class SharedPersistanceModule
 {
-    public static void UseSharedPersistance(this IApplicationBuilder app)
-    {
-        app.UseMongo();
-    }
+    public static void UseSharedPersistance(this IApplicationBuilder app) => app.UseMongo();
 }

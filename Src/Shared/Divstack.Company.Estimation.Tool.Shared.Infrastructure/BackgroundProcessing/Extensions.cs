@@ -9,7 +9,7 @@ internal static class Extensions
 {
     internal static IServiceCollection AddBackgroundProcessing(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddHangfire(hangfireConfiguration => hangfireConfiguration.UseMongoAsStorage(configuration));
+        services.AddHangfire(hangfireConfiguration => hangfireConfiguration.UseInMemoryStorage());
         services.AddHangfireServer();
 
         services.AddScoped<IBackgroundJobScheduler, BackgroundJobScheduler>();

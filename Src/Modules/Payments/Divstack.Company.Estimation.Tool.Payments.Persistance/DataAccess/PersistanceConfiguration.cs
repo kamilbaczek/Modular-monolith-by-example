@@ -4,8 +4,5 @@ using Domain.Payments.Configurations;
 
 internal static class PersistanceConfiguration
 {
-    internal static void Configure()
-    {
-        PaymentPersistanceConfiguration.Configure();
-    }
+    internal static void Configure() => PaymentPersistanceConfiguration.Configure();
 }

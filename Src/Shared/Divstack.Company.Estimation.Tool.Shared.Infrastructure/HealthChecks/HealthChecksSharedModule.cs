@@ -15,9 +15,7 @@ internal static class HealthChecksSharedModule
     {
         services.AddHealthChecks()
             .AddMemoryHealthCheck()
-            .AddBackgroundProcessingHealthCheck()
-            .AddApplicationInsightsPublisher();
-
+            .AddBackgroundProcessingHealthCheck();
         return services;
     }
 
