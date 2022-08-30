@@ -3,7 +3,7 @@
   {
     "reporters": [
       "progress",
-      "html"
+      "cleartext"
     ],
     "project": "Divstack.Company.Estimation.Tool.Valuations.Domain.csproj",
     "solution": "../../../../Divstack.Company.Estimation.Tool.sln"
