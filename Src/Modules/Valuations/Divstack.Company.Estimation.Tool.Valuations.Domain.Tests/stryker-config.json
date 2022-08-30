@@ -2,7 +2,6 @@
   "stryker-config":
   {
     "reporters": [
-      "progress",
       "cleartext"
     ],
     "project": "Divstack.Company.Estimation.Tool.Valuations.Domain.csproj",
