@@ -52,14 +52,10 @@ public sealed class Proposal : Entity
     internal void Approve()
     {
         if (IsCancelled)
-        {
             throw new ProposalIsCancelledException(Id);
-        }
 
         if (HasDecision)
-        {
             throw new ProposalAlreadyHasDecisionException(Id);
-        }
 
         var now = SystemTime.Now();
         Decision = ProposalDecision.AcceptDecision(now);
@@ -68,25 +64,16 @@ public sealed class Proposal : Entity
     internal void Reject()
     {
         if (IsCancelled)
-        {
             throw new ProposalIsCancelledException(Id);
-        }
 
         if (HasDecision)
-        {
             throw new ProposalAlreadyHasDecisionException(Id);
-        }
 
         Decision = ProposalDecision.RejectDecision(DateTime.Now);
     }
 
     internal void Cancel(EmployeeId employeeId)
     {
-        if (IsCancelled)
-        {
-            throw new ProposalAlreadyCancelledException(Id);
-        }
-
         Cancelled = SystemTime.Now();
         CancelledBy = employeeId;
     }

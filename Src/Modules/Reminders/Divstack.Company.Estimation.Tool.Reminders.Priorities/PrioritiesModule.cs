@@ -6,7 +6,7 @@ namespace Divstack.Company.Estimation.Tool.Reminders.Priorities;
 using DeadlineClose.Reminder;
 using Microsoft.Extensions.DependencyInjection;
 
-internal static class ValuationsModule
+internal static class PrioritiesModule
 {
     private const string Configuration = "Configuration";
     private const string Reminder = "Reminder";
