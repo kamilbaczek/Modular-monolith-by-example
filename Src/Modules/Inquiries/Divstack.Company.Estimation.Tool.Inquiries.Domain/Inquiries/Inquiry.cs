@@ -40,18 +40,14 @@ public sealed class Inquiry : Entity, IAggregateRoot
         IServiceExistingChecker serviceExistingChecker)
     {
         if (!services.Any())
-        {
             throw new InquiryCannotBeEmptyException();
-        }
 
         var servicesIds = services.Select(service => service.ServiceId.Value)
             .ToList()
             .AsReadOnly();
-        var areServicesExists = await serviceExistingChecker.ExistAsync(servicesIds);
-        if (areServicesExists is false)
-        {
+        var servicesExists = await serviceExistingChecker.ExistAsync(servicesIds);
+        if (!servicesExists)
             throw new InvalidServicesException(servicesIds);
-        }
 
         return new Inquiry(services, client);
     }
