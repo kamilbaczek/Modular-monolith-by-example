@@ -9,16 +9,13 @@ internal sealed class
     GetValuationHistoryByIdQueryHandler : IRequestHandler<GetValuationHistoryByIdQuery, ValuationHistoryVm>
 {
     private readonly IDocumentStore _documentStore;
-    public GetValuationHistoryByIdQueryHandler(IDocumentStore documentStore)
-    {
-        _documentStore = documentStore;
-    }
+    public GetValuationHistoryByIdQueryHandler(IDocumentStore documentStore) => _documentStore = documentStore;
 
     public async Task<ValuationHistoryVm> Handle(GetValuationHistoryByIdQuery request,
         CancellationToken cancellationToken)
     {
-        var historyDto = await _documentStore
-            .LightweightSession()
+        await using var documentSession = _documentStore.LightweightSession();
+        var historyDto = await documentSession
             .Query<ValuationHistoryDto>()
             .Where(valuation => valuation.Id == request.ValuationId)
             .FirstAsync(cancellationToken);

@@ -16,10 +16,8 @@ internal sealed class GetValuationsQueryHandler : IRequestHandler<GetValuationQu
 
     public async Task<ValuationVm> Handle(GetValuationQuery request, CancellationToken cancellationToken)
     {
-        var valuationInformationDtos = await _documentStore
-            .LightweightSession()
-            .LoadAsync<ValuationInformationDto>(request.ValuationId, cancellationToken);
-
+        await using var documentSession = _documentStore.LightweightSession();
+        var valuationInformationDtos = await documentSession.LoadAsync<ValuationInformationDto>(request.ValuationId, cancellationToken);
         return new ValuationVm(valuationInformationDtos);
     }
 }

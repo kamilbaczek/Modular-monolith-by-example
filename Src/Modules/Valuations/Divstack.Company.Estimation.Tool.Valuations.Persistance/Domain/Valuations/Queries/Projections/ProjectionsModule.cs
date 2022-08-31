@@ -16,6 +16,7 @@ internal static class ProjectionsModule
         services.AddMarten(options =>
             {
                 options.Connection(connectionString);
+                options.RetryPolicy();
                 options.Projections.Add<ProposalsAggregation>(ProjectionLifecycle.Inline);
                 options.Projections.Add<HistoryAggregation>(ProjectionLifecycle.Inline);
                 options.Projections.Add<ValuationInformationAggregation>(ProjectionLifecycle.Inline);

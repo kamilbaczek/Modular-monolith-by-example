@@ -7,15 +7,13 @@ using MediatR;
 internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>
 {
     private readonly IDocumentStore _documentStore;
-    public GetAllValuationsQueryHandler(IDocumentStore documentStore)
-    {
-        _documentStore = documentStore;
-    }
+
+    public GetAllValuationsQueryHandler(IDocumentStore documentStore) => _documentStore = documentStore;
 
     public async Task<ValuationListVm> Handle(GetAllValuationsQuery request, CancellationToken cancellationToken)
     {
-        var valuations = await _documentStore
-            .LightweightSession()
+        await using var documentSession = _documentStore.LightweightSession();
+        var valuations = await documentSession
             .Query<ValuationListItemDto>()
             .OrderByDescending(valuationListItemDto => valuationListItemDto.RequestedDate)
             .ToListAsync(cancellationToken);
