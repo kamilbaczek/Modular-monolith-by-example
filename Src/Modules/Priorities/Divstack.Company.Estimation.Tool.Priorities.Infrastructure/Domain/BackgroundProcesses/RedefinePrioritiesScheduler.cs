@@ -10,10 +10,8 @@ internal sealed class RedefinePrioritiesScheduler : IHostedService
     private const string RedefinePriorities = "redefine-priorities";
     private readonly IServiceScopeFactory _scopeFactory;
 
-    public RedefinePrioritiesScheduler(IServiceScopeFactory scopeFactory)
-    {
-        _scopeFactory = scopeFactory;
-    }
+    public RedefinePrioritiesScheduler(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
+
     public Task StartAsync(CancellationToken cancellationToken)
     {
         using var scope = _scopeFactory.CreateScope();
@@ -24,8 +22,6 @@ internal sealed class RedefinePrioritiesScheduler : IHostedService
 
         return Task.CompletedTask;
     }
-    public Task StopAsync(CancellationToken cancellationToken)
-    {
-        return Task.CompletedTask;
-    }
+
+    public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }

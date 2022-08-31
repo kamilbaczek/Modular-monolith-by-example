@@ -3,4 +3,6 @@
 public interface IEventBusConfiguration
 {
     string ConnectionString { get; }
+    string StorageConnectionString { get; }
+    string DatabaseName { get; }
 }

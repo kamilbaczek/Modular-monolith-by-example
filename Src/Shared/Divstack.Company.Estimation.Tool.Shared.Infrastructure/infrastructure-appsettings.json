@@ -40,5 +40,13 @@
   },
   "FeatureManagement": {
     "ObservabilityModule": true
+  },
+ "EventBus":
+  {
+    "ConnectionString":"",
+    "Storage": {
+      "ConnectionString":"",
+      "DatabaseName":""
+    }
   }
 }
