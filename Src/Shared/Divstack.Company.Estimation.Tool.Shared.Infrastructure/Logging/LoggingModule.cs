@@ -17,8 +17,5 @@ internal static class LoggingModule
         });
     }
 
-    internal static void UseLogging(this IApplicationBuilder app)
-    {
-        app.UseHttpLogging();
-    }
+    internal static void UseLogging(this IApplicationBuilder app) => app.UseHttpLogging();
 }

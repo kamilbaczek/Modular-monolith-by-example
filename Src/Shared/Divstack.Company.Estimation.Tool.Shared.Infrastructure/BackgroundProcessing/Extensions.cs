@@ -8,12 +8,11 @@ using Microsoft.AspNetCore.Routing;
 
 internal static class Extensions
 {
+    private const string BackgroundProcessing = "/background-processing";
+
     internal static IServiceCollection AddBackgroundProcessing(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddHangfire(hangfireConfiguration =>
-        {
-            hangfireConfiguration.UseInMemoryStorage();
-        });
+        services.AddHangfire(hangfireConfiguration => hangfireConfiguration.UseInMemoryStorage());
         services.AddHangfireServer();
 
         services.AddScoped<IBackgroundJobScheduler, BackgroundJobScheduler>();
@@ -31,9 +30,10 @@ internal static class Extensions
                 Authorization = new[]
                 {
                     new DashboardAuthorizationFilter()
-                }
+                },
+                IsReadOnlyFunc = _ => true
             };
-        app.UseHangfireDashboard("/hangfire", dashboardOptions);
+        app.UseHangfireDashboard(BackgroundProcessing, dashboardOptions);
     }
 
     internal static IEndpointRouteBuilder MapBackgroundProcessing(
