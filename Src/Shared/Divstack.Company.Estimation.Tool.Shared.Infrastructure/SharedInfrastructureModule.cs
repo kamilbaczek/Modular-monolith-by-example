@@ -53,8 +53,9 @@ internal static class SharedInfrastructureModule
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapSharedHealthChecks();
             endpoints.MapControllers();
+            endpoints.MapBackgroundProcessing();
+            endpoints.MapSharedHealthChecks();
         });
     }
 

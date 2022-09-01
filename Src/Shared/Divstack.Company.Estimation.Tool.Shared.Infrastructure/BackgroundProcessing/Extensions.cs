@@ -4,11 +4,10 @@ using Abstractions.BackgroundProcessing;
 using Dashboard;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
 
 internal static class Extensions
 {
-    private const string BackgroundProcessingPath = "/background-processing";
-
     internal static IServiceCollection AddBackgroundProcessing(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddHangfire(hangfireConfiguration =>
@@ -32,12 +31,16 @@ internal static class Extensions
                 Authorization = new[]
                 {
                     new DashboardAuthorizationFilter()
-                },
-                AsyncAuthorization = new[]
-                {
-                    new DashboardAuthorizationFilter()
-                },
+                }
             };
-        app.UseHangfireDashboard(BackgroundProcessingPath, dashboardOptions);
+        app.UseHangfireDashboard("/hangfire", dashboardOptions);
+    }
+
+    internal static IEndpointRouteBuilder MapBackgroundProcessing(
+        this IEndpointRouteBuilder endpoints)
+    {
+        endpoints.MapHangfireDashboard();
+
+        return endpoints;
     }
 }
