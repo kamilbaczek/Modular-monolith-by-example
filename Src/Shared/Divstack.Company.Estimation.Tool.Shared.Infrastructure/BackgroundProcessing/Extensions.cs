@@ -36,7 +36,8 @@ internal static class Extensions
                     new DashboardAuthorizationFilter()
                 }
             };
-        endpoints.MapHangfireDashboard(BackgroundProcessingPath, dashboardOptions);
+        endpoints.MapHangfireDashboard(BackgroundProcessingPath, dashboardOptions)
+            .RequireAuthorization();
 
         return endpoints;
     }

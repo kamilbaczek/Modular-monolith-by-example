@@ -47,14 +47,15 @@ internal static class SharedInfrastructureModule
         app.UseSwaggerModule();
         app.UseExceptionHandling();
         app.UseLogging();
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-            endpoints.MapBackgroundProcessing();
-            endpoints.MapSharedHealthChecks();
-        });
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapBackgroundProcessing();
+            endpoints.MapSharedHealthChecks();
+            endpoints.MapControllers();
+        });
     }
 
     internal static IHostBuilder UseSharedInfrastructure(this IHostBuilder hostBuilder)
