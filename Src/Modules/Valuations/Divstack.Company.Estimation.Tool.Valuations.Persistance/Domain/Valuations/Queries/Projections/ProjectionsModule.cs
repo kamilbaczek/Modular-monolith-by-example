@@ -14,17 +14,18 @@ internal static class ProjectionsModule
     internal static IServiceCollection AddProjections(this IServiceCollection services, string connectionString)
     {
         services.AddMarten(options =>
-            {
-                options.Connection(connectionString);
-                options.RetryPolicy();
-                options.Projections.Add<ProposalsAggregation>(ProjectionLifecycle.Inline);
-                options.Projections.Add<HistoryAggregation>(ProjectionLifecycle.Inline);
-                options.Projections.Add<ValuationInformationAggregation>(ProjectionLifecycle.Inline);
-                options.Projections.Add<ValuationListItemAggregation>(ProjectionLifecycle.Inline);
+        {
+            options.UseDefaultSerialization(nonPublicMembersStorage: NonPublicMembersStorage.NonPublicSetters);
+            options.Connection(connectionString);
+            options.RetryPolicy();
 
-                options.AutoCreateSchemaObjects = AutoCreate.All;
-            }
-        );
+            options.Projections.Add<ProposalsAggregation>(ProjectionLifecycle.Inline);
+            options.Projections.Add<HistoryAggregation>(ProjectionLifecycle.Inline);
+            options.Projections.Add<ValuationInformationAggregation>(ProjectionLifecycle.Inline);
+            options.Projections.Add<ValuationListItemAggregation>(ProjectionLifecycle.Inline);
+
+            options.AutoCreateSchemaObjects = AutoCreate.All;
+        });
 
         return services;
     }

@@ -22,7 +22,7 @@ internal sealed class
 
         var historicalEntries = historyDto
             .History
-            .OrderBy(historicalEntry => historicalEntry.ChangeDate)
+            .OrderByDescending(historicalEntry => historicalEntry.ChangeDate)
             .ToList();
 
         var vm = new ValuationHistoryVm(historicalEntries);

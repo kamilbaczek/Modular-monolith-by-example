@@ -21,6 +21,7 @@ internal sealed class ValuationsRepository : IValuationsRepository
     public async Task AddAsync(Valuation valuation, CancellationToken cancellationToken = default)
     {
         var events = valuation.DomainEvents;
+
         await using var documentSession = _documentStore.LightweightSession();
         documentSession.Events.StartStream<Valuation>(
             valuation.Id,
