@@ -49,10 +49,10 @@ internal static class SharedInfrastructureModule
         app.UseLogging();
         app.UseSharedPersistance();
         app.UseSharedHealthChecks();
+        app.UseBackgroundProcessing();
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapBackgroundProcessing();
             endpoints.MapSharedHealthChecks();
             endpoints.MapControllers();
         });

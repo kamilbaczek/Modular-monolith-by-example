@@ -4,7 +4,6 @@ using Abstractions.BackgroundProcessing;
 using Dashboard;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
 
 internal static class Extensions
 {
@@ -25,8 +24,7 @@ internal static class Extensions
         return services;
     }
 
-    internal static IEndpointRouteBuilder MapBackgroundProcessing(
-        this IEndpointRouteBuilder endpoints)
+    internal static void UseBackgroundProcessing(this IApplicationBuilder app)
     {
         var dashboardOptions =
             new DashboardOptions
@@ -34,11 +32,12 @@ internal static class Extensions
                 Authorization = new[]
                 {
                     new DashboardAuthorizationFilter()
-                }
+                },
+                AsyncAuthorization = new[]
+                {
+                    new DashboardAuthorizationFilter()
+                },
             };
-        endpoints.MapHangfireDashboard(BackgroundProcessingPath, dashboardOptions)
-            .RequireAuthorization();
-
-        return endpoints;
+        app.UseHangfireDashboard(BackgroundProcessingPath, dashboardOptions);
     }
 }
