@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.BackgroundProcessing;
 
 using Abstractions.BackgroundProcessing;
+using Dashboard;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 
@@ -18,5 +19,17 @@ internal static class Extensions
         return services;
     }
 
-    internal static void UseBackgroundProcessing(this IApplicationBuilder app) => app.UseHangfireDashboard();
+    internal static void UseBackgroundProcessing(this IApplicationBuilder app)
+    {
+        app.UseHangfireDashboard();
+        var dashboardOptions =
+            new DashboardOptions
+            {
+                Authorization = new[]
+                {
+                    new DashboardAuthorizationFilter()
+                }
+            };
+        app.UseHangfireDashboard(string.Empty, dashboardOptions);
+    }
 }
