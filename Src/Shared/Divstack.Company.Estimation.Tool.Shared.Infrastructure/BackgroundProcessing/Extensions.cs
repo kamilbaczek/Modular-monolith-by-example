@@ -4,12 +4,18 @@ using Abstractions.BackgroundProcessing;
 using Dashboard;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Routing;
 
 internal static class Extensions
 {
+    private const string BackgroundProcessingPath = "/background-processing";
+
     internal static IServiceCollection AddBackgroundProcessing(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddHangfire(hangfireConfiguration => hangfireConfiguration.UseInMemoryStorage());
+        services.AddHangfire(hangfireConfiguration =>
+        {
+            hangfireConfiguration.UseInMemoryStorage();
+        });
         services.AddHangfireServer();
 
         services.AddScoped<IBackgroundJobScheduler, BackgroundJobScheduler>();
@@ -19,9 +25,9 @@ internal static class Extensions
         return services;
     }
 
-    internal static void UseBackgroundProcessing(this IApplicationBuilder app)
+    internal static IEndpointRouteBuilder MapBackgroundProcessing(
+        this IEndpointRouteBuilder endpoints)
     {
-        app.UseHangfireDashboard();
         var dashboardOptions =
             new DashboardOptions
             {
@@ -30,6 +36,8 @@ internal static class Extensions
                     new DashboardAuthorizationFilter()
                 }
             };
-        app.UseHangfireDashboard(string.Empty, dashboardOptions);
+        endpoints.MapHangfireDashboard(BackgroundProcessingPath, dashboardOptions);
+
+        return endpoints;
     }
 }

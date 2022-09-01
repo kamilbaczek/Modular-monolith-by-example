@@ -47,10 +47,10 @@ internal static class SharedInfrastructureModule
         app.UseSwaggerModule();
         app.UseExceptionHandling();
         app.UseLogging();
-        app.UseBackgroundProcessing();
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapBackgroundProcessing();
             endpoints.MapSharedHealthChecks();
         });
         app.UseSharedPersistance();
