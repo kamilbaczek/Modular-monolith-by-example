@@ -96,14 +96,6 @@ jobs:
         name: codecov-umbrella # optional
         fail_ci_if_error: true # optional (default = false)
         verbose: true # optional (default = false)
-      
-  security:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout 
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
         
     - name: Run Snyk to check for vulnerabilities
       uses: snyk/actions/dotnet@master
