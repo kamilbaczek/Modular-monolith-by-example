@@ -1,5 +1,4 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Push")]
-
 namespace Divstack.Company.Estimation.Tool.Push.Api;
 
 using Common.CurrentUser;

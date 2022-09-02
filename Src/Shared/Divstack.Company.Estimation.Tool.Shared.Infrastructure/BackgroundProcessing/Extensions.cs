@@ -5,6 +5,7 @@ using Dashboard;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.Hosting;
 
 internal static class Extensions
 {
@@ -24,12 +25,13 @@ internal static class Extensions
 
     internal static void UseBackgroundProcessing(this IApplicationBuilder app)
     {
+        var environment = app.ApplicationServices.GetRequiredService<IHostEnvironment>();
         var dashboardOptions =
             new DashboardOptions
             {
                 Authorization = new[]
                 {
-                    new DashboardAuthorizationFilter()
+                    new DashboardAuthorizationFilter(environment)
                 },
                 IsReadOnlyFunc = _ => true
             };
