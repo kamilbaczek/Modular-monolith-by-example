@@ -1,5 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Logging;
 
+using Decorators;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpLogging;
 
@@ -15,6 +17,7 @@ internal static class LoggingModule
                                     HttpLoggingFields.RequestBody;
             logging.MediaTypeOptions.AddText(ContentType);
         });
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingDecorator<,>));
     }
 
     internal static void UseLogging(this IApplicationBuilder app) => app.UseHttpLogging();

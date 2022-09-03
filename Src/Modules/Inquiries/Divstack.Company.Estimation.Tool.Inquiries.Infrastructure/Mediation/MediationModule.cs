@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Infrastructure.Mediation;
 
 using Application;
-using Decorators;
 using MediatR;
 using MediatR.Extensions.FluentValidation.AspNetCore;
 
@@ -15,8 +14,6 @@ internal static class MediationModule
         {
             applicationAssembly
         });
-
-        services.AddDecorators();
 
         return services;
     }

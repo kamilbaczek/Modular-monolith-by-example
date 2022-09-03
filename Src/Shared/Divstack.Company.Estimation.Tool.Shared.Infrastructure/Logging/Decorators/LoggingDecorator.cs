@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Mediation.Decorators.Logging;
+﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Logging.Decorators;
 
 using System.Text.Json;
 using MediatR;

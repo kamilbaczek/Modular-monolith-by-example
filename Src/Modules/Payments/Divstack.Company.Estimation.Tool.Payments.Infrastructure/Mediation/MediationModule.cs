@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Payments.Infrastructure.Mediation;
 
 using Application;
-using Decorators;
 using MediatR;
 using Persistance;
 
@@ -17,7 +16,6 @@ internal static class MediationModule
         };
 
         services.AddMediatR(cqsAssemblies);
-        services.AddDecorators();
 
         return services;
     }

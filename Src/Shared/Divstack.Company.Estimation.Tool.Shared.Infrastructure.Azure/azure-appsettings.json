@@ -5,7 +5,8 @@
   "ApplicationInsights": {
     "InstrumentationKey": "",
     "LogLevel": {
-      "Default": "Debug"
+      "Default": "Debug",
+      "Microsoft": "Debug"
     }
   }
 }
