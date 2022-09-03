@@ -1,5 +1,11 @@
 ﻿{
   "ConnectionStrings": {
     "AzureAppConfiguration": ""
+  },
+  "ApplicationInsights": {
+    "InstrumentationKey": "",
+    "LogLevel": {
+      "Default": "Debug"
+    }
   }
 }

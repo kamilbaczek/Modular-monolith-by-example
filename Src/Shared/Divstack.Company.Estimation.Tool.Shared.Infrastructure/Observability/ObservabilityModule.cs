@@ -11,10 +11,6 @@ internal static class ObservabilityModule
         var moduleEnabled = services.IsModuleEnabled(FeatureFlags.ObservabilityModule);
         if (!moduleEnabled) return services;
 
-        services.AddLogging(builder =>
-        {
-            builder.AddApplicationInsights();
-        });
         services.AzureApplicationInsights();
 
         return services;
