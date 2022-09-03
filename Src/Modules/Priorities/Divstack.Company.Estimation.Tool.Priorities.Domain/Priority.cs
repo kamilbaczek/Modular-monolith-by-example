@@ -83,13 +83,7 @@ public sealed class Priority : Entity
         return PriorityLevel.Calculate(Scores.ToList());
     }
 
-    private void Increse(ClientLoseRisk clientLoseRisk)
-    {
-        Scores.Add(clientLoseRisk);
-    }
+    private void Increse(ClientLoseRisk clientLoseRisk) => Scores.Add(clientLoseRisk);
 
-    private void Clear()
-    {
-        Scores.Clear();
-    }
+    private void Clear() => Scores.Clear();
 }
