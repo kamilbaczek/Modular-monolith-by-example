@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Mediation;
 
 using Application;
+using Decorators;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,8 @@ internal static class MediationModule
         var applicationAssembly = typeof(ApplicationModule).Assembly;
         services.AddMediatR(applicationAssembly);
         services.AddValidatorsFromAssembly(applicationAssembly);
+
+        services.AddDecorators();
 
         return services;
     }
