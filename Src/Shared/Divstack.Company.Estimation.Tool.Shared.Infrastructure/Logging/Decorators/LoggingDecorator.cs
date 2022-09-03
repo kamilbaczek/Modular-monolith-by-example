@@ -31,12 +31,12 @@ internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<
     private void LogResponse(TResponse response)
     {
         var responseAsString = JsonSerializer.Serialize(response);
-        _logger.LogInformation("[{Command}] Handling Finished {Response}", typeof(TResponse).Name, responseAsString);
+        _logger.LogInformation("[UseCaseExecution][{Command}] Handling Finished {Response}", typeof(TResponse).Name, responseAsString);
     }
 
     private void LogRequest(TRequest request)
     {
         var requestAsString = JsonSerializer.Serialize(request);
-        _logger.LogInformation("[{Command}] Handling started request: {Request}", typeof(TRequest).Name, requestAsString);
+        _logger.LogInformation("[UseCaseExecution][{Command}] Handling started request: {Request}", typeof(TRequest).Name, requestAsString);
     }
 }
