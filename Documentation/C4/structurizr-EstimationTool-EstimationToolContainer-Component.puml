@@ -1,0 +1,184 @@
+@startuml
+title Estimation Tool - Estimation Tool Container - Components
+
+top to bottom direction
+
+skinparam {
+  shadowing false
+  arrowFontSize 10
+  defaultTextAlignment center
+  wrapWidth 200
+  maxMessageSize 100
+}
+
+hide stereotype
+
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Bootstraper>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam person<<Client>> {
+  BackgroundColor #08427b
+  FontColor #ffffff
+  BorderColor #052e56
+}
+skinparam person<<Employee>> {
+  BackgroundColor #08427b
+  FontColor #ffffff
+  BorderColor #052e56
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Inquiries>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.InquriesDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Notifications>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.NotificationsDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Payments>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.PaymentsDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Priorities>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.PrioritiesDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+skinparam rectangle<<SendGrid>> {
+  BackgroundColor #1168bd
+  FontColor #ffffff
+  BorderColor #0b4884
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Services>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.ServicesDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+skinparam rectangle<<Stripe>> {
+  BackgroundColor #1168bd
+  FontColor #ffffff
+  BorderColor #0b4884
+  roundCorner 20
+}
+skinparam rectangle<<Twillo>> {
+  BackgroundColor #1168bd
+  FontColor #ffffff
+  BorderColor #0b4884
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Users>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.UsersDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Valuations>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.ValuationsDatabase>> {
+  BackgroundColor #438dd5
+  FontColor #ffffff
+  BorderColor #2e6295
+  roundCorner 20
+}
+
+rectangle "==Priorities - Database\n<size:10>[Container]</size>\n\nMongo" <<EstimationTool.PrioritiesDatabase>> as EstimationTool.PrioritiesDatabase
+rectangle "==Users - Database\n<size:10>[Container]</size>\n\nMySql" <<EstimationTool.UsersDatabase>> as EstimationTool.UsersDatabase
+rectangle "==Payments - Database\n<size:10>[Container]</size>\n\nMongo" <<EstimationTool.PaymentsDatabase>> as EstimationTool.PaymentsDatabase
+rectangle "==Notifications - Database\n<size:10>[Container]</size>\n\nMongo" <<EstimationTool.NotificationsDatabase>> as EstimationTool.NotificationsDatabase
+rectangle "==Services - Database\n<size:10>[Container]</size>\n\nMySql" <<EstimationTool.ServicesDatabase>> as EstimationTool.ServicesDatabase
+person "==Employee\n<size:10>[Person]</size>" <<Employee>> as Employee
+person "==Client\n<size:10>[Person]</size>" <<Client>> as Client
+rectangle "==Stripe\n<size:10>[Software System]</size>\n\nPayment Processor" <<Stripe>> as Stripe
+rectangle "==Twillo\n<size:10>[Software System]</size>\n\nSms Gateway" <<Twillo>> as Twillo
+rectangle "==SendGrid\n<size:10>[Software System]</size>\n\nEmail Gateway" <<SendGrid>> as SendGrid
+rectangle "==Inquries - Database\n<size:10>[Container]</size>\n\nPostgres" <<EstimationTool.InquriesDatabase>> as EstimationTool.InquriesDatabase
+rectangle "==Valuations - Database\n<size:10>[Container]</size>\n\nPostgres" <<EstimationTool.ValuationsDatabase>> as EstimationTool.ValuationsDatabase
+
+package "Estimation Tool Container\n[Container]" <<EstimationTool.EstimationToolContainer>> {
+  skinparam PackageBorderColor<<EstimationTool.EstimationToolContainer>> #444444
+  skinparam PackageFontColor<<EstimationTool.EstimationToolContainer>> #444444
+
+  rectangle "==Users\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Users>> as EstimationTool.EstimationToolContainer.Users
+  rectangle "==Services\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Services>> as EstimationTool.EstimationToolContainer.Services
+  rectangle "==Inquiries\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Inquiries>> as EstimationTool.EstimationToolContainer.Inquiries
+  rectangle "==Priorities\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Priorities>> as EstimationTool.EstimationToolContainer.Priorities
+  rectangle "==Payments\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Payments>> as EstimationTool.EstimationToolContainer.Payments
+  rectangle "==Notifications\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Notifications>> as EstimationTool.EstimationToolContainer.Notifications
+  rectangle "==Bootstraper\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Bootstraper>> as EstimationTool.EstimationToolContainer.Bootstraper
+  rectangle "==Valuations\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Valuations>> as EstimationTool.EstimationToolContainer.Valuations
+}
+
+Employee .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Bootstraper : "<color:#707070>Estimate services"
+Client .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Bootstraper : "<color:#707070>Accept/Reject/View valuations"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Valuations : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Priorities : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Inquiries : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Payments : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Services : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Users : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Notifications : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Valuations .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Inquiries : "<color:#707070>Get Inquiry Informations"
+EstimationTool.EstimationToolContainer.Inquiries .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Valuations : "<color:#707070>Listen for 'Inquiry Made' event"
+EstimationTool.EstimationToolContainer.Valuations .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Priorities : "<color:#707070>Listen for priority"
+EstimationTool.EstimationToolContainer.Valuations .[#707070,thickness=2].> EstimationTool.ValuationsDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Users .[#707070,thickness=2].> EstimationTool.UsersDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Priorities .[#707070,thickness=2].> EstimationTool.PrioritiesDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Inquiries .[#707070,thickness=2].> EstimationTool.InquriesDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Notifications .[#707070,thickness=2].> EstimationTool.NotificationsDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Notifications .[#707070,thickness=2].> Twillo : "<color:#707070>Send Sms"
+EstimationTool.EstimationToolContainer.Notifications .[#707070,thickness=2].> SendGrid : "<color:#707070>Send Emails"
+EstimationTool.EstimationToolContainer.Payments .[#707070,thickness=2].> EstimationTool.PaymentsDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Services .[#707070,thickness=2].> EstimationTool.ServicesDatabase : "<color:#707070>Reads from and writes to"
+EstimationTool.EstimationToolContainer.Payments .[#707070,thickness=2].> Stripe : "<color:#707070>Make payments"
+@enduml

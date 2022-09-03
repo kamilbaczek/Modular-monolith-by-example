@@ -1,0 +1,71 @@
+@startuml
+title Estimation Tool - Estimation Tool Container - Components
+
+top to bottom direction
+
+skinparam {
+  shadowing false
+  arrowFontSize 10
+  defaultTextAlignment center
+  wrapWidth 200
+  maxMessageSize 100
+}
+
+hide stereotype
+
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Bootstraper>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam person<<Client>> {
+  BackgroundColor #08427b
+  FontColor #ffffff
+  BorderColor #052e56
+}
+skinparam person<<Employee>> {
+  BackgroundColor #08427b
+  FontColor #ffffff
+  BorderColor #052e56
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Inquiries>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Notifications>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+skinparam rectangle<<EstimationTool.EstimationToolContainer.Valuations>> {
+  BackgroundColor #85bbf0
+  FontColor #000000
+  BorderColor #5d82a8
+  roundCorner 20
+}
+
+person "==Employee\n<size:10>[Person]</size>" <<Employee>> as Employee
+person "==Client\n<size:10>[Person]</size>" <<Client>> as Client
+
+package "Estimation Tool Container\n[Container]" <<EstimationTool.EstimationToolContainer>> {
+  skinparam PackageBorderColor<<EstimationTool.EstimationToolContainer>> #444444
+  skinparam PackageFontColor<<EstimationTool.EstimationToolContainer>> #444444
+
+  rectangle "==Inquiries\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Inquiries>> as EstimationTool.EstimationToolContainer.Inquiries
+  rectangle "==Notifications\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Notifications>> as EstimationTool.EstimationToolContainer.Notifications
+  rectangle "==Bootstraper\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Bootstraper>> as EstimationTool.EstimationToolContainer.Bootstraper
+  rectangle "==Valuations\n<size:10>[Component]</size>\n\nModule" <<EstimationTool.EstimationToolContainer.Valuations>> as EstimationTool.EstimationToolContainer.Valuations
+}
+
+Employee .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Bootstraper : "<color:#707070>Estimate services"
+Client .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Bootstraper : "<color:#707070>Accept/Reject/View valuations"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Valuations : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Inquiries : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Bootstraper .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Notifications : "<color:#707070>Compose"
+EstimationTool.EstimationToolContainer.Valuations .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Inquiries : "<color:#707070>Get Inquiry Informations"
+EstimationTool.EstimationToolContainer.Inquiries .[#707070,thickness=2].> EstimationTool.EstimationToolContainer.Valuations : "<color:#707070>Listen for 'Inquiry Made' event"
+@enduml
