@@ -1,11 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-public record InquiryId(Guid Value)
+public record struct InquiryId(Guid Value)
 {
-    public static InquiryId Create()
-    {
-        return new InquiryId(Guid.NewGuid());
-    }
+    public static InquiryId Create() => new(Guid.NewGuid());
 
-    public static InquiryId Create(Guid value) => new InquiryId(value);
+    public static InquiryId Create(Guid value) => new(value);
 }

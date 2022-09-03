@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 
-public record ValuationId(Guid Value)
+public record struct ValuationId(Guid Value)
 {
     public static ValuationId Create() => new(Guid.NewGuid());
 
