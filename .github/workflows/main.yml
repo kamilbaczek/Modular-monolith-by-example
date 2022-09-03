@@ -127,5 +127,5 @@ jobs:
         uses: frederikheld/render-plantuml-to-wiki-action@v1.0.1
         with:
           WIKI_TOKEN: ${{ secrets.WIKI_TOKEN }}
-          INPUT_DIR: 'Documentation/Architecture'
-          OUTPUT_DIR: 'Documentation/Architecture/Rendered'
+          INPUT_DIR: 'Documentation/C4'
+          OUTPUT_DIR: 'Documentation/C4/Rendered'
