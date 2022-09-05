@@ -24,18 +24,9 @@ public sealed class ProposalDecision : ValueObject
     private string Code { get; init; }
 
 
-    internal static ProposalDecision AcceptDecision(DateTime date)
-    {
-        return new ProposalDecision(date, Accept);
-    }
+    internal static ProposalDecision AcceptDecision(DateTime date) => new(date, Accept);
 
-    internal static ProposalDecision NoDecision()
-    {
-        return new ProposalDecision(null, EmptyDecision);
-    }
+    internal static ProposalDecision NoDecision() => new(null, EmptyDecision);
 
-    internal static ProposalDecision RejectDecision(DateTime date)
-    {
-        return new ProposalDecision(date, Reject);
-    }
+    internal static ProposalDecision RejectDecision(DateTime date) => new(date, Reject);
 }

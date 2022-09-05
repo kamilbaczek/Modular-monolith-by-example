@@ -13,10 +13,7 @@ public sealed class ValuationStatus : ValueObject
     {
     }
 
-    private ValuationStatus(string value)
-    {
-        Value = value;
-    }
+    private ValuationStatus(string value) => Value = value;
 
     internal static ValuationStatus WaitForProposal => new(WaitForProposalStatus);
     internal static ValuationStatus WaitForClientDecision => new(WaitForClientDecisionStatus);

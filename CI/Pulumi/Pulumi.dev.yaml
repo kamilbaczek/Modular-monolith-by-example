@@ -1,0 +1,6 @@
+config:
+  Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_PASSWORD:
+    secure: AAABADDLVCHDIIgniYZZj6unUcgGiqMHK6UxC+tSIUNICSGS787T
+  Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_USERNAME:
+    secure: AAABAOxdfAz0YaNZGWsauHMs20ISBsWzuH5XENiAZaOTSegTlXq0qBaAJQ==
+  azure-native:location: westeurope

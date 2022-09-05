@@ -1,9 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
-public record ProposalId(Guid Value)
+public record struct ProposalId(Guid Value)
 {
-    public static ProposalId Create()
-    {
-        return new ProposalId(Guid.NewGuid());
-    }
+    public static ProposalId Create() => new(Guid.NewGuid());
 }

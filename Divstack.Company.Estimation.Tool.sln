@@ -214,6 +214,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C17B6E61
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Services.IntegrationsTests", "Src\Modules\Services\Tests\Divstack.Company.Estimation.Tool.Services.IntegrationsTests\Divstack.Company.Estimation.Tool.Services.IntegrationsTests.csproj", "{58F58B3F-A573-456C-916F-06B68A07EA5E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{775B672B-E16F-4E1D-BCDA-CAFEE65A7C19}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{41FA24DF-3086-44B3-9D87-4A189FA1C246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Deplyoment.Infrastructure", "CI\Pulumi\Divstack.Estimation.Tool.Deplyoment.Infrastructure.csproj", "{9C626216-BF16-435B-92D5-67EE4083FE60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -480,6 +486,10 @@ Global
 		{58F58B3F-A573-456C-916F-06B68A07EA5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58F58B3F-A573-456C-916F-06B68A07EA5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58F58B3F-A573-456C-916F-06B68A07EA5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C626216-BF16-435B-92D5-67EE4083FE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C626216-BF16-435B-92D5-67EE4083FE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C626216-BF16-435B-92D5-67EE4083FE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C626216-BF16-435B-92D5-67EE4083FE60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -578,5 +588,8 @@ Global
 		{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87} = {6F31D638-3020-4A9F-A04B-AF686C7E2B62}
 		{C17B6E61-44F9-490D-88BC-672F92A2D920} = {CE927331-FFEE-4C0B-B073-5A15D4779AC3}
 		{58F58B3F-A573-456C-916F-06B68A07EA5E} = {C17B6E61-44F9-490D-88BC-672F92A2D920}
+		{775B672B-E16F-4E1D-BCDA-CAFEE65A7C19} = {EA43C91B-FCEE-46D9-8B3B-3C55F134105D}
+		{41FA24DF-3086-44B3-9D87-4A189FA1C246} = {775B672B-E16F-4E1D-BCDA-CAFEE65A7C19}
+		{9C626216-BF16-435B-92D5-67EE4083FE60} = {41FA24DF-3086-44B3-9D87-4A189FA1C246}
 	EndGlobalSection
 EndGlobal
