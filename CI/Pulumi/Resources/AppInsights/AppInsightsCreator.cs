@@ -1,4 +1,4 @@
-﻿namespace Divstack.Estimation.Tool.Deplyoment.Infrastructure.Resources.AppInsights;
+﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppInsights;
 
 using System.Collections.Generic;
 using Pulumi.Azure.AppInsights;

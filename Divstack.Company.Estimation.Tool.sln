@@ -218,7 +218,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{41FA24DF-3086-44B3-9D87-4A189FA1C246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Deplyoment.Infrastructure", "CI\Pulumi\Divstack.Estimation.Tool.Deplyoment.Infrastructure.csproj", "{9C626216-BF16-435B-92D5-67EE4083FE60}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Deployment.Infrastructure", "CI\Pulumi\Divstack.Estimation.Tool.Deployment.Infrastructure.csproj", "{9C626216-BF16-435B-92D5-67EE4083FE60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

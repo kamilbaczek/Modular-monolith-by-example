@@ -1,4 +1,4 @@
-﻿namespace Divstack.Estimation.Tool.Deplyoment.Infrastructure.Resources.AppService;
+﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 
 using Pulumi.Azure.AppService;
 using Pulumi.Azure.AppService.Inputs;

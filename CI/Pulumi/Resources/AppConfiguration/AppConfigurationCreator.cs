@@ -1,4 +1,4 @@
-﻿namespace Divstack.Estimation.Tool.Deplyoment.Infrastructure.Resources.AppConfiguration;
+﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppConfiguration;
 
 using System.Collections.Generic;
 using Pulumi;
@@ -18,11 +18,24 @@ internal static class AppConfigurationCreator
             "Priority:Deadline:WorksDaysToDeadlineFromNow", ""
         },
         {
-            "FeatureManagement:PrioritiesModule", "true"
-        },
-        {
             "ConnectionStrings:Priorities", ""
         }
+    };
+
+    private static IDictionary<string, bool> FeatureFlags => new Dictionary<string, bool>
+    {
+        {
+            "FeatureManagement:InquiriesModule", true
+        },
+        {
+            "FeatureManagement:PaymentsModule", true
+        },
+        {
+            "FeatureManagement:ValuationsModule", true
+        },
+        {
+            "FeatureManagement:PrioritiesModule", true
+        },
     };
 
     internal static ConfigurationStore Create(string enviroment, ResourceGroup resourceGroup)
@@ -47,6 +60,8 @@ internal static class AppConfigurationCreator
 
         foreach (var keyValue in Values)
             CreateConfigurationKey(enviroment, keyValue, configurationStore, dataowner);
+        foreach (var keyValue in FeatureFlags)
+            CreateFeatureFlag(enviroment, keyValue, configurationStore, dataowner);
 
         return configurationStore;
     }
@@ -58,6 +73,23 @@ internal static class AppConfigurationCreator
             Key = keyValue.Key,
             Label = enviroment,
             Value = keyValue.Value
+        }, new CustomResourceOptions
+        {
+            DependsOn = new[]
+            {
+                dataowner
+            }
+        });
+    }
+
+    private static void CreateFeatureFlag(string enviroment, KeyValuePair<string, bool> keyValue, ConfigurationStore configurationStore, Assignment dataowner)
+    {
+        var configurationKey = new ConfigurationFeature("key", new ConfigurationFeatureArgs()
+        {
+            ConfigurationStoreId = configurationStore.Id,
+            Description = keyValue.Key,
+            Label = enviroment,
+            Enabled = keyValue.Value,
         }, new CustomResourceOptions
         {
             DependsOn = new[]
