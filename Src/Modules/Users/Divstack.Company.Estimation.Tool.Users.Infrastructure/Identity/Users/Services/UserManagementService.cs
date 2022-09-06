@@ -229,9 +229,4 @@ internal sealed class UserManagementService : IUserManagementService
         var roles = await _applicationUserManager.GetRolesAsync(userAccount);
         return roles;
     }
-
-    private async Task SendConfirmationEmailAsync(UserAccount userAccount)
-    {
-        _ = await _applicationUserManager.GenerateEmailConfirmationTokenAsync(userAccount);
-    }
 }

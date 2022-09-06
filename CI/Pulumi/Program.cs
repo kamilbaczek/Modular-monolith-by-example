@@ -4,36 +4,38 @@ using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppConfigurat
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppInsights;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.KeyVault;
+using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ResourceGroups;
+using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServicePrincipal;
 using Pulumi;
-using Pulumi.AzureNative.Resources;
 using Deployment = Pulumi.Deployment;
 
-IEnumerable<string> GetEnviroments()
+IEnumerable<string> GetEnvironments()
 {
-    var enviroments = new List<string>
+    var environments = new List<string>
     {
         "Stage"
     }
     .Select(name => name.ToLower());
 
-    return enviroments;
+    return environments;
 }
-
-ResourceGroup ResourceGroup(string enviroment) => new($"rg-{enviroment}-estimation-tool");
-
 
 return await Deployment.RunAsync(() =>
 {
-    var environments = GetEnviroments();
-
+    var environments = GetEnvironments();
     var pulumiConfig = new Config();
+
     foreach (var environment in environments)
-    {
-        var resourceGroup = ResourceGroup(environment);
-        var appServicePlan = AppServicePlanCreator.Create(environment, resourceGroup);
-        var keyVault = KeyVaultCreator.Create(environment, resourceGroup);
-        var configurationStore = AppConfigurationCreator.Create(environment, resourceGroup);
-        var estimationToolApiAppInsights = AppInsightsCreator.Create(environment, resourceGroup);
-        var estimationToolApi = AppServiceCreator.Create(environment, estimationToolApiAppInsights, pulumiConfig, resourceGroup, appServicePlan);
-    }
+        CreateResources(environment, pulumiConfig);
 });
+
+void CreateResources(string environment, Config config)
+{
+    var servicePrincipal = ServicePrincipalCreator.Create(environment);
+    var resourceGroup = ResourceGroupCreator.Create(environment, servicePrincipal.ObjectId);
+    var appServicePlan = AppServicePlanCreator.Create(environment, resourceGroup);
+    var keyVault = KeyVaultCreator.Create(environment, resourceGroup, config);
+    var configurationStore = AppConfigurationCreator.Create(environment, keyVault.Id, resourceGroup);
+    var appInsights = AppInsightsCreator.Create(environment, resourceGroup);
+    var api = AppServiceCreator.Create(environment, appInsights, config, resourceGroup, appServicePlan);
+}

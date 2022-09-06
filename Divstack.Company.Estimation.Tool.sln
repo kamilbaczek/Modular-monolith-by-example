@@ -220,6 +220,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Deployment.Infrastructure", "CI\Pulumi\Divstack.Estimation.Tool.Deployment.Infrastructure.csproj", "{9C626216-BF16-435B-92D5-67EE4083FE60}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8FE246EC-DF29-472F-80E0-930A8063CAC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Users.Infrastructure.Tests", "Src\Modules\Users\Tests\Divstack.Company.Estimation.Tool.Users.Infrastructure.Tests\Divstack.Company.Estimation.Tool.Users.Infrastructure.Tests.csproj", "{65E004A7-3ED9-41E0-8D8F-0FE0DB949079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -490,6 +494,10 @@ Global
 		{9C626216-BF16-435B-92D5-67EE4083FE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C626216-BF16-435B-92D5-67EE4083FE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C626216-BF16-435B-92D5-67EE4083FE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E004A7-3ED9-41E0-8D8F-0FE0DB949079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E004A7-3ED9-41E0-8D8F-0FE0DB949079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E004A7-3ED9-41E0-8D8F-0FE0DB949079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E004A7-3ED9-41E0-8D8F-0FE0DB949079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{33A58F3D-3DCB-4EBF-AE36-199E3B12A1D6} = {0FF07E46-4BE6-4B71-A160-7A188AB1F119}
@@ -591,5 +599,7 @@ Global
 		{775B672B-E16F-4E1D-BCDA-CAFEE65A7C19} = {EA43C91B-FCEE-46D9-8B3B-3C55F134105D}
 		{41FA24DF-3086-44B3-9D87-4A189FA1C246} = {775B672B-E16F-4E1D-BCDA-CAFEE65A7C19}
 		{9C626216-BF16-435B-92D5-67EE4083FE60} = {41FA24DF-3086-44B3-9D87-4A189FA1C246}
+		{8FE246EC-DF29-472F-80E0-930A8063CAC5} = {418201BB-3F1F-414E-A468-603C8A764B4C}
+		{65E004A7-3ED9-41E0-8D8F-0FE0DB949079} = {8FE246EC-DF29-472F-80E0-930A8063CAC5}
 	EndGlobalSection
 EndGlobal

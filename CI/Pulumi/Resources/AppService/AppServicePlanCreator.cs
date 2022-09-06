@@ -5,7 +5,6 @@ using Pulumi.Azure.AppService.Inputs;
 using Pulumi.AzureNative.Resources;
 
 internal static class AppServicePlanCreator
-
 {
     internal static Plan Create(string enviroment, ResourceGroup resourceGroup)
     {

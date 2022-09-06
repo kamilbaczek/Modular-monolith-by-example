@@ -9,7 +9,7 @@ using Jwt.RefreshTokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-internal class SignInManagementService : ISignInManagementService
+internal sealed class SignInManagementService : ISignInManagementService
 {
     private readonly IDateTimeProvider _datetimeProvider;
     private readonly ICurrentUserService currentUserService;

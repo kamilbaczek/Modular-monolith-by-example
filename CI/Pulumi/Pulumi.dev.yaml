@@ -3,4 +3,5 @@ config:
     secure: AAABADDLVCHDIIgniYZZj6unUcgGiqMHK6UxC+tSIUNICSGS787T
   Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_USERNAME:
     secure: AAABAOxdfAz0YaNZGWsauHMs20ISBsWzuH5XENiAZaOTSegTlXq0qBaAJQ==
+  Estimation-Tool-Infrastructure:MongoDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
   azure-native:location: westeurope

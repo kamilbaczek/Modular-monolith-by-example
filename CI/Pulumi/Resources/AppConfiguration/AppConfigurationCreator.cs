@@ -4,42 +4,79 @@ using System.Collections.Generic;
 using Pulumi;
 using Pulumi.Azure.AppConfiguration;
 using Pulumi.Azure.Authorization;
-using Pulumi.AzureNative.Authorization;
 using Pulumi.AzureNative.Resources;
 using ConfigurationStore = Pulumi.AzureNative.AppConfiguration.ConfigurationStore;
 using ConfigurationStoreArgs = Pulumi.AzureNative.AppConfiguration.ConfigurationStoreArgs;
+using GetClientConfig = Pulumi.AzureNative.Authorization.GetClientConfig;
 using SkuArgs = Pulumi.AzureNative.AppConfiguration.Inputs.SkuArgs;
 
 internal static class AppConfigurationCreator
 {
+    private static List<string> Secret => new List<string>
+    {
+        "TokenConfiguration:Secret"
+    };
+
     private static IDictionary<string, string> Values => new Dictionary<string, string>
     {
         {
             "Priority:Deadline:WorksDaysToDeadlineFromNow", ""
         },
         {
-            "ConnectionStrings:Priorities", ""
-        }
+            "TokenConfiguration:Issuer", "localhost:5001"
+        },
+        {
+            "TokenConfiguration:Audience", "DeveloperAudience"
+        },
+        {
+            "TokenConfiguration:AccessExpirationInMinutes", "10000000"
+        },
+        {
+            "TokenConfiguration:RefreshExpirationInMinutes", "100000"
+        },
+        {
+            "TokenConfiguration:LinksExpirationInMinutes", "15"
+        },
+        {
+            "Users:PasswordExpirationFrequency", "30"
+        },
+        {
+            "AdminAccount:UserName", "admin@divstack.pl"
+        },
+        {
+            "AdminAccount:Email", "admin@divstack.pl"
+        },
+        {
+            "AdminAccount:Password", "3wsx$EDC5rfvtest4"
+        },
+        {
+            "AdminAccount:Init", "true"
+        },
     };
 
     private static IDictionary<string, bool> FeatureFlags => new Dictionary<string, bool>
     {
         {
-            "FeatureManagement:InquiriesModule", true
+            "InquiriesModule", true
         },
         {
-            "FeatureManagement:PaymentsModule", true
+            "UsersModule", true
         },
         {
-            "FeatureManagement:ValuationsModule", true
+            "PaymentsModule", true
         },
         {
-            "FeatureManagement:PrioritiesModule", true
+            "ValuationsModule", true
+        },
+        {
+            "PrioritiesModule", true
         },
     };
 
-    internal static ConfigurationStore Create(string enviroment, ResourceGroup resourceGroup)
+    internal static ConfigurationStore Create(string enviroment, Output<string> valutId, ResourceGroup resourceGroup)
     {
+        var clientConfig = Output.Create(GetClientConfig.InvokeAsync());
+
         var configurationStore = new ConfigurationStore($"ac-{enviroment}", new ConfigurationStoreArgs
         {
             ResourceGroupName = resourceGroup.Name,
@@ -50,18 +87,17 @@ internal static class AppConfigurationCreator
             },
         });
 
-        var current = GetClientConfig.InvokeAsync().Result;
-        var dataowner = new Assignment($"ac-{enviroment}-do", new AssignmentArgs
+        var assignment = new Assignment($"ac-{enviroment}-do", new AssignmentArgs
         {
             Scope = configurationStore.Id,
             RoleDefinitionName = "App Configuration Data Owner",
-            PrincipalId = current.ObjectId
+            PrincipalId = clientConfig.Apply(result => result.ObjectId)
         });
 
         foreach (var keyValue in Values)
-            CreateConfigurationKey(enviroment, keyValue, configurationStore, dataowner);
+            CreateConfigurationKey(enviroment, keyValue, configurationStore, assignment);
         foreach (var keyValue in FeatureFlags)
-            CreateFeatureFlag(enviroment, keyValue, configurationStore, dataowner);
+            CreateFeatureFlag(enviroment, keyValue, configurationStore, assignment);
 
         return configurationStore;
     }
@@ -84,10 +120,11 @@ internal static class AppConfigurationCreator
 
     private static void CreateFeatureFlag(string enviroment, KeyValuePair<string, bool> keyValue, ConfigurationStore configurationStore, Assignment dataowner)
     {
-        var configurationKey = new ConfigurationFeature("key", new ConfigurationFeatureArgs()
+        var configurationKey = new ConfigurationFeature(keyValue.Key, new ConfigurationFeatureArgs()
         {
             ConfigurationStoreId = configurationStore.Id,
-            Description = keyValue.Key,
+            Description = string.Empty,
+            Name = keyValue.Key,
             Label = enviroment,
             Enabled = keyValue.Value,
         }, new CustomResourceOptions

@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Pulumi" Version="3.*" />
     <PackageReference Include="Pulumi.Azure" Version="5.18.0-alpha.1661972999" />
+    <PackageReference Include="Pulumi.AzureAD" Version="5.29.0-alpha.1662120600" />
     <PackageReference Include="Pulumi.AzureNative" Version="1.*" />
   </ItemGroup>
 
