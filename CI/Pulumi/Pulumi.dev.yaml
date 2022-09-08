@@ -1,12 +1,24 @@
 config:
+  Estimation-Tool-Infrastructure:AuthTokenSecret:
+    secure: AAABANcd6rkiqEhidvr7OhJflU5JMYY8S4q5HyzaD+x+RGfvCUAkSDc8XQgeQSjUHVIZnbQg2PjamUIblMOpxDvFf9kZw6LPia6+qeEX1bHkNLRG9prqc2yRV2246VK4
   Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_PASSWORD:
     secure: AAABADDLVCHDIIgniYZZj6unUcgGiqMHK6UxC+tSIUNICSGS787T
   Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_USERNAME:
     secure: AAABAOxdfAz0YaNZGWsauHMs20ISBsWzuH5XENiAZaOTSegTlXq0qBaAJQ==
+  Estimation-Tool-Infrastructure:EventBusEndpointKey:
+    secure: AAABAO7aIeGLvrToOiVyjFSVoci8iq9bXk1vFvNwA2EWYM2BvxBWu6LfEvQborNQSZ2D9PMOhYvvZV5HFUyKNC95GtsLGFV3BoYU08eEoSt8KQvDn49PEJNw2o9G2mPf
   Estimation-Tool-Infrastructure:MongoDb:
     secure: AAABAPrdT6ZKA0GQX58UIe50pxyYuq43VxEIoemiTirq3Lj06vwXBfkJ6etjKOPypaWNJEhKyXvMkab52P0HL+FJ1HfPwUWOx9VyvbcwXKugUAX0nQN8TnxWYzSLYYV8PSG1hzen7X99c1mRPZB1iZ6/eQc5XdOT1MdJ4f1QBVQdzw==
   Estimation-Tool-Infrastructure:MySqlDb:
     secure: AAABAOt0vlv0raeTAyKSMEmrjmzyoCzRz7CqpTSDzmSS3kWiGZgtKOD031j/yQYlFcJl+vZZBqQer9+0BqSiu9Bvyu+gQSgdkD1B08YGDztGkpGTuIXgYduMeCD5D1r6WhV/qWwpZScavcIMOjcWWMFhDuXTCoLjpXgmBW3/tvFQZw==
   Estimation-Tool-Infrastructure:PostgresDb:
     secure: AAABABc7LWY5qtRczKfsqA1EOpxUKTKWmni3u3xCFy0x3H8G0M0eeS1NLMHLeKIIi/8QT69vQDLyyjNduaV7g0EOAcW1+J2XokRss/SSud32/0836GKKluiCoGGtzaWr1helEsJpo93AiabErcvtJAyDjPQOYnw2LqO9KKJIe6hOVw==
+  Estimation-Tool-Infrastructure:StripeApi:
+    secure: AAABAByfGvIr2v/gono45zepmDG3Q2wStSXUcGCBQgHcSNUvKwnXTMmxtUMM9gZxd/pYOOJnbWVH3iMbzzj1Sa/dcWxcFfbXyqy65685GrJFc6x5crNC10WS2+XqYmXhPjNMAGDOe/ltvPz+qgACYWGSLok50xlPUet7HZBeLymdG39i15cl4pcxMQ==
+  Estimation-Tool-Infrastructure:TrelloAppKey:
+    secure: AAABALoyYTiMV4x8bVCqv91U2zKqKY2nQLgR0M+hPMDtL6sSG3ipxt5q5LB8ff03jdOiCuXgl/PHu4b4fnCWuA==
+  Estimation-Tool-Infrastructure:TrelloUserKey:
+    secure: AAABACoobXdocGBNJbbbKmWtqQ6FMhI3y0wiJlkko9D9q0Mugijz1STR
+  Estimation-Tool-Infrastructure:UserToken:
+    secure: AAABANAsncRzkYdRgI+MQKryWHklFzZzfA+dDS0vbrS7+ASA1cbcBM03xzizhno7wS4P56KKbnEGEs89inDxhsJscn01FjHzDXzBCa+cuJJB4wQBoOt78Dh4SdmyzJbG
   azure-native:location: westeurope

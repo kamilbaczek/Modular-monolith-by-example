@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ResourceGroups;
 
-using Pulumi;
 using Pulumi.Azure.Authorization;
 using ResourceGroup = Pulumi.AzureNative.Resources.ResourceGroup;
 

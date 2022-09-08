@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Pulumi" Version="3.*" />
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.0.1" />
+    <PackageReference Include="Pulumi" Version="3.39.1" />
     <PackageReference Include="Pulumi.Azure" Version="5.18.0-alpha.1661972999" />
     <PackageReference Include="Pulumi.AzureAD" Version="5.29.0-alpha.1662120600" />
     <PackageReference Include="Pulumi.AzureNative" Version="1.*" />

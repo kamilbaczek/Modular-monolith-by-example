@@ -9,40 +9,64 @@ using Jwt.RefreshTokens;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+internal interface IUsersRepository
+{
+    Task<UserAccount> GetByUserNameAsync(string userName, CancellationToken cancellationToken = default);
+    Task UpdateAsync(UserAccount userAccount, CancellationToken cancellationToken = default);
+}
+
+internal interface IPasswordTokens
+{
+    Task<string> GeneratePasswordResetTokenAsync(UserAccount userAccount);
+}
+
+internal interface ISignInManager
+{
+    Task SignOutAsync();
+
+    Task<string> GeneratePasswordResetTokenAsync(UserAccount userAccount);
+
+    Task<SignInResult> PasswordSignInAsync(UserAccount user, string password,
+        bool isPersistent, bool lockoutOnFailure);
+}
+
+
 internal sealed class SignInManagementService : ISignInManagementService
 {
     private readonly IDateTimeProvider _datetimeProvider;
-    private readonly ICurrentUserService currentUserService;
-    private readonly IRefreshTokenRepository refreshTokenRepository;
-    private readonly SignInManager<UserAccount> signInManager;
-    private readonly ITokenStoreManager tokenStoreManager;
-    private readonly UserManager<UserAccount> userManager;
+    private readonly IPasswordTokens _passwordTokens;
+    private readonly ICurrentUserService _currentUserService;
+    private readonly IRefreshTokenRepository _refreshTokenRepository;
+    private readonly ISignInManager _signInManager;
+    private readonly IUsersRepository _usersRepository;
+    private readonly ITokenStoreManager _tokenStoreManager;
 
-    public SignInManagementService(SignInManager<UserAccount> signInManager,
-        UserManager<UserAccount> userManager,
+    public SignInManagementService(ISignInManager signInManager,
+        IUsersRepository usersRepository,
         ITokenStoreManager tokenStoreManager,
         IRefreshTokenRepository refreshTokenRepository,
         ICurrentUserService currentUserService,
-        IDateTimeProvider datetimeProvider)
+        IDateTimeProvider datetimeProvider,
+        IPasswordTokens passwordTokens)
     {
-        this.signInManager = signInManager;
-        this.userManager = userManager;
-        this.tokenStoreManager = tokenStoreManager;
-        this.refreshTokenRepository = refreshTokenRepository;
-        this.currentUserService = currentUserService;
+        _signInManager = signInManager;
+        _usersRepository = usersRepository;
+        _tokenStoreManager = tokenStoreManager;
+        _refreshTokenRepository = refreshTokenRepository;
+        _currentUserService = currentUserService;
         _datetimeProvider = datetimeProvider;
+        _passwordTokens = passwordTokens;
     }
 
-    public async Task<SignInResultStatus> SignInAsync(string userName, string password)
+    public async Task<SignInResultStatus> SignInAsync(SignInRequest request, CancellationToken cancellationToken = default)
     {
-        var user = await userManager.Users.SingleOrDefaultAsync(u => u.UserName == userName);
-
+        var user = await _usersRepository.GetByUserNameAsync(request.UserName, cancellationToken);
         if (user is null)
         {
             return SignInResultStatus.Negative;
         }
 
-        var signInResult = await signInManager.PasswordSignInAsync(user, password, true, true);
+        var signInResult = await _signInManager.PasswordSignInAsync(user, request.Password, true, true);
         if (signInResult.IsLockedOut)
         {
             return SignInResultStatus.Locked;
@@ -56,40 +80,40 @@ internal sealed class SignInManagementService : ISignInManagementService
         if (!user.IsPasswordExpired(_datetimeProvider))
         {
             user.SignIn(_datetimeProvider);
-            await userManager.UpdateAsync(user);
+            await _usersRepository.UpdateAsync(user, cancellationToken);
 
             return SignInResultStatus.Positive;
         }
 
         await SendResetPasswordMail(user);
         user.AccessFailedCount++;
-        await userManager.UpdateAsync(user);
+        await _usersRepository.UpdateAsync(user, cancellationToken);
 
         return SignInResultStatus.ExpiredPassword;
     }
 
     public async Task SignOutAsync()
     {
-        await signInManager.SignOutAsync();
-        await tokenStoreManager.DeactivateCurrentAsync();
-        var userPublicId = currentUserService.GetPublicUserId();
-        await refreshTokenRepository.RemoveForUserAsync(userPublicId);
+        await _signInManager.SignOutAsync();
+        await _tokenStoreManager.DeactivateCurrentAsync();
+        var userPublicId = _currentUserService.GetPublicUserId();
+        await _refreshTokenRepository.RemoveForUserAsync(userPublicId);
     }
 
     public async Task SaveLogForFailedLoginAttemptAsync(string userName, CancellationToken cancellationToken)
     {
-        var user = await userManager.Users.SingleOrDefaultAsync(u => u.UserName == userName, cancellationToken);
+        var user = await _usersRepository.GetByUserNameAsync(userName, cancellationToken);
         if (user is null)
         {
             return;
         }
 
         user.RegisterFailedLoginAttempt(_datetimeProvider.Now);
-        await userManager.UpdateAsync(user);
+        await _usersRepository.UpdateAsync(user, cancellationToken);
     }
 
     private async Task SendResetPasswordMail(UserAccount userAccount)
     {
-        _ = await userManager.GeneratePasswordResetTokenAsync(userAccount);
+        _ = await _passwordTokens.GeneratePasswordResetTokenAsync(userAccount);
     }
 }

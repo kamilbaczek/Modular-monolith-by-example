@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>Divstack.Company.Estimation.Tool.Services.IntegrationsTests</_Parameter1>
-    </AssemblyAttribute>
+    <InternalsVisibleTo Include="Divstack.Company.Estimation.Tool.Services.IntegrationsTests" />
   </ItemGroup>
 </Project>

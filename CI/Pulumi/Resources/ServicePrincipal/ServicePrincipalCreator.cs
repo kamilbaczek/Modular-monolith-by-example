@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServicePrincipal;
 
-using Pulumi;
 using Pulumi.AzureAD;
 
 internal static class ServicePrincipalCreator

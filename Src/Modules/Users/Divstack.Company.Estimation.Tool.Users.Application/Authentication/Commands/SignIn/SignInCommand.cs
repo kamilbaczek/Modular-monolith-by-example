@@ -36,7 +36,8 @@ public sealed class SignInCommand : ICommand<SignInCommandResponse>
 
         public async Task<SignInCommandResponse> Handle(SignInCommand request, CancellationToken cancellationToken)
         {
-            var signInResultStatus = await signInManagementService.SignInAsync(request.UserName, request.Password);
+            var signInRequest = new SignInRequest(request.UserName, request.Password);
+            var signInResultStatus = await signInManagementService.SignInAsync(signInRequest, cancellationToken);
 
             if (signInResultStatus != SignInResultStatus.Positive)
             {

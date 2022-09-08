@@ -1,8 +1,6 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppInsights;
 
-using System.Collections.Generic;
 using Pulumi.Azure.AppInsights;
-using Pulumi.AzureNative.Resources;
 
 internal static class AppInsightsCreator
 {

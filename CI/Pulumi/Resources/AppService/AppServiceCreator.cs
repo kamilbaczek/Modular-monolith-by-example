@@ -1,10 +1,8 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 
-using Pulumi;
 using Pulumi.Azure.AppInsights;
 using Pulumi.Azure.AppService;
 using Pulumi.Azure.AppService.Inputs;
-using Pulumi.AzureNative.Resources;
 
 internal static class AppServiceCreator
 {

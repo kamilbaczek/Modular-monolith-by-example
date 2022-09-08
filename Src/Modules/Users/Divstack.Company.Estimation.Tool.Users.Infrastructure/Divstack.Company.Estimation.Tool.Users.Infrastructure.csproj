@@ -20,5 +20,8 @@
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Application\Divstack.Company.Estimation.Tool.Users.Application.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Persistance\Divstack.Company.Estimation.Tool.Users.Persistance.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+    <InternalsVisibleTo Include="Divstack.Company.Estimation.Tool.Users.Infrastructure.Tests" />
+  </ItemGroup>
 </Project>

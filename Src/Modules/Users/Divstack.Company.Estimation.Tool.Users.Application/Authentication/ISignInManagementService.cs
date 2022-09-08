@@ -3,9 +3,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 
+public record struct SignInRequest(string UserName, string Password);
+
 public interface ISignInManagementService
 {
-    Task<SignInResultStatus> SignInAsync(string userName, string password);
+    Task<SignInResultStatus> SignInAsync(SignInRequest request, CancellationToken cancellationToken = default);
     Task SignOutAsync();
     Task SaveLogForFailedLoginAttemptAsync(string userName, CancellationToken cancellationToken = default);
 }
