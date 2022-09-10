@@ -9,22 +9,24 @@
 
 title System Context diagram for Estimation Tool
 
-Person(estimator, Estimator , "<$user> <$mobile_user>\n A person who is resposible for suggest valuation proposal on time, based on priorities" )
-Person(customer, Customer , "<$user> <$mobile_user>\n A person who inquiry service" )
+Person(estimator, Estimator , "A person who is resposible for suggest valuation proposal on time, based on priorities" )
+Person(customer, Customer , "A person who inquiry service" )
 
-System(estimation_tool, "Estimation Tool", "Allows customers to inqury service, approve/reject vaulations, pay after service valuation.")
+System(estimation_tool, "Estimation Tool", "System to optimize estimation process. Gives cabapitlites to handle valuations, notifications, priorities, payments, authenticate customers")
 
 System_Ext(twillo, "Twillo", "SMS service resposible for send to customers and estimators")
 System_Ext(sendGrid, "Send Grid", "Email service resposible for send to customers and estimators")
-System_Ext(trello, "Trello", "Email service resposible for send to customers and estimators")
+System_Ext(trello, "Trello", "Project menagment system")
 System_Ext(stripe, "Stripe", "Payment Gateway")
 
-Rel(customer, estimation_tool, "Uses")
-Rel(estimator, estimation_tool, "Uses")
+Rel(customer, estimation_tool, "Made service inquiry, Accept/Reject proposals")
+Rel(estimator, estimation_tool, "Suggest Proposals, Complete")
 
-Rel_U(estimation_tool, twillo, "Sends SMS", "SMS")
+Rel_U(estimation_tool, twillo, "Sends SMS", "HTTP")
 Rel_L(estimation_tool, sendGrid, "Sends e-mails", "SMTP")
-Rel_L(estimation_tool, trello, "Sends create task", "HTTP")
-Rel_Neighbor(estimation_tool, stripe, "Make a payments", "HTTP")
+Rel_R(estimation_tool, trello, "Create task with valuation for estimitor, Change task state", "HTTP")
+Rel_D(estimation_tool, stripe, "Make a payments", "HTTP")
+
+SHOW_LEGEND()
 
 @enduml
