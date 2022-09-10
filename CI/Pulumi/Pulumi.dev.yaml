@@ -6,7 +6,9 @@ config:
   Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_USERNAME:
     secure: AAABAOxdfAz0YaNZGWsauHMs20ISBsWzuH5XENiAZaOTSegTlXq0qBaAJQ==
   Estimation-Tool-Infrastructure:EventBusEndpointKey:
-    secure: AAABAO7aIeGLvrToOiVyjFSVoci8iq9bXk1vFvNwA2EWYM2BvxBWu6LfEvQborNQSZ2D9PMOhYvvZV5HFUyKNC95GtsLGFV3BoYU08eEoSt8KQvDn49PEJNw2o9G2mPf
+    secure: AAABAOea4Kez9uNL/8oXinExOqK/kNCcC7Buxn4pVMU0Bp9wG0Gg/mshOxM0OU03XJB9eGf7bnjbnBowBm3983iU8JdaF2wNT9pg+ofKfVHV0XsaPRuFk5cnTIHaQjD/
+  Estimation-Tool-Infrastructure:EventBusStorageDatabaseName:
+    secure: AAABAPdlPA/ia4BdE/WRGDMTuR91X5ubawWRmzFSWEnZ9dC6ZylETB01eVki/Tc=
   Estimation-Tool-Infrastructure:MongoDb:
     secure: AAABAPrdT6ZKA0GQX58UIe50pxyYuq43VxEIoemiTirq3Lj06vwXBfkJ6etjKOPypaWNJEhKyXvMkab52P0HL+FJ1HfPwUWOx9VyvbcwXKugUAX0nQN8TnxWYzSLYYV8PSG1hzen7X99c1mRPZB1iZ6/eQc5XdOT1MdJ4f1QBVQdzw==
   Estimation-Tool-Infrastructure:MySqlDb:

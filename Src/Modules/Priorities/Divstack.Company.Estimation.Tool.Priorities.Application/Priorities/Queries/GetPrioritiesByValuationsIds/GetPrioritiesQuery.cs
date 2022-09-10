@@ -3,4 +3,7 @@
 using Common.Contracts;
 using Dtos;
 
-public record GetPrioritiesQuery : IQuery<PrioritiesListVm>;
+public record struct GetPrioritiesQuery : IQuery<PrioritiesListVm>
+{
+    public static GetPrioritiesQuery Create() => new();
+}

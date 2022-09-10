@@ -23,7 +23,7 @@ internal sealed class Get : EndpointBaseAsync.WithoutRequest.WithResult<ActionRe
     public override async Task<ActionResult<PrioritiesListVm>> HandleAsync(
         CancellationToken cancellationToken = new())
     {
-        var query = new GetPrioritiesQuery();
+        var query = GetPrioritiesQuery.Create();
         var result = await _prioritiesModule.ExecuteQueryAsync(query);
 
         return result;

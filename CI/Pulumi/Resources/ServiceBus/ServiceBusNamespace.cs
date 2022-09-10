@@ -1,12 +1,12 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServiceBus;
 
-using Pulumi.Azure.KeyVault;
-using Pulumi.Azure.ServiceBus;
-using Pulumi.AzureNative.AppConfiguration;
+using Namespace = Pulumi.Azure.ServiceBus.Namespace;
+using Subscription = Pulumi.Azure.ServiceBus.Subscription;
+using Topic = Pulumi.Azure.ServiceBus.Topic;
 
 internal static class ServiceBusNamespace
 {
-    internal static Namespace Create(string enviromentName, ResourceGroup resourceGroup, KeyVault keyVault, ConfigurationStore appConfig)
+    internal static Namespace Create(string enviromentName, ResourceGroup resourceGroup)
     {
         var @namespace = new Namespace($"sb-{enviromentName}", new()
         {

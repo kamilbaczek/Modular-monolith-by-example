@@ -11,7 +11,7 @@ internal static class KeyVaultSecrets
     internal const string StripeApi = nameof(StripeApi);
     internal const string TrelloAppKey = nameof(TrelloAppKey);
     internal const string TrelloUserKey = nameof(TrelloUserKey);
-    internal const string EventBusEndpointKey = nameof(EventBusEndpointKey);
+    internal const string EventBusStorageDatabaseName = nameof(EventBusStorageDatabaseName);
 
 
     internal static readonly IReadOnlyCollection<KeyVaultSecret> Secrets =
@@ -32,7 +32,7 @@ internal static class KeyVaultSecrets
             new("ConnectionStrings:Priorities"),
             new("ConnectionStrings:Notifications"),
             new("BackgroundProcessing:StorageConnectionString"),
-            new("Storage:ConnectionString")
+            new("EventBus:Storage:ConnectionString")
         }),
         new(MySqlDb, new List<SecuredAppConfigKey>
         {
@@ -50,9 +50,9 @@ internal static class KeyVaultSecrets
         {
             new("Trello:UserToken")
         }),
-        new(EventBusEndpointKey, new List<SecuredAppConfigKey>
+        new(EventBusStorageDatabaseName, new List<SecuredAppConfigKey>
         {
-            new("EventBus:ConnectionString")
+            new("EventBus:Storage:DatabaseName")
         })
     };
 }

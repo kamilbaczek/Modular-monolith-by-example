@@ -17,6 +17,7 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
         _prioritiesRepository = prioritiesRepository;
         _inquiryModule = inquiryModule;
     }
+
     public async Task<Unit> Handle(RedefinePriorityCommand command, CancellationToken cancellationToken)
     {
         var priorityId = new PriorityId(command.PriorityId);

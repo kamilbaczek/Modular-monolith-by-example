@@ -5,16 +5,6 @@
   "WebSockets": {
     "AllowedOrigin": "http://localhost:8080"
   },
-  "Sentry": {
-    "Dsn": "",
-    "MaxRequestBodySize": "Always",
-    "SendDefaultPii": true,
-    "MinimumBreadcrumbLevel": "Debug",
-    "MinimumEventLevel": "Warning",
-    "AttachStackTrace": true,
-    "Debug": true,
-    "DiagnosticsLevel": "Error"
-  },
   "BackgroundProcessing": {
     "StorageConnectionString": ""
   },

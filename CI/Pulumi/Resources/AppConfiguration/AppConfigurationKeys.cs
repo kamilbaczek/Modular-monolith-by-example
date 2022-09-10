@@ -166,9 +166,6 @@ internal static class AppConfigurationKeys
         },
         {
             "EventsModule", true
-        },
-        {
-            "ObservabilityModule", true
         }
     };
 }

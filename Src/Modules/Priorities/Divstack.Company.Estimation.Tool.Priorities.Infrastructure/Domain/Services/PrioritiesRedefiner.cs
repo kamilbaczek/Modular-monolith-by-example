@@ -15,12 +15,10 @@ internal sealed class PrioritiesRedefiner : IPrioritiesRedefiner
 
     public async Task RedefineAll()
     {
-        var query = new GetPrioritiesQuery();
+        var query = GetPrioritiesQuery.Create();
         var prioritiesList = await _prioritiesModule.ExecuteQueryAsync(query);
         foreach (var priority in prioritiesList.Priorities)
-        {
             await RedefinePriority(priority.PriorityId, priority.ValuationId, priority.InquiryId);
-        }
     }
 
     private async Task RedefinePriority(Guid priorityId, Guid valuationId, Guid inquiryId)

@@ -21,8 +21,5 @@ internal static class PaymentsModule
         services.AddInfrastructure(configuration);
     }
 
-    public static void UsePaymentModule(this IApplicationBuilder app)
-    {
-        app.UseInfrastructure();
-    }
+    public static void UsePaymentModule(this IApplicationBuilder app) => app.UseInfrastructure();
 }

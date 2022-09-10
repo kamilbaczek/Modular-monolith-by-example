@@ -10,14 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 internal sealed class PaymentsController : BaseController
 {
-    private readonly IMediator _mediator;
     private readonly IPaymentsModule _paymentsModule;
 
-    public PaymentsController(IPaymentsModule paymentsModule, IMediator mediator)
-    {
-        _paymentsModule = paymentsModule;
-        _mediator = mediator;
-    }
+    public PaymentsController(IPaymentsModule paymentsModule) => _paymentsModule = paymentsModule;
 
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -28,17 +23,6 @@ internal sealed class PaymentsController : BaseController
     {
         await _paymentsModule.ExecuteCommandAsync(payCommand);
 
-        return NoContent();
-    }
-
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    [ProducesDefaultResponseType]
-    [AllowAnonymous]
-    public async Task<ActionResult> Paysss()
-    {
-        await _mediator.Publish(new PaymentCompleted(Guid.NewGuid(), Guid.Parse("ce4197d1-bd75-4cf1-b238-7341efbc6f0b")));
         return NoContent();
     }
 }
