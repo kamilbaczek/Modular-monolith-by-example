@@ -3,8 +3,6 @@
 
 'ref http://plantuml.com/stdlib
 !include <office/Users/user.puml>
-!include <office/Users/mobile_user.puml>
-
 'LAYOUT_WITH_LEGEND
 
 title System Context diagram for Estimation Tool
