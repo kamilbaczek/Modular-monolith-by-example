@@ -2,13 +2,7 @@
 
 public record InquiryId(Guid Value)
 {
-    public static InquiryId Create()
-    {
-        return new InquiryId(Guid.NewGuid());
-    }
+    public static InquiryId Create() => new(Guid.NewGuid());
 
-    public static InquiryId Create(Guid id)
-    {
-        return new InquiryId(id);
-    }
+    public static InquiryId Create(Guid id) => new(id);
 }

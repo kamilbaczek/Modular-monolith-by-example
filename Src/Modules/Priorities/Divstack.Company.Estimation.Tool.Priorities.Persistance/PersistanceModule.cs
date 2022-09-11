@@ -23,8 +23,5 @@ internal static class PersistanceModule
         return services;
     }
 
-    internal static void UsePersistanceModule(this IApplicationBuilder app)
-    {
-        app.UseDataAccess();
-    }
+    internal static void UsePersistanceModule(this IApplicationBuilder app) => app.UseDataAccess();
 }

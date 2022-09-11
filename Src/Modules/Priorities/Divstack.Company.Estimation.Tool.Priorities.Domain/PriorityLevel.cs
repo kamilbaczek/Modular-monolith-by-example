@@ -1,27 +1,14 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain;
 
-public record PriorityLevel(string Name, int Weight, int? Scores)
+public readonly record struct PriorityLevel(string Name, int Weight, int? Scores)
 {
     private const int HighLevelScoreBoundary = 20;
     private const int MediumLevelScoreBoundary = 10;
 
-    private static PriorityLevel Low(int scores)
-    {
-        return Create(nameof(Low), 0, scores);
-    }
-    private static PriorityLevel Medium(int scores)
-    {
-        return Create(nameof(Medium), 1, scores);
-    }
-    private static PriorityLevel High(int scores)
-    {
-        return Create(nameof(High), 2, scores);
-    }
-
-    private static PriorityLevel Create(string value, int weight, int scores)
-    {
-        return new PriorityLevel(value, weight, scores);
-    }
+    private static PriorityLevel Low(int scores) => Create(nameof(Low), 0, scores);
+    private static PriorityLevel Medium(int scores) => Create(nameof(Medium), 1, scores);
+    private static PriorityLevel High(int scores) => Create(nameof(High), 2, scores);
+    private static PriorityLevel Create(string value, int weight, int scores) => new(value, weight, scores);
 
     internal static PriorityLevel Calculate(IReadOnlyCollection<ClientLoseRisk> scores)
     {
@@ -34,13 +21,7 @@ public record PriorityLevel(string Name, int Weight, int? Scores)
         };
     }
 
-    public static bool operator >(PriorityLevel S1, PriorityLevel S2)
-    {
-        return S1.Weight > S2.Weight;
-    }
+    public static bool operator >(PriorityLevel s1, PriorityLevel s2) => s1.Weight > s2.Weight;
 
-    public static bool operator <(PriorityLevel S1, PriorityLevel S2)
-    {
-        return S1.Weight < S2.Weight;
-    }
+    public static bool operator <(PriorityLevel s1, PriorityLevel s2) => s1.Weight < s2.Weight;
 }

@@ -8,10 +8,7 @@ internal sealed class PrioritiesRepository : IPrioritiesRepository
 {
     private readonly IPrioritiesContext _prioritiesContext;
 
-    public PrioritiesRepository(IPrioritiesContext prioritiesContext)
-    {
-        _prioritiesContext = prioritiesContext;
-    }
+    public PrioritiesRepository(IPrioritiesContext prioritiesContext) => _prioritiesContext = prioritiesContext;
 
     public async Task<Priority> GetAsync(PriorityId priorityId, CancellationToken cancellationToken = default)
     {
@@ -27,10 +24,8 @@ internal sealed class PrioritiesRepository : IPrioritiesRepository
             .SingleOrDefaultAsync(cancellationToken);
     }
 
-    public async Task AddAsync(Priority priority, CancellationToken cancellationToken = default)
-    {
+    public async Task AddAsync(Priority priority, CancellationToken cancellationToken = default) =>
         await _prioritiesContext.Priorities.InsertOneAsync(priority, cancellationToken: cancellationToken);
-    }
 
     public async Task CommitAsync(Priority updatedPriority, CancellationToken cancellationToken = default)
     {

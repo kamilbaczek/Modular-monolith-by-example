@@ -14,6 +14,7 @@ internal sealed class PrioritiesBuilder
         ValuationId = ValuationId.Create(new Guid());
         CompanySize = 100;
     }
+
     private static InquiryId? InquiryId { get; set; }
     private static ValuationId? ValuationId { get; set; }
     private static Deadline? Deadline { get; set; }
