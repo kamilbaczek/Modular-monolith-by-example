@@ -25,6 +25,4 @@ Rel_L(estimation_tool, sendGrid, "Sends e-mails", "SMTP")
 Rel_R(estimation_tool, trello, "Create task with valuation for estimitor, Change task state", "HTTP")
 Rel_D(estimation_tool, stripe, "Make a payments", "HTTP")
 
-SHOW_LEGEND()
-
 @enduml

@@ -25,6 +25,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Architecture", "Architecture", "{11F86752-A7D7-4EBB-9C9E-4B893506EC17}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C4", "C4", "{5262984E-25B8-47CE-BE33-57E76F7EC3DD}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\C4\system_context_diagram.puml = Documentation\C4\system_context_diagram.puml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Valuations", "Valuations", "{D8C07E63-3DAE-4497-9D41-D5E89C571357}"
 EndProject
