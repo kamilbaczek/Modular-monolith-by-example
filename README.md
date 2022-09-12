@@ -39,16 +39,7 @@
 
 ## Documentation
 ### C4
-
-#### System Context
-## System Context
-[[/Documentation/C4/Rendered/system_context_diagram.png|alt=system_context_diagram]]
-
-#### Containers
-![Containers](https://user-images.githubusercontent.com/74410956/130395295-3d48672c-5c84-4e55-8fbe-9cdbb327b5e6.png)
-
-#### Components
-![Components](https://i.ibb.co/g4VBrKb/structurizr-Software-System-Estimation-Tool-Container-Component.png)
+[Wiki](https://github.com/kamilbaczek/Estimation-Tool/wiki/C4)
 
 #### Event Storming
 [Miro](https://miro.com/app/board/o9J_lcC1E7g=/?invite_link_id=913994717613)
