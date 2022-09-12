@@ -3,9 +3,6 @@
 ## Table of contents
 * [Presentation](#presentation)
 * [Documentation](#documentation)
-  * [System Context](#system-context)
-  * [Containers](#containers)
-  * [Components](#components)
   * [Event Storming](#event-storming)
 * [Technologies](#technologies)
 * [CI/CD](#ci/cd)
