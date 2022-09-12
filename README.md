@@ -41,7 +41,8 @@
 ### C4
 
 #### System Context
-![download](https://user-images.githubusercontent.com/74410956/143678423-cdd8b31e-a6d9-4722-97d6-fc06b8e203fa.png)
+## System Context
+[[/Documentation/C4/Rendered/system_context_diagram.png|alt=system_context_diagram]]
 
 #### Containers
 ![Containers](https://user-images.githubusercontent.com/74410956/130395295-3d48672c-5c84-4e55-8fbe-9cdbb327b5e6.png)
