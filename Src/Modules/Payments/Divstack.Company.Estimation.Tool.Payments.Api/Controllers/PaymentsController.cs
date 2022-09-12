@@ -2,8 +2,6 @@
 
 using Application.Common.Contracts;
 using Application.Payments.Commands.Pay;
-using IntegrationsEvents.External;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
