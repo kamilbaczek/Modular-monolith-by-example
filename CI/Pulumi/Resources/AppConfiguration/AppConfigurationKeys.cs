@@ -162,7 +162,10 @@ internal static class AppConfigurationKeys
             "PrioritiesModule", true
         },
         {
-            "SmsModule", true
+            "SmsModule", false
+        },
+        {
+            "TrelloModule", true
         },
         {
             "EventsModule", true

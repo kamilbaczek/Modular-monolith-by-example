@@ -12,20 +12,25 @@ internal static class AppConfigurationCreator
     internal static ConfigurationStore Create(string enviroment, ResourceGroup resourceGroup)
     {
         var configurationStore = CreateStore(enviroment, resourceGroup);
-        var current = GetClientConfig.InvokeAsync().Result;
-        var dataowner = new Assignment($"ac-{enviroment}-do", new AssignmentArgs
+        var clientConfig = Output.Create(GetClientConfig.InvokeAsync());
+        var assignment = CreateAssignment(enviroment, configurationStore, clientConfig);
+
+        foreach (var keyValue in AppConfigurationKeys.NotSecuredKeys)
+            CreateConfigurationKey(enviroment, keyValue, configurationStore, assignment);
+        foreach (var keyValue in AppConfigurationKeys.FeatureFlags)
+            CreateFeatureFlag(enviroment, keyValue, configurationStore, assignment);
+
+        return configurationStore;
+    }
+    private static Assignment CreateAssignment(string enviroment, ConfigurationStore configurationStore, Output<GetClientConfigResult> clientConfig)
+    {
+        var assignment = new Assignment($"ac-{enviroment}-do", new AssignmentArgs
         {
             Scope = configurationStore.Id,
             RoleDefinitionName = "App Configuration Data Owner",
-            PrincipalId = current.ObjectId
+            PrincipalId = clientConfig.Apply(c => c.ObjectId),
         });
-
-        foreach (var keyValue in AppConfigurationKeys.NotSecuredKeys)
-            CreateConfigurationKey(enviroment, keyValue, configurationStore, dataowner);
-        foreach (var keyValue in AppConfigurationKeys.FeatureFlags)
-            CreateFeatureFlag(enviroment, keyValue, configurationStore, dataowner);
-
-        return configurationStore;
+        return assignment;
     }
     private static ConfigurationStore CreateStore(string enviroment, ResourceGroup resourceGroup)
     {
@@ -44,13 +49,14 @@ internal static class AppConfigurationCreator
 
     private static void CreateConfigurationKey(string enviroment, KeyValuePair<string, string> keyValue, ConfigurationStore configurationStore, Assignment assignment)
     {
-        var configurationKey = new ConfigurationKey(keyValue.Key, new ConfigurationKeyArgs
-        {
-            ConfigurationStoreId = configurationStore.Id,
-            Key = keyValue.Key,
-            Label = enviroment,
-            Value = keyValue.Value
-        },
+        var configurationKey = new ConfigurationKey(keyValue.Key,
+            new ConfigurationKeyArgs
+            {
+                ConfigurationStoreId = configurationStore.Id,
+                Key = keyValue.Key,
+                Label = enviroment,
+                Value = keyValue.Value
+            },
             new CustomResourceOptions
             {
                 DependsOn = new[]

@@ -13,7 +13,6 @@ internal static class KeyVaultSecrets
     internal const string TrelloUserKey = nameof(TrelloUserKey);
     internal const string EventBusStorageDatabaseName = nameof(EventBusStorageDatabaseName);
 
-
     internal static readonly IReadOnlyCollection<KeyVaultSecret> Secrets =
         new List<KeyVaultSecret>
     {
@@ -27,16 +26,17 @@ internal static class KeyVaultSecrets
         }),
         new(MongoDb, new List<SecuredAppConfigKey>
         {
-            new("ConnectionStrings:Inquiries"),
             new("ConnectionStrings:Payments"),
             new("ConnectionStrings:Priorities"),
             new("ConnectionStrings:Notifications"),
+            new("ConnectionStrings:Services"),
             new("BackgroundProcessing:StorageConnectionString"),
             new("EventBus:Storage:ConnectionString")
         }),
         new(MySqlDb, new List<SecuredAppConfigKey>
         {
-            new("ConnectionStrings:Users"),
+            new("ConnectionStrings:Inquiries"),
+            new("ConnectionStrings:Users")
         }),
         new(PostgresDb, new List<SecuredAppConfigKey>
         {
@@ -44,11 +44,11 @@ internal static class KeyVaultSecrets
         }),
         new(TrelloAppKey, new List<SecuredAppConfigKey>
         {
-            new("Trello:AppKey")
+            new("Integrations:Trello:AppKey")
         }),
         new(TrelloUserKey, new List<SecuredAppConfigKey>
         {
-            new("Trello:UserToken")
+            new("Integrations:Trello:UserToken")
         }),
         new(EventBusStorageDatabaseName, new List<SecuredAppConfigKey>
         {

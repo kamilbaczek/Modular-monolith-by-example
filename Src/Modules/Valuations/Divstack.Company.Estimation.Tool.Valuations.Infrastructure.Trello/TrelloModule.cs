@@ -9,6 +9,7 @@ using Extensions;
 using Features.ValuationRequest;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Shared.Infrastructure.FeatureFlags;
 
 internal static class TrelloModule
 {
@@ -16,6 +17,9 @@ internal static class TrelloModule
 
     internal static IServiceCollection AddTrello(this IServiceCollection services)
     {
+        var enabled = services.IsModuleEnabled(FeatureFlags.Module);
+        if (!enabled) return services;
+
         services.Scan(scan => scan.FromAssemblyOf<ValuationRequestCreatedTrelloEventHandler>()
             .AddClasses(classes => classes.Where(type => type.Name.EndsWith(Configuration)))
             .AsImplementedInterfaces()
@@ -28,6 +32,8 @@ internal static class TrelloModule
 
     internal static void UseTrello(this IApplicationBuilder app)
     {
+        var enabled = app.IsModuleEnabled(FeatureFlags.Module);
+        if (!enabled) return;
         app.UseTrelloAuthentication();
     }
 }
