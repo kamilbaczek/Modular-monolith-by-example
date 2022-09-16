@@ -6,30 +6,6 @@ using Application.Authentication;
 using Domain;
 using Domain.Users;
 using Jwt.RefreshTokens;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-
-internal interface IUsersRepository
-{
-    Task<UserAccount> GetByUserNameAsync(string userName, CancellationToken cancellationToken = default);
-    Task UpdateAsync(UserAccount userAccount, CancellationToken cancellationToken = default);
-}
-
-internal interface IPasswordTokens
-{
-    Task<string> GeneratePasswordResetTokenAsync(UserAccount userAccount);
-}
-
-internal interface ISignInManager
-{
-    Task SignOutAsync();
-
-    Task<string> GeneratePasswordResetTokenAsync(UserAccount userAccount);
-
-    Task<SignInResult> PasswordSignInAsync(UserAccount user, string password,
-        bool isPersistent, bool lockoutOnFailure);
-}
-
 
 internal sealed class SignInManagementService : ISignInManagementService
 {
@@ -62,20 +38,14 @@ internal sealed class SignInManagementService : ISignInManagementService
     {
         var user = await _usersRepository.GetByUserNameAsync(request.UserName, cancellationToken);
         if (user is null)
-        {
             return SignInResultStatus.Negative;
-        }
 
         var signInResult = await _signInManager.PasswordSignInAsync(user, request.Password, true, true);
         if (signInResult.IsLockedOut)
-        {
             return SignInResultStatus.Locked;
-        }
 
         if (!signInResult.Succeeded)
-        {
             return SignInResultStatus.Negative;
-        }
 
         if (!user.IsPasswordExpired(_datetimeProvider))
         {
@@ -104,9 +74,7 @@ internal sealed class SignInManagementService : ISignInManagementService
     {
         var user = await _usersRepository.GetByUserNameAsync(userName, cancellationToken);
         if (user is null)
-        {
             return;
-        }
 
         user.RegisterFailedLoginAttempt(_datetimeProvider.Now);
         await _usersRepository.UpdateAsync(user, cancellationToken);

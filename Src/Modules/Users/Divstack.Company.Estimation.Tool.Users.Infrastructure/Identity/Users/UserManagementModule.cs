@@ -16,8 +16,11 @@ internal static class UserManagementModule
         services.AddSingleton<IAdminAccountConfiguration, AdminAccountConfiguration>();
         services.AddScoped<IUserManagementService, UserManagementService>();
         services.AddScoped<ISignInManagementService, SignInManagementService>();
+        services.AddScoped<ISignInManager, UserAccountSignInManager>();
+        services.AddScoped<IUsersRepository, UsersRepository>();
         services.AddScoped<IRoleManagementService, RoleManagementService>();
         services.AddScoped<IPasswordComparer, PasswordComparer>();
+        services.AddScoped<IPasswordTokens, PasswordTokens>();
         services.AddScoped<IPasswordsManagementService, PasswordsManagementService>();
         services.AddUserSeeder();
     }

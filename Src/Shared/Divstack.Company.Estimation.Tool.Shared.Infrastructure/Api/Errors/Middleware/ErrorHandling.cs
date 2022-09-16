@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Shared.Infrastructure.Api.Errors.Middleware;
 
+using System.Diagnostics;
 using System.Net;
 using Environments;
 using Microsoft.AspNetCore.Hosting;
@@ -37,14 +38,10 @@ internal sealed class ErrorHandling
         _logger.LogError(message);
         var code = HttpStatusCode.InternalServerError;
         if (exception.IsNotFoundException())
-        {
             code = HttpStatusCode.NotFound;
-        }
 
         if (exception.IsValidationException())
-        {
             code = HttpStatusCode.BadRequest;
-        }
 
         var response = _webHostEnvironment.IsProduction() ? ExceptionDto.CreateInternalServerError() : ExceptionDto.CreateWithMessage(message);
 
@@ -60,5 +57,5 @@ internal sealed class ErrorHandling
         return context.Response.WriteAsync(jsonResponseBody);
     }
 
-    private static string GetMessage(Exception exception) => $"{exception.Message} {exception.StackTrace}";
+    private static string GetMessage(Exception exception) => $"{exception.Message} {exception.Demystify()}";
 }

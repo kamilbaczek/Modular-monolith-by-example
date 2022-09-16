@@ -6,23 +6,20 @@ using Application.Authentication;
 using Domain.Users;
 using Microsoft.AspNetCore.Identity;
 
-public class RoleManagementService : IRoleManagementService
+internal sealed class RoleManagementService : IRoleManagementService
 {
-    private readonly RoleManager<ApplicationRole> roleManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
 
-    public RoleManagementService(RoleManager<ApplicationRole> roleManager)
-    {
-        this.roleManager = roleManager;
-    }
+    public RoleManagementService(RoleManager<ApplicationRole> roleManager) => _roleManager = roleManager;
 
     public async Task AddNewRole(string roleName)
     {
-        if (await roleManager.RoleExistsAsync(roleName))
+        if (await _roleManager.RoleExistsAsync(roleName))
         {
             throw new InvalidOperationException($"Role [{roleName}] already exists.");
         }
 
-        var result = await roleManager.CreateAsync(new ApplicationRole
+        var result = await _roleManager.CreateAsync(new ApplicationRole
         {
             Name = roleName
         });
@@ -32,8 +29,5 @@ public class RoleManagementService : IRoleManagementService
         }
     }
 
-    public async Task<bool> RoleExists(string roleName)
-    {
-        return await roleManager.RoleExistsAsync(roleName);
-    }
+    public async Task<bool> RoleExists(string roleName) => await _roleManager.RoleExistsAsync(roleName);
 }

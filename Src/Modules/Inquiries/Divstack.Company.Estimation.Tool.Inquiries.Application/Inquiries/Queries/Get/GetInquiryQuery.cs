@@ -3,4 +3,10 @@
 using Common.Contracts;
 using Dtos;
 
-public record struct GetInquiryQuery(Guid InquiryId) : IQuery<InquiryVm>;
+public record struct GetInquiryQuery(Guid InquiryId) : IQuery<InquiryVm>
+{
+    public static GetInquiryQuery Create()
+    {
+        return new GetInquiryQuery();
+    }
+}

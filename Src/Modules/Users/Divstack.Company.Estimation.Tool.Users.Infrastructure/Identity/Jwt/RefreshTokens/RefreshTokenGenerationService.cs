@@ -45,10 +45,9 @@ internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationSer
 
     private static string GenerateRandomRefreshToken()
     {
-        var randomNumber = new byte[32];
-        using var rng = new RNGCryptoServiceProvider();
-        rng.GetBytes(randomNumber);
-        var refreshTokenString = Convert.ToBase64String(randomNumber);
+        var bytes = RandomNumberGenerator.GetBytes(32);
+        var refreshTokenString = Convert.ToBase64String(bytes);
+
         return refreshTokenString;
     }
 
@@ -67,8 +66,6 @@ internal sealed class RefreshTokenGenerationService : IRefreshTokenGenerationSer
     {
         var existingRefreshToken = await _refreshTokenRepository.GetByUserPublicIdOrDefaultAsync(userPublicId);
         if (existingRefreshToken != null)
-        {
             await _refreshTokenRepository.RemoveAsync(existingRefreshToken);
-        }
     }
 }

@@ -14,6 +14,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.Publisher.ApplicationInsights" Version="6.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.System" Version="6.0.0" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.1-rc2.3" />
+    <PackageReference Include="Ben.Demystifier" Version="0.4.1" />
     <PackageReference Include="Hangfire" Version="1.8.0-beta3" />
     <PackageReference Include="Hangfire.InMemory" Version="0.3.4" />
     <PackageReference Include="Hangfire.Mongo" Version="0.7.28" />

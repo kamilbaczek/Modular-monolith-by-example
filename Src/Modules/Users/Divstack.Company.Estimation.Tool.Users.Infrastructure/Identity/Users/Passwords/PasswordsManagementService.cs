@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Passwords;
 
 using System;
 using System.Linq;
@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using Application.Authentication;
 using Errors;
 using Microsoft.EntityFrameworkCore;
+using Services;
 
 internal sealed class PasswordsManagementService : IPasswordsManagementService
 {
     private readonly ApplicationUserManager _applicationUserManager;
 
-    public PasswordsManagementService(ApplicationUserManager applicationUserManager)
-    {
+    public PasswordsManagementService(ApplicationUserManager applicationUserManager) =>
         _applicationUserManager = applicationUserManager;
-    }
 
     public async Task<string> GenerateResetUserPasswordTokenAsync(Guid userPublicId)
     {
@@ -118,7 +117,6 @@ internal sealed class PasswordsManagementService : IPasswordsManagementService
 
         var confirmEmailResult = await _applicationUserManager.ConfirmEmailAsync(user, token);
         if (!confirmEmailResult.Succeeded)
-        // throw event await SendConfirmationEmailAsync(user);
         {
             throw new InvalidOperationException("Link Expired");
         }

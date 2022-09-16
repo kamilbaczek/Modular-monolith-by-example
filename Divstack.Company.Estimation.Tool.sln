@@ -197,6 +197,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adr", "Adr", "{75D2B370-D9C
 		Documentation\Architecture\Decisions\0001-record-architecture-decisions.md = Documentation\Architecture\Decisions\0001-record-architecture-decisions.md
 		Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md = Documentation\Architecture\Decisions\0002-infrastructure-migration-to-azure.md
 		Documentation\Architecture\Decisions\0003-move-inmemory-event-bus-outside-process.md = Documentation\Architecture\Decisions\0003-move-inmemory-event-bus-outside-process.md
+		Documentation\Architecture\Decisions\0004-infrastructure-as-a-code-using-pulumi.md = Documentation\Architecture\Decisions\0004-infrastructure-as-a-code-using-pulumi.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Emails.Priorities", "Src\Modules\Emails\Divstack.Company.Estimation.Tool.Emails.Priorities\Divstack.Company.Estimation.Tool.Emails.Priorities.csproj", "{4A6D88B0-C407-4BBF-AD8F-222C8447C124}"

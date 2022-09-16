@@ -7,10 +7,8 @@ internal sealed class GetAllInquiriesQueryHandler : IRequestHandler<GetAllInquir
 {
     private readonly IDatabaseConnectionFactory _databaseConnectionFactory;
 
-    public GetAllInquiriesQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory)
-    {
+    public GetAllInquiriesQueryHandler(IDatabaseConnectionFactory databaseConnectionFactory) =>
         _databaseConnectionFactory = databaseConnectionFactory;
-    }
 
     public async Task<InquiryListVm> Handle(GetAllInquiriesQuery request, CancellationToken cancellationToken)
     {
