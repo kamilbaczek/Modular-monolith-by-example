@@ -6,6 +6,17 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
+  up:
+    name: Preview
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pulumi/actions@v3
+        with:
+          command: up
+          stack-name: dev
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   build:
     name: Build
     runs-on: ubuntu-latest
