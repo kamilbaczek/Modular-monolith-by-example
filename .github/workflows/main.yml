@@ -10,7 +10,7 @@ jobs:
     name: Deploy Code Azure Infrastructure
     runs-on: ubuntu-latest
     steps:
-      - name: 'Azure login'
+      - name: Log in with Azure
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
