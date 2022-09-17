@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   up:
-    name: Deploy Code Azure Infrastructure
+    name: Deploy Code, Azure Infrastructure
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
