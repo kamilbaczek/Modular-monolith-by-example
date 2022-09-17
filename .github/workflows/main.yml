@@ -7,7 +7,7 @@ on:
     types: [opened, synchronize, reopened]
 jobs:
   up:
-    name: Preview
+    name: Deploy infrastructure and Code to Azure
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
