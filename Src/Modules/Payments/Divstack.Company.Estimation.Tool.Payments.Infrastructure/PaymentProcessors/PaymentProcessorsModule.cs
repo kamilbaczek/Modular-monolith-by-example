@@ -12,8 +12,5 @@ internal static class PaymentProcessorsModule
         return services;
     }
 
-    internal static void UsePaymentProcessors(this IApplicationBuilder app)
-    {
-        app.UseStripe();
-    }
+    internal static void UsePaymentProcessors(this IApplicationBuilder app) => app.UseStripe();
 }

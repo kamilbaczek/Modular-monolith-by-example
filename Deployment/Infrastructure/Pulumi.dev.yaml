@@ -1,10 +1,6 @@
 config:
   Estimation-Tool-Infrastructure:AuthTokenSecret:
     secure: AAABANcd6rkiqEhidvr7OhJflU5JMYY8S4q5HyzaD+x+RGfvCUAkSDc8XQgeQSjUHVIZnbQg2PjamUIblMOpxDvFf9kZw6LPia6+qeEX1bHkNLRG9prqc2yRV2246VK4
-  Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_PASSWORD:
-    secure: AAABADDLVCHDIIgniYZZj6unUcgGiqMHK6UxC+tSIUNICSGS787T
-  Estimation-Tool-Infrastructure:DOCKER_REGISTRY_SERVER_USERNAME:
-    secure: AAABAOxdfAz0YaNZGWsauHMs20ISBsWzuH5XENiAZaOTSegTlXq0qBaAJQ==
   Estimation-Tool-Infrastructure:EventBusEndpointKey:
     secure: AAABAOea4Kez9uNL/8oXinExOqK/kNCcC7Buxn4pVMU0Bp9wG0Gg/mshOxM0OU03XJB9eGf7bnjbnBowBm3983iU8JdaF2wNT9pg+ofKfVHV0XsaPRuFk5cnTIHaQjD/
   Estimation-Tool-Infrastructure:EventBusStorageDatabaseName:

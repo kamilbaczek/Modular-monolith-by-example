@@ -16,13 +16,10 @@ internal sealed class PaymentProcessor : IPaymentProcessor
         _paymentInitializer = paymentInitializer;
         _paymentConfirmation = paymentConfirmation;
     }
-    public async Task PayAsync(PaymentSecret paymentSecret, Card card, CancellationToken cancellationToken = default)
-    {
-        await _paymentConfirmation.ConfirmAsync(paymentSecret, card, cancellationToken);
-    }
 
-    public async Task<PaymentSecret> InitializeAsync(Money amountToPay, CancellationToken cancellationToken = default)
-    {
-        return await _paymentInitializer.InitializeAsync(amountToPay, cancellationToken);
-    }
+    public async Task PayAsync(PaymentSecret paymentSecret, Card card, CancellationToken cancellationToken = default) =>
+        await _paymentConfirmation.ConfirmAsync(paymentSecret, card, cancellationToken);
+
+    public async Task<PaymentSecret> InitializeAsync(Money amountToPay, CancellationToken cancellationToken = default) =>
+        await _paymentInitializer.InitializeAsync(amountToPay, cancellationToken);
 }

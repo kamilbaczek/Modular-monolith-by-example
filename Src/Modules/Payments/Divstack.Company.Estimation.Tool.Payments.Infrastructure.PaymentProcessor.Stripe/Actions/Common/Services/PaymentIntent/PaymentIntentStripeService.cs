@@ -2,5 +2,5 @@
 
 using global::Stripe;
 
-internal sealed class PaymentIntentStripeStripeService : PaymentIntentService, IPaymentIntentStripeService
+internal sealed class PaymentIntentStripeService : PaymentIntentService, IPaymentIntentStripeService
 { }

@@ -16,15 +16,12 @@ public static class StripeModule
         services.AddScoped<IPaymentProcessor, PaymentProcessor>();
         services.AddScoped<IPaymentInitializer, PaymentInitializer>();
         services.AddScoped<IPaymentConfirmation, PaymentConfirmation>();
-        services.AddScoped<IPaymentIntentStripeService, PaymentIntentStripeStripeService>();
+        services.AddScoped<IPaymentIntentStripeService, PaymentIntentStripeService>();
         services.AddScoped<IPaymentMethodStripeService, PaymentMethodStripeService>();
-
 
         return services;
     }
 
-    public static void UseStripe(this IApplicationBuilder app)
-    {
+    public static void UseStripe(this IApplicationBuilder app) =>
         app.ConfigureStripe();
-    }
 }
