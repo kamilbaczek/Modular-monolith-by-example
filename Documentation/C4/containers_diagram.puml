@@ -16,8 +16,6 @@
 !includeurl AzurePuml/Databases/AzureDatabaseForPostgreSQL.puml
 !includeurl AzurePuml/Databases/AzureCosmosDb.puml
 
-LAYOUT_WITH_LEGEND()
-
 title Container diagram for Estimation Tool
 
 Person(estimator, Estimator , "A person who is resposible for suggest valuation proposal on time, based on priorities" )
