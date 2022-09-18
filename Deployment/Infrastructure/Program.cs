@@ -21,11 +21,10 @@ void CreateResources(string environment, Config configuration)
 {
     var servicePrincipal = ServicePrincipalCreator.Create(environment);
     var resourceGroup = ResourceGroupCreator.Create(environment, servicePrincipal.ObjectId);
-    var appServicePlan = AppServicePlanCreator.Create(environment, resourceGroup);
     var @namespace = ServiceBusNamespace.Create(environment, resourceGroup);
     var configurationStore = AppConfigurationCreator.Create(environment, resourceGroup);
     var keyVault = KeyVaultCreator.Create(environment, resourceGroup, configuration);
     SecuredKeyValueCreator.Create(environment, keyVault, configuration, resourceGroup, configurationStore, @namespace);
     var appInsights = AppInsightsCreator.Create(environment, resourceGroup);
-    ContainerAppCreator.Create(environment, appInsights, configuration, resourceGroup, appServicePlan);
+    ContainerAppCreator.Create(environment, appInsights, configuration, resourceGroup);
 }

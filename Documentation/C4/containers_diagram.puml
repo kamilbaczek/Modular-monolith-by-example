@@ -1,28 +1,63 @@
 @startuml
-!include <c4/C4_Context.puml>  
+!pragma revision 1
 
-'ref http://plantuml.com/stdlib
-!include <office/Users/user.puml>
-'LAYOUT_WITH_LEGEND
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-title System Context diagram for Estimation Tool
+!define AzurePuml https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist
+!includeurl AzurePuml/AzureCommon.puml
+!includeurl AzurePuml/AzureC4Integration.puml
+!includeurl AzurePuml/Web/AzureWebApp.puml
+
+!includeurl AzurePuml/Security/AzureKeyVault.puml
+!includeurl AzurePuml/DevOps/AzureApplicationInsights.puml
+!includeurl AzurePuml/Management/AppConfiguration.puml
+!includeurl AzurePuml/Integration/AzureServiceBus.puml
+!includeurl AzurePuml/Databases/AzureDatabaseForMySQL.puml
+!includeurl AzurePuml/Databases/AzureDatabaseForPostgreSQL.puml
+!includeurl AzurePuml/Databases/AzureCosmosDb.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Container diagram for Estimation Tool
 
 Person(estimator, Estimator , "A person who is resposible for suggest valuation proposal on time, based on priorities" )
 Person(customer, Customer , "A person who inquiry service" )
 
-System(estimation_tool, "Estimation Tool", "System to optimize estimation process. Gives cabapitlites to handle valuations, notifications, priorities, payments, authenticate customers")
+AzureWebApp(spa, "Single-Page App", "Angular, JS")
 
-System_Ext(twillo, "Twillo", "SMS service resposible for send to customers and estimators")
-System_Ext(sendGrid, "Send Grid", "Email service resposible for send to customers and estimators")
-System_Ext(trello, "Trello", "Project menagment system")
-System_Ext(stripe, "Stripe", "Payment Gateway")
+AzureWebApp(webApp, "WebAPI", ".NET 6", "")
+Rel_Neighbor(spa, webApp, "Uses", "JSON, HTTPS")
+Rel_Back_Neighbor(spa, webApp, "Delivers")
 
-Rel(customer, estimation_tool, "Made service inquiry, Accept/Reject proposals")
-Rel(estimator, estimation_tool, "Suggest Proposals, Complete")
+Rel(customer, spa, "Uses", "HTTPS")
+Rel(estimator, spa, "Uses", "HTTPS")
 
-Rel_U(estimation_tool, twillo, "Sends SMS", "HTTP")
-Rel_L(estimation_tool, sendGrid, "Sends e-mails", "SMTP")
-Rel_R(estimation_tool, trello, "Create task with valuation for estimitor, Change task state", "HTTP")
-Rel_D(estimation_tool, stripe, "Make a payments", "HTTP")
+AzureApplicationInsights(azureApplicationInsights, "Observability System", "AzureApplicationInsights")
+Rel_U(webApp, azureApplicationInsights, "Log request", "")
+
+AzureServiceBus(serviceBus, "Message Broker", "Azure Service Bus", "")
+Rel_U(webApp, serviceBus, "Publish", "")
+Rel_Back(webApp, serviceBus, "Subscribe", "")
+
+AzureKeyVault(keyVault, "Secrets Store", "Azure Key Valut", "")
+AppConfiguration(azureAppConfiguration, "Configuration Management", "Azure App Configuratio", "Contains all configuration entries and feature flags")
+Rel_Neighbor(webApp, azureAppConfiguration, "Get configuration")
+Rel_Neighbor(azureAppConfiguration, keyVault, "Get secrets")
+Rel_Back_Neighbor(azureAppConfiguration, keyVault, "Returns secrets")
+Rel_Back_Neighbor(webApp, azureAppConfiguration, "Returns configuration")
+
+AzureCosmosDb(mongoDb, "Document Database", "MongoDB")
+AzureDatabaseForMySQL(mySQL, "Relational Database", "MySQL")
+AzureDatabaseForPostgreSQL(postgres, "Relational Database", "Postgres")
+
+Rel_D(webApp, mongoDb, "Write")
+Rel_Back(webApp, mongoDb, "Read")
+
+Rel_D(webApp, mySQL, "Write")
+Rel_Back(webApp, mySQL, "Read")
+
+Rel_D(webApp, postgres, "Write")
+Rel_Back(webApp, postgres, "Read")
+
 
 @enduml

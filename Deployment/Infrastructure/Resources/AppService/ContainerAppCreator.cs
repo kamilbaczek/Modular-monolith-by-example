@@ -17,7 +17,7 @@ using SecretArgs = Pulumi.AzureNative.App.Inputs.SecretArgs;
 
 internal static class ContainerAppCreator
 {
-    internal static ContainerApp Create(string environment, Insights insights, Config config, ResourceGroup resourceGroup, Plan plan)
+    internal static ContainerApp Create(string environment, Insights insights, Config config, ResourceGroup resourceGroup)
     {
         var workspace = new Workspace($"{environment}-loganalytics", new WorkspaceArgs
         {
