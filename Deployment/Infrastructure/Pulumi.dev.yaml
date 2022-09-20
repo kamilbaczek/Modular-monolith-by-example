@@ -20,8 +20,8 @@ config:
   Estimation-Tool-Infrastructure:UserToken:
     secure: AAABANAsncRzkYdRgI+MQKryWHklFzZzfA+dDS0vbrS7+ASA1cbcBM03xzizhno7wS4P56KKbnEGEs89inDxhsJscn01FjHzDXzBCa+cuJJB4wQBoOt78Dh4SdmyzJbG
   azure-native:location: westeurope
-  azure:clientId: d3dea36d-2da9-4401-bb9e-3339917caa82
+  azure:clientId: 0b9e9494-00c6-4908-9c0d-5002e9a1a9e9
   azure:clientSecret:
-    secure: AAABAJI7kXMUDDwIzKtpzN4zX4V9el+ttUOn1VCGNRC6VLK4pgnTLb+4NVvU6Jolz2ICJzzGRYTue1q2YlqXLsUe/r4EIF2b
+    secure: AAABAIsux14KR9bXHIVQfPs2yzpwvw9UR+e/92WD5WetPlwkxTM0rwC9dVnUzZrSdRp086k1UM57KI7u8ojfQvCofT05KZDS
   azure:subscriptionId: /subscriptions/019aa37b-84f3-4b63-862c-2fe8767bd589
-  azure:tenantId: d3dea36d-2da9-4401-bb9e-3339917caa82
+  azure:tenantId: 5e8092e1-1649-4c57-baf5-7a3eb80a2bfc

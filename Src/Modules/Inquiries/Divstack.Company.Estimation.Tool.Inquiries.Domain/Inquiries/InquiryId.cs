@@ -2,8 +2,5 @@
 
 public record InquiryId(Guid Value)
 {
-    internal static InquiryId Create()
-    {
-        return new InquiryId(Guid.NewGuid());
-    }
+    internal static InquiryId Create() => new(Guid.NewGuid());
 }
