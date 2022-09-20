@@ -16,6 +16,7 @@ internal static class ServicePrincipalCreator
             {
                 new()
                 {
+                    Id = "9e91ff68-b4e9-4ffd-ab18-6dd24a379a3b",
                     AllowedMemberTypes = new[] { "Application" },
                     Description = "Allows the application to access Estimation Tool API on behalf of the signed-in user.",
                     DisplayName = "Estimation Tool API",

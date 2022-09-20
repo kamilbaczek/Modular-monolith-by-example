@@ -26,14 +26,14 @@ internal static class ContainerAppCreator
             RetentionInDays = 30,
         });
 
-        var workspaceSharedKeys = Output.Tuple(resourceGroup.Name, workspace.Name).Apply(items =>
-            GetSharedKeys.InvokeAsync(new GetSharedKeysArgs
-            {
-                ResourceGroupName = items.Item1,
-                WorkspaceName = items.Item2,
-            }));
+        // var workspaceSharedKeys = Output.Tuple(resourceGroup.Name, workspace.Name).Apply(items =>
+        //     GetSharedKeys.InvokeAsync(new GetSharedKeysArgs
+        //     {
+        //         ResourceGroupName = items.Item1,
+        //         WorkspaceName = items.Item2,
+        //     }));
 
-        var managedEnv = new ManagedEnvironment("env", new ManagedEnvironmentArgs
+        var managedEnv = new ManagedEnvironment($"{environment}-env", new ManagedEnvironmentArgs
         {
             ResourceGroupName = resourceGroup.Name,
             AppLogsConfiguration = new AppLogsConfigurationArgs
@@ -42,7 +42,7 @@ internal static class ContainerAppCreator
                 LogAnalyticsConfiguration = new LogAnalyticsConfigurationArgs
                 {
                     CustomerId = workspace.CustomerId,
-                    SharedKey = workspaceSharedKeys.Apply(r => r.PrimarySharedKey)
+                    // SharedKey = workspaceSharedKeys.Apply(r => r.PrimarySharedKey)
                 }
             }
         });
@@ -54,25 +54,27 @@ internal static class ContainerAppCreator
             AdminUserEnabled = true
         });
 
-        var credentials = Output.Tuple(resourceGroup.Name, registry.Name).Apply(items =>
-            ListRegistryCredentials.InvokeAsync(new ListRegistryCredentialsArgs
-            {
-                ResourceGroupName = items.Item1,
-                RegistryName = items.Item2
-            }));
-        var adminUsername = credentials.Apply(credentials => credentials.Username);
-        var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
+        // var credentials = Output.Tuple(resourceGroup.Name, registry.Name)
+        //     .Apply(items =>
+        //     ListRegistryCredentials.InvokeAsync(
+        //         new ListRegistryCredentialsArgs
+        //     {
+        //         ResourceGroupName = items.Item1,
+        //         RegistryName = items.Item2
+        //     }));
+        // var adminUsername = credentials.Apply(credentials => credentials.Username);
+        // var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
 
-        var image = "estimationtool";
-        var myImage = new Image(image, new ImageArgs
+        const string image = "estimationtool";
+        var estimationToolImage = new Image(image, new ImageArgs
         {
             ImageName = Output.Format($"{registry.LoginServer}/{image}:v1.0.0"),
             Build = new DockerBuild { Context = "../../" },
             Registry = new ImageRegistry
             {
                 Server = registry.LoginServer,
-                Username = adminUsername,
-                Password = adminPassword
+                Username = "estimationtool",
+                Password = "estimationtool"
             }
         });
 
@@ -92,7 +94,7 @@ internal static class ContainerAppCreator
                     new RegistryCredentialsArgs
                     {
                         Server = registry.LoginServer,
-                        Username = adminUsername,
+                        Username = "estimationtool",
                         PasswordSecretRef = "pwd",
                     }
                 },
@@ -101,7 +103,7 @@ internal static class ContainerAppCreator
                     new SecretArgs
                     {
                         Name = "pwd",
-                        Value = adminPassword
+                        Value = "estimationtool"
                     }
                 },
             },
@@ -112,7 +114,7 @@ internal static class ContainerAppCreator
                     new ContainerArgs
                     {
                         Name = "myapp",
-                        Image = myImage.ImageName,
+                        Image = estimationToolImage.ImageName,
                     }
                 }
             }
