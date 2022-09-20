@@ -38,6 +38,10 @@
 ### C4
 [Wiki](https://github.com/kamilbaczek/Estimation-Tool/wiki/C4)
 
+### Cloud Infrastructure
+![image](https://user-images.githubusercontent.com/74410956/190911013-87569f48-137d-47ce-ac32-747665bd2bb9.png)
+
+
 #### Event Storming
 [Miro](https://miro.com/app/board/o9J_lcC1E7g=/?invite_link_id=913994717613)
 
