@@ -23,5 +23,5 @@ config:
   azure:clientId: 0b9e9494-00c6-4908-9c0d-5002e9a1a9e9
   azure:clientSecret:
     secure: AAABAIsux14KR9bXHIVQfPs2yzpwvw9UR+e/92WD5WetPlwkxTM0rwC9dVnUzZrSdRp086k1UM57KI7u8ojfQvCofT05KZDS
-  azure:subscriptionId: /subscriptions/019aa37b-84f3-4b63-862c-2fe8767bd589
+  azure:subscriptionId: 019aa37b-84f3-4b63-862c-2fe8767bd589
   azure:tenantId: 5e8092e1-1649-4c57-baf5-7a3eb80a2bfc
