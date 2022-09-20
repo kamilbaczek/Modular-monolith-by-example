@@ -12,20 +12,12 @@ internal static class ServicePrincipalCreator
         var application = new Application($"app-ad-{environment}", new()
         {
             DisplayName = $"Estimation Tool - {environment}",
-            Owners = new[]
-            {
-                currentPrincipal
-            },
         });
 
         var servicePrincipal = new ServicePrincipal($"sp-ac-kv-{environment}-policy", new()
         {
             ApplicationId = application.ApplicationId,
             AppRoleAssignmentRequired = false,
-            Owners = new[]
-            {
-                currentPrincipal
-            },
         });
 
         return servicePrincipal;
