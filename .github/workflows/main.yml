@@ -133,6 +133,9 @@ jobs:
   architecture-diagrams:
       name: Architecture Diagrams
       runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: Documentation/C4
       steps:    
       - name: Checkout 
         uses: actions/checkout@v2
@@ -143,7 +146,6 @@ jobs:
         id: plantuml
         uses: grassedge/generate-plantuml-action@v1.5
         with:
-          path: 'Documentation/C4'
           message: "Render Architecture diagrams"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
