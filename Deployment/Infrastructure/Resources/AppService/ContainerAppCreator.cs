@@ -17,7 +17,7 @@ using SecretArgs = Pulumi.AzureNative.App.Inputs.SecretArgs;
 
 internal static class ContainerAppCreator
 {
-    internal static ContainerApp Create(string environment, Insights insights, Config config, ResourceGroup resourceGroup)
+    internal static ContainerApp Create(string environment, ResourceGroup resourceGroup)
     {
         var workspace = new Workspace($"{environment}-loganalytics", new WorkspaceArgs
         {
@@ -113,7 +113,7 @@ internal static class ContainerAppCreator
                 {
                     new ContainerArgs
                     {
-                        Name = "myapp",
+                        Name = "estimationTool",
                         Image = estimationToolImage.ImageName,
                     }
                 }
