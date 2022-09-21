@@ -139,9 +139,11 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: Render PlantUML to wiki
-        uses: frederikheld/render-plantuml-to-wiki-action@v1.0.1
+      - name: plantuml
+        id: plantuml
+        uses: grassedge/generate-plantuml-action@v1.5
         with:
-          WIKI_TOKEN: ${{ secrets.WIKI_TOKEN }}
-          INPUT_DIR: 'Documentation/C4'
-          OUTPUT_DIR: 'Documentation/C4/Rendered'
+          path: 'Documentation/C4'
+          message: "Render Architecture diagrams"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
