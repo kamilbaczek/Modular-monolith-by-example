@@ -36,7 +36,7 @@
 
 ## Documentation
 ### C4
-#### System Contetext
+#### System Context
 ![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/system_context_diagram.svg)
 
 #### Cloud Infrastructure
