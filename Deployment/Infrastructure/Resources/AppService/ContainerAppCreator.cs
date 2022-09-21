@@ -1,20 +1,17 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 
+using AzureNative.App;
+using AzureNative.App.Inputs;
+using AzureNative.ContainerRegistry;
+using AzureNative.OperationalInsights;
+using AzureNative.OperationalInsights.Inputs;
 using Pulumi;
-using Pulumi.AzureNative.App;
-using Pulumi.AzureNative.App.Inputs;
-using Pulumi.AzureNative.ContainerRegistry;
-using Pulumi.AzureNative.OperationalInsights;
-using Pulumi.AzureNative.OperationalInsights.Inputs;
 using Pulumi.AzureNative.Resources;
-using Pulumi.Docker;
-using ContainerArgs = Pulumi.AzureNative.App.Inputs.ContainerArgs;
-using SecretArgs = Pulumi.AzureNative.App.Inputs.SecretArgs;
 using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
 {
-    internal static ContainerApp Create(string environment, ResourceGroup resourceGroup)
+    internal static Registry Create(string environment, ResourceGroup resourceGroup)
     {
         var workspace = new Workspace($"{environment}-loganalytics", new WorkspaceArgs
         {
@@ -44,82 +41,13 @@ internal static class ContainerAppCreator
             }
         });
 
-        var registry = new Registry($"registry", new RegistryArgs
+        var registry = new Registry($"registry{environment}", new RegistryArgs
         {
             ResourceGroupName = resourceGroup.Name,
             Sku = new SkuArgs { Name = "Basic" },
             AdminUserEnabled = true
         });
 
-        var credentials = Output.Tuple(resourceGroup.Name, registry.Name)
-            .Apply(items =>
-            ListRegistryCredentials.InvokeAsync(
-                new ListRegistryCredentialsArgs
-                {
-                    ResourceGroupName = items.Item1,
-                    RegistryName = items.Item2
-                }));
-        var adminUsername = credentials.Apply(credentials => credentials.Username);
-        var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
-
-        const string image = "estimationtool";
-        var estimationToolImage = new Image(image, new ImageArgs
-        {
-            ImageName = Output.Format($"{registry.LoginServer}/{image}:v1.0.0"),
-            Build = new DockerBuild
-            {
-                Context = "../../"
-            },
-            Registry = new ImageRegistry
-            {
-                Server = registry.LoginServer,
-                Username = adminUsername,
-                Password = adminPassword
-            }
-        });
-
-        var containerApp = new ContainerApp($"{environment}-app", new ContainerAppArgs
-        {
-            ResourceGroupName = resourceGroup.Name,
-            ManagedEnvironmentId = managedEnv.Id,
-            Configuration = new ConfigurationArgs
-            {
-                Ingress = new IngressArgs
-                {
-                    External = true,
-                    TargetPort = 80
-                },
-                Registries =
-                {
-                    new RegistryCredentialsArgs
-                    {
-                        Server = registry.LoginServer,
-                        Username = adminUsername,
-                        PasswordSecretRef = "pwd",
-                    }
-                },
-                Secrets =
-                {
-                    new SecretArgs
-                    {
-                        Name = "pwd",
-                        Value = adminPassword
-                    }
-                },
-            },
-            Template = new TemplateArgs
-            {
-                Containers =
-                {
-                    new ContainerArgs
-                    {
-                        Name = "estimationtool",
-                        Image = estimationToolImage.ImageName,
-                    }
-                }
-            }
-        });
-
-        return containerApp;
+        return registry;
     }
 }
