@@ -7,7 +7,7 @@
 
 title System Context diagram for Estimation Tool
 
-Person(estimator, Estimator , "A person who is resposible for suggest valuation proposal on time, based on priorities" )
+Person(estimator, Estimator , "A person who is resposible for suggest valuation proposals on time, based on priorities" )
 Person(customer, Customer , "A person who inquiry service" )
 
 System(estimation_tool, "Estimation Tool", "System to optimize estimation process. Gives cabapitlites to handle valuations, notifications, priorities, payments, authenticate customers")
