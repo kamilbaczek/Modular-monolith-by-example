@@ -39,7 +39,7 @@
 [Wiki](https://github.com/kamilbaczek/Estimation-Tool/wiki/C4)
 
 ### Cloud Infrastructure
-![image](https://user-images.githubusercontent.com/74410956/190911013-87569f48-137d-47ce-ac32-747665bd2bb9.png)
+![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/containers_diagram.svg)
 
 
 #### Event Storming
