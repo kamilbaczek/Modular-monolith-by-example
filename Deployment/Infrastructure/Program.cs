@@ -1,11 +1,9 @@
 ﻿using Divstack.Estimation.Tool.Deployment.Infrastructure.Common.Enviroments;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppConfiguration;
-using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppInsights;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.KeyVault;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ResourceGroups;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServiceBus;
-using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServicePrincipal;
 using Pulumi.AzureAD;
 using Config = Pulumi.Config;
 using Deployment = Pulumi.Deployment;

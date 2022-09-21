@@ -2,7 +2,6 @@
 
 using Azure.Telemetry;
 using Infrastructure.FeatureFlags;
-using Microsoft.Extensions.Logging;
 
 internal static class ObservabilityModule
 {

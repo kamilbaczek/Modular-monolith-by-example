@@ -15,4 +15,8 @@
     <PackageReference Include="Pulumi.Docker" Version="3.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\ServicePrincipal" />
+  </ItemGroup>
+
 </Project>

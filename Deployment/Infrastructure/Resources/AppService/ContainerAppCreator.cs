@@ -1,19 +1,16 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 
 using Pulumi;
-using Pulumi.Azure.AppInsights;
-using Pulumi.Azure.AppService;
 using Pulumi.AzureNative.App;
 using Pulumi.AzureNative.App.Inputs;
 using Pulumi.AzureNative.ContainerRegistry;
-using Pulumi.AzureNative.ContainerRegistry.Inputs;
 using Pulumi.AzureNative.OperationalInsights;
 using Pulumi.AzureNative.OperationalInsights.Inputs;
 using Pulumi.AzureNative.Resources;
 using Pulumi.Docker;
-using Config = Pulumi.Config;
 using ContainerArgs = Pulumi.AzureNative.App.Inputs.ContainerArgs;
 using SecretArgs = Pulumi.AzureNative.App.Inputs.SecretArgs;
+using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
 {
@@ -69,7 +66,10 @@ internal static class ContainerAppCreator
         var estimationToolImage = new Image(image, new ImageArgs
         {
             ImageName = Output.Format($"{registry.LoginServer}/{image}:v1.0.0"),
-            Build = new DockerBuild { Context = "../../" },
+            Build = new DockerBuild
+            {
+                Context = "../../"
+            },
             Registry = new ImageRegistry
             {
                 Server = registry.LoginServer,
