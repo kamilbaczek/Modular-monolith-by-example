@@ -133,18 +133,14 @@ jobs:
   architecture-diagrams:
       name: Architecture Diagrams
       runs-on: ubuntu-latest
-      defaults:
-        run:
-          working-directory: Documentation/C4
+
       steps:    
       - name: Checkout 
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: generate and commit diagrams
-        uses: abekoh/commit-plantuml-action@1.0.2
+      - name: Generate SVG Diagrams
+        uses: holowinski/plantuml-github-action@main
         with:
-          botEmail: ${{ secrets.BOT_EMAIL }}
-          botGithubToken: ${{ secrets.GITHUB_TOKEN }}
-          enableReviewComment: true
+          args: -v -tsvg Documentation/C4/*.puml
