@@ -36,9 +36,10 @@
 
 ## Documentation
 ### C4
-[Wiki](https://github.com/kamilbaczek/Estimation-Tool/wiki/C4)
+#### System Contetext
+![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/system_context_diagram.svg)
 
-### Cloud Infrastructure
+#### Cloud Infrastructure
 ![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/containers_diagram.svg)
 
 
