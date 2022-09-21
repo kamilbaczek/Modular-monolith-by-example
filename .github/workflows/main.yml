@@ -144,3 +144,9 @@ jobs:
         uses: holowinski/plantuml-github-action@main
         with:
           args: -v -tsvg Documentation/C4/*.puml
+
+      - name: Push Local Changes
+        uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        with:
+          commit_message: "Generate SVG files for PlantUML diagrams"
+          branch: ${{ github.head_ref }}
