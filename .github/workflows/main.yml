@@ -147,11 +147,13 @@ jobs:
 
       - name: Generate SVG Diagrams
         uses: holowinski/plantuml-github-action@main
+        continue-on-error: true
         with:
           args: -v -tsvg ${{steps.getfile.outputs.files}}
 
       - name: Push Local Changes
         uses: stefanzweifel/git-auto-commit-action@v4.1.2
+        continue-on-error: true
         with:
           commit_message: "Generate SVG files for PlantUML diagrams"
           branch: ${{ github.head_ref }}
