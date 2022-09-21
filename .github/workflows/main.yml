@@ -142,10 +142,9 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: plantuml
-        id: plantuml
-        uses: grassedge/generate-plantuml-action@v1.5
+      - name: generate and commit diagrams
+        uses: abekoh/commit-plantuml-action@1.0.2
         with:
-          message: "Render Architecture diagrams"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          botEmail: ${{ secrets.BOT_EMAIL }}
+          botGithubToken: ${{ secrets.GITHUB_TOKEN }}
+          enableReviewComment: true
