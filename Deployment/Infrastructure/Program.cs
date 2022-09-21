@@ -6,6 +6,8 @@ using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.KeyVault;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ResourceGroups;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServiceBus;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ServicePrincipal;
+using Pulumi.AzureAD;
+using Config = Pulumi.Config;
 using Deployment = Pulumi.Deployment;
 
 return await Deployment.RunAsync(() =>
@@ -19,8 +21,9 @@ return await Deployment.RunAsync(() =>
 
 void CreateResources(string environment, Config configuration)
 {
-    var servicePrincipal = ServicePrincipalCreator.Create(environment);
-    var resourceGroup = ResourceGroupCreator.Create(environment, servicePrincipal.ObjectId);
+    var current = Output.Create(GetClientConfig.InvokeAsync());
+    var objetId = current.Apply(getClientConfigResult => getClientConfigResult.ObjectId);
+    var resourceGroup = ResourceGroupCreator.Create(environment, objetId);
     var @namespace = ServiceBusNamespace.Create(environment, resourceGroup);
     var configurationStore = AppConfigurationCreator.Create(environment, resourceGroup);
     var keyVault = KeyVaultCreator.Create(environment, resourceGroup, configuration);

@@ -26,12 +26,12 @@ internal static class ContainerAppCreator
             RetentionInDays = 30,
         });
 
-        // var workspaceSharedKeys = Output.Tuple(resourceGroup.Name, workspace.Name).Apply(items =>
-        //     GetSharedKeys.InvokeAsync(new GetSharedKeysArgs
-        //     {
-        //         ResourceGroupName = items.Item1,
-        //         WorkspaceName = items.Item2,
-        //     }));
+        var workspaceSharedKeys = Output.Tuple(resourceGroup.Name, workspace.Name).Apply(items =>
+            GetSharedKeys.InvokeAsync(new GetSharedKeysArgs
+            {
+                ResourceGroupName = items.Item1,
+                WorkspaceName = items.Item2,
+            }));
 
         var managedEnv = new ManagedEnvironment($"{environment}-env", new ManagedEnvironmentArgs
         {
@@ -42,7 +42,7 @@ internal static class ContainerAppCreator
                 LogAnalyticsConfiguration = new LogAnalyticsConfigurationArgs
                 {
                     CustomerId = workspace.CustomerId,
-                    // SharedKey = workspaceSharedKeys.Apply(r => r.PrimarySharedKey)
+                    SharedKey = workspaceSharedKeys.Apply(r => r.PrimarySharedKey)
                 }
             }
         });
@@ -54,16 +54,16 @@ internal static class ContainerAppCreator
             AdminUserEnabled = true
         });
 
-        // var credentials = Output.Tuple(resourceGroup.Name, registry.Name)
-        //     .Apply(items =>
-        //     ListRegistryCredentials.InvokeAsync(
-        //         new ListRegistryCredentialsArgs
-        //     {
-        //         ResourceGroupName = items.Item1,
-        //         RegistryName = items.Item2
-        //     }));
-        // var adminUsername = credentials.Apply(credentials => credentials.Username);
-        // var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
+        var credentials = Output.Tuple(resourceGroup.Name, registry.Name)
+            .Apply(items =>
+            ListRegistryCredentials.InvokeAsync(
+                new ListRegistryCredentialsArgs
+                {
+                    ResourceGroupName = items.Item1,
+                    RegistryName = items.Item2
+                }));
+        var adminUsername = credentials.Apply(credentials => credentials.Username);
+        var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
 
         const string image = "estimationtool";
         var estimationToolImage = new Image(image, new ImageArgs
@@ -73,8 +73,8 @@ internal static class ContainerAppCreator
             Registry = new ImageRegistry
             {
                 Server = registry.LoginServer,
-                Username = "estimationtool",
-                Password = "estimationtool"
+                Username = adminUsername,
+                Password = adminPassword
             }
         });
 
@@ -94,7 +94,7 @@ internal static class ContainerAppCreator
                     new RegistryCredentialsArgs
                     {
                         Server = registry.LoginServer,
-                        Username = "estimationtool",
+                        Username = adminUsername,
                         PasswordSecretRef = "pwd",
                     }
                 },
@@ -103,7 +103,7 @@ internal static class ContainerAppCreator
                     new SecretArgs
                     {
                         Name = "pwd",
-                        Value = "estimationtool"
+                        Value = adminPassword
                     }
                 },
             },
