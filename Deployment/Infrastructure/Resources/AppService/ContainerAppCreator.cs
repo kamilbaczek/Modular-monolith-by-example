@@ -113,7 +113,7 @@ internal static class ContainerAppCreator
                 {
                     new ContainerArgs
                     {
-                        Name = "estimationTool",
+                        Name = "estimationtool",
                         Image = estimationToolImage.ImageName,
                     }
                 }
