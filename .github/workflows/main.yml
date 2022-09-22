@@ -129,7 +129,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: file=Divstack.Company.Estimation.Tool.sln
+          args: --all-projects --detection-depth=10
           
   architecture-diagrams:
       name: Architecture Diagrams
