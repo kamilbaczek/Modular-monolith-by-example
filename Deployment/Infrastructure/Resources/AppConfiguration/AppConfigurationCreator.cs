@@ -12,8 +12,8 @@ internal static class AppConfigurationCreator
     internal static ConfigurationStore Create(string enviroment, ResourceGroup resourceGroup)
     {
         var clientConfig = Output.Create(GetClientConfig.InvokeAsync());
-        var assignment = CreateAssignment(enviroment, clientConfig);
-        var configurationStore = CreateStore(enviroment, resourceGroup, assignment);
+        var configurationStore = CreateStore(enviroment, resourceGroup);
+        var assignment = CreateAssignment(enviroment, configurationStore, clientConfig);
 
         foreach (var keyValue in AppConfigurationKeys.NotSecuredKeys)
             CreateConfigurationKey(enviroment, keyValue, configurationStore, assignment);
@@ -22,16 +22,17 @@ internal static class AppConfigurationCreator
 
         return configurationStore;
     }
-    private static Assignment CreateAssignment(string enviroment, Output<GetClientConfigResult> clientConfig)
+    private static Assignment CreateAssignment(string enviroment, ConfigurationStore configurationStore, Output<GetClientConfigResult> clientConfig)
     {
         var assignment = new Assignment($"ac-{enviroment}-do", new AssignmentArgs
         {
+            Scope = configurationStore.Id,
             RoleDefinitionName = "App Configuration Data Owner",
             PrincipalId = clientConfig.Apply(c => c.ObjectId),
         });
         return assignment;
     }
-    private static ConfigurationStore CreateStore(string enviroment, ResourceGroup resourceGroup, Assignment assignment)
+    private static ConfigurationStore CreateStore(string enviroment, ResourceGroup resourceGroup)
     {
         var configurationStore = new ConfigurationStore($"ac-{enviroment}", new ConfigurationStoreArgs
         {
@@ -41,9 +42,6 @@ internal static class AppConfigurationCreator
             {
                 Name = "Standard",
             },
-        }, new CustomResourceOptions()
-        {
-            DependsOn = assignment
         });
 
         return configurationStore;
