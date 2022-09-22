@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="707px" preserveAspectRatio="none" style="width:1254px;height:707px;" version="1.1" viewBox="0 0 1254 707" width="1254px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="435" x="403.25" y="16.708">Container Cloud Azure diagram for "Estimation Tool"</text><!--MD5=[2bd350f703fb70bb20a649babb1f6c3b]
+entity estimator--><rect fill="#08427B" height="165.7813" style="stroke:#073B6F;stroke-width:1.5;" width="218" x="7" y="29.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="91" y="50.5918">«person»</text><image height="48" width="48" x="92" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACD0lEQVR4Xu2YoU4EMRCGT+4j8Ai8AhaH4QHgAUjQuFMECUgMIUgwJAgMhgQsAYUiJCiQIBBY+EITsjfTdme6V24v4c8vyGbb+ZjOtN0bNcvjQXmkH83WvYBWto6PLm6v7p7uH1/w2fXD+PBycX1Pv2l3IdDm/vn7x+dXQiAubRzoURa7gRZWd0iGRIiJbOnhnfYBQZNJjNbuyY2eJG8fkDE3bbG4ep6MHUAsgYxmE3nVs6VsBWJSGccsOlFPmLIViMzLOB7pCVO2AtHJMohH7Fh6zqitQK7m0rJvAVYgGcEpe//PLdDz65sM4pF9N7ICcXDKIB5Nv6j7tD0NoSdM2QrU9Gg0ewE1LqBhHR3BBdvj2vapnidjHxD/q6vd7Pvhr31AwcY8eXMTXAKECZZJFXuEq27aLgQK5uLMohCenGGuGewOxSjBvYBqeG6B+Nqiblggdjnc+ZXDy+FNFpFzw76O3UBAROuXh6FoiAcf5g9eTvUgzy0nWg6I8cXHRUpg5bOVBCo+KDpFajOf23GgPme7RSQ+lacIENUgJ6gg1k6HjgOlqnLqip4tEuhv0hNEMXUD0clyXE3p6pZA0S2nnvTlXwLJEZWlb7cTQH1+USgTN4VhAenm/wea1OCAOmqo6fE1WCb9WSKBah+rbUWPWAmE2Rvk0ApiB45eOyNAzU8xcTvj8KvkKEoOaIYeHNA3ZuygAvFMUO0AAAAASUVORK5CYII=" y="53.4219"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="77" x="77.5" y="116.2734">Estimator</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="118" y="133.042"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="194" x="21" y="149.3389">A person who is resposible for</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="190" x="19" y="165.6357">suggest valuation proposal on</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="158" x="37" y="181.9326">time, based on priorities</text><!--MD5=[92848cbaf65985a669855153c5362c37]
+entity customer--><rect fill="#08427B" height="133.1875" style="stroke:#073B6F;stroke-width:1.5;" width="209" x="260.5" y="45.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="340" y="67.0918">«person»</text><image height="48" width="48" x="341" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAIAAADYYG7QAAACD0lEQVR4Xu2YoU4EMRCGT+4j8Ai8AhaH4QHgAUjQuFMECUgMIUgwJAgMhgQsAYUiJCiQIBBY+EITsjfTdme6V24v4c8vyGbb+ZjOtN0bNcvjQXmkH83WvYBWto6PLm6v7p7uH1/w2fXD+PBycX1Pv2l3IdDm/vn7x+dXQiAubRzoURa7gRZWd0iGRIiJbOnhnfYBQZNJjNbuyY2eJG8fkDE3bbG4ep6MHUAsgYxmE3nVs6VsBWJSGccsOlFPmLIViMzLOB7pCVO2AtHJMohH7Fh6zqitQK7m0rJvAVYgGcEpe//PLdDz65sM4pF9N7ICcXDKIB5Nv6j7tD0NoSdM2QrU9Gg0ewE1LqBhHR3BBdvj2vapnidjHxD/q6vd7Pvhr31AwcY8eXMTXAKECZZJFXuEq27aLgQK5uLMohCenGGuGewOxSjBvYBqeG6B+Nqiblggdjnc+ZXDy+FNFpFzw76O3UBAROuXh6FoiAcf5g9eTvUgzy0nWg6I8cXHRUpg5bOVBCo+KDpFajOf23GgPme7RSQ+lacIENUgJ6gg1k6HjgOlqnLqip4tEuhv0hNEMXUD0clyXE3p6pZA0S2nnvTlXwLJEZWlb7cTQH1+USgTN4VhAenm/wea1OCAOmqo6fE1WCb9WSKBah+rbUWPWAmE2Rvk0ApiB45eOyNAzU8xcTvj8KvkKEoOaIYeHNA3ZuygAvFMUO0AAAAASUVORK5CYII=" y="69.9219"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="76" x="327" y="132.7734">Customer</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="367" y="149.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="185" x="274.5" y="165.8389">A person who inquiry service</text><!--MD5=[33573e971ff506c0f246109ca3fd77bd]
+entity spa--><rect fill="#FFFFFF" height="136.5625" style="stroke:#3C7FC0;stroke-width:1.5;" width="143" x="293.5" y="319.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="89" x="320.5" y="340.5918">«AzureWebApp»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="123" x="303.5" y="358.2734">Single-Page App</text><image height="70" width="70" x="330" xlink:href="data:image/png;base64,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" y="362.0469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="65" x="332.5" y="443.1855">[Angular, JS]</text><!--MD5=[5d6dbbd7e3ad527ac67d257ab33183fc]
+entity webApp--><rect fill="#FFFFFF" height="169.1563" style="stroke:#3C7FC0;stroke-width:1.5;" width="109" x="551.5" y="303.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="89" x="561.5" y="324.5918">«AzureWebApp»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="62" x="575" y="342.2734">WebAPI</text><image height="70" width="70" x="571" xlink:href="data:image/png;base64,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" y="346.0469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="43" x="584.5" y="427.1855">[.NET 6]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="608" y="443.0107"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="608" y="459.3076"/><!--MD5=[e73e5528cb9b71aa75f3007bc0843de9]
+entity azureApplicationInsights--><rect fill="#FFFFFF" height="136.5625" style="stroke:#3C7FC0;stroke-width:1.5;" width="182" x="505" y="43.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="147" x="522.5" y="65.0918">«AzureApplicationInsights»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="162" x="515" y="82.7734">Observability System</text><image height="70" width="70" x="561" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAEQklEQVR4Xu2aPW4UQRCFfUmu4CvsFeYKDklNSrYSKYkDUpA2QIgACSwChAiQ2sWUXKqp19td1V1jWIvSC7zj7ur3Tf/O7F6VZxdX9sLlx15Id59+3Lz9srz5THrx8r2Ir9C/qICtkxSZSPc/fx8/fDcMbVFhqkIVba6JSEO6ffcVHftF1W3G0UhAoiF0/eqELqOiJCmjcRbp8PojmmN/XWEtEiW0bQRjHOn07RfaQt8eIRUlt+25YxAJedBoVCbbMNUIkuFBczOapxpBMg2nSye3bTsijKS3HXSjRVOiISyvJU1Qc9ZBL2JItC12edB9Q1hdJA1Ro9ZHMwJItMfn8ogwj6aiP0LHiwASHcwaPOSMCqBdj7gi5hSq0NkigMQNYKvkRu/6dEedbDRP9JpGf9MVzM+NSrFueJF4FmF7ZIIYUFQeAfRHwsZafDsQKTSjvEhyt4zo1goDDQ8+Vos5fpSoSopRLSpJklQHGIShjnIhUWNVHrnTeqSRRb7IA6kqKUN/6K6Tu4NtkQHnzutCoqlSRZI+MQNMegBhWFJx2Y5G7ig+2iOS85zuQsLxfb2uCuyMfGgeD5KMMf5okDghIjnXPRcSNqCRpJfEcRRJqKSXqi0uvpOECwlHnTCwM17fZpCW2gQzjZIN66wWU0iHdUdiH+RSJEj6YreAXJHkOyKZ1BqJ7q5Qzeu0LpLnkK596/gsEouGyiQYVackmudJkQzPQc0ilhg110XCb65j5v9If8KFtGxPk9iwcSYz3lwXEVK1AGbW7S6JiziN8n8BKXOrNScUbNg42wkp80BUetMJHbMQhkVbc7VAG8l6OhNeJHM63gOpzZP/vESrUwPJUO2BZA2dDy9S2S4S2LymIscshGHxw6IpgAkHuqiEkMr2SI4OZpAwm27I+mhGDOlOLX1oQqjIMQthqgUwj0a68y10EjGksn0cRB9M1UWiJFIAM2geKmkd9CKMVNTwQyssfj3SeJ0iBbAua2zIcYwgndZvLhpUk0iS/OR7f2JiBKn0Vj+xXv1YvSKStM7jD8YgUmmufg3H7QKScPGdUKsxjtTdfKPS2e4j7/VNjCMVxwndL50ntLFiTCGV2vswtNuVqW7bCMYskt58Q2xYnhXdWDFmkUqto4Y130UlBanRUVHNd1FJQSpJHZXSRSUL6fbxN1Fo1KPol2LtyEG6V99Mh8B0rZm9SEcOUtn+vgNVZTAFbMbRSEOSsTem4RMdRhrSaf3yc1hjh+5qpCGV7W9xQpo5pGJkIpW1r+TFg1OJ/cORjFRWKnnp1dUxaeHW8dRIx/XnEfqZ19afjt2RkIF18/hGxdafjnykLsPx8VUry9afjnwkw8BrAI7AS0LqMnAB7smLnEvIoLvxJv7msRu7ILUZzHSy9acjH+lWvTeuMmil77NlD6TimE778ZSdkEptRj0NT9kPqTSp9uMpuyL9rXiGSA/TfmpDfYzQVwAAAABJRU5ErkJggg==" y="86.5469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="143" x="524.5" y="167.6855">[AzureApplicationInsights]</text><!--MD5=[fcdb0fc1acd680a3de81ec8825f10433]
+entity serviceBus--><rect fill="#FFFFFF" height="169.1563" style="stroke:#3C7FC0;stroke-width:1.5;" width="143" x="723.5" y="27.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="102" x="744" y="49.0918">«AzureServiceBus»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="123" x="733.5" y="66.7734">Message Broker</text><image height="70" width="70" x="760" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAADb0lEQVR4Xu2aMa7TQBCGfcl3hVzBV8gVUtJCSxeJluYVtCC9AiEKJEAUCFEghT87ycaZ317v7EyUOMrokwixM7tfdrxeb163u7vo9BvLj4fSEuKhZImff/49f/n9+sP3zftvYP3uq4DXeHP76dfLj7/6MxERr4SOortZYBboQV5ncUSkEno2HA0TgWJhSqgx7qgVDK/Oa48YJXzH3L82kEpnN4ZXyVNsUyChpwhdSmiYOxQCrHRj1dGudDkfodmqXSm83pi22aJRKWR+q6HhompRqi85WSIoTDfihvJrUaqfskcrx6QEUBE6RTHMShii/u3nSqaU+MwCsNIpimFQkppBJXCrU4QoAdMVNa8EE5PGkCil0TxTUVKSaY0bqGe0Kw1KpkliXEmWOZzaSpQS0FmmY0RJ5mhO2kCgUv3lpJVw5XC6ZgKV6h+Bz5RiffpQpT5dUbglzrqdlEw3nEpilTJwK4idlKKunyEXUhKmHhYPSlHNKEa/y9jy5iYOSnyqFdOtg8Nzz1CLwL1S1BBZ15c58EHOZmI4VnslPqOZBiu/j5BvXB1erd68BGKywsmcoY1c+R2qjg87qbQK9BGk/DrI8TE/s1bhPkCerDr8w8dCKFhdwkfAQHW4sPhAPfIbxBSja028yWcK/pJBko7fradP64Myyop9MGJAXuML4lZM4EtxjVKN0nZgxT75qFj5lXAduaaHSqXtceuL31eH/EroUufJUq9Uiaczmc4z+YQoxRbefpSQjg9UcoNK++lhl1bBfKyGEKUhzT3JIMleyVN7m/RreRT++z7G/PS8xIcXR5/2xg5KmEafXn1cOtu0L3Dae8C480mz8A8NTriJSmSIzpR2qfz41DLcJyubtJUlF9LaoZRXyWdK8jjIZxfgLlqBz3P6uxz5LzdRw2aw8zGy22qy4i5a8Y/S0GfHSrvjHiV/chTuohNuogzv5o0oSVTOFtwnK57CkylOxaTSLhXhbBvcRSvyEGlV2kz/BUtJSQKflKUX532KUFJwE0NW6Tl6SkZiXimHPMDllUufds+4T04kbWZ9HEYUZ9kkh0FpKeFV8j8ODFHTcVt4lbhbDQwXzboBe1xfqU876Xm0dQP2uL7SKtVbHijdgD1uQmmIbsAe11e6w8K7QyWFbsAeXqU7vC/dYDyUlhAPpSXEf51qk7MusrFGAAAAAElFTkSuQmCC" y="70.5469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="104" x="743" y="151.6855">[Azure Service Bus]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="797" y="167.5107"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="797" y="183.8076"/><!--MD5=[4aa0325d6c4c2fb1eae1b54977e8a4c9]
+entity keyVault--><rect fill="#FFFFFF" height="169.1563" style="stroke:#3C7FC0;stroke-width:1.5;" width="121" x="1127.5" y="303.4531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="90" x="1143" y="324.5918">«AzureKeyVault»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="101" x="1137.5" y="342.2734">Secrets Store</text><image height="70" width="70" x="1153" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAFeUlEQVR4Xt2bsY7kNgyG7yX3FeYV9hXuFbZM67TpDFybxkXaHLDFIUgRILdIEQQpAjCE6eHQ/EWJkrUIcj+Iw61HsviZFC1rPB/om9MHf+D/r3dBev369/bLn8tPv7/8+NvHT78+//Dl9v0rG/+H/+SD/BE34Ga+5wxNQ3r765/18x/sMbv+9N3PagJjzX3KhNyRu/szjmoCEl9yvvwRg4ZFgxZB8km4jT97vy4hsQfqEDoqLnIEnMklwPZ6notgg0jsmTiBnolxNBDGWjFcYnJabuNHzakbqQ7Djsq8RwY0qSIRmwzBDbwHLfUh8fDFNONE0rGlTiRNqwJ3x2yUsXjQhwcJdSBJDajAUImHP+WDavxnREUxGB/UNk2lkHhUOXUFRpohj20gqlNJAwcmVMlC30Yq8mAyIA/62tXSzTFxAJuhGkhFHiyyRS/XuGRhyyKV3CQclWuDaiC5+cN/4irG8nDOWHMtVcgTUfFwNgkz86qGxDd7y4PJRnceRzKMVKSicxKyS+yYb2EUInHQXXx8i50HMaxhSOm+qEWYOpWL1RpndRmJh3TzB4dp8oi5jq4X8kRUMqstVfF6UYQkfbQ/dk7yZAx5Iip2wyLdglJRQHIpt0KIJ/KIIU9Ete7LMaXC2ktFpOYUQp+uG/KI+bHPk6oYKI/kqhymnEzu9zDkWfelLTpgA4XV74TEgW5WbXRlliFPFChX011+npBciDCVqYWEDiWt0td7cK5+GKgTkrSQphhQahUGeRofswpV8cpqoLD0PZA4R5shomqU1v0hfMwEqUjlPdjlZpSdcg+k5Vy79bgTksy1JBLtOaVIi6nmDyS7Qi1mnahS8YajpCFCJKx4KnZSqezN5kByta5yIooDhb7mTakszxYvfAlyT2fKgbSdF3WPfiVFRWI4Ssu++YpI0XxWWSTlP5C4fx6JYqopluShM9J6n3UHkr0jFe+wqHeiyvOQWRzZCnEgyW6WfKyfNfVOVEkeMhXiyeyNHUh2LagRzGg6VZ6HzgtzLXoHkn5w69/gnEjVxUN7VbOey8EDKV/Bi5pC1ctDUMfl4Bwkukw1wEN1JBu+rTPxVMNUYzxUT7zh8uA0QDXMQ/XyMFbEi+qiusJDZju2UMTtrbayZk2qsrSdyEPnpyZ1+0BazJNFcQulS5lAjRUhp9rqYetZtjaVQdpGi5CVOvyEy1aaUcdViiQLNoSZQlWs4GSRko+AGVmk5fyEh+Y7p1Vc4JFFstPpYu7lkfKLbpQNkb3xPJCS2ykZJZHkuO+cU/RISxaJzmuIK7nXRNI55numldr0otzWZEZ6X0IkgREbPv9bfmvyLbGBnBEiFW0YqWMDmSBQY9X81bydUkFahxaTbhbhBPFILlBjKwlFkt0fJLlC5b7h9B8jEkE1Hxi1C6krEdaxr8wo8cVmXXmkrjO7lLsFN88y0pb4+rmiJFIXj61yghTdA8pIBOnXNamSSL5bVW4KFVNOFCIRVL98TXdIEVV0mVFzXuUQ2bWsxCqTgUmkDBUP5+LTzJcGkmSwm1fNOWCRXvZ3dRFGrXI2Ww/UDd8I1ECigGqtzoQMkhzkf6Owr6ZeqwNRY6s2kshl4G2fWtEAlcTTI2LFM3B3O3mEp5lvqiwSQbVQsGLm2DhEhjwIIzz1euDUgUT3r6EQ7Bne02N3kcGaa/96fu9OYZ6qL3UV1YdE9wuJVGIf95eqtSWSOJ6t+lJ1Jbcr6kYSbfvObQQmxg4hjFiEISYzp1nfIw0iiaQodYFVYDSlezPN6RKSaDG/vCjiPe8/vliqP7WQjku8zMlrApJIZo7UemsVBjEBLpbNMU1DUr3tL/By2X0xv8dSvOf7r7JeZv9sSTUf6T/XN4j0LwQK1sXUjCk8AAAAAElFTkSuQmCC" y="346.0469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="92" x="1142" y="427.1855">[Azure Key Valut]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="1190" y="443.0107"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="1190" y="459.3076"/><!--MD5=[0bb7dca1c776695f4ad80e7f7dabac47]
+entity azureAppConfiguration--><rect fill="#FFFFFF" height="204.0781" style="stroke:#3C7FC0;stroke-width:1.5;" width="189" x="817.5" y="285.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="105" x="859.5" y="307.0918">«AppConfiguration»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="108" x="856" y="324.7734">Configuration</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="102" x="861" y="343.3984">Management</text><image height="70" width="70" x="877" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAENElEQVR4Xu2awY7UMAyG92n3FXgFXqGvUK7cRuLKpQfOSHNAiAMSjDggxAEpWPVs1vWf2E7aTpkV1i+kHRLn/+IkTXfnIb24eNAf3H8cg3T59SdL/9/quB3S+fvv08cf44dvRU2ff1ID3acrboFEdpGhJmqs+zfGvki0rtB0RGsqtiMS2UKvcXWXqxOJpp+GJNH24G2gNnofz/D+qxR9InMGoxnJ3hg8tR3rTcFk0ZRpB140IPVNvCvEUGpdgVEkuzjdQoCitBszQkjH8gyNy89H6lhv6GmY97rbxlD8nuEjoWNDaAUVbKYU31EOUnzJoYltNYYPdAcJrReFDvaQNlcJCyn4eMGxd1JwO1lIkVWHA++nWyDhqLsqeELcE1Lwem4hGW9shyAFH7hlpMjjFYe8jdzlV0Byi3Ms0uA9ozSSu3/+BaTBpFogxXkORxrqVAsk9F0TDrBGlJBWexY2qKl4Bj4jHViiaX7nz2rKL1iu8YyEvovCpCs1zq/3Uk2FwivFFenA6xz/QkYJm9U0wZl+Rdr7QWR0R56pZe1VkTiLIcwVV64D5hlh1bGKay/nURmWRPsjoWnONs6nHMJIZTBsKfMviWJIaDQo5NlQeYglUWwvodegcHa3Ui7gVNtLxomHRpuEbjZRNjbVkFL9uYQum7RHoeThIViu4d8e0GWr0NNKZVcjbKQUueOhxVZtWyhZIrw6pMhNHC22KogUb8ZpiyVK+L50gvc/tNik0TvH8anqdmFXynkOjZSACl02yZ57Iz82zqKcxSXHUUBKW1CNgcuBndmtVY2qjJSW+wrHM+SSsHC9oSKp8G+qVSQOLhcOZghHLSqS1i1UlqRykDhoJtiEq8i8svAcQsWzNSPlmErfIVF1x/GKkl2MwI5FdSK9evvp8c2Z/pX9X7/7Qh+O4hGB4xVV29wyLk9fRXDViUTWWURFtSIxDys3C/rAamPwgo9oLVJRunXAkO4AgV2UivMSRaJpQIwsKpfu8BQ2mG4tAhsHO1pI1JO88mHKG8mQ3E4y3HWIm6qjiwwLiWDQekRqPaAnFD8x7ZJmyeQYFlKxMvThOH+5bJrf/rHBI1QMPa1Rcf/IsJBo2hQV/ajayEMv67T82xbaWimZHMNCSvPmll4xnWpAzKoNGlovu1BtSMVcRn3cjd4tOYoKB4l2heGYw2iAVraScehZSLhPcC9RdtVADoZWNpRwsYgqEs234mFR3dj0Zf7VHzaQVMWFd5m/Hh45r42TfeF1GVWk5N2ADMkhJRWuFvTKwk0rwdR/qbCQeIbO81fW0bcSFSdf1TEPwnAUy2iYRlQMC0lG7anKGuq/r3EDeQykSGyDFJm8WiBPraTBiCLJ049foeUna5Bw7ekWjRFFyjejPORFXJfWIKVloVamSnGkNA+sxqMfh8qXDw6MBqR7if9I9xAvEOkvfibKZfLeEkAAAAAASUVORK5CYII=" y="347.1719"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="131" x="846.5" y="428.3105">[Azure App Configuratio]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="914" y="444.1357"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="161" x="831.5" y="460.4326">Contains all configuration</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="154" x="835" y="476.7295">entries and feature flags</text><!--MD5=[b4adeb42df2ec2341e38311c3904a1d5]
+entity mongoDb--><rect fill="#FFFFFF" height="136.5625" style="stroke:#3C7FC0;stroke-width:1.5;" width="176" x="280" y="564.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="102" x="317" y="586.0918">«AzureCosmosDb»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="156" x="290" y="603.7734">Document Database</text><image height="70" width="70" x="333" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAFBElEQVR4Xt2aPY4UMRCFuSRXmCvMFeYKG5IuKVlLpCQbkII0AUIESDAiQIgAyRSuHW/1e+VydS8D0/tUWs32j9uf68d2zzwrT07P8MD2NUa6+/gdD123BkinH7+m99/kL564Yg2Qjl9/CpL8xRNXrAGSRJ0gbSv2IiSNOrUNxV6E1HjU8PS1qoukIWdtK+HnINl4Y7v+CHxAkrLGnumZXHm5Miijpp2B/ugRORUP6z2SFuul1qOSR96+/XLz5vPh9af9qw+7l8fnL96JyQf5V0zO2nsbAz8isF4izAJPm+abwXrjpCQNIGPCzO0vMh5WJ5dK32l8v0pgpHPc46TJKPCz8ga98pGKVyRcz5Ra67mXK8yCac5oOFjrxael6iKVeR13A1eeIYnBnWtd7Blf3Ey8jY/xxGDtVIRUzGyLJ2pwup1jgMD4dm2hF+FWkB3tlgGSDga7SI64XVln3JRYhsqNowGSjgS0PlHycC9XmLQjYSylX8qmzgFDKkh4PThA0ntsYWD/cOfWGYe3lgQ4aLUGqdTb7OcL8fQcokUPj561EskK6hv3DEzXCmxwGeeqVXDWVohsLllN8xRigAwMs0nO4JNIPao15cFqZ0oTMyyFacYpxOrFno26dk0WKeMi7m7GelkEYnKYbdvxLNJu5CLua89kfaAr8Tj1QXyl5ckuiJqgcD+GR2C4c0nZfvdcVJJIksEBT4wkPmkm7azmKaZIQO2G0E0h7cKoYwyGUUumTU9tOCwPuKhkkGB6TSIxT6ZYD3WkzQW7fYw0mVq3mudQd6/Y9HKBf9z5aox0V19iNNMF5f68AmCeyyHJo4c8ZYikGHi0RqOAuUgM81eQwD9BaxGSu7OwkmH7N0h5nhIgtRVhgFRqfU8irS4PzMMlwcpHsoU/RpKzSaTDqiK+lKf0kGwTbi5Z5ZEyG1UrqAdiGVc7SFD4h0iH+ko1g6RUmZE+1becwLOv23i8lIRILYUaz3Bc9RabVEzCxj1W0xcPfHZfd59yHB9PQiRoqMwXi7HkSgVjANcgYttwAI/WVZ3rhyFTAMldawyDxOpU3yRnqBhmX+MKxvR2/pIdn+dphmTbsuORd1QxNZAxYh4ONuCRa/Bhnh6QwEXmmu7WvyeYrGKSveecqSan5UkmUrFItjlwy6LYK7Up7rdrB8ocNTmua0iLlOzGPRJsqubX/NG62IvNhdFiwDyH3Ov/0pBs1LlhtghpGnnppr4lZp7mHEZKuqg0JNtu72YX1ZWOtGu9SLPOYZ68i8oipN5x0Kl+6cQWwIBzgGeRi8oipJJzlFaqZgHMdF5zxDyTl9uBliGVkOp03hc2mF7OTF6kuTyZRR0oWx6suFTo7a2Lh/Py1LUeDPPsc3Mr6B4JVquxowp9hfG8vmlRtzCDheG0cWG0wWE3XPlT7USzLUtHOo6uZm7OBDzr/KN6QILZttmxvrwGg9VTz27r6yRm6JEkeeLhni1be1RLTUlacGrv7d/AbhMLuSlMDdwvPYYKSJaapFnQUaspzAtEUiXjSk13vmKHtb+52Y2+27RqlQxPnOUjqTRnGp5+Vjt2vhpSJyfZdAoOxptlg6g3ChHSI3VX3za3bZJOVlobF2E0cVK47VwQ6S/qFP6q7jT/ecS1IwUkbHrLtSOV6iKxoGJBYm8AqYlzya0QW0Iq/73iXUiPmpeuVoGLynaR3BlJtUmkwEVlo0ixniDSb1abtkpqWBGhAAAAAElFTkSuQmCC" y="607.5469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="61" x="337.5" y="688.6855">[MongoDB]</text><!--MD5=[47c60e5405d977d594abe2dd3b06cff6]
+entity mySQL--><rect fill="#FFFFFF" height="136.5625" style="stroke:#3C7FC0;stroke-width:1.5;" width="175" x="491.5" y="564.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="151" x="503.5" y="586.0918">«AzureDatabaseForMySQL»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="155" x="501.5" y="603.7734">Relational Database</text><image height="70" width="70" x="544" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAEKklEQVR4Xt2bMW4UMRiFczhfYa+QK+QKHIGUtKGlQ6KlSUGFBFIKhCiQYEWBEAXS8jS/xrLf8/y2J2NmwtMTSnbt3++Lx7OemeXq8t/pil94+hqCdP71p9Hccws9FklTPt48RqdWImmO1A/ff5vvP/8sOjbQvql51Db1Iemo5pj+9ccfKxw5tfIKtg4kxYA13+NdnEBOs6wmJIVZPSHtLs4bJyupjqQ8Ovw4r6DqRtJRR3tjJCp3BKQqVTdS1yq6ffu16Lt337Rx0RhOM3DKXBWkYsUiFYI+e/Pl5tUn+PrlQ7vRHh2LnEujc8pcFSQMqUXP80kPIQxDg6624RVPd+bTiw+cMlcFKTx/f71AZbb52YQKMPgbFWcmGs0QiVPmqiOZ/ZHMwEOm9Agsosa34rpqKY42MQynzNWKZNO1dDAMNQa1ydkeKYK1/FE3MQYimCFIKRuOmc3nDQVRtkgSzSlzrUdKjbMQ1oatikZI25va54GdYFBEKxfNKXNtg6RGvnZrd9+cMtcQJA3tWyv45pS5hiCFTirt7ptT5hqCpKF9awXfnDLXEKTQSaXdfXPKXEOQNLRvreCbU+YaghQ6qbS7b06ZawiShvatFXxzylxDkEInlXb3zSlzrURCDmfPQoltZ+BYK/jmlLm6kZAPGxl7F/sabIK0TZiZY0sIGx+F2R8Jw5/l0h9XR9oMTnlM2NEpz85ImCJuMc2VxsLscbtJyqN9q+aiuTZAgrCVTpsVp8ikPAdFukw3XmIzHIr89izlOS4SVn9shp/57VnGQC+ibDoK3daiQyD8M6TLPFH4l99IdHQkWjA2UXRioDZHR9I1cz3d9Iu/2o2E5P3DI+FXGp4+tcDz9JB0oqLs8+rpIeFF3U+YbAfUgmS3iqKp4A5ISxsFrKtGJF87INEpwRQ3qUUk54NLtQOSvn6eHjE4SDAtGEdjkeyGeHS6CbL7yffT3dPIA+P8kXaJr5+m6yh7cmGPMMxoT3M4FqndaXS1PUoiGLOuTDofhl2QlIHcftQVr1y4Ua4hSKFG1Y6kR13YBUkZViBhfoo8YRekUKOKa2lpRd24z2Y4Za4hSMrgWyv45pS5hiCFTirt7ptT5hqCpKF9awXfnDLXEKTQSaXdfXPKXEOQNLRvreCbU+YaghQ6qbS7b06ZawiShvatFXxzylxDkEInlXb3zSlzVZBWjBc6eXqHONWuICtIS1uSqjW3Y+3uGJE4Za4K0mXVRGlo31phyafaFF1akIrb+6o1t2PtXnTxjoCqjmTqOgI1tG+toNZLwyW1Il2mW1N6gblkze1Yu6fGX7NlcqI6kKLs7oKOHa2hfWuFMN/M6IIxrUEynadvfuLKp5hJcztOMW6n7+ryYD1aj5TqnPxHjLvka8ma/jQ9lr6Zv96afkWXi67VNkiH0n+I9Bc2LZmqFac7ZwAAAABJRU5ErkJggg==" y="607.5469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="46" x="556" y="688.6855">[MySQL]</text><!--MD5=[0e1fecc31e3549f2a1667c6349b56d9e]
+entity postgres--><rect fill="#FFFFFF" height="136.5625" style="stroke:#3C7FC0;stroke-width:1.5;" width="196" x="702" y="564.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="176" x="712" y="586.0918">«AzureDatabaseForPostgreSQL»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="155" x="722.5" y="603.7734">Relational Database</text><image height="70" width="70" x="765" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAFM0lEQVR4Xt2bsY7cNhCG/XB8Bb3CvsK9wj1Ctkxrt+kOSJvmilQBYuAKw3ARIFmkCAIXBtYD/tCAnH84oijRsO/HX5y15HC+HYmiqPWb+6vTG3vgx9cUpNv/Xzpte56ho0ic5XHbMXZqEInzKP3yz2f188f/2Pop9y1tR+3TPiQeFdbUn97/O2Dl5MgDbDuQGEPM+R23W0CbTVtdSPy1DRek3zIEj2sz87SNZIJOqkzLA+XajcSjzvbJSCbc94C0SbUbaddVdP3tL9dvf/+bG7seuKI2kNyILpUk+vjrp4dfPogv7176Le2lo8vZGt1mWWsDSYbkoLd1kpAkgMGJDht4wW1q+flPm2WtDaT00x+XBpWCSQanUAmMfEduZdTSTFKyWdbaRoLjkWDUrTwDXVT9SK+rnuDSRpOxWdbqRUK5WifDVMugKM75SArW86WeYhnIwExBKtnknDm9bhJQwrokaptlrXGk0jILybWBq6ITEmtT3A8wwUgQjuzaZlnrHCS25Ndv7h7bZllrChInHZsjxLZZ1pqClHZScffYNstaU5A46dgcIbbNstYUpLSTirvHtlnWmoLEScfmCLFtlrWOIklCWGiqZTrGcRgrN6yVsMzV4+VAMqHjIx6CXXZkjSPJ8JKo7bAKy7lb49lGOqKBkJTH5Z/4RmKXXViDSMJjsikltQp4VNLMjSPl4hFLm/ZGg0hBfSRFN1FXEsdtHNfKNDYaQVrChzBcWvZoW9KeSyqQPO5EJHNlG7nfeqBbflDlb4HHnYjEw6tw3dujW5KZkBPlcdWmpdHJSHiktUe3hEKV+yTf+sQLkKREeneSLC95R6E19clxqQ9amnOvfCxnFzEcjSAFdUADgElakjHAbLvMA2BsbmG7Qj+V7jyuugjjaATJTRFKRQ2f8kYpqHjzDVcdZvxr3lQpkb71JB4ETXkvCX9j+YOkGUkZ8BFOV3wkXwSP2DM6NIjUmqZTgaRykXCT1X+iUPgbE2Bg7eVqEKm1ekgNJG6PWU6PC5L+He+lpElIrRnikrfEzEFJXStQShj0+tETL56+4SoKaRCptSZK3jnpnnj3tVBor0jxXAfbQLUGkZKXOtqbI63pAcIUcl+RAMljGdsotcaR3HOJTzxM4uWRUloo3KB6SpTmIbl3p3Iuhh7y66PyiJGQ4AGp5yqCbYha40jJO/de8pa8HpeK6dUS6JpXhptPfmrbv9YhJFMQCDcczMh4FrItPMXLBWPbudYhJEmdl6RAMo4LJV04eGDbv9YhpESTBOa3VOwQ4VKJLyepJOYGvErDEpbHUtv+tY4ilRXQKVh5MPvFk949n3X6twS55m0WHktddHV0FCmtbwcxMeDIQ35pCVTULUZa8rscmOOzbf9aJyAZL3n585x/vIXvO0Z6Dp/2XNsQtc5HgpXklSAxT4C0+SjBtiFqTUFKHpUNverHQGKexbuDQf2LBrUNUWsKUvKoWovxzlmutA1RawoS8yyNp8B7nsE5QmwbotYUpORRuQsIrGu5e2wbpdYG0sB4yeNZ8s3URs9Lob1DLO2ZBtpA6nwmYzPSUp97z/nHNDjO3QO7y/9SG0j3oUIxTOmHdcdYzRFaXrZKdO9B6twP4LH7zd1dX+g1lKttJGjXGchJx+YI7NaEyepFune/G4Y578DcvTR2jmw2be1AUmGHnsdWc9KxOUJafxy3CwYaQYJu+Zefj40fK3DegUuMa36LYwfbo3GkUrf1P8c81T9L5uyX/LpJH/gei5/o2qCjOgfpu9IrRPoKHkyuag73ELgAAAAASUVORK5CYII=" y="607.5469"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="55" x="772.5" y="688.6855">[Postgres]</text><!--MD5=[84d01fd75023f9da6e1fc643789a4051]
+link spa to webApp--><path d="M436.66,387.9531 C470.55,387.9531 510.66,387.9531 543.33,387.9531 " fill="none" id="spa-to-webApp" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="551.46,387.9531,543.46,384.9531,543.46,390.9531,551.46,387.9531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="25" x="481.5" y="368.0918">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="78" x="455" y="382.0605">[JSON, HTTPS]</text><!--MD5=[90c3e08aedd236733fc5ade99da3340c]
+reverse link spa to webApp--><path d="M444.7,403.9631 C467.84,406.8431 493.16,408.2731 516.5,405.9531 C527.86,404.8231 539.9,402.9031 551.36,400.7331 " fill="none" id="spa-backto-webApp" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="436.61,402.8931,444.1443,406.9223,444.9359,400.9748,436.61,402.8931" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="43" x="472.5" y="403.0918">Delivers</text><!--MD5=[42bca9335c471dd5687971eddc2ce696]
+link customer to spa--><path d="M365,178.9631 C365,218.6731 365,269.4931 365,310.9631 " fill="none" id="customer-to-spa" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="365,319.1231,368,311.1231,362,311.1231,365,319.1231" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="25" x="375.5" y="239.0918">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="366" y="253.0605">[HTTPS]</text><!--MD5=[7ce2edd9cdbf7c81ae6c047abedb3be8]
+link estimator to spa--><path d="M190.71,195.5131 C224.7,232.8431 264.62,276.6931 297.67,312.9931 " fill="none" id="estimator-to-spa" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="303.33,319.2131,300.1618,311.2782,295.7255,315.318,303.33,319.2131" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="25" x="251.5" y="239.0918">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="44" x="242" y="253.0605">[HTTPS]</text><!--MD5=[75306e2c615e7eea201db59a643f5331]
+reverse link azureApplicationInsights to webApp--><path d="M593.72,189.1931 C593.42,201.8031 593.16,214.7431 593,226.9531 C592.83,239.8431 592.36,243.0831 593,255.9531 C593.76,271.2431 595.01,287.5131 596.44,303.1831 " fill="none" id="azureApplicationInsights-backto-webApp" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="593.92,180.9631,590.7206,188.8855,596.7188,189.0357,593.92,180.9631" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="63" x="594" y="246.0918">Log request</text><!--MD5=[ab4bb3acc0bee0f1af753bcd60cfbbc3]
+reverse link serviceBus to webApp--><path d="M779.16,205.2331 C773.78,222.8731 766.59,240.6031 757,255.9531 C732.64,294.9531 693.04,328.6731 660.51,352.1331 " fill="none" id="serviceBus-backto-webApp" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="781.51,197.1531,776.4008,204.0012,782.1634,205.6721,781.51,197.1531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="40" x="772" y="246.0918">Publish</text><!--MD5=[274b119fa880ece05bebcc0ee3966e03]
+reverse link webApp to serviceBus--><path d="M651.27,296.2631 C664.1,273.0431 678.75,248.5431 694,226.9531 C702.9,214.3531 713.01,201.5831 723.31,189.3731 " fill="none" id="webApp-backto-serviceBus" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="647.35,303.4231,653.8248,297.8485,648.5628,294.9656,647.35,303.4231" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="695" y="246.0918">Subscribe</text><!--MD5=[ce82668ae0cf272016a2440a4ec7ad6f]
+link webApp to azureAppConfiguration--><path d="M660.53,401.4431 C670.13,403.3231 680.06,404.9431 689.5,405.9531 C728.63,410.1231 771.71,408.1531 809.47,404.2631 " fill="none" id="webApp-to-azureAppConfiguration" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="817.44,403.4031,809.1685,401.2625,809.8005,407.2291,817.44,403.4031" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="97" x="690.5" y="403.0918">Get configuration</text><!--MD5=[7e4e967660cd04ddec97918e04b2a97d]
+reverse link webApp to azureAppConfiguration--><path d="M668.79,387.9531 C711.55,387.9531 768.94,387.9531 817.23,387.9531 " fill="none" id="webApp-backto-azureAppConfiguration" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="660.71,387.9531,668.71,390.9531,668.71,384.9531,660.71,387.9531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="120" x="679" y="382.0918">Returns configuration</text><!--MD5=[4f897c647d822d38a939ece7985ec9c8]
+link azureAppConfiguration to keyVault--><path d="M1006.89,404.3031 C1036.26,407.4231 1068.72,408.9131 1098.5,405.9531 C1105.19,405.2831 1112.12,404.3431 1119.02,403.2431 " fill="none" id="azureAppConfiguration-to-keyVault" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="1127.1,401.8831,1118.7128,400.2539,1119.7096,406.1705,1127.1,401.8831" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="61" x="1036.5" y="403.0918">Get secrets</text><!--MD5=[40e81bf0f57bbacc5f7d94cb367ec0fd]
+reverse link azureAppConfiguration to keyVault--><path d="M1014.62,387.9531 C1052.52,387.9531 1094.24,387.9531 1127.26,387.9531 " fill="none" id="azureAppConfiguration-backto-keyVault" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="1006.6,387.9531,1014.6,390.9531,1014.6,384.9531,1006.6,387.9531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="84" x="1025" y="382.0918">Returns secrets</text><!--MD5=[0cb03e25da0ac2d4ab7a9f0620f27990]
+link webApp to mongoDb--><path d="M551.45,424.5531 C499.32,458.9231 427.2,507.5331 417,519.9531 C407.87,531.0631 400.15,544.1331 393.73,557.3631 " fill="none" id="webApp-to-mongoDb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="390.29,564.7231,396.391,558.7417,390.9536,556.2049,390.29,564.7231" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="30" x="418" y="532.0918">Write</text><!--MD5=[9e95b76ecc8249bbf2b39ee93b46c6cb]
+reverse link webApp to mongoDb--><path d="M545.59,450.7631 C511.6,485.5331 469.11,529.0031 434.22,564.7031 " fill="none" id="webApp-backto-mongoDb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="551.4,444.8131,543.6671,448.4466,547.9629,452.6353,551.4,444.8131" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="27" x="473" y="532.0918">Read</text><!--MD5=[3360c520d76f7154690cac4204f8fe7c]
+link webApp to mySQL--><path d="M573.93,472.5431 C568.92,492.7231 565.74,514.3931 567,534.9531 C567.44,542.0831 568.05,549.4831 568.77,556.8831 " fill="none" id="webApp-to-mySQL" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="569.6,564.8931,571.7568,556.6258,565.789,557.2462,569.6,564.8931" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="30" x="568" y="532.0918">Write</text><!--MD5=[67f11ff416d020fba8f484cc4cf68ff4]
+reverse link webApp to mySQL--><path d="M607.2,480.7931 C606.57,498.8031 605.3,517.5131 603,534.9531 C601.71,544.7131 599.83,554.9231 597.67,564.8931 " fill="none" id="webApp-backto-mySQL" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="607.45,472.5731,604.2086,480.4784,610.2059,480.6605,607.45,472.5731" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="27" x="605" y="532.0918">Read</text><!--MD5=[c0c7715238b1b16db282a4d290feb878]
+link webApp to postgres--><path d="M660.74,459.7731 C679.42,483.7431 700.51,510.6031 720,534.9531 C726.04,542.5031 732.38,550.3431 738.72,558.1531 " fill="none" id="webApp-to-postgres" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="744.06,564.7031,741.3485,556.6008,736.6895,560.3815,744.06,564.7031" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="30" x="721" y="532.0918">Write</text><!--MD5=[2cd025106d53ec722294539d67694d57]
+reverse link webApp to postgres--><path d="M667.52,431.6231 C697.46,454.9031 732.06,485.9031 756,519.9531 C765.53,533.5031 773.37,549.4031 779.65,564.9131 " fill="none" id="webApp-backto-postgres" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="660.82,426.4731,665.3374,433.7252,668.992,428.9667,660.82,426.4731" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="27" x="765" y="532.0918">Read</text><!--MD5=[ee0fb3599d01af70c02a6b0b7452a2a7]
+@startuml
+!pragma revision 1
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define AzurePuml https://raw.githubusercontent.com/plantuml-stdlib/Azure-PlantUML/master/dist
+!includeurl AzurePuml/AzureCommon.puml
+!includeurl AzurePuml/AzureC4Integration.puml
+!includeurl AzurePuml/Web/AzureWebApp.puml
+
+!includeurl AzurePuml/Security/AzureKeyVault.puml
+!includeurl AzurePuml/DevOps/AzureApplicationInsights.puml
+!includeurl AzurePuml/Management/AppConfiguration.puml
+!includeurl AzurePuml/Integration/AzureServiceBus.puml
+!includeurl AzurePuml/Databases/AzureDatabaseForMySQL.puml
+!includeurl AzurePuml/Databases/AzureDatabaseForPostgreSQL.puml
+!includeurl AzurePuml/Databases/AzureCosmosDb.puml
+
+title Container Cloud Azure diagram for "Estimation Tool"
+
+Person(estimator, Estimator , "A person who is resposible for suggest valuation proposal on time, based on priorities" )
+Person(customer, Customer , "A person who inquiry service" )
+
+AzureWebApp(spa, "Single-Page App", "Angular, JS")
+
+AzureWebApp(webApp, "WebAPI", ".NET 6", "")
+Rel_Neighbor(spa, webApp, "Uses", "JSON, HTTPS")
+Rel_Back_Neighbor(spa, webApp, "Delivers")
+
+Rel(customer, spa, "Uses", "HTTPS")
+Rel(estimator, spa, "Uses", "HTTPS")
+
+AzureApplicationInsights(azureApplicationInsights, "Observability System", "AzureApplicationInsights")
+Rel_U(webApp, azureApplicationInsights, "Log request", "")
+
+AzureServiceBus(serviceBus, "Message Broker", "Azure Service Bus", "")
+Rel_U(webApp, serviceBus, "Publish", "")
+Rel_Back(webApp, serviceBus, "Subscribe", "")
+
+AzureKeyVault(keyVault, "Secrets Store", "Azure Key Valut", "")
+AppConfiguration(azureAppConfiguration, "Configuration Management", "Azure App Configuratio", "Contains all configuration entries and feature flags")
+Rel_Neighbor(webApp, azureAppConfiguration, "Get configuration")
+Rel_Neighbor(azureAppConfiguration, keyVault, "Get secrets")
+Rel_Back_Neighbor(azureAppConfiguration, keyVault, "Returns secrets")
+Rel_Back_Neighbor(webApp, azureAppConfiguration, "Returns configuration")
+
+AzureCosmosDb(mongoDb, "Document Database", "MongoDB")
+AzureDatabaseForMySQL(mySQL, "Relational Database", "MySQL")
+AzureDatabaseForPostgreSQL(postgres, "Relational Database", "Postgres")
+
+Rel_D(webApp, mongoDb, "Write")
+Rel_Back(webApp, mongoDb, "Read")
+
+Rel_D(webApp, mySQL, "Write")
+Rel_Back(webApp, mySQL, "Read")
+
+Rel_D(webApp, postgres, "Write")
+Rel_Back(webApp, postgres, "Read")
+
+
+@enduml
+
+@startuml
+!pragma revision 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor #FFFFFF
+
+skinparam shadowing<<legendArea>> false
+skinparam rectangle<<legendArea>> {
+    backgroundcolor #00000000
+    bordercolor #00000000
+}
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam queue {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam actor {
+    StereotypeFontSize 12
+    shadowing false
+    style awesome
+}
+
+skinparam person {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    BorderStyle dashed
+}
+
+skinparam package {
+    StereotypeFontSize 6
+    StereotypeFontColor transparent
+    FontStyle plain
+    BackgroundColor transparent
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<boundary>>StereotypeFontColor transparent
+skinparam rectangle<<boundary>>StereotypeFontColor transparent
+
+
+skinparam rectangle<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<enterprise_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<enterprise_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<enterprise_boundary>>StereotypeFontColor transparent
+
+
+
+skinparam rectangle<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<system_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<system_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<system_boundary>>StereotypeFontColor transparent
+
+
+
+skinparam rectangle<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<container_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<container_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<container_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam database<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam queue<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam database<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam queue<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam actor<<system>> {
+    StereotypeFontColor #1168BD
+    FontColor #1168BD
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam person<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam queue<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam actor<<external_system>> {
+    StereotypeFontColor #999999
+    FontColor #999999
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam person<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+skinparam rectangle<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<enterprise_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<enterprise_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<enterprise_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<enterprise_boundary>>StereotypeFontColor transparent
+
+
+
+skinparam rectangle<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<system_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<system_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<system_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<system_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
+
+sprite $person [48x48/16] {
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+000000000000025788300000000005886410000000000000
+000000000007DFFFFFFD9643347BFFFFFFFB400000000000
+0000000004EFFFFFFFFFFFFFFFFFFFFFFFFFFB1000000000
+000000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFD200000000
+00000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE10000000
+0000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB0000000
+000000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5000000
+000003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD000000
+000009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF200000
+00000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF600000
+00000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF800000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+00001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA00000
+00000EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF700000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+0000008FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD3000000
+000000014555555555555555555555555555555300000000
+000000000000000000000000000000000000000000000000
+000000000000000000000000000000000000000000000000
+}
+
+sprite $person2 [48x48/16] {
+0000000000000000000049BCCA7200000000000000000000
+0000000000000000006EFFFFFFFFB3000000000000000000
+00000000000000001CFFFFFFFFFFFF700000000000000000
+0000000000000001EFFFFFFFFFFFFFF80000000000000000
+000000000000000CFFFFFFFFFFFFFFFF6000000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+00000000000001FFFFFFFFFFFFFFFFFFF900000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFF00000000000000
+0000000000000BFFFFFFFFFFFFFFFFFFFF40000000000000
+0000000000000EFFFFFFFFFFFFFFFFFFFF70000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000FFFFFFFFFFFFFFFFFFFFF80000000000000
+0000000000000DFFFFFFFFFFFFFFFFFFFF60000000000000
+0000000000000AFFFFFFFFFFFFFFFFFFFF40000000000000
+00000000000006FFFFFFFFFFFFFFFFFFFE00000000000000
+00000000000000EFFFFFFFFFFFFFFFFFF800000000000000
+000000000000007FFFFFFFFFFFFFFFFFF100000000000000
+000000000000000BFFFFFFFFFFFFFFFF5000000000000000
+0000000000000001DFFFFFFFFFFFFFF70000000000000000
+00000000000000000BFFFFFFFFFFFF500000000000000000
+0000000000000000005DFFFFFFFFA1000000000000000000
+0000000000000000000037ABB96100000000000000000000
+000000000002578888300000000005888864100000000000
+0000000007DFFFFFFFFD9643347BFFFFFFFFFB4000000000
+00000004EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB10000000
+0000007FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD2000000
+000006FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE100000
+00003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB00000
+0000BFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50000
+0003FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD0000
+0009FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF2000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFB000
+001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA000
+000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8000
+000DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6000
+0009FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFF2000
+0003FFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFFD0000
+0000BFFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFF50000
+00003FFFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFFB00000
+000006FFFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFFE100000
+0000007FFFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFFD2000000
+00000004EFFF8FFFFFFFFFFFFFFFFFFFFFF8FFFB10000000
+0000000007DF8FFFFFFFFFFFFFFFFFFFFFF8FB4000000000
+000000000002578888888888888888888864100000000000
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam database<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam queue<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam actor<<container>> {
+    StereotypeFontColor #438DD5
+    FontColor #438DD5
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam person<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+
+skinparam rectangle<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam database<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam queue<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam actor<<external_container>> {
+    StereotypeFontColor #B3B3B3
+    FontColor #B3B3B3
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam person<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+
+
+
+skinparam rectangle<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam database<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam queue<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam actor<<container_boundary>> {
+    FontColor transparent
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam person<<container_boundary>> {
+    FontColor #444444
+    BackgroundColor transparent
+    BorderColor #444444
+}
+skinparam package<<container_boundary>>StereotypeFontColor transparent
+skinparam rectangle<<container_boundary>>StereotypeFontColor transparent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+
+
+
+
+
+
+
+
+
+
+sprite $AzureWebApp [70x70/16z] {
+rTVRek8g381X8EUy_mFl61KQOLTdxkRp_b-bvR1e_uOE96hcfi8qsjyOP5ufmPy-1G3v0O_sCoO8uYSAxITeRX3G_CYeVTNL0yCQqnxJ_gL1dWmXg5tzFAnk
+_Y8Gq3wugZ1XW5yYRWI1IaC8CDrcncgOAJpmDH5AvZvYYU51B6WafljCfnL910zgIb3TPP1iHH92G88D4ekeAcyH8B8QoLSp-lW8YAwlZgqQH2Gb4dZqi3B8
+QcbsUYimApMYDFhA8Ca-1wL4A9M82WBC3BA6FGDbkcMbH1Z2AmEiBvyPQmjxLcGrb01cPaHbpsmls9qpiqN2613-DwCpGbi5uGq5uJOptXMB90N4qKB75I7H
+ajaht9uWrp0Hb8qtSKJabQ4jusaEA33r5ae6vOaXeHmps99waDwgZEoPlI8jpPTKT98BU2gPCYIOxwX2kK98_Ao8N39zlfRUTb8G95ALvvUayc9qJUIAfM18
+YErbNB-rPUvWo2apsWINrxijpVSlAzlBwHUS5PsLlilAbXdzolwgejmBzM2t5JXKf1TSAj8Fw5GPnQgOXt5mYAYEGZtehE3OW9moCAxOtbzQ_65iZX7bSK54
+-ffrb1KP7_WK2JGce0U5kHhTU1HmgYHQvpMbtaBtH50Wqjv8SmirOmhOqlmV36SYR1cTJ4NKWYlF2dju_u47VDiQ-oQbxyhmW5aX2xeoh5jYsxt7EaaCCoDP
+kMJe-NLx6o0bif-nv2uO0Crg9h12Uw9IsOxOxavPONjd1AVUtk3-k1V7f3OpIlW4VU7zjASs3SLaayvHzIiBjT8kCB6byZXGAbk4svPHjzeH-gZmHyHQCJ2O
+krNACAuGYKM3PSD6go92dfMAQoNH6xHKCkA-TtIhq7A-evqoM2EqSB-xrrYXiDJ8-78zEcTGLKMOcT9ePsFF9Cg6b6kVzRkhvsGxtoDdv1UVaKMso3Qgol9N
+6BIlnB_WzelEViD6-nMPdp6qFp5GjfBKnEybdGM2zc_u3m
+}
+
+skinparam rectangle<<AzureWebApp>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+
+sprite $AzureKeyVault [70x70/16z] {
+rTW7ZkH020LGeA22xt_WRQFcsysMcQ0uNs7ZF16SwOz4clKnrvgZMvFV2AnZ7QyiZ_-kA__Ci1d0w6PzX3Nj1yQA6gQfnsOuwvkEhfFm34My78UM_iGOJVGM
+QGDEephZtSjivu0_maHjlliQ9J9X1DBubHOCd5biTnrX025FC72EoJKoA93umVIduSpY2h7xZoc6VcTiEVCyaob0sXae7upCfzdq0zqGdqHImA2herEEUILl
+f24IvsLcl1fDIFEPC124yJUV3FjiqedkanKWswJPn8HJFvgHcj6JiRjo6qf3dfbhD2llHzvp_0OZwEcs9yQIKob5CLWtVvJ2ML44IGf7CLXGpuUARGA6KGpM
+92ZbNejkbOPQC1cvhPcWL4aAtPOzqT395xLeA8A9uWXXhDbJpwNXqdMrn3Y52E5YBbvBp1OjEQfGm5G10aNZQ1bKC0L2CyOxNehHjvb0CDvZn4cbL305GXfB
+MgyqAfW2eHRdDHQzOKe4gtvGmDG857HKC0M2ZZ3TcW6ocousNJ05GXQRxZWPSwH4S8NfSM7meifYylppiOkpiMvfh-1inAftYch9OD6uIkqLAnYSHkcAMIdA
+-uOqNRrBHTj3Gto9gzUA0ibxNlckbYEXu3A9vBiQxh1FYcUZu0wRx_PPKRqKtKq5fQ2OkLFCz96Pfx9v2ggLL2oUWl8JMQd8ff-rVJei5CdxmIcKUvg5iXkA
+FJqrPmLC-t_9_V49ddTAPjWhcSNRX7mgVJDUmTl4CwDRnTGOAtQ4wrUrmRaZUoKG6SNB6aRiphluiu88my1W7wFnzkaE6o9knDkdKXqPrvimaToGwqqOBHTf
+vv132YM4SoADlXNDpW1nBFtPbmPyQi17XjrNXZfYypWJm2lJX7uUrjx7FBkOetTb-Xlv1m
+}
+
+skinparam rectangle<<AzureKeyVault>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AzureApplicationInsights [70x70/16z] {
+rTS5kkj0241X7ARxN_2RfCJQ47j-hbN_Z-4w_2-nkRzwxiRF19GHM7B1suY-Tj9x1hVNRerl834zQMbYuwf1RKLyGK4ta9PzEusk8gti8hCWDNEA-0Q9kGtZ
+9uYiaDYsPkGGmHhfBKp38yLc92o-ifWPFLvj6ZmCje6S080ycGPraeZZEuaXZvxXEyjXv7mKwe3Ay1pF1bVD237EXg543CV3A29vfXs9NkVpJ5Gfd8eWHiyH
+qJFf5wD7oAbmfLYkLf06PAtGS75KA8-abHApWXtvLdoS9H_bbV8-q7WKsLDoFJdCcHACIBskK9ON4IdEb3OfpbX4FYdjJEdfhiFgSKs9CVVjNZWlnjWVKFn3
+8Q9PoOkBufMYTnIj5BwZC9mj9XLczapoug90cPmf2oArWhCIPmeSf6yb6H7nJ4KsYi1HaSokiY01X_5w65NriRmOiy9md2tCMZ7L5M9mLinAcDcicCMi19n6
+ESoUagCGdAVh1UUxMAzMuKgHpFBKvMBvRLX_xNtNUWZNqegfl_JhNocxIC3bkFvRYk5wqOe2RiILmd2d-BbHCjt_srlkAVZgVHWzX7krrr1QyyK__FzHHdiA
+mTty6t6u7yb714yYtYJmaugecVjZ9O6UgJvJLe1mxvao0YASFLHMW8ZQqxqiGC_ieR80AezFf3CmHl1pYqdaQLGWJnc2_wOV
+}
+
+skinparam rectangle<<AzureApplicationInsights>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AppConfiguration [70x70/16z] {
+xPK5jgKm343ZjFlVy51EaKTA6iRj_l-iSeaWyEU1A_1Da6Y72RuIrWyOlW9K1y5RI1t9S91Pc70iiOQ-A0FxTAmZwGmyTi9n8B7avDibSKxqiD596WWF10Tt
+4kDKFZP1Cw7ObCIvRdDmcf1z3ujbuEzY8HWXBoqoEUCi2GU1v2scwHCkhs4DB6bDLgAouZhrDXHktEPVNq3AZLim-FO24jvmxKwTAdf9oAV4kLDVzdtQBNAC
+RwCfY_RZg_21xDavIo09E2qKMOGZvAmBXltX23qj45ea3iNSkMj3ub0K3aABXA4W773Q8ZUBmWNfbhZLSXzGWmyaKLrrbHA4Z4Q53tGK7WuU96557YO8x-54
+FLPNgwTuYFM2y1Lvd45mC443j-zNuCh4KcffWqlLQ2rEBBNMGhIi7_V512SqjtJS-d5211uy98i_xa023bvCIprGNmFq0mwh3hhtWv3u0dXw74M9xHeFEyAQ
+b4q2ZQLkI6nX641rXS-lXISIfYTBdpWYGOu0Z_QjZJ2Vg4bBFUl2srTqbcamilS50RMt2u-C46dKS71KJrk5H-2VDQLnMP18waafFJl4sraC7TSXV_uQU5mj
+fXPwj21uV9zKbWSBvaA1ibKKozW2PsrZU5j4Hl0z-CyN
+}
+
+skinparam rectangle<<AppConfiguration>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AzureServiceBus [70x70/16z] {
+xT97bkCm34NHZmpK_lTRESa6PT9IvxuZZju1IU2N-O_4t2F2JHdtOOqD8omZZtS7EX8jnGgB0LkzJSzfDX9xV3voFEDnWwx-JeyMxwFyIbVlPDtm6bk2VPGR
+7vNS2knXzQbAqZZnNfYfA7eIcVCLHuSySwMIRIHoiKAumfch5MuYwvLqsuOe9oeT_zw9cKhFy45p1pTtRjydMuw6vpNP7KLmHSRJv8WqaHO1L4Do4Qa11xGc
+Cr933A-vZDHO86eg8xM7ingc7mYlIDzvTRGQgL_eAoAYQjNnR2lR37sSP509lrLHvc-7lfBMLeQiMZ9V6TyeSKR5uNEL_P-6TEsXg0u1MKSb07uuIl7C7ox5
+M1D9lCgvYfkt5S4hggcAYNKLnpkk-sTnVAAyzrqCt_bzDr9iSToiw6N52LV8QkL6POGUgNjanbY-25CX_1nM8uvvrSkgEbn9iHCgvNb6fNxfZOvNUYVjoq_t
+tnC
+}
+
+skinparam rectangle<<AzureServiceBus>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AzureDatabaseForMySQL [70x70/16z] {
+xTK5iYmX38NXX10Yx7-_ZnuoGhscjUJQTsNyhpCEtmGERjvyT3gHKgBGZfu8lG94-JyjTYWK4_A66BNNeBmZ5cr6yW6HcLVo8VCAdgtWl49vK0AFZyoyGaEc
+YAgDL7hi6I5OOTWbOb6RaK89EuSLrV0f5vqqcF39wcgbLiAtp4LKezQEbD8BWMgTLQebF2HPdLSQ8zn5hJ6l1EE4KuaZiLa9han3AoNAHRs6GvNWWqYShVXk
+vM_BtnQt8Q9NAfe0a5_1103vTCKH5X9R4YpeR4NX0Vij6BgB5IYryNIp0ij3B72tajk9_Ax0Gcj3CNMt4cCCRbLI7yDn_695-XXS8doveWGDGiCtAW81_KQb
+8dHvg2Hgy7Y5eREX4WvN36FAiv8lLE8GxLLnEbCnQcmvmfHRn8KQRxHmQIGVg8pyHPZB0yD2httkZdS8_SAMoSDoRmj6vDBZydnarF- -6szN_hO4Fxl5OKKv
+kwN06Z-tnM4L-fajXZ1HZczXc4jwR4j1s9PjRuinmZxCuhCjLWYEmqIPHSqxKrLXGlW6_W4
+}
+
+skinparam rectangle<<AzureDatabaseForMySQL>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AzureDatabaseForPostgreSQL [70x70/16z] {
+xTO7Skiw38NX0u14u_xNco91oLLUP4FZAQzzqrB_EMJYWdy8Ei5TzC3j17-G7JFV27q5HCPVY70hL1F60pNgsH0PJmXj7WuP3JNdkZ9QhYjqjqBjMz4okpSZ
+fuoQUvovLUpuIVmYQCTZciSLKs7Q9NwnWhuwwXUDANI8zMjbBQ5lOwgvLytTLVT2aRMkAYkOMZZMLMKJGa_9rhYgb9XCbtXMuc6bf4yvjPXbgESghKh9irNk
+LR9V-NzBlvAc7_mpOtFCQPc63spPhkH0YI3iHWHl7MzMab5qYnIjhrklCb3uwEr6VUgTIk9WYXFRft6dOZWauuHoptOgYZ82FynrlwA67oYbJjIlXAfd61s9
+wRaTIMxTorgXCZCg4ZR4781sAe6o51WqK-gME7Lwzo-zK9O0qxWgqo5G1MYrAlnT-NHiIG0wWTchZ1-L_NFA0UW0ebSnxA8g4vlXW2fuzIfvVCx7YMeCVrQq
+MLbSd-CJ7nLCWofbjpB_FD5C54gseQjR2MnKyS4DXs6BLxjIH-9WG9BnHSrkL1IRaGCM-8El6vMagcmOXx7wbUD-ELTc3ZCSOgYxURUI3D0M4Sp4mG6GPhUo
+WZdMScLm9WxfxlqJbPmYcjyLUU5r-kLAdYlpXIqlLt97sDbBMmGxVsdBn2vVscBOIAkILriScyXrblY5FZoIHFwiA5fZyeldfyOKWFBEUymWND3-Uyo9Q-oz
+BKfuRCIpBJ49pz6mlDeIAkWZbZ7D8tVXxZQ5y0_m3W
+}
+
+skinparam rectangle<<AzureDatabaseForPostgreSQL>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+sprite $AzureCosmosDb [70x70/16z] {
+pPS7WkCW34MjWX3S_y0x16SLFk0jzfOtlRtH5qI4u_z4df2GqWCMLduYaCeJWVI1IDgudwSXD-DqReHYqK_aUgc8HLw_9ap32YDl3INBNcejxecxG4Taq7yg
+wAqeTI3h2XvIOHcvpfGVQcZehTO0FS9C3PQ5HY8cUJqfRoBNl3rms_LFk0mA41N6Hl3gSIJeG0zZWiLZMWS7UjnICePsplD51WcY_JS9B8EclLrA-5qsWGLm
+aFX9QSWyN1dw4ljaS0J55ZDQLfRoAN508Nq3nm2MuXCy_6fiksqfACc9UqUX6DXqiTzMaaJ71EzAiKKf-GkZzHb8K0e62aU3ZmMq6VWKWGQ9NGtQgKnTIxAk
+BPj3Gnh9_ESiQISvWra9oTQYBwuE-tHfkPQ4vR31OZi9hGv73kLWoRoJ8D2gqMAyQApE9GfOyc39zlb_gKjyiZ2UpwpsqWH9EocTafgMEGyUpJPOidUwBdcj
+iif31q73iyyIqyRh2D-rbY6dEqfII7nL2ZpXZMrpAg8GjIR1jiJ0cWOepBikoULbmVonb-T8mUb8tYLv4KZGWhLO58Abu660dKaH9Wh1Kj22dI5qv7ZcG5iB
+5cFbY-yEDG-97XiBQgX9UZ_EC26nGO3TZGwBUYdP51nTuiSCmwpmsYZU5D6GSDH2sn7A7ve84lq8YLzV0hWZ-a6oK4mI1isQP5vhURrquE6ZX9gr0iaqj8Ad
+XHeGvZmxYk2o70YBg8h4XOLq4EN4Spj3UuMax9ujAM_MX8yxn6M8w7STh0E_NGf9tChkNrZbk0dTbiH-kO_A8nP-mYB7_yWt
+}
+
+skinparam rectangle<<AzureCosmosDb>> {
+    BackgroundColor #FFFFFF
+    BorderColor #3C7FC0
+}
+
+title Container Cloud Azure diagram for "Estimation Tool"
+
+rectangle "<$person>\n==Estimator\n\n A person who is resposible for suggest valuation proposal on time, based on priorities" <<person>> as estimator 
+rectangle "<$person>\n==Customer\n\n A person who inquiry service" <<person>> as customer 
+
+rectangle "==Single-Page App\n<color:#0072C6><$AzureWebApp></color>\n//<size:12>[Angular, JS]</size>//" <<AzureWebApp>> as spa
+
+rectangle "==WebAPI\n<color:#0072C6><$AzureWebApp></color>\n//<size:12>[.NET 6]</size>//\n\n " <<AzureWebApp>> as webApp
+spa ->> webApp : **Uses**\n//<size:12>[JSON, HTTPS]</size>//
+spa <<- webApp : **Delivers**
+
+customer - ->> spa : **Uses**\n//<size:12>[HTTPS]</size>//
+estimator - ->> spa : **Uses**\n//<size:12>[HTTPS]</size>//
+
+rectangle "==Observability System\n<color:#0072C6><$AzureApplicationInsights></color>\n//<size:12>[AzureApplicationInsights]</size>//" <<AzureApplicationInsights>> as azureApplicationInsights
+webApp -UP->> azureApplicationInsights : **Log request**
+
+rectangle "==Message Broker\n<color:#0072C6><$AzureServiceBus></color>\n//<size:12>[Azure Service Bus]</size>//\n\n " <<AzureServiceBus>> as serviceBus
+webApp -UP->> serviceBus : **Publish**
+webApp <<- - serviceBus : **Subscribe**
+
+rectangle "==Secrets Store\n<color:#0072C6><$AzureKeyVault></color>\n//<size:12>[Azure Key Valut]</size>//\n\n " <<AzureKeyVault>> as keyVault
+rectangle "==Configuration Management\n<color:#0072C6><$AppConfiguration></color>\n//<size:12>[Azure App Configuratio]</size>//\n\n Contains all configuration entries and feature flags" <<AppConfiguration>> as azureAppConfiguration
+webApp ->> azureAppConfiguration : **Get configuration**
+azureAppConfiguration ->> keyVault : **Get secrets**
+azureAppConfiguration <<- keyVault : **Returns secrets**
+webApp <<- azureAppConfiguration : **Returns configuration**
+
+rectangle "==Document Database\n<color:#0072C6><$AzureCosmosDb></color>\n//<size:12>[MongoDB]</size>//" <<AzureCosmosDb>> as mongoDb
+rectangle "==Relational Database\n<color:#0072C6><$AzureDatabaseForMySQL></color>\n//<size:12>[MySQL]</size>//" <<AzureDatabaseForMySQL>> as mySQL
+rectangle "==Relational Database\n<color:#0072C6><$AzureDatabaseForPostgreSQL></color>\n//<size:12>[Postgres]</size>//" <<AzureDatabaseForPostgreSQL>> as postgres
+
+webApp -DOWN->> mongoDb : **Write**
+webApp <<- - mongoDb : **Read**
+
+webApp -DOWN->> mySQL : **Write**
+webApp <<- - mySQL : **Read**
+
+webApp -DOWN->> postgres : **Write**
+webApp <<- - postgres : **Read**
+
+
+@enduml
+
+PlantUML version 1.2020.23(Sun Dec 13 19:14:58 GMT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

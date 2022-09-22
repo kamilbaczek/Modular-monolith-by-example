@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="602px" preserveAspectRatio="none" style="width:920px;height:602px;" version="1.1" viewBox="0 0 920 602" width="920px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="363" x="272" y="16.708">System Context diagram for Estimation Tool</text><!--MD5=[2bd350f703fb70bb20a649babb1f6c3b]
+entity estimator--><rect fill="#08427B" height="117.7813" style="stroke:#073B6F;stroke-width:1.5;" width="218" x="321.5" y="27.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="405.5" y="49.0918">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="77" x="392" y="66.7734">Estimator</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="432.5" y="83.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="194" x="335.5" y="99.8389">A person who is resposible for</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="197" x="332" y="116.1357">suggest valuation proposals on</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="158" x="351.5" y="132.4326">time, based on priorities</text><!--MD5=[92848cbaf65985a669855153c5362c37]
+entity customer--><rect fill="#08427B" height="85.1875" style="stroke:#073B6F;stroke-width:1.5;" width="209" x="575" y="44.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="50" x="654.5" y="65.5918">«person»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="76" x="641.5" y="83.2734">Customer</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="681.5" y="100.042"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="185" x="589" y="116.3389">A person who inquiry service</text><!--MD5=[b81b1741f2c2afdc488e3f8d7203072b]
+entity estimation_tool--><rect fill="#1168BD" height="166.6719" style="stroke:#3C7FC0;stroke-width:1.5;" width="191" x="335" y="252.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="51" x="405" y="274.0918">«system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="123" x="369" y="291.7734">Estimation Tool</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="432.5" y="308.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="125" x="368" y="324.8389">System to optimize</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="167" x="345" y="341.1357">estimation process. Gives</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="138" x="359.5" y="357.4326">cabapitlites to handle</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="156" x="350.5" y="373.7295">valuations, notifications,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="133" x="362" y="390.0264">priorities, payments,</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="152" x="354.5" y="406.3232">authenticate customers</text><!--MD5=[0806134d3797f7a3685cdec250223329]
+entity twillo--><rect fill="#999999" height="117.7813" style="stroke:#8A8A8A;stroke-width:1.5;" width="196" x="90.5" y="27.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="101" x="138" y="49.0918">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="47" x="165" y="66.7734">Twillo</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="190.5" y="83.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="168" x="104.5" y="99.8389">SMS service resposible for</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="147" x="113" y="116.1357">send to customers and</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="154" y="132.4326">estimators</text><!--MD5=[55a1c76f49fd1c02040c15a21a351fd6]
+entity sendGrid--><rect fill="#999999" height="117.7813" style="stroke:#8A8A8A;stroke-width:1.5;" width="205" x="7" y="277.4531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="101" x="59" y="298.5918">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="74" x="72.5" y="316.2734">Send Grid</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="111.5" y="333.042"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="177" x="21" y="349.3389">Email service resposible for</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="147" x="34" y="365.6357">send to customers and</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="69" x="75" y="381.9326">estimators</text><!--MD5=[2548e593cfc07fd37e4eafbc43910660]
+entity trello--><rect fill="#999999" height="85.1875" style="stroke:#8A8A8A;stroke-width:1.5;" width="201" x="713" y="293.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="101" x="763" y="315.0918">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="45" x="791" y="332.7734">Trello</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="815.5" y="349.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="177" x="727" y="365.8389">Project menagment system</text><!--MD5=[a29fe3b73bd7c5d5e80e6b5e6b2bebf6]
+entity stripe--><rect fill="#999999" height="85.1875" style="stroke:#8A8A8A;stroke-width:1.5;" width="138" x="361.5" y="510.9531"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="101" x="380" y="532.0918">«external_system»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="46" x="407.5" y="549.7734">Stripe</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="432.5" y="566.542"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="114" x="375.5" y="582.8389">Payment Gateway</text><!--MD5=[124d4d50d65d5a113a81a1ae076cf915]
+link customer to estimation_tool--><path d="M645.84,129.4831 C622.99,156.9131 591.57,193.1531 561.5,222.9531 C551.55,232.8231 540.86,242.8331 530.03,252.6231 " fill="none" id="customer-to-estimation_tool" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="526.04,256.2131,535.4055,253.1656,529.7565,252.8683,530.0538,247.2193,526.04,256.2131" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="137" x="605.5" y="189.02">Made service inquiry,</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="90" x="629" y="204.1528">Accept/Reject</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="62" x="644.5" y="219.2856">proposals</text><!--MD5=[d5c672d665f669952f11a7b27f3a6db3]
+link estimator to estimation_tool--><path d="M430.5,145.9831 C430.5,176.0931 430.5,213.5131 430.5,247.1231 " fill="none" id="estimator-to-estimation_tool" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="430.5,252.4831,434.5,243.4831,430.5,247.4831,426.5,243.4831,430.5,252.4831" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="118" x="431.5" y="196.52">Suggest Proposals,</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="62" x="461" y="211.6528">Complete</text><!--MD5=[631659a45d43c5aeaee27edb9c4b7c97]
+reverse link twillo to estimation_tool--><path d="M248.91,149.7331 C279.29,180.8031 316.54,218.9031 349.37,252.4831 " fill="none" id="twillo-backto-estimation_tool" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="245.24,145.9831,248.6641,155.2176,248.7325,149.5612,254.389,149.6296,245.24,145.9831" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="66" x="318.5" y="197.02">Sends SMS</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="333" y="211.2246">[HTTP]</text><!--MD5=[be6492cf0f54932f16516e86f0a11d19]
+reverse link sendGrid to estimation_tool--><path d="M217.48,336.4531 C255.45,336.4531 297.83,336.4531 334.73,336.4531 " fill="none" id="sendGrid-backto-estimation_tool" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="212.39,336.4531,221.39,340.4531,217.39,336.4531,221.39,332.4531,212.39,336.4531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="86" x="230.5" y="315.52">Sends e-mails</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="40" x="253.5" y="329.7246">[SMTP]</text><!--MD5=[0176e468b09672705efb39df0805e588]
+link estimation_tool to trello--><path d="M526.16,336.4531 C581.33,336.4531 650.79,336.4531 707.6,336.4531 " fill="none" id="estimation_tool-to-trello" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="712.71,336.4531,703.71,332.4531,707.71,336.4531,703.71,340.4531,712.71,336.4531" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="106" x="565" y="285.52">Create task with</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="150" x="544.5" y="300.6528">valuation for estimitor,</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="115" x="562" y="315.7856">Change task state</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="601" y="329.9902">[HTTP]</text><!--MD5=[f73f95e6754e979bec25b08e82a92963]
+link estimation_tool to stripe--><path d="M430.5,419.9631 C430.5,448.9331 430.5,480.4531 430.5,505.4931 " fill="none" id="estimation_tool-to-stripe" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="430.5,510.7231,434.5,501.7231,430.5,505.7231,426.5,501.7231,430.5,510.7231" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="113" x="431.5" y="463.02">Make a payments</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="37" x="469.5" y="477.2246">[HTTP]</text><!--MD5=[1f1ec16eb271b7daed5a6cfa813427f3]
+@startuml
+!include <c4/C4_Context.puml>  
+
+'ref http://plantuml.com/stdlib
+!include <office/Users/user.puml>
+'LAYOUT_WITH_LEGEND
+
+title System Context diagram for Estimation Tool
+
+Person(estimator, Estimator , "A person who is resposible for suggest valuation proposals on time, based on priorities" )
+Person(customer, Customer , "A person who inquiry service" )
+
+System(estimation_tool, "Estimation Tool", "System to optimize estimation process. Gives cabapitlites to handle valuations, notifications, priorities, payments, authenticate customers")
+
+System_Ext(twillo, "Twillo", "SMS service resposible for send to customers and estimators")
+System_Ext(sendGrid, "Send Grid", "Email service resposible for send to customers and estimators")
+System_Ext(trello, "Trello", "Project menagment system")
+System_Ext(stripe, "Stripe", "Payment Gateway")
+
+Rel(customer, estimation_tool, "Made service inquiry, Accept/Reject proposals")
+Rel(estimator, estimation_tool, "Suggest Proposals, Complete")
+
+Rel_U(estimation_tool, twillo, "Sends SMS", "HTTP")
+Rel_L(estimation_tool, sendGrid, "Sends e-mails", "SMTP")
+Rel_R(estimation_tool, trello, "Create task with valuation for estimitor, Change task state", "HTTP")
+Rel_D(estimation_tool, stripe, "Make a payments", "HTTP")
+
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+sprite $user [44x48/16] {
+00000000000000000000000000000000000000000000
+00000000000000000000000000000000000000000000
+000000000000000000048AA851000000000000000000
+0000000000000000059AAAAAAA710000000000000000
+00000000000000008AAAAAAAAAAA2000000000000000
+0000000000000008AAAAAAAAAAAA9100000000000000
+000000000000006AAAAAAAAAAAAAA900000000000000
+00000000000001AAAAAAAAAAAAAAAA50000000000000
+00000000000007AAAAAAAAAAAAAAAA80000000000000
+0000000000001AAAAAAAAAAAAAAAAAA2000000000000
+0000000000003AAAAAAAAAAAAAAAAAA5000000000000
+0000000000005AAAAAAAAAAAAAAAAAA8000000000000
+0000000000006AAAAAAAAAAAAAAAAAAA000000000000
+0000000000006AAAAAAAAAAAAAAAAAAA000000000000
+0000000000005AAAAAAAAAAAAAAAAAA9000000000000
+0000000000004AAAAAAAAAAAAAAAAAA6000000000000
+0000000000001AAAAAAAAAAAAAAAAAA2000000000000
+00000000000008AAAAAAAAAAAAAAAA90000000000000
+00000000000002AAAAAAAAAAAAAAAA60000000000000
+000000000000007AAAAAAAAAAAAAAA10000000000000
+0000000000000019AAAAAAAAAAAAA300000000000000
+00000000000000019AAAAAAAAAAA3000000000000000
+000000000000000017AAAAAAAA830000000000000000
+00000000000000000017AAAA83000000000000000000
+00000000000021000000011000000001000000000000
+000000000029AA30000000000000007AA40000000000
+0000000026AAAAA610000000000038AAAA8300000000
+00000005AAAAAAAAA40000000028AAAAAAAA70000000
+0000007AAAAAAAAAAAA8666679AAAAAAAAAAA9200000
+000006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA900000
+000019AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA50000
+00004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA80000
+00008AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1000
+0000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3000
+0002AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6000
+0004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8000
+0006AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA000
+0007AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA100
+0008AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA300
+0009AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA400
+0009AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA600
+000AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA700
+001AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA800
+002AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA800
+004AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA900
+005AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA900
+00000000000000000000000000000000000000000000
+00000000000000000000000000000000000000000000
+}
+
+
+title System Context diagram for Estimation Tool
+
+rectangle "==Estimator\n\n A person who is resposible for suggest valuation proposals on time, based on priorities" <<person>> as estimator
+rectangle "==Customer\n\n A person who inquiry service" <<person>> as customer
+
+rectangle "==Estimation Tool\n\n System to optimize estimation process. Gives cabapitlites to handle valuations, notifications, priorities, payments, authenticate customers" <<system>> as estimation_tool
+
+rectangle "==Twillo\n\n SMS service resposible for send to customers and estimators" <<external_system>> as twillo
+rectangle "==Send Grid\n\n Email service resposible for send to customers and estimators" <<external_system>> as sendGrid
+rectangle "==Trello\n\n Project menagment system" <<external_system>> as trello
+rectangle "==Stripe\n\n Payment Gateway" <<external_system>> as stripe
+
+customer - -> estimation_tool : "===Made service inquiry, Accept/Reject proposals"
+estimator - -> estimation_tool : "===Suggest Proposals, Complete"
+
+estimation_tool -UP-> twillo : "===Sends SMS\n//<size:12>[HTTP]</size>//"
+estimation_tool -LEFT-> sendGrid : "===Sends e-mails\n//<size:12>[SMTP]</size>//"
+estimation_tool -RIGHT-> trello : "===Create task with valuation for estimitor, Change task state\n//<size:12>[HTTP]</size>//"
+estimation_tool -DOWN-> stripe : "===Make a payments\n//<size:12>[HTTP]</size>//"
+
+@enduml
+
+PlantUML version 1.2020.23(Sun Dec 13 19:14:58 GMT 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

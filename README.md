@@ -36,10 +36,11 @@
 
 ## Documentation
 ### C4
-[Wiki](https://github.com/kamilbaczek/Estimation-Tool/wiki/C4)
+#### System Context
+![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/system_context_diagram.svg)
 
-### Cloud Infrastructure
-![image](https://user-images.githubusercontent.com/74410956/190911013-87569f48-137d-47ce-ac32-747665bd2bb9.png)
+#### Cloud Infrastructure
+![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/containers_diagram.svg)
 
 
 #### Event Storming
@@ -48,8 +49,6 @@
 ##### Priorities
 <img width="934" alt="image" src="https://user-images.githubusercontent.com/74410956/159788894-a9a3c640-b6da-4f45-8363-9e4877abfdba.png">
 
-##### Valuations Flow
-![diagram](https://user-images.githubusercontent.com/74410956/142997315-97c09d1f-cef3-416f-98bf-069b388ea019.png)
 
 ## Notes for developers
 ### Dotnet format as precommit hook
