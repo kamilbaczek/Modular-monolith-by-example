@@ -73,7 +73,7 @@ jobs:
         gist_badge_label: 'Valuations - Integration Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
         
-    - name: Services - Integrations Tests
+    - name: Services - Integration Tests
       uses: zyborg/dotnet-tests-report@v1
       with:
         project_path: Src/Modules/Services/Divstack.Company.Estimation.Tool.Services.IntegrationsTests
