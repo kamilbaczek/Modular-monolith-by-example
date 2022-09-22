@@ -124,11 +124,8 @@ jobs:
 
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/dotnet@master
-        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --file=Divstack.Company.Estimation.Tool.sln
           
   architecture-diagrams:
       name: Architecture Diagrams
