@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-    <PackageReference Include="MongoDB.Bson" Version="2.13.2"/>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Bson" Version="2.13.2" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects\Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.csproj" />
   </ItemGroup>
 
 </Project>
