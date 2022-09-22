@@ -129,7 +129,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --all-projects
+          args: --all-projects --detection-depth=4
           
   architecture-diagrams:
       name: Architecture Diagrams
