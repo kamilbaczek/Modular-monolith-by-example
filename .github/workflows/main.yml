@@ -126,10 +126,16 @@ jobs:
       
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/dotnet@master
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --all-projects --detection-depth=10
+          args: --all-projects --detection-depth=10 --sarif-file-output=snyk.sarif
+          
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: snyk.sarif
           
   architecture-diagrams:
       name: Architecture Diagrams
