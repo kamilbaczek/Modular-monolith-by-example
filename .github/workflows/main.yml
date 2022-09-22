@@ -128,6 +128,8 @@ jobs:
         uses: snyk/actions/dotnet@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: file=Divstack.Company.Estimation.Tool.sln
           
   architecture-diagrams:
       name: Architecture Diagrams
