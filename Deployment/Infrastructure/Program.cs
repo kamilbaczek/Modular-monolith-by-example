@@ -23,8 +23,8 @@ void CreateResources(string environment, Config configuration)
     var objetId = current.Apply(getClientConfigResult => getClientConfigResult.ObjectId);
     var resourceGroup = ResourceGroupCreator.Create(environment, objetId);
     var @namespace = ServiceBusNamespace.Create(environment, resourceGroup);
-    var configurationStore = AppConfigurationCreator.Create(environment, resourceGroup);
+    var store = AppConfigurationCreator.Create(environment, resourceGroup);
     var keyVault = KeyVaultCreator.Create(environment, resourceGroup, configuration);
-    SecuredKeyValueCreator.Create(environment, keyVault, configuration, resourceGroup, configurationStore, @namespace);
+    SecuredKeyValueCreator.Create(environment, keyVault, configuration, resourceGroup, store.Item1, @namespace, store.Item2);
     ContainerAppCreator.Create(environment, resourceGroup);
 }

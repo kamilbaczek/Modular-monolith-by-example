@@ -1,10 +1,13 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.KeyVault;
 
 using Pulumi.Azure.AppConfiguration;
+using Pulumi.Azure.Authorization;
+using Pulumi.Azure.Core;
 using Pulumi.Azure.KeyVault;
 using Pulumi.Azure.ServiceBus;
 using Secrets;
 using ConfigurationStore = Pulumi.AzureNative.AppConfiguration.ConfigurationStore;
+using ResourceGroup = ResourceGroup;
 using Secret = Pulumi.AzureNative.KeyVault.Secret;
 using SecretArgs = Pulumi.AzureNative.KeyVault.SecretArgs;
 
@@ -13,7 +16,13 @@ internal static class SecuredKeyValueCreator
     private const string ServiceBusSecretName = "ServiceBusConnectionString";
     private const string EventbusConnectionString = "EventBus:ConnectionString";
 
-    internal static IReadOnlyCollection<Secret> Create(string enviroment, KeyVault keyVault, Config config, ResourceGroup resourceGroup, ConfigurationStore configurationStore, Namespace @namespace)
+    internal static IReadOnlyCollection<Secret> Create(string enviroment,
+        KeyVault keyVault,
+        Config config,
+        ResourceGroup resourceGroup,
+        ConfigurationStore configurationStore,
+        Namespace @namespace,
+        Assignment assignment)
     {
         var secrets = new List<Secret>();
         foreach (var keyVaultSecret in KeyVaultSecrets.Secrets)
@@ -22,16 +31,16 @@ internal static class SecuredKeyValueCreator
             secrets.Add(createdSecret);
 
             foreach (var securedAppConfigKey in keyVaultSecret.SecuredAppConfigKeys)
-                CreateConfigurationForSecret(enviroment, securedAppConfigKey.Key, createdSecret, configurationStore);
+                CreateConfigurationForSecret(enviroment, securedAppConfigKey.Key, createdSecret, configurationStore, assignment);
         }
 
-        CreateServiceBusSecret(enviroment, keyVault, resourceGroup, configurationStore, @namespace, secrets);
+        CreateServiceBusSecret(enviroment, keyVault, resourceGroup, configurationStore, @namespace, secrets, assignment);
 
 
         return secrets;
     }
 
-    private static void CreateServiceBusSecret(string enviroment, KeyVault keyVault, ResourceGroup resourceGroup, ConfigurationStore configurationStore, Namespace @namespace, List<Secret> secrets)
+    private static void CreateServiceBusSecret(string enviroment, KeyVault keyVault, ResourceGroup resourceGroup, ConfigurationStore configurationStore, Namespace @namespace, List<Secret> secrets, Assignment assignment)
     {
         var secret = new Secret(ServiceBusSecretName,
             new SecretArgs
@@ -45,7 +54,7 @@ internal static class SecuredKeyValueCreator
                 VaultName = keyVault.Name,
             });
         secrets.Add(secret);
-        CreateConfigurationForSecret(enviroment, EventbusConnectionString, secret, configurationStore);
+        CreateConfigurationForSecret(enviroment, EventbusConnectionString, secret, configurationStore, assignment);
     }
 
     private static Secret CreateSecret(KeyVault keyVault, Config config, ResourceGroup resourceGroup, KeyVaultSecret keyVaultSecret)
@@ -65,7 +74,7 @@ internal static class SecuredKeyValueCreator
             });
     }
 
-    private static void CreateConfigurationForSecret(string enviroment, string key, Secret secret, ConfigurationStore configurationStore)
+    private static void CreateConfigurationForSecret(string enviroment, string key, Secret secret, ConfigurationStore configurationStore, Assignment assignment)
     {
         var configurationKey = new ConfigurationKey(key, new ConfigurationKeyArgs
         {
@@ -74,6 +83,9 @@ internal static class SecuredKeyValueCreator
             Label = enviroment,
             Type = "vault",
             VaultKeyReference = secret.Properties.Apply(response => response.SecretUriWithVersion),
+        }, new CustomResourceOptions()
+        {
+            DependsOn = assignment
         });
     }
 }
