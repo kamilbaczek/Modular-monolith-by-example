@@ -26,5 +26,5 @@ void CreateResources(string environment, Config configuration)
     var configurationStoreResult = AppConfigurationCreator.Create(environment, resourceGroup);
     var keyVault = KeyVaultCreator.Create(environment, resourceGroup, configuration);
     SecuredKeyValueCreator.Create(environment, keyVault, configuration, resourceGroup, configurationStoreResult.ConfigurationStore, @namespace, configurationStoreResult.Assigment);
-    ContainerAppCreator.Create(environment, resourceGroup);
+    ContainerAppCreator.Create(environment, resourceGroup, configurationStoreResult.ConfigurationStore);
 }

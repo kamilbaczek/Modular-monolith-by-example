@@ -1,7 +1,9 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
 
+using System.Linq;
 using AzureNative.App;
 using AzureNative.App.Inputs;
+using AzureNative.AppConfiguration;
 using AzureNative.ContainerRegistry;
 using AzureNative.OperationalInsights;
 using AzureNative.OperationalInsights.Inputs;
@@ -14,7 +16,7 @@ using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
 {
-    internal static Registry Create(string environment, ResourceGroup resourceGroup)
+    internal static Registry Create(string environment, ResourceGroup resourceGroup, ConfigurationStore configurationStore)
     {
         var workspace = new Workspace($"{environment}-loganalytics", new WorkspaceArgs
         {
@@ -22,6 +24,17 @@ internal static class ContainerAppCreator
             Sku = new WorkspaceSkuArgs { Name = "PerGB2018" },
             RetentionInDays = 30,
         });
+
+        var configurationResult = Output.Tuple(resourceGroup.Name, configurationStore.Name)
+            .Apply(items =>
+                Pulumi.Azure.AppConfiguration.GetConfigurationStore.InvokeAsync(
+                new()
+                {
+                    ResourceGroupName = items.Item1,
+                    Name = items.Item2,
+                }));
+
+        var configurationStorePrimaryReadKeyResult = configurationResult.Apply(result => result.PrimaryReadKeys.First());
 
         var workspaceSharedKeys = Output.Tuple(resourceGroup.Name, workspace.Name).Apply(items =>
             GetSharedKeys.InvokeAsync(new GetSharedKeysArgs
@@ -108,13 +121,25 @@ internal static class ContainerAppCreator
                 {
                     new ContainerArgs
                     {
+                        Env = new InputList<EnvironmentVarArgs>()
+                        {
+                            new EnvironmentVarArgs()
+                            {
+                                Name = "ASPNETCORE_ENVIRONMENT",
+                                Value = environment
+                            },
+                            new EnvironmentVarArgs()
+                            {
+                                Name = "ConnectionStrings__AzureAppConfiguration",
+                                Value = $"{configurationStorePrimaryReadKeyResult.Apply(result => result.ConnectionString)}"
+                            },
+                        },
                         Name = "estimationtool",
                         Image = myImage.ImageName,
                     }
                 }
             }
         });
-
 
         return registry;
     }
