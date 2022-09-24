@@ -9,7 +9,7 @@ using SkuArgs = Pulumi.AzureNative.AppConfiguration.Inputs.SkuArgs;
 
 internal static class AppConfigurationCreator
 {
-    internal static ConfigurationStoreResult Create(string enviroment, ResourceGroup resourceGroup)
+    internal static ConfigurationStoreCreationResult Create(string enviroment, ResourceGroup resourceGroup)
     {
         var clientConfig = Output.Create(GetClientConfig.InvokeAsync());
         var configurationStore = CreateStore(enviroment, resourceGroup);
@@ -20,7 +20,7 @@ internal static class AppConfigurationCreator
         foreach (var keyValue in AppConfigurationKeys.FeatureFlags)
             CreateFeatureFlag(enviroment, keyValue, configurationStore, assignment);
 
-        return new ConfigurationStoreResult(configurationStore, assignment);
+        return new ConfigurationStoreCreationResult(configurationStore, assignment);
     }
     private static Assignment CreateAssignment(string enviroment, ConfigurationStore configurationStore, Output<GetClientConfigResult> clientConfig)
     {

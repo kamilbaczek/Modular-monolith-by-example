@@ -7,7 +7,7 @@ using ResourceGroup = ResourceGroup;
 
 internal static class KeyVaultCreator
 {
-    internal static KeyVault Create(string enviroment, ResourceGroup resourceGroup, Config config)
+    internal static KeyVault Create(string enviroment, ResourceGroup resourceGroup)
     {
         var clientConfig = Output.Create(GetClientConfig.InvokeAsync());
         var tenantId = clientConfig.Apply(c => c.TenantId);

@@ -4,4 +4,4 @@ namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppConfig
 
 using Pulumi.Azure.Authorization;
 
-internal record struct ConfigurationStoreResult(ConfigurationStore ConfigurationStore, Assignment Assigment);
+internal record struct ConfigurationStoreCreationResult(ConfigurationStore ConfigurationStore, Assignment Assigment);

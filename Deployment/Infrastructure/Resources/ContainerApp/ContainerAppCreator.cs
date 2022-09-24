@@ -1,13 +1,13 @@
-﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppService;
+﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ContainerApp;
 
 using System.Linq;
-using AzureNative.App;
-using AzureNative.App.Inputs;
-using AzureNative.AppConfiguration;
-using AzureNative.ContainerRegistry;
-using AzureNative.OperationalInsights;
-using AzureNative.OperationalInsights.Inputs;
 using Pulumi;
+using Pulumi.AzureNative.App;
+using Pulumi.AzureNative.App.Inputs;
+using Pulumi.AzureNative.AppConfiguration;
+using Pulumi.AzureNative.ContainerRegistry;
+using Pulumi.AzureNative.OperationalInsights;
+using Pulumi.AzureNative.OperationalInsights.Inputs;
 using Pulumi.AzureNative.Resources;
 using Pulumi.Docker;
 using ContainerArgs = AzureNative.App.Inputs.ContainerArgs;
@@ -74,7 +74,7 @@ internal static class ContainerAppCreator
         var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
 
         var customImage = "estimationtool";
-        var myImage = new Image(customImage, new ImageArgs
+        var image = new Image(customImage, new ImageArgs
         {
             ImageName = Output.Format($"{registry.LoginServer}/{customImage}:v1.0.0"),
             Build = new DockerBuild { Context = "../.." },
@@ -121,21 +121,21 @@ internal static class ContainerAppCreator
                 {
                     new ContainerArgs
                     {
-                        Env = new InputList<EnvironmentVarArgs>()
+                        Env = new InputList<EnvironmentVarArgs>
                         {
-                            new EnvironmentVarArgs()
+                            new EnvironmentVarArgs
                             {
                                 Name = "ASPNETCORE_ENVIRONMENT",
                                 Value = environment
                             },
-                            new EnvironmentVarArgs()
+                            new EnvironmentVarArgs
                             {
                                 Name = "ConnectionStrings__AzureAppConfiguration",
-                                Value = $"{configurationStorePrimaryReadKeyResult.Apply(result => result.ConnectionString)}"
+                                Value = configurationStorePrimaryReadKeyResult.Apply(result => result.ConnectionString)
                             },
                         },
                         Name = "estimationtool",
-                        Image = myImage.ImageName,
+                        Image = image.ImageName,
                     }
                 }
             }
