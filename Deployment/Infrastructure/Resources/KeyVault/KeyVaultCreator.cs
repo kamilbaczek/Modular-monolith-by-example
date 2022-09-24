@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.KeyVault;
 
+using AzureNative.AppConfiguration;
 using Pulumi.Azure.Core;
 using Pulumi.Azure.KeyVault;
 using Pulumi.Azure.KeyVault.Inputs;
@@ -7,7 +8,7 @@ using ResourceGroup = ResourceGroup;
 
 internal static class KeyVaultCreator
 {
-    internal static KeyVault Create(string enviroment, ResourceGroup resourceGroup)
+    internal static KeyVault Create(string enviroment, ResourceGroup resourceGroup, ConfigurationStore configurationStore)
     {
         var clientConfig = Output.Create(GetClientConfig.InvokeAsync());
         var tenantId = clientConfig.Apply(c => c.TenantId);
@@ -28,6 +29,15 @@ internal static class KeyVaultCreator
                 {
                     TenantId = tenantId,
                     ObjectId = currentPrincipal,
+                    SecretPermissions =
+                    {
+                        "Delete", "Get", "List", "Set"
+                    }
+                },
+                new KeyVaultAccessPolicyArgs
+                {
+                    TenantId = tenantId,
+                    ObjectId = configurationStore.Id,
                     SecretPermissions =
                     {
                         "Delete", "Get", "List", "Set"
