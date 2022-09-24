@@ -7,6 +7,9 @@ using AzureNative.OperationalInsights;
 using AzureNative.OperationalInsights.Inputs;
 using Pulumi;
 using Pulumi.AzureNative.Resources;
+using Pulumi.Docker;
+using ContainerArgs = AzureNative.App.Inputs.ContainerArgs;
+using SecretArgs = AzureNative.App.Inputs.SecretArgs;
 using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
@@ -47,6 +50,71 @@ internal static class ContainerAppCreator
             Sku = new SkuArgs { Name = "Basic" },
             AdminUserEnabled = true
         });
+
+        var credentials = Output.Tuple(resourceGroup.Name, registry.Name).Apply(items =>
+           ListRegistryCredentials.InvokeAsync(new ListRegistryCredentialsArgs
+           {
+               ResourceGroupName = items.Item1,
+               RegistryName = items.Item2
+           }));
+        var adminUsername = credentials.Apply(credentials => credentials.Username);
+        var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
+
+        var customImage = "estimationtool";
+        var myImage = new Image(customImage, new ImageArgs
+        {
+            ImageName = Output.Format($"{registry.LoginServer}/{customImage}:v1.0.0"),
+            Build = new DockerBuild { Context = "../.." },
+            Registry = new ImageRegistry
+            {
+                Server = registry.LoginServer,
+                Username = adminUsername,
+                Password = adminPassword
+            }
+        });
+
+        var containerApp = new ContainerApp("estimationtool", new ContainerAppArgs
+        {
+            ResourceGroupName = resourceGroup.Name,
+            ManagedEnvironmentId = managedEnv.Id,
+            Configuration = new ConfigurationArgs
+            {
+                Ingress = new IngressArgs
+                {
+                    External = true,
+                    TargetPort = 80
+                },
+                Registries =
+                {
+                    new RegistryCredentialsArgs
+                    {
+                        Server = registry.LoginServer,
+                        Username = adminUsername,
+                        PasswordSecretRef = "pwd",
+                    }
+                },
+                Secrets =
+                {
+                    new SecretArgs
+                    {
+                        Name = "pwd",
+                        Value = adminPassword
+                    }
+                },
+            },
+            Template = new TemplateArgs
+            {
+                Containers =
+                {
+                    new ContainerArgs
+                    {
+                        Name = "estimationtool",
+                        Image = myImage.ImageName,
+                    }
+                }
+            }
+        });
+
 
         return registry;
     }
