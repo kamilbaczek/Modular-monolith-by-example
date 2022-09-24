@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppConfiguration;
 
+using AzureNative.AppConfiguration.Inputs;
 using AzureNative.Authorization;
 using Pulumi.Azure.AppConfiguration;
 using Pulumi.Azure.Authorization;
@@ -42,7 +43,13 @@ internal static class AppConfigurationCreator
             {
                 Name = "Standard",
             },
+            Identity = new ResourceIdentityArgs
+            {
+                Type = "SystemAssigned",
+            }
         });
+
+        configurationStore.Identity.Apply(c => c.PrincipalId);
 
         return configurationStore;
     }

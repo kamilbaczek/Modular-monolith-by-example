@@ -37,7 +37,7 @@ internal static class KeyVaultCreator
                 new KeyVaultAccessPolicyArgs
                 {
                     TenantId = tenantId,
-                    ObjectId = configurationStore.Id,
+                    ObjectId = configurationStore.Identity.Apply(response => response.PrincipalId),
                     SecretPermissions =
                     {
                         "Delete", "Get", "List", "Set"

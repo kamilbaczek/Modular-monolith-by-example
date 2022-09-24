@@ -2,6 +2,7 @@
 
 using System.Linq;
 using Pulumi;
+using Pulumi.Azure.Role;
 using Pulumi.AzureNative.App;
 using Pulumi.AzureNative.App.Inputs;
 using Pulumi.AzureNative.AppConfiguration;
@@ -16,6 +17,7 @@ using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
 {
+    [System.Obsolete]
     internal static Registry Create(string environment, ResourceGroup resourceGroup, ConfigurationStore configurationStore)
     {
         var workspace = new Workspace($"{environment}-loganalytics", new WorkspaceArgs
@@ -90,6 +92,8 @@ internal static class ContainerAppCreator
         {
             ResourceGroupName = resourceGroup.Name,
             ManagedEnvironmentId = managedEnv.Id,
+            Identity = new ManagedServiceIdentityArgs
+            { Type = "SystemAssigned" },
             Configuration = new ConfigurationArgs
             {
                 Ingress = new IngressArgs
@@ -140,6 +144,14 @@ internal static class ContainerAppCreator
                 }
             }
         });
+
+        var assignment = new Assignment($"ac-{environment}-do", new AssignmentArgs
+        {
+            Scope = configurationStore.Id,
+            RoleDefinitionName = "App Configuration Data Owner",
+            PrincipalId = containerApp.Identity.Apply(identity => identity.PrincipalId)
+        });
+
 
         return registry;
     }
