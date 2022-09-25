@@ -1,30 +1,29 @@
 ﻿namespace Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ContainerApp;
 
-using System.Linq;
-using Pulumi;
+using AzureNative.ContainerRegistry;
+using AzureNative.OperationalInsights;
+using AzureNative.OperationalInsights.Inputs;
+using Pulumi.Azure.AppInsights;
 using Pulumi.Azure.Role;
-using Pulumi.AzureNative.App;
-using Pulumi.AzureNative.App.Inputs;
-using Pulumi.AzureNative.AppConfiguration;
-using Pulumi.AzureNative.ContainerRegistry;
-using Pulumi.AzureNative.OperationalInsights;
-using Pulumi.AzureNative.OperationalInsights.Inputs;
-using Pulumi.AzureNative.Resources;
 using Pulumi.Docker;
-using ContainerArgs = AzureNative.App.Inputs.ContainerArgs;
-using SecretArgs = AzureNative.App.Inputs.SecretArgs;
+using ContainerApp = AzureNative.App.ContainerApp;
+using ContainerArgs = ContainerArgs;
+using SecretArgs = SecretArgs;
 using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
 {
     [System.Obsolete]
-    internal static Registry Create(string environment, ResourceGroup resourceGroup, ConfigurationStore configurationStore)
+    internal static ContainerApp Create(string environment,
+        ResourceGroup resourceGroup,
+        ConfigurationStore configurationStore,
+        Insights insights)
     {
         var workspace = new Workspace($"{environment}-loganalytics", new WorkspaceArgs
         {
             ResourceGroupName = resourceGroup.Name,
             Sku = new WorkspaceSkuArgs { Name = "PerGB2018" },
-            RetentionInDays = 30,
+            RetentionInDays = 30
         });
 
         var configurationResult = Output.Tuple(resourceGroup.Name, configurationStore.Name)
@@ -137,6 +136,11 @@ internal static class ContainerAppCreator
                                 Name = "ConnectionStrings__AzureAppConfiguration",
                                 Value = configurationStorePrimaryReadKeyResult.Apply(result => result.ConnectionString)
                             },
+                            new EnvironmentVarArgs
+                            {
+                                Name = "ApplicationInsights__InstrumentationKey",
+                                Value = insights.InstrumentationKey
+                            },
                         },
                         Name = "estimationtool",
                         Image = image.ImageName,
@@ -152,7 +156,6 @@ internal static class ContainerAppCreator
             PrincipalId = containerApp.Identity.Apply(identity => identity.PrincipalId)
         });
 
-
-        return registry;
+        return containerApp;
     }
 }

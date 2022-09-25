@@ -2,11 +2,10 @@
 
 using Pulumi.Azure.AppConfiguration;
 using Pulumi.Azure.Authorization;
-using Pulumi.Azure.Core;
 using Pulumi.Azure.KeyVault;
 using Pulumi.Azure.ServiceBus;
 using Secrets;
-using ConfigurationStore = Pulumi.AzureNative.AppConfiguration.ConfigurationStore;
+using ConfigurationStore = ConfigurationStore;
 using ResourceGroup = ResourceGroup;
 using Secret = Pulumi.AzureNative.KeyVault.Secret;
 using SecretArgs = Pulumi.AzureNative.KeyVault.SecretArgs;
@@ -34,7 +33,14 @@ internal static class SecuredKeyValueCreator
                 CreateConfigurationForSecret(enviroment, securedAppConfigKey.Key, createdSecret, configurationStore, assignment);
         }
 
-        CreateServiceBusSecret(enviroment, keyVault, resourceGroup, configurationStore, @namespace, secrets, assignment);
+        CreateServiceBusSecret(
+            enviroment,
+            keyVault,
+            resourceGroup,
+            configurationStore,
+            @namespace,
+            secrets,
+            assignment);
 
 
         return secrets;
@@ -76,14 +82,15 @@ internal static class SecuredKeyValueCreator
 
     private static void CreateConfigurationForSecret(string enviroment, string key, Secret secret, ConfigurationStore configurationStore, Assignment assignment)
     {
-        var configurationKey = new ConfigurationKey(key, new ConfigurationKeyArgs
+        var configurationKey = new ConfigurationKey(key,
+        new ConfigurationKeyArgs
         {
             ConfigurationStoreId = configurationStore.Id,
             Key = key,
             Label = enviroment,
             Type = "vault",
             VaultKeyReference = secret.Properties.Apply(response => response.SecretUriWithVersion),
-        }, new CustomResourceOptions()
+        }, new CustomResourceOptions
         {
             DependsOn = assignment
         });

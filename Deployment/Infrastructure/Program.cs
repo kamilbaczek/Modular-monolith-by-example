@@ -1,5 +1,6 @@
 ﻿using Divstack.Estimation.Tool.Deployment.Infrastructure.Common.Enviroments;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppConfiguration;
+using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.AppInsights;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ContainerApp;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.KeyVault;
 using Divstack.Estimation.Tool.Deployment.Infrastructure.Resources.ResourceGroups;
@@ -25,7 +26,14 @@ void CreateResources(string environment, Config configuration)
     var resourceGroup = ResourceGroupCreator.Create(environment, principalId);
     var @namespace = ServiceBusNamespace.Create(environment, resourceGroup);
     var configurationStoreResult = AppConfigurationCreator.Create(environment, resourceGroup);
-    var keyVault = KeyVaultCreator.Create(environment, resourceGroup, configurationStoreResult.ConfigurationStore);
-    SecuredKeyValueCreator.Create(environment, keyVault, configuration, resourceGroup, configurationStoreResult.ConfigurationStore, @namespace, configurationStoreResult.Assigment);
-    ContainerAppCreator.Create(environment, resourceGroup, configurationStoreResult.ConfigurationStore);
+    var applicationInsights = AppInsightsCreator.Create(environment, resourceGroup);
+    var containerApp = ContainerAppCreator.Create(environment, resourceGroup, configurationStoreResult.ConfigurationStore, applicationInsights);
+    var keyVault = KeyVaultCreator.Create(environment, resourceGroup, configurationStoreResult.ConfigurationStore, containerApp);
+    SecuredKeyValueCreator.Create(environment,
+        keyVault,
+        configuration,
+        resourceGroup,
+        configurationStoreResult.ConfigurationStore,
+        @namespace,
+        configurationStoreResult.Assigment);
 }
