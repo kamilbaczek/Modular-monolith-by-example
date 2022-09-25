@@ -38,6 +38,19 @@ jobs:
       with:
         fetch-depth: 0
         
+    - name: Install dotnet-reportgenerator
+      run: |
+        dotnet tool install -g dotnet-reportgenerator-globaltool
+        dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
+        dotnet new tool-manifest
+        dotnet tool install dotnet-reportgenerator-globaltool
+    - name: Install sonarscanner-dotnet
+      run:  dotnet tool install --global dotnet-sonarscanner --version 5.4
+    - name: Sonarscanner for dotnet
+      run: |
+           dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+           dotnet reportgenerator "-reports:**/TestResults/**/coverage.opencover.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
+        
     - name: Install stryker
       run:  dotnet tool install --global dotnet-stryker
      
