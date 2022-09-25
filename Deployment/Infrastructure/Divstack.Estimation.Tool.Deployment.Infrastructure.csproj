@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.3.0" />
-    <PackageReference Include="Pulumi" Version="3.40.0-beta.0-alpha.1662097290" />
-    <PackageReference Include="Pulumi.Azure" Version="5.18.0" />
+    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.4.0" />
+    <PackageReference Include="Pulumi" Version="3.40.1" />
+    <PackageReference Include="Pulumi.Azure" Version="5.19.0" />
     <PackageReference Include="Pulumi.AzureAD" Version="5.29.0-alpha.1662120600" />
-    <PackageReference Include="Pulumi.AzureNative" Version="1.76.0" />
+    <PackageReference Include="Pulumi.AzureNative" Version="1.78.0" />
     <PackageReference Include="Pulumi.Docker" Version="3.4.1" />
   </ItemGroup>
 

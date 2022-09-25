@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Infrastructure\Divstack.Company.Estimation.Tool.Users.Infrastructure.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Infrastructure\Divstack.Company.Estimation.Tool.Users.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>

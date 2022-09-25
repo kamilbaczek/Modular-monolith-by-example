@@ -13,18 +13,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1"/>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.9"/>
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3"/>
+    <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Domain\Divstack.Company.Estimation.Tool.Priorities.Domain.csproj"/>
-    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Infrastructure\Divstack.Company.Estimation.Tool.Priorities.Infrastructure.csproj"/>
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Domain\Divstack.Company.Estimation.Tool.Priorities.Domain.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Infrastructure\Divstack.Company.Estimation.Tool.Priorities.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
