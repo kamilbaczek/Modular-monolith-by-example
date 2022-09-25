@@ -1,4 +1,4 @@
-name: Build
+name: Estimation Tool CI/CD
 on:
   push:
     branches:
