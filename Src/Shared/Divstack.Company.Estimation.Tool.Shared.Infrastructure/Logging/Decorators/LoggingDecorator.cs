@@ -4,7 +4,7 @@ using System.Text.Json;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull, IRequest<TResponse>
 {
     private readonly ILogger<LoggingDecorator<TRequest, TResponse>> _logger;
     private readonly bool _debugMode;
