@@ -11,17 +11,12 @@ internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
     private readonly IConfiguration _configuration;
     private IDbConnection _connection;
 
-    public DatabaseConnectionFactory(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
+    public DatabaseConnectionFactory(IConfiguration configuration) => _configuration = configuration;
 
     public IDbConnection Create()
     {
         if (_connection is { State: ConnectionState.Open })
-        {
             return _connection;
-        }
 
         _connection =
             new MySqlConnection(_configuration.GetConnectionString(DataAccessConstants.ConnectionStringName));
@@ -32,9 +27,6 @@ internal sealed class DatabaseConnectionFactory : IDatabaseConnectionFactory
 
     public void Dispose()
     {
-        if (_connection is { State: ConnectionState.Open })
-        {
-            _connection.Dispose();
-        }
+        if (_connection is { State: ConnectionState.Open }) _connection.Dispose();
     }
 }

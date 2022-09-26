@@ -7,7 +7,7 @@
 !includeurl AzurePuml/AzureCommon.puml
 !includeurl AzurePuml/AzureC4Integration.puml
 !includeurl AzurePuml/Web/AzureWebApp.puml
-
+!includeurl AzurePuml/Containers/AzureContainerApp.puml
 !includeurl AzurePuml/Security/AzureKeyVault.puml
 !includeurl AzurePuml/DevOps/AzureApplicationInsights.puml
 !includeurl AzurePuml/Management/AppConfiguration.puml
@@ -16,14 +16,14 @@
 !includeurl AzurePuml/Databases/AzureDatabaseForPostgreSQL.puml
 !includeurl AzurePuml/Databases/AzureCosmosDb.puml
 
-title Container Cloud Azure diagram for "Estimation Tool"
+title Azure Cloud diagram for "Estimation Tool"
 
 Person(estimator, Estimator , "A person who is resposible for suggest valuation proposal on time, based on priorities" )
 Person(customer, Customer , "A person who inquiry service" )
 
 AzureWebApp(spa, "Single-Page App", "Angular, JS")
 
-AzureWebApp(webApp, "WebAPI", ".NET 6", "")
+AzureContainerApp(webApp, "WebAPI", ".NET 6", "")
 Rel_Neighbor(spa, webApp, "Uses", "JSON, HTTPS")
 Rel_Back_Neighbor(spa, webApp, "Delivers")
 
