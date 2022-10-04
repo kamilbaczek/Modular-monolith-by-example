@@ -169,6 +169,9 @@ internal static class AppConfigurationKeys
         },
         {
             "EventsModule", true
+        },
+        {
+            "HangfireModule", true
         }
     };
 }
