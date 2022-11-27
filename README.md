@@ -28,8 +28,9 @@
 
 ## Architecture
 ### C4
-[![C4](https://i3.ytimg.com/vi/-FaXMV2-k64/maxresdefault.jpg)](https://s.icepanel.io/vY0SkvgDs7V83U/Gl8F)
-
+#### Context
+![Estimation Tool Landscape View - System Context (Latest) (1)](https://user-images.githubusercontent.com/74410956/204153187-87359de3-8923-4fee-aecf-c28409b2794a.png)](https://s.icepanel.io/vY0SkvgDs7V83U/Gl8F)
+[Interactive Architecture Diagram C4](https://s.icepanel.io/vY0SkvgDs7V83U/Gl8F)
 
 #### Cloud Infrastructure
 ![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/containers_diagram.svg)
