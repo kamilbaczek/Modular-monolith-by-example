@@ -26,8 +26,10 @@
 
 [Swagger](https://estimation-tool-api.azurewebsites.net/index.html)
 
-## Documentation
+## Architecture
 ### C4
+[![C4](https://i3.ytimg.com/vi/-FaXMV2-k64/maxresdefault.jpg)](https://s.icepanel.io/vY0SkvgDs7V83U/Gl8F)
+
 
 #### Cloud Infrastructure
 ![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/containers_diagram.svg)
