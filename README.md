@@ -29,7 +29,7 @@
 ## Architecture
 ### C4
 #### Context
-![Estimation Tool Landscape View - System Context (Latest) (1)](https://user-images.githubusercontent.com/74410956/204153187-87359de3-8923-4fee-aecf-c28409b2794a.png)](https://s.icepanel.io/vY0SkvgDs7V83U/Gl8F)
+![Estimation Tool Landscape View - System Context (Latest) (1)](https://user-images.githubusercontent.com/74410956/204153187-87359de3-8923-4fee-aecf-c28409b2794a.png)
 [Interactive Architecture Diagram C4](https://s.icepanel.io/vY0SkvgDs7V83U/Gl8F)
 
 #### Cloud Infrastructure
