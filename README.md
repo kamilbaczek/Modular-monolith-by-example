@@ -36,22 +36,17 @@
 
 ## Documentation
 ### C4
-#### System Context
-![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/system_context_diagram.svg)
 
 #### Cloud Infrastructure
 ![image](https://github.com/kamilbaczek/Estimation-Tool/blob/develop/Documentation/C4/containers_diagram.svg)
 
 
 #### Event Storming
-[Miro](https://miro.com/app/board/o9J_lcC1E7g=/?invite_link_id=913994717613)
-
-##### Priorities
-<img width="934" alt="image" src="https://user-images.githubusercontent.com/74410956/159788894-a9a3c640-b6da-4f45-8363-9e4877abfdba.png">
-
+![image](https://user-images.githubusercontent.com/74410956/204135380-07d3ac67-fafa-4381-8234-3e1bfdb99c4c.png)
 
 ## Notes for developers
 ### Dotnet format as precommit hook
 Author cares about code quality of this projected. That why dotnet format is executed before each commit. To make code properly formatted always. This save a lot of time during code review. Rules for dotnet format are stored in .editorconfig file. Install [precommit](https://pre-commit.com/) before you will start commit even locally.
+
 
 
