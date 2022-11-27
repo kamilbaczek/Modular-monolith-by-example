@@ -1,13 +1,5 @@
 # Estimations Tool - makes estimations easier
 
-## Table of contents
-* [Presentation](#presentation)
-* [Documentation](#documentation)
-  * [Event Storming](#event-storming)
-* [Technologies](#technologies)
-* [CI/CD](#ci/cd)
-* [Test Environment](#test-environment)
-
 ## Presentation
 [![Presentation](https://i3.ytimg.com/vi/-FaXMV2-k64/maxresdefault.jpg)](https://www.youtube.com/watch?v=-FaXMV2-k64&t=11s&ab_channel=ArtOfSoftwareDesign)
 
@@ -43,10 +35,6 @@
 
 #### Event Storming
 ![image](https://user-images.githubusercontent.com/74410956/204135380-07d3ac67-fafa-4381-8234-3e1bfdb99c4c.png)
-
-## Notes for developers
-### Dotnet format as precommit hook
-Author cares about code quality of this projected. That why dotnet format is executed before each commit. To make code properly formatted always. This save a lot of time during code review. Rules for dotnet format are stored in .editorconfig file. Install [precommit](https://pre-commit.com/) before you will start commit even locally.
 
 
 
