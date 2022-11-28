@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.Azure.csproj" />
     <ProjectReference Include="..\..\..\Shared\Divstack.Company.Estimation.Tool.Shared.Infrastructure\Divstack.Company.Estimation.Tool.Shared.Infrastructure.csproj" />
+    <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Services.Core\Divstack.Company.Estimation.Tool.Services.Core.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Services.DataAccess\Divstack.Company.Estimation.Tool.Services.DataAccess.csproj" />
   </ItemGroup>
 

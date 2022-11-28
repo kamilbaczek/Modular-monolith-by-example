@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <RootNamespace>Divstack.Company.Estimation.Tool.Modules.Emails.Bootstrapper</RootNamespace>
-    <LangVersion>10</LangVersion>
+
   </PropertyGroup>
 
   <ItemGroup>

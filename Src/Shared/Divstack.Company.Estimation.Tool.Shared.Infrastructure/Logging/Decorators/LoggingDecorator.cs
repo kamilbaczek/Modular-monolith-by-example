@@ -14,7 +14,7 @@ internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<
         _logger = logger;
         _debugMode = _logger.IsEnabled(LogLevel.Debug);
     }
-
+    
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
         if (_debugMode)
@@ -39,4 +39,6 @@ internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<
         var requestAsString = JsonSerializer.Serialize(request);
         _logger.LogInformation("[UseCaseExecution][{Command}] Handling started request: {Request}", typeof(TRequest).Name, requestAsString);
     }
+    
+
 }
