@@ -14,8 +14,8 @@ internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<
         _logger = logger;
         _debugMode = _logger.IsEnabled(LogLevel.Debug);
     }
-
-    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         if (_debugMode)
             LogRequest(request);

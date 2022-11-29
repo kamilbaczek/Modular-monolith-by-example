@@ -1,17 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Inquiries.Domain.Tests.Inquiries;
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Common;
 using Common.Fakes;
 using Domain.Inquiries;
 using Domain.Inquiries.Events;
 using Domain.Inquiries.Exceptions;
 using Domain.Inquiries.Items.Services;
-using FluentAssertions;
-using NSubstitute;
-using NUnit.Framework;
 using Services.Core.Services.Contracts;
 
 public class InquiryMadeTests : BaseInquiryTest
