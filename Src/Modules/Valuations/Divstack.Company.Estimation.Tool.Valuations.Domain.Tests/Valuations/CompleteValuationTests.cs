@@ -5,7 +5,6 @@ using Common;
 using Common.Builders;
 using Domain.Valuations;
 using Domain.Valuations.Events;
-using NUnit.Framework;
 
 public class CompleteValuationTests : BaseValuationTest
 {

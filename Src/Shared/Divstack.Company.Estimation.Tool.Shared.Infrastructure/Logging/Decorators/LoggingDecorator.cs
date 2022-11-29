@@ -39,6 +39,4 @@ internal sealed class LoggingDecorator<TRequest, TResponse> : IPipelineBehavior<
         var requestAsString = JsonSerializer.Serialize(request);
         _logger.LogInformation("[UseCaseExecution][{Command}] Handling started request: {Request}", typeof(TRequest).Name, requestAsString);
     }
-    
-
 }
