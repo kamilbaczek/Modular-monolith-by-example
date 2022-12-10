@@ -6,7 +6,6 @@ using Common.Engine;
 using Common.Engine.Mocks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 
 [SetUpFixture]
 public class TestEngine

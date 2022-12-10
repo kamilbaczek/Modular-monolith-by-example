@@ -3,7 +3,6 @@
 using Assertions;
 using Extensions;
 using Fakers;
-using NUnit.Framework;
 
 public class ServicesTests : ServicesTestsBase
 {
@@ -19,5 +18,16 @@ public class ServicesTests : ServicesTestsBase
         var services = await ServicesService.GetAllAsync();
         var createdService = services.GetService(serviceId);
         createdService.Should().BeService(serviceId, serviceRequest);
+    }
+    
+    [Test]
+    public async Task Given_Delete_When_ServiceExists_Then_ServiceIsDeleted()
+    {
+        var serviceId = await CreateFullService();
+        await EnsureServiceExists(serviceId);
+
+        await ServicesService.DeleteAsync(serviceId);
+        
+        await EnsureServiceDeleted(serviceId);
     }
 }
