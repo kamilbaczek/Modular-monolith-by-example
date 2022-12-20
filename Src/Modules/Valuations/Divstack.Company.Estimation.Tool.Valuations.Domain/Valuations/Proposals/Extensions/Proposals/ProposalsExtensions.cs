@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Extensions.Proposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Extensions.Proposals;
 
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 

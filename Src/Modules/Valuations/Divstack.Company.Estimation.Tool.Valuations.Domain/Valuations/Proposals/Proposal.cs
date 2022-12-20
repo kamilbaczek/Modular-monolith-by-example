@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS8618
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
 using Exceptions;
 using Valuations.Exceptions;
@@ -17,9 +16,9 @@ public sealed class Proposal : Entity
         EmployeeId suggestedBy)
     {
         Id = proposalId;
-        Price = Guard.Against.Null(value, nameof(value));
-        Description = Guard.Against.Null(description, nameof(description));
-        SuggestedBy = Guard.Against.Null(suggestedBy, nameof(suggestedBy));
+        Price = Guard.Against.Null(value);
+        Description = Guard.Against.Null(description);
+        SuggestedBy = Guard.Against.Null(suggestedBy);
         Suggested = SystemTime.Now();
         Decision = ProposalDecision.NoDecision();
     }
@@ -51,12 +50,6 @@ public sealed class Proposal : Entity
 
     internal void Approve()
     {
-        if (IsCancelled)
-            throw new ProposalIsCancelledException(Id);
-
-        if (HasDecision)
-            throw new ProposalAlreadyHasDecisionException(Id);
-
         var now = SystemTime.Now();
         Decision = ProposalDecision.AcceptDecision(now);
     }

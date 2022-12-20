@@ -1,6 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 
 using Domain.Valuations.Proposals;
+using Domain.Valuations.States;
 using MediatR;
 
 internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApproveProposalCommand>
@@ -18,15 +19,15 @@ internal sealed class ApproveProposalCommandHandler : IRequestHandler<ApprovePro
     public async Task<Unit> Handle(ApproveProposalCommand command, CancellationToken cancellationToken)
     {
         var valuationId = new ValuationId(command.ValuationId);
-        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-        if (valuation is null)
-            throw new NotFoundException(command.ValuationId, nameof(Valuation));
+        var valuationNegotiating = await _valuationsRepository.GetAsync<ValuationNegotiation>(valuationId, cancellationToken);
+        if (valuationNegotiating is null)
+            throw new NotFoundException(command.ValuationId, nameof(ValuationNegotiation));
 
         var proposalId = new ProposalId(command.ProposalId);
-        valuation.ApproveProposal(proposalId);
+        var valuationApproved = valuationNegotiating.ApproveProposal(proposalId);
 
-        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+        await _valuationsRepository.CommitAsync(valuationApproved, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(valuationApproved.DomainEvents, cancellationToken);
 
         return Unit.Value;
     }

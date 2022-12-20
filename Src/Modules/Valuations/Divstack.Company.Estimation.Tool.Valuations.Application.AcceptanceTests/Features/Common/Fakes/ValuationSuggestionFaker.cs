@@ -1,7 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Proposals.Suggest.Fakes;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Common.Fakes;
 
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 using Faker;
-using Valuations.Commands.SuggestProposal;
 
 internal static class ValuationSuggestionFaker
 {

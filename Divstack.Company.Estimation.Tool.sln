@@ -208,7 +208,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Estimation.Tool.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{EA43C91B-FCEE-46D9-8B3B-3C55F134105D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests", "Src\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests\Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.csproj", "{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests", "Src\Modules\Valuations\Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests\Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.csproj", "{52A0F127-AEBD-40F1-93E0-3E8D8E5D5C87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C17B6E61-44F9-490D-88BC-672F92A2D920}"
 EndProject

@@ -1,5 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Events;
 
+using States;
+
 public sealed class ProposalCancelledDomainEvent : DomainEventBase
 {
     public ProposalCancelledDomainEvent(

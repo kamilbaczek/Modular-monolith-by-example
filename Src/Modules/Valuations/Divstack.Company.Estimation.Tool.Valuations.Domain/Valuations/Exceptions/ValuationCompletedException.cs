@@ -1,5 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Exceptions;
 
+using States;
+
 public sealed class ValuationCompletedException : InvalidOperationException
 {
     public ValuationCompletedException(ValuationId valuationId) :

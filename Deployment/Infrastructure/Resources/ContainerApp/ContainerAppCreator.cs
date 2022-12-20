@@ -77,14 +77,14 @@ internal static class ContainerAppCreator
         var customImage = "estimationtool";
         var image = new Image(customImage, new ImageArgs
         {
-            ImageName = Output.Format($"{registry.LoginServer}/{customImage}:v1.0.0"),
-            Build = new DockerBuild { Context = "../.." },
-            Registry = new ImageRegistry
-            {
-                Server = registry.LoginServer,
-                Username = adminUsername,
-                Password = adminPassword
-            }
+            // ImageName = Output.Format($"{registry.LoginServer}/{customImage}:v1.0.0"),
+            // Build = new DockerBuild { Context = "../.." },
+            // Registry = new RegistryImage
+            // {
+            //     Server = registry.LoginServer,
+            //     Username = adminUsername,
+            //     Password = adminPassword
+            // }
         });
 
         var containerApp = new ContainerApp("estimationtool", new ContainerAppArgs

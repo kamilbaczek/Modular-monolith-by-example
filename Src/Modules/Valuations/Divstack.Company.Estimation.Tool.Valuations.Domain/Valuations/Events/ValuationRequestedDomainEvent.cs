@@ -1,5 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Events;
 
+using States;
+
 public sealed class ValuationRequestedDomainEvent : DomainEventBase
 {
     public ValuationRequestedDomainEvent(

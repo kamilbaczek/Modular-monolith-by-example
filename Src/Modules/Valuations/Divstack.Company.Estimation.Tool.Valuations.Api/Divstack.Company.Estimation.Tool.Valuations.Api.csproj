@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Ardalis.ApiEndpoints" Version="4.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
@@ -21,6 +21,15 @@
 
   <ItemGroup>
     <None Update="valuations-appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Remove="Endpoints\Commands\Cancel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Endpoints\Commands\Cancel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Endpoints\Commands\Cancel\**" />
   </ItemGroup>
 
 </Project>
