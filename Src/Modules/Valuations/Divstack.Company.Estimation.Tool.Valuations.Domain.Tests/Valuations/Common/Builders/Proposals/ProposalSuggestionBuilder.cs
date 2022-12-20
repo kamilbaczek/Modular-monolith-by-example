@@ -2,18 +2,19 @@
 
 using Decisions;
 using Domain.Valuations;
+using Domain.Valuations.States;
 using Shared.DDD.ValueObjects;
 
 internal sealed class ProposalSuggestionBuilder
 {
-    public ProposalSuggestionBuilder(Valuation valuation)
+    public ProposalSuggestionBuilder(ValuationRequested valuation)
     {
         Value = Money.Of(3123, "USD");
         Description = "test";
         ProposedBy = EmployeeId.Of(Guid.NewGuid());
         Valuation = valuation;
     }
-    private static Valuation Valuation { get; set; }
+    private static ValuationRequested Valuation { get; set; }
     private static Money Value { get; set; }
     private static string Description { get; set; }
     private static EmployeeId ProposedBy { get; set; }
@@ -38,30 +39,30 @@ internal sealed class ProposalSuggestionBuilder
 
     internal ApprovedProposalBuilder WithApprovedProposalDecision()
     {
-        Suggest();
-        return new ApprovedProposalBuilder(Valuation);
+        var valuationNegotiation = Suggest();
+        return new ApprovedProposalBuilder(valuationNegotiation);
     }
 
-    internal RejectedProposalBuilder WithRejectedProposalDecision()
+    // internal RejectedProposalBuilder WithRejectedProposalDecision()
+    // {
+    //     Suggest();
+    //     return new RejectedProposalBuilder(Valuation);
+    // }
+    //
+    // internal ProposalCancelledBuilder WithCancelledProposal()
+    // {
+    //     Suggest();
+    //     return new ProposalCancelledBuilder(Valuation);
+    // }
+
+    private static ValuationNegotiation Suggest()
     {
-        Suggest();
-        return new RejectedProposalBuilder(Valuation);
+        var valuationNegotiation = Valuation.SuggestProposal(Value, Description, ProposedBy);
+
+        return valuationNegotiation;
     }
 
-    internal ProposalCancelledBuilder WithCancelledProposal()
-    {
-        Suggest();
-        return new ProposalCancelledBuilder(Valuation);
-    }
-
-    private static Valuation Suggest()
-    {
-        Valuation.SuggestProposal(Value, Description, ProposedBy);
-
-        return Valuation;
-    }
-
-    public static implicit operator Valuation(ProposalSuggestionBuilder builder)
+    public static implicit operator ValuationNegotiation(ProposalSuggestionBuilder builder)
     {
         return Suggest();
     }

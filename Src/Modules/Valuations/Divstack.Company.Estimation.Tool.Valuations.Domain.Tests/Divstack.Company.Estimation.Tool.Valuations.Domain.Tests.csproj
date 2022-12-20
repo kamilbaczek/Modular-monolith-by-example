@@ -25,21 +25,4 @@
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Valuations\Proposals\**" />
-    <Compile Remove="Valuations\CompleteValuationTests.cs" />
-    <Compile Remove="Valuations\RequestValuationTests.cs" />
-    <Compile Remove="Valuations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="Valuations\Proposals\**" />
-    <EmbeddedResource Remove="Valuations\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Valuations\Proposals\**" />
-    <None Remove="Valuations\**" />
-  </ItemGroup>
-
 </Project>

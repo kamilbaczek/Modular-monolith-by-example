@@ -45,6 +45,7 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
     
     internal static ValuationNegotiation Start(ValuationId valuationId, InquiryId inquiryId, ProposalDescription proposalDescription, Money price, EmployeeId employeeId) => 
         new(valuationId, inquiryId, proposalDescription, price, employeeId);
+    
     public void ReSuggestProposal(
         Money price,
         string description,
@@ -92,8 +93,7 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
         Apply(@event);
         AddDomainEvent(@event);
     }
-
-
+    
     private void Apply(ProposalSuggestedDomainEvent @event)
     {
         var proposal = Proposal.Suggest(

@@ -3,34 +3,35 @@
 using Domain.Valuations;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
+using Domain.Valuations.States;
 using Shared.DDD.BuildingBlocks.Tests;
 
 internal sealed class ApprovedProposalBuilder
 {
-    public ApprovedProposalBuilder(Valuation valuation)
+    public ApprovedProposalBuilder(ValuationNegotiation valuationNegotiation)
     {
-        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
+        var proposalSuggestedDomainEvent = valuationNegotiation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
         ProposalId = proposalSuggestedDomainEvent.ProposalId;
-        Valuation = valuation;
+        ValuationNegotiation = valuationNegotiation;
     }
-    private static Valuation Valuation { get; set; }
+    private static ValuationNegotiation ValuationNegotiation { get; set; }
     private static ProposalId ProposalId { get; set; }
 
     public CompletedValuationBuilder MarkedAsComplete()
     {
-        Approve();
+       var approved =  Approve();
 
-        return new CompletedValuationBuilder(Valuation);
+        return new CompletedValuationBuilder(approved);
     }
 
-    private static Valuation Approve()
+    private static ValuationApproved Approve()
     {
-        Valuation.ApproveProposal(ProposalId);
+        var approved = ValuationNegotiation.ApproveProposal(ProposalId);
 
-        return Valuation;
+        return approved;
     }
 
-    public static implicit operator Valuation(ApprovedProposalBuilder builder)
+    public static implicit operator ValuationApproved(ApprovedProposalBuilder builder)
     {
         return Approve();
     }
