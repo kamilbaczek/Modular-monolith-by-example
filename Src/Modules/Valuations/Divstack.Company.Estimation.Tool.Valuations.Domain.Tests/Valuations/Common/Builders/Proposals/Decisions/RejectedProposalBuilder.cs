@@ -1,10 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common.Builders.Proposals.Decisions;
 
-using Domain.Valuations;
-using Domain.Valuations.Proposals;
-using Domain.Valuations.Proposals.Events;
-using Shared.DDD.BuildingBlocks.Tests;
-
 internal sealed class RejectedProposalBuilder
 {
     // public RejectedProposalBuilder(Valuation valuation)
@@ -28,3 +23,4 @@ internal sealed class RejectedProposalBuilder
     //     return Rejected();
     // }
 }
+

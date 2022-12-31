@@ -4,8 +4,13 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="Divstack.Company.Estimation.Tool.Valuations.ArchTests" />
+  </ItemGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Domain\Divstack.Company.Estimation.Tool.Valuations.Domain.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Valuations.Infrastructure\Divstack.Company.Estimation.Tool.Valuations.Infrastructure.csproj" />

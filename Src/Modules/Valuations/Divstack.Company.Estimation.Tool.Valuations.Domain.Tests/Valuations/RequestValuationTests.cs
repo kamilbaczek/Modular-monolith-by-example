@@ -5,7 +5,6 @@ using Common;
 using Domain.Valuations;
 using Domain.Valuations.Events;
 using Domain.Valuations.States;
-using NUnit.Framework;
 
 public class RequestValuationTests : BaseValuationTest
 {
@@ -20,3 +19,4 @@ public class RequestValuationTests : BaseValuationTest
         @event.AssertIsCorrect();
     }
 }
+

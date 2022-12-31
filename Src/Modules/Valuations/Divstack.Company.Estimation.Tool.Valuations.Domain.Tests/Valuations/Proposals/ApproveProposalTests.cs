@@ -26,7 +26,7 @@ public class ApproveProposalTests : BaseValuationTest
         var @event = GetPublishedEvent<ProposalApprovedDomainEvent>(valuationApproved);
         @event.AssertIsCorrect(proposalSuggestedDomainEvent.ProposalId);
     }
-    
+
     [Test]
     public void Given_ApproveProposal_When_ProposalNotExist_Then_ProposalIsNotFound()
     {

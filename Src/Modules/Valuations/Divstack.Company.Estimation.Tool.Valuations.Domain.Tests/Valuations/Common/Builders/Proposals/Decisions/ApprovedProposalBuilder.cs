@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common.Builders.Proposals.Decisions;
 
-using Domain.Valuations;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
 using Domain.Valuations.States;
@@ -19,7 +18,7 @@ internal sealed class ApprovedProposalBuilder
 
     public CompletedValuationBuilder MarkedAsComplete()
     {
-       var approved =  Approve();
+        var approved = Approve();
 
         return new CompletedValuationBuilder(approved);
     }
@@ -36,3 +35,4 @@ internal sealed class ApprovedProposalBuilder
         return Approve();
     }
 }
+

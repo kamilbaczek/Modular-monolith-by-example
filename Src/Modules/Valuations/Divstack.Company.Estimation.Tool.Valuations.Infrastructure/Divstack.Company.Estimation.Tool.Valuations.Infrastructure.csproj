@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="Divstack.Company.Estimation.Tool.Valuations.ArchTests" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="DotNetCore.CAP" Version="7.0.1" />
     <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.4.0" />

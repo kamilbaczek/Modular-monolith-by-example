@@ -1,7 +1,7 @@
 ﻿#pragma warning disable CS8618
 namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.Get.Dtos;
 
-public class ValuationInformationDto
+public sealed class ValuationInformationDto
 {
     public ValuationInformationDto()
     {

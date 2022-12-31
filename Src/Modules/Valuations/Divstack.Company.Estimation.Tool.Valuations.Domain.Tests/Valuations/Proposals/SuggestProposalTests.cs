@@ -22,7 +22,7 @@ public class SuggestProposalTests : BaseValuationTest
         var employee = EmployeeId.Of(Id);
         ValuationRequested valuationRequested = A.Valuation();
 
-       var valuationNegotiation = valuationRequested.SuggestProposal(money, Description, employee);
+        var valuationNegotiation = valuationRequested.SuggestProposal(money, Description, employee);
 
         var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuationNegotiation);
         @event.AssertIsCorrect(money, employee);
@@ -33,7 +33,7 @@ public class SuggestProposalTests : BaseValuationTest
     // {
     //     var money = Money.Of(MinimumSuggestionValue, Currency);
     //     var employee = EmployeeId.Of(Id);
-    //     Valuation valuation = A.Valuation()
+    //     ValuationRequested valuation = A.Valuation()
     //         .WithProposal();
     //
     //     var suggestProposal = () => valuation.SuggestProposal(money, Description, employee);
@@ -54,5 +54,19 @@ public class SuggestProposalTests : BaseValuationTest
         var suggestProposal = () => valuationRequested.SuggestProposal(money, Description, employee);
 
         suggestProposal.Should().Throw<ProposalValueLessenThanMinimalException>();
+    }
+
+    [TestCase(99999999999999.9999,2)]
+    public void Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected(decimal value, int reproposalCount)
+    {
+        var money = Money.Of(value, Currency);
+        var employee = EmployeeId.Of(Id);
+        ValuationNegotiation valuationNegotiation = A.Valuation()
+            .WithProposal()
+            .WithReSuggestProposals(reproposalCount);
+
+        var reSuggested = () => valuationNegotiation.ReSuggestProposal(money, Description, employee);
+         
+        reSuggested.Should().Throw<InvalidOperationException>();
     }
 }

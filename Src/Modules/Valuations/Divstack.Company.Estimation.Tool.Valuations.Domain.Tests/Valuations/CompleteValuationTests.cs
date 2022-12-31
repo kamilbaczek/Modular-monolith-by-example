@@ -10,7 +10,7 @@ using Domain.Valuations.States;
 public class CompleteValuationTests : BaseValuationTest
 {
     [Test]
-    public void Given_Complete_When_ValuationHasAtLastOnceProposalWithDecision_Then_ValuationIsCompleted()
+    public void Given_Complete_Then_ValuationIsCompleted()
     {
         var employee = new EmployeeId(Guid.NewGuid());
         ValuationApproved valuationApproved = A.Valuation()

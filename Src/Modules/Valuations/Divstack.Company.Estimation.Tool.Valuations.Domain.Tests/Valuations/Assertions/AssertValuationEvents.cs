@@ -4,7 +4,6 @@ using Domain.Valuations;
 using Domain.Valuations.Events;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
-using FluentAssertions;
 using Shared.DDD.ValueObjects;
 
 internal static class AssertValuationEvents
@@ -47,3 +46,4 @@ internal static class AssertValuationEvents
         domainEvent.ValuationId.Should().Be(valuationId);
     }
 }
+

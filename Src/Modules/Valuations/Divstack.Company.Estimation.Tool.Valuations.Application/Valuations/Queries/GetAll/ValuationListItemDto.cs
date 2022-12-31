@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
 
-public class ValuationListItemDto
+public sealed class ValuationListItemDto
 {
     public ValuationListItemDto(Guid id, Guid inquiryId, string status, DateTime requestedDate, Guid? completedBy)
     {

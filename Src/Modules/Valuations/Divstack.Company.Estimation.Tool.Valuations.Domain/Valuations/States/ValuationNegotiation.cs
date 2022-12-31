@@ -36,8 +36,6 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
     public ValuationId ValuationId => ValuationId.Of(Id);
     private InquiryId InquiryId { get; set; }
     private IList<Proposal> Proposals { get; } = new List<Proposal>();
-
-
     private IReadOnlyCollection<Proposal> NotCancelledProposals => Proposals.GetNotCancelled();
 
     private Proposal? ProposalWaitForDecision => NotCancelledProposals
@@ -116,7 +114,6 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
         proposal.Reject();
     }
 
-
     private Proposal GetProposal(ProposalId proposalId)
     {
         var proposal = NotCancelledProposals.Get(proposalId);
@@ -147,6 +144,6 @@ public class ValuationInNegotationException : Exception
 {
     public ValuationInNegotationException(string s)
     {
-        throw new NotImplementedException();
+         throw new NotImplementedException();
     }
 }

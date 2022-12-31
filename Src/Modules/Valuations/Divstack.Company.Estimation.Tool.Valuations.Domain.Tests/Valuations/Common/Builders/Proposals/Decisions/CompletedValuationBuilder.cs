@@ -9,7 +9,7 @@ internal sealed class CompletedValuationBuilder
     {
         ValuationApproved = valuationApproved;
     }
-    
+
     private static ValuationApproved ValuationApproved { get; set; }
 
     private static ValuationCompleted WithCompleted()
@@ -26,3 +26,4 @@ internal sealed class CompletedValuationBuilder
         return completed;
     }
 }
+

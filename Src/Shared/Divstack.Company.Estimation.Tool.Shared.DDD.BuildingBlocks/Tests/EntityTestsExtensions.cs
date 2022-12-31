@@ -5,10 +5,6 @@ using System.Linq;
 public static class EntityTestsExtensions
 {
     public static TEvent GetPublishedEvent<TEvent>(this Entity entity) where TEvent : class,
-        IDomainEvent
-    {
-        return entity.DomainEvents.OfType<TEvent>()
-            .OrderBy(domainEvent => domainEvent.OccurredOn)
-            .FirstOrDefault();
-    }
+        IDomainEvent =>
+        entity.DomainEvents.OfType<TEvent>().MaxBy(domainEvent => domainEvent.OccurredOn);
 }
