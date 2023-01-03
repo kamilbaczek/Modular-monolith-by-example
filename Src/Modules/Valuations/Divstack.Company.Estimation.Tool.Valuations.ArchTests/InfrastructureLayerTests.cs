@@ -8,7 +8,7 @@ public class InfrastructureLayerTests
     private const string I = "I";
     
     [Test]
-    public void GIVEN_architecture_WHEN_the_infrastructure_layer_is_validated_THEN_it_should_not_depend_on_API()
+    public void GIVEN_infrastructure_THEN_it_should_not_depend_on_API()
     {
         var api = Project.Api.GetName().Name;
         var policy = Types.InAssembly(Project.Infrastructure!)!
@@ -22,7 +22,7 @@ public class InfrastructureLayerTests
     }
     
     [Test]
-    public void GIVEN_architecture_WHEN_type_is_interface_THEN_should_have_name_started_with_I()
+    public void GIVEN_infrastructure_WHEN_type_is_interface_THEN_should_have_name_started_with_I()
     {
         var policy = Types.InAssembly(Project.Infrastructure!)
             .That()
@@ -37,7 +37,7 @@ public class InfrastructureLayerTests
     }
     
     [Test]
-    public void GIVEN_architecture_WHEN_type_is_internal_and_is_class_THEN_should_be_sealed()
+    public void GIVEN_infrastructure_WHEN_type_is_internal_and_is_class_THEN_should_be_sealed()
     {
         var policy = Types.InAssembly(Project.Infrastructure!)
             .That()
@@ -52,7 +52,7 @@ public class InfrastructureLayerTests
     }
     
     [Test]
-    public void GIVEN_architecture_WHEN_type_is_configuration_THEN_should_not_be_public()
+    public void GIVEN_infrastructure_WHEN_type_is_configuration_THEN_should_not_be_public()
     {
         var pattern = SearchPatterns.ContainsNamePattern("Configuration");
         var policy = Types.InAssembly(Project.Infrastructure!)
@@ -72,7 +72,7 @@ public class InfrastructureLayerTests
     [Theory]
     [TestCase("Command")]
     [TestCase("Endpoint")]
-    public void GIVEN_architecture_WHEN_the_application_layer_is_validated_THEN_it_should_not_have_particular_types_of_classes(string name)
+    public void GIVEN_infrastructure_THEN_it_should_not_have_particular_types_of_classes(string name)
     {
         var pattern = SearchPatterns.ContainsNamePattern(name);
         var policy = Types.InAssembly(Project.Infrastructure!)!

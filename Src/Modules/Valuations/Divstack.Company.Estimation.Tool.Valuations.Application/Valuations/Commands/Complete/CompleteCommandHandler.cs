@@ -3,7 +3,7 @@
 using Domain.Valuations.States;
 using MediatR;
 
-internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
+internal class CompleteCommandHandler : IRequestHandler<CompleteCommand>
 {
     private readonly ICurrentUserService _currentUserService;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
