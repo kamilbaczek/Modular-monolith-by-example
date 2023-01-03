@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
 using Exceptions;
-using Valuations.Exceptions;
 
 public sealed class Proposal : Entity
 {
@@ -58,9 +57,6 @@ public sealed class Proposal : Entity
     {
         if (IsCancelled)
             throw new ProposalIsCancelledException(Id);
-
-        if (HasDecision)
-            throw new ProposalAlreadyHasDecisionException(Id);
 
         Decision = ProposalDecision.RejectDecision(DateTime.Now);
     }

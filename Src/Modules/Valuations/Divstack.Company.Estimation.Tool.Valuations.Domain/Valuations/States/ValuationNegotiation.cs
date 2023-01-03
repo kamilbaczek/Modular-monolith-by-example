@@ -8,6 +8,7 @@ using Proposals.Extensions.Proposals;
 
 public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationState
 {
+    private const int Limit = 3;
     private ValuationNegotiation() { }
 
     private ValuationNegotiation(
@@ -50,12 +51,9 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
         EmployeeId proposedBy)
     {
         if (ProposalWaitForDecision is not null)
-        {
-            throw new ValuationInNegotationException(
-                $"Cannot suggest proposal for valuation {ValuationId} because there is already a proposal waiting for decision");
-        }
+            throw new ValuationInNegotiationException(ValuationId);
 
-        if (Proposals.Count > 3)
+        if (Proposals.Count > Limit)
             throw new InvalidOperationException("Cannot suggest more than 3 proposals");
 
         var proposalId = ProposalId.Create();
@@ -137,13 +135,5 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
                 Apply(valuationRequestedDomainEvent);
                 break;
         }
-    }
-}
-
-public class ValuationInNegotationException : Exception
-{
-    public ValuationInNegotationException(string s)
-    {
-         throw new NotImplementedException();
     }
 }
