@@ -1,10 +1,9 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Core.Sender;
 
 using Configuration;
-using Contracts;
+using Shared.Abstractions.BackgroundProcessing;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using Shared.Abstractions.BackgroundProcessing;
 using static String;
 
 internal sealed class EmailSender : IEmailSender

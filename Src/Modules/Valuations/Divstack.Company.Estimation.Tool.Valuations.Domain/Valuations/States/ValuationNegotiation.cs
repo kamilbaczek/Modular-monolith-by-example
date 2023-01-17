@@ -9,6 +9,7 @@ using Proposals.Extensions.Proposals;
 public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationState
 {
     private const int Limit = 3;
+    
     private ValuationNegotiation() { }
 
     private ValuationNegotiation(
@@ -54,7 +55,7 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
             throw new ValuationInNegotiationException(ValuationId);
 
         if (Proposals.Count > Limit)
-            throw new InvalidOperationException("Cannot suggest more than 3 proposals");
+            throw new ValuationExceedLimitOfProposalsException(ValuationId, Limit);
 
         var proposalId = ProposalId.Create();
         var proposalDescription = ProposalDescription.From(description);
@@ -81,6 +82,9 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
 
     public void RejectProposal(ProposalId proposalId)
     {
+        if (ProposalWaitForDecision is null)
+            throw new ProposalHasAlreadyDecisionException(proposalId);
+        
         var proposal = GetProposal(proposalId);
         var @event = new ProposalRejectedDomainEvent(
             ValuationId,

@@ -2,7 +2,7 @@
 
 using System.Web;
 using Configuration;
-using Core.Sender.Contracts;
+using Core;
 using Core.Sender.TemplateReader;
 
 internal sealed class ValuationProposalSuggestedMailSender : IValuationProposalSuggestedMailSender

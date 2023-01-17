@@ -58,7 +58,7 @@ public sealed class Proposal : Entity
         if (IsCancelled)
             throw new ProposalIsCancelledException(Id);
 
-        Decision = ProposalDecision.RejectDecision(DateTime.Now);
+        Decision = ProposalDecision.RejectDecision(SystemTime.Now());
     }
 
     internal void Cancel(EmployeeId employeeId)

@@ -5,12 +5,10 @@ using Domain.Valuations.States;
 
 internal sealed class CompletedValuationBuilder
 {
-    public CompletedValuationBuilder(ValuationApproved valuationApproved)
-    {
-        ValuationApproved = valuationApproved;
-    }
-
     private static ValuationApproved ValuationApproved { get; set; }
+    
+    public CompletedValuationBuilder(ValuationApproved valuationApproved) => 
+        ValuationApproved = valuationApproved;
 
     private static ValuationCompleted WithCompleted()
     {
@@ -26,4 +24,3 @@ internal sealed class CompletedValuationBuilder
         return completed;
     }
 }
-

@@ -7,14 +7,15 @@ using Shared.DDD.BuildingBlocks.Tests;
 
 internal sealed class ApprovedProposalBuilder
 {
+    private static ValuationNegotiation ValuationNegotiation { get; set; }
+    private static ProposalId ProposalId { get; set; }
+    
     public ApprovedProposalBuilder(ValuationNegotiation valuationNegotiation)
     {
         var proposalSuggestedDomainEvent = valuationNegotiation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
         ProposalId = proposalSuggestedDomainEvent.ProposalId;
         ValuationNegotiation = valuationNegotiation;
     }
-    private static ValuationNegotiation ValuationNegotiation { get; set; }
-    private static ProposalId ProposalId { get; set; }
 
     public CompletedValuationBuilder MarkedAsComplete()
     {
@@ -30,9 +31,6 @@ internal sealed class ApprovedProposalBuilder
         return approved;
     }
 
-    public static implicit operator ValuationApproved(ApprovedProposalBuilder builder)
-    {
-        return Approve();
-    }
+    public static implicit operator ValuationApproved(ApprovedProposalBuilder builder) => 
+        Approve();
 }
-

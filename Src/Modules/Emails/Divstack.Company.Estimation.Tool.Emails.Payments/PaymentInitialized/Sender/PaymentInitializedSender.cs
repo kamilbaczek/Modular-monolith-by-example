@@ -2,7 +2,7 @@
 
 using Common.Extensions;
 using Configuration;
-using Core.Sender.Contracts;
+using Core;
 using Core.Sender.TemplateReader;
 using Microsoft.Extensions.Configuration;
 

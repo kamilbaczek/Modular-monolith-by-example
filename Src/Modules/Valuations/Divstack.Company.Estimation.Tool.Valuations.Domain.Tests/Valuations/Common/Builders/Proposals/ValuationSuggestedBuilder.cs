@@ -3,51 +3,52 @@
 using Bogus;
 using Decisions;
 using Domain.Valuations;
-using Domain.Valuations.Events;
 using Domain.Valuations.Proposals.Events;
 using Domain.Valuations.States;
 using Shared.DDD.BuildingBlocks.Tests;
 using Shared.DDD.ValueObjects;
 
-internal sealed class ValuationNegotiationBuilder
+internal sealed class ValuationSuggestedBuilder
 {
     private readonly Faker _faker = new();
 
-    public ValuationNegotiationBuilder(ValuationRequested valuation)
+    public ValuationSuggestedBuilder(ValuationRequested valuation)
     {
         Value = CreateFakeValue();
         Description = _faker.Lorem.Sentence();
         ProposedBy = EmployeeId.Of(Guid.NewGuid());
         Valuation = valuation;
-    }
-    private Money CreateFakeValue()
-    {
-        return Money.Of(_faker.Finance.Amount(101), _faker.Finance.Currency().Code);
-    }
+    } 
+   
+    private Money CreateFakeValue() => 
+        Money.Of(_faker.Finance.Amount(101), _faker.Finance.Currency().Code);
+
     private static ValuationRequested Valuation { get; set; }
     private static Money Value { get; set; }
     private static string Description { get; set; }
     private static EmployeeId ProposedBy { get; set; }
 
-    internal ValuationNegotiationBuilder WithPrice(Money value)
+    internal ValuationSuggestedBuilder WithPrice(Money value)
     {
         Value = value;
+        
         return this;
     }
 
-    internal ValuationNegotiationBuilder WithEmployee(EmployeeId proposedBy)
+    internal ValuationSuggestedBuilder WithEmployee(EmployeeId proposedBy)
     {
         ProposedBy = proposedBy;
+        
         return this;
     }
 
-    internal ValuationNegotiationBuilder WithDescription(string description)
+    internal ValuationSuggestedBuilder WithDescription(string description)
     {
         Description = description;
         return this;
     }
     
-    internal ValuationNegotiationBuilder WithReSuggestProposals(int reSuggestedProposalCount)
+    internal ValuationSuggestedBuilder WithReSuggestProposals(int reSuggestedProposalCount)
     {
         var valuationNegotiation = Suggest();
         RejectRecentProposal(valuationNegotiation);
@@ -61,6 +62,14 @@ internal sealed class ValuationNegotiationBuilder
         
         return this;
     }
+    
+    internal ValuationRejectedBuilder WithRejected()
+    {
+        var valuationNegotiation = Suggest();
+
+        return new ValuationRejectedBuilder(valuationNegotiation);
+    }
+    
     private static void RejectRecentProposal(ValuationNegotiation valuationNegotiation)
     {
         var recentProposal = valuationNegotiation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
@@ -70,6 +79,7 @@ internal sealed class ValuationNegotiationBuilder
     internal ApprovedProposalBuilder WithApprovedProposalDecision()
     {
         var valuationNegotiation = Suggest();
+        
         return new ApprovedProposalBuilder(valuationNegotiation);
     }
     
@@ -80,8 +90,5 @@ internal sealed class ValuationNegotiationBuilder
         return valuationNegotiation;
     }
 
-    public static implicit operator ValuationNegotiation(ValuationNegotiationBuilder builder)
-    {
-        return Suggest();
-    }
+    public static implicit operator ValuationNegotiation(ValuationSuggestedBuilder builder) => Suggest();
 }

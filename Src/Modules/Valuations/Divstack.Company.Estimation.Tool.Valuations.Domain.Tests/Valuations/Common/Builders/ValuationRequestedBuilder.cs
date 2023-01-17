@@ -8,24 +8,18 @@ internal sealed class ValuationRequestedBuilder
 {
     private static InquiryId InquiryId { get; set; }
 
-    internal ValuationRequestedBuilder()
-    {
+    internal ValuationRequestedBuilder() => 
         InquiryId = InquiryId.Create();
-    }
 
-    private static ValuationRequested Build()
-    {
-        return ValuationRequested.Request(InquiryId);
-    }
+    private static ValuationRequested Build() => 
+        ValuationRequested.Request(InquiryId);
 
-    internal ValuationNegotiationBuilder WithProposal()
+    internal ValuationSuggestedBuilder WithProposal()
     {
         var valuationRequested = Build();
-        return new ValuationNegotiationBuilder(valuationRequested);
+        return new ValuationSuggestedBuilder(valuationRequested);
     }
 
-    public static implicit operator ValuationRequested(ValuationRequestedBuilder requestedBuilder)
-    {
-        return Build();
-    }
+    public static implicit operator ValuationRequested(ValuationRequestedBuilder requestedBuilder) => 
+        Build();
 }

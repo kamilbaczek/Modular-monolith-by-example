@@ -28,19 +28,6 @@ public class SuggestProposalTests : BaseValuationTest
         @event.AssertIsCorrect(money, employee);
     }
 
-    // [Test]
-    // public void Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
-    // {
-    //     var money = Money.Of(MinimumSuggestionValue, Currency);
-    //     var employee = EmployeeId.Of(Id);
-    //     ValuationRequested valuation = A.Valuation()
-    //         .WithProposal();
-    //
-    //     var suggestProposal = () => valuation.SuggestProposal(money, Description, employee);
-    //
-    //     suggestProposal.Should().Throw<ProposalWaitForDecisionException>();
-    // }
-
     [TestCase(99.9)]
     [TestCase(50.9)]
     [TestCase(20.99)]
@@ -67,6 +54,7 @@ public class SuggestProposalTests : BaseValuationTest
 
         var reSuggested = () => valuationNegotiation.ReSuggestProposal(money, Description, employee);
          
+        //TODO change exception 
         reSuggested.Should().Throw<InvalidOperationException>();
     }
 }

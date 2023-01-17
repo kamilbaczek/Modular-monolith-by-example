@@ -37,7 +37,7 @@ public class InfrastructureLayerTests
     }
     
     [Test]
-    public void GIVEN_infrastructure_WHEN_type_is_internal_and_is_class_THEN_should_be_sealed()
+    public void GIVEN_infrastructure_WHEN_type_is_internal_AND_is_class_THEN_should_be_sealed()
     {
         var policy = Types.InAssembly(Project.Infrastructure!)
             .That()
