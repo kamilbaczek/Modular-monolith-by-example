@@ -52,7 +52,7 @@ public sealed class ValuationNegotiation : Entity, IAggregateRoot, IValuationSta
         EmployeeId proposedBy)
     {
         if (ProposalWaitForDecision is not null)
-            throw new ValuationInNegotiationException(ValuationId);
+            throw new ProposalWaitForClientDecisionException(ValuationId);
 
         if (Proposals.Count > Limit)
             throw new ValuationExceedLimitOfProposalsException(ValuationId, Limit);

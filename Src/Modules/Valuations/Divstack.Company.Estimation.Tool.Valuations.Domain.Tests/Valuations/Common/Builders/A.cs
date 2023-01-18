@@ -2,9 +2,5 @@
 
 internal static class A
 {
-    internal static ValuationRequestedBuilder Valuation()
-    {
-        return new();
-    }
+    internal static ValuationRequestedBuilder Valuation() => new();
 }
-

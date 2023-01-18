@@ -4,6 +4,7 @@ using Assertions;
 using Common;
 using Common.Builders;
 using Domain.Valuations;
+using Domain.Valuations.Exceptions;
 using Domain.Valuations.Proposals.Events;
 using Domain.Valuations.Proposals.Exceptions;
 using Domain.Valuations.States;
@@ -44,17 +45,16 @@ public class SuggestProposalTests : BaseValuationTest
     }
 
     [TestCase(99999999999999.9999,2)]
-    public void Given_RejectProposal_When_ProposalIsNotCancelledAndHasNoDecision_Then_ProposalIsRejected(decimal value, int reproposalCount)
+    public void Given_ReSuggestProposal_When_ProposalWaitForClientDecision_Then_ThrowException(decimal value, int reProposalCount)
     {
         var money = Money.Of(value, Currency);
         var employee = EmployeeId.Of(Id);
         ValuationNegotiation valuationNegotiation = A.Valuation()
             .WithProposal()
-            .WithReSuggestProposals(reproposalCount);
+            .WithReSuggestProposals(reProposalCount);
 
         var reSuggested = () => valuationNegotiation.ReSuggestProposal(money, Description, employee);
          
-        //TODO change exception 
-        reSuggested.Should().Throw<InvalidOperationException>();
+        reSuggested.Should().Throw<ProposalWaitForClientDecisionException>();
     }
-}
+} 
