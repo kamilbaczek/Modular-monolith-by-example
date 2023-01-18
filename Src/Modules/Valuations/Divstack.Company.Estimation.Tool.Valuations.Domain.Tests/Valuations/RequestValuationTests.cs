@@ -4,7 +4,7 @@ using Assertions;
 using Common;
 using Domain.Valuations;
 using Domain.Valuations.Events;
-using NUnit.Framework;
+using Domain.Valuations.States;
 
 public class RequestValuationTests : BaseValuationTest
 {
@@ -13,9 +13,10 @@ public class RequestValuationTests : BaseValuationTest
     {
         var inquiry = InquiryId.Create();
 
-        var valuation = Valuation.Request(inquiry);
+        var valuationRequested = ValuationRequested.Request(inquiry);
 
-        var @event = GetPublishedEvent<ValuationRequestedDomainEvent>(valuation);
+        var @event = GetPublishedEvent<ValuationRequestedDomainEvent>(valuationRequested);
         @event.AssertIsCorrect();
     }
 }
+

@@ -1,6 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Extensions.Proposals;
-
-using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals.Extensions.Proposals;
 
 internal static class ProposalsExtensions
 {
@@ -14,5 +12,5 @@ internal static class ProposalsExtensions
             .FirstOrDefault(proposal => proposal.Id == proposalId);
 
     internal static Proposal? GetWithNoDecision(this IReadOnlyCollection<Proposal> proposals) => proposals
-        .SingleOrDefault(proposal => !proposal.HasDecision);
+        .SingleOrDefault(proposal => proposal.HasDecision == false);
 }

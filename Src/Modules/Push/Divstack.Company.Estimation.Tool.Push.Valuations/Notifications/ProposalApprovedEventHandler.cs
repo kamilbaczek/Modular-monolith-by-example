@@ -11,6 +11,7 @@ internal sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApp
 {
     private readonly INotificationsWriteRepository _notificationsWriteRepository;
     private readonly IHubContext<ValuationsHub> _valuationsHub;
+    
     public ProposalApprovedEventHandler(IHubContext<ValuationsHub> valuationsHub, INotificationsWriteRepository notificationsWriteRepository)
     {
         _valuationsHub = valuationsHub;
@@ -20,8 +21,8 @@ internal sealed class ProposalApprovedEventHandler : IHandleMessages<ProposalApp
     public async Task Handle(ProposalApproved proposalApprovedEvent, IMessageHandlerContext context)
     {
         var notification = Notification.Create(proposalApprovedEvent.ValuationId, nameof(ProposalApproved), proposalApprovedEvent.SuggestedBy);
-        await _notificationsWriteRepository.AddAsync(notification);
+        await _notificationsWriteRepository.AddAsync(notification, context.CancellationToken);
         var employeeId = proposalApprovedEvent.SuggestedBy.ToString();
-        await _valuationsHub.Clients.User(employeeId).SendAsync(nameof(ProposalApproved), proposalApprovedEvent);
+        await _valuationsHub.Clients.User(employeeId).SendAsync(nameof(ProposalApproved), proposalApprovedEvent, context.CancellationToken);
     }
 }

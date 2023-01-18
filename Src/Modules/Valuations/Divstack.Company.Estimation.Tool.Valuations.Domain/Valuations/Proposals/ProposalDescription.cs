@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS8618
-namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations.Proposals;
 
 using Exceptions;
 

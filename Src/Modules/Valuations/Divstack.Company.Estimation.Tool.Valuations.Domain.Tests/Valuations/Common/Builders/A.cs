@@ -2,5 +2,5 @@
 
 internal static class A
 {
-    internal static ValuationBuilder Valuation() => new();
+    internal static ValuationRequestedBuilder Valuation() => new();
 }

@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Complete;
 
+using Domain.Valuations.States;
 using MediatR;
 
 internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
@@ -7,7 +8,8 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
     private readonly ICurrentUserService _currentUserService;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IValuationsRepository _valuationsRepository;
-    public CompleteCommandHandler(IValuationsRepository valuationsRepository,
+    
+	public CompleteCommandHandler(IValuationsRepository valuationsRepository,
         ICurrentUserService currentUserService,
         IIntegrationEventPublisher integrationEventPublisher)
     {
@@ -19,17 +21,17 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
     public async Task<Unit> Handle(CompleteCommand command, CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(command.ValuationId);
-        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-        if (valuation is null)
+        var valuationApproved = await _valuationsRepository.GetAsync<ValuationApproved>(valuationId, cancellationToken);
+        if (valuationApproved is null)
         {
-            throw new NotFoundException(command.ValuationId, nameof(Valuation));
+            throw new NotFoundException(command.ValuationId, nameof(ValuationApproved));
         }
 
         var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
-        valuation.Complete(employeeId);
+         var completed = valuationApproved.Complete(employeeId);
 
-        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+        await _valuationsRepository.CommitAsync(completed, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(completed.DomainEvents, cancellationToken);
 
         return Unit.Value;
     }

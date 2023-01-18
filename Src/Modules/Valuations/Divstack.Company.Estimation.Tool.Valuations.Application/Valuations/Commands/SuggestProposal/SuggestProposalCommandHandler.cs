@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.SuggestProposal;
 
+using Domain.Valuations.States;
 using MediatR;
 using Shared.DDD.ValueObjects;
 
@@ -21,17 +22,17 @@ internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestPro
     public async Task<Unit> Handle(SuggestProposalCommand command, CancellationToken cancellationToken)
     {
         var valuationId = ValuationId.Of(command.ValuationId);
-        var valuation = await _valuationsRepository.GetAsync(valuationId, cancellationToken);
-        if (valuation is null)
-            throw new NotFoundException(command.ValuationId, nameof(Valuation));
+        var valuationRequested = await _valuationsRepository.GetAsync<ValuationRequested>(valuationId, cancellationToken);
+        if (valuationRequested is null)
+            throw new NotFoundException(command.ValuationId, nameof(ValuationRequested));
 
         var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
         var money = Money.Of(command.Value, command.Currency);
 
-        valuation.SuggestProposal(money, command.Description!, employeeId);
-
-        await _valuationsRepository.CommitAsync(valuation, cancellationToken);
-        await _integrationEventPublisher.PublishAsync(valuation.DomainEvents, cancellationToken);
+        var suggestProposal = valuationRequested.SuggestProposal(money, command.Description!, employeeId);
+        
+        await _valuationsRepository.CommitAsync(suggestProposal, cancellationToken);
+        await _integrationEventPublisher.PublishAsync(suggestProposal.DomainEvents, cancellationToken);
 
         return Unit.Value;
     }

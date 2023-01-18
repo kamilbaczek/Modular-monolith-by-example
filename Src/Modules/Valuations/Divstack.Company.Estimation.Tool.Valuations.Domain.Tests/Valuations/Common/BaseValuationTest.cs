@@ -10,3 +10,4 @@ public abstract class BaseValuationTest : BaseTest
 
     protected static Guid Id => Guid.NewGuid();
 }
+

@@ -6,14 +6,16 @@ using AzureNative.OperationalInsights.Inputs;
 using Pulumi.Azure.AppInsights;
 using Pulumi.Azure.Role;
 using Pulumi.Docker;
+using Pulumi.Docker.Inputs;
 using ContainerApp = AzureNative.App.ContainerApp;
 using ContainerArgs = ContainerArgs;
+using RegistryArgs = AzureNative.ContainerRegistry.RegistryArgs;
 using SecretArgs = SecretArgs;
+using DockerRegistryArgs = Pulumi.Docker.Inputs.RegistryArgs;
 using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
 {
-    [System.Obsolete]
     internal static ContainerApp Create(string environment,
         ResourceGroup resourceGroup,
         ConfigurationStore configurationStore,
@@ -78,8 +80,8 @@ internal static class ContainerAppCreator
         var image = new Image(customImage, new ImageArgs
         {
             ImageName = Output.Format($"{registry.LoginServer}/{customImage}:v1.0.0"),
-            Build = new DockerBuild { Context = "../.." },
-            Registry = new ImageRegistry
+            Build = new DockerBuildArgs { Context = "../.." },
+            Registry = new DockerRegistryArgs
             {
                 Server = registry.LoginServer,
                 Username = adminUsername,

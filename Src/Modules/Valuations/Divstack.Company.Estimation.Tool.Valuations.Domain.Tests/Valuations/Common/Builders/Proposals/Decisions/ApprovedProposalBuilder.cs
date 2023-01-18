@@ -1,37 +1,36 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Domain.Tests.Valuations.Common.Builders.Proposals.Decisions;
 
-using Domain.Valuations;
 using Domain.Valuations.Proposals;
 using Domain.Valuations.Proposals.Events;
+using Domain.Valuations.States;
 using Shared.DDD.BuildingBlocks.Tests;
 
 internal sealed class ApprovedProposalBuilder
 {
-    public ApprovedProposalBuilder(Valuation valuation)
-    {
-        var proposalSuggestedDomainEvent = valuation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
-        ProposalId = proposalSuggestedDomainEvent.ProposalId;
-        Valuation = valuation;
-    }
-    private static Valuation Valuation { get; set; }
+    private static ValuationNegotiation ValuationNegotiation { get; set; }
     private static ProposalId ProposalId { get; set; }
+    
+    public ApprovedProposalBuilder(ValuationNegotiation valuationNegotiation)
+    {
+        var proposalSuggestedDomainEvent = valuationNegotiation.GetPublishedEvent<ProposalSuggestedDomainEvent>();
+        ProposalId = proposalSuggestedDomainEvent.ProposalId;
+        ValuationNegotiation = valuationNegotiation;
+    }
 
     public CompletedValuationBuilder MarkedAsComplete()
     {
+        var approved = Approve();
+
+        return new CompletedValuationBuilder(approved);
+    }
+
+    private static ValuationApproved Approve()
+    {
+        var approved = ValuationNegotiation.ApproveProposal(ProposalId);
+
+        return approved;
+    }
+
+    public static implicit operator ValuationApproved(ApprovedProposalBuilder builder) => 
         Approve();
-
-        return new CompletedValuationBuilder(Valuation);
-    }
-
-    private static Valuation Approve()
-    {
-        Valuation.ApproveProposal(ProposalId);
-
-        return Valuation;
-    }
-
-    public static implicit operator Valuation(ApprovedProposalBuilder builder)
-    {
-        return Approve();
-    }
 }

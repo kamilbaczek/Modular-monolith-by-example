@@ -7,6 +7,7 @@ using Domain.Valuations;
 using Domain.Valuations.Exceptions;
 using Domain.Valuations.Proposals.Events;
 using Domain.Valuations.Proposals.Exceptions;
+using Domain.Valuations.States;
 using Shared.DDD.ValueObjects;
 
 public class SuggestProposalTests : BaseValuationTest
@@ -20,40 +21,12 @@ public class SuggestProposalTests : BaseValuationTest
     {
         var money = Money.Of(value, Currency);
         var employee = EmployeeId.Of(Id);
-        Valuation valuation = A.Valuation();
+        ValuationRequested valuationRequested = A.Valuation();
 
-        valuation.SuggestProposal(money, Description, employee);
+        var valuationNegotiation = valuationRequested.SuggestProposal(money, Description, employee);
 
-        var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuation);
+        var @event = GetPublishedEvent<ProposalSuggestedDomainEvent>(valuationNegotiation);
         @event.AssertIsCorrect(money, employee);
-    }
-
-    [Test]
-    public void Given_SuggestProposal_When_ValuationIsCompleted_Then_CannotSuggestProposal()
-    {
-        var money = Money.Of(MinimumSuggestionValue, Currency);
-        var employee = EmployeeId.Of(Id);
-        Valuation valuation = A.Valuation()
-            .WithProposal()
-            .WithApprovedProposalDecision()
-            .MarkedAsComplete();
-
-        var suggestProposal = () => valuation.SuggestProposal(money, Description, employee);
-
-        suggestProposal.Should().Throw<ValuationCompletedException>();
-    }
-
-    [Test]
-    public void Given_SuggestProposal_When_ProposalHasNoDecision_Then_ProposalIsNotCreated()
-    {
-        var money = Money.Of(MinimumSuggestionValue, Currency);
-        var employee = EmployeeId.Of(Id);
-        Valuation valuation = A.Valuation()
-            .WithProposal();
-
-        var suggestProposal = () => valuation.SuggestProposal(money, Description, employee);
-
-        suggestProposal.Should().Throw<ProposalWaitForDecisionException>();
     }
 
     [TestCase(99.9)]
@@ -64,10 +37,24 @@ public class SuggestProposalTests : BaseValuationTest
     {
         var money = Money.Of(value, Currency);
         var employee = EmployeeId.Of(Id);
-        Valuation valuation = A.Valuation();
+        ValuationRequested valuationRequested = A.Valuation();
 
-        var suggestProposal = () => valuation.SuggestProposal(money, Description, employee);
+        var suggestProposal = () => valuationRequested.SuggestProposal(money, Description, employee);
 
         suggestProposal.Should().Throw<ProposalValueLessenThanMinimalException>();
     }
-}
+
+    [TestCase(99999999999999.9999,2)]
+    public void Given_ReSuggestProposal_When_ProposalWaitForClientDecision_Then_ThrowException(decimal value, int reProposalCount)
+    {
+        var money = Money.Of(value, Currency);
+        var employee = EmployeeId.Of(Id);
+        ValuationNegotiation valuationNegotiation = A.Valuation()
+            .WithProposal()
+            .WithReSuggestProposals(reProposalCount);
+
+        var reSuggested = () => valuationNegotiation.ReSuggestProposal(money, Description, employee);
+         
+        reSuggested.Should().Throw<ProposalWaitForClientDecisionException>();
+    }
+} 

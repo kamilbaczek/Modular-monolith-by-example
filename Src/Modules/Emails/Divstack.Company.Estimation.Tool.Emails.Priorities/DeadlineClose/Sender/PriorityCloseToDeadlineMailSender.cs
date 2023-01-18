@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Emails.Priorities.DeadlineClose.Sender;
 
 using Configuration;
-using Core.Sender.Contracts;
+using Core;
 using Core.Sender.TemplateReader;
 
 internal sealed class PriorityCloseToDeadlineMailSender : IPriorityCloseToDeadlineMailSender
