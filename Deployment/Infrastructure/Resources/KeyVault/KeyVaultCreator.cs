@@ -41,7 +41,7 @@ internal static class KeyVaultCreator
                 new KeyVaultAccessPolicyArgs
                 {
                     TenantId = tenantId,
-                    ObjectId = configurationStore.Identity.Apply(response => response.PrincipalId),
+                    ObjectId = configurationStore.Identity.Apply(response => response!.PrincipalId),
                     SecretPermissions =
                     {
                         "Delete", "Get", "List", "Set"
@@ -50,7 +50,7 @@ internal static class KeyVaultCreator
                 new KeyVaultAccessPolicyArgs
                 {
                     TenantId = tenantId,
-                    ObjectId = containerApp.Identity.Apply(response => response.PrincipalId),
+                    ObjectId = containerApp.Identity.Apply(response => response!.PrincipalId),
                     SecretPermissions =
                     {
                         "Delete", "Get", "List", "Set"

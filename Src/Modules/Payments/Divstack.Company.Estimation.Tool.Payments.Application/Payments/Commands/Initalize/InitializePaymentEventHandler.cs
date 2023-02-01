@@ -27,7 +27,7 @@ internal sealed class InitializePaymentEventHandler : IHandleMessages<ValuationC
 
         var payment = await Payment.InitializeAsync(valuationId, inquiryId, amountToPay, _paymentProcessor);
 
-        await _paymentsRepository.PersistAsync(payment);
-        await _integrationEventPublisher.PublishAsync(payment.DomainEvents);
+        await _paymentsRepository.PersistAsync(payment, context.CancellationToken);
+        await _integrationEventPublisher.PublishAsync(payment.DomainEvents, context.CancellationToken);
     }
 }

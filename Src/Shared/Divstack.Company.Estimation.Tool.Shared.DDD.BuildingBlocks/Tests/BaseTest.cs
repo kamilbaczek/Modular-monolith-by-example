@@ -8,7 +8,7 @@ public abstract class BaseTest
     protected static TEvent GetPublishedEvent<TEvent>(Entity entity) where TEvent : class,
         IDomainEvent =>
         entity.DomainEvents.OfType<TEvent>()
-                           .MinBy(domainEvent => domainEvent.OccurredOn);
+                           .MinBy(domainEvent => domainEvent.OccurredOn)!;
 
     protected static void AssertEventNotPublished<TEvent>(Entity entity) where TEvent : class
     {

@@ -1,12 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
     <UserSecretsId>2bd98ace-6527-48f9-b414-c7400358db12</UserSecretsId>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
-    <RootNamespace>Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

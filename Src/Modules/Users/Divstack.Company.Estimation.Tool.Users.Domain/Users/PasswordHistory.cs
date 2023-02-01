@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Users.Domain.Users;
 
 using System;
 

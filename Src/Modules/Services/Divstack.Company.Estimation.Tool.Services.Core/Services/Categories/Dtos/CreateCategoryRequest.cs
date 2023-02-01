@@ -1,7 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 
-public sealed class CreateCategoryRequest
+public sealed record CreateCategoryRequest(string Name, string Description)
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    internal static CreateCategoryRequest Create(string name, string description) => 
+        new(name, description);
 }

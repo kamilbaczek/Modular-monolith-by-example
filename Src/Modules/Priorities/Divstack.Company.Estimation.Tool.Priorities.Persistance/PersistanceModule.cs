@@ -16,7 +16,7 @@ internal static class PersistanceModule
     internal static IServiceCollection AddPersistanceModule(this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(ConnectionStringName);
+        var connectionString = configuration.GetConnectionString(ConnectionStringName)!;
         services.AddDataAccess(connectionString);
         services.AddPersistanceHealthChecks(connectionString);
 

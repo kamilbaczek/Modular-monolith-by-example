@@ -7,10 +7,10 @@ using System.Reflection;
 
 public abstract class ValueObject : IEquatable<ValueObject>
 {
-    private List<FieldInfo> _fields;
-    private List<PropertyInfo> _properties;
+    private List<FieldInfo>? _fields;
+    private List<PropertyInfo>? _properties;
 
-    public bool Equals(ValueObject obj)
+    public bool Equals(ValueObject? obj)
     {
         return Equals(obj as object);
     }
@@ -35,15 +35,15 @@ public abstract class ValueObject : IEquatable<ValueObject>
         return !(obj1 == obj2);
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (obj == null || GetType() != obj.GetType())
         {
             return false;
         }
 
-        return GetProperties().All(p => PropertiesAreEqual(obj, p))
-               && GetFields().All(f => FieldsAreEqual(obj, f));
+        return GetProperties()!.All(p => PropertiesAreEqual(obj, p))
+               && GetFields()!.All(f => FieldsAreEqual(obj, f));
     }
 
     public override int GetHashCode()
@@ -51,16 +51,16 @@ public abstract class ValueObject : IEquatable<ValueObject>
         unchecked
         {
             var hash = 17;
-            foreach (var prop in GetProperties())
+            foreach (var prop in GetProperties()!)
             {
                 var value = prop.GetValue(this, null);
-                hash = HashValue(hash, value);
+                hash = HashValue(hash, value!);
             }
 
-            foreach (var field in GetFields())
+            foreach (var field in GetFields()!)
             {
                 var value = field.GetValue(this);
-                hash = HashValue(hash, value);
+                hash = HashValue(hash, value!);
             }
 
             return hash;
@@ -85,7 +85,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
         return Equals(f.GetValue(this), f.GetValue(obj));
     }
 
-    private IEnumerable<PropertyInfo> GetProperties()
+    private IEnumerable<PropertyInfo>? GetProperties()
     {
         if (_properties == null)
         {
@@ -98,7 +98,7 @@ public abstract class ValueObject : IEquatable<ValueObject>
         return _properties;
     }
 
-    private IEnumerable<FieldInfo> GetFields()
+    private IEnumerable<FieldInfo>? GetFields()
     {
         if (_fields == null)
         {

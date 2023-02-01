@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Services.Core.Services;
 
 using System;
 using System.Collections.Generic;

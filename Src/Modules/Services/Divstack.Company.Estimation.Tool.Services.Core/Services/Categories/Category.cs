@@ -1,7 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories;
 
-using System;
-
 public sealed class Category
 {
     private Category(string name, string description)

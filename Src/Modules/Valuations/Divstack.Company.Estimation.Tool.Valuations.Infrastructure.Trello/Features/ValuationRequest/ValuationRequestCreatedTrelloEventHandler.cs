@@ -18,7 +18,7 @@ internal sealed class ValuationRequestCreatedTrelloEventHandler : IHandleMessage
     {
         var taskName = GenerateTaskName(@event.ValuationId);
         var description = GenerateDescription(@event, new List<string>());
-        await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description);
+        await _trelloTaskCreator.CreateAsync(ListNames.Todo, taskName, description, context.CancellationToken);
     }
 
     private static string GenerateDescription(ValuationRequested notification,

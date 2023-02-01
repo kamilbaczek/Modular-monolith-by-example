@@ -14,7 +14,7 @@ internal sealed class TrelloConfiguration : ITrelloConfiguration
         _configuration = configuration;
     }
 
-    public string BoardId => _configuration[BoardIdKeyName];
-    public string AppKey => _configuration[AppKeyKeyName];
-    public string UserToken => _configuration[UserTokenKeyName];
+    public string BoardId => _configuration[BoardIdKeyName]!;
+    public string AppKey => _configuration[AppKeyKeyName]!;
+    public string UserToken => _configuration[UserTokenKeyName]!;
 }

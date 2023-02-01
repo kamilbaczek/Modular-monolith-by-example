@@ -1,12 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-
-    <RootNamespace>Divstack.Company.Estimation.Tool.Users.Api</RootNamespace>
-
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Users.Infrastructure\Divstack.Company.Estimation.Tool.Users.Infrastructure.csproj" />
   </ItemGroup>

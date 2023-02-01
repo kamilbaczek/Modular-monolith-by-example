@@ -22,7 +22,7 @@ internal abstract class DesignTimeDbContextFactoryBase<TContext> :
             .AddEnvironmentVariables()
             .Build();
 
-        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
+        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName)!;
 
         return Create(connectionString);
     }

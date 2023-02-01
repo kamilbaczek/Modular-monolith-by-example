@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Proposals.Suggest
+namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Features.Proposals.Suggest
 {
     using TechTalk.SpecFlow;
     using System;

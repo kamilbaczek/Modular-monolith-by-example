@@ -13,5 +13,5 @@ internal sealed class StripeApiConfiguration
         _configurationSection = configuration.GetSection(StripeConfigurationSectionName);
     }
 
-    internal string ApiKey => Guard.Against.Null(_configurationSection.GetValue<string>(nameof(ApiKey)), nameof(ApiKey));
+    internal string ApiKey => Guard.Against.Null(_configurationSection.GetValue<string>(nameof(ApiKey)))!;
 }

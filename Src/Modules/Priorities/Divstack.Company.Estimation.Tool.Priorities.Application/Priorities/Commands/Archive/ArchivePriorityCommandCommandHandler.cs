@@ -16,12 +16,12 @@ internal sealed class ArchivePriorityCommandCommandHandler : IHandleMessages<Pro
     public async Task Handle(ProposalSuggested proposalSuggested, IMessageHandlerContext context)
     {
         var valuationId = ValuationId.Create(proposalSuggested.ValuationId);
-        var priority = await _prioritiesRepository.GetAsync(valuationId);
+        var priority = await _prioritiesRepository.GetAsync(valuationId, context.CancellationToken);
         if (priority is null)
             throw new NotFoundException(proposalSuggested.ValuationId.ToString(), nameof(Priority));
 
         priority.Archive();
 
-        await _prioritiesRepository.CommitAsync(priority);
+        await _prioritiesRepository.CommitAsync(priority, context.CancellationToken);
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Categories.Dtos;
 
-using System;
 using System.Text.Json.Serialization;
 
 public sealed class CategoryDto

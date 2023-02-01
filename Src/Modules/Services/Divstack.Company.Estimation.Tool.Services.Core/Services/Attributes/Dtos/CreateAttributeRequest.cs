@@ -2,8 +2,4 @@
 
 using System;
 
-public sealed class CreateAttributeRequest
-{
-    public string Name { get; set; }
-    public Guid ServiceId { get; set; }
-}
+public sealed record CreateAttributeRequest(string Name, Guid ServiceId);

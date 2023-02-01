@@ -4,7 +4,7 @@ using AzureNative.ContainerRegistry;
 using AzureNative.OperationalInsights;
 using AzureNative.OperationalInsights.Inputs;
 using Pulumi.Azure.AppInsights;
-using Pulumi.Azure.Role;
+using Pulumi.Azure.Authorization;
 using Pulumi.Docker;
 using Pulumi.Docker.Inputs;
 using ContainerApp = AzureNative.App.ContainerApp;
@@ -55,7 +55,7 @@ internal static class ContainerAppCreator
                 LogAnalyticsConfiguration = new LogAnalyticsConfigurationArgs
                 {
                     CustomerId = workspace.CustomerId,
-                    SharedKey = workspaceSharedKeys.Apply(r => r.PrimarySharedKey)
+                    SharedKey = workspaceSharedKeys.Apply(r => r.PrimarySharedKey)!
                 }
             }
         });
@@ -84,8 +84,8 @@ internal static class ContainerAppCreator
             Registry = new DockerRegistryArgs
             {
                 Server = registry.LoginServer,
-                Username = adminUsername,
-                Password = adminPassword
+                Username = adminUsername!,
+                Password = adminPassword!
             }
         });
 
@@ -107,7 +107,7 @@ internal static class ContainerAppCreator
                     new RegistryCredentialsArgs
                     {
                         Server = registry.LoginServer,
-                        Username = adminUsername,
+                        Username = adminUsername!,
                         PasswordSecretRef = "pwd",
                     }
                 },
@@ -116,7 +116,7 @@ internal static class ContainerAppCreator
                     new SecretArgs
                     {
                         Name = "pwd",
-                        Value = adminPassword
+                        Value = adminPassword!
                     }
                 },
             },
@@ -145,7 +145,7 @@ internal static class ContainerAppCreator
                             },
                         },
                         Name = "estimationtool",
-                        Image = image.ImageName,
+                        Image = image.ImageName!,
                     }
                 }
             }
@@ -155,7 +155,7 @@ internal static class ContainerAppCreator
         {
             Scope = configurationStore.Id,
             RoleDefinitionName = "App Configuration Data Owner",
-            PrincipalId = containerApp.Identity.Apply(identity => identity.PrincipalId)
+            PrincipalId = containerApp.Identity.Apply(identity => identity!.PrincipalId)
         });
 
         return containerApp;

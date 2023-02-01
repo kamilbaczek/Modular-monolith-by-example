@@ -24,14 +24,14 @@ internal sealed class PriorityCloseToDeadlineUnScheduler :
     }
     public Task Handle(ProposalCancelled proposalCancelled, IMessageHandlerContext context)
     {
-        UnSchedule(proposalCancelled.ValuationId);
+        UnSchedule(proposalCancelled.ValuationId, context.CancellationToken);
 
         return Task.CompletedTask;
     }
 
     public Task Handle(ProposalSuggested proposalSuggested, IMessageHandlerContext context)
     {
-        UnSchedule(proposalSuggested.ValuationId);
+        UnSchedule(proposalSuggested.ValuationId, context.CancellationToken);
 
         return Task.CompletedTask;
     }

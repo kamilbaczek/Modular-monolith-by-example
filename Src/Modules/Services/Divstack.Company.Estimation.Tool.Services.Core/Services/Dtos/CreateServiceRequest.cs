@@ -2,9 +2,4 @@
 
 using System;
 
-public sealed class CreateServiceRequest
-{
-    public string Name { get; init; }
-    public string Description { get; init; }
-    public Guid CategoryId { get; init; }
-}
+public sealed record CreateServiceRequest(Guid CategoryId, string Name, string Description);

@@ -1,19 +1,23 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects;
 
 using BuildingBlocks;
 
 public class Money : ValueObject
 {
+    private const string DefaultCurrency = "USD";
+    
     private Money()
     {
     }
+    
     private Money(decimal? value, string currency)
     {
         Value = value;
         Currency = currency;
     }
 
-    public static Money Undefined => new(null, null);
+    public static Money Undefined => new(null, DefaultCurrency);
 
     public decimal? Value { get; init; }
 

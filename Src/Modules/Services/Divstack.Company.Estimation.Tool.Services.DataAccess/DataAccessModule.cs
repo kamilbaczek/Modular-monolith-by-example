@@ -20,7 +20,7 @@ internal static class DataAccessModule
     internal static IServiceCollection AddDataAccess(this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(ServicesConnectionString);
+        var connectionString = configuration.GetConnectionString(ServicesConnectionString)!;
 
         services.AddCore();
         services.RegisterRepositories();

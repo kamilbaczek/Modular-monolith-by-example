@@ -24,16 +24,16 @@ internal sealed class DefinePrioritiesEventHandler : IHandleMessages<ValuationRe
     public async Task Handle(ValuationRequested message, IMessageHandlerContext context)
     {
         var deadline = Deadline.Create(_deadlinesConfiguration);
-        var companySize = await GetCompanySize(message.InquiryId);
+        var companySize = await GetCompanySizeAsync(message.InquiryId);
         var valuationId = ValuationId.Create(message.ValuationId);
         var inquiryId = InquiryId.Create(message.InquiryId);
 
         var priority = Priority.Define(valuationId, inquiryId, companySize, deadline);
 
-        await _prioritiesRepository.AddAsync(priority);
+        await _prioritiesRepository.AddAsync(priority, context.CancellationToken);
     }
 
-    private async Task<int?> GetCompanySize(Guid inquiryId)
+    private async Task<int?> GetCompanySizeAsync(Guid inquiryId)
     {
         var inquiryQuery = new GetInquiryClientQuery(inquiryId);
         var client = await _inquiryModule.ExecuteQueryAsync(inquiryQuery);

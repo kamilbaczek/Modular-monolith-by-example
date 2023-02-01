@@ -25,7 +25,7 @@ public class TestEngine
         services.ReplaceCurrentUserService();
 
         ServiceScopeFactory = services.BuildServiceProvider()
-            .GetService<IServiceScopeFactory>();
+            .GetService<IServiceScopeFactory>()!;
     }
 
     [OneTimeTearDown]

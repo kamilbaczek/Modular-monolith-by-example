@@ -9,6 +9,6 @@ internal sealed class MailConfiguration : ConfigurationBase, IMailConfiguration
     {
     }
 
-    public string MailFrom => configurationSection[nameof(MailFrom)];
-    public string ApiKey => configurationSection[nameof(ApiKey)];
+    public string MailFrom => configurationSection[nameof(MailFrom)]!;
+    public string ApiKey => configurationSection[nameof(ApiKey)]!;
 }

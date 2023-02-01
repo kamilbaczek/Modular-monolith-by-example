@@ -9,10 +9,12 @@ internal sealed class EventMapper : IEventMapper
 {
     public IReadOnlyCollection<IIntegrationEvent> Map(IReadOnlyCollection<IDomainEvent> events)
     {
-        return events.Select(Map).ToList();
+        return events.Select(Map)
+            .Where(@event => @event is not null)
+            .ToList()!;
     }
 
-    private static IIntegrationEvent Map(IDomainEvent @event)
+    private static IIntegrationEvent? Map(IDomainEvent @event)
     {
         return @event switch
         {

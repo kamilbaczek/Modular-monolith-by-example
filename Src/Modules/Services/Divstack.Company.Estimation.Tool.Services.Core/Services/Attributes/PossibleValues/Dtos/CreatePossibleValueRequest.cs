@@ -2,9 +2,4 @@
 
 using System;
 
-public sealed class CreatePossibleValueRequest
-{
-    public string Value { get; set; }
-    public Guid ServiceId { get; set; }
-    public Guid AttributeId { get; set; }
-}
+public sealed record CreatePossibleValueRequest(string Value, Guid ServiceId, Guid AttributeId);

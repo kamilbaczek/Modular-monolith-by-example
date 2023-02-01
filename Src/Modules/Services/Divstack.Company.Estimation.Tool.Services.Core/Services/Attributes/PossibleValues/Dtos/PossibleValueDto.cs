@@ -1,6 +1,5 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues.Dtos;
 
-using System;
 using System.Text.Json.Serialization;
 
 public sealed class PossibleValueDto

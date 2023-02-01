@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes.PossibleValues;
 
-using System;
 using Attribute = Attributes.Attribute;
 
 public sealed class PossibleValue

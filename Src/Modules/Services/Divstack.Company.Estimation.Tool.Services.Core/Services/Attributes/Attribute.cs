@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Services.Core.Services.Attributes;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using PossibleValues;
@@ -22,12 +22,9 @@ public sealed class Attribute
     internal IList<PossibleValue> PossibleValues { get; set; }
     internal Guid Id { get; set; }
     internal string Name { get; set; }
-    private Service Service { get; set; }
 
-    internal static Attribute Create(Service service, string name)
-    {
-        return new Attribute(service, name);
-    }
+    internal static Attribute Create(Service service, string name) => 
+        new(service, name);
 
     internal void AddPossibleValue(string value)
     {

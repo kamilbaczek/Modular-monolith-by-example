@@ -12,5 +12,5 @@ internal sealed class ValuationsTopicConfiguration : IValuationsTopicConfigurati
     public ValuationsTopicConfiguration(IConfiguration configuration) => 
         _configuration = configuration;
 
-    public string TopicName => _configuration.GetValue<string>(Guard.Against.NullOrEmpty(ValuationsTopicKey, nameof(TopicName)));
+    public string TopicName => _configuration.GetValue<string>(Guard.Against.NullOrEmpty(ValuationsTopicKey, nameof(TopicName)))!;
 }

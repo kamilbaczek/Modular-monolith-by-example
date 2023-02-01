@@ -10,14 +10,14 @@ internal sealed class PrioritiesBuilder
     {
         InquiryId = InquiryId.Create();
         Deadline = A.Deadline().WithDeadline(WorksDaysToDeadlineFromNow);
-        InquiryId = InquiryId.Create(new Guid());
-        ValuationId = ValuationId.Create(new Guid());
+        InquiryId = InquiryId.Create(Guid.NewGuid());
+        ValuationId = ValuationId.Create(Guid.NewGuid());
         CompanySize = 100;
     }
 
-    private static InquiryId? InquiryId { get; set; }
-    private static ValuationId? ValuationId { get; set; }
-    private static Deadline? Deadline { get; set; }
+    private static InquiryId InquiryId { get; set; }
+    private static ValuationId ValuationId { get; set; }
+    private static Deadline  Deadline { get; set; }
     private static int CompanySize { get; set; }
 
     internal PrioritiesBuilder WithDeadline(int worksDaysToDeadlineFromNow)

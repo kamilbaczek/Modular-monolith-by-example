@@ -1,4 +1,5 @@
-﻿namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
+﻿#pragma warning disable CS8618
+namespace Divstack.Company.Estimation.Tool.Shared.DDD.ValueObjects.Emails;
 
 using System;
 using System.Net.Mail;

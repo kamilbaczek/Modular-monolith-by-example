@@ -26,7 +26,7 @@ internal sealed class ServicesSeeder : IHostedService
         var categories = await categoriesService.GetAllAsync(cancellationToken);
         if (!categories.Any())
         {
-            var categoryDto = await CreateCategory(cancellationToken, categoriesService);
+            var categoryDto = await CreateCategoryAsync(categoriesService, cancellationToken);
             categories.Add(categoryDto);
         }
 
@@ -35,7 +35,7 @@ internal sealed class ServicesSeeder : IHostedService
         var services = await servicesService.GetAllAsync(cancellationToken);
         if (!services.Any())
         {
-            await CreateService(servicesService, category.Id);
+            await CreateServiceAsync(servicesService, category.Id);
         }
 
     }
@@ -45,28 +45,19 @@ internal sealed class ServicesSeeder : IHostedService
         return Task.CompletedTask;
     }
 
-    private static async Task CreateService(IServicesService servicesService, Guid categoryId)
+    private static async Task CreateServiceAsync(IServicesService servicesService, Guid categoryId)
     {
-        var createService = new CreateServiceRequest
-        {
-            Name = "Cisco Router Fix",
-            Description = "Very hard service",
-            CategoryId = categoryId
-        };
+        var createService = new CreateServiceRequest(categoryId, "Cisco Router Fix", "Very hard service");
         await servicesService.CreateAsync(createService);
     }
 
-    private static async Task<CategoryDto> CreateCategory(CancellationToken cancellationToken,
-        ICategoriesService categoriesService)
+    private static async Task<CategoryDto> CreateCategoryAsync(ICategoriesService categoriesService, CancellationToken cancellationToken)
     {
-        var categoryRequest = new CreateCategoryRequest
-        {
-            Name = "Internet",
-            Description = "Internet Services"
-        };
+        var categoryRequest = new CreateCategoryRequest("Internet", "Internet Services");
         await categoriesService.CreateAsync(categoryRequest, cancellationToken);
         var categories = await categoriesService.GetAllAsync(cancellationToken);
         var categoryDto = categories.First();
+        
         return categoryDto;
     }
 }

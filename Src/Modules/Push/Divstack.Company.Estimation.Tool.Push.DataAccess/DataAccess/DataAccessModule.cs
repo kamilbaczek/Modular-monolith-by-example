@@ -16,7 +16,7 @@ internal static class DataAccessModule
     internal static IServiceCollection AddDataAccess(this IServiceCollection services,
         IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName);
+        var connectionString = configuration.GetConnectionString(DataAccessConstants.ConnectionStringName)!;
         services.AddMongo(connectionString);
         services.AddScoped<INotificationsContext, NotificationsContext>();
         services.AddScoped<INotificationsReadRepository, NotificationsReadRepository>();

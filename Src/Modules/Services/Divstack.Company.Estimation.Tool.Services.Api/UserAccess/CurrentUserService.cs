@@ -23,7 +23,8 @@ internal sealed class CurrentUserService : ICurrentUserService
 
     public string[] GetCurrentUserRoles()
     {
-        var tmp = _httpContextAccessor.HttpContext?.User?.FindAll(ClaimTypes.Role).Select(r => r.Value).ToArray();
-        return tmp;
+        var roles = _httpContextAccessor.HttpContext?.User?.FindAll(ClaimTypes.Role).Select(r => r.Value).ToArray()!;
+        
+        return roles;
     }
 }

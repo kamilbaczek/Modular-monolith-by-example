@@ -6,5 +6,5 @@ public static class EntityTestsExtensions
 {
     public static TEvent GetPublishedEvent<TEvent>(this Entity entity) where TEvent : class,
         IDomainEvent =>
-        entity.DomainEvents.OfType<TEvent>().MaxBy(domainEvent => domainEvent.OccurredOn);
+        entity.DomainEvents.OfType<TEvent>().MaxBy(domainEvent => domainEvent.OccurredOn)!;
 }

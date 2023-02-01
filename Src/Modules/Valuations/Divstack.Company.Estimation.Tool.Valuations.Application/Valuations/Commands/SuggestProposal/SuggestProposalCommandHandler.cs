@@ -27,7 +27,7 @@ internal sealed class SuggestProposalCommandHandler : IRequestHandler<SuggestPro
             throw new NotFoundException(command.ValuationId, nameof(ValuationRequested));
 
         var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
-        var money = Money.Of(command.Value, command.Currency);
+        var money = Money.Of(command.Value, command.Currency!);
 
         var suggestProposal = valuationRequested.SuggestProposal(money, command.Description!, employeeId);
         

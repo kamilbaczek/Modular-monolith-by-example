@@ -25,6 +25,6 @@ internal sealed class IntegrationEventPublisher : IIntegrationEventPublisher
             .AsReadOnly();
 
         foreach (var @event in integrationEvents)
-            await _messageSession.SendLocal(@event);
+            await _messageSession.SendLocal(@event, cancellationToken: cancellationToken);
     }
 }

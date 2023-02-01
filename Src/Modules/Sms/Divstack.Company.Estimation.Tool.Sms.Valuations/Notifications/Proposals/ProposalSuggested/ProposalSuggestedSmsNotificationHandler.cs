@@ -41,7 +41,7 @@ internal sealed class ProposalSuggestedSmsNotificationHandler : IHandleMessages<
             proposalSuggested.Description,
             acceptLink,
             rejectLink);
-        await _smsClient.SendAsync(message, client.PhoneNumber);
+        await _smsClient.SendAsync(message, client.PhoneNumber, context.CancellationToken);
     }
     private string GetAcceptLink(ProposalSuggested proposalSuggested)
     {

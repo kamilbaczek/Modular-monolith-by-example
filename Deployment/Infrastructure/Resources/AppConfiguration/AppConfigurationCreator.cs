@@ -49,7 +49,7 @@ internal static class AppConfigurationCreator
             }
         });
 
-        configurationStore.Identity.Apply(c => c.PrincipalId);
+        configurationStore.Identity.Apply(c => c!.PrincipalId);
 
         return configurationStore;
     }
