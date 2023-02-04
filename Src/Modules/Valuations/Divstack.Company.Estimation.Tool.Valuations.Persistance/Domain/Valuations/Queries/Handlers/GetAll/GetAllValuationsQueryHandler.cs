@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Queries.Handlers.GetAll;
 
 using Application.Valuations.Queries.GetAll;
-using Marten;
 using MediatR;
 
 internal sealed class GetAllValuationsQueryHandler : IRequestHandler<GetAllValuationsQuery, ValuationListVm>

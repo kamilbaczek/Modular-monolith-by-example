@@ -2,7 +2,6 @@
 
 using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
-using Marten;
 using MediatR;
 
 internal sealed class

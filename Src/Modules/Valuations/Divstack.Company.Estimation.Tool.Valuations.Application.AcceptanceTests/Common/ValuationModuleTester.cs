@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common;
 
+using AcceptanceTests;
 using Application.Common.Interfaces;
 using Domain.Valuations;
 using Inquiries.IntegrationsEvents.External;
@@ -14,12 +15,12 @@ internal static class ValuationModuleTester
 {
     internal static async Task RequestValuation(InquiryMadeEvent inquiryMadeEvent)
     {
-        using var scope = TestEngine.ServiceScopeFactory?.CreateScope();
+        using var scope = TestEngine.ServiceScopeFactory.CreateScope();
 
         var eventPublisher = Mock.Of<IIntegrationEventPublisher>();
-        var valuationsRepository = scope?.ServiceProvider.GetRequiredService<IValuationsRepository>();
+        var valuationsRepository = scope.ServiceProvider.GetRequiredService<IValuationsRepository>();
 
-        var valuationEventHandler = new RequestValuationEventHandler(valuationsRepository!, eventPublisher);
+        var valuationEventHandler = new RequestValuationEventHandler(valuationsRepository, eventPublisher);
         await valuationEventHandler.Handle(inquiryMadeEvent, new TestableMessageHandlerContext());
     }
 
@@ -29,7 +30,7 @@ internal static class ValuationModuleTester
         var result = await ExecuteQueryAsync(query);
         var valuationListItemDto = result.Valuations.FirstOrDefault(valuation => valuation.InquiryId == inquiryId);
 
-        return valuationListItemDto;
+        return valuationListItemDto!;
     }
 
     internal static async Task<ValuationProposalEntryDto> GetRecentProposal(Guid valuationId)

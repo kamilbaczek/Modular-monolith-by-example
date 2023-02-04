@@ -2,7 +2,6 @@
 
 using Application.Valuations.Queries.Get;
 using Application.Valuations.Queries.Get.Dtos;
-using Marten;
 using MediatR;
 
 internal sealed class GetValuationsQueryHandler : IRequestHandler<GetValuationQuery, ValuationVm>

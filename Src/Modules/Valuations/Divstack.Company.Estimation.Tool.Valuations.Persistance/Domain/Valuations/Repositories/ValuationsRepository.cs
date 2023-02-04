@@ -1,10 +1,10 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Persistance.Domain.Valuations.Repositories;
 
-using Marten;
 using Tool.Valuations.Domain.Valuations;
 using Tool.Valuations.Domain.Valuations.States;
 
-internal sealed class ValuationsRepository: IValuationsRepository
+[UsedImplicitly]
+public sealed class ValuationsRepository: IValuationsRepository
 {
     private readonly IDocumentStore _documentStore;
 
@@ -23,12 +23,11 @@ internal sealed class ValuationsRepository: IValuationsRepository
     {
         var events = valuation.DomainEvents;
 
-        await using var documentSession = _documentStore.LightweightSession();
+        await using var documentSession = _documentStore.OpenSession();
         documentSession.Events.StartStream<ValuationRequested>(
             valuation.Id,
             events
         );
-
         await documentSession.SaveChangesAsync(cancellationToken);
     }
 

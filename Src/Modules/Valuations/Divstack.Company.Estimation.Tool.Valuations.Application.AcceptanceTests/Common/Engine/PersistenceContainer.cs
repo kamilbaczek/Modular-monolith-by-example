@@ -6,20 +6,16 @@ using DotNet.Testcontainers.Containers;
 
 internal static class PersistenceContainer
 {
-    private static readonly PostgreSqlTestcontainerConfiguration Database = new()
-    {
-        Database = "db",
-        Username = "postgres",
-        Password = "postgres",
-        Port = 52574
-    };
+    private static readonly TestcontainerDatabase TestContainerDatabase = new ContainerBuilder<PostgreSqlTestcontainer>()
+        .WithDatabase(new PostgreSqlTestcontainerConfiguration
+        {
+            Database = "db",
+            Username = "postgres",
+            Password = "postgres",
+            Port = 52574
+        })
+        .Build();
 
-    private static readonly TestcontainerDatabase TestContainerDatabase =
-        new TestcontainersBuilder<PostgreSqlTestcontainer>()
-            .WithDatabase(Database)
-            .WithWaitStrategy(Wait.ForUnixContainer())
-            .Build();
-
-    internal static Task StartAsync() => TestContainerDatabase.StartAsync();
-    internal static void Stop() => TestContainerDatabase.DisposeAsync().AsTask();
+    internal static async Task StartAsync() => await TestContainerDatabase.StartAsync();
+    internal static async Task StopAsync() => await TestContainerDatabase.DisposeAsync();
 }

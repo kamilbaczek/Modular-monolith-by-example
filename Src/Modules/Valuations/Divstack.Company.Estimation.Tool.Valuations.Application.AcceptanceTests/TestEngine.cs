@@ -1,8 +1,8 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests;
 
 using Bootstrapper;
-using Common.Engine;
-using Common.Engine.Mocks;
+using Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine;
+using Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine.Mocks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,11 +28,11 @@ public class TestEngine
         services.ReplaceCurrentUserService();
 
         ServiceScopeFactory = services.BuildServiceProvider()
-            .GetService<IServiceScopeFactory>();
+            .GetService<IServiceScopeFactory>()!;
     }
 
     [AfterTestRun]
-    public static void RunAfterAnyTests() => PersistenceContainer.Stop();
+    public static async Task RunAfterAnyTests() => await PersistenceContainer.StopAsync();
 
     private static IConfigurationRoot BuildConfiguration()
     {

@@ -19,7 +19,7 @@
     <PackageReference Include="SpecFlow.NUnit" Version="4.0.16-beta" />
     <PackageReference Include="System.Text.Encodings.Web" Version="7.0.0" />
     <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
-    <PackageReference Include="Testcontainers" Version="2.3.0" />
+    <PackageReference Include="Testcontainers" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>

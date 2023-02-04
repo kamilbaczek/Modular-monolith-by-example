@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common;
 
+using AcceptanceTests;
 using Application.Common.Contracts;
 
 internal static class ValuationModule

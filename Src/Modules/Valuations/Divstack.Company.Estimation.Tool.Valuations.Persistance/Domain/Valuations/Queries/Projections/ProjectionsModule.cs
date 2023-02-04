@@ -4,7 +4,6 @@ using Handlers.Get;
 using Handlers.GetAll;
 using Handlers.GetHistory;
 using Handlers.GetProposals;
-using Marten;
 using Marten.Events.Projections;
 using Microsoft.Extensions.DependencyInjection;
 using Weasel.Core;

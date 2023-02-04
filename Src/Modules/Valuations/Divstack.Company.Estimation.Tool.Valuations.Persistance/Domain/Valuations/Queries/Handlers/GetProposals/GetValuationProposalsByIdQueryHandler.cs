@@ -2,7 +2,6 @@
 
 using Application.Valuations.Queries.GetProposalsById;
 using Application.Valuations.Queries.GetProposalsById.Dtos;
-using Marten;
 using MediatR;
 
 internal sealed class
