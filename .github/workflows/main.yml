@@ -45,7 +45,7 @@ jobs:
         dotnet new tool-manifest
         dotnet tool install dotnet-reportgenerator-globaltool
     - name: Install sonarscanner-dotnet
-      run:  dotnet tool install --global dotnet-sonarscanner --version 5.4
+      run:  dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
            dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
