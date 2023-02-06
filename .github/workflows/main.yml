@@ -13,11 +13,6 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    - name: Install .NET 7 SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.x.x
-        
     - name: Checkout 
       uses: actions/checkout@v2
       with:
@@ -132,10 +127,10 @@ jobs:
         fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
     - uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.x' # SDK Version to use.
+        dotnet-version: '7.x' # SDK Version to use.
 
     - name: Install sonarscanner-dotnet
-      run:  dotnet tool install --global dotnet-sonarscanner --version 5.4
+      run:  dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
            dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool"
