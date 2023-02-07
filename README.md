@@ -1,4 +1,4 @@
-# 🚀 Estimations Tool - makes estimations easier
+# Estimations Tool - makes estimations easier 🚀
 ![image3](https://user-images.githubusercontent.com/74410956/217158944-a7272279-ed4b-4d86-9497-784c80093755.png)
 
 An Estimation Tool is a software or program that streamlines and simplifies the process of estimating costs of services. 
