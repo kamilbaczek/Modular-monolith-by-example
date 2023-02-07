@@ -1,4 +1,6 @@
 # Estimations Tool - makes estimations easier
+![image3](https://user-images.githubusercontent.com/74410956/217158944-a7272279-ed4b-4d86-9497-784c80093755.png)
+
 An Estimation Tool is a software or program that streamlines and simplifies the process of estimating costs of services. 
 The Estimation Tool also offers an easy-to-use inquiry system that facilitates communication between the estimator and the client. With a user-friendly interface and built-in notifications, the tool ensures smooth and efficient communication, reducing the time and effort required to manage inquiries and respond to clients' requests. The system acts as a bridge between the estimator and the client, streamlining the process of inquiry and providing a centralized platform for all communication related to the estimation process. 
 
