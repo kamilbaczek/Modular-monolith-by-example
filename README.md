@@ -25,13 +25,6 @@ The purpose of the project is to provide guidance and inspiration for .NET devel
 ##### Domain Code Coverage
 [![Domain Code Coverage](https://codecov.io/gh/kamilbaczek/Estimation-Tool/branch/develop/graph/badge.svg?token=S66MBBE6CV)](https://codecov.io/gh/kamilbaczek/Estimation-Tool)
 
-#### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
-
-[Application](https://estimation-tool-api.azurewebsites.net)     
-#### ![server](https://user-images.githubusercontent.com/74410956/144381496-43427b48-909b-4b63-b4b2-687f90d2bce6.png) 
-
-[Swagger](https://estimation-tool-api.azurewebsites.net/index.html)
-
 ## Architecture
 ### C4
 #### Context
