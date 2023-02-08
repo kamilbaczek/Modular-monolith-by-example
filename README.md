@@ -42,3 +42,6 @@ The purpose of the project is to provide guidance and inspiration for .NET devel
 
 ## ⭐ Say thanks
 Feel free to give a ⭐ to this repository if you like it. Your support is greatly appreciated!
+
+## 📚 My content
+![https://dev.to/kamilbaczek](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=dev.to&logoColor=white)
