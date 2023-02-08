@@ -40,5 +40,5 @@ The purpose of the project is to provide guidance and inspiration for .NET devel
 #### Event Storming
 ![image](https://user-images.githubusercontent.com/74410956/204135380-07d3ac67-fafa-4381-8234-3e1bfdb99c4c.png)
 
-
-
+## ⭐ Say thanks
+Feel free to give a ⭐ to this repository if you like it. Your support is greatly appreciated!
