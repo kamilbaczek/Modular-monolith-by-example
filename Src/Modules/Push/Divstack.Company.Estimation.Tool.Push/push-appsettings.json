@@ -1,5 +1,8 @@
 ﻿{
   "FeatureManagement": {
     "PushModule": true
+  },
+  "ConnectionStrings": {
+    "Notifications": "mongodb://localhost:27017/"
   }
 }

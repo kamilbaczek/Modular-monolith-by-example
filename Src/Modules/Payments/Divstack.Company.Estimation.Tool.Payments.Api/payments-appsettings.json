@@ -1,6 +1,6 @@
 ﻿{
   "ConnectionStrings": {
-    "Payments": ""
+    "Payments": "mongodb://localhost:27017/"
   },
   "StripeApi": {
     "ApiKey": ""

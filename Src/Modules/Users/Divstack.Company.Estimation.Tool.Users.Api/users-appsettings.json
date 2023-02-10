@@ -17,7 +17,7 @@
     "Init": "true"
   },
   "ConnectionStrings": {
-    "Users": ""
+    "Users": "Server=localhost;Database=devdb;Uid=root;Pwd=root;"
   },
   "FeatureManagement": {
     "UsersModule": true

@@ -5,5 +5,8 @@
   "Twillo": {
     "AccountSid": "",
     "AuthToken": ""
+  },
+  "FeatureManagement": {
+    "SmsModule": false
   }
 }

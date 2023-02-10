@@ -12,22 +12,22 @@ internal static class EventBusModule
 
     internal static void UseEvents(this IHostBuilder hostBuilder)
     {
-        hostBuilder.UseNServiceBus(context =>
-        {
-            var name = GetName();
-
-            var endpointConfiguration = new EndpointConfiguration(name);
-            var eventBusConfiguration = new EventBusConfiguration(context.Configuration);
-
-            SetupTransport(endpointConfiguration, eventBusConfiguration);
-            ConfigurePersistance(endpointConfiguration, eventBusConfiguration);
-
-            endpointConfiguration.EnableOutbox();
-            endpointConfiguration.EnableInstallers();
-            endpointConfiguration.AuditProcessedMessagesTo(AuditQueue);
-
-            return endpointConfiguration;
-        });
+        // hostBuilder.UseNServiceBus(context =>
+        // {
+        //     var name = GetName();
+        //
+        //     var endpointConfiguration = new EndpointConfiguration(name);
+        //     var eventBusConfiguration = new EventBusConfiguration(context.Configuration);
+        //
+        //     SetupTransport(endpointConfiguration, eventBusConfiguration);
+        //     // ConfigurePersistance(endpointConfiguration, eventBusConfiguration);
+        //     //
+        //     // endpointConfiguration.EnableOutbox();
+        //     // endpointConfiguration.EnableInstallers();
+        //     // endpointConfiguration.AuditProcessedMessagesTo(AuditQueue);
+        //
+        //     return endpointConfiguration;
+        // });
     }
 
     private static void ConfigurePersistance(EndpointConfiguration endpointConfiguration, IEventBusConfiguration configuration)

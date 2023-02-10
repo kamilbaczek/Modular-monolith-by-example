@@ -16,11 +16,15 @@ internal static class AzureAppConfigurationModule
 
     internal static void AddAzureApplicationConfiguration(this IConfigurationBuilder builder, IConfiguration configuration)
     {
+        var connectionString = configuration.GetConnectionString(AzureAppConfiguration);
+        var azureApplicationConfigurationEnabled = string.IsNullOrEmpty(connectionString);
+        if(azureApplicationConfigurationEnabled)
+            return;
+
         var environment = System.Environment.GetEnvironmentVariable(Environment);
         if (string.IsNullOrEmpty(environment))
             throw new EnvironmentNameNotFoundException();
 
-        var connectionString = configuration.GetConnectionString(AzureAppConfiguration);
         builder.AddAzureAppConfiguration(options =>
         {
             options.Connect(connectionString);

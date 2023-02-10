@@ -23,6 +23,6 @@ internal static class DataAccessModule
 
         using var scope = services.BuildServiceProvider().CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<TContext>();
-        dbContext.Database.Migrate();
+        // dbContext.Database.Migrate();
     }
 }

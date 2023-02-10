@@ -7,7 +7,7 @@
     }
   },
   "ConnectionStrings": {
-    "Valuations": ""
+    "Valuations": "Server=postgres;Database=testdb;User Id=postgres;Password=postgres;"
   },
   "FeatureManagement": {
     "ValuationModule": true
