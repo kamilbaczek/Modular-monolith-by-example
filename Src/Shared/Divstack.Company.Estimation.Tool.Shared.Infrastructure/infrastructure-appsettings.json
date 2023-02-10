@@ -6,7 +6,7 @@
     "AllowedOrigin": "http://localhost:8080"
   },
   "BackgroundProcessing": {
-    "StorageConnectionString": ""
+    "StorageConnectionString": "mongodb://localhost:27017/"
   },
   "HealthChecks-UI": {
     "DisableMigrations": false,
