@@ -22,7 +22,6 @@ internal static class EventBusModule
             SetupTransport(endpointConfiguration, eventBusConfiguration, context.HostingEnvironment);
             ConfigurePersistance(endpointConfiguration, eventBusConfiguration);
             
-            // endpointConfiguration.EnableOutbox();
             endpointConfiguration.EnableInstallers();
             endpointConfiguration.AuditProcessedMessagesTo(AuditQueue);
         
@@ -45,6 +44,7 @@ internal static class EventBusModule
             endpointConfiguration.UseTransport<RabbitMQTransport>()
                 .ConnectionString(configuration.ConnectionString)
                 .UseConventionalRoutingTopology(QueueType.Classic);
+            
             return;
         }
         
