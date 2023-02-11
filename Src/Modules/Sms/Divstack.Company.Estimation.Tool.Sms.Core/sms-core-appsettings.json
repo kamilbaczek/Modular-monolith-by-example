@@ -1,12 +1,12 @@
 ﻿{
   "PhoneNumbers": {
-    "From": ""
+    "From": "+1 123 456 7890"
   },
   "Twillo": {
-    "AccountSid": "",
-    "AuthToken": ""
+    "AccountSid": "dev",
+    "AuthToken": "dev"
   },
   "FeatureManagement": {
-    "SmsModule": false
+    "SmsModule": true
   }
 }

@@ -12,7 +12,7 @@ internal sealed class
     private readonly IPriorityCloseToDeadlineMailSender _priorityCloseToDeadlineMailSender;
     private readonly IUserModule _userModule;
 
-    internal PriorityCloseToDeadlineRemindEventHandler(
+    public PriorityCloseToDeadlineRemindEventHandler(
         IPriorityCloseToDeadlineMailSender priorityCloseToDeadlineMailSender,
         IUserModule userModule)
     {

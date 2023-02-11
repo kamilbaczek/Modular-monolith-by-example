@@ -1,15 +1,16 @@
 ﻿{
   "Integrations": {
     "Trello": {
-      "BoardId": "",
-      "AppKey": "",
-      "UserToken": ""
+      "BoardId": "123",
+      "AppKey": "dev",
+      "UserToken": "dev"
     }
   },
   "ConnectionStrings": {
     "Valuations": "Server=postgres;Database=testdb;User Id=postgres;Password=postgres;"
   },
   "FeatureManagement": {
-    "ValuationModule": true
+    "ValuationModule": true,
+    "TrelloModule": true
   }
 }

@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine.Mocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Common.Engine.Mocks;
 
-using Application.Common.Interfaces;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Common.Interfaces;
 using Moq;
 
 internal static class IntegrationEventPublisherMock

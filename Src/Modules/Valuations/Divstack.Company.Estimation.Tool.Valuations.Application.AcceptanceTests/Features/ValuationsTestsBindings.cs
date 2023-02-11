@@ -1,10 +1,10 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Features;
 
+using Common.Fakes;
 using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
-using Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Common.Fakes;
 using TechTalk.SpecFlow;
-using static IntegrationTests.Common.ValuationModule;
-using static IntegrationTests.Common.ValuationModuleTester;
+using static AcceptanceTests.Common.ValuationModule;
+using static AcceptanceTests.Common.ValuationModuleTester;
 
 [Binding]
 public class ValuationsTestsBindings

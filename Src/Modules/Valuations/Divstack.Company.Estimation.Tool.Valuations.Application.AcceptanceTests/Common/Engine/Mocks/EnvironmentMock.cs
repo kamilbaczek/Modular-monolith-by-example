@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine.Mocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Common.Engine.Mocks;
 
 using Microsoft.AspNetCore.Hosting;
 using Moq;

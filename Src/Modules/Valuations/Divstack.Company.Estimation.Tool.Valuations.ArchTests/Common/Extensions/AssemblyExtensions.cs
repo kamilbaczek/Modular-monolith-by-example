@@ -1,4 +1,4 @@
-﻿namespace Csl.Cmp.SimInventory.Arch.Tests.Common.Extensions;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.ArchTests.Common.Extensions;
 
 internal static class AssemblyExtensions
 {

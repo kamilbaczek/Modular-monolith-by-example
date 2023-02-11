@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine.Mocks;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Common.Engine.Mocks;
 
-using Domain.UserAccess;
+using Divstack.Company.Estimation.Tool.Valuations.Domain.UserAccess;
 using Moq;
 
 internal static class CurrentUserMock

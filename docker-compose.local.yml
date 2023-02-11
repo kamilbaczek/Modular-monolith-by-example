@@ -1,18 +1,12 @@
 ﻿version: '3.9'
 services:
-  azurite:
-    image: mcr.microsoft.com/azure-storage/azurite
-    hostname: azurite
-    restart: always
-    command: "azurite --blobHost 127.0.0.1 --blobPort 10010 --queueHost 127.0.0.1 --queuePort 10011"
-    ports:
-      - "10010:10010"
-      - "10011:10011"
   mongodb:
     image: mongo:4.4
     restart: always
     ports:
       - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
   mysql:
     image: mysql:8.0
     restart: always
@@ -21,6 +15,8 @@ services:
       MYSQL_DATABASE: devdb
     ports:
       - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
   postgres:
     image: postgres:12
     restart: always
@@ -29,3 +25,19 @@ services:
       POSTGRES_DB: testdb
     ports:
       - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:management
+    profiles:
+      - local
+      - prod
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+volumes:
+  mongodbdata:
+  mysql:
+  postgres:

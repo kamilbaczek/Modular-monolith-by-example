@@ -17,12 +17,13 @@ internal static class SmsModule
     internal static IServiceCollection AddSmsCoreModule(this IServiceCollection services, IConfiguration configuration)
     {
         var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
-        if (!moduleEnabled) return services;
+        if (!moduleEnabled) 
+            return services;
 
-        // services.AddScoped<ISmsClient, SmsClient>();
-        // var smsConfiguration = new SmsConfiguration(configuration);
-        // TwilioClient.Init(smsConfiguration.AccountSid, smsConfiguration.AuthToken);
-        // services.AddScoped<IPhoneNumbersConfiguration, PhoneNumbersConfiguration>();
+        services.AddScoped<ISmsClient, SmsClient>();
+        var smsConfiguration = new SmsConfiguration(configuration);
+        TwilioClient.Init(smsConfiguration.AccountSid, smsConfiguration.AuthToken);
+        services.AddScoped<IPhoneNumbersConfiguration, PhoneNumbersConfiguration>();
 
         return services;
     }

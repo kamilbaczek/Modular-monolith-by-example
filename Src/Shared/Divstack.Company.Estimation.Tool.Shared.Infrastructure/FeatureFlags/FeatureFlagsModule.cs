@@ -9,7 +9,7 @@ internal static class FeatureFlagsModule
 {
     internal static void AddFeatureFlags(this IServiceCollection services)
     {
-        services.AddScoped<IFeatureFlagsChecker, FeatureFlagsChecker>();
         services.AddFeatureManagement();
+        services.AddSingleton<IFeatureFlagsChecker, FeatureFlagsChecker>();
     }
 }

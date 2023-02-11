@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Common.Engine;
 
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Configurations;
