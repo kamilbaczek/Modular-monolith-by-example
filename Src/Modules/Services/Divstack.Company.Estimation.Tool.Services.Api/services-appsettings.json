@@ -1,6 +1,6 @@
 ﻿{
   "ConnectionStrings": {
-    "Services": ""
+    "Services": "mongodb://localhost:27017/"
   },
   "FeatureManagement": {
     "ServicesModule": true

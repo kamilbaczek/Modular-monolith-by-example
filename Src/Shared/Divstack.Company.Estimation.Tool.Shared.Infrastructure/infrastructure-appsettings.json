@@ -6,7 +6,7 @@
     "AllowedOrigin": "http://localhost:8080"
   },
   "BackgroundProcessing": {
-    "StorageConnectionString": ""
+    "StorageConnectionString": "mongodb://localhost:27017/"
   },
   "HealthChecks-UI": {
     "DisableMigrations": false,
@@ -33,10 +33,10 @@
   },
  "EventBus":
   {
-    "ConnectionString":"",
+    "ConnectionString":"amqp://guest:guest@localhost:5672",
     "Storage": {
-      "ConnectionString":"",
-      "DatabaseName":""
+      "ConnectionString":"mongodb://localhost:27017/",
+      "DatabaseName":"test"
     }
   }
 }

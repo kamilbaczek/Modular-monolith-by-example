@@ -1,7 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Services;
+﻿namespace Divstack.Company.Estimation.Tool.Users.Infrastructure.Identity.Users.Passwords;
 
 using System.Threading.Tasks;
-using Domain.Users;
+using Divstack.Company.Estimation.Tool.Users.Domain.Users;
 
 internal interface IPasswordTokens
 {

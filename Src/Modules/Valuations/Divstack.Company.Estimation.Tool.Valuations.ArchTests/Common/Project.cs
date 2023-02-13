@@ -2,7 +2,7 @@
 
 using Api.Endpoints.Queries.Get;
 using Application.Valuations.Commands.ApproveProposal;
-using Csl.Cmp.SimInventory.Arch.Tests.Common.Extensions;
+using Extensions;
 using Infrastructure.Events.Publish.Configuration;
 
 internal static class Project

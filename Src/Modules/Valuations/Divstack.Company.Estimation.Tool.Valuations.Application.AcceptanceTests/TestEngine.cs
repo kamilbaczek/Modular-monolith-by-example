@@ -1,8 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests;
 
 using Bootstrapper;
-using Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine;
-using Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common.Engine.Mocks;
+using Common.Engine;
+using Common.Engine.Mocks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

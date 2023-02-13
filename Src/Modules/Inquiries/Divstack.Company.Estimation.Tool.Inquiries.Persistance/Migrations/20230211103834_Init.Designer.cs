@@ -11,22 +11,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 {
     [DbContext(typeof(InquiriesContext))]
-    [Migration("20220116104535_Add_Phone_Number_Column")]
-    partial class Add_Phone_Number_Column
+    [Migration("20230211103834_Init")]
+    partial class Init
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.0")
+                .HasAnnotation("ProductVersion", "7.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Inquiry", b =>
                 {
-                    b.Property<Guid>("ValuationId")
+                    b.Property<Guid>("Id")
                         .HasColumnType("char(36)");
 
-                    b.HasKey("ValuationId");
+                    b.HasKey("Id");
 
                     b.ToTable("Inquiries", (string)null);
                 });
@@ -122,13 +123,13 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 
                     b.OwnsMany("Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.InquiryItem", "InquiryItems", b1 =>
                         {
-                            b1.Property<Guid>("ValuationId")
+                            b1.Property<Guid>("Id")
                                 .HasColumnType("char(36)");
 
                             b1.Property<Guid>("InquiryId")
                                 .HasColumnType("char(36)");
 
-                            b1.HasKey("ValuationId");
+                            b1.HasKey("Id");
 
                             b1.HasIndex("InquiryId");
 
@@ -154,7 +155,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 
                                     b2.OwnsMany("Divstack.Company.Estimation.Tool.Inquiries.Domain.Inquiries.Items.Services.Attributes.Attribute", "Attributes", b3 =>
                                         {
-                                            b3.Property<Guid>("ValuationId")
+                                            b3.Property<Guid>("Id")
                                                 .HasColumnType("char(36)");
 
                                             b3.Property<Guid>("ServiceInquiryItemId")
@@ -163,7 +164,7 @@ namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
                                             b3.Property<Guid>("ValueId")
                                                 .HasColumnType("char(36)");
 
-                                            b3.HasKey("ValuationId");
+                                            b3.HasKey("Id");
 
                                             b3.HasIndex("ServiceInquiryItemId");
 

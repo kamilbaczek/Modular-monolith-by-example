@@ -17,7 +17,8 @@ internal static class SmsModule
     internal static IServiceCollection AddSmsCoreModule(this IServiceCollection services, IConfiguration configuration)
     {
         var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
-        if (!moduleEnabled) return services;
+        if (!moduleEnabled) 
+            return services;
 
         services.AddScoped<ISmsClient, SmsClient>();
         var smsConfiguration = new SmsConfiguration(configuration);

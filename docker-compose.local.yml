@@ -1,0 +1,43 @@
+﻿version: '3.9'
+services:
+  mongodb:
+    image: mongo:4.4
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodbdata:/data/db
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/`var`/lib/mysql
+  postgres:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: testdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:management
+    profiles:
+      - local
+      - prod
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+volumes:
+  mongodbdata:
+  mysql:
+  postgres:

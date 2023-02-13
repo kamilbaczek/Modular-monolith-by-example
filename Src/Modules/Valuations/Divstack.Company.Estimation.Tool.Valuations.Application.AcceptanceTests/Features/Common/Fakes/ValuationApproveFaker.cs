@@ -1,6 +1,6 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Features.Common.Fakes;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Features.Common.Fakes;
 
-using Valuations.Commands.ApproveProposal;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.ApproveProposal;
 
 internal static class ValuationApproveFaker
 {

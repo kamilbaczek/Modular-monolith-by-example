@@ -16,7 +16,8 @@ internal static class ValuationModule
         IConfiguration configuration)
     {
         var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
-        if (!moduleEnabled) return;
+        if (!moduleEnabled)
+            return;
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddInfrastructure(configuration);
@@ -25,7 +26,8 @@ internal static class ValuationModule
     public static void UseValuationModule(this IApplicationBuilder app)
     {
         var moduleEnabled = app.IsModuleEnabled(FeatureFlags.Module);
-        if (!moduleEnabled) return;
+        if (!moduleEnabled) 
+            return;
 
         app.UseInfrastructure();
     }

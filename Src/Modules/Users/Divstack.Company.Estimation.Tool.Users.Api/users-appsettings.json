@@ -1,6 +1,6 @@
 ﻿{
   "TokenConfiguration": {
-    "Secret": "",
+    "Secret": "devsecret",
     "Issuer": "localhost:5001",
     "Audience": "DeveloperAudience",
     "AccessExpirationInMinutes": 10000000,
@@ -17,7 +17,7 @@
     "Init": "true"
   },
   "ConnectionStrings": {
-    "Users": ""
+    "Users": "Server=localhost;Database=devdb;Uid=root;Pwd=root;"
   },
   "FeatureManagement": {
     "UsersModule": true

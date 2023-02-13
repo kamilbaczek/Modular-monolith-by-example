@@ -5,6 +5,7 @@ using Domain;
 using Domain.Users;
 using Domain.Users.Interfaces;
 using Identity.Jwt.RefreshTokens;
+using Identity.Users.Passwords;
 using Identity.Users.Services;
 using Microsoft.AspNetCore.Identity;
 

@@ -1,6 +1,6 @@
 ﻿{
   "ConnectionStrings": {
-    "Inquiries": ""
+    "Inquiries": "Server=localhost;Database=devdb;Uid=root;Pwd=root;"
   },
   "FeatureManagement": {
     "InquiriesModule": true

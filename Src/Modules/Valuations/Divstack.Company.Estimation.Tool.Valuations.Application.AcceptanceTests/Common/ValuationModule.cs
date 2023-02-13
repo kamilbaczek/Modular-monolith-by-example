@@ -1,7 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.IntegrationTests.Common;
+﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Common;
 
-using AcceptanceTests;
-using Application.Common.Contracts;
+using Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests;
+using Divstack.Company.Estimation.Tool.Valuations.Application.Common.Contracts;
 
 internal static class ValuationModule
 {

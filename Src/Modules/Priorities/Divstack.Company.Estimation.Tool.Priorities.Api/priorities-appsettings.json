@@ -8,6 +8,6 @@
     "PrioritiesModule": true
   },
   "ConnectionStrings": {
-    "Priorities": ""
+    "Priorities": "mongodb://localhost:27017/"
   }
 }
