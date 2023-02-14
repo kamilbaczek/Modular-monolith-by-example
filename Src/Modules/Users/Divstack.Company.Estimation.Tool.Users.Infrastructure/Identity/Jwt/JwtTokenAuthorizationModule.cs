@@ -24,7 +24,6 @@ internal static class JwtTokenAuthorizationModule
         services.AddScoped<IAuthorizationHandler, TokenValidAuthorizationHandler>();
         services.AddSingleton<ITokenConfiguration, TokenConfiguration>();
         services.AddScoped<IJwtTokenManagementService, JwtTokenManagementService>();
-        services.AddScoped<ITokenGenerationService, TokenGenerationService>();
         services.AddScoped<IRefreshTokenGenerationService, RefreshTokenGenerationService>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddSingleton<IUserIdProvider, UserPublicIdProvider>();
@@ -47,7 +46,9 @@ internal static class JwtTokenAuthorizationModule
                     ValidIssuer = tokenConfiguration.Issuer,
                     ValidAudience = tokenConfiguration.Audience,
                     ValidateIssuer = true,
-                    ValidateAudience = true
+                    ValidateAudience = true,
+                    ValidateLifetime = false,
+                    ClockSkew = TimeSpan.Zero
                 };
                 options.Events = new JwtBearerEvents
                 {

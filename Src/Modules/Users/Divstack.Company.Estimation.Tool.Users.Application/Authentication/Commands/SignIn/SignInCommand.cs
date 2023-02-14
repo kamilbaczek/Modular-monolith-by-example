@@ -18,43 +18,44 @@ public sealed class SignInCommand : ICommand<SignInCommandResponse>
 
     internal sealed class Handler : IRequestHandler<SignInCommand, SignInCommandResponse>
     {
-        private readonly IJwtTokenManagementService jwtTokenManagementService;
-        private readonly IRefreshTokenGenerationService refreshTokenGenerationService;
-        private readonly ISignInManagementService signInManagementService;
-        private readonly IUserManagementService userManagementService;
+        private readonly IJwtTokenManagementService _jwtTokenManagementService;
+        private readonly IRefreshTokenGenerationService _refreshTokenGenerationService;
+        private readonly ISignInManagementService _signInManagementService;
+        private readonly IUserManagementService _userManagementService;
 
         public Handler(ISignInManagementService signInManagementService,
             IJwtTokenManagementService jwtTokenManagementService,
             IUserManagementService userManagementService,
             IRefreshTokenGenerationService refreshTokenGenerationService)
         {
-            this.signInManagementService = signInManagementService;
-            this.jwtTokenManagementService = jwtTokenManagementService;
-            this.userManagementService = userManagementService;
-            this.refreshTokenGenerationService = refreshTokenGenerationService;
+            _signInManagementService = signInManagementService;
+            _jwtTokenManagementService = jwtTokenManagementService;
+            _userManagementService = userManagementService;
+            _refreshTokenGenerationService = refreshTokenGenerationService;
         }
 
         public async Task<SignInCommandResponse> Handle(SignInCommand request, CancellationToken cancellationToken)
         {
             var signInRequest = new SignInRequest(request.UserName, request.Password);
-            var signInResultStatus = await signInManagementService.SignInAsync(signInRequest, cancellationToken);
+            var signInResultStatus = await _signInManagementService.SignInAsync(signInRequest, cancellationToken);
 
             if (signInResultStatus != SignInResultStatus.Positive)
             {
-                await signInManagementService.SaveLogForFailedLoginAttemptAsync(request.UserName,
+                await _signInManagementService.SaveLogForFailedLoginAttemptAsync(request.UserName,
                     cancellationToken);
                 var signInFailedCommandResponse =
                     SignInCommandResponse.CreateFailed(signInResultStatus, request.UserName);
+                
                 return signInFailedCommandResponse;
             }
 
-            var userRole = await userManagementService.GetUserRolesAsync(request.UserName);
+            var userRole = await _userManagementService.GetUserRolesAsync(request.UserName);
 
-            var userDetails = await userManagementService.GetUserDetailsAsync(request.UserName);
-            var jwtToken = jwtTokenManagementService.GenerateJwtToken(userDetails, userRole);
-            var refreshToken = await refreshTokenGenerationService.GenerateRefreshTokenAsync(userDetails.PublicId);
-
+            var userDetails = await _userManagementService.GetUserDetailsAsync(request.UserName);
+            var jwtToken = _jwtTokenManagementService.GenerateJwtToken(userDetails, userRole);
+            var refreshToken = await _refreshTokenGenerationService.GenerateRefreshTokenAsync(userDetails.PublicId);
             var signInCommandResponse = SignInCommandResponse.CreateSuccess(jwtToken, refreshToken);
+            
             return signInCommandResponse;
         }
     }
