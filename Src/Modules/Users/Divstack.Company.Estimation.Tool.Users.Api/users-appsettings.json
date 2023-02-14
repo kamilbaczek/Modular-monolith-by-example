@@ -1,6 +1,6 @@
 ﻿{
   "TokenConfiguration": {
-    "Secret": "devsecret",
+    "Secret": "p2s5v8y/B?E(H+Mb",
     "Issuer": "localhost:5001",
     "Audience": "DeveloperAudience",
     "AccessExpirationInMinutes": 10000000,
