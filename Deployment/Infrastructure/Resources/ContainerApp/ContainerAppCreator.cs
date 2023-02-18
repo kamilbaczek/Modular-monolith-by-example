@@ -11,7 +11,6 @@ using ContainerApp = AzureNative.App.ContainerApp;
 using ContainerArgs = ContainerArgs;
 using RegistryArgs = AzureNative.ContainerRegistry.RegistryArgs;
 using SecretArgs = SecretArgs;
-using DockerRegistryArgs = Pulumi.Docker.Inputs.RegistryArgs;
 using SkuArgs = AzureNative.ContainerRegistry.Inputs.SkuArgs;
 
 internal static class ContainerAppCreator
@@ -76,17 +75,23 @@ internal static class ContainerAppCreator
         var adminUsername = credentials.Apply(credentials => credentials.Username);
         var adminPassword = credentials.Apply(credentials => credentials.Passwords[0].Value);
 
-        var customImage = "estimationtool";
-        var image = new Image(customImage, new ImageArgs
+        var imageName = Output.Format($"{registry.LoginServer}/estimationtool");
+        var image = new Image("estimationtool", new ImageArgs
         {
-            ImageName = Output.Format($"{registry.LoginServer}/{customImage}:v1.0.0"),
-            Build = new DockerBuildArgs { Context = "../.." },
-            Registry = new DockerRegistryArgs
+            ImageName = imageName,
+            Build = new DockerBuild { Context = "../.." },
+            Registry = new ImageRegistry
             {
                 Server = registry.LoginServer,
                 Username = adminUsername!,
                 Password = adminPassword!
             }
+        });
+        
+        image.Urn.Apply(urn =>
+        {
+            Console.WriteLine("Docker !!!: " + urn);
+            return urn;
         });
 
         var containerApp = new ContainerApp("estimationtool", new ContainerAppArgs
