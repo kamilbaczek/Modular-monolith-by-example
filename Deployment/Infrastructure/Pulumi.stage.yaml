@@ -1,12 +1,18 @@
 config:
   Estimation-Tool-Infrastructure:AuthTokenSecret:
     secure: AAABADgv5sxS4663sJbYziAeeY9OpBZTdPUstnuEAUr+iNWI1d3wLCdj/grI799eCCzsNdQVusi4aRSvKMiW0tPr8kE=
-  Estimation-Tool-Infrastructure:EventBusStorageDatabaseName: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
-  Estimation-Tool-Infrastructure:MongoDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
-  Estimation-Tool-Infrastructure:MySqlDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
-  Estimation-Tool-Infrastructure:PostgresDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:EventBusStorageDatabaseName:
+    secure: AAABAJuK3RWavpctKM0XjBrqmjCEJUPab1IXdrDwv7qpjhUAYeQBXdpm5yp7qmSP0kcuHcg/BIVDN4E2CrZMiUxK+Ii9wSPHcg3SHE5qqItabkDJRkQZ8k7RPYI/zDfX75gQXbpNUsaM9y+FjDD+j5QfJSZY+AqvekESAAXCYpz2yg==
+  Estimation-Tool-Infrastructure:MongoDb:
+    secure: AAABAL4btFwo+uALsprsvPDALZKtPtZkIXxJidy9OelR9EG+ltD92U/H95Y3mk5psxfuIbtD+saQQ7w5ZlHy6kqqTa+rYbZszzLalTSZqTtBNWZWtzzDrbo3Uzwnc+hPHlFXXtIaLHhMz7rRQkavX7jdwPMq9b3L9Atc0M9xb0DKZA==
+  Estimation-Tool-Infrastructure:MySqlDb:
+    secure: AAABAKKIh/YpD4BPU3BOzRqEBMM/j3PaOOhwN/gE9O1dUaSz2s/Vu4t+dAUuxx8OGgC8lcfRsY1WxCkzUyw7xQ9PnwxrSOdZqisvrZMs2r0scc/veIzMUSoen3B2YD5i1NFjNWwI0MuBlcYkore3qbckCk/x8uyQX2YD2BRyKFYd7M8=
+  Estimation-Tool-Infrastructure:PostgresDb:
+    secure: AAABAGKr0WZHjSLdnVzd5AYai82i7W2nBXnah6KMZX1xfd405UGvot3l+el0dKnua+wF4UortbOSvXk8aclqvNeunAmYjzOXVKzv42PjnK2NLr51wwqD22de3YZh8TVa9T8JoGHbhll4DPMqcnJPQoQpKbuDmg==
   Estimation-Tool-Infrastructure:StripeApi:
     secure: AAABABnw2zgJ+ZyZanoNyJtypXeAgrx1T/xXY5bm13vlrHwMVzAWHconJMJaMLG5Zp5jQLZfmjrsivIUdCdlW/quBhE=
-  Estimation-Tool-Infrastructure:TrelloAppKey: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
-  Estimation-Tool-Infrastructure:TrelloUserKey: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:TrelloAppKey:
+    secure: AAABANeFeiH0T8hEFbKe4uWpafEpZ4w1GkJp/odQPP8ZnDA=
+  Estimation-Tool-Infrastructure:TrelloUserKey:
+    secure: AAABAK2gQeaf2N6YEkom62TzC8eNQV2TIqI2T/Th0sxiXvM=
   azure-native:location: westeurope
