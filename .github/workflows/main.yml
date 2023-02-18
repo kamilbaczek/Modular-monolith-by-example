@@ -167,7 +167,7 @@ jobs:
         with:
           work-dir: Deployment/Infrastructure
           command: up
-          stack-name: dev
+          stack-name: stage
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
