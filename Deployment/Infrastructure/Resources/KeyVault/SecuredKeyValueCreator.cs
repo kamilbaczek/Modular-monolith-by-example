@@ -42,7 +42,6 @@ internal static class SecuredKeyValueCreator
             secrets,
             assignment);
 
-
         return secrets;
     }
 

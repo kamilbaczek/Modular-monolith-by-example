@@ -11,7 +11,7 @@ using Shared.DDD.ValueObjects.PhoneNumbers;
 
 internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCommand, Guid>
 {
-    private readonly IClientCompanyFinder _clientCompanyFinder;
+    private readonly IClientCompanyFinder ClientCompanyFinder;
     private readonly IInquiriesRepository _inquiriesRepository;
     private readonly IIntegrationEventPublisher _integrationEventPublisher;
     private readonly IServiceExistingChecker _serviceExistingChecker;
@@ -26,7 +26,7 @@ internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCom
         _inquiriesRepository = inquiriesRepository;
         _serviceExistingChecker = serviceExistingChecker;
         _integrationEventPublisher = integrationEventPublisher;
-        _clientCompanyFinder = clientCompanyFinder;
+        ClientCompanyFinder = clientCompanyFinder;
         _serviceMapper = serviceMapper;
     }
 
@@ -34,7 +34,7 @@ internal sealed class MakeInquiryCommandHandler : IRequestHandler<MakeInquiryCom
     {
         var email = Email.Of(makeInquiryCommand.Email);
         var phoneNumber = PhoneNumber.Of(makeInquiryCommand.PhoneNumber);
-        var clientCompany = await _clientCompanyFinder.FindCompany(email);
+        var clientCompany = await ClientCompanyFinder.FindCompany(email);
         var client = Client.Of(makeInquiryCommand.FirstName, makeInquiryCommand.LastName, email, phoneNumber, clientCompany);
         var services = makeInquiryCommand.AskedServiceDtos
             .Select(service => _serviceMapper.Map(service))

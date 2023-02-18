@@ -33,7 +33,8 @@ internal static class TrelloModule
     internal static void UseTrello(this IApplicationBuilder app)
     {
         var enabled = app.IsModuleEnabled(FeatureFlags.Module);
-        if (!enabled) return;
+        if (!enabled) 
+            return;
         app.UseTrelloAuthentication();
     }
 }

@@ -8,13 +8,13 @@ using Dtos.ClientProfile;
 internal sealed class CompanyFinderHttpClient : ICompanyFinderHttpClient
 {
     private const string Snov = "snov";
-    // private const string JsonType = "application/json";
-    // private readonly HttpClient _client;
+    private const string JsonType = "application/json";
+    private readonly HttpClient _client;
     // private string _httpsApiSnovIoV1GetProfileByEmail = "https://api.snov.io/v1/get-profile-by-email";
 
     public CompanyFinderHttpClient(IHttpClientFactory httpClientFactory)
     {
-        // _client = httpClientFactory.CreateClient(Snov);
+        _client = httpClientFactory.CreateClient(Snov);
     }
 
     public async Task<ClientProfileDto> GetClientProfile(string email)

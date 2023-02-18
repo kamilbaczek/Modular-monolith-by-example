@@ -1,0 +1,12 @@
+config:
+  Estimation-Tool-Infrastructure:AuthTokenSecret:
+    secure: AAABADgv5sxS4663sJbYziAeeY9OpBZTdPUstnuEAUr+iNWI1d3wLCdj/grI799eCCzsNdQVusi4aRSvKMiW0tPr8kE=
+  Estimation-Tool-Infrastructure:EventBusStorageDatabaseName: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:MongoDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:MySqlDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:PostgresDb: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:StripeApi:
+    secure: AAABABnw2zgJ+ZyZanoNyJtypXeAgrx1T/xXY5bm13vlrHwMVzAWHconJMJaMLG5Zp5jQLZfmjrsivIUdCdlW/quBhE=
+  Estimation-Tool-Infrastructure:TrelloAppKey: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  Estimation-Tool-Infrastructure:TrelloUserKey: mongodb+srv://kamilbaczek:IZvuriSGq9MYML5p@cluster0.dxstw.mongodb.net/?retryWrites=true&w=majority
+  azure-native:location: westeurope

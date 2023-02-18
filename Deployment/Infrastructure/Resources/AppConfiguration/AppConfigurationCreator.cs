@@ -23,9 +23,10 @@ internal static class AppConfigurationCreator
 
         return new ConfigurationStoreCreationResult(configurationStore, assignment);
     }
+    
     private static Assignment CreateAssignment(string enviroment, ConfigurationStore configurationStore, Output<GetClientConfigResult> clientConfig)
     {
-        var assignment = new Assignment($"ac-{enviroment}-do", new AssignmentArgs
+        var assignment = new Assignment($"ac-{enviroment}-app-do", new AssignmentArgs
         {
             Scope = configurationStore.Id,
             RoleDefinitionName = "App Configuration Data Owner",
