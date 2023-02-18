@@ -6,7 +6,6 @@ using AzureNative.OperationalInsights.Inputs;
 using Pulumi.Azure.AppInsights;
 using Pulumi.Azure.Authorization;
 using Pulumi.Docker;
-using Pulumi.Docker.Inputs;
 using ContainerApp = AzureNative.App.ContainerApp;
 using ContainerArgs = ContainerArgs;
 using RegistryArgs = AzureNative.ContainerRegistry.RegistryArgs;
@@ -85,7 +84,8 @@ internal static class ContainerAppCreator
                 Server = registry.LoginServer,
                 Username = adminUsername!,
                 Password = adminPassword!
-            }
+            },
+            
         });
         
         image.Urn.Apply(urn =>
