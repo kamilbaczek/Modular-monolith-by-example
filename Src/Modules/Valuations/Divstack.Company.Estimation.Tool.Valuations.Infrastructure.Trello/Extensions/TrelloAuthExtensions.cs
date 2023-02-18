@@ -4,6 +4,7 @@ using Configuration;
 using Manatee.Trello;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using TrelloConfiguration = Manatee.Trello.TrelloConfiguration;
 
 internal static class TrelloAuthExtensions
 {
