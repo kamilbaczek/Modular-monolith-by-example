@@ -20,7 +20,10 @@ internal class CurrentUserService : ICurrentUserService
 
     public string[] GetCurrentUserRoles()
     {
-        var userRoles = _httpContextAccessor.HttpContext?.User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToArray();
+        var userRoles = _httpContextAccessor.HttpContext?.User
+            .FindAll(ClaimTypes.Role)
+            .Select(r => r.Value)
+            .ToArray();
         
         return userRoles;
     }
