@@ -38,6 +38,7 @@ public sealed class Program
 
                 var configuration = builder.Build();
                 builder.AddApplicationConfiguration(configuration);
+                builder.Build();
             })
             .UseSharedInfrastructure();
     }

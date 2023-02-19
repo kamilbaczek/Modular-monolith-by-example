@@ -31,7 +31,10 @@ internal static class EventBusModule
 
     private static void ConfigurePersistance(EndpointConfiguration endpointConfiguration, IEventBusConfiguration configuration)
     {
-        var persistence = endpointConfiguration.UsePersistence<MongoPersistence>().UseTransactions(false);
+        var persistence = endpointConfiguration
+            .UsePersistence<MongoPersistence>()
+            .UseTransactions(false);
+        
         var client = new MongoClient(configuration.StorageConnectionString);
         persistence.MongoClient(client);
         persistence.DatabaseName(configuration.DatabaseName);

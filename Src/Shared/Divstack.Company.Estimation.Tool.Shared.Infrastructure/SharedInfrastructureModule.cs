@@ -7,7 +7,6 @@ using Api.Errors.Middleware;
 using Api.Swagger;
 using Api.WebSockets;
 using BackgroundProcessing;
-using Configuration;
 using EventBus;
 using FeatureFlags;
 using HealthChecks;
@@ -32,7 +31,6 @@ internal static class SharedInfrastructureModule
         services.AddBackgroundProcessing(configuration);
         services.AddSharedHealthChecks();
         services.AddObservability();
-        services.AddConfiguration();
         services.AddLogging();
     }
 

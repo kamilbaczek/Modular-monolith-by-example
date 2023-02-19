@@ -12,13 +12,13 @@ using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 internal static class AzureAppConfigurationModule
 {
     private const string Environment = "ASPNETCORE_ENVIRONMENT";
-    private const string AzureAppConfiguration = "AzureAppConfiguration";
+    private const string AzureAppConfiguration = "ConnectionStrings__AzureAppConfiguration";
 
     internal static void AddAzureApplicationConfiguration(this IConfigurationBuilder builder, IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString(AzureAppConfiguration);
-        var azureApplicationConfigurationEnabled = string.IsNullOrEmpty(connectionString);
-        if(azureApplicationConfigurationEnabled)
+        var connectionString = System.Environment.GetEnvironmentVariable(AzureAppConfiguration);
+        var azureApplicationConfigurationEnabled = !string.IsNullOrEmpty(connectionString);
+        if(!azureApplicationConfigurationEnabled)
             return;
 
         var environment = System.Environment.GetEnvironmentVariable(Environment);

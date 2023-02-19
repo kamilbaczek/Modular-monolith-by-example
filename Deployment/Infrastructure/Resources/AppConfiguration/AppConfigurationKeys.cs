@@ -135,6 +135,9 @@ internal static class AppConfigurationKeys
         },
         {
             "WebSockets:AllowedOrigin", "http://localhost:8080"
+        },
+        {
+            "EventBus:Storage:DatabaseName", "EstimationTool"
         }
     };
 
