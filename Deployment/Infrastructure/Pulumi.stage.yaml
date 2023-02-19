@@ -2,7 +2,7 @@ config:
   Estimation-Tool-Infrastructure:AuthTokenSecret:
     secure: AAABADgv5sxS4663sJbYziAeeY9OpBZTdPUstnuEAUr+iNWI1d3wLCdj/grI799eCCzsNdQVusi4aRSvKMiW0tPr8kE=
   Estimation-Tool-Infrastructure:EventBusStorageDatabaseName:
-    secure: AAABAJuK3RWavpctKM0XjBrqmjCEJUPab1IXdrDwv7qpjhUAYeQBXdpm5yp7qmSP0kcuHcg/BIVDN4E2CrZMiUxK+Ii9wSPHcg3SHE5qqItabkDJRkQZ8k7RPYI/zDfX75gQXbpNUsaM9y+FjDD+j5QfJSZY+AqvekESAAXCYpz2yg==
+    secure: AAABAKqjm8WUvpIgTR57/EC7ZXvdNTZVHJn2wdbUgI58YYjHELp4A5e4derqIg==
   Estimation-Tool-Infrastructure:MongoDb:
     secure: AAABAL4btFwo+uALsprsvPDALZKtPtZkIXxJidy9OelR9EG+ltD92U/H95Y3mk5psxfuIbtD+saQQ7w5ZlHy6kqqTa+rYbZszzLalTSZqTtBNWZWtzzDrbo3Uzwnc+hPHlFXXtIaLHhMz7rRQkavX7jdwPMq9b3L9Atc0M9xb0DKZA==
   Estimation-Tool-Infrastructure:MySqlDb:
