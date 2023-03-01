@@ -7,6 +7,7 @@ using Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds.Dtos;
 internal sealed class Get : EndpointBaseAsync.WithoutRequest.WithResult<ActionResult<PrioritiesListVm>>
 {
     private readonly IPrioritiesModule _prioritiesModule;
+    
     public Get(IPrioritiesModule prioritiesModule) =>
         _prioritiesModule = prioritiesModule;
 

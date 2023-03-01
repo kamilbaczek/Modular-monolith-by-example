@@ -22,6 +22,7 @@ internal sealed class PriorityCloseToDeadlineUnScheduler :
         _priorityDeadlineCloseReminder = priorityDeadlineCloseReminder;
         _deadlinesCloseReminderConfiguration = deadlinesCloseReminderConfiguration;
     }
+    
     public Task Handle(ProposalCancelled proposalCancelled, IMessageHandlerContext context)
     {
         UnSchedule(proposalCancelled.ValuationId, context.CancellationToken);

@@ -12,6 +12,10 @@ public class RedefinePrioritiesTests : BasePriorityTest
     {
         new object[]
         {
+            new DateTime(1998, 2, 6), 20, new DateTime(1998, 2, 26)
+        },
+        new object[]
+        {
             new DateTime(1998, 2, 3), 3, new DateTime(1998, 2, 6)
         },
         new object[]

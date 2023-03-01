@@ -8,10 +8,8 @@ using Valuations.IntegrationsEvents.ExternalEvents;
 internal sealed class ArchivePriorityCommandCommandHandler : IHandleMessages<ProposalSuggested>
 {
     private readonly IPrioritiesRepository _prioritiesRepository;
-    public ArchivePriorityCommandCommandHandler(IPrioritiesRepository prioritiesRepository)
-    {
+    public ArchivePriorityCommandCommandHandler(IPrioritiesRepository prioritiesRepository) => 
         _prioritiesRepository = prioritiesRepository;
-    }
 
     public async Task Handle(ProposalSuggested proposalSuggested, IMessageHandlerContext context)
     {

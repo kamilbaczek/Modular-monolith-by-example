@@ -12,6 +12,6 @@ internal sealed class PriorityDeadlineCloseReminder : IPriorityDeadlineCloseRemi
         CancellationToken cancellationToken = default)
     {
         var @event = new PriorityCloseToDeadlineRemind(valuationId, daysBeforeDeadline);
-        await _messageSession.Publish(@event);
+        await _messageSession.Publish(@event, cancellationToken: cancellationToken);
     }
 }
