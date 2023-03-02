@@ -2,6 +2,7 @@
 
 using Application.Valuations.Commands.Complete;
 
+[ExcludeFromCodeCoverage]
 [Route($"{ValuationsRouting.Url}/complete")]
 internal sealed class CompleteEndpoint : EndpointBaseAsync.WithRequest<CompleteCommand>.WithoutResult
 {

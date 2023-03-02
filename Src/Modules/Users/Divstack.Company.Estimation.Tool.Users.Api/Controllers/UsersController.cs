@@ -1,7 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Users.Api.Controllers;
 
 using System;
-using System.Threading.Tasks;
 using Application.Contracts;
 using Application.Users.Commands.ChangeUserPassword;
 using Application.Users.Commands.CreateUser;
@@ -14,14 +13,12 @@ using Common.DTO.Users;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+[ExcludeFromCodeCoverage]
 internal sealed class UsersController : BaseController
 {
     private readonly IUserModule _userModule;
 
-    public UsersController(IUserModule userModule)
-    {
-        _userModule = userModule;
-    }
+    public UsersController(IUserModule userModule) => _userModule = userModule;
 
     [HttpGet(Name = "GetAllUsers")]
     public async Task<ActionResult<GetAllUsersResponse>> GetAll()

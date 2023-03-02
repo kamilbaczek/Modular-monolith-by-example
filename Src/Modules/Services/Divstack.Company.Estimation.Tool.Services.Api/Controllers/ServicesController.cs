@@ -1,13 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Core.Services.Dtos;
 using Core.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+[ExcludeFromCodeCoverage]
 internal sealed class ServicesController : BaseController
 {
     private const int BatchItemsLimit = 25;

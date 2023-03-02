@@ -2,6 +2,7 @@
 
 using Application.Users.Queries.GetAllUsers;
 
+[ExcludeFromCodeCoverage]
 public class GetAllUsersResponse
 {
     public UserListVm UserListVm { get; set; }

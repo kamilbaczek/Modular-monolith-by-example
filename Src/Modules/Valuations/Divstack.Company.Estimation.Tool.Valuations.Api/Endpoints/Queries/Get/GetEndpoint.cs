@@ -3,14 +3,12 @@
 using Application.Valuations.Queries.Get;
 using Application.Valuations.Queries.Get.Dtos;
 
+[ExcludeFromCodeCoverage]
 [Route(ValuationsRouting.Url)]
 internal sealed class GetEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResult<ActionResult<ValuationVm>>
 {
     private readonly IValuationsModule _valuationsModule;
-    public GetEndpoint(IValuationsModule valuationsModule)
-    {
-        _valuationsModule = valuationsModule;
-    }
+    public GetEndpoint(IValuationsModule valuationsModule) => _valuationsModule = valuationsModule;
 
     [HttpGet("{id}")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

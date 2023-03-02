@@ -1,12 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
-using System;
-using System.Threading.Tasks;
 using Core.Services.Attributes.PossibleValues.Dtos;
 using Core.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+[ExcludeFromCodeCoverage]
 internal sealed class PossibleValuesController : BaseController
 {
     private readonly IServicesService _servicesService;

@@ -1,22 +1,18 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Core.Services.Categories.Dtos;
 using Core.Services.Categories.Services;
 using Core.Services.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+[ExcludeFromCodeCoverage]
 internal sealed class CategoriesController : BaseController
 {
     private readonly ICategoriesService _categoriesService;
 
-    public CategoriesController(ICategoriesService categoriesService)
-    {
+    public CategoriesController(ICategoriesService categoriesService) => 
         _categoriesService = categoriesService;
-    }
 
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]

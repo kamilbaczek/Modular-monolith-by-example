@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+[ExcludeFromCodeCoverage]
 internal sealed class PaymentsController : BaseController
 {
     private readonly IPaymentsModule _paymentsModule;

@@ -4,14 +4,12 @@ using System.Security.Claims;
 using Domain.Common.UserAccess;
 using Microsoft.AspNetCore.Http;
 
+[ExcludeFromCodeCoverage]
 internal sealed class CurrentUserService : ICurrentUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public CurrentUserService(IHttpContextAccessor httpContextAccessor)
-    {
-        _httpContextAccessor = httpContextAccessor;
-    }
+    public CurrentUserService(IHttpContextAccessor httpContextAccessor) => _httpContextAccessor = httpContextAccessor;
 
     public Guid GetPublicUserId()
     {

@@ -1,9 +1,11 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations;
 
+[ExcludeFromCodeCoverage]
 public partial class Init_users_module : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)

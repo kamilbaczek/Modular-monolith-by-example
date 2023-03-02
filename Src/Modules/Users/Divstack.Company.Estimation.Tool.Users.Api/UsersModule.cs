@@ -15,7 +15,8 @@ internal static class UsersModule
     public static void AddUsersModule(this IServiceCollection services, IConfiguration configuration)
     {
         var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
-        if (!moduleEnabled) return;
+        if (!moduleEnabled) 
+            return;
 
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddInfrastructure(configuration);

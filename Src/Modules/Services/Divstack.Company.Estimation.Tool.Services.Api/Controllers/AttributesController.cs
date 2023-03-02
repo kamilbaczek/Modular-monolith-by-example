@@ -1,12 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Services.Api.Controllers;
 
-using System;
-using System.Threading.Tasks;
 using Core.Services.Attributes.Dtos;
 using Core.Services.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+[ExcludeFromCodeCoverage]
 internal sealed class AttributesController : BaseController
 {
     private readonly IServicesService _servicesService;

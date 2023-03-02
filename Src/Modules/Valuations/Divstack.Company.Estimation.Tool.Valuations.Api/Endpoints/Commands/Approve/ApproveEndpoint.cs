@@ -2,6 +2,7 @@
 
 using Application.Valuations.Commands.ApproveProposal;
 
+[ExcludeFromCodeCoverage]
 [Route($"{ValuationsRouting.Url}/proposals/approve")]
 internal sealed class ApproveEndpoint : EndpointBaseAsync.WithRequest<ApproveProposalCommand>.WithoutResult
 {

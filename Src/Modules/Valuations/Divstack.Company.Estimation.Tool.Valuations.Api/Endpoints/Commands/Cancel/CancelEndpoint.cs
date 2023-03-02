@@ -2,6 +2,7 @@
 
 using Application.Valuations.Commands.CancelProposal;
 
+[ExcludeFromCodeCoverage]
 [Route($"{ValuationsRouting.Url}/proposals/cancel")]
 internal sealed class CancelEndpoint : EndpointBaseAsync.WithRequest<CancelProposalCommand>.WithoutResult
 {

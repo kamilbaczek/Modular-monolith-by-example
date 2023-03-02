@@ -3,6 +3,7 @@
 using Application.Valuations.Queries.GetHistoryById;
 using Application.Valuations.Queries.GetHistoryById.Dtos;
 
+[ExcludeFromCodeCoverage]
 [Route(ValuationsRouting.Url)]
 internal sealed class GetHistoryEndpoint : EndpointBaseAsync.WithRequest<Guid>.WithResult<ActionResult<ValuationHistoryVm>>
 {

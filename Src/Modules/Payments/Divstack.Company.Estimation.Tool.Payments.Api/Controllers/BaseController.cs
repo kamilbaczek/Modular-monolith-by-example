@@ -7,5 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 [Route("api/payments-module/[controller]")]
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+[ExcludeFromCodeCoverage]
 internal abstract class BaseController : ControllerBase
 { }

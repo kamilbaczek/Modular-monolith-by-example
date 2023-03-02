@@ -2,6 +2,7 @@
 
 using Common.Endpoints;
 
+[ExcludeFromCodeCoverage]
 internal static class ValuationsRouting
 {
     internal const string Url = $"{Routing.ModuleUrl}/Valuations";

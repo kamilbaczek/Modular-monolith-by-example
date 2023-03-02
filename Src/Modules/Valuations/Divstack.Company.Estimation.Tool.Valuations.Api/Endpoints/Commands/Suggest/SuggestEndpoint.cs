@@ -2,14 +2,12 @@
 
 using Application.Valuations.Commands.SuggestProposal;
 
+[ExcludeFromCodeCoverage]
 [Route($"{ValuationsRouting.Url}/proposals")]
 internal sealed class SuggestEndpoint : EndpointBaseAsync.WithRequest<SuggestProposalCommand>.WithoutResult
 {
     private readonly IValuationsModule _valuationsModule;
-    public SuggestEndpoint(IValuationsModule valuationsModule)
-    {
-        _valuationsModule = valuationsModule;
-    }
+    public SuggestEndpoint(IValuationsModule valuationsModule) => _valuationsModule = valuationsModule;
 
     [HttpPost]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
