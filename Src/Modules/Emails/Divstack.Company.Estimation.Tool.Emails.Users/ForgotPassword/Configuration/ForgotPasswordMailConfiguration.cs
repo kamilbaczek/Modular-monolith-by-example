@@ -11,7 +11,7 @@ internal sealed class ForgotPasswordMailConfiguration : ConfigurationBase, IForg
     {
     }
 
-    public string Subject => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(Subject), nameof(Subject));
+    public string Subject => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(nameof(Subject)));
 
-    public string Format => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(Format), nameof(Format));
+    public string Format => Guard.Against.NullOrEmpty(configurationSection.GetValue<string>(nameof(Format)));
 }
