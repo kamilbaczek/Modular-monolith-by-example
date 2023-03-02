@@ -120,7 +120,7 @@ jobs:
       with:
         dotnet-version: '7.x' # SDK Version to use.
   
-    - name: Install dotnet-coverage
+    - name: Install dotnet coverage
       run:  dotnet tool install --global dotnet-coverage
     - name: Install sonarscanner-dotnet
       run:  dotnet tool install --global dotnet-sonarscanner
