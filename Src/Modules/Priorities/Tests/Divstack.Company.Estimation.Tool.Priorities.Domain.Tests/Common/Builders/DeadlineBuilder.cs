@@ -23,13 +23,9 @@ internal sealed class DeadlineBuilder
         return this;
     }
 
-    private Deadline Build()
-    {
-        return Deadline.Create(_configurationMock.Object);
-    }
+    private Deadline Build() => 
+        Deadline.Create(_configurationMock.Object);
 
-    public static implicit operator Deadline(DeadlineBuilder builder)
-    {
-        return builder.Build();
-    }
+    public static implicit operator Deadline(DeadlineBuilder builder) => 
+        builder.Build();
 }

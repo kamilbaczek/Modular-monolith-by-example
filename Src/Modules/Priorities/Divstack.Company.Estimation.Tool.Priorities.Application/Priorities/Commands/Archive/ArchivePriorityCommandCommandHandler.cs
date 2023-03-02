@@ -1,9 +1,7 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Priorities.Commands.Archive;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Commands.Archive;
 
 using Ardalis.GuardClauses;
-using Domain;
-using NServiceBus;
-using Valuations.IntegrationsEvents.ExternalEvents;
+using Divstack.Company.Estimation.Tool.Priorities.Domain;
 
 internal sealed class ArchivePriorityCommandCommandHandler : IHandleMessages<ProposalSuggested>
 {

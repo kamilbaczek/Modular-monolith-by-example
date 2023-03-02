@@ -22,9 +22,4 @@ internal static class DataAccessModule
 
         services.AddSingleton(mongoClient);
     }
-
-    internal static void UseDataAccess(this IApplicationBuilder app)
-    {
-        PersistanceConfiguration.Configure();
-    }
 }

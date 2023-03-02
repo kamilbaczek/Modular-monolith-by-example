@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Priorities.Commands.Redefine;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Commands.Redefine;
 
 using FluentValidation;
 

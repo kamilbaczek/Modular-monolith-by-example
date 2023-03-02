@@ -1,9 +1,9 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Priorities.Commands.Redefine;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Commands.Redefine;
 
 using Ardalis.GuardClauses;
-using Domain;
-using Inquiries.Application.Common.Contracts;
-using Inquiries.Application.Inquiries.Queries.GetClient;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
+using Divstack.Company.Estimation.Tool.Priorities.Domain;
 using MediatR;
 
 internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<RedefinePriorityCommand>

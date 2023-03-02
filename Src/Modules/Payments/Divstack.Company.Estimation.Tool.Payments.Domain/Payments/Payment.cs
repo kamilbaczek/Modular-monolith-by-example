@@ -8,10 +8,10 @@ public sealed class Payment : Entity, IAggregateRoot
     private Payment(ValuationId valuationId, InquiryId inquiryId, Money amountToPay, PaymentSecret paymentSecret)
     {
         Id = PaymentId.Create();
-        PaymentSecret = Guard.Against.Null(paymentSecret, nameof(paymentSecret));
-        ValuationId = Guard.Against.Null(valuationId, nameof(valuationId));
-        AmountToPay = Guard.Against.Null(amountToPay, nameof(amountToPay));
-        InquiryId = Guard.Against.Null(inquiryId, nameof(inquiryId));
+        PaymentSecret = Guard.Against.Null(paymentSecret);
+        ValuationId = Guard.Against.Null(valuationId);
+        AmountToPay = Guard.Against.Null(amountToPay);
+        InquiryId = Guard.Against.Null(inquiryId);
         PaymentStatus = PaymentStatus.WaitForPayment;
         var @event = new PaymentInitializedDomainEvent(Id, ValuationId, InquiryId, AmountToPay);
 

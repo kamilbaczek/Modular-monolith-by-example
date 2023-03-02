@@ -1,12 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RootNamespace>Divstack.Company.Estimation.Tool.Priorities</RootNamespace>
-  </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.4.0" />
     <PackageReference Include="MediatR" Version="11.1.0" />
@@ -19,6 +12,10 @@
     <ProjectReference Include="..\..\Inquiries\Divstack.Company.Estimation.Tool.Inquiries.Application\Divstack.Company.Estimation.Tool.Inquiries.Application.csproj" />
     <ProjectReference Include="..\..\Valuations\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents\Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.csproj" />
     <ProjectReference Include="..\Divstack.Company.Estimation.Tool.Priorities.Domain\Divstack.Company.Estimation.Tool.Priorities.Domain.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <InternalsVisibleTo Include="Divstack.Company.Estimation.Tool.Priorities.IntegrationTests" />
   </ItemGroup>
 
 </Project>

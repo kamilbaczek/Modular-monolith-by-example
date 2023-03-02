@@ -18,7 +18,7 @@ internal static class PrioritiesPersistanceConfiguration
             classMap.MapProperty("Level").SetIsRequired(true);
             classMap.MapProperty("Deadline").SetIsRequired(true);
             classMap.MapProperty("ManualSetLevel");
-            classMap.MapProperty("Archived");
+            classMap.MapProperty("Archived").SetIsRequired(true).SetDefaultValue(false);
         });
 
         BsonClassMap.RegisterClassMap<Deadline>(classMap =>

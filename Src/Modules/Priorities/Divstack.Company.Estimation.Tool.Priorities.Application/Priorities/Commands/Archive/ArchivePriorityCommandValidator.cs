@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Priorities.Commands.Archive;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Commands.Archive;
 
 using FluentValidation;
 

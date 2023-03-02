@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Common.Contracts;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Common.Contracts;
 
 using MediatR;
 

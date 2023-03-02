@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure;
 
-using Common.Contracts;
+using Application.Common.Contracts;
 using MediatR;
 
 internal sealed class PrioritiesModule : IPrioritiesModule

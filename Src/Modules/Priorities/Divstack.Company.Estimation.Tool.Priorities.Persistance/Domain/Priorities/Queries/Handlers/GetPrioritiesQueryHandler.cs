@@ -1,11 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Persistance.Domain.Priorities.Queries.Handlers;
 
+using Application.Priorities.Queries.GetPrioritiesByValuationsIds;
+using Application.Priorities.Queries.GetPrioritiesByValuationsIds.Dtos;
 using DataAccess;
 using MediatR;
 using MongoDB.Driver;
 using Tool.Priorities.Domain;
-using Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds;
-using Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds.Dtos;
 
 internal sealed class GetPrioritiesQueryHandler : IRequestHandler<GetPrioritiesQuery, PrioritiesListVm>
 {
@@ -17,10 +17,8 @@ internal sealed class GetPrioritiesQueryHandler : IRequestHandler<GetPrioritiesQ
 
     private readonly IPrioritiesContext _prioritiesContext;
 
-    public GetPrioritiesQueryHandler(IPrioritiesContext prioritiesContext)
-    {
+    public GetPrioritiesQueryHandler(IPrioritiesContext prioritiesContext) => 
         _prioritiesContext = prioritiesContext;
-    }
 
     public async Task<PrioritiesListVm> Handle(GetPrioritiesQuery request, CancellationToken cancellationToken)
     {

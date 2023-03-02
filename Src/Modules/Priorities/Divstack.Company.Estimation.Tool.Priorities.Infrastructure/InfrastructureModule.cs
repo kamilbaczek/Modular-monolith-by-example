@@ -3,7 +3,8 @@
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Priorities.Api")]
 namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure;
 
-using Common.Contracts;
+using Application;
+using Application.Common.Contracts;
 using Domain.BackgroundProcesses;
 using Domain.Configurations;
 using Domain.Services;

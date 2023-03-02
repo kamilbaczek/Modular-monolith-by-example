@@ -16,7 +16,8 @@ public sealed class Priority : Entity
         InquiryId = inquiryId;
         Scores = new List<ClientLoseRisk>();
         Level = ManualSetLevel ?? Calculate(companySize);
-
+        Archived = false;
+        
         var @event = new PriorityDefinedDomainEvent(valuationId, Id, Deadline);
         AddDomainEvent(@event);
     }

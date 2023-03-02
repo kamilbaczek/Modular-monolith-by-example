@@ -1,8 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Domain.Services;
 
-using Common.Contracts;
-using Priorities.Commands.Redefine;
-using Priorities.Queries.GetPrioritiesByValuationsIds;
+using Application.Common.Contracts;
+using Application.Priorities.Commands.Redefine;
+using Application.Priorities.Queries.GetPrioritiesByValuationsIds;
 using Tool.Priorities.Domain;
 
 internal sealed class PrioritiesRedefiner : IPrioritiesRedefiner

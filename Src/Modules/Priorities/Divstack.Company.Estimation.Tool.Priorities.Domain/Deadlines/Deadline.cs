@@ -11,7 +11,7 @@ public sealed class Deadline : ValueObject
 
     public DateTime Date { get; init; }
     internal bool Exceeded => SystemTime.Now() > Date;
-    internal int DaysToDeadline => (SystemTime.Now() - Date).Days;
+    internal int DaysToDeadline => (Date - SystemTime.Now()).Days;
 
     public static Deadline Create(IDeadlinesConfiguration deadlinesConfiguration)
     {

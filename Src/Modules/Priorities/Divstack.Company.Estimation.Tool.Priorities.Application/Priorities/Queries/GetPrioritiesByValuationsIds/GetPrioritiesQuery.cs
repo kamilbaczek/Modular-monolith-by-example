@@ -1,4 +1,4 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Queries.GetPrioritiesByValuationsIds;
 
 using Common.Contracts;
 using Dtos;

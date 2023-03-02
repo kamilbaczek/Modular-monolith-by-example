@@ -1,8 +1,8 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Api.Priorities;
 
-using Tool.Priorities.Common.Contracts;
-using Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds;
-using Tool.Priorities.Priorities.Queries.GetPrioritiesByValuationsIds.Dtos;
+using Application.Common.Contracts;
+using Application.Priorities.Queries.GetPrioritiesByValuationsIds;
+using Application.Priorities.Queries.GetPrioritiesByValuationsIds.Dtos;
 
 internal sealed class Get : EndpointBaseAsync.WithoutRequest.WithResult<ActionResult<PrioritiesListVm>>
 {

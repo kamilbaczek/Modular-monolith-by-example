@@ -1,11 +1,9 @@
-﻿namespace Divstack.Company.Estimation.Tool.Priorities.Priorities.Commands.Define;
+﻿namespace Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Commands.Define;
 
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
+using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
 using Domain;
 using Domain.Deadlines;
-using Inquiries.Application.Common.Contracts;
-using Inquiries.Application.Inquiries.Queries.GetClient;
-using NServiceBus;
-using Valuations.IntegrationsEvents.ExternalEvents;
 
 internal sealed class DefinePrioritiesEventHandler : IHandleMessages<ValuationRequested>
 {
@@ -21,6 +19,7 @@ internal sealed class DefinePrioritiesEventHandler : IHandleMessages<ValuationRe
         _deadlinesConfiguration = deadlinesConfiguration;
         _inquiryModule = inquiryModule;
     }
+    
     public async Task Handle(ValuationRequested message, IMessageHandlerContext context)
     {
         var deadline = Deadline.Create(_deadlinesConfiguration);

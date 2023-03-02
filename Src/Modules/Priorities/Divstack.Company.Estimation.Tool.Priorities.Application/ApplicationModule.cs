@@ -1,6 +1,6 @@
 ﻿[assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Priorities.Infrastructure")]
 
-namespace Divstack.Company.Estimation.Tool.Priorities;
+namespace Divstack.Company.Estimation.Tool.Priorities.Application;
 
 internal static class ApplicationModule
 {

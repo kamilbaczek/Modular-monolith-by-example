@@ -19,9 +19,12 @@ internal static class PersistanceModule
         var connectionString = configuration.GetConnectionString(ConnectionStringName)!;
         services.AddDataAccess(connectionString);
         services.AddPersistanceHealthChecks(connectionString);
-
+        PersistanceConfiguration.Configure();
+        
         return services;
     }
 
-    internal static void UsePersistanceModule(this IApplicationBuilder app) => app.UseDataAccess();
+    internal static void UsePersistanceModule(this IApplicationBuilder _)
+    {
+    }
 }

@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Infrastructure.Mediation;
 
+using Application;
 using MediatR;
 using MediatR.Extensions.FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
