@@ -130,6 +130,9 @@ jobs:
           dotnet build --no-incremental
           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
           dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
+        
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.2
 
   security:
       name: Security Scan
