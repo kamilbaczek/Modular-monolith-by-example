@@ -41,19 +41,6 @@ jobs:
       with:
         fetch-depth: 0
         
-    - name: Install dotnet-reportgenerator
-      run: |
-        dotnet tool install -g dotnet-reportgenerator-globaltool
-        dotnet tool install dotnet-reportgenerator-globaltool --tool-path tools
-        dotnet new tool-manifest
-        dotnet tool install dotnet-reportgenerator-globaltool
-    - name: Install sonarscanner-dotnet
-      run:  dotnet tool install --global dotnet-sonarscanner
-    - name: Sonarscanner for dotnet
-      run: |
-           dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
-           dotnet reportgenerator "-reports:**/TestResults/**/coverage.opencover.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
-        
     - name: Valuations - Integrations Tests
       uses: zyborg/dotnet-tests-report@v1
       with:
@@ -100,10 +87,20 @@ jobs:
         project_path: Src/Modules/Priorities/Divstack.Company.Estimation.Tool.Priorities.IntegrationTests
         report_name: Priorities
         report_title: Integration Tests
-        gist_name: valuations_integrations_tests.md
+        gist_name: priorities_integrations_tests.md
         gist_badge_label: 'Priorities - Integration Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-  
+
+    - name: Priorities - Integrations Tests
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Priorities/Divstack.Company.Estimation.Tool.Priorities.Domain.Tests
+        report_name: Priorities
+        report_title: Unit Tests
+        gist_name: priorities_unit_tests.md
+        gist_badge_label: 'Priorities - Unit Tests: %Counters_passed%/%Counters_total%'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        
   sonar:
     name: Sonar
     runs-on: ubuntu-latest
