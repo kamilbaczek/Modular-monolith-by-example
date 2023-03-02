@@ -121,14 +121,14 @@ jobs:
         dotnet-version: '7.x' # SDK Version to use.
   
     - name: Install dotnet-coverage
-      run:  dotnet tool install --global dotnet-coverage
+      run:  dotnet tool install --global JetBrains.dotCover.GlobalTool
     - name: Install sonarscanner-dotnet
       run:  dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
-           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml  /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool"
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.cs.dotcover.reportsPaths=dotCover.Output.html  /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool"
            dotnet build --no-incremental
-           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
+           dotnet dotcover test --dcReportType=HTML
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 
   security:
