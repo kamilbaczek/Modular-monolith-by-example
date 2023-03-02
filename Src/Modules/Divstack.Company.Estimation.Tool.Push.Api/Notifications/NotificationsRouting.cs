@@ -2,6 +2,7 @@
 
 using Common.Endpoints;
 
+[ExcludeFromCodeCoverage]
 internal static class NotificationsRouting
 {
     internal const string Url = $"{Routing.ModuleUrl}/notifications";

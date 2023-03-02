@@ -4,6 +4,7 @@ using Common.CurrentUser;
 using DataAccess.DataAccess.Repositories.Read;
 using DataAccess.Entities;
 
+[ExcludeFromCodeCoverage]
 internal sealed class GetNotReadEndpoint : EndpointBaseAsync.WithoutRequest.WithResult<ActionResult<IReadOnlyCollection<Notification>>>
 {
     private readonly Guid _currentUserId;

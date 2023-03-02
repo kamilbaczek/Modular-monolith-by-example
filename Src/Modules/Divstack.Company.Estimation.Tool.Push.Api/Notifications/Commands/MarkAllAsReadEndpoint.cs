@@ -4,6 +4,7 @@ using Common.CurrentUser;
 using DataAccess.DataAccess.Repositories.Read;
 using DataAccess.DataAccess.Repositories.Write;
 
+[ExcludeFromCodeCoverage]
 internal sealed class MarkAllAsReadEndpoint : EndpointBaseAsync.WithoutRequest.WithoutResult
 {
     private readonly Guid _currentUserId;
