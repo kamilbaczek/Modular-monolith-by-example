@@ -54,15 +54,6 @@ jobs:
            dotnet test --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
            dotnet reportgenerator "-reports:**/TestResults/**/coverage.opencover.xml" "-targetdir:sonarqubecoverage" "-reporttypes:SonarQube"
         
-    - name: Install stryker
-      run:  dotnet tool install --global dotnet-stryker
-     
-    - name: Valuations - Domain Tests Mutations
-      run:  cd Src/Modules/Valuations/Divstack.Company.Estimation.Tool.Valuations.Domain.Tests && dotnet stryker
-    
-    - name: Priorities - Domain Tests Mutations
-      run:  cd Src/Modules/Priorities/Tests/Divstack.Company.Estimation.Tool.Priorities.Domain.Tests && dotnet stryker
- 
     - name: Valuations - Integrations Tests
       uses: zyborg/dotnet-tests-report@v1
       with:
@@ -101,6 +92,16 @@ jobs:
         report_title: Unit Tests
         gist_name: inquires_unit_tests.md
         gist_badge_label: 'Inquiries - Unit Tests: %Counters_passed%/%Counters_total%'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Priorities - Integrations Tests
+      uses: zyborg/dotnet-tests-report@v1
+      with:
+        project_path: Src/Modules/Priorities/Divstack.Company.Estimation.Tool.Priorities.IntegrationTests
+        report_name: Priorities
+        report_title: Integration Tests
+        gist_name: valuations_integrations_tests.md
+        gist_badge_label: 'Priorities - Integration Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Codecov
