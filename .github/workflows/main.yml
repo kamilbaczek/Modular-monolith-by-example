@@ -103,15 +103,6 @@ jobs:
         gist_name: valuations_integrations_tests.md
         gist_badge_label: 'Priorities - Integration Tests: %Counters_passed%/%Counters_total%'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-      
-    - name: Codecov
-      uses: codecov/codecov-action@v2.1.0
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        files: "**/TestResults/**/coverage.opencover.xml"
-        name: codecov-umbrella
-        fail_ci_if_error: true 
-        verbose: true 
   
   sonar:
     name: Sonar
@@ -128,13 +119,16 @@ jobs:
     - uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '7.x' # SDK Version to use.
-
+  
+    - name: Install dotnet-coverage
+      run:  dotnet tool install --global dotnet-coverage
     - name: Install sonarscanner-dotnet
       run:  dotnet tool install --global dotnet-sonarscanner
     - name: Sonarscanner for dotnet
       run: |
-           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool"
-           dotnet build
+           dotnet sonarscanner begin /v:1.${{ github.run_number }} /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml  /d:sonar.verbose=true /d:sonar.language=cs /o:"kamilbaczek" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="$SONAR_TOKEN" /key:"kamilbaczek_Estimation-Tool"
+           dotnet build --no-incremental
+           dotnet-coverage collect 'dotnet test' -f xml  -o 'coverage.xml'
            dotnet sonarscanner end /d:sonar.login="$SONAR_TOKEN"
 
   security:
