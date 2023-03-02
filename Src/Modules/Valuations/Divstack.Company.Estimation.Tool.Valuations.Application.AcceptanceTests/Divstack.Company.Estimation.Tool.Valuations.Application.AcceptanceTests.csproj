@@ -3,6 +3,7 @@
   <PropertyGroup>
     <UserSecretsId>2bd98ace-6527-48f9-b414-c7400358db12</UserSecretsId>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <SonarQubeTestProject>true</SonarQubeTestProject>
   </PropertyGroup>
 
   <ItemGroup>

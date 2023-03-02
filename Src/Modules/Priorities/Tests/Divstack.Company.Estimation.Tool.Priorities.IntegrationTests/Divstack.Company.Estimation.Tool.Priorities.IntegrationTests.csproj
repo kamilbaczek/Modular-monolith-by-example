@@ -1,4 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <SonarQubeTestProject>true</SonarQubeTestProject>
+    </PropertyGroup>
   
     <ItemGroup>
       <ProjectReference Include="..\..\..\..\Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper\Divstack.Company.Estimation.Tool.Bootstrapper.csproj" />

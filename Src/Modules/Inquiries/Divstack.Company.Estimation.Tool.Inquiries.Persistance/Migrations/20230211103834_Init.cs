@@ -5,7 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations;
 
+using System.Diagnostics.CodeAnalysis;
+
 /// <inheritdoc />
+[ExcludeFromCodeCoverage]
 public partial class Init : Migration
 {
     /// <inheritdoc />

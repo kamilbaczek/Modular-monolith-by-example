@@ -1,4 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <SonarQubeTestProject>true</SonarQubeTestProject>
+  </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />

@@ -8,8 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Users.Persistance.Migrations
 {
+    using System.Diagnostics.CodeAnalysis;
+
     [DbContext(typeof(UsersContext))]
     [Migration("20210626121915_Init_users_module")]
+    [ExcludeFromCodeCoverage]
     partial class Init_users_module
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

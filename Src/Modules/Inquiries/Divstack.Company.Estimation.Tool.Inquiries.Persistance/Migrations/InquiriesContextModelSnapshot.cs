@@ -9,7 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 {
+    using System.Diagnostics.CodeAnalysis;
+
     [DbContext(typeof(InquiriesContext))]
+    [ExcludeFromCodeCoverage]
     partial class InquiriesContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

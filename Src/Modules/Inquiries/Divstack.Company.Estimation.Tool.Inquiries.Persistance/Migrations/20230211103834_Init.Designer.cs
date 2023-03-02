@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Divstack.Company.Estimation.Tool.Inquiries.Persistance.Migrations
 {
+    using System.Diagnostics.CodeAnalysis;
+
     [DbContext(typeof(InquiriesContext))]
     [Migration("20230211103834_Init")]
     partial class Init
