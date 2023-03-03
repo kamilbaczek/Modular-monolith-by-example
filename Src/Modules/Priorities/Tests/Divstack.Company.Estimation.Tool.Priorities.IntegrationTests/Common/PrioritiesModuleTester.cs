@@ -10,11 +10,12 @@ using Domain.Deadlines;
 
 internal static class PrioritiesModuleTester
 {
-    internal static async Task HandleValuationRequestedEvent(ValuationRequested valuationRequested, int clientCompanySize, IDeadlinesConfiguration deadlinesConfiguration)
+    internal static async Task HandleValuationRequestedEvent(ValuationRequested valuationRequested, int clientCompanySize)
     {
         using var scope = TestEngine.ServiceScopeFactory.CreateScope();
         var prioritiesRepository = scope.ServiceProvider.GetRequiredService<IPrioritiesRepository>();
-
+        var deadlinesConfiguration = scope.ServiceProvider.GetRequiredService<IDeadlinesConfiguration>();
+        
         var inquiriesModule = new Mock<IInquiriesModule>();
         SetupGetInquiryClientQuery(inquiriesModule, clientCompanySize);
         
