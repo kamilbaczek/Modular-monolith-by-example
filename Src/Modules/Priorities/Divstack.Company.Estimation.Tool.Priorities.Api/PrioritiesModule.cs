@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure.FeatureFlags;
 using UserAccess;
 
+[ExcludeFromCodeCoverage]
 internal static class PrioritiesModule
 {
     public static void AddPrioritiesModule(this IServiceCollection services,

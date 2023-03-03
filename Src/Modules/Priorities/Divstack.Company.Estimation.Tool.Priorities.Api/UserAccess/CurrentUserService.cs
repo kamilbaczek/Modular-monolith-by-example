@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Domain.UserAccess;
 using Microsoft.AspNetCore.Http;
 
+[ExcludeFromCodeCoverage]
 internal sealed class CurrentUserService : ICurrentUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;

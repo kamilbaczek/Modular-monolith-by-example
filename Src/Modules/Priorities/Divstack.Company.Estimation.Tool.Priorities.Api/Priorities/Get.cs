@@ -4,6 +4,7 @@ using Application.Common.Contracts;
 using Application.Priorities.Queries.GetPrioritiesByValuationsIds;
 using Application.Priorities.Queries.GetPrioritiesByValuationsIds.Dtos;
 
+[ExcludeFromCodeCoverage]
 internal sealed class Get : EndpointBaseAsync.WithoutRequest.WithResult<ActionResult<PrioritiesListVm>>
 {
     private readonly IPrioritiesModule _prioritiesModule;
