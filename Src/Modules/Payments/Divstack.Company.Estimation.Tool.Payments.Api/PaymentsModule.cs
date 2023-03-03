@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Shared.Infrastructure.FeatureFlags;
 
+[ExcludeFromCodeCoverage]
 internal static class PaymentsModule
 {
     public static void AddPaymentsModule(this IServiceCollection services,

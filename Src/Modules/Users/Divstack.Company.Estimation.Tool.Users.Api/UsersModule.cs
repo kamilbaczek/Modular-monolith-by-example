@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Infrastructure.FeatureFlags;
 
+[ExcludeFromCodeCoverage]
 internal static class UsersModule
 {
     public static void AddUsersModule(this IServiceCollection services, IConfiguration configuration)

@@ -6,6 +6,7 @@ using System.Security.Claims;
 using Application.Authentication;
 using Microsoft.AspNetCore.Http;
 
+[ExcludeFromCodeCoverage]
 internal class CurrentUserService : ICurrentUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;

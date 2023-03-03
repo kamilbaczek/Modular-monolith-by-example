@@ -8,6 +8,7 @@ using Shared.Infrastructure.Configuration;
 /// <summary>
 ///     Entry point to  application
 /// </summary>
+[ExcludeFromCodeCoverage]
 public sealed class Program
 {
     /// <summary>
