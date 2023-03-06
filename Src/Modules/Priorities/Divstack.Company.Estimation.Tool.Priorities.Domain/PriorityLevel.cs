@@ -1,6 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain;
 
-public readonly record struct PriorityLevel(string Name, int Weight, int? Scores)
+public record PriorityLevel(string Name, int Weight, int? Scores)
 {
     private const int HighLevelScoreBoundary = 20;
     private const int MediumLevelScoreBoundary = 10;

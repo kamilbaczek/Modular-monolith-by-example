@@ -1,8 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.IntegrationTests.Common;
 
 using Divstack.Company.Estimation.Tool.Inquiries.Application.Common.Contracts;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient;
-using Divstack.Company.Estimation.Tool.Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 using Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Commands.Define;
 using Divstack.Company.Estimation.Tool.Valuations.IntegrationsEvents.ExternalEvents;
 using Domain;
@@ -10,24 +8,29 @@ using Domain.Deadlines;
 
 internal static class PrioritiesModuleTester
 {
-    internal static async Task HandleValuationRequestedEvent(ValuationRequested valuationRequested, int clientCompanySize)
+    internal static async Task HandleValuationRequestedEventAsync(IEnumerable<ValuationRequested> valuationRequests)
+    {
+        foreach (var valuationRequested in valuationRequests)
+        {
+            await HandleValuationRequestedEventAsync(valuationRequested);
+        }
+    }
+    
+    internal static async Task HandleValuationRequestedEventAsync(ValuationRequested valuationRequested)
     {
         using var scope = TestEngine.ServiceScopeFactory.CreateScope();
         var prioritiesRepository = scope.ServiceProvider.GetRequiredService<IPrioritiesRepository>();
         var deadlinesConfiguration = scope.ServiceProvider.GetRequiredService<IDeadlinesConfiguration>();
-        
-        var inquiriesModule = new Mock<IInquiriesModule>();
-        SetupGetInquiryClientQuery(inquiriesModule, clientCompanySize);
-        
-        var definePrioritiesEventHandler = new DefinePrioritiesEventHandler(prioritiesRepository, deadlinesConfiguration, inquiriesModule.Object);
+        var inquiriesModule = scope.ServiceProvider.GetRequiredService<IInquiriesModule>();
+
+        var definePrioritiesEventHandler = new DefinePrioritiesEventHandler(prioritiesRepository, deadlinesConfiguration, inquiriesModule);
         await definePrioritiesEventHandler.Handle(valuationRequested, new TestableMessageHandlerContext());
     }
     
-    private static void SetupGetInquiryClientQuery(Mock<IInquiriesModule> inquiriesModule, int clientCompanySize)
+    internal static async Task RedefineAllAsync()
     {
-        var query = new InquiryClientDto("John", "Doe", "test@mail.com", "123456789", clientCompanySize.ToString());
-        inquiriesModule
-            .Setup(module => module.ExecuteQueryAsync(It.IsAny<GetInquiryClientQuery>()))
-            .ReturnsAsync(query);
+        using var scope = TestEngine.ServiceScopeFactory.CreateScope();
+        var prioritiesRedefiner = scope.ServiceProvider.GetRequiredService<IPrioritiesRedefiner>();
+        await prioritiesRedefiner.RedefineAllAsync();
     }
 }

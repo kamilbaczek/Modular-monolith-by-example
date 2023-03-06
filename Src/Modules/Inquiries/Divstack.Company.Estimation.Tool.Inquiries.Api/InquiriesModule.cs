@@ -11,7 +11,8 @@ internal static class InquiriesModule
         IConfiguration configuration)
     {
         var moduleEnabled = services.IsModuleEnabled(FeatureFlags.Module);
-        if (!moduleEnabled) return;
+        if (!moduleEnabled)
+            return;
 
         services.AddInfrastructure(configuration);
     }

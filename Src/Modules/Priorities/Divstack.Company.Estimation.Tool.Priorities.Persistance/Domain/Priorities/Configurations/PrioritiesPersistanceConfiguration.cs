@@ -1,5 +1,6 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Persistance.Domain.Priorities.Configurations;
 
+using Extensions;
 using MongoDB.Bson.Serialization;
 using Tool.Priorities.Domain;
 using Tool.Priorities.Domain.Deadlines;
@@ -19,6 +20,13 @@ internal static class PrioritiesPersistanceConfiguration
             classMap.MapProperty("Deadline").SetIsRequired(true);
             classMap.MapProperty("ManualSetLevel");
             classMap.MapProperty("Archived").SetIsRequired(true).SetDefaultValue(false);
+        });
+        
+        BsonClassMap.RegisterClassMap<PriorityId>(bsonClassMap =>
+        {
+            bsonClassMap.MapProperty(priorityId => priorityId.Value)
+                .ConfigureIdSerializer()
+                .SetIsRequired(true);
         });
 
         BsonClassMap.RegisterClassMap<Deadline>(classMap =>

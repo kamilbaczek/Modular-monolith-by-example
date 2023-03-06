@@ -10,6 +10,7 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
 {
     private readonly IInquiriesModule _inquiryModule;
     private readonly IPrioritiesRepository _prioritiesRepository;
+    
     public RedefinePriorityCommandCommandHandler(
         IPrioritiesRepository prioritiesRepository,
         IInquiriesModule inquiryModule)
