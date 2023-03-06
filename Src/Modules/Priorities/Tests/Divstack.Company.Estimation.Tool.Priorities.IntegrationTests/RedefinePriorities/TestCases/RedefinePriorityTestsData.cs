@@ -13,7 +13,8 @@ internal static class RedefinePriorityTestsData
                 new(Guid.NewGuid(), Guid.NewGuid()),
                 new(Guid.NewGuid(), Guid.NewGuid()),
                 new(Guid.NewGuid(), Guid.NewGuid()),
-                new(Guid.NewGuid(), Guid.NewGuid())            }
+                new(Guid.NewGuid(), Guid.NewGuid())
+            }
         }
     };
 }
