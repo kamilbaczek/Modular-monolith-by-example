@@ -10,7 +10,7 @@ using TestCases;
 public sealed class RedefinePrioritiesTests
 {
     private static readonly DateTime NowDate = new(2020, 2, 3, 1, 1, 1);
-    private static DateTime FutureDate => NowDate.AddMonths(2);
+    private static readonly DateTime FutureDate = new(2020, 4, 3, 1, 1, 1);
 
     [Theory]
     [TestCaseSource(typeof(RedefinePriorityTestsData), nameof(RedefinePriorityTestsData.TestCases))]
