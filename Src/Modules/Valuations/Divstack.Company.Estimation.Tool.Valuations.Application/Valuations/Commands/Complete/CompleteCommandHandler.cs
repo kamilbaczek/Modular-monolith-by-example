@@ -22,15 +22,11 @@ internal sealed class CompleteCommandHandler : IRequestHandler<CompleteCommand>
     {
         var valuationId = ValuationId.Of(command.ValuationId);
         var valuationApproved = await _valuationsRepository.GetAsync<ValuationApproved>(valuationId, cancellationToken);
-        if (valuationApproved is null)
-        {
-            throw new NotFoundException(command.ValuationId, nameof(ValuationApproved));
-        }
-
         var employeeId = EmployeeId.Of(_currentUserService.GetPublicUserId());
+        
          var completed = valuationApproved.Complete(employeeId);
 
-        await _valuationsRepository.CommitAsync(completed, cancellationToken);
+         await _valuationsRepository.CommitAsync(completed, cancellationToken);
         await _integrationEventPublisher.PublishAsync(completed.DomainEvents, cancellationToken);
 
         return Unit.Value;

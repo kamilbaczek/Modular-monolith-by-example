@@ -9,6 +9,8 @@ using TestCases;
 
 public sealed class RedefinePrioritiesTests
 {
+    public RedefinePrioritiesTests() => SystemTime.SetDateTime(NowDate);
+    
     private static readonly DateTime NowDate = new(2020, 2, 3, 1, 1, 1);
     private static readonly DateTime FutureDate = new(2020, 4, 3, 1, 1, 1);
 
@@ -17,7 +19,6 @@ public sealed class RedefinePrioritiesTests
     public async Task Given_RedefinePriorities_When_time_pass_Then_PrioritiesLevelWasIncreased(IEnumerable<ValuationRequested> valuationRequests)
     {
         var query = GetPrioritiesQuery.Create();
-        SystemTime.SetDateTime(NowDate);
         await PrioritiesModuleTester.HandleValuationRequestedEventAsync(valuationRequests);
         var prioritiesBeforeTimePast = await PrioritiesModule.ExecuteQueryAsync(query);
         prioritiesBeforeTimePast.Should().HavePrioritiesInLowLevel();

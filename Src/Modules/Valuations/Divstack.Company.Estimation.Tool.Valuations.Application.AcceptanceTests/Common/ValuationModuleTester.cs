@@ -1,12 +1,11 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests.Common;
 
 using Divstack.Company.Estimation.Tool.Inquiries.IntegrationsEvents.External;
-using Divstack.Company.Estimation.Tool.Valuations.Application.AcceptanceTests;
 using Divstack.Company.Estimation.Tool.Valuations.Application.Common.Interfaces;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Commands.Request;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetAll;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById;
-using Divstack.Company.Estimation.Tool.Valuations.Application.Valuations.Queries.GetProposalsById.Dtos;
+using Valuations.Commands.Request;
+using Valuations.Queries.GetAll;
+using Valuations.Queries.GetProposalsById;
+using Valuations.Queries.GetProposalsById.Dtos;
 using Divstack.Company.Estimation.Tool.Valuations.Domain.Valuations;
 using NServiceBus.Testing;
 using static ValuationModule;
