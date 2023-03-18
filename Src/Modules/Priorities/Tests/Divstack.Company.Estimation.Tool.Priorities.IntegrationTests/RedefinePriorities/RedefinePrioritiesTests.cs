@@ -16,17 +16,17 @@ public sealed class RedefinePrioritiesTests
 
     [Theory]
     [TestCaseSource(typeof(RedefinePriorityTestsData), nameof(RedefinePriorityTestsData.TestCases))]
-    public async Task Given_RedefinePriorities_When_time_pass_Then_PrioritiesLevelWasIncreased(IEnumerable<ValuationRequested> valuationRequests)
+    public async Task Given_RedefinePriorities_When_time_pass_Then_PrioritiesLevelWasIncreased(IList<ValuationRequested> valuationRequests)
     {
         var query = GetPrioritiesQuery.Create();
         await PrioritiesModuleTester.HandleValuationRequestedEventAsync(valuationRequests);
         var prioritiesBeforeTimePast = await PrioritiesModule.ExecuteQueryAsync(query);
-        prioritiesBeforeTimePast.Should().HavePrioritiesInLowLevel();
+        prioritiesBeforeTimePast.Should().HavePrioritiesInLowLevel(valuationRequests);
         SystemTime.SetDateTime(FutureDate);
         
         await PrioritiesModuleTester.RedefineAllAsync();
 
         var prioritiesAfterTimePass = await PrioritiesModule.ExecuteQueryAsync(query);
-        prioritiesAfterTimePass.Should().HavePrioritiesInMediumLevel();
+        prioritiesAfterTimePass.Should().HavePrioritiesInMediumLevel(valuationRequests);
     }
 }
