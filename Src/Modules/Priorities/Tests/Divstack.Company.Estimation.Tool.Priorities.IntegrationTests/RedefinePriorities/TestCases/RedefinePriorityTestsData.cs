@@ -15,6 +15,13 @@ internal static class RedefinePriorityTestsData
                 new(Guid.NewGuid(), Guid.NewGuid()),
                 new(Guid.NewGuid(), Guid.NewGuid())
             }
+        },
+        new object[]
+        {
+            new List<ValuationRequested>
+            {
+                new(Guid.NewGuid(), Guid.NewGuid()),
+            }
         }
     };
 }
