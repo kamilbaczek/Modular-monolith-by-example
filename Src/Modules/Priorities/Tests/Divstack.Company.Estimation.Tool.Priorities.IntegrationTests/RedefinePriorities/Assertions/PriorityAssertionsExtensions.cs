@@ -4,8 +4,6 @@ using Divstack.Company.Estimation.Tool.Priorities.Application.Priorities.Queries
 
 internal static class PriorityAssertionsExtensions
 {
-    public static PriorityAssertions Should(this PrioritiesListVm priority)
-    {
-        return new PriorityAssertions(priority);
-    }
+    public static PriorityAssertions Should(this PrioritiesListVm priority) => 
+        new(priority);
 }

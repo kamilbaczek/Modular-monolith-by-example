@@ -1,5 +1,7 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.Domain;
 
+using Ardalis.GuardClauses;
+
 public record PriorityLevel(string Name, int Weight, int? Scores)
 {
     private const int HighLevelScoreBoundary = 20;
@@ -21,7 +23,21 @@ public record PriorityLevel(string Name, int Weight, int? Scores)
         };
     }
 
-    public static bool operator >(PriorityLevel s1, PriorityLevel s2) => s1.Weight > s2.Weight;
+    public static bool operator >(PriorityLevel left, PriorityLevel right)
+    {
+        Guard.Against.Null(left);
+        Guard.Against.Null(right);
+        var result = left.Weight > right.Weight;
 
-    public static bool operator <(PriorityLevel s1, PriorityLevel s2) => s1.Weight < s2.Weight;
+        return result;
+    }
+
+    public static bool operator <(PriorityLevel left, PriorityLevel right)
+    {
+        Guard.Against.Null(left);
+        Guard.Against.Null(right);
+        var result = left.Weight < right.Weight;
+
+        return result;
+    }
 }
