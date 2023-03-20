@@ -1,19 +1,19 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.IntegrationTests;
 
-using System.IO;
-using Divstack.Company.Estimation.Tool.Bootstrapper;
-using Divstack.Company.Estimation.Tool.Priorities.IntegrationTests.Common.Engine;
+using Bootstrapper;
+using Common.Engine;
 using Divstack.Company.Estimation.Tool.Priorities.IntegrationTests.Common.Engine.Mocks;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
+using Users.Domain;
 
 [SetUpFixture]
 public class TestEngine
 {
     internal static IServiceScopeFactory ServiceScopeFactory;
-
+    internal static IMock<IDateTimeProvider> dateTimeProviderMock;
+    
     [OneTimeSetUp]
-    public static async Task RunBeforeAnyTests()
+    public static async Task RunBeforeAnyTestsAsync()
     {
         await PersistenceContainer.StartAsync();
 
@@ -22,6 +22,7 @@ public class TestEngine
         var services = new ServiceCollection();
         startup.ConfigureServices(services);
         services.ReplaceCurrentUserService();
+        services.MockInquiriesModule();
 
         ServiceScopeFactory = services.BuildServiceProvider()
             .GetService<IServiceScopeFactory>()!;

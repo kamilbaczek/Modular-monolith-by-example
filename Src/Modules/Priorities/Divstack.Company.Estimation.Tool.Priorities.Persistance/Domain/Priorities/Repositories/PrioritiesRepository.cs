@@ -27,9 +27,7 @@ internal sealed class PrioritiesRepository : IPrioritiesRepository
     public async Task AddAsync(Priority priority, CancellationToken cancellationToken = default) =>
         await _prioritiesContext.Priorities.InsertOneAsync(priority, cancellationToken: cancellationToken);
 
-    public async Task CommitAsync(Priority updatedPriority, CancellationToken cancellationToken = default)
-    {
+    public async Task CommitAsync(Priority updatedPriority, CancellationToken cancellationToken = default) =>
         await _prioritiesContext.Priorities.ReplaceOneAsync(priority => priority.Id == updatedPriority.Id,
             updatedPriority, cancellationToken: cancellationToken);
-    }
 }

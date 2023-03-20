@@ -8,8 +8,7 @@ internal static class DefinePriorityTestsData
     {
         new object[]
         {
-            new ValuationRequested(Guid.NewGuid(), Guid.NewGuid()),
-            10
+            new ValuationRequested(Guid.NewGuid(), Guid.NewGuid())
         }
     };
 }

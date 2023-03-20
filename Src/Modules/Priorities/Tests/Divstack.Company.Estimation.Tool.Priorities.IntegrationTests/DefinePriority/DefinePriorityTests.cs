@@ -10,9 +10,9 @@ public sealed class DefinePriorityTests
 {
     [Theory]
     [TestCaseSource(typeof(DefinePriorityTestsData), nameof(DefinePriorityTestsData.TestCases))]
-    public async Task Given_HandleValuationRequestedEvent_Then_PriorityIsDefined(ValuationRequested valuationRequested, int clientCompanySize)
+    public async Task Given_HandleValuationRequestedEvent_Then_PriorityIsDefined(ValuationRequested valuationRequested)
     {
-        await PrioritiesModuleTester.HandleValuationRequestedEvent(valuationRequested, clientCompanySize);
+        await PrioritiesModuleTester.HandleValuationRequestedEventAsync(valuationRequested);
         
         var query = GetPrioritiesQuery.Create();
         var result = await PrioritiesModule.ExecuteQueryAsync(query);

@@ -10,6 +10,7 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
 {
     private readonly IInquiriesModule _inquiryModule;
     private readonly IPrioritiesRepository _prioritiesRepository;
+    
     public RedefinePriorityCommandCommandHandler(
         IPrioritiesRepository prioritiesRepository,
         IInquiriesModule inquiryModule)
@@ -25,7 +26,7 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
         if (priority is null)
             throw new NotFoundException(command.PriorityId.ToString(), nameof(Priority));
 
-        var companySize = await GetCompanySize(command.InquiryId);
+        var companySize = await GetCompanySizeAsync(command.InquiryId);
         priority.Redefine(companySize);
 
         await _prioritiesRepository.CommitAsync(priority, cancellationToken);
@@ -33,7 +34,7 @@ internal sealed class RedefinePriorityCommandCommandHandler : IRequestHandler<Re
         return Unit.Value;
     }
 
-    private async Task<int?> GetCompanySize(Guid inquiryId)
+    private async Task<int?> GetCompanySizeAsync(Guid inquiryId)
     {
         var inquiryQuery = new GetInquiryClientQuery(inquiryId);
         var client = await _inquiryModule.ExecuteQueryAsync(inquiryQuery);

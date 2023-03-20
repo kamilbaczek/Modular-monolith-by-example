@@ -2,5 +2,5 @@
 
 public interface IPrioritiesRedefiner
 {
-    Task RedefineAll();
+    Task RedefineAllAsync();
 }

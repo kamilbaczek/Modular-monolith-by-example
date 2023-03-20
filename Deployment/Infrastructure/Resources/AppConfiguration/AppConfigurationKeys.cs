@@ -17,7 +17,7 @@ internal static class AppConfigurationKeys
             "Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware", "Debug"
         },
         {
-            "ApplicationInsights:LogLevel:Default", "Debug"
+            "ApplicationInsights:LogLevel:Default", "Information"
         },
         {
             "ApplicationInsights:LogLevel:Microsoft", "Debug"

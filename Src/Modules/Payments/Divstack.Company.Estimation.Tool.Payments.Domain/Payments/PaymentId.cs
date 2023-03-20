@@ -2,13 +2,7 @@
 
 public record PaymentId(Guid Value)
 {
-    public static PaymentId Create()
-    {
-        return new PaymentId(Guid.NewGuid());
-    }
+    internal static PaymentId Create() => new(Guid.NewGuid());
 
-    public static PaymentId Of(Guid id)
-    {
-        return new PaymentId(id);
-    }
+    public static PaymentId Of(Guid id) => new(id);
 }

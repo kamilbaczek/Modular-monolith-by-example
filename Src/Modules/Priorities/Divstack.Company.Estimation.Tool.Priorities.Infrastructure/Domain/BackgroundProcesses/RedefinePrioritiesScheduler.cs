@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Shared.Abstractions.BackgroundProcessing;
 using Tool.Priorities.Domain;
 
+[ExcludeFromCodeCoverage]
 internal sealed class RedefinePrioritiesScheduler : IHostedService
 {
     private const string RedefinePriorities = "redefine-priorities";
@@ -18,7 +19,7 @@ internal sealed class RedefinePrioritiesScheduler : IHostedService
         var prioritiesRedefiner = scope.ServiceProvider.GetRequiredService<IPrioritiesRedefiner>();
         var backgroundJobScheduler = scope.ServiceProvider.GetRequiredService<IRecurringBackgroundJobScheduler>();
 
-        backgroundJobScheduler.ScheduleHourly(RedefinePriorities, () => prioritiesRedefiner.RedefineAll());
+        backgroundJobScheduler.ScheduleHourly(RedefinePriorities, () => prioritiesRedefiner.RedefineAllAsync());
 
         return Task.CompletedTask;
     }

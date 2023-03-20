@@ -1,6 +1,9 @@
 ﻿namespace Divstack.Company.Estimation.Tool.Priorities.IntegrationTests.Common.Engine.Mocks;
 
-using Payments.Domain.Common.UserAccess;
+using Domain.UserAccess;
+using Inquiries.Application.Common.Contracts;
+using Inquiries.Application.Inquiries.Queries.GetClient;
+using Inquiries.Application.Inquiries.Queries.GetClient.Dtos;
 
 internal static class CurrentUserMock
 {
@@ -14,5 +17,21 @@ internal static class CurrentUserMock
         services.AddTransient(_ =>
             Mock.Of<ICurrentUserService>(
                 currentUserService => currentUserService.GetPublicUserId() == CurrentUserId));
+    }
+    
+    internal static void MockInquiriesModule(this IServiceCollection services)
+    {
+        var inquiriesModule = new Mock<IInquiriesModule>();
+        var clientCompanySize = 10;
+        SetupGetInquiryClientQuery(inquiriesModule, clientCompanySize);
+        services.AddTransient<IInquiriesModule>(_ => inquiriesModule.Object);
+    }
+    
+    private static void SetupGetInquiryClientQuery(Mock<IInquiriesModule> inquiriesModule, int clientCompanySize)
+    {
+        var query = new InquiryClientDto("John", "Doe", "test@mail.com", "123456789", clientCompanySize.ToString());
+        inquiriesModule
+            .Setup(module => module.ExecuteQueryAsync(It.IsAny<GetInquiryClientQuery>()))
+            .ReturnsAsync(query);
     }
 }

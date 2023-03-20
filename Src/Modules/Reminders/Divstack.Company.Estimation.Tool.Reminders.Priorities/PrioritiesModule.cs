@@ -3,9 +3,11 @@
 [assembly: InternalsVisibleTo("Divstack.Company.Estimation.Tool.Reminders")]
 namespace Divstack.Company.Estimation.Tool.Reminders.Priorities;
 
+using System.Diagnostics.CodeAnalysis;
 using DeadlineClose.Reminder;
 using Microsoft.Extensions.DependencyInjection;
 
+[ExcludeFromCodeCoverage]
 internal static class PrioritiesModule
 {
     private const string Configuration = "Configuration";
