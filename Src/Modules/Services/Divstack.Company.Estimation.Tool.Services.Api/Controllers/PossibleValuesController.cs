@@ -24,6 +24,7 @@ internal sealed class PossibleValuesController : BaseController
         return Ok();
     }
 
+    //Test
     [HttpDelete("{serviceId}/{attributeId}/{possibleValueId}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
